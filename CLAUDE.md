@@ -4,11 +4,14 @@ This repo is the entry point for working on Craftons marketing — especially fr
 
 > The brain (guidelines, strategy, inspiration, content, media) lives in Google Drive: `Peninsula Studio/01 Craftons/Marketing/`. This repo points to it; it does not duplicate the media.
 
-## The three homes (don't mix them up)
+## The homes (don't mix them up)
 
 - **This repo (`marketing-engine`)** — the marketing workspace + mobile entry point. Where you do the work: writing, planning, brand teardowns. Docs, not app code.
 - **Google Drive `…/01 Craftons/Marketing/`** — the brain: media, assets, and content/strategy docs. Source of truth. Dump inspo here from your phone.
 - **cnccut.app repo** — the dashboard/app code. It reads marketing data (from Drive and/or a database) to display it. It does not import this repo's files as code.
+- **Later.com** — scheduling/posting. Approved drafts go here to be published.
+
+**Control model:** Claude produces drafts → Lee approves and posts. Nothing auto-publishes.
 
 ## Accessing the brain
 

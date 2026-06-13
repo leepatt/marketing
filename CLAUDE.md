@@ -20,6 +20,7 @@ This repo is the entry point for working on Craftons marketing — especially fr
 
 ## Start here
 
+- This repo `SETUP.md` — the step-by-step setup sequence + the integrations/API-key checklist for standing the engine up.
 - Drive `02 Strategy/Craftons-Marketing-Engine-Plan.md` — the phased build plan.
 - Drive `02 Strategy/Craftons-Marketing-Engine-Notes.md` — decisions, targets, the Gozney playbook, benchmarks.
 - Drive `01 Inspiration/README.md` — how we gather and tear down brands.
@@ -30,6 +31,7 @@ This repo is the entry point for working on Craftons marketing — especially fr
 - No guessing. Inspiration teardowns only for brands Jake/Lee nominate; build from observed content with receipts.
 - Brand tone ≠ social caption tone.
 - Real footage leads; AI extends. A human approves every asset.
+- **Ongoing project — invest in integrations.** This is a long-term build, not a one-off. Where an API key or integration would make recurring work repeatable, set it up properly now rather than working around it — pay the setup cost once for compounding efficiency across future sessions. Keys live in the code repo's `.env`, never in the Drive brain. See `SETUP.md` for the integrations checklist.
 
 ## Status
 

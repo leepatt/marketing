@@ -1,0 +1,19 @@
+# secrets / env
+.env
+.env.*
+
+# os / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# node (if any tooling is added later)
+node_modules/
+
+# large media — media lives in Google Drive, not in this repo
+*.mp4
+*.mov
+*.png
+*.jpg
+*.jpeg
+*.psd

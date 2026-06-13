@@ -53,7 +53,9 @@ Concretely:
 ## Part B — Integrations & API keys (set these up now)
 
 The core of the "invest now" principle. Grouped by priority. For each: what it unlocks, what's
-needed, and where it lives.
+needed, and where it lives. **Step-by-step setup for each key lives in `INTEGRATIONS.md`** (the
+runbook). A **Zapier MCP connector is already live in this session**, so Later/Klaviyo/Meta/
+Google Ads can be bridged via Zapier instead of raw keys for some flows — see the runbook.
 
 ### Already connected (Claude session connectors — usable now, incl. mobile)
 

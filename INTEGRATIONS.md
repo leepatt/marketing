@@ -1,0 +1,138 @@
+# Integrations & API Keys — Setup Runbook
+
+The per-integration "how to actually wire it" companion to `SETUP.md` Part B. One section per
+integration: what it unlocks, exactly how to get the key, the env var name, where it lives, and
+cost. Work top-down by priority.
+
+## Ground rules (read once)
+
+- **Only you can obtain the keys** (they require logins to each service). I can wire each one
+  into tooling **once the key exists** in the env — and I can verify, document, and build the
+  scripts around it.
+- **Never paste raw keys into chat.** Put them straight into the cnccut.app `.env` and/or the
+  web-session environment-variable config. Chat is not a safe place for secrets.
+- **Keys live in the cnccut.app code repo `.env`** + the remote session env vars. Never in the
+  Drive brain, never committed to git. (`.gitignore` here excludes `.env*`.)
+- **Two ways to connect each service:**
+  1. **Raw API key** → in `.env`, used by scripts/tooling. Most control.
+  2. **Zapier MCP bridge** → already connected in this session. Good for posting/notifying/
+     simple actions without managing raw keys. Configure actions at:
+     `https://mcp.zapier.com/mcp/servers/1d8f79d5-5ec9-4104-8ff7-61fb14322f73/config`
+- **TODO (blocked on repo scope):** verify the exact env var names below against cnccut.app's
+  existing `.env` (especially Meta + Google Ads + Perplexity, which the notes say are already
+  partly wired). The names below are the recommended convention; match the repo if it differs.
+
+---
+
+## Priority 1 — Production (unblocks content at volume)
+
+### B1 · Replicate — AI image + video generation
+- **Unlocks:** b-roll, video extension, image touch-up, illustration gen (Phase 2/Step 3).
+- **Get the key:** [replicate.com](https://replicate.com) → sign in → **Account → API tokens** → *Create token*.
+- **Env var:** `REPLICATE_API_TOKEN`
+- **Cost:** pay-as-you-go, ~$50–150/mo depending on volume. Draft on cheap models, spend on finals.
+- **Status:** ☐ To do
+
+### B2 · Glif — templated image gen / ad-creative variants
+- **Unlocks:** carousel templates, Meta ad-creative variants from a template.
+- **Get the key:** [glif.app](https://glif.app) → account settings → **API**.
+- **Env var:** `GLIF_API_TOKEN`
+- **Cost:** credits, ~$20–40/mo.
+- **Status:** ☐ To do
+
+---
+
+## Priority 2 — Intel (unblocks Trend Radar + teardowns)
+
+### B3 · Perplexity — research / Trend Radar
+- **Unlocks:** weekly Trend Radar digest, market/competitor research.
+- **Get the key:** [perplexity.ai](https://www.perplexity.ai) → **Settings → API** → buy credits → generate key.
+- **Env var:** `PERPLEXITY_API_KEY`
+- **Cost:** usage-based, small.
+- **Status:** ☐ Confirm — a key was used for research on 2026-06-12; verify it's persisted in `.env`.
+
+### B4 · Firecrawl — scrape inspo & competitor content
+- **Unlocks:** pulling brand/competitor posts and pages for teardowns into `01 Inspiration/`.
+- **Get the key:** [firecrawl.dev](https://www.firecrawl.dev) → dashboard → **API Keys**.
+- **Env var:** `FIRECRAWL_API_KEY`
+- **Cost:** free tier, then usage-based.
+- **Status:** ☐ To do
+
+---
+
+## Priority 3 — Distribution (unblocks posting + measurement)
+
+### B5 · Later.com — scheduling / posting
+- **Unlocks:** approved drafts → scheduled/posted (the execution end of the loop).
+- **Reality:** Later's public API is limited. Three options, easiest first:
+  1. **Manual** — Lee posts approved drafts from Later directly. Zero setup. *(Recommended to start.)*
+  2. **Zapier bridge** — trigger Later actions via the Zapier MCP (no raw key).
+  3. **Later API** — if/when broader programmatic access is needed.
+- **Env var (if API):** `LATER_API_KEY`
+- **Status:** ☐ Decide (default: manual to start, revisit auto-scheduling later)
+
+### B6 · Meta / Instagram Graph API — insights + ads
+- **Unlocks:** IG insights → dashboard (Phase 4); Meta ad creative + draft campaigns (Phase 5).
+- **Setup:** [developers.facebook.com](https://developers.facebook.com) → create app → add
+  **Instagram Graph API** + **Marketing API** → link the IG business account + the Craftons FB
+  page → generate a **long-lived access token**.
+- **Env vars:** `META_ACCESS_TOKEN`, `META_APP_ID`, `META_APP_SECRET`, `META_AD_ACCOUNT_ID`, `IG_BUSINESS_ACCOUNT_ID`
+- **Note:** `tools/meta-ads.mjs` already exists in cnccut.app with a `CONFIRM=1` guardrail —
+  check which env vars it already expects and reuse those names.
+- **Status:** ☐ Wire token (partly scaffolded)
+
+### B7 · Google Ads API — draft search/awareness campaigns
+- **Unlocks:** programmatic campaign drafting (Phase 5). Account already exists.
+- **Setup:** Google Ads → **API Center** → apply for a **developer token** (approval has lead
+  time — apply early) → create an OAuth2 client → generate a refresh token.
+- **Env vars:** `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`, `GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_CUSTOMER_ID`
+- **Status:** ☐ To do — manual campaign building is fine until the dev token is approved.
+
+---
+
+## Priority 4 — Newsletter
+
+### B8 · Klaviyo (provisional) — newsletter send + list
+- **Unlocks:** fortnightly newsletter; list built off the calculator lead magnet (Phase 3).
+- **Decision first:** confirm Klaviyo vs alternative before wiring (it's Shopify-native, which is why it's the default).
+- **Get the key:** Klaviyo → **Settings → API Keys** → create a **private API key**.
+- **Env var:** `KLAVIYO_API_KEY`
+- **Cost:** free to 250 contacts, then ~$20–45 at a small list.
+- **Status:** ☐ Decide platform, then set up
+
+---
+
+## Priority 5 — Local tooling (no keys)
+
+### B9 · Media tooling — ffmpeg, sharp / Pillow / OpenCV
+- **Unlocks:** video assembly + image processing locally (Phase 2).
+- **Setup:** install in the session environment via a setup/SessionStart script so every session
+  has them. No keys.
+- **Status:** ☐ Add to setup script
+
+---
+
+## What unblocks what
+
+```
+B1 Replicate ─┐
+B2 Glif       ├─► Step 3 Production (image/video at volume)
+B9 ffmpeg ────┘
+B3 Perplexity ─┐
+B4 Firecrawl ──┴─► Step 2 Trend Radar + teardowns
+B5 Later ─────────► Step posting (operating loop)
+B6 Meta/IG ───────► Step 5 dashboard insights + Step 6 Meta ads
+B7 Google Ads ────► Step 6 Google ads
+B8 Klaviyo ───────► Step 4 newsletter
+```
+
+## Suggested order to knock out
+
+1. **B1 + B2** (production) and **B3 + B4** (intel) — these unblock the most recurring work.
+2. **B9** — quick, no key.
+3. **B6** — start the Meta token now; it gates both insights and ads.
+4. **B7** — apply for the Google Ads dev token early (approval lag).
+5. **B8** — after the platform decision.
+6. **B5** — manual to start; automate later.
+
+> When you've put a key in the env, tell me which one and I'll wire/verify the tooling around it.

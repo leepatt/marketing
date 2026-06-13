@@ -149,8 +149,18 @@ The repeatable cycle every week:
 
 ## Open items to unblock (parked, don't block setup)
 
-- Tia's monthly capacity → sets Reels cadence.
 - Ad budget $ + per-platform split.
 - Email platform final call (provisional: Klaviyo).
 - LinkedIn activation timing (founder-led).
 - When/whether to add TikTok + YouTube.
+
+### Resolved
+
+- **Tia's capacity: ~2–3 pieces/month** (target/hope). She produces the **how-to videos** plus
+  other shoots — this is the **real-footage hero supply**.
+  - **Implication for cadence.** Growth cadence is ~3 Reels + 1–2 carousels/week (~12–20 posts/mo),
+    but Tia supplies only ~2–3 hero pieces/mo. So each Tia shoot must be **atomised into multiple
+    outputs** (several Reels + stills + carousel frames), and the rest of the calendar is filled by:
+    self-shot **In the Workshop** footage (machines cutting — Craftons can capture this in-house),
+    **Site Spotlight** client assets, **Configure It** screen-recordings, AI b-roll/extension, and
+    education **carousels (Build Smarter)**. Real footage leads; the mix fills the gap to cadence.

@@ -28,6 +28,25 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
 - [ ] **Video:** ffmpeg assembly of Tia's footage → Reels export.
 - [ ] **Social/illustration style layer** (anti-slop rules) feeding AI gen (Replicate/Glif).
 
+## 🎬 Production quality — research-driven (see `research/2026-production-stack.md`)
+> Verdict: the path to pro-grade is **rendering your real CAD geometry + finishing brand fidelity**,
+> not better AI prompts. Visual style = a mix: real 3D/photography for product heroes, locked
+> line-art illustration for explainers, AI as extension only.
+- [ ] **#1 lever — Blender CAD→render pipeline.** Blender (free) + a STEP-import add-on, scripted
+      headless, with a reusable turntable / product-on-white / environmental scene template so every
+      SKU renders identically from its CAD file. (Or KeyShot $1,299/yr if speed > scripting.)
+- [ ] **Define the illustration style** — build a **Recraft V4** custom style (~$48/mo, vector + text)
+      or train a **FLUX LoRA on Replicate** from approved references → consistent line-art layer.
+- [ ] **Add a Style Dictionary token layer** (`tokens.json` → CSS vars) feeding every template; wire
+      the design system's `_adherence.oxlintrc.json` check into the pipeline.
+- [ ] **Build the template library from teardowns** (skeleton → Craftons tokens): product-feature,
+      before/during/after, spec/compliance, testimonial, educational carousel, story 1080×1920.
+- [ ] **Image-treatment pass in sharp** — green-duotone + motif overlay + grain so any photo reads as Craftons.
+- [ ] **Video:** ffmpeg finishing script + **Whisper** captions (+ CNC term list) + atomise shoots
+      (8–12 clips each). AI b-roll = **Kling** via Replicate (~$0.07/s). ⚠️ Avoid Sora (API ends 2026-09-24).
+- [ ] **Generation cautions:** use FLUX **Pro** not Dev (Dev = non-commercial); Firefly only for
+      indemnified paid-ad creative; keep the human-approval gate.
+
 ## ✅ Verify
 - [ ] Confirm the cnccut-app `.env` loads all 12 keys (quick check from inside the repo).
 - [ ] Confirm a new session reads the keys from the Jake cloud environment.

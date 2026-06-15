@@ -16,13 +16,17 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
 - [ ] (Optional) Same for the small text extras if wanted: `_ds_manifest.json`, `_adherence.oxlintrc.json`,
       and the `ui_kits/web/` HTML/CSS/JS. Fonts/PNGs/PDF stay in Drive.
 
-## 🟡 Build the production pipeline (B9 + compositing)
-- [ ] **Scaffold the media tooling** as a setup script on the Jake cloud environment:
-      `ffmpeg`, `sharp`, `ImageMagick`, SVG tooling (librsvg), **Playwright** (headless render),
-      and install the **Aeonik brand fonts** so text renders correctly.
-- [ ] Wire the **HTML/CSS → image** render pipeline using `craftons-design` tokens (true brand colours/type).
-- [ ] Build the **social/illustration style layer** on top of the locked brand foundation
-      (line style, colour treatment, references — the "anti-slop" rules) for mass illustration output.
+## 🟡 Production pipeline (B9 + compositing)
+- [x] **Pipeline built + working** → `pipeline/` (HTML/CSS template → PNG via Playwright + sharp).
+      Proven render: `post-hero-1080x1350` IG portrait. `npm run render`.
+- [ ] **Add the media tooling setup script to the Jake cloud environment** — paste
+      `pipeline/setup-media-tooling.sh` body into the env's *Setup script* field (so mobile sessions have ffmpeg/Playwright cached).
+- [ ] **Swap interim `pipeline/tokens.css` for the canonical `colors_and_type.css`** (from Drive) + drop
+      **Aeonik `.otf`s** into `pipeline/fonts/` so headlines render in the real face (currently a fallback).
+- [ ] **Pull the real curve-motif PNG + logo** from Drive `assets/` (template uses an SVG placeholder).
+- [ ] **More templates:** carousel slides, quote/testimonial card, compliance block, story 1080×1920.
+- [ ] **Video:** ffmpeg assembly of Tia's footage → Reels export.
+- [ ] **Social/illustration style layer** (anti-slop rules) feeding AI gen (Replicate/Glif).
 
 ## ✅ Verify
 - [ ] Confirm the cnccut-app `.env` loads all 12 keys (quick check from inside the repo).

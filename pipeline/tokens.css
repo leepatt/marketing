@@ -1,0 +1,57 @@
+/* ============================================================
+   Craftons pipeline — INTERIM tokens
+   ------------------------------------------------------------
+   Confirmed brand values only. This is a FALLBACK so templates
+   render before the canonical file is in place.
+
+   ⚠️ Replace with the canonical `colors_and_type.css` from the
+   Drive brain (00 Brain/Design-system/, file id
+   1KMBH74vo-tSqim_7WnI9dFaee3aWuo9M) for the COMPLETE, exact
+   token set (full neutral ramp, semantic colours, type scale,
+   shadows, motion). See .claude/skills/craftons-design/SOURCE.md.
+   ============================================================ */
+
+/* Webfonts — Aeonik is licensed (.otf in Drive fonts/). Until those
+   files are placed in ./fonts, Aeonik falls back to the stack below. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Anton&family=Big+Shoulders+Display:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap");
+
+:root {
+  /* ===== Brand colours (CONFIRMED) ===== */
+  --craftons-green: #194431;        /* primary deep forest green */
+  --craftons-green-700: #123022;
+  --craftons-green-900: #0a1c14;
+  --craftons-line-green: #2d8a5b;   /* line-art accent on dark */
+  --black: #000000;
+  --ink: #0e0e0c;                   /* near-black body text */
+  --white: #ffffff;
+
+  /* Semantic (CONFIRMED anchors) */
+  --bg: var(--white);
+  --bg-invert: var(--craftons-green);
+  --bg-dark: var(--black);
+  --fg: var(--ink);
+  --fg-invert: var(--white);
+  --accent: var(--craftons-green);
+  --accent-hover: var(--craftons-green-700);
+
+  /* ===== Type families (CONFIRMED stack; Aeonik display = official) ===== */
+  --font-display: "Aeonik", "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-condensed: "HWTArtz", "Big Shoulders Display", "Anton", "Inter", sans-serif;
+  --font-stencil: "Anton", "Big Shoulders Display", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Tracking (CONFIRMED) */
+  --tracking-tight: -0.02em;
+  --tracking-tighter: -0.03em;
+  --tracking-wide: 0.04em;
+  --tracking-widest: 0.18em;
+
+  /* ===== Spacing — 4px base (CONFIRMED scale endpoints; interim mids) ===== */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+  --sp-6: 24px; --sp-7: 32px; --sp-8: 40px; --sp-9: 48px; --sp-10: 64px;
+  --sp-11: 80px; --sp-12: 96px; --sp-13: 128px;
+
+  /* ===== Radii (CONFIRMED) — buttons/inputs/cards default 6px ===== */
+  --r-0: 0; --r-xs: 2px; --r-sm: 4px; --r-md: 6px; --r-lg: 10px; --r-xl: 16px; --r-pill: 999px;
+}

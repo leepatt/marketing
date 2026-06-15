@@ -31,14 +31,14 @@ cost. Work top-down by priority.
 - **Get the key:** [replicate.com](https://replicate.com) → sign in → **Account → API tokens** → *Create token*.
 - **Env var:** `REPLICATE_API_TOKEN`
 - **Cost:** pay-as-you-go, ~$50–150/mo depending on volume. Draft on cheap models, spend on finals.
-- **Status:** ☐ To do
+- **Status:** ✅ Key collected 2026-06-15 — pending placement in `.env` + verify
 
 ### B2 · Glif — templated image gen / ad-creative variants
 - **Unlocks:** carousel templates, Meta ad-creative variants from a template.
 - **Get the key:** [glif.app](https://glif.app) → account settings → **API**.
 - **Env var:** `GLIF_API_TOKEN`
 - **Cost:** credits, ~$20–40/mo.
-- **Status:** ☐ To do
+- **Status:** ✅ Key collected 2026-06-15 — pending placement in `.env` + verify
 
 ---
 
@@ -49,14 +49,14 @@ cost. Work top-down by priority.
 - **Get the key:** [perplexity.ai](https://www.perplexity.ai) → **Settings → API** → buy credits → generate key.
 - **Env var:** `PERPLEXITY_API_KEY`
 - **Cost:** usage-based, small.
-- **Status:** ☐ Confirm — a key was used for research on 2026-06-12; verify it's persisted in `.env`.
+- **Status:** ✅ Key collected 2026-06-15 — pending placement in `.env` + verify
 
 ### B4 · Firecrawl — scrape inspo & competitor content
 - **Unlocks:** pulling brand/competitor posts and pages for teardowns into `01 Inspiration/`.
 - **Get the key:** [firecrawl.dev](https://www.firecrawl.dev) → dashboard → **API Keys**.
 - **Env var:** `FIRECRAWL_API_KEY`
 - **Cost:** free tier, then usage-based.
-- **Status:** ☐ To do
+- **Status:** ✅ Key collected 2026-06-15 — pending placement in `.env` + verify
 
 ---
 
@@ -78,26 +78,27 @@ cost. Work top-down by priority.
 - **Env vars:** `META_ACCESS_TOKEN`, `META_APP_ID`, `META_APP_SECRET`, `META_AD_ACCOUNT_ID`, `IG_BUSINESS_ACCOUNT_ID`
 - **Note:** `tools/meta-ads.mjs` already exists in cnccut.app with a `CONFIRM=1` guardrail —
   check which env vars it already expects and reuse those names.
-- **Status:** ☐ Wire token (partly scaffolded)
+- **Status:** ✅ `META_ACCESS_TOKEN` + `META_AD_ACCOUNT_ID` collected 2026-06-15 — pending placement + verify. (Still TBC: `META_APP_ID`/`META_APP_SECRET`/`IG_BUSINESS_ACCOUNT_ID` — check what `meta-ads.mjs` actually needs.)
 
 ### B7 · Google Ads API — draft search/awareness campaigns
 - **Unlocks:** programmatic campaign drafting (Phase 5). Account already exists.
 - **Setup:** Google Ads → **API Center** → apply for a **developer token** (approval has lead
   time — apply early) → create an OAuth2 client → generate a refresh token.
-- **Env vars:** `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`, `GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_CUSTOMER_ID`
-- **Status:** ☐ To do — manual campaign building is fine until the dev token is approved.
+- **Env vars:** `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`, `GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_CUSTOMER_ID`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID`
+- **Accounts (set up 2026-06-15):** Manager (MCC) `Craftons Marketing` = `275-347-3695` → `GOOGLE_ADS_LOGIN_CUSTOMER_ID=2753473695`; advertiser account `310-491-2421` → `GOOGLE_ADS_CUSTOMER_ID=3104912421`. OAuth client is a **Web application** with redirect URI `https://developers.google.com/oauthplayground`; refresh token minted via OAuth Playground (own creds, offline + force-consent).
+- **Status:** ✅ All 5 values collected 2026-06-15 — pending placement + verify. **Basic-access approval still pending** (dev token is Test-access until granted; manual campaign building is fine meanwhile). ⚠️ Client secret + refresh token were exposed in a setup screenshot — rotate secret + re-mint refresh token before production.
 
 ---
 
 ## Priority 4 — Newsletter
 
-### B8 · Klaviyo (provisional) — newsletter send + list
+### B8 · Email platform — newsletter send + list → **Shopify Email** (decided 2026-06-15)
 - **Unlocks:** fortnightly newsletter; list built off the calculator lead magnet (Phase 3).
-- **Decision first:** confirm Klaviyo vs alternative before wiring (it's Shopify-native, which is why it's the default).
-- **Get the key:** Klaviyo → **Settings → API Keys** → create a **private API key**.
-- **Env var:** `KLAVIYO_API_KEY`
-- **Cost:** free to 250 contacts, then ~$20–45 at a small list.
-- **Status:** ☐ Decide platform, then set up
+- **Decision:** use **Shopify Email**, not Klaviyo, to start. Rationale: already connected (no new account/key), free for the **first 10,000 sends/month** (a fortnightly newsletter to a small list stays free indefinitely), and lives in the same admin as the store/customer data.
+- **Trade-off accepted:** Shopify Email has weak automation — no branching flows, A/B splits, or multi-step sequences. Fine for a simple fortnightly broadcast. **Revisit Klaviyo** only if/when we need real lifecycle automation (abandoned-config flows, predictive sends).
+- **How:** Shopify admin → **Marketing → Campaigns → Create campaign → Shopify Email**. No API key needed for sending; the Shopify MCP connector (already live) + `customer`/`marketing` Admin API cover list reads and automation if we script it later.
+- **Env var:** none (uses the existing Shopify connection). `KLAVIYO_API_KEY` only if we switch back.
+- **Status:** ✅ Decided — Shopify Email (no key needed)
 
 ---
 

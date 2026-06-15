@@ -73,14 +73,14 @@ Google Ads can be bridged via Zapier instead of raw keys for some flows — see 
 
 | # | Integration | Unlocks | What's needed | Where key lives | Status |
 |---|-------------|---------|---------------|-----------------|--------|
-| B1 | **Replicate** | AI image + video gen (b-roll, extension, touch-up) | API token; ~$50–150/mo | code repo `.env` | ☐ To do |
-| B2 | **Glif** | Templated image gen / ad-creative variants | API key / credits; ~$20–40/mo | code repo `.env` | ☐ To do |
-| B3 | **Perplexity** | Trend Radar + market research | API key (already used for research 2026-06-12) | code repo `.env` | ☐ Confirm/persist |
-| B4 | **Firecrawl** | Scrape inspo brands & competitor content for teardowns | API key | code repo `.env` | ☐ To do |
+| B1 | **Replicate** | AI image + video gen (b-roll, extension, touch-up) | API token; ~$50–150/mo | code repo `.env` | ✅ Key collected 2026-06-15 (pending place/verify) |
+| B2 | **Glif** | Templated image gen / ad-creative variants | API key / credits; ~$20–40/mo | code repo `.env` | ✅ Key collected 2026-06-15 (pending place/verify) |
+| B3 | **Perplexity** | Trend Radar + market research | API key (already used for research 2026-06-12) | code repo `.env` | ✅ Key collected 2026-06-15 (pending place/verify) |
+| B4 | **Firecrawl** | Scrape inspo brands & competitor content for teardowns | API key | code repo `.env` | ✅ Key collected 2026-06-15 (pending place/verify) |
 | B5 | **Later.com** | Scheduling/posting approved drafts | Manual — Later has **no public API** (confirmed 2026-06-15) | n/a | ✅ Decided: manual |
-| B6 | **Meta / Instagram Graph API** | IG insights → dashboard; Meta ad creative + draft campaigns | Meta app, access token, IG business account linked; `tools/meta-ads.mjs` (CONFIRM=1 guardrail exists) | code repo `.env` | ☐ Wire token |
-| B7 | **Google Ads API** | Draft search/awareness campaigns programmatically | Account exists; need API + developer token | code repo `.env` | ☐ To do (manual first OK) |
-| B8 | **Klaviyo** (provisional) | Newsletter send + list off the calculator lead magnet | API key (confirm platform first) | code repo `.env` | ☐ Decide + set up |
+| B6 | **Meta / Instagram Graph API** | IG insights → dashboard; Meta ad creative + draft campaigns | Meta app, access token, IG business account linked; `tools/meta-ads.mjs` (CONFIRM=1 guardrail exists) | code repo `.env` | ✅ Token + ad-account ID collected 2026-06-15 (pending place/verify) |
+| B7 | **Google Ads API** | Draft search/awareness campaigns programmatically | Account exists; need API + developer token | code repo `.env` | ✅ All 5 values collected 2026-06-15 (Basic-access approval pending) |
+| B8 | **Shopify Email** (decided, was Klaviyo) | Newsletter send + list off the calculator lead magnet | Nothing — uses existing Shopify connection | n/a | ✅ Decided 2026-06-15: Shopify Email (free ≤10k sends/mo) |
 | B9 | **Local media tooling** | Video/image assembly (`ffmpeg`, `sharp`/Pillow/OpenCV) | Install in env / setup script | n/a (no key) | ☐ Add to setup script |
 
 > **Efficiency note:** for anything that should "just work" in future sessions, prefer enabling
@@ -150,7 +150,7 @@ The repeatable cycle every week:
 ## Open items to unblock (parked, don't block setup)
 
 - Ad budget $ + per-platform split.
-- Email platform final call (provisional: Klaviyo).
+- ~~Email platform final call (provisional: Klaviyo).~~ **Resolved 2026-06-15: Shopify Email** (free ≤10k sends/mo, already connected; revisit Klaviyo if we need automation).
 - LinkedIn activation timing (founder-led).
 - When/whether to add TikTok + YouTube.
 

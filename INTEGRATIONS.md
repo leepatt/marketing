@@ -64,12 +64,11 @@ cost. Work top-down by priority.
 
 ### B5 · Later.com — scheduling / posting
 - **Unlocks:** approved drafts → scheduled/posted (the execution end of the loop).
-- **Reality:** Later's public API is limited. Three options, easiest first:
-  1. **Manual** — Lee posts approved drafts from Later directly. Zero setup. *(Recommended to start.)*
-  2. **Zapier bridge** — trigger Later actions via the Zapier MCP (no raw key).
-  3. **Later API** — if/when broader programmatic access is needed.
-- **Env var (if API):** `LATER_API_KEY`
-- **Status:** ☐ Decide (default: manual to start, revisit auto-scheduling later)
+- **Reality (confirmed 2026-06-15):** Later has **no public API** — it's a manual visual scheduler by design. No developer endpoint for programmatic posting or analytics.
+- **Decision: manual.** Claude drafts captions + assets → Lee loads them into Later → Later schedules/posts. Fits the "Lee approves and posts" control model exactly. No key, no integration.
+- **Measurement:** pull performance from the **Meta/IG Graph API (B6)** directly, not from Later.
+- **If automation is ever wanted:** switch to an API-first scheduler — **Postproxy** (free tier + MCP, best fit), **Ayrshare** (~$149/mo, most established), Late, or Post for Me. Only worth it once the manual load-in is the bottleneck.
+- **Status:** ✅ Decided — manual (no key needed)
 
 ### B6 · Meta / Instagram Graph API — insights + ads
 - **Unlocks:** IG insights → dashboard (Phase 4); Meta ad creative + draft campaigns (Phase 5).

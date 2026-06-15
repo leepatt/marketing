@@ -77,7 +77,7 @@ Google Ads can be bridged via Zapier instead of raw keys for some flows — see 
 | B2 | **Glif** | Templated image gen / ad-creative variants | API key / credits; ~$20–40/mo | code repo `.env` | ☐ To do |
 | B3 | **Perplexity** | Trend Radar + market research | API key (already used for research 2026-06-12) | code repo `.env` | ☐ Confirm/persist |
 | B4 | **Firecrawl** | Scrape inspo brands & competitor content for teardowns | API key | code repo `.env` | ☐ To do |
-| B5 | **Later.com** | Scheduling/posting approved drafts | Account + API access | code repo `.env` | ☐ To do |
+| B5 | **Later.com** | Scheduling/posting approved drafts | Manual — Later has **no public API** (confirmed 2026-06-15) | n/a | ✅ Decided: manual |
 | B6 | **Meta / Instagram Graph API** | IG insights → dashboard; Meta ad creative + draft campaigns | Meta app, access token, IG business account linked; `tools/meta-ads.mjs` (CONFIRM=1 guardrail exists) | code repo `.env` | ☐ Wire token |
 | B7 | **Google Ads API** | Draft search/awareness campaigns programmatically | Account exists; need API + developer token | code repo `.env` | ☐ To do (manual first OK) |
 | B8 | **Klaviyo** (provisional) | Newsletter send + list off the calculator lead magnet | API key (confirm platform first) | code repo `.env` | ☐ Decide + set up |

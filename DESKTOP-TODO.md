@@ -56,6 +56,11 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
 - [ ] **Layer 2 — 3D preview (Blender):** swap the flat 2D curve preview for a real 3D render of the
       radius plate (procedural from dimensions; STEP/OBJ export from the Fusion app for exact parts).
 - [ ] **Phase 2 polish:** captions/intro/outro via Remotion or ffmpeg.
+- [ ] **Motion design — "focus punch-in":** auto-zoom to the active control (the SaaS-ad look).
+      Layer 1 = in-page CSS (active field scales up, rest dims, numbers count up, curve redraws);
+      Layer 2 = virtual-camera push-in (animate stage scale+translate, or post-zoom in Remotion/ffmpeg);
+      sequence on a timeline → capture → reel. Quick path: **Screen Studio** (auto-zoom screen recorder).
+      Engine path: **Remotion** (keyframed zooms/callouts, branded cursor, deterministic).
 - [ ] **Bonus reel:** animate the **nesting** (parts slotting onto a sheet) — "precision, minimal waste."
 - [ ] **Asset to fetch (desktop):** export one sample radius plate from the Fusion app as **STEP or OBJ**
       → drop in Drive (`00 Brain/product-cad/`) as a reference for the Blender setup.

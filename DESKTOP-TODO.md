@@ -47,6 +47,19 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
 - [ ] **Generation cautions:** use FLUX **Pro** not Dev (Dev = non-commercial); Firefly only for
       indemnified paid-ad creative; keep the human-approval gate.
 
+## 🎥 Formwork Builder demo reel (two-layer plan)
+> Goal: a slick "watch it configure" reel — clean scripted clicks, no janky screen-record.
+> Right tool per layer: **Playwright drives/records the UI**, **Blender renders the 3D plate**.
+- [ ] **Layer 1 — UI capture (Playwright):** build a brand-styled standalone configurator (our tokens +
+      Aeonik + motif + the existing curve maths), then a Playwright script that animates a styled cursor,
+      drags the radius slider, clicks "Build" — captured frame-by-frame → ffmpeg → smooth 1080×1920 reel.
+- [ ] **Layer 2 — 3D preview (Blender):** swap the flat 2D curve preview for a real 3D render of the
+      radius plate (procedural from dimensions; STEP/OBJ export from the Fusion app for exact parts).
+- [ ] **Phase 2 polish:** captions/intro/outro via Remotion or ffmpeg.
+- [ ] **Bonus reel:** animate the **nesting** (parts slotting onto a sheet) — "precision, minimal waste."
+- [ ] **Asset to fetch (desktop):** export one sample radius plate from the Fusion app as **STEP or OBJ**
+      → drop in Drive (`00 Brain/product-cad/`) as a reference for the Blender setup.
+
 ## ✅ Verify
 - [ ] Confirm the cnccut-app `.env` loads all 12 keys (quick check from inside the repo).
 - [ ] Confirm a new session reads the keys from the Jake cloud environment.

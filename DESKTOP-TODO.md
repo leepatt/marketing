@@ -62,6 +62,15 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
       sequence on a timeline → capture → reel. Quick path: **Screen Studio** (auto-zoom screen recorder).
       Engine path: **Remotion** (keyframed zooms/callouts, branded cursor, deterministic).
 - [ ] **Bonus reel:** animate the **nesting** (parts slotting onto a sheet) — "precision, minimal waste."
+- [ ] **⭐ Lead format — interactive 3D configurator + exploded view** (à la Awwwards iyO/Copentek).
+      Proven for manufacturers: 3D exploded-view +38% CTR, 3D configurator +22% AOV. This is the hero format.
+- [ ] **Motion engine = Remotion** (free ≤3 ppl): `theme.ts` brand tokens + reusable scenes; `spring()`
+      + a `craftonsSpring` easing preset; `@remotion/three`/Blender-image-seq for 3D; Whisper captions; Lambda for batch.
+- [ ] **Quick-demo recorder (Windows):** FocuSee or Cursorful — ⚠️ NOT Screen Studio (Mac-only).
+- [ ] **Sound + finishing kit:** Epidemic Sound (or Uppbeat) for SFX/music (confirm ad-license);
+      ElevenLabs Starter ($5) for VO; word-by-word captions; export 1080×1920 H.264 ~12–15Mbps, design to loop.
+- [ ] **Asset producers (optional):** Lottie (UI micro-anims), Rive (interactive), Cavalry (now free), Jitter.
+- [ ] **First reel spec is written** → see §7 of `research/2026-motion-design.md` ("Your radius, cut to spec." 15s).
 - [ ] **Asset to fetch (desktop):** export one sample radius plate from the Fusion app as **STEP or OBJ**
       → drop in Drive (`00 Brain/product-cad/`) as a reference for the Blender setup.
 

@@ -28,6 +28,18 @@ Quality comes from layers, not a single "train" button or the inspo folder alone
 - **AI never generates:** the product's hero geometry or exact dimensions. Those are *rendered* from
   CAD/real footage. (Per standing rule: real leads, AI extends, a human approves every asset.)
 
+## Motion rules (for animation/video — full detail in `research/2026-motion-design.md`)
+Premium motion is physics, not luck. Encode these in every template:
+- **Never linear easing.** Default `ease-out`; standard `cubic-bezier(0.4,0,0.2,1)`; UI moves ≤300ms.
+  Use a fixed palette of 3–4 easings everywhere (spring-based where possible).
+- **2–3% overshoot-then-settle** on pop-ins; **stagger** grouped elements 0.05–0.15s.
+- **One focal move per shot:** Z-axis push-in to the active element, dim/spotlight the rest; parallax for depth.
+- **Reveal with a sweep/Z-zoom**, not a hard cut. **Count-ups** for numbers. **Cut to the beat.**
+- **Hook ≤2.5s**, pattern-interrupt open; micro-cuts (0.4–1.2s) early then every 3–5s; design to **loop**.
+- **Sound design on every transition/CTA** (click/whoosh/pop) — the cheapest premium upgrade.
+- **Motion blur on big moves only**; animate transform/opacity only at 60fps; **restraint** (every motion has a job).
+- **Lead with the product in interactive 3D** (configurator + exploded view) — proven to convert for manufacturers.
+
 ## Practical checklist before any asset ships
 - [ ] On-brand tokens (colour/type/spacing) — passes the adherence check?
 - [ ] Hero product/UI = rendered from real data (not AI-imagined)?

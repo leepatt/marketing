@@ -1,120 +1,216 @@
 # Craftons content pillars — the value-first model
 
-_Locked 2026-06-18 (workshopped with Lee). The definitive structure for what we post and why._
+_Locked 2026-06-20 (workshopped with Lee, then rebuilt from the brand teardowns). The definitive
+structure for what we post and why. Evidence lives in `inspiration/SWIPE-FILE.md`._
 
 > Companion docs: `BRAND.md` (brand + visual voice), `QUALITY-DOCTRINE.md` (anti-slop / quality
-> law), and `SOCIAL-VOICE.md` (the punchy caption voice — to be written next). Strategy/why lives
-> in Drive `02 Strategy/`.
+> law), `inspiration/SWIPE-FILE.md` (the six brand teardowns this model is built on), and
+> `briefs/` (per-format production briefs). Strategy/why lives in Drive `02 Strategy/`.
 
 ## The core philosophy — value first, sell last
 
 We don't run a catalogue feed. The product is the **occasional payoff, not the subject.** People
 follow Craftons because the account *helps them, entertains them, and celebrates their craft* —
-and they buy *because* they fell for the world around the product. (The Gozney playbook: the feed
-is pizza and fire and gatherings; the oven is almost incidental — and that's exactly why it sells.)
+and they buy *because* they fell for the world around the product.
 
-So we organise pillars by **intent**, not by topic. This makes "too salesy" structurally
-impossible: selling is one lane of four, and the smallest.
+This is not a hunch — it's what every brand we admire actually does (`SWIPE-FILE.md`):
+**sell is the smallest lane** (Gozney ~8%, July soft/rare, Bellroy sells but sell-last). And the
+competitor selling to our exact audience, BuildPass, proves the inverse: their feed is all about
+*them* → engagement is dead (~0.5%). **Builders trust builders, not the logo.**
+
+So we organise by **intent**, not topic — and each lane runs one **named, repeatable format**
+(the way Gozney runs "How To Pizza" and Bellroy runs its stop-motion demo). Named formats are why
+this works; one-off "ideas" are why our earlier attempts didn't.
 
 ## The brand laws (apply to every post, every lane)
 
 1. **Big company, never small workshop.** Every asset reads big, polished, national. **No workshop
-   tours, no phone-in-the-shed footage.** Satisfying/process content is allowed *only* when it's
-   studio-clean or rendered — never a cluttered shed.
+   tours, no phone-in-the-shed footage.** Process/beauty content is allowed *only* studio-clean or
+   rendered.
 2. **Value before the ask.** ~85% of posts sell nothing. We earn the right to sell with the other 15%.
-3. **Make other people the hero** (lane 3) more than we talk about ourselves.
-4. **Real footage leads, AI extends, a human approves every asset** (standing rule + `QUALITY-DOCTRINE.md`).
-5. **Builder-to-builder voice** (see `BRAND.md`) — confident, not boastful; trade language; no jargon.
+3. **Make other people the hero** (Inspire lane) more than we talk about ourselves. (The BuildPass lesson.)
+4. **Let the product demonstrate itself.** The single highest-leverage move across all our
+   benchmarks — Bellroy's slimming wallet, July's "one feature one shot," Gozney's cheese-pull.
+   For us that's Tia's close-ups + the rendered configurator.
+5. **Restraint = looking big.** Calm captions, consistent palette, sound design over meme audio,
+   builder-to-builder voice (never consumer cutesy). Discipline, not budget, is what makes a small
+   brand look national. (July & Bellroy.)
+6. **One thing per post.** One feature, one number, one moment. (July, B1M.)
+7. **Show the invisible.** Reveal the engineering — cross-sections, cutaways, before/after. (Bellroy.)
+8. **Consistency beats virality.** The win is a repeatable weekly system + library depth, not any
+   single viral hit. (Gozney's per-post engagement is modest; the system is the moat.)
+9. **Real footage leads, AI extends, a human approves every asset** (standing rule).
 
-## The four lanes
+## The four lanes + the flagship
 
-| # | Lane | Intent | Share | Primary metric |
-|---|------|--------|-------|----------------|
-| 1 | **Teach** | Add value — genuinely useful, even if they never buy | **35%** | Saves |
-| 2 | **Inspire / Celebrate** | Build trust & loyalty — make others the hero | **30%** | Shares, follows |
-| 3 | **Entertain** | Earn the scroll — pure enjoyment, nothing to buy | **20%** | Reach, shares |
-| 4 | **Sell** | The payoff — product, the tool, feature drops | **15%** | Link clicks |
+| Lane | Intent | Share | Signature format | Primary metric |
+|------|--------|-------|------------------|----------------|
+| **Teach** | Add value — useful even if they never buy | **35%** | *How To Curve* | Saves |
+| **Inspire / Celebrate** | Build trust — make others the hero | **30%** | *Built with Craftons* | Shares, follows |
+| **Craft Macro** | Earn the scroll — beauty, nothing to buy | **20%** | *Craft Macro* | Reach, shares |
+| **Sell** | The payoff — product & the tool | **15%** | *Watch It Configure / Spec Drops* | Link clicks |
+| **Flagship** | Authority — the hero series | *low cadence, ~monthly; drawn from Teach+Inspire budget* | *How This Curve Was Built* | Reach, follows, saves |
 
-Optimise the account overall for **saves + shares** (per the operating loop in `SETUP.md`).
-
----
-
-### Lane 1 — TEACH (add value) · 35%
-Genuinely useful building knowledge that helps a builder **even if they never buy from us.** This
-is the value core and includes the **How-To series** (video + stills mix).
-
-- **What it covers:** how-to / setting-out / detailing; building science; NCC 2025 + 7-star
-  explainers; trade time-savers; "why this fails and what to do instead."
-- **Example posts:**
-  - *"NCC 2025 changed how you detail external walls. The 60-second version."*
-  - *"How to set out a radius wall so it doesn't crack."*
-  - Myth-bust as education: *"Why site-bent curves fail — the building science."* (a strong
-    opinion that *teaches*, never "buy our thing").
-- **Supply:** Tia how-to footage; clean studio/rendered demos; carousels; talking-head.
-
-### Lane 2 — INSPIRE / CELEBRATE (build trust & loyalty) · 30%
-Make **other people the hero.** This is where on-site content lives — framed as celebrating the
-**builder's craft**, not "look what our product did." Biggest trust driver.
-
-- **What it covers:** finished projects (credit the builder, hype *their* work); jaw-dropping
-  curved/complex architecture (aspiration — doesn't have to be ours); founder/industry POV.
-- **Example posts:**
-  - A finished feature wall, builder credited and celebrated.
-  - *"Builds that shouldn't be possible"* — architecture that makes you stare.
-  - Founder POV: *"Where Aussie construction is heading."*
-- **Supply:** Tia on-site shoots (cut like a premium brand film — editorial, Dezeen-style);
-  client assets; reposts/features with permission.
-
-### Lane 3 — ENTERTAIN (earn the scroll) · 20%
-Pure enjoyment. Nothing to buy. Where we win reach and new followers.
-
-- **What it covers:** oddly-satisfying loops (**studio-clean / rendered only** — cut, nest, bend);
-  relatable trade humour; tier lists / rankings; POV moments.
-- **Example posts:**
-  - The satisfying curve-bend or nesting loop — no caption selling, just hypnotic.
-  - *"POV: the architect specced a 2.4m radius and walked off."* (shared *pain*, not the fix).
-  - *"Ways to build a radius wall — ranked S to F."* (argue-in-the-comments).
-- **Supply:** rendered animation (Blender/Playwright); clean macro capture; text/graphic posts.
-
-### Lane 4 — SELL (the payoff) · 15%
-Only now does the product show up — because the other 85% earned it.
-
-- **What it covers:** the configurator "watch it build"; product spec reveals; **feature drops.**
-- **The configurator fix — "ships like software."** Don't treat the Formwork Builder like a
-  product you photograph once. Treat it like an **app that's always updating** (Apple / SaaS
-  energy) — that's how this lane never runs dry even when the product photo hasn't changed:
-  - *"New this week: nest 40% tighter."* (changelog-style feature drop)
-  - *"Coming soon 👀"* teaser before a new profile launches (drop-countdown energy)
-  - *"You asked for 6m radius. Shipped."*
-- **Supply:** Playwright+Blender configurator reels; product-on-white; spec graphics.
+Optimise the account overall for **saves + shares**.
 
 ---
 
-## Formats that span lanes (recurring devices, not pillars)
+## LANE 1 — TEACH · 35% · format: "How To Curve"
 
-These are *how* we say it, reused across lanes — point them at value, not sales:
+**Intent:** genuinely useful building knowledge that helps a builder *even if they never buy from
+us.* The value core and the biggest lane.
 
-- **Myth-busting** — strong, contrarian, backed by a reason (finance/derm-TikTok energy). → mostly **Teach**.
-- **POV / "the brief"** — drop the viewer into a relatable tension. → mostly **Entertain**.
-- **Tier list / ranking** — rank methods S–F; engagement bait. → **Entertain** / **Teach**.
-- **Oddly-satisfying loop** — studio-clean only. → **Entertain**.
-- **Spec-sheet / car-review** — product as a reviewer presents a car; numbers + verdict. → **Sell** (use sparingly).
-- **"Ships like software"** — changelog / feature-drop / teaser framing for the tool. → **Sell**.
+**Why (receipt):** Gozney's "How To Pizza" — a *named, numbered, evergreen* education series — is
+the single most copyable format across all six teardowns. It makes the brand the *teacher of the
+craft*, builds authority, justifies a premium price, and creates infinite evergreen content.
+BuildPass leaves this lane wide open (almost no save-worthy how-to) — so it's also our clearest
+gap to exploit.
+
+**The format:** a named, numbered series ("How To Curve — Ep. 01…") on the fundamentals Craftons
+enables. Video + stills mix. Soft CTA ("full guide — link in bio"). Branded hashtag. One topic per
+post, builder-to-builder, spec-literate.
+
+**How it's made:** Tia close-ups (real hands, real material) + carousels (cheap, desk) + AI b-roll
+to extend. No big budget.
+
+**Examples:** ⚠️ **Not yet locked — to workshop.** Topic territory to draw the episode list from:
+setting out a radius so it doesn't crack · bending-ply do's & don'ts · formwork basics · avoiding
+rookie mistakes · chord/radius/arc explained · getting more pours out of formply · detailing a
+curved junction · NCC 2025 for curved/external walls. *We'll pick and sequence the first 3–4
+episodes together.*
+
+**The rule:** teach for real. If a post only makes sense to someone about to buy, it belongs in Sell.
+
+---
+
+## LANE 2 — INSPIRE / CELEBRATE · 30% · format: "Built with Craftons"
+
+**Intent:** build trust and loyalty by making **other people the hero** — real builders' real jobs,
+not "look what our product did."
+
+**Why (receipt):** Hommey's "This is Hommey by you" (customer-as-protagonist) is their loyalty
+engine and translates HIGH to trade. BuildPass proves builders engage with *a named peer giving a
+concrete outcome* and ignore brand self-congratulation. Gozney scales via credited UGC +
+ambassadors. Translate the *mechanics*, not Hommey's consumer voice.
+
+**The format:** feature real jobs using Radius Pro / bending ply / formply, **credited by handle.**
+Tia films the finished curved job on site; the builder gives one concrete line ("saved me a day of
+hand-bending"). Plus a **"send us your curves"** submission mechanic so builders feed us content.
+
+**How it's made:** Tia on-site (cut editorial, premium — not "site visit") + builder-supplied phone
+footage, credited. Founder/industry POV as a lighter sub-format.
+
+**Examples:** ⚠️ **Not yet locked — to workshop.** Honest dependency: this lane needs **real client
+jobs to feature**, which we may be short on early. Two things to workshop: (a) the **"send us your
+curves" submission mechanic** (how we source jobs), and (b) the **first 2–3 builds** to feature once
+we have them. Until the pipeline fills, this lane leans lighter and the Flagship/Teach carry more.
+
+**The rule:** the builder is the hero; Craftons is the enabler. Credit by handle. No cutesy voice.
+
+---
+
+## LANE 3 — CRAFT MACRO · 20% · format: "Craft Macro"  ✅ LOCKED
+
+**Intent:** pure scroll-stop. Extreme close-up, slow-mo footage of material doing its thing, shot
+beautifully, sound on, that **sells nothing.** The Craftons "cheese-pull."
+
+**Why (receipt):** every benchmark runs this and it's often their most-watched, least-salesy
+content — Gozney's cheese-pull/fire macro, Bellroy's mechanism reveals, July's "one feature one
+shot." Satisfying close-ups are the most shareable format on IG, they make raw material look
+*premium and engineered* (the "big company" job, for free), and they quietly prove precision.
+
+**The format:** 5–15s, vertical, 60–120fps slow-mo, studio-clean backdrop, **sound captured clean**,
+one moment per clip, designed to loop, no caption-selling. Lead with the sexy *outcome* (the
+concrete/finished curve), but keep the product legible via the *transformation/reveal*.
+
+**How it's made:** Tia, controlled light, plain backdrop. Full production brief:
+`briefs/craft-macro-shoot-brief.md`.
+
+**Examples (locked — Lee's shortlist):**
+- **The form-strip reveal** ⭐ — peeling the form to reveal a flawless curved concrete face. *(money shot)*
+- **Light across the finished curve** — raking light travelling along smooth off-form concrete.
+- **Flat sheet → curve flex** — bending ply flexing into a radius (sound: the woody creak).
+- **The fit / seam** — precision parts seating to a perfect line (sound: the click/seat).
+- **The pour** ⭐ — concrete flowing into the curved form (sound: the glug/splash).
+- **Nested kit-of-parts** — precision parts nested/stacked in rhythm.
+
+> Story bonus: **pour → form-strip → finished curve** in sequence = a ready-made mini-reel from one
+> pour day. (Shots are split into a "studio anytime" session and an "on pour day" session in the brief.)
+
+**The rule:** studio-clean only; sell nothing; one thing per clip. The restraint *is* the point.
+
+---
+
+## LANE 4 — SELL · 15% · format: "Watch It Configure / Spec Drops"
+
+**Intent:** the payoff. The product shows up only now — because the other 85% earned it.
+
+**Why (receipt):** Bellroy makes the *demo* the sell (function-as-spectacle, x-ray "show the
+invisible," before/after problem→solve). July manufactures novelty from one catalogue by treating
+each variant as *news*. Hommey makes inventory events feel like events (reframe FOMO → capability
+for B2B). Sell stays the smallest slice everywhere.
+
+**The format (three modes):**
+1. **Watch It Configure** — rendered "watch it build" reels of the Formwork Builder (your owned,
+   rights-free hero asset) with clean on-screen labels (radius / sheet / lead time).
+2. **Spec Drops ("ships like software")** — each new radius capability, profile, sheet size, or
+   configurator feature posted as an event: *"New: nest 40% tighter," "You asked for 6m radius. Shipped."*
+   Renewable calendar from the existing range; no fake urgency.
+3. **Before/after problem→solve** — carousel: the pain (slow, wasteful site-built formwork) →
+   the clean Craftons result. Terse, confident, sell-last caption.
+
+**How it's made:** rendered configurator (Blender/Playwright) + AI-extended b-roll + carousels.
+
+**Examples:** ⚠️ **Format agreed, specific posts not locked — to workshop.** We'll spec the first
+"watch it configure" reel and the first 2–3 spec-drop posts together.
+
+**The rule:** one feature/number per post; soft CTA; never two Sell posts back-to-back.
+
+---
+
+## FLAGSHIP — "How This Curve Was Built" (low cadence, build toward)
+
+**Intent:** the hero authority series — the cinematic "B1M-style" explainer Lee liked, made
+executable.
+
+**Why (receipt):** B1M's transferable asset isn't its footage (their cheat is *free* developer
+footage we don't have) — it's the **diagram-driven story spine.** The verdict from the teardown:
+**don't clone the photoreal documentary** (AI-faking real buildings looks uncanny and is legally
+shaky). **Change format, not budget → a fully-animated/illustrated explainer (Kurzgesagt mode).**
+
+**The format:** keep B1M's story spine (hook with one number → why the curve is hard → the
+precision solve → the payoff) and hook discipline; ~80% reusable motion-graphic kit; the **rendered
+configurator as your "CGI flythrough"**; 20–30s of Tia's real macro as the texture layer; AI for
+stylized/illustrated sequences only (disclosed, never fake real landmarks); one consistent narrator;
+cheap music sub; chop into vertical social cuts.
+
+**Cadence:** low (≈monthly). Front-loaded — episodes 1–3 slow while we build the kit + style;
+4+ get fast. A series to *grow into*, not a week-one format.
+
+**Examples:** ⚠️ **Candidate subjects only — to workshop later.** Candidates: Sydney Opera House
+(sphere geometry) · Macallan Distillery (curved *timber* gridshell — on-brand) · Crown Sydney
+(curved tower, AU) · Eden Project biomes. *Not locked; revisit once the cheaper lanes are running.*
+
+**Dependency:** needs the locked AI illustration style (`QUALITY-DOCTRINE.md`) to look consistent.
+
+---
 
 ## Weekly mix (rule of thumb)
 
-At ~12–20 posts/month (per `SETUP.md` cadence), a representative week:
-- ~2 **Teach**, ~2 **Inspire/Celebrate**, ~1 **Entertain**, ~1 **Sell** — adjust to supply, but
-  keep Sell to roughly 1-in-6 and never two Sell posts back-to-back.
+At ~12–20 posts/month, a representative week: ~2 **Teach** · ~2 **Inspire** · ~1–2 **Craft Macro**
+· ~1 **Sell** · plus ~1 **Flagship/month**. Keep Sell to ≈1-in-6; never two Sell posts in a row.
+
+## What's locked vs. still to workshop
+
+- ✅ **Craft Macro** — examples locked (6 shots + shoot brief).
+- ⚠️ **How To Curve** — need the first 3–4 episodes (topic territory listed above).
+- ⚠️ **Built with Craftons** — need the "send us your curves" mechanic + first builds (job-supply dependent).
+- ⚠️ **Watch It Configure / Spec Drops** — need the first reel + first spec-drop posts.
+- ⚠️ **How This Curve Was Built** (flagship) — candidate subjects only; build toward later.
 
 ## Why these specific lanes (receipts)
 
-- **Teach + How-To** — Lee's call: the How-To series is a definite pillar (video + stills).
-- **Inspire/Celebrate weighted up (30%)** — Lee: lane 3 should be a bigger percent; trust/loyalty
-  is the priority. On-site (Tia) reframed from "site visit" to editorial celebration.
-- **No workshop tours / big-company law** — Lee: "we want to come across as a big company, not a
-  small workshop."
-- **Configurator as a software-style lane** — Lee's concern that a static Radius Pro photo runs
-  out of content; the Formwork Builder is "endless… post updates and new features."
-- **Value-first, sell last** — Lee: "add value, add entertainment, build loyalty and trust, then
-  sell last."
+Full evidence: `inspiration/SWIPE-FILE.md`. Headlines: value-first/sell-last (all six) · product
+demonstrates itself (Bellroy/July/Gozney) · education-as-a-show (Gozney) · customer-as-hero
+(Hommey/BuildPass/Gozney) · restraint = looking big (July/Bellroy) · don't be inside-out
+(BuildPass, negative) · animate the B1M format, don't clone it (B1M).

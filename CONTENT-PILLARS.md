@@ -98,9 +98,14 @@ ambassadors. Translate the *mechanics*, not Hommey's consumer voice.
 Tia films the finished curved job on site; the builder gives one concrete line ("saved me a day of
 hand-bending"). Plus a **"send us your curves"** submission mechanic so builders feed us content.
 
-**How it's made:** Tia on-site (cut editorial, premium — not "site visit") + builder-supplied phone
-footage, credited. *(Founder/industry POV parked for now — revisit when Lee/Jake are ready; it also
-seeds founder-led LinkedIn later.)*
+**How it's made:** client media is usually **stills, not good video**, so the lane runs three ways —
+**(1) carousels / single hero image** (before/during/after + finished hero + details, credited — the
+workhorse, best for saves); **(2) photo-to-motion reels** (animate stills with slow pan/zoom +
+parallax + music + text, to earn Reel reach *without* client video); **(3) intercut reels** (client
+stills + *our own* Craft Macro footage + the Formwork Builder render, so a thin photo set becomes a
+proper reel). Tia re-shoots the hero jobs when they're local — best builds get true video, the rest
+stay photo-based. *(Founder/industry POV parked for now — revisit when ready; it seeds founder-led
+LinkedIn later.)*
 
 **Examples (engine locked, builds incoming):** the lane runs on two sources —
 - **Fresh builder jobs** — good project images coming soon; these are the core "Built with Craftons"

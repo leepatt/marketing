@@ -48,7 +48,7 @@ this works; one-off "ideas" are why our earlier attempts didn't.
 | **Teach** | Add value — useful even if they never buy | **35%** | *How-To Series* | Saves |
 | **Inspire / Celebrate** | Build trust — make others the hero | **30%** | *Built with Craftons* | Shares, follows |
 | **Craft Macro** | Earn the scroll — beauty, nothing to buy | **20%** | *Craft Macro* | Reach, shares |
-| **Sell** | The payoff — product & the tool | **15%** | *Watch It Configure / Spec Drops* | Link clicks |
+| **Sell** | The payoff — product & the tool | **15%** | *Formwork Builder Showcase* | Link clicks |
 | **Flagship** | Authority — the hero series | *low cadence, ~monthly; drawn from Teach+Inspire budget* | *How This Curve Was Built* | Reach, follows, saves |
 
 Optimise the account overall for **saves + shares**.
@@ -142,30 +142,40 @@ concrete/finished curve), but keep the product legible via the *transformation/r
 
 ---
 
-## LANE 4 — SELL · 15% · format: "Watch It Configure / Spec Drops"
+## LANE 4 — SELL · 15% · format: "Formwork Builder Showcase"
 
 **Intent:** the payoff. The product shows up only now — because the other 85% earned it.
 
-**Why (receipt):** Bellroy makes the *demo* the sell (function-as-spectacle, x-ray "show the
-invisible," before/after problem→solve). July manufactures novelty from one catalogue by treating
-each variant as *news*. Hommey makes inventory events feel like events (reframe FOMO → capability
-for B2B). Sell stays the smallest slice everywhere.
+**Why (receipt):** Bellroy makes the *demo* the sell — but only because the product is interesting
+to watch. The **Formwork Builder** is Craftons' one tool with genuine visual range ("endless shapes
+and things you can design"), so it anchors this lane. **Radius Pro and the architrave builder are
+simple/boring to show, so they do NOT anchor Sell** — they sell through the value lanes (below).
+July manufactures novelty from one catalogue by treating each variant as news; here, novelty comes
+from the endless variety of *forms*. Sell stays the smallest slice everywhere.
 
-**The format (three modes):**
-1. **Watch It Configure** — rendered "watch it build" reels of the Formwork Builder (your owned,
-   rights-free hero asset) with clean on-screen labels (radius / sheet / lead time).
-2. **Spec Drops ("ships like software")** — each new radius capability, profile, sheet size, or
-   configurator feature posted as an event: *"New: nest 40% tighter," "You asked for 6m radius. Shipped."*
-   Renewable calendar from the existing range; no fake urgency.
-3. **Before/after problem→solve** — carousel: the pain (slow, wasteful site-built formwork) →
-   the clean Craftons result. Terse, confident, sell-last caption.
+**The format:** a showcase, not a transactional demo — **"look what you can design."** Each post
+features an ambitious, complex concrete form designed in the Formwork Builder. Variety comes from
+the *shapes* (which never run out), not from repeating the tool — closer to aspiration than a sales
+pitch, with a soft CTA. New capabilities fold in here, demonstrated by a new form they enable
+("New: double-curves. Watch.").
 
-**How it's made:** rendered configurator (Blender/Playwright) + AI-extended b-roll + carousels.
+**How it's made:** rendered / screen-captured Formwork Builder (Blender/Playwright) + AI-extended
+b-roll. *(Depends on the configurator capture pipeline — on the desktop to-do. Until then Sell runs
+lighter; it's only 15% of the feed.)*
 
-**Examples:** ⚠️ **Format agreed, specific posts not locked — to workshop.** We'll spec the first
-"watch it configure" reel and the first 2–3 spec-drop posts together.
+**Examples:** ⚠️ **Direction locked, specific shapes to shortlist.** Fresh angles: a wild form being
+designed (double-curve / tapered / organic / faceted) · **"send us your shape"** (a follower's
+brief, designed on screen — participatory, endless) · recreate a famous building's form · a real
+job's complex form (ties to Built with Craftons) · the range reel (fast montage of 10 different
+forms).
 
-**The rule:** one feature/number per post; soft CTA; never two Sell posts back-to-back.
+**The simpler products sell elsewhere:** Radius Pro and the architrave builder are too simple to
+demo, so they sell through the **value lanes**, not here — Craft Macro (the finished curve, gorgeous)
+· How-To Series (using Radius Pro to build something real) · Built with Craftons (a builder's
+finished job). The product still sells hard — through beauty, teaching and proof, not a dull config
+screen.
+
+**The rule:** showcase the form, not the UI; soft CTA; never two Sell posts back-to-back.
 
 ---
 
@@ -206,7 +216,7 @@ At ~12–20 posts/month, a representative week: ~2 **Teach** · ~2 **Inspire** �
 - ✅ **Craft Macro** — examples locked (6 shots + shoot brief).
 - ✅ **How-To Series** — first 5 episodes locked (confirm ep. 3 wording).
 - ⚠️ **Built with Craftons** — need the "send us your curves" mechanic + first builds (job-supply dependent).
-- ⚠️ **Watch It Configure / Spec Drops** — need the first reel + first spec-drop posts.
+- ⚠️ **Formwork Builder Showcase** (Sell) — direction locked; shortlist the first few forms to feature.
 - ⚠️ **How This Curve Was Built** (flagship) — candidate subjects only; build toward later.
 
 ## Why these specific lanes (receipts)

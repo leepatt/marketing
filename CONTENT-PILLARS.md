@@ -99,12 +99,16 @@ Tia films the finished curved job on site; the builder gives one concrete line (
 hand-bending"). Plus a **"send us your curves"** submission mechanic so builders feed us content.
 
 **How it's made:** Tia on-site (cut editorial, premium — not "site visit") + builder-supplied phone
-footage, credited. Founder/industry POV as a lighter sub-format.
+footage, credited. *(Founder/industry POV parked for now — revisit when Lee/Jake are ready; it also
+seeds founder-led LinkedIn later.)*
 
-**Examples:** ⚠️ **Not yet locked — to workshop.** Honest dependency: this lane needs **real client
-jobs to feature**, which we may be short on early. Two things to workshop: (a) the **"send us your
-curves" submission mechanic** (how we source jobs), and (b) the **first 2–3 builds** to feature once
-we have them. Until the pipeline fills, this lane leans lighter and the Flagship/Teach carry more.
+**Examples (engine locked, builds incoming):** the lane runs on two sources —
+- **Fresh builder jobs** — good project images coming soon; these are the core "Built with Craftons"
+  features (credited by handle; Tia re-shoots hero jobs when they're local).
+- **The #BuiltWithCraftons mechanic** — standing CTA in bio, on packaging, delivery dockets + order
+  emails; seed it via Shopify outreach to past buyers for project shots.
+- **Already-posted photos** — repurpose *sparingly* into a new format (carousel / "revisited" cut /
+  b-roll). Don't just re-post.
 
 **The rule:** the builder is the hero; Craftons is the enabler. Credit by handle. No cutesy voice.
 
@@ -223,7 +227,7 @@ At ~12–20 posts/month, a representative week: ~2 **Teach** · ~2 **Inspire** �
 
 - ✅ **Craft Macro** — examples locked (6 shots + shoot brief).
 - ✅ **How-To Series** — first 5 episodes locked (confirm ep. 3 wording).
-- ⚠️ **Built with Craftons** — need the "send us your curves" mechanic + first builds (job-supply dependent).
+- ✅ **Built with Craftons** (Inspire) — engine locked (#BuiltWithCraftons mechanic + fresh builds incoming); founder POV parked.
 - ✅ **Formwork Builder Showcase** (Sell) — forms locked (curved bench seats, curved walls, firepits; more shapes coming).
 - ⚠️ **How This Curve Was Built** (flagship) — candidate subjects only; build toward later.
 

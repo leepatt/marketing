@@ -163,11 +163,19 @@ pitch, with a soft CTA. New capabilities fold in here, demonstrated by a new for
 b-roll. *(Depends on the configurator capture pipeline — on the desktop to-do. Until then Sell runs
 lighter; it's only 15% of the feed.)*
 
-**Examples:** ⚠️ **Direction locked, specific shapes to shortlist.** Fresh angles: a wild form being
-designed (double-curve / tapered / organic / faceted) · **"send us your shape"** (a follower's
-brief, designed on screen — participatory, endless) · recreate a famous building's form · a real
-job's complex form (ties to Built with Craftons) · the range reel (fast montage of 10 different
-forms).
+**Examples (locked — real Formwork Builder capabilities):**
+- **Curved bench seats** ⭐ — the strongest; showcase the angled-backrest + cantilever features
+- **Curved walls** — serpentine / sweeping off-form
+- **Firepits** — circular / sculptural
+- *More shapes coming — each new shape ships as its own showcase ("New: [shape]. Watch.").*
+
+Repeatable angles once the core forms are running: **"send us your shape"** (a follower's brief
+designed on screen) · recreate a famous form · a real job's form (ties to Built with Craftons) · a
+range reel.
+
+**Cross-pillar bonus:** a curved bench seat (angled backrest + cantilever) feeds three pillars from
+one job — the **How-To Series** (the build), this **Showcase** (the design), and **Craft Macro**
+(the form-strip reveal of the finished concrete). One shoot, three lanes.
 
 **The simpler products sell elsewhere:** Radius Pro and the architrave builder are too simple to
 demo, so they sell through the **value lanes**, not here — Craft Macro (the finished curve, gorgeous)
@@ -216,7 +224,7 @@ At ~12–20 posts/month, a representative week: ~2 **Teach** · ~2 **Inspire** �
 - ✅ **Craft Macro** — examples locked (6 shots + shoot brief).
 - ✅ **How-To Series** — first 5 episodes locked (confirm ep. 3 wording).
 - ⚠️ **Built with Craftons** — need the "send us your curves" mechanic + first builds (job-supply dependent).
-- ⚠️ **Formwork Builder Showcase** (Sell) — direction locked; shortlist the first few forms to feature.
+- ✅ **Formwork Builder Showcase** (Sell) — forms locked (curved bench seats, curved walls, firepits; more shapes coming).
 - ⚠️ **How This Curve Was Built** (flagship) — candidate subjects only; build toward later.
 
 ## Why these specific lanes (receipts)

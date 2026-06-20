@@ -45,7 +45,7 @@ this works; one-off "ideas" are why our earlier attempts didn't.
 
 | Lane | Intent | Share | Signature format | Primary metric |
 |------|--------|-------|------------------|----------------|
-| **Teach** | Add value — useful even if they never buy | **35%** | *How To Curve* | Saves |
+| **Teach** | Add value — useful even if they never buy | **35%** | *How-To Series* | Saves |
 | **Inspire / Celebrate** | Build trust — make others the hero | **30%** | *Built with Craftons* | Shares, follows |
 | **Craft Macro** | Earn the scroll — beauty, nothing to buy | **20%** | *Craft Macro* | Reach, shares |
 | **Sell** | The payoff — product & the tool | **15%** | *Watch It Configure / Spec Drops* | Link clicks |
@@ -55,7 +55,7 @@ Optimise the account overall for **saves + shares**.
 
 ---
 
-## LANE 1 — TEACH · 35% · format: "How To Curve"
+## LANE 1 — TEACH · 35% · format: "How-To Series"
 
 **Intent:** genuinely useful building knowledge that helps a builder *even if they never buy from
 us.* The value core and the biggest lane.
@@ -66,18 +66,19 @@ craft*, builds authority, justifies a premium price, and creates infinite evergr
 BuildPass leaves this lane wide open (almost no save-worthy how-to) — so it's also our clearest
 gap to exploit.
 
-**The format:** a named, numbered series ("How To Curve — Ep. 01…") on the fundamentals Craftons
+**The format:** a named, numbered series ("How-To Series — Ep. 01…") on the fundamentals Craftons
 enables. Video + stills mix. Soft CTA ("full guide — link in bio"). Branded hashtag. One topic per
 post, builder-to-builder, spec-literate.
 
 **How it's made:** Tia close-ups (real hands, real material) + carousels (cheap, desk) + AI b-roll
 to extend. No big budget.
 
-**Examples:** ⚠️ **Not yet locked — to workshop.** Topic territory to draw the episode list from:
-setting out a radius so it doesn't crack · bending-ply do's & don'ts · formwork basics · avoiding
-rookie mistakes · chord/radius/arc explained · getting more pours out of formply · detailing a
-curved junction · NCC 2025 for curved/external walls. *We'll pick and sequence the first 3–4
-episodes together.*
+**Examples (locked — Lee's shortlist):** project-led how-tos that teach a real build technique.
+- **How to pour an off-form curved wall**
+- **How to create an angled backrest on a bench seat**
+- **How to create a cantilevered bench seat** *(interpreted from a dictation note — confirm wording)*
+- **How to create a curved timber wall frame**
+- **How to calculate curved wall plates from plans**
 
 **The rule:** teach for real. If a post only makes sense to someone about to buy, it belongs in Sell.
 
@@ -203,7 +204,7 @@ At ~12–20 posts/month, a representative week: ~2 **Teach** · ~2 **Inspire** �
 ## What's locked vs. still to workshop
 
 - ✅ **Craft Macro** — examples locked (6 shots + shoot brief).
-- ⚠️ **How To Curve** — need the first 3–4 episodes (topic territory listed above).
+- ✅ **How-To Series** — first 5 episodes locked (confirm ep. 3 wording).
 - ⚠️ **Built with Craftons** — need the "send us your curves" mechanic + first builds (job-supply dependent).
 - ⚠️ **Watch It Configure / Spec Drops** — need the first reel + first spec-drop posts.
 - ⚠️ **How This Curve Was Built** (flagship) — candidate subjects only; build toward later.

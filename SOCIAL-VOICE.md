@@ -1,9 +1,8 @@
 # Craftons social voice — caption & tone guide
 
-_DRAFT v0.1 (2026-06-23). Built from the brand-voice skill (`BRAND.md`) + the swipe-file tones
-(`inspiration/SWIPE-FILE.md`). **Still to finalise:** (a) tune to Lee's own writing in the Drive
-How-To Episode 2 draft, (b) lock the 3 "dials" below, (c) enrich the jargon layer from the
-Bowens/Big River/Bunnings teardowns (in progress)._
+_v1.0 — locked 2026-06-23 (with Lee). Built from the brand-voice skill (`BRAND.md`) + the swipe-file
+tones (`inspiration/SWIPE-FILE.md`). **Tone dials locked: some dry humour · no emoji · a little
+slang.** Jargon layer still being enriched from the Bowens/Big River/Bunnings teardowns (in progress)._
 
 > Companion to `BRAND.md` (the brand/product voice). Standing rule: **brand tone ≠ caption tone.**
 > This doc is the *caption* voice.
@@ -24,21 +23,28 @@ a bit dry. Proud of the work, allergic to fluff. Speaks to builders *and* archit
 - **Brand (website/headlines):** polished, aspirational — *"Building Smarter Starts Here."*
 - **Social (captions):** looser, human — *"Most blokes still bog-and-sand a radius. There's a faster way."*
 
+## Tone settings (locked)
+- **Dry humour: on, in small doses.** Understated, builder-to-builder — a wry aside, not a gag reel.
+  Earns a smirk; never tries too hard.
+- **Emoji: none.** Not decorative, not functional. Clean text. (Matches the brand rule + July's restraint.)
+- **Slang: a little.** Light Aussie site language is welcome (*blokes, bog-and-sand, chippy, sparky,
+  on the tools*) — sprinkled for authenticity, never forced or bogan.
+
 ## Do
 - Lead with the point; one idea per caption.
 - Trade language, not marketing words (*formply, off-form, set-out, radius, chord, pour, strip, nest*).
 - Let the work talk — confident, not boastful.
 - Soft CTAs.
 - Make the builder (or their work) the hero; credit by handle.
-- Explain *why it matters*, assume they know the basics.
+- Explain *why it matters*; assume they know the basics.
 
 ## Don't
-- ❌ Consumer-cutesy ("wake up babe 😍", "obsessed") — gets you laughed off site.
+- ❌ Consumer-cutesy ("wake up babe", "obsessed", "bestie") — gets you laughed off site.
 - ❌ Corporate-supplier ("proud to announce our quality solutions") — the Big River trap.
 - ❌ Marketing jargon (innovative, game-changing, seamless, synergy, leverage, elevate).
 - ❌ Hard-sell / fake urgency / discount-spam.
 - ❌ Hashtag soup.
-- ❌ Emoji as decoration *(default: no emoji — matches the brand rule + July's restraint).*
+- ❌ **Emoji.** None.
 
 ## Caption anatomy
 - **Hook (line 1):** the point / the tension / the number. Earn the tap.
@@ -61,11 +67,12 @@ a bit dry. Proud of the work, allergic to fluff. Speaks to builders *and* archit
 
 ## Casing & formatting
 - Sentence case for captions. ALL CAPS only for spec/compliance callouts (per `BRAND.md`).
-- Emoji off by default; rare functional use only (an arrow, a tick) if ever.
+- No emoji, anywhere.
 
 ## Vocabulary (v1 — enrich from competitor teardowns)
 - **Use:** formply, off-form, formwork, pour, strip, radius, chord, set-out, bending ply, nest,
   plate, lineal metre, to size, on spec, lead time, cavity batten, NCC 2025, 7-star, span, substrate.
+- **Light slang:** blokes, bog-and-sand, chippy, sparky, on the tools, sorted, spot-on.
 - **Avoid:** solutions, innovative, game-changing, synergy, leverage, cutting-edge, seamless,
   elevate, "quality" as filler.
 
@@ -78,13 +85,11 @@ a bit dry. Proud of the work, allergic to fluff. Speaks to builders *and* archit
 ❌ *"Obsessed with this dreamy curved bench 😍✨ tap to shop bestie!"*
 ✅ *"A cantilevered curved bench, poured off-form. Designed in minutes — the finish does the rest."*
 
+**Dry-humour example (the tone, done right):**
+✅ *"Still bending ply over your knee and hoping? There's a better way. Radius Pro turns up already curved to your set-out."*
+
 **One caption per pillar:**
 - **How-To:** *"Setting out a curved wall? Get your chord length right or it'll crack at the join. The 60-second version — link in bio."*
 - **Craft Macro:** *"Flat sheet in. Perfect curve out."*
 - **Built with Craftons:** *"@builder nailed this off-form curved feature wall — designed in our Formwork Builder, poured on site. Built something curved? Tag #BuiltWithCraftons."*
 - **Sell:** *"Curved bench seat. Angled backrest. Cantilever. Designed in the Formwork Builder in minutes — your shape's next. Link in bio."*
-
-## Open dials (to lock with Lee)
-1. **Dry-humour level** — do the examples feel right, too casual, or not casual enough?
-2. **Emoji** — off by default (current call), or allow rare functional ones?
-3. **Slang / mild site language** ("blokes") — in or out?

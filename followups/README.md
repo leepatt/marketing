@@ -1,201 +1,129 @@
-# Client Follow-Up Engine
+# Client Follow-Up Engine — CNC Cut
 
-> **New workstream — sales conversion, not content.** Separate from the content/social engine
-> (`SETUP.md`, `CONTENT-PILLARS.md`). This is about converting leads and quotes we've *already
-> earned* — plugging the revenue leaks where deals slip away.
+> **Sales-conversion workstream, not content.** Separate from the Craftons content/social engine
+> (`/CONTENT-PILLARS.md` etc.). This is about converting quotes and leads we've *already earned* —
+> chasing quotes that go quiet so winnable jobs don't slip away.
 >
-> **Status: v1 draft (2026-06-22) — for Lee's review.** Nothing here sends until Lee approves the
-> copy and the automation level (see *Open decisions*). All email copy below is DRAFT, in Craftons
-> voice, awaiting sign-off.
+> **Two docs:** *this* file = the **system** (how follow-ups are triggered and run).
+> `followup-rules.md` = **how to write a good follow-up** (the agent reads it before drafting).
+>
+> **Status:** v2 design (2026-06-23). Proof-of-concept validated; not yet wired into a Routine.
 
 ---
 
 ## Why this exists — the leak
 
-Most quotes that go quiet were *winnable*. The deal was half-closed; it just needed a chase that
-never came. The trigger for this work was a Will Barron (Salesman.com) talk, and the principle is
-blunt: **~44% of businesses follow up once and give up, or never follow up at all.** That gap is
-the cheapest revenue in the building — you've already done the hard part (won the enquiry, built
-the quote); you're just not finishing.
+Most quotes that go quiet were *winnable* — the job was half-closed and just needed a chase that
+never came. The trigger for this work was a Will Barron (Salesman.com) video; the principle is
+blunt: **~44% of businesses follow up once or never**, and that gap is the cheapest revenue going.
+We currently issue **~15–30 quotes/week** with no systematic follow-up. That's the leak we're
+plugging.
 
-Barron's **Revenue Leak Calculator** is built for exactly our kind of business and names four
-leak points. Mapped to Craftons:
-
-| # | Leak | Craftons reality | Where we fix it |
-|---|------|------------------|-----------------|
-| 1 | **Lead generation** — system to find customers | The content engine feeds this | (content engine — separate) |
-| 2 | **Meeting / response** — system to respond + book | Enquiries land in Gmail + form → ClickUp | **Flow B** (Gmail) |
-| 3 | **Quote follow-up** — system to chase quotes | **The main gap.** ~15–30 quotes/wk, no chase | **Flow A** (Quotient → own platform) |
-| 4 | **Past-customer reactivation** — when did you last reach out | Untapped — they already trust us | **Flow C** (Gmail + Shopify Email) |
-
-You came in for #3. **#4 is the other half** — reactivating past clients is the easiest money in
-the building because the trust is already there.
-
----
-
-## Current state (confirmed 2026-06-22)
+## Current state (confirmed 2026-06-23)
 
 - **Leads land in:** Gmail (direct enquiries) + form submissions that drop into **ClickUp**.
-- **Quoting:** **Quotient** is live and working — **but** a custom, Craftons-tailored quoting
-  platform is on the roadmap to replace it.
-- **Volume:** ~**15–30 quotes/week** (~60–120/month).
+- **Quoting:** **Quotient** is live, **but** a custom CNC Cut quoting platform is on the roadmap to
+  replace it. So we don't over-invest in Quotient-specific plumbing — the follow-up *logic* is a
+  portable asset.
+- **Volume:** ~15–30 quotes/week (~60–120/month).
+- **Sender:** `cnc@cnccut.melbourne`.
+  - ⚠️ **Brand flag (confirm):** customers may correspond with the **Craftons** brand — the PoC job
+    came in to `hello@craftons.com.au` as "Craftons Order #1155," yet the sending inbox is
+    `cnc@cnccut.melbourne`. Confirm how brand/inbox should read to the customer.
 
-**Strategic consequence:** because Quotient is being replaced, we **do not** over-invest in deep
-Quotient-specific plumbing. We design the follow-up *logic* (cadence + copy) as a **portable
-asset**, switch on Quotient's built-in follow-ups as the cheap interim, and **bake the same
-sequence into the new platform** when it's built.
+## Why Gmail-centred (the key decision)
 
----
+The goal is **personalise every follow-up as much as possible.** That settles the tool choice:
 
-## Architecture — ClickUp is the spine
+- **Quotient can't personalise** — its follow-ups are templated merge-fields, capped at 2, and the
+  API won't allow per-client bespoke copy.
+- **The context lives in email** — the whole conversation (enquiry, quote, back-and-forth) is in
+  the Gmail thread. ClickUp only holds the job at the start; Quotient only the quote + enquiry.
+- **An agent can read the thread** and draft a genuinely tailored follow-up.
+
+So follow-ups are **written and sent from Gmail**, drafted by an agent that reads the real context.
+Quotient still *creates* the quote (and its own auto-follow-ups are turned **off**, so the customer
+never gets a robotic Quotient nudge plus our personal one).
+
+## Architecture
 
 ```
-Enquiry (Gmail) ─┐
-Form submission ─┴─► ClickUp (the spine: pipeline + status + reminders)
-                          │
-          ┌───────────────┼─────────────────────────┐
-          ▼               ▼                          ▼
-   Flow B (Gmail)   Flow A (Quotient now,      Flow C (Gmail +
-   enquiry chase    own platform later)        Shopify Email)
-                    quote follow-up            reactivation
+Quotient: quote sent ──► ClickUp: status → "Waiting Approval"  (state machine, already wired)
+                                    │
+                       daily Routine sweep: in "Waiting Approval"
+                       ≥ 4 business days, no draft yet, no reply
+                                    │
+                                    ▼
+            Agent reads: Gmail thread  +  ClickUp comments [Ravi excluded]
+                                    │   (apply followup-rules.md; never leak internal)
+                                    ▼
+                 Gmail: personalised draft, on-thread ──► human reviews & sends
+                                    │
+                         mark ClickUp task "drafted" (idempotency)
 ```
 
-- **ClickUp = system of record.** It already receives form submissions and is connected here.
-  A simple pipeline drives everything: `New enquiry → Quoted → Following up → Won / Lost`.
-  ClickUp reminders/automations fire the cadence; status changes are the stop-condition.
-- **Quotient** = switch on built-in automatic quote-follow-up emails now (config, not build).
-  Interim only.
-- **Gmail** = where enquiry + reactivation emails go out (connected; Zapier bridge available).
-- **Own quoting platform (future)** = Flow A baked in natively; retire Quotient's version.
+- **ClickUp = trigger / state machine.** It already knows quote status (Quotient tells it). Not the
+  content store — just the state + timer.
+- **Gmail = context + draft + send.** The thread is the richest context; the draft lands here; a
+  human always sends.
+- **No separate database.** State (drafted? / stop?) lives on the ClickUp task.
 
-### Control model (carried over from the marketing engine)
-Craftons' standing rule is **"Claude drafts → Lee approves; nothing auto-publishes."** Follow-ups
-test that rule at 15–30/wk. Recommended reconciliation (see *Open decisions* to confirm):
-- **Quote follow-ups (Flow A):** templated + low-risk + Quotient auto-stops on accept/decline →
-  safe to **automate** once copy is approved.
-- **Reactivation + enquiry replies (Flows B/C):** more personal → **Claude drafts, Lee one-click
-  sends.**
-- **Hard safety rule everywhere:** never send the next touch if the customer has already replied,
-  accepted, or paid. Quotient handles this for quotes; the Gmail side must check the thread +
-  ClickUp status before each send.
+## How it runs — a Claude Cowork Routine
 
----
+This runs entirely in **Claude Cowork (Claude Code on the web)** as a scheduled **Routine** — no
+custom code and no raw API keys needed for v1:
 
-## Flow A — Quote follow-up *(the main gap)*
+- **Scheduled, unattended** daily run on Anthropic's cloud; the Gmail + ClickUp connectors carry
+  over (authenticated once on the account) and execute without per-call prompts.
+- **The build is a prompt, not code** — a self-contained instruction set the daily run executes,
+  pointed at `followup-rules.md`.
+- **Trigger is a poll, not a push:** the daily sweep finds jobs that are *Waiting Approval ≥ 4
+  business days, not yet drafted, no customer reply*, and drafts each one.
 
-**Trigger:** a quote is sent (Quotient now). **Stop:** reply, accept, or decline.
-Five touches over three weeks. Builder-to-builder, low-pressure, each one gives a reason to
-re-engage. `[brackets]` = merge fields.
+**Later hardening (optional):** re-implement in **cnccut.app** if/when we want it baked into the
+dashboard or the new quoting platform — same logic, more control. Code + secrets live there, never
+in this repo (per `/CLAUDE.md`).
 
-| Touch | When | Intent |
-|-------|------|--------|
-| 1 | Day 2 | Did it land? open the door |
-| 2 | Day 5 | Reassurance — kill the common hesitation |
-| 3 | Day 9 | Remove the blocker — make it easy to say what's wrong |
-| 4 | Day 14 | Still going ahead? gentle validity deadline |
-| 5 | Day 21 | Break-up — close the file, leave the door open |
+## Context & safety
 
-**DRAFT copy** (Craftons voice — confident, not pushy; trade language; "we" = Craftons, "you" = the builder):
+Full rules in **`followup-rules.md`**. The load-bearing ones:
 
-**Touch 1 — Day 2**
-> **Subject:** Your Craftons quote — did it land?
->
-> Hi [First name], just making sure the quote for [project] came through OK — they occasionally
-> catch in spam. Happy to walk through any line item or adjust quantities if the scope's moved.
-> Anything you need from us to move it forward?
->
-> — [Sender], Craftons
+- **Context = Gmail thread + ClickUp job comments.**
+- **Exclude Ravi-tagged comments** — they're CAM handoff notes; drop before drafting.
+- **Internal notes inform, never leak** — use them to understand the job; never reveal margins,
+  "chase deposit," supplier issues, etc. to the customer.
+- **Never fabricate** — no comments? Work from the thread alone.
+- **Draft only — a human always sends.** Nothing auto-sends.
+- **Stop conditions:** customer replied, quote accepted/declined, or status changed → no further
+  follow-up. Mark the task once drafted so it's never drafted twice.
 
-**Touch 2 — Day 5**
-> **Subject:** Quick one on the [project] quote
->
-> Hi [First name], two things builders usually want nailed down before they commit on a job like
-> this: lead time, and knowing the parts land ready to go. Everything's CNC-cut to your spec, so it
-> goes straight in — no hand-fitting on site. Want me to jump on a quick call and run through it?
->
-> — [Sender]
+## Proof of concept — done ✅
 
-**Touch 3 — Day 9**
-> **Subject:** Anything holding up the [project] job?
->
-> Hi [First name], if the quote isn't quite right — price, quantities, timing — tell me what's off
-> and I'll sort it. Easier to adjust now than have it sit. What's the hold-up?
->
-> — [Sender]
+Validated manually on **"Build by the Sea"** (2026-06-23): read the enquiry thread, applied the
+date logic (quote ~11 May, install window lapsed), and produced a short, direct, reason-led draft
+with no banned filler. Confirmed the no-comments case degrades gracefully. See the worked example
+in `followup-rules.md §7`.
 
-**Touch 4 — Day 14**
-> **Subject:** Still going ahead with [project]?
->
-> Hi [First name], checking in before this one ages out — the pricing and lead times on the quote
-> hold until [date]. If you're still on for it, reply and I'll lock it in.
->
-> — [Sender]
+## Open decisions
 
-**Touch 5 — Day 21**
-> **Subject:** Closing this one off
->
-> Hi [First name], I'll close the file on the [project] quote for now — no worries if the timing's
-> not right. When it comes back around we're here, and the quote's easy to refresh. Good luck with
-> the build.
->
-> — [Sender]
+1. **Brand/inbox** — how the sender reads to the customer (Craftons vs CNC Cut). *See brand flag.*
+2. **Sequence timings** — defaults are ~4 days / ~2 weeks / ~4 weeks (in `followup-rules.md §4`);
+   confirm or tune.
+3. **Signature** — whose name signs the emails.
+4. **ClickUp "drafted" marker** — which field/label to use as the idempotency flag.
+
+## Phased rollout
+
+1. **Phase 1 — Routine live (here).** Finalise the Routine prompt (points at `followup-rules.md`),
+   stand up the daily sweep, turn Quotient's auto-follow-ups off. *Biggest, fastest win.*
+2. **Phase 2 — Tune.** Watch real drafts, refine the rules + timings.
+3. **Phase 3 — Harden into cnccut.app** if/when we want dashboard integration or it's folded into
+   the new quoting platform.
 
 ---
 
-## Flow B — New enquiry *(speed-to-lead + info chase)*
-
-**Speed-to-lead is the single biggest lever** — the faster the first reply, the higher the close.
-
-1. **Instant acknowledgement** (auto, on enquiry/form):
-   > Hi [First name], got your enquiry — we'll have [a quote / next steps] back to you by
-   > [timeframe]. If it's time-sensitive, call [number] and we'll get straight onto it. — Craftons
-2. **Info chase** — when we're waiting on drawings/specs to quote: nudge **Day 2 / Day 5 / Day 10**
-   to get what we need ("To get your quote accurate we just need [plans / dimensions / spec] —
-   send those through and we'll turn it around fast.").
-
----
-
-## Flow C — Past-customer reactivation *(the easy money)*
-
-A recurring campaign, **not** a per-lead sequence. Quarterly 1:1-style outreach to past clients.
-**Cross-links to the content engine:** this is also where the **#BuiltWithCraftons** mechanic and
-the **Shopify Email** newsletter (B8) feed in — ask for finished-job photos and you get content +
-reactivation in one touch.
-
-**DRAFT copy:**
-> **Subject:** What are you building at the moment?
->
-> Hi [First name], been a while since [last job]. What's on the bench at the moment? We've [new:
-> e.g. new shapes in the Formwork Builder / Radius Pro updates] — happy to quote anything curved
-> you've got coming up. And if you've got photos of how [last job] turned out, we'd love to see it.
->
-> — [Sender], Craftons
-
----
-
-## Open decisions (need Lee)
-
-1. **Automation level** — full auto vs. draft-and-approve vs. hybrid (recommended: hybrid — auto
-   the quote chase, draft-and-approve the personal ones). *This gates how we build.*
-2. **Sender / signatory** — who do these come from? Lee personally, or a `sales@` inbox?
-3. **Cadence numbers** — confirm the Day 2/5/9/14/21 spacing for Flow A (and the validity window
-   for Touch 4).
-4. **Quotient now vs. wait for the new platform** — confirm we switch Quotient's follow-ups on as
-   the interim rather than waiting.
-
-## Phased rollout (once decisions land)
-
-1. **Phase 1 — Quote chase live.** Approve Flow A copy → switch on Quotient's built-in follow-ups;
-   stand up the ClickUp pipeline + statuses. *Biggest, fastest win.*
-2. **Phase 2 — Enquiry flow.** Gmail speed-to-lead ack + info chase (canned responses / drafts).
-3. **Phase 3 — Reactivation.** Quarterly campaign, cross-linked to #BuiltWithCraftons + Shopify Email.
-4. **Phase 4 — Own platform.** Bake Flow A into the new quoting tool; retire Quotient's follow-ups.
-
----
-
-_Sources: Will Barron / Salesman.com — [the video](https://www.youtube.com/watch?v=ltI6fVjNCSk),
+_Source: Will Barron / Salesman.com — [the video](https://www.youtube.com/watch?v=ltI6fVjNCSk),
 [Revenue Leak Calculator](https://calculator.salesman.com/),
-[Simple Selling Method](https://salesman.com/simple-selling-method/). Sequence reconstructed from
-Barron's published material (the verbatim transcript wasn't retrievable)._
+[Simple Selling Method](https://salesman.com/simple-selling-method/). Method reconstructed from
+Barron's published material (verbatim transcript wasn't retrievable)._
 </content>
-</invoke>

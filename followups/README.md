@@ -26,10 +26,10 @@ plugging.
   replace it. So we don't over-invest in Quotient-specific plumbing — the follow-up *logic* is a
   portable asset.
 - **Volume:** ~15–30 quotes/week (~60–120/month).
-- **Sender:** `cnc@cnccut.melbourne`.
-  - ⚠️ **Brand flag (confirm):** customers may correspond with the **Craftons** brand — the PoC job
-    came in to `hello@craftons.com.au` as "Craftons Order #1155," yet the sending inbox is
-    `cnc@cnccut.melbourne`. Confirm how brand/inbox should read to the customer.
+- **Sender & brand:** `cnc@cnccut.melbourne`, signing off as **CNC Cut** *(decided 2026-06-23)*.
+  - *Caveat to keep in mind:* some customers have history under the **Craftons** brand (the PoC job
+    came in to `hello@craftons.com.au` as "Craftons Order #1155"). Referencing "the quote we sent"
+    sidesteps any confusion; we don't lead with brand.
 
 ## Why Gmail-centred (the key decision)
 
@@ -104,13 +104,16 @@ date logic (quote ~11 May, install window lapsed), and produced a short, direct,
 with no banned filler. Confirmed the no-comments case degrades gracefully. See the worked example
 in `followup-rules.md §7`.
 
-## Open decisions
+## Decisions (resolved 2026-06-23)
 
-1. **Brand/inbox** — how the sender reads to the customer (Craftons vs CNC Cut). *See brand flag.*
-2. **Sequence timings** — defaults are ~4 days / ~2 weeks / ~4 weeks (in `followup-rules.md §4`);
-   confirm or tune.
-3. **Signature** — whose name signs the emails.
-4. **ClickUp "drafted" marker** — which field/label to use as the idempotency flag.
+1. **Brand/inbox** — ✅ CNC Cut, from `cnc@cnccut.melbourne` (see *Current state*).
+2. **Sequence timings** — provisional defaults ~4 days / ~2 weeks / ~4 weeks (`followup-rules.md §4`).
+   *Based on Barron's published method, not the verbatim video — tune from real results.*
+3. **Signature** — ✅ left blank for now; the human fills it before sending.
+4. **ClickUp state marker** — ✅ two **custom fields** on each job task (not a separate task):
+   - `Follow-up` (dropdown): `None` · `1st follow-up` · `2nd follow-up` · `Closed off` · `Do not follow up`
+   - `Last follow-up` (date)
+   The agent reads/updates these for idempotency + timing. *Lee to create the fields in ClickUp.*
 
 ## Phased rollout
 

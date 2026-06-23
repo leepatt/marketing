@@ -5,9 +5,11 @@
 > human writing one by hand. The **system/plumbing** (how follow-ups are triggered and run) lives
 > in `followups/README.md`; **this** file is purely *how to write a good one*.
 >
-> **Source.** Built from a Will Barron / Salesman.com video (the trigger for this work) plus his
-> published "Selling Made Simple" method, then adapted to CNC Cut. Treat it as living — tune it as
-> we see what actually converts.
+> **Source.** A Will Barron / Salesman.com video triggered this work, but its transcript wasn't
+> retrievable — so these rules are reconstructed from Barron's **published** method ("Selling Made
+> Simple", the Revenue Leak Calculator) plus the specific rules Lee relayed from the video, then
+> adapted to CNC Cut. His published material and the video say the same things. Treat it as living —
+> tune it as we see what actually converts.
 >
 > **Status:** draft for review (2026-06-23). Not yet wired into a Routine.
 
@@ -84,18 +86,18 @@ never re-send the same nudge.
 
 - **Draft only — a human always sends.** Nothing auto-sends. Drafts sit in Gmail for review.
 - **Reply on the existing email thread** (keeps context, lifts opens). Never a cold new subject.
-- **Sender:** `cnc@cnccut.melbourne`.
-  - *Brand note (confirm):* customers may correspond with the **Craftons** brand — the live test
-    job came in to `hello@craftons.com.au` as "Craftons Order #1155," yet the sending inbox is
-    `cnc@cnccut.melbourne`. Confirm how the brand/inbox should read to the customer so it's not
-    confusing.
+- **Sender:** `cnc@cnccut.melbourne`, signing off as **CNC Cut**. Don't lead with brand — referencing
+  "the quote we sent" avoids confusion for customers with **Craftons** history.
 - **Trigger:** quote sent (Quotient) → ClickUp status moves to **Waiting Approval** → first
   follow-up due ~4 business days later. Runs as a daily Claude Cowork **Routine** that sweeps for
   due jobs (polls; it doesn't get pushed).
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.
-- **Idempotency & stop conditions:** mark the ClickUp task once a draft is created so it's never
-  drafted twice. **Stop the sequence** the moment the customer replies, the quote is
-  accepted/declined, or the job changes status.
+- **Idempotency & stop conditions:** track state in two ClickUp custom fields on the job —
+  `Follow-up` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`)
+  and `Last follow-up` (date). Advance `Follow-up` and set `Last follow-up` whenever a draft is
+  created, so a job is never drafted twice and the next touch can be timed. **Stop the sequence** the
+  moment the customer replies, the quote is accepted/declined, the job changes status, or
+  `Follow-up` is set to `Do not follow up`.
 
 ## 7. Worked example — "Build by the Sea"
 

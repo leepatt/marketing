@@ -30,6 +30,18 @@ a bit dry. Proud of the work, allergic to fluff. Speaks to builders *and* archit
 - **Slang: a little.** Light Aussie site language is welcome (*blokes, bog-and-sand, chippy, sparky,
   on the tools*) — sprinkled for authenticity, never forced or bogan.
 
+## Brand presence — value first, brand barely there
+The page adds value first; sales is a quiet by-product. So:
+- **~85% (value posts): the caption mentions no brand and makes no pitch.** A Craft Macro off-form
+  wall is just a great piece of content — say nothing about Craftons or the software. Let it stand.
+- **The visual carries a subtle logo.** That's the only brand cue on value content — the logo + the
+  **@handle** do the brand work, not the words.
+- **How-To posts: subtle "creation words" only.** Name the product/tool *lightly* where it's
+  genuinely relevant (e.g., a passing "set out in the Formwork Builder") — never a pitch.
+- **~15% (Sell posts): soft CTA only** — *"order at Craftons," "head over to Craftons."* **No
+  hard-sell energy ever** — no "buy now," no "limited time," no manufactured urgency.
+- Rule of thumb: if a value post reads like an ad, cut the brand line and let the work talk.
+
 ## Do
 - Lead with the point; one idea per caption.
 - Trade language, not marketing words (*formply, off-form, set-out, radius, chord, pour, strip, nest*).
@@ -62,7 +74,7 @@ a bit dry. Proud of the work, allergic to fluff. Speaks to builders *and* archit
 ## CTA by lane
 - **How-To Series:** "Full how-to — link in bio." / "Save this for your next curved job."
 - **Built with Craftons:** "Built something curved? Tag #BuiltWithCraftons." + credit the builder.
-- **Craft Macro:** usually none — let it breathe.
+- **Craft Macro:** no CTA, no brand mention — let it breathe. The subtle logo on the visual is the only cue.
 - **Formwork Builder Showcase (Sell):** "Design yours in the Formwork Builder — link in bio."
 
 ## Casing & formatting

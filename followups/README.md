@@ -123,6 +123,23 @@ in `followup-rules.md §7`.
 3. **Phase 3 — Harden into cnccut.app** if/when we want dashboard integration or it's folded into
    the new quoting platform.
 
+## Additional routines (planned)
+
+Each is its own scheduled Cowork Routine, sharing the voice in `followup-rules.md`. Draft-only,
+human sends.
+
+- **Weekly digest** *(confirmed)* — Mondays, emails Lee a summary: outstanding quotes, follow-ups
+  drafted, jobs gone quiet. Drives adoption + visibility.
+- **Won-job review & photo request** *(confirmed)* — when a job is marked Won, drafts a **per-job
+  tailored** message asking for a Google review + finished-job photos. Photos feed the Craftons
+  `#BuiltWithCraftons` content engine — two birds. *Needs: the Google review link + the exact
+  "Won/done" status name.*
+- **Past-customer reactivation** *(backlog)* — periodic (≈quarterly) personalised "what are you
+  building?" to past clients gone quiet ~3–6 months (Barron's leak #4 — the cheapest revenue).
+  1:1 and personal, distinct from a broadcast newsletter. *Needs: the cleanest past-customer source
+  (ClickUp / Quotient / Xero / Shopify) + the "gone quiet" window.*
+- **Speed-to-lead** — *already handled in ClickUp; no Routine needed.*
+
 ---
 
 _Source: Will Barron / Salesman.com — [the video](https://www.youtube.com/watch?v=ltI6fVjNCSk),

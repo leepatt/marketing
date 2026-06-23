@@ -60,11 +60,14 @@ never re-send the same nudge.
 | Touch | Timing (from quote sent) | Angle |
 |-------|--------------------------|-------|
 | 1 | ~4 business days | The reason-led nudge (e.g. timeline, did it land, one question) |
-| 2 | ~2 weeks | A *different* angle — offer to adjust/simplify the spec, a quick call, solve a likely blocker |
+| 2 | ~2 weeks | The **callback offer** — "reply with a window that suits + a number and I'll call you" (no fixed slot). One ask. |
 | 3 | ~4 weeks | The close-off / "break-up" — give permission to say no, then stop |
 
 *(Timings are starting defaults — tune them.)*
 
+- **Touch 2 is the callback offer.** Don't propose a fixed time slot — CNC Cut's day is
+  unpredictable (walk-ins, moving schedule). Ask the customer for a rough window + a number and call
+  them within it. Lower friction for them, and it fits how the day actually runs.
 - **The close-off is a deliberate step, not a failure** — it's often the highest-replying email in
   the sequence. Always the ender.
 - **Then stop.** After the close-off with no reply, mark it lost. Don't keep going.

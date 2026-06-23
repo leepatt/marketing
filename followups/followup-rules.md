@@ -15,6 +15,23 @@
 
 ---
 
+## Voice — how CNC Cut sounds
+
+Write like one tradie talking to another — Australian, relaxed, direct, human. We make CNC-cut
+components for builders; the reader knows their trade, so respect their time.
+
+- **Australian English and tone.** Plain and friendly, no corporate gloss. Aussie spelling
+  (organise, colour, metre).
+- **Builder-to-builder.** Concrete and practical. Short sentences. Get to the point.
+- **Warm but not gushy; confident, not salesy.** A real person wrote this, not a marketing team.
+- **Light vernacular is fine** — "no dramas", "give you a buzz", "keen", "sort it out", "flick it
+  through" — but don't lay it on thick. **Mirror the customer's energy:** if they're formal, ease
+  off; if they open with "Legend", match it.
+- **First person, real.** "I'll", "we'll". Sign off `Cheers,` then the sender's name (blank for
+  now), then `CNC Cut`.
+- **Banned corporate-speak:** "reach out", "touch base", "circle back", "as per", "kindly", "at
+  your earliest convenience" (on top of the banned filler in §2).
+
 ## 1. Mindset
 
 - **Most quotes are lost by never following up — not to a competitor.** The follow-up *is* the

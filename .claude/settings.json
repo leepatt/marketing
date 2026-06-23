@@ -1,22 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Google_Drive",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96",
-      "mcp__Google_Drive__search_files",
-      "mcp__Google_Drive__list_recent_files",
-      "mcp__Google_Drive__read_file_content",
-      "mcp__Google_Drive__download_file_content",
-      "mcp__Google_Drive__get_file_metadata",
-      "mcp__Google_Drive__get_file_permissions",
-      "mcp__Google_Drive__create_file",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__search_files",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__list_recent_files",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__read_file_content",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__download_file_content",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__get_file_metadata",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__get_file_permissions",
-      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__create_file"
+      "mcp__Google_Drive__*",
+      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__*"
     ]
   }
 }

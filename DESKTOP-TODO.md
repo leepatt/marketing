@@ -3,11 +3,12 @@
 _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; nothing is blocked._
 
 ## 🔴 Do first — security
-- [ ] **Rotate the Google Ads credentials** (client secret + refresh token appeared in a setup screenshot).
-  1. [myaccount.google.com/permissions](https://myaccount.google.com/permissions) → "Craftons Ads" → **Remove access**.
-  2. Google Cloud Console → **Clients → craftons-ads-client → Reset secret**.
-  3. Re-run the OAuth Playground (offline + force-consent) → new refresh token.
-  4. Update the 2 values in **both** places: cnccut-app `.env` **and** the Jake cloud environment.
+- [x] **Rotate the Google Ads credentials** — ✅ DONE 2026-06-23. Deleted the "Craftons Ads" OAuth
+      grant (revokes leaked refresh token), disabled the leaked secret in Cloud Console (new UI uses
+      "Add secret" → added a new one), re-minted the refresh token via OAuth Playground, updated both
+      values in **Vercel env vars** + redeployed.
+  - [ ] **Remaining:** mirror the two new values into the **Jake cloud environment**; once verified,
+        **delete** the disabled old secret in Cloud Console.
 
 ## 🟠 Finish the design-system wiring
 - [ ] **Paste `colors_and_type.css` into the repo** for an in-repo token copy.

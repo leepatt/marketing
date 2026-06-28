@@ -41,15 +41,18 @@ MATERIAL ORDER -> DESIGN -> MANUFACTURE -> PICKUP -> DELIVERY -> COMPLETE.
 - You therefore only ever act on jobs in "AWAITING APPROVAL" (Part A) or "COMPLETE" (Part B).
   Ignore every other status.
 
-FINDING THE RIGHT THREAD:
-Each job's name is "Client - Job", e.g. "Concretum - Heartford Entry Walls". A client may have
-several jobs running, so use BOTH the client and the specific job detail to find the matching Gmail
-thread in the cnc@cnccut.melbourne mailbox (plus the customer's email if it's on the task).
-NOTE: quotes go out via Quotient, so MANY jobs have NO Gmail thread — that's normal and NOT a
-reason to skip. If there's an existing thread (e.g. the original enquiry), reply on it; if not, send
-a FRESH email to the customer (subject like "[Job] – Quote #[number]"). Get the customer's email
-from the enquiry thread, the Quotient notification email, or the ClickUp task. Only SKIP + flag if
-you find MULTIPLE possible threads and can't tell which is right — never guess.
+CONTEXT & DELIVERY (read carefully):
+- ClickUp is the source of truth. Get the job context (name "Client - Job", comments, fields) AND
+  the customer's email from the Job List task.
+- Everything sends from cnc@cnccut.melbourne. A FRESH email is the DEFAULT. Only reply on a thread
+  if one already exists in the cnc@cnccut.melbourne mailbox for this exact job.
+- Do NOT read or chase any other inbox (cnccutmelbourne@gmail.com, hello@craftons.com.au). A missing
+  thread is NEVER a reason to skip — just send a fresh email (subject like "[Job] – Quote #[number]").
+- Every Job List task is a CNC Cut job → send from cnc@cnccut.melbourne. Pure Craftons jobs are
+  handled by Craftons separately and aren't in the Job List, so you won't see them. No Craftons
+  branching.
+- If a cnc@ thread does exist and the client has several jobs, use the job detail to pick the right
+  one; if you can't tell which, send fresh rather than guess.
 
 Fields: `Follow-Up Email` (dropdown) and `Last follow-up` (date).
 
@@ -74,11 +77,12 @@ A3 — Stop conditions (skip and note for the human if any are true):
 - The customer has already replied (latest message in the thread is from them, not us).
 - The status is no longer AWAITING APPROVAL (accepted/declined).
 
-A4 — Gather context for a due job:
-- Find the customer's Gmail thread (per FINDING THE RIGHT THREAD). Read the whole thread.
+A4 — Gather context for a due job (per CONTEXT & DELIVERY above):
+- Get the job context + the customer's email from the ClickUp task. If a cnc@cnccut.melbourne thread
+  exists for this job, read it too.
 - Read ClickUp comments, EXCLUDING any that tag/assign Ravi. Use internal notes only to understand
   the job; never quote or reveal internal detail. Pull the quote ref/value if available. If context
-  is thin, work from the thread alone; NEVER invent detail.
+  is thin, keep it simple; NEVER invent detail.
 
 A5 — Draft (per followup-rules.md, in CNC Cut's voice). Short, direct, one question, real reason,
 no banned phrases. Use the angle for the touch:
@@ -90,9 +94,9 @@ Delivery: reply on the existing thread if there is one; otherwise send a FRESH e
 customer (subject "[Job] – Quote #[number]"). From: cnc@cnccut.melbourne. Sign "Cheers," / (blank
 name line) / "CNC Cut".
 
-A6 — Create the Gmail DRAFT (do not send). Label its thread "Follow-up to review" (create the label
-if it doesn't exist). Update the job: set `Follow-Up Email` to the new stage and `Last follow-up`
-to today.
+A6 — Create the Gmail DRAFT (do not send). Try to label its thread "Follow-up to review" (create the
+label if needed) — but this is BEST-EFFORT: if labelling errors, carry on, the draft is what matters.
+Update the job: set `Follow-Up Email` to the new stage and `Last follow-up` to today.
 
 =================================================================
 PART B — Review + photo request  (status "COMPLETE")
@@ -114,8 +118,8 @@ two easy asks:
 Light, not pushy. A fresh friendly email reads better than the old quote thread for a finished job.
 From cnc@cnccut.melbourne, sign "Cheers," / (blank) / "CNC Cut". (Best sent Tue–Thu, late morning.)
 
-B4 — Create the Gmail DRAFT (do not send). Label its thread "Follow-up to review". Set
-`Follow-Up Email` to "Request Email". Ask each customer only once.
+B4 — Create the Gmail DRAFT (do not send). Try to label it "Follow-up to review" (best-effort — skip
+if it errors). Set `Follow-Up Email` to "Request Email". Ask each customer only once.
 
 =================================================================
 FINAL — Summarise for Lee: Part A drafts (client + touch), Part B drafts (client), and anything

@@ -94,7 +94,9 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 
 - **Use real specifics** — the job description, quote number, value, a detail from the thread.
   Generic follow-ups get ignored; "the seat and planter box setout (Quote #1162, $4,850)" lands.
-- **Context comes from two places:** the Gmail thread, and the ClickUp job comments.
+- **ClickUp is the source of truth for context** — the job name (`Client - Job`), comments, fields,
+  and the **customer's email** all come from the Job List task. A `cnc@cnccut.melbourne` Gmail thread
+  is a bonus if one exists, not a requirement.
 - **Internal notes inform, they never leak.** ClickUp comments are internal — use them to
   *understand* the job, but never quote or reveal internal detail (margins, "chase the deposit",
   supplier issues, "client is difficult", CAM complexity) to the customer.
@@ -109,11 +111,14 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 - **Never write to the repo.** Create Gmail drafts only and report your summary as text in the run.
   Do **not** commit files, create branches, or store customer details (names, emails, quotes) in the
   repo.
-- **Delivery — fresh email vs reply.** Quotes go out via **Quotient**, so there's usually **no Gmail
-  thread** to reply to. If an existing thread with the customer exists (e.g. their original enquiry),
-  reply on it. If not, send a **fresh email** to the customer's address with a clear subject like
-  `[Job] – Quote #[number]`. **No thread is NOT a reason to skip.** Get the customer's email from the
-  enquiry thread, the Quotient notification, or the ClickUp task.
+- **Single outbound, fresh-email default.** Everything goes out from **`cnc@cnccut.melbourne`**. A
+  **fresh email is the default** — only reply on an existing `cnc@cnccut.melbourne` thread if one
+  happens to exist for this job. **Never read or chase other inboxes** (`cnccutmelbourne@gmail.com`,
+  `hello@craftons.com.au`) — a missing thread is *never* a reason to skip; just send fresh. Subject
+  like `[Job] – Quote #[number]`. The customer's email comes from the ClickUp job.
+- **Every Job List task is a CNC Cut job** — follow it up from `cnc@cnccut.melbourne`, no exceptions.
+  Pure Craftons jobs are handled separately by Craftons (their own email) and aren't in the Job
+  List, so you'll never see them. No Craftons-specific handling.
 - **Sender:** `cnc@cnccut.melbourne`, signing off as **CNC Cut**. Don't lead with brand — referencing
   "the quote we sent" avoids confusion for customers with **Craftons** history.
 - **Trigger:** quote sent (Quotient) → ClickUp status moves to **AWAITING APPROVAL** → first
@@ -124,10 +129,10 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
   the production stages** (Deposit Invoice → Delivery). At **COMPLETE** (parts in the customer's
   hands), send one **review + photo request**, **2–15 business days** after completion (best Tue–Thu,
   late morning).
-- **Match the right thread.** Jobs are named `Client - Job` (e.g. *Concretum - Heartford Entry
-  Walls*); a client may have several on the go. Use client + job detail to find the correct Gmail
-  thread. Only **skip + flag** if you find *multiple* threads and can't tell which is right — never
-  guess. If there's simply **no thread**, that's fine — send a fresh email (see Delivery above).
+- **If a `cnc@` thread exists, match it carefully.** Jobs are named `Client - Job` (e.g. *Concretum
+  - Heartford Entry Walls*); a client may have several on the go. If you reply on a thread, use
+  client + job detail to pick the right one — if several match and you can't tell, send a fresh email
+  rather than guess. (No thread at all is the normal case → fresh email.)
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.
 - **Idempotency & stop conditions:** track state in two ClickUp custom fields on the job —
   `Follow-Up Email` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`

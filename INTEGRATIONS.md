@@ -86,7 +86,7 @@ cost. Work top-down by priority.
   time — apply early) → create an OAuth2 client → generate a refresh token.
 - **Env vars:** `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`, `GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_CUSTOMER_ID`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID`
 - **Accounts (set up 2026-06-15):** Manager (MCC) `Craftons Marketing` = `275-347-3695` → `GOOGLE_ADS_LOGIN_CUSTOMER_ID=2753473695`; advertiser account `310-491-2421` → `GOOGLE_ADS_CUSTOMER_ID=3104912421`. OAuth client is a **Web application** with redirect URI `https://developers.google.com/oauthplayground`; refresh token minted via OAuth Playground (own creds, offline + force-consent).
-- **Status:** ✅ All 5 values collected 2026-06-15 — pending placement + verify. **Basic-access approval still pending** (dev token is Test-access until granted; manual campaign building is fine meanwhile). ⚠️ Client secret + refresh token were exposed in a setup screenshot — rotate secret + re-mint refresh token before production.
+- **Status:** ✅ Values collected 2026-06-15. **Basic-access approval still pending** (dev token is Test-access until granted; manual campaign building is fine meanwhile). ✅ **Rotated 2026-06-23** — leaked client secret + refresh token revoked: deleted the "Craftons Ads" OAuth grant, disabled the leaked secret in Cloud Console (added a new secret), re-minted the refresh token via OAuth Playground, placed the two new values in **Vercel** env vars + redeployed. ⏳ Remaining (desktop): mirror the two new values into the Jake cloud environment; delete the disabled old secret once verified.
 
 ---
 

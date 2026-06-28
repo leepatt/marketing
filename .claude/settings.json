@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Google_Drive__*",
+      "mcp__ffe818c5-601b-4545-83c6-dd1016b7ae96__*"
+    ]
+  }
+}

@@ -27,7 +27,10 @@ this works; one-off "ideas" are why our earlier attempts didn't.
 1. **Big company, never small workshop.** Every asset reads big, polished, national. **No workshop
    tours, no phone-in-the-shed footage.** Process/beauty content is allowed *only* studio-clean or
    rendered.
-2. **Value before the ask.** ~85% of posts sell nothing. We earn the right to sell with the other 15%.
+2. **Value before the ask — brand barely there.** ~85% of posts sell nothing *and don't mention the
+   brand at all* — a beautiful off-form wall just stands on its own; the visual's **subtle logo** +
+   the **@handle** do the brand work. How-To posts use only subtle "creation words." The ~15% Sell
+   posts use **soft CTAs only** (*"order at Craftons"*) — never hard-sell. See `SOCIAL-VOICE.md`.
 3. **Make other people the hero** (Inspire lane) more than we talk about ourselves. (The BuildPass lesson.)
 4. **Let the product demonstrate itself.** The single highest-leverage move across all our
    benchmarks — Bellroy's slimming wallet, July's "one feature one shot," Gozney's cheese-pull.

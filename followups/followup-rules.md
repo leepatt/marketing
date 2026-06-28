@@ -112,6 +112,14 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 - **Trigger:** quote sent (Quotient) → ClickUp status moves to **AWAITING APPROVAL** → first
   follow-up due ~4 business days later. Runs as a daily Claude Cowork **Routine** that sweeps for
   due jobs (polls; it doesn't get pushed).
+- **Pipeline logic:** chase **only** while in **AWAITING APPROVAL**. When the customer accepts,
+  Quotient auto-moves the job to **DEPOSIT INVOICE** → chasing stops and **nothing is sent through
+  the production stages** (Deposit Invoice → Delivery). At **COMPLETE** (parts in the customer's
+  hands), send one **review + photo request**, **2–15 business days** after completion (best Tue–Thu,
+  late morning).
+- **Match the right thread.** Jobs are named `Client - Job` (e.g. *Concretum - Heartford Entry
+  Walls*); a client may have several on the go. Use client + job detail to find the correct Gmail
+  thread, and **skip + flag** if you can't match one confidently — never guess.
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.
 - **Idempotency & stop conditions:** track state in two ClickUp custom fields on the job —
   `Follow-Up Email` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`
@@ -120,23 +128,21 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
   moment the customer replies, the quote is accepted/declined, the job changes status, or
   `Follow-Up Email` is set to `Do not follow up`.
 
-## 7. Worked example — "Build by the Sea"
+## 7. Worked example — "Concretum – Heartford Entry Walls" (illustrative)
 
-Returning customer (Samuel Broomfield, Build by the Sea). Quoted ~11 May for a seat & planter box
-formwork setout; his ~4-week install window had passed by the time of follow-up (late June).
+A client with several jobs on the go — so we match the thread on client **and** job detail. Quote's
+been quiet ~2 weeks → **touch 2 (the callback offer)** is due.
 
-**✗ Wrong** — filler opener + lazy date logic:
-> Hi Samuel, just following up on the quote for the seat and planter box setout — wanted to make
-> sure it landed. The timeline's getting tight, so let me know if you'd like to proceed…
+**✗ Wrong** — filler opener, no real reason, two asks:
+> Hi [name], just checking in on the Heartford entry walls quote. Also, did you want to send through
+> the updated plans? Let me know if you'd like to proceed.
 
-**✓ Right** — reason-led, date-aware, short, one question, easy out:
-> Hi Samuel,
+**✓ Right** — reason-led, one ask, dead easy to action:
+> Hi [name],
 >
-> The seat and planter box setout we quoted back in May — your early-June install window's been and
-> gone, so I wanted to see where it landed.
+> Chasing up the Heartford entry walls quote — easiest might be a quick call to run through it.
 >
-> Still going ahead? If so, I'll refresh the quote to suit your new dates. If not, no dramas — just
-> say the word and I'll close it off.
+> Reply with a rough window that suits and a number, and I'll give you a buzz then.
 >
 > Cheers,
 > [Sender]

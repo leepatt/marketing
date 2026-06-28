@@ -68,6 +68,27 @@ Quotient: quote sent ──► ClickUp: status → "AWAITING APPROVAL"  (state m
   human always sends.
 - **No separate database.** State (drafted? / stop?) lives on the ClickUp task.
 
+## Pipeline logic (when we send)
+
+```
+NEW ORDERS → QUOTE → AWAITING APPROVAL → (accept → auto) DEPOSIT INVOICE → MATERIAL ORDER →
+DESIGN → MANUFACTURE → PICKUP → DELIVERY → COMPLETE
+                 │                                                                    │
+          chase here only                                              review request here
+        (touches 1→2→3)            ── nothing sent through production ──        (2–15 biz days after)
+```
+
+- **Chase only in AWAITING APPROVAL.** On acceptance, Quotient auto-moves the job to DEPOSIT
+  INVOICE → chasing stops; **nothing is sent through the production stages.**
+- **Review at COMPLETE** (parts in the customer's hands), **2–15 business days** later — best Tue–Thu,
+  late morning (per review-timing research).
+- **Recency guards** stop a first-run flood: don't auto-chase quotes older than ~20 business days
+  (flag them instead); only request reviews for jobs completed in the last ~15 business days.
+- **Thread matching:** jobs are named `Client - Job` (e.g. *Concretum - Heartford Entry Walls*);
+  the agent matches on client + job detail and **skips + flags** if it can't match one thread.
+- **Mailbox:** Gmail connector = `cnc@cnccut.melbourne`; drafts are labelled `Follow-up to review`
+  so Lee can find them in one click.
+
 ## How it runs — a Claude Cowork Routine
 
 This runs entirely in **Claude Cowork (Claude Code on the web)** as a scheduled **Routine** — no

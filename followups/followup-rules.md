@@ -113,11 +113,11 @@ never re-send the same nudge.
   due jobs (polls; it doesn't get pushed).
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.
 - **Idempotency & stop conditions:** track state in two ClickUp custom fields on the job —
-  `Follow-up` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`
-  / `Review requested`) and `Last follow-up` (date). Advance `Follow-up` and set `Last follow-up` whenever a draft is
+  `Follow-Up Email` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`
+  / `Request Email`) and `Last follow-up` (date). Advance `Follow-Up Email` and set `Last follow-up` whenever a draft is
   created, so a job is never drafted twice and the next touch can be timed. **Stop the sequence** the
   moment the customer replies, the quote is accepted/declined, the job changes status, or
-  `Follow-up` is set to `Do not follow up`.
+  `Follow-Up Email` is set to `Do not follow up`.
 
 ## 7. Worked example — "Build by the Sea"
 

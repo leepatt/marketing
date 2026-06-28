@@ -8,8 +8,8 @@
 > `followups/followup-rules.md` (read by the agent at the start of every run).
 >
 > **ClickUp custom fields used (2):**
-> - `Follow-up` (Dropdown): `None` / `1st follow-up` / `2nd follow-up` / `Closed off` /
->   `Do not follow up` / `Review requested`
+> - `Follow-Up Email` (Dropdown): `None` / `1st follow-up` / `2nd follow-up` / `Closed off` /
+>   `Do not follow up` / `Request Email`
 > - `Last follow-up` (Date)
 
 ---
@@ -30,20 +30,20 @@ CNC Cut VOICE, the BANNED language, the one-idea/one-question discipline, the da
 the rules on internal notes (never leak) and Ravi-tagged comments (never use).
 
 You do TWO jobs each run, both in the ClickUp list «JOBS LIST NAME», using the custom fields:
-- `Follow-up` (dropdown: None / 1st follow-up / 2nd follow-up / Closed off / Do not follow up /
-  Review requested)
+- `Follow-Up Email` (dropdown: None / 1st follow-up / 2nd follow-up / Closed off / Do not follow up /
+  Request Email)
 - `Last follow-up` (date)
 
 =================================================================
 PART A — Chase open quotes  (jobs with status "AWAITING APPROVAL")
 =================================================================
 
-A1 — For each job in "AWAITING APPROVAL", read `Follow-up` and `Last follow-up` and decide if a
+A1 — For each job in "AWAITING APPROVAL", read `Follow-Up Email` and `Last follow-up` and decide if a
 follow-up is due (business days only; skip weekends):
-- `Follow-up` = None  AND  >= 4 business days since the quote was sent  -> draft TOUCH 1.
-- `Follow-up` = 1st follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 2.
-- `Follow-up` = 2nd follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 3.
-- `Follow-up` = Closed off / Do not follow up / Review requested  -> SKIP.
+- `Follow-Up Email` = None  AND  >= 4 business days since the quote was sent  -> draft TOUCH 1.
+- `Follow-Up Email` = 1st follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 2.
+- `Follow-Up Email` = 2nd follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 3.
+- `Follow-Up Email` = Closed off / Do not follow up / Request Email  -> SKIP.
 - Not yet due -> SKIP.
 (Quote-sent date = when the job entered "AWAITING APPROVAL", or the date of the quote email in the
 thread.)
@@ -68,14 +68,14 @@ no banned phrases. Use the angle for the touch:
 Reply ON the existing thread. From: cnc@cnccut.melbourne. Sign "Cheers," / (blank name line) /
 "CNC Cut".
 
-A5 — Create the Gmail DRAFT (do not send). Update the job: set `Follow-up` to the new stage
+A5 — Create the Gmail DRAFT (do not send). Update the job: set `Follow-Up Email` to the new stage
 (1st / 2nd / Closed off) and `Last follow-up` to today.
 
 =================================================================
 PART B — Review + photo request  (jobs with status "COMPLETE")
 =================================================================
 
-B1 — Find jobs with status "COMPLETE" where `Follow-up` is NOT "Review requested" and NOT
+B1 — Find jobs with status "COMPLETE" where `Follow-Up Email` is NOT "Request Email" and NOT
 "Do not follow up". Skip the rest (already asked / opted out).
 
 B2 — Gather context: find the Gmail thread via the customer's email; understand what was actually
@@ -89,7 +89,7 @@ two easy asks:
 Keep it light, not pushy. A fresh friendly email usually reads better than the old quote thread for
 a finished job — use your judgement. From cnc@cnccut.melbourne, sign "Cheers," / (blank) / "CNC Cut".
 
-B4 — Create the Gmail DRAFT (do not send). Set `Follow-up` to "Review requested". Ask each customer
+B4 — Create the Gmail DRAFT (do not send). Set `Follow-Up Email` to "Request Email". Ask each customer
 only once.
 
 =================================================================
@@ -112,7 +112,7 @@ You produce a short weekly follow-up digest for CNC Cut and leave it as a Gmail 
 cnc@cnccut.melbourne (do not send). Purpose: give Lee one glance at where things stand.
 
 In ClickUp, list «JOBS LIST NAME», look at jobs with status "AWAITING APPROVAL" and their
-`Follow-up` / `Last follow-up` fields, and report:
+`Follow-Up Email` / `Last follow-up` fields, and report:
 - Quotes still open (AWAITING APPROVAL) and how long each has been waiting.
 - Where each is in the sequence (None / 1st / 2nd / Closed off).
 - Jobs gone quiet that are due to be closed off.

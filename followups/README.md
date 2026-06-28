@@ -111,10 +111,10 @@ in `followup-rules.md §7`.
    *Based on Barron's published method, not the verbatim video — tune from real results.*
 3. **Signature** — ✅ left blank for now; the human fills it before sending.
 4. **ClickUp state marker** — ✅ two **custom fields** on each job task (not a separate task):
-   - `Follow-up` (dropdown): `None` · `1st follow-up` · `2nd follow-up` · `Closed off` ·
-     `Do not follow up` · `Review requested`
+   - `Follow-Up Email` (dropdown): `None` · `1st follow-up` · `2nd follow-up` · `Closed off` ·
+     `Do not follow up` · `Request Email`
    - `Last follow-up` (date)
-   The agent reads/updates these for idempotency + timing. The `Review requested` dropdown value is
+   The agent reads/updates these for idempotency + timing. The `Request Email` dropdown value is
    the once-only marker for the review ask (no separate field needed). *Lee to create the fields.*
 
 ## Phased rollout
@@ -135,8 +135,8 @@ human sends.
 - **Won-job review & photo request** *(built — now Part B of Routine 1)* — when a job hits the
   **COMPLETE** status, drafts a **per-job tailored** message asking for a Google review
   (`https://g.page/r/CbPqUkXeclXuEAE/review`) + finished-job photos. Photos feed the Craftons
-  `#BuiltWithCraftons` content engine — two birds. Marked done by setting `Follow-up` =
-  `Review requested` (no extra field).
+  `#BuiltWithCraftons` content engine — two birds. Marked done by setting `Follow-Up Email` =
+  `Request Email` (no extra field).
 - **Past-customer reactivation** *(backlog)* — periodic (≈quarterly) personalised "what are you
   building?" to past clients gone quiet ~3–6 months (Barron's leak #4 — the cheapest revenue).
   1:1 and personal, distinct from a broadcast newsletter. *Needs: the cleanest past-customer source

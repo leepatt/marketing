@@ -39,10 +39,13 @@ PART A — Chase open quotes  (jobs with status "AWAITING APPROVAL")
 =================================================================
 
 A1 — For each job in "AWAITING APPROVAL", read `Follow-Up Email` and `Last follow-up` and decide if a
-follow-up is due (business days only; skip weekends):
+follow-up is due.
+**BUSINESS DAYS ONLY: count Monday–Friday only; never count Saturday or Sunday. A quote sent on a
+Friday is 1 business day old the following Monday, not 3.** (Public holidays optional — weekends are
+the must.) Timings:
 - `Follow-Up Email` = None  AND  >= 4 business days since the quote was sent  -> draft TOUCH 1.
-- `Follow-Up Email` = 1st follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 2.
-- `Follow-Up Email` = 2nd follow-up  AND  >= 10 business days since `Last follow-up`  -> draft TOUCH 3.
+- `Follow-Up Email` = 1st follow-up  AND  >= 10 business days (~2 weeks) since `Last follow-up`  -> draft TOUCH 2.
+- `Follow-Up Email` = 2nd follow-up  AND  >= 10 business days (~2 weeks) since `Last follow-up`  -> draft TOUCH 3.
 - `Follow-Up Email` = Closed off / Do not follow up / Request Email  -> SKIP.
 - Not yet due -> SKIP.
 (Quote-sent date = when the job entered "AWAITING APPROVAL", or the date of the quote email in the

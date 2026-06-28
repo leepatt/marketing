@@ -80,7 +80,8 @@ never re-send the same nudge.
 | 2 | ~2 weeks | The **callback offer** — "reply with a window that suits + a number and I'll call you" (no fixed slot). One ask. |
 | 3 | ~4 weeks | The close-off / "break-up" — give permission to say no, then stop |
 
-*(Timings are starting defaults — tune them.)*
+*(Timings are starting defaults — tune them.)* **All timings are in business days — Monday to
+Friday only; never count weekends.** (e.g. the first touch is 4 business days after the quote.)
 
 - **Touch 2 is the callback offer.** Don't propose a fixed time slot — CNC Cut's day is
   unpredictable (walk-ins, moving schedule). Ask the customer for a rough window + a number and call

@@ -106,7 +106,14 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 ## 6. Operational rules
 
 - **Draft only — a human always sends.** Nothing auto-sends. Drafts sit in Gmail for review.
-- **Reply on the existing email thread** (keeps context, lifts opens). Never a cold new subject.
+- **Never write to the repo.** Create Gmail drafts only and report your summary as text in the run.
+  Do **not** commit files, create branches, or store customer details (names, emails, quotes) in the
+  repo.
+- **Delivery — fresh email vs reply.** Quotes go out via **Quotient**, so there's usually **no Gmail
+  thread** to reply to. If an existing thread with the customer exists (e.g. their original enquiry),
+  reply on it. If not, send a **fresh email** to the customer's address with a clear subject like
+  `[Job] – Quote #[number]`. **No thread is NOT a reason to skip.** Get the customer's email from the
+  enquiry thread, the Quotient notification, or the ClickUp task.
 - **Sender:** `cnc@cnccut.melbourne`, signing off as **CNC Cut**. Don't lead with brand — referencing
   "the quote we sent" avoids confusion for customers with **Craftons** history.
 - **Trigger:** quote sent (Quotient) → ClickUp status moves to **AWAITING APPROVAL** → first
@@ -119,7 +126,8 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
   late morning).
 - **Match the right thread.** Jobs are named `Client - Job` (e.g. *Concretum - Heartford Entry
   Walls*); a client may have several on the go. Use client + job detail to find the correct Gmail
-  thread, and **skip + flag** if you can't match one confidently — never guess.
+  thread. Only **skip + flag** if you find *multiple* threads and can't tell which is right — never
+  guess. If there's simply **no thread**, that's fine — send a fresh email (see Delivery above).
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.
 - **Idempotency & stop conditions:** track state in two ClickUp custom fields on the job —
   `Follow-Up Email` (dropdown: `None` / `1st follow-up` / `2nd follow-up` / `Closed off` / `Do not follow up`

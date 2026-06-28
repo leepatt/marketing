@@ -44,8 +44,12 @@ MATERIAL ORDER -> DESIGN -> MANUFACTURE -> PICKUP -> DELIVERY -> COMPLETE.
 FINDING THE RIGHT THREAD:
 Each job's name is "Client - Job", e.g. "Concretum - Heartford Entry Walls". A client may have
 several jobs running, so use BOTH the client and the specific job detail to find the matching Gmail
-thread in the cnc@cnccut.melbourne mailbox (plus the customer's email if it's on the task). If you
-cannot confidently identify ONE matching thread, SKIP the job and flag it — never guess.
+thread in the cnc@cnccut.melbourne mailbox (plus the customer's email if it's on the task).
+NOTE: quotes go out via Quotient, so MANY jobs have NO Gmail thread — that's normal and NOT a
+reason to skip. If there's an existing thread (e.g. the original enquiry), reply on it; if not, send
+a FRESH email to the customer (subject like "[Job] – Quote #[number]"). Get the customer's email
+from the enquiry thread, the Quotient notification email, or the ClickUp task. Only SKIP + flag if
+you find MULTIPLE possible threads and can't tell which is right — never guess.
 
 Fields: `Follow-Up Email` (dropdown) and `Last follow-up` (date).
 
@@ -82,8 +86,9 @@ no banned phrases. Use the angle for the touch:
 - TOUCH 2 — the callback offer: invite a quick call WITHOUT a fixed slot — ask them to reply with a
   rough window that suits and a number, and we'll call them then. One ask.
 - TOUCH 3 — the close-off / break-up: give permission to say no, then we stop.
-Reply ON the existing thread. From: cnc@cnccut.melbourne. Sign "Cheers," / (blank name line) /
-"CNC Cut".
+Delivery: reply on the existing thread if there is one; otherwise send a FRESH email to the
+customer (subject "[Job] – Quote #[number]"). From: cnc@cnccut.melbourne. Sign "Cheers," / (blank
+name line) / "CNC Cut".
 
 A6 — Create the Gmail DRAFT (do not send). Label its thread "Follow-up to review" (create the label
 if it doesn't exist). Update the job: set `Follow-Up Email` to the new stage and `Last follow-up`
@@ -117,9 +122,9 @@ FINAL — Summarise for Lee: Part A drafts (client + touch), Part B drafts (clie
 skipped/flagged (stale backlog quotes, threads you couldn't match, replies that need a human).
 Keep it tight.
 
-HARD RULES: draft only, never send · never use banned phrases · never leak internal notes · never
-use Ravi-tagged comments · never fabricate · business days only · match the right thread or skip ·
-never draft the same job twice for the same step.
+HARD RULES: draft only, never send · never write to the repo (Gmail drafts only) · never use banned
+phrases · never leak internal notes · never use Ravi-tagged comments · never fabricate · business
+days only · no thread = send fresh (don't skip) · never draft the same job twice for the same step.
 ```
 
 ---

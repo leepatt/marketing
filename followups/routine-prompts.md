@@ -28,6 +28,8 @@ Open `followups/followup-rules.md` in the connected repo and follow it exactly �
 CNC Cut VOICE, the BANNED language, the one-idea/one-question discipline, the date reasoning, and
 the rules on internal notes (never leak) and Ravi-tagged comments (never use).
 
+All jobs live in the ClickUp list "Job List" — only act on tasks there.
+
 THE CLICKUP PIPELINE (important — controls when we send):
 NEW ORDERS -> QUOTE -> AWAITING APPROVAL -> (customer accepts -> auto-moves to) DEPOSIT INVOICE ->
 MATERIAL ORDER -> DESIGN -> MANUFACTURE -> PICKUP -> DELIVERY -> COMPLETE.
@@ -130,7 +132,7 @@ never draft the same job twice for the same step.
 You produce a short weekly follow-up digest for CNC Cut and leave it as a Gmail DRAFT to
 cnc@cnccut.melbourne (do not send). Purpose: give Lee one glance at where things stand.
 
-In ClickUp, list «JOBS LIST NAME», look at jobs with status "AWAITING APPROVAL" and their
+In ClickUp, list "Job List", look at jobs with status "AWAITING APPROVAL" and their
 `Follow-Up Email` / `Last follow-up` fields, and report:
 - Quotes still open (AWAITING APPROVAL) and how long each has been waiting.
 - Where each is in the sequence (None / 1st / 2nd / Closed off).

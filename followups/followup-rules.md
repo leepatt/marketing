@@ -108,7 +108,7 @@ never re-send the same nudge.
 - **Reply on the existing email thread** (keeps context, lifts opens). Never a cold new subject.
 - **Sender:** `cnc@cnccut.melbourne`, signing off as **CNC Cut**. Don't lead with brand — referencing
   "the quote we sent" avoids confusion for customers with **Craftons** history.
-- **Trigger:** quote sent (Quotient) → ClickUp status moves to **Waiting Approval** → first
+- **Trigger:** quote sent (Quotient) → ClickUp status moves to **AWAITING APPROVAL** → first
   follow-up due ~4 business days later. Runs as a daily Claude Cowork **Routine** that sweeps for
   due jobs (polls; it doesn't get pushed).
 - **Send during business hours / business days.** Skip weekends; respect the business-day count.

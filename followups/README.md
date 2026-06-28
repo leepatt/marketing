@@ -48,9 +48,9 @@ never gets a robotic Quotient nudge plus our personal one).
 ## Architecture
 
 ```
-Quotient: quote sent ──► ClickUp: status → "Waiting Approval"  (state machine, already wired)
+Quotient: quote sent ──► ClickUp: status → "AWAITING APPROVAL"  (state machine, already wired)
                                     │
-                       daily Routine sweep: in "Waiting Approval"
+                       daily Routine sweep: in "AWAITING APPROVAL"
                        ≥ 4 business days, no draft yet, no reply
                                     │
                                     ▼
@@ -77,7 +77,7 @@ custom code and no raw API keys needed for v1:
   over (authenticated once on the account) and execute without per-call prompts.
 - **The build is a prompt, not code** — a self-contained instruction set the daily run executes,
   pointed at `followup-rules.md`.
-- **Trigger is a poll, not a push:** the daily sweep finds jobs that are *Waiting Approval ≥ 4
+- **Trigger is a poll, not a push:** the daily sweep finds jobs that are *AWAITING APPROVAL ≥ 4
   business days, not yet drafted, no customer reply*, and drafts each one.
 
 **Later hardening (optional):** re-implement in **cnccut.app** if/when we want it baked into the
@@ -130,10 +130,11 @@ human sends.
 
 - **Weekly digest** *(confirmed)* — Mondays, emails Lee a summary: outstanding quotes, follow-ups
   drafted, jobs gone quiet. Drives adoption + visibility.
-- **Won-job review & photo request** *(confirmed)* — when a job is marked Won, drafts a **per-job
-  tailored** message asking for a Google review + finished-job photos. Photos feed the Craftons
-  `#BuiltWithCraftons` content engine — two birds. *Needs: the Google review link + the exact
-  "Won/done" status name.*
+- **Won-job review & photo request** *(prompt written — Routine 3)* — when a job hits the
+  **COMPLETE** status, drafts a **per-job tailored** message asking for a Google review
+  (`https://g.page/r/CbPqUkXeclXuEAE/review`) + finished-job photos. Photos feed the Craftons
+  `#BuiltWithCraftons` content engine — two birds. *Needs one extra ClickUp field: `Review
+  requested` (Date), the once-only marker.*
 - **Past-customer reactivation** *(backlog)* — periodic (≈quarterly) personalised "what are you
   building?" to past clients gone quiet ~3–6 months (Barron's leak #4 — the cheapest revenue).
   1:1 and personal, distinct from a broadcast newsletter. *Needs: the cleanest past-customer source

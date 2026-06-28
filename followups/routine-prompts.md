@@ -42,8 +42,9 @@ MATERIAL ORDER -> DESIGN -> MANUFACTURE -> PICKUP -> DELIVERY -> COMPLETE.
   Ignore every other status.
 
 CONTEXT & DELIVERY (read carefully):
-- ClickUp is the source of truth. Get the job context (name "Client - Job", comments, fields) AND
-  the customer's email from the Job List task.
+- Client details (customer email + contact) are always on the ClickUp Job List task — that's where
+  you get WHO to email. For job CONTEXT, also READ the cnc@cnccut.melbourne email thread for the job
+  where one exists (not all job info is in ClickUp), plus the ClickUp comments. Combine both.
 - Everything sends from cnc@cnccut.melbourne. A FRESH email is the DEFAULT. Only reply on a thread
   if one already exists in the cnc@cnccut.melbourne mailbox for this exact job.
 - Do NOT read or chase any other inbox (cnccutmelbourne@gmail.com, hello@craftons.com.au). A missing
@@ -78,8 +79,8 @@ A3 — Stop conditions (skip and note for the human if any are true):
 - The status is no longer AWAITING APPROVAL (accepted/declined).
 
 A4 — Gather context for a due job (per CONTEXT & DELIVERY above):
-- Get the job context + the customer's email from the ClickUp task. If a cnc@cnccut.melbourne thread
-  exists for this job, read it too.
+- Get the customer's email + client details from the ClickUp task. For context, READ the
+  cnc@cnccut.melbourne email thread for this job if one exists (not all job info is in ClickUp).
 - Read ClickUp comments, EXCLUDING any that tag/assign Ravi. Use internal notes only to understand
   the job; never quote or reveal internal detail. Pull the quote ref/value if available. If context
   is thin, keep it simple; NEVER invent detail.

@@ -94,9 +94,11 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 
 - **Use real specifics** — the job description, quote number, value, a detail from the thread.
   Generic follow-ups get ignored; "the seat and planter box setout (Quote #1162, $4,850)" lands.
-- **ClickUp is the source of truth for context** — the job name (`Client - Job`), comments, fields,
-  and the **customer's email** all come from the Job List task. A `cnc@cnccut.melbourne` Gmail thread
-  is a bonus if one exists, not a requirement.
+- **Client details from ClickUp; job context from ClickUp *and* the email thread.** The
+  **customer's email and contact details** are always on the ClickUp Job List task — the reliable
+  source for *who* to contact. But **not all job info is in ClickUp**, so where a
+  `cnc@cnccut.melbourne` thread exists for the job, **read it too** (plus the ClickUp comments) for
+  the fuller picture of what was discussed. If there's no thread, work from ClickUp + Quotient.
 - **Internal notes inform, they never leak.** ClickUp comments are internal — use them to
   *understand* the job, but never quote or reveal internal detail (margins, "chase the deposit",
   supplier issues, "client is difficult", CAM complexity) to the customer.

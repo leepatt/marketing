@@ -39,7 +39,7 @@ review requests — with `Cheers,` then this exact block, verbatim:
 
 ```html
 <table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:13px;line-height:1.5">
-  <tr><td style="padding-bottom:10px"><img src="https://ci3.googleusercontent.com/mail-sig/AIorK4wLC6Ix90GEfYDJ27kuxBYKkdlrBj324AT6V2m-wjllzvqYfLPjv-mXmevMnwP6z_Hy6-kgWqBFkGhK" alt="CNC Cut" width="110" style="display:block;border:0"></td></tr>
+  <tr><td style="padding-bottom:10px"><img src="https://i.ibb.co/yByDXNNm/CNC-CUT-EMAIL.png" alt="CNC Cut" width="100" style="display:block;border:0"></td></tr>
   <tr><td>0466 146 744</td></tr>
   <tr><td>45 Sparks Avenue, Fairfield VIC 3078</td></tr>
   <tr><td><a href="https://cnccut.melbourne" style="color:#1155cc">cnccut.melbourne</a></td></tr>

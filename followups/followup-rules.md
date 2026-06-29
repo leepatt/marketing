@@ -131,6 +131,10 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 ## 6. Operational rules
 
 - **Draft only — a human always sends.** Nothing auto-sends. Drafts sit in Gmail for review.
+- **Never attach files.** Emails are text/HTML only — no attachments of any kind, and never carry a
+  thread's existing attachments into the reply. (Customers must never receive stray files.)
+- **Review requests must contain the clickable review link** — never write the review ask as text
+  without the actual link.
 - **Never write to the repo.** Create Gmail drafts only and report your summary as text in the run.
   Do **not** commit files, create branches, or store customer details (names, emails, quotes) in the
   repo.

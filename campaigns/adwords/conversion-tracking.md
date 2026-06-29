@@ -1,8 +1,9 @@
-# Conversion tracking setup (Shopify → Google Ads)
+# Conversion tracking setup (Google Ads)
 
-_Without this you're spending blind (see the CNC Cut account: ~$2k/mo, 0 tracked conversions). Set
-this up for **each store** (Craftons + CNC Cut), each linked to its own Google Ads account. Do the
-steps in order — Step 1 alone gets you purchase tracking fast._
+_Without this you're spending blind (see the CNC Cut account: ~$2k/mo, 0 tracked conversions).
+**Two different stacks:** **Craftons = Shopify** → Steps 1–4 below. **CNC Cut = a custom Next.js app
+on Vercel** (not Shopify) → see the **CNC Cut** section at the end (code-based). Each links to its own
+Google Ads account._
 
 ## What counts as a conversion (and rough value)
 Assigning a value lets Google optimise toward *valuable* leads, not just any click.
@@ -18,6 +19,9 @@ Mark **orders + form submits** as **Primary** (used for bidding). Calls/emails c
 (tracked, not optimised on) until you trust them.
 
 ---
+
+> **Steps 1–4 are for the Craftons Shopify store.** For **CNC Cut (custom app)**, skip to the CNC Cut
+> section at the end.
 
 ## Step 1 — Shopify "Google & YouTube" app (fastest — handles purchases)
 1. Shopify admin → **Settings → Apps and sales channels** (or **Sales channels → +**) → add
@@ -61,6 +65,35 @@ For tighter lead tracking, create these directly: Google Ads → **Goals → Con
 - Then the weekly review (`campaign-setup.md`) finally has a real scoreboard: **cost-per-lead vs.
   job value.**
 
-> Note for the CNC Cut account specifically: it's spending ~$2k/mo on *Maximise clicks* with 0 tracked
-> conversions — do this setup there first/too, and reconsider the $19/click "Industry Specific" campaign
-> once you can see which spend actually produces leads.
+---
+
+## CNC Cut — custom app (Next.js on Vercel), NOT Shopify
+The Shopify steps don't apply. CNC Cut is your own web app, so tracking goes **in the code** — which
+is cleaner (you control exactly when a conversion fires). Urgent here: it's spending ~$2k/mo on
+*Maximise clicks* with **0 tracked conversions.**
+
+1. **Install GA4 + the Google tag (gtag.js)** in the app — a `<Script>` in the root layout
+   (`app/layout.tsx`), or via Google Tag Manager. Load the Google Ads tag `AW-XXXXXXX`.
+2. **Create the conversion actions** in the **CNC Cut** Google Ads account (Goals → Conversions →
+   **Website**): *quote/lead submitted*, *order placed* (with value), *phone call*, *email click*.
+   Each gives you a conversion **label**.
+3. **Fire the event at the success moments in the code** — on the quote-success / order-confirmation
+   component:
+   ```js
+   gtag('event', 'conversion', {
+     send_to: 'AW-XXXXXXX/conversionLabel',
+     value: orderValue,      // for purchases
+     currency: 'AUD',
+   });
+   ```
+   Fire the *lead* label on quote-form success; the *purchase* label on order confirmation.
+4. **Enhanced conversions:** pass the hashed customer email/phone on the event for better matching.
+5. **Verify** with Google Tag Assistant + the "Recording conversions" status; test a real submit.
+
+> This is dev work in the **cnccut-app** repo (Next.js/Vercel), which is outside this session's scope.
+> I can implement it — add `cnccut-app` to this session and I'll wire the tag + conversion events at
+> the right components for your review. Until then, even **GA4 + linking GA4 to Google Ads** (no app
+> changes — just the GA4 script + key events) gets you basic conversion data fast.
+
+> Once you can see leads on CNC Cut, **reassess the $19/click "Industry Specific" campaign** — that's
+> the likely money leak.

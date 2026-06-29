@@ -39,7 +39,7 @@ review requests — with `Cheers,` then this exact block, verbatim:
 
 ```html
 <table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:13px;line-height:1.5">
-  <tr><td style="padding-bottom:10px"><img src="https://i.ibb.co/yByDXNNm/CNC-CUT-EMAIL.png" alt="CNC Cut" width="100" style="display:block;border:0"></td></tr>
+  <tr><td style="padding-bottom:6px;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:bold;color:#c0202a;letter-spacing:0.5px">CNC CUT</td></tr>
   <tr><td>0466 146 744</td></tr>
   <tr><td>45 Sparks Avenue, Fairfield VIC 3078</td></tr>
   <tr><td><a href="https://cnccut.melbourne" style="color:#1155cc">cnccut.melbourne</a></td></tr>
@@ -48,6 +48,10 @@ review requests — with `Cheers,` then this exact block, verbatim:
 ```
 
 Write the message itself as simple HTML (short paragraphs) above the signature.
+
+*(The brand mark is a red "CNC CUT" text wordmark, not an image — Gmail strips externally-hosted
+images from API-created drafts, so an `<img>` logo won't render. Revisit only if a working image
+method is found.)*
 
 ## 1. Mindset
 

@@ -88,3 +88,27 @@ new variants (plenty spare in the `ads/` files).
 - Check device + geo splits (which suburbs/areas convert) → trim the dead ones.
 - Once you have ~15–30 conversions, switch bidding to **Maximize Conversions** and let Google optimise.
 - Reinvest learnings into the SEO articles (the keyword plan) so paid + organic compound.
+
+---
+
+## Activation checklist (build it in this order)
+1. **Conversion tracking first** — import Shopify/GA4 conversions or add the Google tag. Track:
+   quote-form submit, configurator checkout, call clicks, email clicks. *Don't launch without this.*
+2. **Create campaign** — Search; goal Leads; name *Craftons – Customised Building Products*.
+3. **Settings** — Search Partners OFF; Display expansion OFF; budget **$50/day**; bidding **Manual CPC
+   / Max-clicks capped ~$3.50**; language English.
+4. **Geo** — 50 km radius around Melbourne CBD **+** Geelong **+** Surf Coast Shire **+** Mornington
+   Peninsula Shire; location option **"presence: people in your locations."**
+5. **3 ad groups** — paste keywords from `keywords.md` (phrase + exact).
+6. **Ads** — add the RSAs from `ads/` (2 per group ideal), set each final URL; apply the pins.
+7. **Negatives** — paste `negative-keywords.md` at campaign level.
+8. **Extensions** — add sitelinks, callouts, structured snippets, call from `ad-extensions.md`.
+9. **Review & publish.**
+10. **Verify** conversions fire (test a form submit) within the first day.
+
+## After launch (do NOT start yet — set up once the campaign is live)
+- **Weekly review routine** — schedule a Claude routine (web app) running the weekly-review prompt
+  (see chat / `negative-keywords.md` + this doc). Starts as a reminder + checklist; upgrades to
+  **auto-pull-and-flag** once the Google Ads API gets **Basic access** (currently Test-access).
+- **Calendar nudge** — recurring Monday 8am reminder as a backstop.
+- **Status:** ☐ routine to be set up after activation.

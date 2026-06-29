@@ -128,9 +128,14 @@ block. Try to label it "Follow-up to review" (best-effort — skip if it errors)
 `Follow-Up Email` to "Request Email". Ask each customer only once.
 
 =================================================================
-FINAL — Summarise for Lee: Part A drafts (client + touch), Part B drafts (client), and anything
-skipped/flagged (stale backlog quotes, threads you couldn't match, replies that need a human).
-Keep it tight.
+FINAL — Build a run summary AND save it as a Gmail DRAFT addressed to cnc@cnccut.melbourne
+(internal, to ourselves), subject "Follow-up run summary — [today's date]". Try to label it
+"Follow-up summary" (best-effort). The summary MUST include, for EVERY draft you created:
+- client + job, the touch/type (Touch 1 / Touch 2 / close-off / review request), the recipient,
+- the subject line, and the FULL draft body text (so wording can be reviewed and improved).
+Then list anything skipped/flagged (stale backlog quotes, threads you couldn't match, replies that
+need a human, complaints). This internal summary draft is the ONLY draft that may contain multiple
+emails' text; it is never sent to a customer.
 
 HARD RULES: draft only, never send · NEVER attach files (text/HTML only — no attachments of any
 kind; do not carry a thread's attachments into the reply) · review requests MUST contain the

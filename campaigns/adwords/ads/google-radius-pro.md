@@ -6,7 +6,7 @@ platform: google
 format: responsive-search-ad
 target_audience: builders/carpenters + architects (AU)
 awareness_level: solution-aware
-landing_page: https://craftons.com.au/products/craftons-radius-pro-plywood
+landing_page: https://craftons.com.au/products/radius-online
 date: 2026-06-30
 status: draft
 ---
@@ -19,7 +19,7 @@ status: draft
 **Note:** "bendy ply" stays as a *keyword* (it converts) but ads land on Radius Pro — we don't stock
 flat bendy sheets, we cut the curve for you.
 
-**Final URL:** https://craftons.com.au/products/craftons-radius-pro-plywood
+**Final URL:** https://craftons.com.au/products/radius-online
 **Display path:** /radius-pro/curved-ply
 
 ## Headlines (≤30 chars)

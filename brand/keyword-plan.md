@@ -7,6 +7,9 @@ campaign (paid). Source context: `brand/audience.md`, `brand/competitors.md`._
 > **Data quality:** SERP/competition validated via web search (US-biased engine, so AU volumes are
 > directional, not exact). Volumes shown as qualitative est. (High/Med/Low). Validate exact AU
 > volumes in Google Keyword Planner once the Ads account is live.
+>
+> **Confirmed by Lee (real conversions):** *bendy ply* and *curved bench seat* are proven search
+> terms that have won jobs — prioritised in ads + page titles below.
 
 ---
 
@@ -21,6 +24,9 @@ campaign (paid). Source context: `brand/audience.md`, `brand/competitors.md`._
    genuinely useful, AU-specific content; strong commercial intent.
 
 ### Quick wins (3-month, lead-driving)
+- **"bendy ply" ⭐** — confirmed converter (jobs won); low competition, high intent. Lead with it.
+- **"curved bench seat" ⭐ / "curved bench seat formwork"** — confirmed search; the Formwork Builder's hero use case.
+- **"curved architrave"** — low-competition niche, high intent (Architrave Builder owns this fast).
 - **"minimum bending radius" / "how tight can plywood bend"** — specific, low competition, high intent.
 - **"what is formply" / "formply grades (F17)"** — commercial, thin competition.
 - **"how to set out a curved wall"** — how-to, AU gap, converts to leads + feeds the How-To Series.
@@ -44,12 +50,14 @@ to work — you pay to appear). Group into ad groups, each pointing at the match
 
 | Ad group | Seed keywords | Intent |
 |----------|---------------|--------|
-| Bending/curved ply | bending plywood, bendy ply, flexible plywood, curved plywood, bending plywood melbourne, buy bending plywood | Transactional |
-| Formply / formwork | formply, formwork plywood, F17 formply, formply supplier, film faced plywood | Transactional |
-| Curved formwork (configurator) | curved formwork, formwork for curved walls, curved concrete wall formwork | Commercial |
-| Curved features | curved bench seat, off-form concrete bench, curved concrete firepit | Commercial |
+| Bending / curved ply | **bendy ply ⭐**, bending plywood, flexible plywood, flexi ply, curved plywood, bendy ply melbourne, buy bending plywood | Transactional |
+| Formply | formply, formwork plywood, F17 formply, formply supplier, film faced plywood | Transactional |
+| **Formwork Builder** (curved formwork) | curved formwork, formwork for curved walls, curved concrete wall formwork, circular formwork, U-shape / L-shape formwork, curved retaining wall formwork, **curved bench seat ⭐**, curved concrete bench seat, curved bench seat formwork, firepit formwork | Commercial |
+| **Architrave Builder** (curved architraves) | curved architrave, arched door architrave, curved head door, curved window architrave, MDF curved architrave, arched doorway trim, circular window architrave | Commercial |
+| Radius Pro (cut to size) | radius plywood, curved plywood panels, curved MDF, curved formply, curved timber wall | Commercial |
 | Acoustic panels | acoustic perforated panels, acoustic plywood panels, perforated timber panels | Transactional |
-| Architectural curves | curved timber wall, radius plywood, curved plywood panels | Commercial |
+
+⭐ = confirmed converter / known search term (Lee).
 
 **Negatives (don't pay for these):** free, DIY plans, cheap, second hand/used, jobs/careers,
 wholesale, minecraft, drawing, how to draw. Geo-target: Melbourne metro + VIC first, expand by demand.
@@ -72,6 +80,9 @@ wholesale, minecraft, drawing, how to draw. Geo-target: Melbourne metro + VIC fi
 | Bending ply vs kerf-cutting vs laminating | High | Commercial | Comparison |
 | Curved plywood for walls / joinery | Med | Commercial | Use case |
 | Buy bending plywood (AU / Melbourne) | High | Transactional | Product/landing |
+
+> ⭐ **Lead with "bendy ply".** Confirmed lead-generator (jobs won from it). Make it the primary term
+> in the ad group, page titles and H1 — not just the more formal "bending plywood".
 
 ### Pillar 2 — Formply & Formwork Plywood  ·  Priority: HIGH
 - Volume: PASS (est. High) · Market-centric: PASS · Competitive: PASS (supplier blogs, winnable) ·
@@ -117,6 +128,35 @@ wholesale, minecraft, drawing, how to draw. Geo-target: Melbourne metro + VIC fi
 | Acoustic panel NRC / how they work | Med | Informational | Definition/guide |
 | Perforated timber panels for fitout | Med | Commercial | Use case |
 
+### Pillar 6 — Curved Formwork (the Formwork Builder)  ·  Priority: HIGH (hero product)
+- Volume: PASS (est. Med–High — builders actively posting curved-bench-seat formwork on IG/TikTok = live demand)
+- Market-centric: PASS ("curved formwork", "curved bench seat formwork") · Competitive: MIXED
+  (international system brands EFCO/Alsina rank for *systems*; **AU + "design-online, delivered
+  ready-to-assemble" gap**) · Proprietary: YES — configures **circular, U-shape & L-shape** walls
+  into a CNC-cut, labelled, ready-to-assemble kit; nobody else offers this online. **VALID PILLAR.**
+
+| Cluster | Priority | Intent | Content type |
+|---------|----------|--------|--------------|
+| Curved bench seat formwork ⭐ | High | Commercial | Use case → configurator |
+| Curved formwork (circular / U / L walls) | High | Commercial | Use case → configurator |
+| Curved concrete wall formwork | High | Commercial | Use case |
+| Firepit / curved retaining wall formwork | Med | Commercial | Use case |
+| Design curved formwork online | Med | Transactional | Product/landing |
+
+### Pillar 7 — Curved Architraves (the Architrave Builder)  ·  Priority: MEDIUM–HIGH (niche to own)
+- Volume: PASS (est. Low–Med, but high intent + almost no dedicated competition) · Market-centric:
+  PASS ("curved architrave", "arched doorway architrave") · Competitive: PASS — niche, few dedicated
+  players → **high opportunity, easy to own** · Proprietary: YES — live 3D online builder, MR MDF,
+  instant pricing (arched doors, curved windows, circles, niches). **VALID PILLAR.**
+
+| Cluster | Priority | Intent | Content type |
+|---------|----------|--------|--------------|
+| Curved architrave / arched door architrave | High | Commercial | Use case → builder |
+| Curved head door / arched doorway trim | High | Commercial | How-to / use case |
+| Curved window architrave | Med | Commercial | Use case |
+| MDF curved architrave | Med | Commercial | Definition/landing |
+| Circular feature / niche trim | Low | Commercial | Use case |
+
 ### Demoted / not pillars
 - **"Formwork Builder" / "Radius Pro" (brand terms)** — DEMOTE. Nobody searches these yet (fails
   market test). Use for AdWords brand-defence + product pages, not SEO pillars.
@@ -157,6 +197,11 @@ wholesale, minecraft, drawing, how to draw. Geo-target: Melbourne metro + VIC fi
 
 > Each article: hand to `/seo-content` (SERP analysis + PAA + schema), then `/content-atomizer` to
 > spin into the social pillars. Voice = `brand/voice-profile.md` (value-first, brand barely there).
+
+> **Product / use-case pages to ship alongside** (these are the AdWords landing pages for the two
+> builders — prioritise over blog articles for them, since intent is commercial): **curved bench seat
+> formwork** + **design curved formwork online** (Formwork Builder), and **curved architraves / arched
+> doorway** (Architrave Builder). Send paid clicks straight to these, not the homepage.
 
 ---
 

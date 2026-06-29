@@ -116,7 +116,8 @@ Exclude Ravi-tagged comments; never leak internal detail.
 
 B3 — Draft a short, warm, per-job tailored message: thank them, reference the specific job, then
 two easy asks:
-- A Google review: https://search.google.com/local/writereview?placeid=ChIJVbqw2cJF1moRs-pSRd5yVe4
+- A Google review — you MUST include this as a clickable link (anchor text e.g. "leave us a Google
+  review"); never write the review ask without the actual link: https://search.google.com/local/writereview?placeid=ChIJVbqw2cJF1moRs-pSRd5yVe4
 - Finished photos: e.g. "if you grabbed any shots of it installed, we'd love to see how it turned
   out."
 Light, not pushy. Reply within the existing thread if one exists; otherwise a fresh email. From
@@ -131,9 +132,11 @@ FINAL — Summarise for Lee: Part A drafts (client + touch), Part B drafts (clie
 skipped/flagged (stale backlog quotes, threads you couldn't match, replies that need a human).
 Keep it tight.
 
-HARD RULES: draft only, never send · never write to the repo (Gmail drafts only) · never use banned
-phrases · never leak internal notes · never use Ravi-tagged comments · never fabricate · business
-days only · no thread = send fresh (don't skip) · never draft the same job twice for the same step.
+HARD RULES: draft only, never send · NEVER attach files (text/HTML only — no attachments of any
+kind; do not carry a thread's attachments into the reply) · review requests MUST contain the
+clickable review link · never write to the repo (Gmail drafts only) · never use banned phrases ·
+never leak internal notes · never use Ravi-tagged comments · never fabricate · business days only ·
+no thread = send fresh (don't skip) · never draft the same job twice for the same step.
 ```
 
 ---

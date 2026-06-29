@@ -105,3 +105,20 @@ The page adds value first; sales is a quiet by-product. So:
 - **Craft Macro:** *"Flat sheet in. Perfect curve out."*
 - **Built with Craftons:** *"@builder nailed this off-form curved feature wall — designed in our Formwork Builder, poured on site. Built something curved? Tag #BuiltWithCraftons."*
 - **Sell:** *"Curved bench seat. Angled backrest. Cantilever. Designed in the Formwork Builder in minutes — your shape's next. Link in bio."*
+
+## How we compare — caption study (first-list brands)
+How the inspiration/competitor set actually captions, vs. our voice (evidence: `inspiration/SWIPE-FILE.md`).
+
+| Brand | Their caption style | vs. Craftons |
+|---|---|---|
+| **July** | Short, calm, design-mag confident. Opens on the object/transformation, not a pitch. Benefit-led. Almost no emoji. Soft, rare CTAs. | ✅ Very close — our model + trade voice |
+| **Bellroy** | Short, understated, benefit-led. Visual-first hooks. Sell-last even in sell posts. | ✅ Very close — same restraint |
+| **Gozney** | Warm, plain. "Learn how to: +" education framing. Product often incidental. Soft CTAs, branded hashtags. | ✅ Close — matches our How-To + product-incidental ethos |
+| **Hommey** | Conversational, second-person, emoji present, community "by you" framing, soft scarcity CTAs. | ⚠️ Half — take the community/credit idea, reject the cutesy tone + emoji |
+| **BuildPass** | Medium-long, a touch corporate, emoji-sprinkled, curiosity hooks, "book a demo." Avoids tradie slang. | ❌ Diverges most — more brand-forward + emoji than us |
+| **B1M** | (Titles, not captions) one big number/superlative carries the hook. | ✅ Hook discipline matches |
+
+**Verdict — aligned with the brands that work, different on purpose where it counts:**
+- We match the strongest feeds (**July / Bellroy / Gozney**): short, benefit-led, lead-with-the-point, soft CTAs, product incidental, credit-by-handle.
+- We deliberately differ: **no emoji** (side with July/Bellroy's restraint, not Hommey/BuildPass); **real tradie voice + a little dry humour** (BuildPass avoids slang — we don't, our audience is on the tools); **"brand barely there" is stricter than all of them** (even Gozney keeps the product gently present).
+- **Caution from the data:** BuildPass is the brand-forward, emoji-y, slightly-corporate one — and the one with dead engagement (~0.5%). That validates our value-first, less-branded, peer-voice call for this audience.

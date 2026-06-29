@@ -50,7 +50,7 @@ to work — you pay to appear). Group into ad groups, each pointing at the match
 
 | Ad group | Seed keywords | Intent |
 |----------|---------------|--------|
-| Bending / curved ply | **bendy ply ⭐**, bending plywood, flexible plywood, flexi ply, curved plywood, bendy ply melbourne, buy bending plywood | Transactional |
+| **Radius Pro** (curved ply, cut to size) | curved plywood, radius plywood, custom curved plywood, curved plywood cut to size, curved plywood panels, **bendy ply ⭐** *(search term → lands on Radius Pro)*, bendy ply melbourne | Transactional |
 | Formply | formply, formwork plywood, F17 formply, formply supplier, film faced plywood | Transactional |
 | **Formwork Builder** (curved formwork) | curved formwork, formwork for curved walls, curved concrete wall formwork, circular formwork, U-shape / L-shape formwork, curved retaining wall formwork, **curved bench seat ⭐**, curved concrete bench seat, curved bench seat formwork, firepit formwork | Commercial |
 | **Architrave Builder** (curved architraves) | curved architrave, arched door architrave, curved head door, curved window architrave, MDF curved architrave, arched doorway trim, circular window architrave | Commercial |
@@ -81,8 +81,9 @@ wholesale, minecraft, drawing, how to draw. Geo-target: Melbourne metro + VIC fi
 | Curved plywood for walls / joinery | Med | Commercial | Use case |
 | Buy bending plywood (AU / Melbourne) | High | Transactional | Product/landing |
 
-> ⭐ **Lead with "bendy ply".** Confirmed lead-generator (jobs won from it). Make it the primary term
-> in the ad group, page titles and H1 — not just the more formal "bending plywood".
+> ⭐ **Lead with "bendy ply".** Confirmed lead-generator (jobs won from it) — use it as a keyword and
+> in page titles. But the *product* is **Radius Pro** (curved, cut-to-size); we don't stock flat
+> bendy sheets, so ads/pages land on Radius Pro and reframe: "we cut the curve for you".
 
 ### Pillar 2 — Formply & Formwork Plywood  ·  Priority: HIGH
 - Volume: PASS (est. High) · Market-centric: PASS · Competitive: PASS (supplier blogs, winnable) ·

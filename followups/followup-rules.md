@@ -27,10 +27,27 @@ components for builders; the reader knows their trade, so respect their time.
 - **Light vernacular is fine** — "no dramas", "give you a buzz", "keen", "sort it out", "flick it
   through" — but don't lay it on thick. **Mirror the customer's energy:** if they're formal, ease
   off; if they open with "Legend", match it.
-- **First person, real.** "I'll", "we'll". Sign off `Cheers,` then the sender's name (blank for
-  now), then `CNC Cut`.
+- **First person, real.** "I'll", "we'll". Sign off `Cheers,` then the **CNC Cut email signature**
+  (see *Email signature* below). No separate name line.
 - **Banned corporate-speak:** "reach out", "touch base", "circle back", "as per", "kindly", "at
   your earliest convenience" (on top of the banned filler in §2).
+
+## Email signature
+
+**Create every draft as HTML (`htmlBody`)** so this renders. End every email — follow-ups *and*
+review requests — with `Cheers,` then this exact block, verbatim:
+
+```html
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;color:#222222;font-size:13px;line-height:1.5">
+  <tr><td style="padding-bottom:10px"><img src="https://ci3.googleusercontent.com/mail-sig/AIorK4wLC6Ix90GEfYDJ27kuxBYKkdlrBj324AT6V2m-wjllzvqYfLPjv-mXmevMnwP6z_Hy6-kgWqBFkGhK" alt="CNC Cut" width="110" style="display:block;border:0"></td></tr>
+  <tr><td>0466 146 744</td></tr>
+  <tr><td>45 Sparks Avenue, Fairfield VIC 3078</td></tr>
+  <tr><td><a href="https://cnccut.melbourne" style="color:#1155cc">cnccut.melbourne</a></td></tr>
+  <tr><td style="padding-top:10px;font-style:italic;color:#3c803c">Need Custom Radius &amp; Curves? &ndash; <a href="https://craftons.com.au/products/radius-online" style="color:#3c803c;font-weight:bold;font-style:italic">Try Craftons Radius Pro</a></td></tr>
+</table>
+```
+
+Write the message itself as simple HTML (short paragraphs) above the signature.
 
 ## 1. Mindset
 
@@ -113,11 +130,13 @@ Friday only; never count weekends.** (e.g. the first touch is 4 business days af
 - **Never write to the repo.** Create Gmail drafts only and report your summary as text in the run.
   Do **not** commit files, create branches, or store customer details (names, emails, quotes) in the
   repo.
-- **Single outbound, fresh-email default.** Everything goes out from **`cnc@cnccut.melbourne`**. A
-  **fresh email is the default** — only reply on an existing `cnc@cnccut.melbourne` thread if one
-  happens to exist for this job. **Never read or chase other inboxes** (`cnccutmelbourne@gmail.com`,
-  `hello@craftons.com.au`) — a missing thread is *never* a reason to skip; just send fresh. Subject
-  like `[Job] – Quote #[number]`. The customer's email comes from the ClickUp job.
+- **Single outbound from `cnc@cnccut.melbourne` — reply in the existing thread.** When a job already
+  has an email thread in the `cnc@cnccut.melbourne` mailbox, **reply within that thread** — keep every
+  follow-up in the same conversation; do not start a new one. **Start a fresh email ONLY when there's
+  genuinely no Gmail thread** (Craftons jobs, ClickUp form submissions that never emailed) — subject
+  like `[Job] – Quote #[number]`. A missing thread is never a reason to skip. **Never read other
+  inboxes** (`cnccutmelbourne@gmail.com`, `hello@craftons.com.au`); the customer's email comes from
+  the ClickUp job.
 - **Every Job List task is a CNC Cut job** — follow it up from `cnc@cnccut.melbourne`, no exceptions.
   Pure Craftons jobs are handled separately by Craftons (their own email) and aren't in the Job
   List, so you'll never see them. No Craftons-specific handling.

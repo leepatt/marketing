@@ -116,7 +116,7 @@ Exclude Ravi-tagged comments; never leak internal detail.
 
 B3 — Draft a short, warm, per-job tailored message: thank them, reference the specific job, then
 two easy asks:
-- A Google review: https://g.page/r/CbPqUkXeclXuEAE/review
+- A Google review: https://search.google.com/local/writereview?placeid=ChIJVbqw2cJF1moRs-pSRd5yVe4
 - Finished photos: e.g. "if you grabbed any shots of it installed, we'd love to see how it turned
   out."
 Light, not pushy. Reply within the existing thread if one exists; otherwise a fresh email. From

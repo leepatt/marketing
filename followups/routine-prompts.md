@@ -45,10 +45,12 @@ CONTEXT & DELIVERY (read carefully):
 - Client details (customer email + contact) are always on the ClickUp Job List task — that's where
   you get WHO to email. For job CONTEXT, also READ the cnc@cnccut.melbourne email thread for the job
   where one exists (not all job info is in ClickUp), plus the ClickUp comments. Combine both.
-- Everything sends from cnc@cnccut.melbourne. A FRESH email is the DEFAULT. Only reply on a thread
-  if one already exists in the cnc@cnccut.melbourne mailbox for this exact job.
+- Everything sends from cnc@cnccut.melbourne. REPLY WITHIN the existing email thread whenever one
+  exists for this job — keep the follow-up in the same conversation. Start a FRESH email ONLY when
+  there's no Gmail thread (Craftons jobs, ClickUp form submissions that never emailed; subject like
+  "[Job] – Quote #[number]").
 - Do NOT read or chase any other inbox (cnccutmelbourne@gmail.com, hello@craftons.com.au). A missing
-  thread is NEVER a reason to skip — just send a fresh email (subject like "[Job] – Quote #[number]").
+  thread is NEVER a reason to skip — just send a fresh email.
 - Every Job List task is a CNC Cut job → send from cnc@cnccut.melbourne. Pure Craftons jobs are
   handled by Craftons separately and aren't in the Job List, so you won't see them. No Craftons
   branching.
@@ -116,8 +118,8 @@ two easy asks:
 - A Google review: https://g.page/r/CbPqUkXeclXuEAE/review
 - Finished photos: e.g. "if you grabbed any shots of it installed, we'd love to see how it turned
   out."
-Light, not pushy. A fresh friendly email reads better than the old quote thread for a finished job.
-From cnc@cnccut.melbourne, sign "Cheers," / (blank) / "CNC Cut". (Best sent Tue–Thu, late morning.)
+Light, not pushy. Reply within the existing thread if one exists; otherwise a fresh email. From
+cnc@cnccut.melbourne, end with the CNC Cut signature. (Best sent Tue–Thu, late morning.)
 
 B4 — Create the Gmail DRAFT (do not send). Try to label it "Follow-up to review" (best-effort — skip
 if it errors). Set `Follow-Up Email` to "Request Email". Ask each customer only once.

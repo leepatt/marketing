@@ -49,5 +49,11 @@ Claude applies.
 
 ## Env vars needed (set in the environment's secret store)
 `GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`,
-`GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID` (=275-347-3695),
-`GOOGLE_ADS_CUSTOMER_ID` (the Craftons advertiser — confirm via `accounts` first).
+`GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID` (=2753473695),
+`GOOGLE_ADS_CUSTOMER_ID` (=3104912421, the Craftons advertiser — confirm via `accounts` first).
+
+> **⚠️ Source of truth = Vercel** (cnccut-app project → Settings → Environment Variables), holding the
+> **post-2026-06-23 rotation** values. The local cnccut-app `.env` is **STALE/revoked — do NOT copy
+> creds from it** (you'd grab the revoked client secret + refresh token and auth would fail). Copy the
+> 4 secrets from Vercel straight into this environment's variable settings (dashboard → dashboard,
+> never via chat). Confirmed by the old session's `creds-mirror-handoff.md`.

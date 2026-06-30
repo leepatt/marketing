@@ -36,7 +36,18 @@ Post-launch routine runs the report tool weekly → summary + recommended change
 Claude applies.
 
 ## Status
-- ☐ Basic access applied for (Lee)
-- ☐ Google Ads creds mirrored into this engine's env vars
-- ☐ `tools/google-ads.mjs` built (Claude, after access)
+- ☑ **Basic access GRANTED 2026-06-30** — Developer Token approved on MCC **275-347-3695**
+  (15,000 ops/day). Engine verified it can reach the Google Ads API endpoint from the cloud.
+- ☑ **`tools/google-ads.mjs` built (read-only)** — `accounts` + `report` commands; `google-ads-api`
+  dep added. Writes (deploy/negatives/bids) to be added behind CONFIRM=1 after we connect.
+- ☐ **Google Ads creds mirrored into this engine's env vars** (Lee — into the environment's secret
+  store, persists across sessions; not repo/chat). Vars: see `## Env vars needed` below.
+- ☐ **Confirm the Craftons advertiser customer id** — docs conflict (design doc says 310-491-2421;
+  STATUS labelled that CNC Cut). Resolve empirically: `node tools/google-ads.mjs accounts` lists
+  accounts by name + 30-day conversions; pick the one with Craftons' ~23 purchases + 443 leads.
 - ☐ Weekly routine wired (after launch + access)
+
+## Env vars needed (set in the environment's secret store)
+`GOOGLE_ADS_DEVELOPER_TOKEN`, `GOOGLE_ADS_CLIENT_ID`, `GOOGLE_ADS_CLIENT_SECRET`,
+`GOOGLE_ADS_REFRESH_TOKEN`, `GOOGLE_ADS_LOGIN_CUSTOMER_ID` (=275-347-3695),
+`GOOGLE_ADS_CUSTOMER_ID` (the Craftons advertiser — confirm via `accounts` first).

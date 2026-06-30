@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Craftons inspiration-collection tools (run on desktop).",
   "dependencies": {
+    "google-ads-api": "^24.1.0",
     "playwright": "^1.48.0"
   }
 }

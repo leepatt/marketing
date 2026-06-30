@@ -67,9 +67,13 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ⏳ Pending / in progress
-- [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
-  awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
+- [x] **Google Ads API Basic access GRANTED (2026-06-30)** — dev token approved on MCC **275-347-3695**
+  (15k ops/day). Engine can reach the API from the cloud (verified). `tools/google-ads.mjs` built
+  (read-only: `accounts` + `report`); writes pending behind CONFIRM=1 after connect.
+- [ ] **Mirror Google Ads creds into THIS engine's env vars** — into the environment's **secret store**
+  (persists across sessions; not repo/chat). 6 vars listed in `api-access.md`. ← **the only blocker to connect**
+- [ ] **Confirm Craftons advertiser customer id** — docs conflict; resolve via `google-ads.mjs accounts`
+  (pick the account with ~23 purchases + 443 leads). Then deploy is human-approved (real $).
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ---

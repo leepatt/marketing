@@ -2,7 +2,7 @@
 
 _Created 2026-06-30. Goal: leads & sales without wasting spend. Ad copy: `ads/`. Keywords: `../../brand/keyword-plan.md`._
 
-> ## ✅ DEPLOYED via the engine (2026-06-30) — Campaign ID `23983924746`, status **PAUSED**
+> ## 🟢 LIVE via the engine (2026-06-30) — Campaign ID `23983924746`, status **ENABLED / SERVING**
 > The engine built this whole campaign on the live account (310-491-2421) via the Google Ads API
 > using `tools/google-ads-launch.mjs` (one atomic, validated, all-or-nothing create). Verified by
 > reading it back: Search-only, Manual CPC, $50/day, geo + language as below, 3 ad groups (cpc cap
@@ -11,9 +11,10 @@ _Created 2026-06-30. Goal: leads & sales without wasting spend. Ad copy: `ads/`.
 > **2 RSAs per ad group (6 total):** Ad 1 pins the product name to H1 (clarity/control); Ad 2 is fully
 > unpinned (Google's free hand). Same copy, only the pinning differs → a clean A/B on whether to trust
 > the pin or let Google optimise. Read the ad report after 2–3 weeks and keep the winner.
-> **Remaining: Lee reviews in the UI and flips the campaign to ENABLED** (it does NOT spend while
-> PAUSED). Then verify a test form-submit fires a conversion (tracking already confirmed live).
-> Re-build/inspect with `node tools/google-ads-launch.mjs` (dry-run) / `node tools/google-ads.mjs report`.
+> **ENABLED & SERVING as of 2026-06-30** — spending up to $50/day. 3 ads were APPROVED at launch
+> (1 per group); the 3 unpinned test ads finish review and join automatically.
+> **Remaining human check: submit a real lead form and confirm the conversion records within a day.**
+> Inspect anytime with `node tools/google-ads.mjs report 7` (or `report 1`).
 
 ## Campaign settings
 - **Name:** Craftons – Customised Building Products

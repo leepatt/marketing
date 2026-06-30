@@ -39,8 +39,9 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] **A/B test live: 2 RSAs per ad group (6 total).** Ad 1 = product-name **pinned** to H1 (clarity/control);
   Ad 2 = **fully unpinned** (Google's free optimisation). Same approved copy — only the pinning differs,
   so it's a clean "control vs. let-Google-handle-it" read. After 2–3 weeks the ad report picks the winner.
-- [ ] **Lee to review in the Google Ads UI → flip campaign to ENABLED to go live.** (Then verify a
-  test form-submit fires a conversion within day 1.)
+- [x] **LIVE 🟢 — campaign ENABLED & SERVING (2026-06-30).** $50/day. 3 ads APPROVED at launch (1 per
+  group), 3 unpinned still finishing review (join automatically when cleared).
+  - [ ] **Verify a test form-submit fires a conversion within day 1** (human step — submit a real lead form).
 
 ### Craftons AdWords — source assets (built the campaign above)
 - [x] 3 RSAs → `campaigns/adwords/ads/` (Radius Pro · Curved Bench Seat/Formwork · Curved Architraves)

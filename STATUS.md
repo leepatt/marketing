@@ -28,7 +28,19 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] **Keyword plan** done → `brand/keyword-plan.md` — 7 pillars + 6 ad groups (paid + SEO), 90-day calendar
   - Confirmed converters: **"bendy ply"**, **"curved bench seat"**. Product = Radius Pro (not flat bendy sheets).
 
-### Craftons AdWords — campaign BUILT (assets ready to deploy)
+### Craftons AdWords — campaign DEPLOYED via the engine (PAUSED, 2026-06-30) 🚀
+- [x] **Engine built the live campaign via the Google Ads API** — `tools/google-ads-launch.mjs`
+  (atomic, all-or-nothing, validated then created). **Campaign ID `23983924746`**, status **PAUSED**
+  (zero spend until Lee flips it to ENABLED in the UI).
+- [x] Built exactly to spec & **verified by reading it back**: Search-only (Search Partners + Display
+  OFF), **Manual CPC**, **$50/day**, geo = Melbourne 50km + Geelong + Surf Coast + Mornington (Presence),
+  English. 3 ad groups (cpc cap $3.50), **39 keywords** (phrase+exact), **3 RSAs** (15 HLs each),
+  **70 campaign negatives**, extensions: **4 sitelinks + 8 callouts + 2 snippet sets + 1 call**
+  (call number **0485500227**, Lee-confirmed).
+- [ ] **Lee to review in the Google Ads UI → flip campaign to ENABLED to go live.** (Then verify a
+  test form-submit fires a conversion within day 1.)
+
+### Craftons AdWords — source assets (built the campaign above)
 - [x] 3 RSAs → `campaigns/adwords/ads/` (Radius Pro · Curved Bench Seat/Formwork · Curved Architraves)
 - [x] Keywords (phrase+exact) → `campaigns/adwords/keywords.md`
 - [x] Negative keywords → `campaigns/adwords/negative-keywords.md`
@@ -78,14 +90,13 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ⏭ Next steps (in order)
-1. **Build the write/CONFIRM mode** for `google-ads.mjs` (add negatives, pause keywords, adjust
-   bids/budget, create campaigns) gated behind `CONFIRM=1`. Target = Craftons account `310-491-2421`
-   only (separate-accounts decision locked). Read-only is done.
-2. **Engine deploys the Craftons campaigns** — creds + Basic access are live, the campaign assets are
-   built (`campaigns/adwords/`). With write mode in place, push the campaigns (goal: engine-run,
-   tracked from day 1).
+1. **Lee: review campaign `23983924746` in the Google Ads UI and flip it to ENABLED.** It's built and
+   PAUSED — review the 3 ad groups / RSAs / keywords / negatives / extensions, then enable to go live.
+   (Engine can flip it on too — just say so. Real spend starts the moment it's ENABLED.)
+2. **Verify conversions fire** — submit a test lead form on the site and confirm the `form_submit`
+   conversion records within a day.
 3. **Set up the weekly-review routine** (Claude routine, web app) → run `google-ads.mjs report` weekly
-   → auto-report + advice. The read-only tool is ready to wire now.
+   → auto-report + advice + propose negatives. The read-only tool is ready to wire now.
 4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
 5. **Content production** (independent of ads): Tia shoots Craft Macro Session A; build out How-To Series shot lists.
 
@@ -130,5 +141,6 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `brand/{voice-profile,audience,competitors,keyword-plan,assets}.md`
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
-`cnc-cut-review-log.md` · **`tools/google-ads.mjs`** (read-only reporter, runs in this env)
+`cnc-cut-review-log.md` · **`tools/google-ads.mjs`** (read-only reporter) ·
+**`tools/google-ads-launch.mjs`** (campaign launcher — built the live campaign 23983924746)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

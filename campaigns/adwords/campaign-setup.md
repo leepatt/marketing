@@ -2,6 +2,16 @@
 
 _Created 2026-06-30. Goal: leads & sales without wasting spend. Ad copy: `ads/`. Keywords: `../../brand/keyword-plan.md`._
 
+> ## ✅ DEPLOYED via the engine (2026-06-30) — Campaign ID `23983924746`, status **PAUSED**
+> The engine built this whole campaign on the live account (310-491-2421) via the Google Ads API
+> using `tools/google-ads-launch.mjs` (one atomic, validated, all-or-nothing create). Verified by
+> reading it back: Search-only, Manual CPC, $50/day, geo + language as below, 3 ad groups (cpc cap
+> $3.50), 39 keywords (phrase+exact), 3 RSAs (15 HLs each), 70 campaign negatives, and extensions
+> (4 sitelinks, 8 callouts, 2 structured-snippet sets, 1 call → 0485500227).
+> **Remaining: Lee reviews in the UI and flips the campaign to ENABLED** (it does NOT spend while
+> PAUSED). Then verify a test form-submit fires a conversion (tracking already confirmed live).
+> Re-build/inspect with `node tools/google-ads-launch.mjs` (dry-run) / `node tools/google-ads.mjs report`.
+
 ## Campaign settings
 - **Name:** Craftons – Customised Building Products
 - **Type:** Search **only** — turn **OFF** "Search Partners" and "Display Network expansion"

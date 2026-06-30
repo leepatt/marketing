@@ -13,7 +13,7 @@ limits noted. Add all that apply — Google shows the best mix._
 3. **Curved Architraves** → /products/curved-architraves
    - Arched doors, curved windows
    - Design in 3D, instant pricing
-4. **Get a Quote** → /pages/contact *(confirm URL)*
+4. **Get a Quote** → /pages/contact *(confirmed 2026-06-30 — live on craftons.com.au; no dedicated quote page exists, contact page is the quote path)*
    - Custom curves, fast quote
    - Dispatched in 3 business days
 
@@ -32,8 +32,10 @@ limits noted. Add all that apply — Google shows the best mix._
 - **Header: "Services"** → Design Online, CNC Cutting, Cut To Size, Delivery
 
 ## Call extension
-- Phone: **0466 146 744** *(confirm best number for leads)* — enable call reporting to track calls
-  as conversions.
+- Phone: **0411 689 166** — this is the number published live on craftons.com.au (2026-06-30).
+  Recommend using it for the call extension so the ad matches the site. *(Docs previously listed
+  `0466 146 744` — Lee to confirm which line is best for sales/leads; if 0466 is a dedicated sales
+  line, use that instead.)* Enable call reporting to track calls as conversions.
 
 ## Notes
 - Confirm the **/pages/contact** (or quote) URL before adding the "Get a Quote" sitelink.

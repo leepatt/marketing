@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-06-30. Branch: `claude/elegant-ramanujan-ct2p85`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -72,15 +72,29 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
-## ❓ Open questions / decisions needed (answer these to unblock)
-- **Account structure:** Is Craftons in the **same Google Ads account as CNC Cut (`310-491-2421`)** or separate?
-  (Decides where the engine builds the new campaigns. Craftons conversion tracking lives in the account with
-  23 purchases + 443 lead forms.)
-- **Sitelink "Get a Quote" URL** — confirm the real contact/quote page (placeholder `/pages/contact`).
-- **Call extension phone** — confirm best lead number (had `0466 146 744`).
-- **CNC Cut negatives:** do they offer **milling**? **engraving**? (If no → add as negatives.)
-- **Configurators:** do customers **check out & pay online**, or mostly **request a quote**? (purchase vs lead mix)
-- **Tidy:** demote `file_download` conversion from **Primary → Secondary** (don't optimise toward PDF-downloaders).
+## ❓ Open questions / decisions needed
+
+### ✅ Resolved 2026-06-30 (with receipts)
+- **Sitelink "Get a Quote" URL → `/pages/contact`.** Verified live on craftons.com.au: there is **no
+  dedicated quote page** — the contact page *is* the quote path. Placeholder was correct; caveat removed
+  in `ad-extensions.md`.
+- **CNC Cut milling/engraving → NO.** cnccut.melbourne advertises **2D & 3D router cutting only**. →
+  Added `milling / mill / engraving / engrave / engraver / laser` as negatives (`cnc-cut-review-log.md`).
+- **Configurators — purchase vs quote → BOTH, lead-dominant (~19:1).** The configurators support online
+  checkout (Radius Pro product page: "dispatched in 3 business days from checkout"; **23 purchases /
+  $17.3k** tracked) but the dominant action is **lead/quote forms (443 tracked)**. Implication for the
+  engine: keep **Purchase** Primary, but **"Submit lead form" is the main optimisation signal** — bid
+  toward leads, not just purchases.
+- **`file_download` conversion → demote Primary → Secondary.** Confirmed correct: don't optimise toward
+  PDF-downloaders. (Manual change in Google Ads UI — flagged in next-steps until API write access lands.)
+
+### ⏳ Still needs Lee (can't be derived from data)
+- **Account structure:** Is Craftons in the **same Google Ads account as CNC Cut (`310-491-2421`)** or
+  separate? Strong inference = **separate** (Craftons' 23 purchases + 443 lead forms live with its own
+  GA4/Shopify Google&YouTube app; CNC Cut acct shows 0 conversions; different domains craftons.com.au vs
+  cnccut.melbourne). **Confirm before the engine builds the new campaigns** — decides where they land.
+- **Call extension phone:** site publishes **`0411 689 166`** (recommended, so ad matches site). Docs had
+  `0466 146 744` — confirm if that's a dedicated sales line to use instead. (Both noted in `ad-extensions.md`.)
 
 ---
 

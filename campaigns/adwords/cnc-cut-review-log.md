@@ -11,7 +11,10 @@ _Tightening + weekly reassessment record for the existing CNC Cut Google Ads acc
 - ☑ **Capped max CPC ~$3.50** (was "Maximise clicks" uncapped) — stops expensive clicks.
 - ☑ **Turned off Search Partners + Display** on active campaigns.
 - ☑ **Added negative keywords** (machine-buyer / repair / foreign intent): machine, machines, for sale,
-  buy, second hand, used, machine service, router cutter, cutter bit, corte (+ milling/engraving if not offered).
+  buy, second hand, used, machine service, router cutter, cutter bit, corte.
+- ☑ **Confirmed (2026-06-30):** cnccut.melbourne advertises **2D & 3D router cutting only** — no milling,
+  no engraving. → **Add `milling`, `mill`, `engraving`, `engrave`, `engraver`, `laser` as negatives** so
+  router-cutting ads don't pay for milling/engraving searches the business can't fulfil.
 - ☑ **Match types** verified already exact — no change needed.
 - ☑ **Brand bidding** tightened (Manual CPC / lower target — brand clicks shouldn't cost $3.48).
 

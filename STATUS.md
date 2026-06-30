@@ -105,6 +105,15 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
+## 🖥️ Marketing Cockpit (dashboard in cnccut.app) — PLAN drafted (not built)
+- [x] **Master plan + first-module spec written** (planning only, no deploy) → `dashboard/PLAN.md` +
+  `dashboard/google-ads-module.md`. Vision: a GHL-style cockpit where Lee views every channel's data
+  and steers it; **Claude is the brain** (proposes click-to-apply changes) + a chat bar; gamified.
+- [x] **Key insight:** the dashboard is a *face on the engine we already built* — `google-ads.mjs`
+  (read) + `google-ads-launch.mjs` (gated writes) + the daily monitor + propose→approve = the backend.
+- [ ] **Next when ready:** confirm cnccut.app stack, add that repo to a session, build Phase 1
+  (Google Ads read-only view). Channels roadmap: Ads → Sales → Meta/IG → Email → Social → Content.
+
 ## ❓ Open questions / decisions needed (answer these to unblock)
 - ~~Account structure~~ **DECIDED (Lee, 2026-06-30):** CNC Cut and Craftons are **separate accounts**.
   The engine works on the **Craftons ad account `310-491-2421` only** for now (CNC Cut is out of scope
@@ -147,3 +156,4 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `cnc-cut-review-log.md` · **`tools/google-ads.mjs`** (read-only reporter) ·
 **`tools/google-ads-launch.mjs`** (campaign launcher — built the live campaign 23983924746)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`
+**Cockpit / dashboard:** `dashboard/PLAN.md` (master) · `dashboard/google-ads-module.md` (first module)

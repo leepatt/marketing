@@ -45,17 +45,13 @@ Claude applies.
   Write/change mode (CONFIRM=1 gate) still TODO as a separate, deliberate step.
 - ☐ Weekly routine wired (after launch)
 
-### ⚠ Linkage finding (2026-06-30)
-The advertiser **310-491-2421 ("Craftons Google Ads account")** is reached via **direct user access**,
-NOT through the manager MCC (275-347-3695). Forcing the manager as `login-customer-id` returns
-`USER_PERMISSION_DENIED` — the advertiser is **not currently linked under the manager**. The tool
-therefore sends **no** `login-customer-id` by default (set `GOOGLE_ADS_USE_LOGIN_CUSTOMER_ID=1` only
-after the account is moved under the MCC). Decision for Lee: link 310-491-2421 under the Craftons
-Marketing MCC, or keep it standalone and drop the manager from the design.
-
-### ⚠ Account-structure finding (answers an open question in STATUS.md)
-Account **310-491-2421** — the same number STATUS called "CNC Cut" — is **named "Craftons Google Ads
-account"** and is currently running a **Cavity Battens Performance Max** campaign (Craftons product:
-84 conv / $1,171 / $13.94 per conv over 30 days; now PAUSED). So Craftons + the engine's creds point
-at **this** account. Confirm with Lee whether CNC Cut and Craftons truly share this one account before
-the engine deploys the new Craftons search campaigns.
+### Account structure & linkage — DECIDED (Lee, 2026-06-30)
+- **Separate accounts.** CNC Cut and Craftons are **not** the same account. The engine works on the
+  **Craftons ad account `310-491-2421`** ("Craftons Google Ads account") **only** for now.
+- **Standalone, not under the MCC.** `310-491-2421` is reached by **direct user access**; it is **not**
+  linked under the Craftons Marketing manager MCC (`275-347-3695`), and the MCC stays unused for now.
+  Forcing the manager as `login-customer-id` returns `USER_PERMISSION_DENIED`, so the tool sends **no**
+  `login-customer-id` by default (set `GOOGLE_ADS_USE_LOGIN_CUSTOMER_ID=1` only if the account is ever
+  moved under the MCC).
+- Context: this account is currently running a **Cavity Battens Performance Max** campaign (Craftons
+  product: 84 conv / $1,171 / $13.94 per conv over 30 days; now PAUSED).

@@ -58,9 +58,8 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   deliberate next step, not yet built. → `campaigns/adwords/api-tool-design.md`
 - [x] **Live read sanity-check:** account "Craftons Google Ads account" (310-491-2421) is running
   **Cavity Battens — Performance Max** (PAUSED): 84 conv / $1,171 / **$13.94 per conv** over 30 days.
-- ⚠ **Linkage:** advertiser reached by **direct access**, NOT via the manager MCC (275-347-3695) —
-  forcing the manager `login-customer-id` gives `USER_PERMISSION_DENIED` (account isn't linked under
-  it). Tool sends no `login-customer-id` by default. → decision needed (see open questions).
+- ✅ **Linkage decided (Lee, 2026-06-30):** keep `310-491-2421` **standalone** (not under the MCC).
+  Reached by direct access; tool correctly sends no `login-customer-id`. The MCC stays unused for now.
 
 ### Infrastructure / security
 - [x] **Google Ads creds rotated** (2026-06-23), placed in Vercel → `INTEGRATIONS.md` / `DESKTOP-TODO.md`
@@ -79,12 +78,12 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ⏭ Next steps (in order)
-1. **Confirm account structure** (Lee, blocks deploy): account 310-491-2421 is named "Craftons Google
-   Ads account" and runs a Craftons Cavity Battens PMax — is this shared with CNC Cut, or separate?
-   And: link it under the Craftons Marketing MCC (275-347-3695), or keep standalone? (See open questions.)
+1. **Build the write/CONFIRM mode** for `google-ads.mjs` (add negatives, pause keywords, adjust
+   bids/budget, create campaigns) gated behind `CONFIRM=1`. Target = Craftons account `310-491-2421`
+   only (separate-accounts decision locked). Read-only is done.
 2. **Engine deploys the Craftons campaigns** — creds + Basic access are live, the campaign assets are
-   built (`campaigns/adwords/`). Once #1 is settled, add the write/CONFIRM mode to `google-ads.mjs`
-   and push the campaigns (goal: engine-run, tracked from day 1).
+   built (`campaigns/adwords/`). With write mode in place, push the campaigns (goal: engine-run,
+   tracked from day 1).
 3. **Set up the weekly-review routine** (Claude routine, web app) → run `google-ads.mjs report` weekly
    → auto-report + advice. The read-only tool is ready to wire now.
 4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
@@ -93,12 +92,10 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ❓ Open questions / decisions needed (answer these to unblock)
-- **Account structure (new evidence 2026-06-30):** account `310-491-2421` — the number STATUS called
-  "CNC Cut" — is actually **named "Craftons Google Ads account"** and runs a Craftons **Cavity Battens
-  PMax**. The engine's creds point here. So: do CNC Cut + Craftons **share this one account**, or are
-  they separate? AND should `310-491-2421` be **linked under the Craftons Marketing MCC (275-347-3695)**
-  (right now it's reached by direct access only — not linked under the MCC)? Decides where/how the
-  engine deploys the new campaigns.
+- ~~Account structure~~ **DECIDED (Lee, 2026-06-30):** CNC Cut and Craftons are **separate accounts**.
+  The engine works on the **Craftons ad account `310-491-2421` only** for now (CNC Cut is out of scope
+  here). The Craftons Marketing MCC (`275-347-3695`) stays **unused/standalone** — `310-491-2421` is
+  reached by direct access and that's fine; revisit linking it under the MCC only if a reason arises.
 - **Sitelink "Get a Quote" URL** — confirm the real contact/quote page (placeholder `/pages/contact`).
 - **Call extension phone** — confirm best lead number (had `0466 146 744`).
 - **CNC Cut negatives:** do they offer **milling**? **engraving**? (If no → add as negatives.)

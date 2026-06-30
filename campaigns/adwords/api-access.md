@@ -37,6 +37,13 @@ Claude applies.
 
 ## Status
 - ☐ Basic access applied for (Lee)
-- ☐ Google Ads creds mirrored into this engine's env vars
+- ⚠ Google Ads creds mirrored into this engine's env vars — **present but auth fails.** Verified
+  2026-06-30: all 6 `GOOGLE_ADS_*` vars exist and are well-formed (client-id suffix, `GOCSPX-` secret
+  prefix, `1//` refresh-token prefix, no whitespace), but the OAuth refresh exchange returns
+  **`invalid_client: client secret is invalid`**. Diagnosis: this env still holds the **old/disabled**
+  client secret from before the 2026-06-23 rotation. The OAuth + GAQL probe never reaches the live
+  account, so Test-vs-Basic access is still **unconfirmed**.
+  **→ Lee fix:** mirror the post-rotation `GOOGLE_ADS_CLIENT_SECRET` + `GOOGLE_ADS_REFRESH_TOKEN`
+  from Vercel into this engine's env vars, start a new session, re-run the verify probe.
 - ☐ `tools/google-ads.mjs` built (Claude, after access)
 - ☐ Weekly routine wired (after launch + access)

@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-06-30. Branch: `claude/creds-status-check-r1gwgr`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -57,8 +57,14 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
-- [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
+- [⚠] **Google Ads creds ARE in this engine's env — but auth FAILS (stale secret).** Verified 2026-06-30:
+  all 6 `GOOGLE_ADS_*` vars are present and correctly formatted, but the OAuth refresh-token exchange
+  returns **`invalid_client: client secret is invalid`** → this env holds the **OLD (disabled) client
+  secret**, not the rotated one. **Fix (Lee, can't be done from chat — secrets never go through git/chat):**
+  copy the post-rotation **`GOOGLE_ADS_CLIENT_SECRET`** and **`GOOGLE_ADS_REFRESH_TOKEN`** from **Vercel**
+  into this engine's environment variables, then start a **new session** (env loads at startup) and re-verify.
+- [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy) — note: it's
+  still live in *this* env, so don't expect auth to work here until the new secret is mirrored in.
 
 ---
 

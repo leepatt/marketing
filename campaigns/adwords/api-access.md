@@ -36,7 +36,26 @@ Post-launch routine runs the report tool weekly → summary + recommended change
 Claude applies.
 
 ## Status
-- ☐ Basic access applied for (Lee)
-- ☐ Google Ads creds mirrored into this engine's env vars
-- ☐ `tools/google-ads.mjs` built (Claude, after access)
-- ☐ Weekly routine wired (after launch + access)
+- ☑ **Basic access GRANTED** — verified live 2026-06-30: the API read the **non-test** advertiser
+  account (310-491-2421, AUD/Melbourne) and returned real spend/conversions. A Test-access token
+  cannot read a production account, so this confirms Basic access. (`node tools/google-ads.mjs whoami`.)
+- ☑ **Google Ads creds mirrored into this engine's env vars** — all six present, OAuth refresh works
+  (rotated client secret + refresh token valid), dev token reaches the live account.
+- ☑ `tools/google-ads.mjs` built (Claude) — **read-only** reporter (whoami / accounts / report / terms).
+  Write/change mode (CONFIRM=1 gate) still TODO as a separate, deliberate step.
+- ☐ Weekly routine wired (after launch)
+
+### ⚠ Linkage finding (2026-06-30)
+The advertiser **310-491-2421 ("Craftons Google Ads account")** is reached via **direct user access**,
+NOT through the manager MCC (275-347-3695). Forcing the manager as `login-customer-id` returns
+`USER_PERMISSION_DENIED` — the advertiser is **not currently linked under the manager**. The tool
+therefore sends **no** `login-customer-id` by default (set `GOOGLE_ADS_USE_LOGIN_CUSTOMER_ID=1` only
+after the account is moved under the MCC). Decision for Lee: link 310-491-2421 under the Craftons
+Marketing MCC, or keep it standalone and drop the manager from the design.
+
+### ⚠ Account-structure finding (answers an open question in STATUS.md)
+Account **310-491-2421** — the same number STATUS called "CNC Cut" — is **named "Craftons Google Ads
+account"** and is currently running a **Cavity Battens Performance Max** campaign (Craftons product:
+84 conv / $1,171 / $13.94 per conv over 30 days; now PAUSED). So Craftons + the engine's creds point
+at **this** account. Confirm with Lee whether CNC Cut and Craftons truly share this one account before
+the engine deploys the new Craftons search campaigns.

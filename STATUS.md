@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-06-30. Branch: `claude/creds-status-check-fzhcli`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -47,6 +47,21 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] Paused $19/click "Industry Specific"; capped CPC ~$3.50; Search Partners/Display off; negatives added;
   match types already exact; Brand bidding reined in → baseline + checklist in `campaigns/adwords/cnc-cut-review-log.md`
 
+### Google Ads API — ENGINE-CONNECTED (verified live 2026-06-30)
+- [x] **Creds mirrored into THIS engine's env** — all six `GOOGLE_ADS_*` vars present & well-formed;
+  OAuth refresh works (rotated client secret + refresh token valid).
+- [x] **Basic access CONFIRMED** — the API read the **non-test** advertiser account 310-491-2421
+  (AUD/Melbourne) and returned real spend/conversions. Test-access tokens can't read production, so
+  this proves Basic access is granted. (Resolves the "Basic access pending" item below.)
+- [x] **`tools/google-ads.mjs` built** — zero-dependency, **read-only** reporter
+  (`whoami` / `accounts` / `report [days]` / `terms [days]`). Write/change mode (CONFIRM=1) is a
+  deliberate next step, not yet built. → `campaigns/adwords/api-tool-design.md`
+- [x] **Live read sanity-check:** account "Craftons Google Ads account" (310-491-2421) is running
+  **Cavity Battens — Performance Max** (PAUSED): 84 conv / $1,171 / **$13.94 per conv** over 30 days.
+- ⚠ **Linkage:** advertiser reached by **direct access**, NOT via the manager MCC (275-347-3695) —
+  forcing the manager `login-customer-id` gives `USER_PERMISSION_DENIED` (account isn't linked under
+  it). Tool sends no `login-customer-id` by default. → decision needed (see open questions).
+
 ### Infrastructure / security
 - [x] **Google Ads creds rotated** (2026-06-23), placed in Vercel → `INTEGRATIONS.md` / `DESKTOP-TODO.md`
 - [x] **Drive connector permission fix** — tracked `.claude/settings.json` allow-lists Drive tools
@@ -55,27 +70,35 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ⏳ Pending / in progress
-- [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
-  awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
-- [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
+- [x] ~~Google Ads API Basic access~~ — **GRANTED & verified 2026-06-30** (read a live production account).
+- [x] ~~Mirror Google Ads creds into THIS engine's env vars~~ — **done & verified** (all six present, working).
+- [ ] **Build the write/change mode** for `google-ads.mjs` (add negatives, pause keywords, adjust
+  bids/budget) behind a `CONFIRM=1` gate — read-only is built; writes are not.
+- [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy — desktop).
 
 ---
 
 ## ⏭ Next steps (in order)
-1. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
-2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved
-   writes), mirrors creds into env, and **the engine deploys the Craftons campaigns** (the goal: engine-run, tracked from day 1).
-3. **Set up the weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
+1. **Confirm account structure** (Lee, blocks deploy): account 310-491-2421 is named "Craftons Google
+   Ads account" and runs a Craftons Cavity Battens PMax — is this shared with CNC Cut, or separate?
+   And: link it under the Craftons Marketing MCC (275-347-3695), or keep standalone? (See open questions.)
+2. **Engine deploys the Craftons campaigns** — creds + Basic access are live, the campaign assets are
+   built (`campaigns/adwords/`). Once #1 is settled, add the write/CONFIRM mode to `google-ads.mjs`
+   and push the campaigns (goal: engine-run, tracked from day 1).
+3. **Set up the weekly-review routine** (Claude routine, web app) → run `google-ads.mjs report` weekly
+   → auto-report + advice. The read-only tool is ready to wire now.
 4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
 5. **Content production** (independent of ads): Tia shoots Craft Macro Session A; build out How-To Series shot lists.
 
 ---
 
 ## ❓ Open questions / decisions needed (answer these to unblock)
-- **Account structure:** Is Craftons in the **same Google Ads account as CNC Cut (`310-491-2421`)** or separate?
-  (Decides where the engine builds the new campaigns. Craftons conversion tracking lives in the account with
-  23 purchases + 443 lead forms.)
+- **Account structure (new evidence 2026-06-30):** account `310-491-2421` — the number STATUS called
+  "CNC Cut" — is actually **named "Craftons Google Ads account"** and runs a Craftons **Cavity Battens
+  PMax**. The engine's creds point here. So: do CNC Cut + Craftons **share this one account**, or are
+  they separate? AND should `310-491-2421` be **linked under the Craftons Marketing MCC (275-347-3695)**
+  (right now it's reached by direct access only — not linked under the MCC)? Decides where/how the
+  engine deploys the new campaigns.
 - **Sitelink "Get a Quote" URL** — confirm the real contact/quote page (placeholder `/pages/contact`).
 - **Call extension phone** — confirm best lead number (had `0466 146 744`).
 - **CNC Cut negatives:** do they offer **milling**? **engraving**? (If no → add as negatives.)
@@ -94,6 +117,12 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - **Reading file *content* from Drive** needs the connector allow-list (search works without it). PDFs in this
   env: `pip install pdfminer.six cffi` then `pdfminer.high_level.extract_text` (poppler not installed).
 - **Voice:** brand-caption tone ≠ paid-search-ad tone. Ads use direct CTAs; social is value-first/soft-CTA.
+- **Google Ads `login-customer-id` gotcha:** the advertiser (310-491-2421) is reached by **direct
+  user access**, not through the manager MCC. Sending the manager as `login-customer-id` → 403
+  `USER_PERMISSION_DENIED`. Query the advertiser directly (no header) unless/until it's linked under
+  the MCC. `tools/google-ads.mjs` defaults to no header; `GOOGLE_ADS_USE_LOGIN_CUSTOMER_ID=1` to send it.
+- **Verifying Basic vs Test access:** Test-access dev tokens can only read **test** accounts. If
+  `google-ads.mjs whoami` returns a non-test account with real data, Basic access is granted.
 
 ---
 
@@ -104,5 +133,5 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `brand/{voice-profile,audience,competitors,keyword-plan,assets}.md`
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
-`cnc-cut-review-log.md`
+`cnc-cut-review-log.md` · **`tools/google-ads.mjs`** (read-only reporter, runs in this env)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

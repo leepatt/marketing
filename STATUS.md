@@ -63,12 +63,13 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ### ⛔ Blocker (2026-06-30): Google Ads refresh token expired after 7 days
-Creds are in, but the refresh token won't mint an access token. **Root cause:** OAuth app is in
+Creds are in, but the refresh token won't mint an access token. **Root cause:** OAuth app was in
 **"Testing"** publishing status → Google expires refresh tokens **7 days after issuance** (adwords =
 sensitive scope). Re-minted 2026-06-23, dead by 2026-06-30 — exactly on schedule.
-**Fix (Lee):** publish the OAuth consent screen to **"In production"**, re-mint the refresh token via
-OAuth Playground, drop it into this env + Vercel, then tell Claude to re-verify. Full steps in
-`campaigns/adwords/api-access.md`.
+**Progress:** OAuth app now **published to "In production"** ✅ (stops future 7-day expiry).
+**Still to do (Lee):** re-mint the refresh token via OAuth Playground **after publishing** (a token
+minted *before* publish keeps the 7-day clock — ordering matters), put it in this env + Vercel, then
+**start a fresh session** and tell Claude to re-verify. Full runbook in `campaigns/adwords/api-access.md`.
 
 ---
 

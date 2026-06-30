@@ -34,9 +34,11 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   (zero spend until Lee flips it to ENABLED in the UI).
 - [x] Built exactly to spec & **verified by reading it back**: Search-only (Search Partners + Display
   OFF), **Manual CPC**, **$50/day**, geo = Melbourne 50km + Geelong + Surf Coast + Mornington (Presence),
-  English. 3 ad groups (cpc cap $3.50), **39 keywords** (phrase+exact), **3 RSAs** (15 HLs each),
-  **70 campaign negatives**, extensions: **4 sitelinks + 8 callouts + 2 snippet sets + 1 call**
-  (call number **0485500227**, Lee-confirmed).
+  English. 3 ad groups (cpc cap $3.50), **39 keywords** (phrase+exact), **70 campaign negatives**,
+  extensions: **4 sitelinks + 8 callouts + 2 snippet sets + 1 call** (call number **0485500227**, Lee-confirmed).
+- [x] **A/B test live: 2 RSAs per ad group (6 total).** Ad 1 = product-name **pinned** to H1 (clarity/control);
+  Ad 2 = **fully unpinned** (Google's free optimisation). Same approved copy — only the pinning differs,
+  so it's a clean "control vs. let-Google-handle-it" read. After 2–3 weeks the ad report picks the winner.
 - [ ] **Lee to review in the Google Ads UI → flip campaign to ENABLED to go live.** (Then verify a
   test form-submit fires a conversion within day 1.)
 

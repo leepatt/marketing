@@ -6,8 +6,11 @@ _Created 2026-06-30. Goal: leads & sales without wasting spend. Ad copy: `ads/`.
 > The engine built this whole campaign on the live account (310-491-2421) via the Google Ads API
 > using `tools/google-ads-launch.mjs` (one atomic, validated, all-or-nothing create). Verified by
 > reading it back: Search-only, Manual CPC, $50/day, geo + language as below, 3 ad groups (cpc cap
-> $3.50), 39 keywords (phrase+exact), 3 RSAs (15 HLs each), 70 campaign negatives, and extensions
+> $3.50), 39 keywords (phrase+exact), 70 campaign negatives, and extensions
 > (4 sitelinks, 8 callouts, 2 structured-snippet sets, 1 call → 0485500227).
+> **2 RSAs per ad group (6 total):** Ad 1 pins the product name to H1 (clarity/control); Ad 2 is fully
+> unpinned (Google's free hand). Same copy, only the pinning differs → a clean A/B on whether to trust
+> the pin or let Google optimise. Read the ad report after 2–3 weeks and keep the winner.
 > **Remaining: Lee reviews in the UI and flips the campaign to ENABLED** (it does NOT spend while
 > PAUSED). Then verify a test form-submit fires a conversion (tracking already confirmed live).
 > Re-build/inspect with `node tools/google-ads-launch.mjs` (dry-run) / `node tools/google-ads.mjs report`.

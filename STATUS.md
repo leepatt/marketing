@@ -47,6 +47,16 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] Paused $19/click "Industry Specific"; capped CPC ~$3.50; Search Partners/Display off; negatives added;
   match types already exact; Brand bidding reined in → baseline + checklist in `campaigns/adwords/cnc-cut-review-log.md`
 
+### Inspiration → image-gen reference pipeline (NEW 2026-06-30)
+- [x] **`tools/video-frames.py`** — videos → deduped reference frames (1 frame/0.5s, perceptual-hash dedupe).
+- [x] **`tools/ig-collect.mjs`** — Playwright collector: pulls a profile's images+videos via a saved login
+  session. **Runs on desktop only** (cloud env + IG block headless/datacenter — verified). Reusable per brand.
+- [x] **SessionStart hook** (`.claude/hooks/session-start.sh`) auto-installs ffmpeg + media tooling every
+  web session (fixes ffmpeg not persisting). **Activates once merged to default branch.**
+- First target: **@modernconcreteco** → Drive `01 Inspiration/modernconcreteco/`. Reference/mood use only.
+- See `tools/README.md` for the full loop. Open: image-engine (`pipeline/`) consumes prompts, not photos —
+  inspiration feeds the `craftons-design` prompt/style layer + a manifest, not `render.mjs` directly.
+
 ### Infrastructure / security
 - [x] **Google Ads creds rotated** (2026-06-23), placed in Vercel → `INTEGRATIONS.md` / `DESKTOP-TODO.md`
 - [x] **Drive connector permission fix** — tracked `.claude/settings.json` allow-lists Drive tools

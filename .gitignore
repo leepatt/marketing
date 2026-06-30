@@ -17,3 +17,7 @@ node_modules/
 *.jpg
 *.jpeg
 *.psd
+
+# ig-collect: never commit login session/cookies or scraped output
+tools/.ig-session.json
+tools/collected/

@@ -1,0 +1,10 @@
+{
+  "name": "craftons-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Craftons inspiration-collection tools (run on desktop).",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

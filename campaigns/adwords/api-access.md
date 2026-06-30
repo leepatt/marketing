@@ -37,6 +37,31 @@ Claude applies.
 
 ## Status
 - ☐ Basic access applied for (Lee)
-- ☐ Google Ads creds mirrored into this engine's env vars
+- ◑ Google Ads creds mirrored into this engine's env vars — **all six present**, but the
+  **refresh token is expired/revoked** (see blocker below). Other five are correct.
 - ☐ `tools/google-ads.mjs` built (Claude, after access)
 - ☐ Weekly routine wired (after launch + access)
+
+## ⛔ BLOCKER (found 2026-06-30) — refresh token expired after 7 days
+All six creds are now in this engine's env. Five verified correct: `GOOGLE_ADS_CLIENT_ID`
+(well-formed), `GOOGLE_ADS_CLIENT_SECRET` (GOCSPX- prefix), `GOOGLE_ADS_CUSTOMER_ID=3104912421`,
+`GOOGLE_ADS_LOGIN_CUSTOMER_ID=2753473695`, `GOOGLE_ADS_DEVELOPER_TOKEN`.
+
+**`GOOGLE_ADS_REFRESH_TOKEN` is dead.** Minting an access token returns
+`invalid_grant` / "Token has been expired or revoked."
+
+**Root cause:** Google expires refresh tokens **7 days after issuance** when the OAuth app's
+**consent screen is in "Testing" publishing status** (the `adwords` scope is a sensitive scope, so
+this applies). The token was re-minted on **2026-06-23**; today is **2026-06-30** = exactly 7 days.
+It died on schedule. Re-minting now without changing publishing status will just expire again next
+week.
+
+**Permanent fix (Lee):**
+1. Google Cloud Console → **APIs & Services → OAuth consent screen** → set publishing status to
+   **"In production"** (Publish app). This stops the 7-day refresh-token expiry.
+2. Re-mint the refresh token via **OAuth Playground** (own creds, scope `https://www.googleapis.com/auth/adwords`,
+   *offline* access + *force consent*).
+3. Drop the new `GOOGLE_ADS_REFRESH_TOKEN` into this engine's env (and Vercel, to keep them in sync).
+4. Tell Claude "refresh token re-minted" → Claude re-verifies the live API call.
+
+(Claude can't do steps 1–2: they need Lee's Google login + consent.)

@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-06-30. Branch: `claude/creds-status-check-7b9he4`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -57,8 +57,18 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
+- [~] **Mirror Google Ads creds into THIS engine's env vars** — all six env vars ARE now in this engine
+  (verified 2026-06-30). BUT ⛔ **`GOOGLE_ADS_REFRESH_TOKEN` is expired** (`invalid_grant`). Other five
+  creds verified correct. Needs re-mint — see blocker below + `api-access.md`.
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
+
+### ⛔ Blocker (2026-06-30): Google Ads refresh token expired after 7 days
+Creds are in, but the refresh token won't mint an access token. **Root cause:** OAuth app is in
+**"Testing"** publishing status → Google expires refresh tokens **7 days after issuance** (adwords =
+sensitive scope). Re-minted 2026-06-23, dead by 2026-06-30 — exactly on schedule.
+**Fix (Lee):** publish the OAuth consent screen to **"In production"**, re-mint the refresh token via
+OAuth Playground, drop it into this env + Vercel, then tell Claude to re-verify. Full steps in
+`campaigns/adwords/api-access.md`.
 
 ---
 
@@ -94,6 +104,9 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - **Reading file *content* from Drive** needs the connector allow-list (search works without it). PDFs in this
   env: `pip install pdfminer.six cffi` then `pdfminer.high_level.extract_text` (poppler not installed).
 - **Voice:** brand-caption tone ≠ paid-search-ad tone. Ads use direct CTAs; social is value-first/soft-CTA.
+- **Google OAuth refresh tokens die in 7 days while the app is in "Testing" publishing status** (sensitive
+  scopes like `adwords` included). Every re-mint will keep dying weekly until the OAuth consent screen is
+  **published to "In production"**. Publish once → tokens stop expiring. (Bit us 2026-06-30.)
 
 ---
 

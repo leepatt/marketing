@@ -88,13 +88,15 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - **`file_download` conversion → demote Primary → Secondary.** Confirmed correct: don't optimise toward
   PDF-downloaders. (Manual change in Google Ads UI — flagged in next-steps until API write access lands.)
 
-### ⏳ Still needs Lee (can't be derived from data)
-- **Account structure:** Is Craftons in the **same Google Ads account as CNC Cut (`310-491-2421`)** or
-  separate? Strong inference = **separate** (Craftons' 23 purchases + 443 lead forms live with its own
-  GA4/Shopify Google&YouTube app; CNC Cut acct shows 0 conversions; different domains craftons.com.au vs
-  cnccut.melbourne). **Confirm before the engine builds the new campaigns** — decides where they land.
-- **Call extension phone:** site publishes **`0411 689 166`** (recommended, so ad matches site). Docs had
-  `0466 146 744` — confirm if that's a dedicated sales line to use instead. (Both noted in `ad-extensions.md`.)
+### ✅ Resolved by Lee 2026-06-30
+- **Account structure → SEPARATE accounts.** Craftons is **not** in the CNC Cut account (`310-491-2421`).
+  → The engine builds the new Craftons campaigns in **Craftons' own Google Ads account** (the one with the
+  23 purchases + 443 lead forms / Shopify Google&YouTube + GA4). CNC Cut stays separate.
+- **Call extension phone → `0411 689 166`.** Use the number published live on craftons.com.au so the ad
+  matches the site (supersedes the old `0466 146 744`). Finalised in `ad-extensions.md`.
+
+> **All open questions resolved.** Engine deployment is unblocked once Google Ads API Basic access lands
+> (see Pending / Next steps) — build in Craftons' own account, optimise toward "Submit lead form".
 
 ---
 

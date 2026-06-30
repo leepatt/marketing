@@ -32,10 +32,9 @@ limits noted. Add all that apply — Google shows the best mix._
 - **Header: "Services"** → Design Online, CNC Cutting, Cut To Size, Delivery
 
 ## Call extension
-- Phone: **0411 689 166** — this is the number published live on craftons.com.au (2026-06-30).
-  Recommend using it for the call extension so the ad matches the site. *(Docs previously listed
-  `0466 146 744` — Lee to confirm which line is best for sales/leads; if 0466 is a dedicated sales
-  line, use that instead.)* Enable call reporting to track calls as conversions.
+- Phone: **0411 689 166** — confirmed (Lee, 2026-06-30): use the number published live on
+  craftons.com.au so the ad matches the site. (Supersedes the old `0466 146 744`.) Enable call
+  reporting to track calls as conversions.
 
 ## Notes
 - Confirm the **/pages/contact** (or quote) URL before adding the "Get a Quote" sitelink.

@@ -26,9 +26,13 @@ node ig-collect.mjs login         # one-time: log in, saves tools/.ig-session.js
 node ig-collect.mjs modernconcreteco --max 60
 ```
 
-Options: `--out DIR` (default `collected`), `--max N`, `--headful` (show the
-browser if IG throws a challenge). Output lands in
-`collected/<handle>/raw/` plus a `manifest.json`.
+Options: `--out DIR`, `--max N`, `--headful` (show the browser if IG throws a
+challenge). Output lands in `<out>/<handle>/raw/` plus a `manifest.json`.
+
+**Default output → Google Drive.** `--out` defaults to the desktop `G:` mount of
+the brain's `01 Inspiration` folder, so downloads sync straight into Drive with
+no copy step. To change it without editing code (e.g. a Mac Drive path), set the
+`IG_COLLECT_OUT` env var; `--out` still overrides per-run.
 
 It downloads the real media bytes by capturing network responses (reliable for
 IG's blob/streamed video), keeps the largest copy of each photo, and is

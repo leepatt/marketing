@@ -15,7 +15,8 @@
  *
  *   # 2) collect a profile (reuses the saved session)
  *   node ig-collect.mjs modernconcreteco --max 60
- *   #   --out DIR     output root (default ./collected)
+ *   #   --out DIR     output root (default: the Drive "01 Inspiration" G: mount;
+ *   #                 override per-run with --out or globally via IG_COLLECT_OUT env var)
  *   #   --max N       stop after N posts (default: all found)
  *   #   --headful     show the browser (default headless; use if IG challenges)
  *
@@ -69,9 +70,15 @@ async function login() {
 }
 
 // --- collect ------------------------------------------------------------------
+// Default output = the Drive "01 Inspiration" folder on the desktop G: mount, so
+// downloads sync straight into Google Drive. Override with --out or, for a
+// different machine/OS (e.g. a Mac Drive path), the IG_COLLECT_OUT env var.
+const DEFAULT_OUT = process.env.IG_COLLECT_OUT ||
+  'G:\\.shortcut-targets-by-id\\1V4uCnZGXyz6rAzmK_aJzGS2NseP9QURU\\Peninsula Studio\\01 Craftons\\Marketing\\01 Inspiration';
+
 function parseArgs(argv) {
   const handle = argv[0]?.replace(/^@/, '');
-  const opt = { out: 'collected', max: Infinity, headful: false };
+  const opt = { out: DEFAULT_OUT, max: Infinity, headful: false };
   for (let i = 1; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--out') opt.out = argv[++i];

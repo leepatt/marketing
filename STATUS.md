@@ -51,6 +51,8 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] **`tools/video-frames.py`** — videos → deduped reference frames (1 frame/0.5s, perceptual-hash dedupe).
 - [x] **`tools/ig-collect.mjs`** — Playwright collector: pulls a profile's images+videos via a saved login
   session. **Runs on desktop only** (cloud env + IG block headless/datacenter — verified). Reusable per brand.
+  Default output = Drive `01 Inspiration` mount. Autonomous via `tools/ig-collect.bat` +
+  `tools/install-schedule.cmd` (weekly Windows Task Scheduler job). Caveats: PC on, periodic IG re-login.
 - [x] **SessionStart hook** (`.claude/hooks/session-start.sh`) auto-installs ffmpeg + media tooling every
   web session (fixes ffmpeg not persisting). **Activates once merged to default branch.**
 - First target: **@modernconcreteco** → Drive `01 Inspiration/modernconcreteco/`. Reference/mood use only.

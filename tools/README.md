@@ -39,6 +39,28 @@ IG's blob/streamed video), keeps the largest copy of each photo, and is
 rate-limited between posts. If discovery returns 0 posts, IG changed its markup
 — update the `POST_LINK` selector in the script.
 
+### Run it autonomously (Windows desktop)
+
+To have fresh inspiration land in Drive on a schedule with no one watching:
+
+```bat
+REM one-time, after login is set up:
+install-schedule.cmd          REM registers a weekly task (Mondays 09:07)
+```
+
+- `ig-collect.bat [handle] [maxPosts]` is the wrapper the task runs (handle
+  defaults to `modernconcreteco`); it logs to `tools/ig-collect.log` (git-ignored).
+- `install-schedule.cmd` registers a Windows Task Scheduler job that runs the
+  wrapper weekly. Re-run to change it; remove with
+  `schtasks /Delete /TN "Craftons IG Inspiration" /F`.
+- **Limits of "autonomous":** the PC must be on/awake at the scheduled time;
+  IG sessions expire every few weeks (re-run `node ig-collect.mjs login`, ~30s);
+  keep the cadence weekly so IG doesn't flag the account. It can't run in the
+  cloud — IG blocks datacenter/headless traffic.
+
+(On macOS the same `ig-collect.mjs` runs under `cron`/`launchd` instead — ask
+Claude Code on the desktop to set that up.)
+
 ## 2. `video-frames.py` — videos → deduped reference frames
 
 ```bash

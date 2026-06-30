@@ -101,16 +101,19 @@ A dedicated card tracks the **pinned vs unpinned RSA** test per ad group: impres
 each ad, and once there's enough data, a **"Pin wins / Unpinned wins"** verdict with a one-click
 "pause the loser" action. This is the gamified "experiment" surfaced as a mini-scoreboard.
 
-## 6. Gamification for this module
+## 6. Gamification for this module — **LIGHT** (per `PLAN.md` §6)
 
+Two signals only:
 - **Ads Health (0–100):** blends $/lead vs target, CTR, % budget not wasted, all-ads-approved, has
   conversions. Green/amber/red.
 - **Leak meter 💧:** running total of spend on 0-conversion search terms in the window. Applying
   negatives visibly drops it — instant feedback.
-- **Quests:** "Clear this week's wasted terms", "Get Architraves its first lead", "$/lead under $30".
-- **Streak 🔥:** days the feed was reviewed / a recommendation actioned.
-- **XP + score contribution:** applying good actions and hitting targets feeds the global Marketing
-  Score in `PLAN.md`.
+
+_(Score/streaks/quests/badges are intentionally out of scope for now — can revisit later.)_
+
+> **Autonomy (per `PLAN.md` §4):** start with every action a click. Later, `add_negative` cards with
+> `risk:"low"` may auto-apply (with an "auto-applied (undo)" entry in the feed); budget/bid/pause/ad
+> changes always wait for Lee's click.
 
 ## 7. Build phases (this module)
 

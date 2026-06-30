@@ -111,6 +111,9 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   and steers it; **Claude is the brain** (proposes click-to-apply changes) + a chat bar; gamified.
 - [x] **Key insight:** the dashboard is a *face on the engine we already built* — `google-ads.mjs`
   (read) + `google-ads-launch.mjs` (gated writes) + the daily monitor + propose→approve = the backend.
+- [x] **Decisions locked (2026-06-30):** gamification = **light** (Health score + Leak meter only);
+  autonomy = **start strict, later auto-apply only `risk:low` actions** (e.g. junk negatives), ask for
+  anything with money/reach.
 - [ ] **Next when ready:** confirm cnccut.app stack, add that repo to a session, build Phase 1
   (Google Ads read-only view). Channels roadmap: Ads → Sales → Meta/IG → Email → Social → Content.
 

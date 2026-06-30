@@ -83,6 +83,16 @@ Everything below is just this loop, repeated per channel and dressed up well.
   beyond a ceiling without an extra confirmation.
 - **Secrets server-side.** API keys never reach the frontend; all channel calls go through the backend.
 
+### Autonomy — graduated (decided 2026-06-30: "auto low-risk later")
+- **Start strict:** every change is a click Lee approves. (Phases 1–4.)
+- **Then graduate:** once Claude has a track record, let it **auto-apply only clearly-safe, low-risk
+  actions** — e.g. adding obvious junk negatives ("guitar", "skateboard") — while **everything with
+  money or reach still asks** (budget/bid changes, pausing keywords/ads/campaigns, creating/editing
+  ads). Each action already carries a `risk` field (`low`/`med`/`high`) and a type — autonomy is just a
+  per-type allow-list gated on `risk: "low"`.
+- **Always auditable + reversible:** auto-applied actions still hit the audit log and surface in the
+  feed as "auto-applied (undo)", so nothing happens invisibly and Lee can roll any of them back.
+
 ## 5. The module pattern (so it scales to everything)
 
 Every channel is a **module** implementing the same contract:
@@ -104,21 +114,17 @@ Build modules in this order (value + readiness):
 5. **Social posting + content pipeline** (drafts → approve → schedule; LinkedIn, IG, etc.).
 6. **Content/SEO** (the keyword plan + article performance).
 
-## 6. Gamification (make running marketing feel like levelling up)
+## 6. Gamification — **LIGHT** (decided 2026-06-30)
 
-The goal: turn "boring admin" into a loop Lee *wants* to check daily. Mechanics:
-- **Marketing Score** (0–1000, credit-score style): a single composite of efficiency (cost-per-lead),
-  growth (leads/sales trend), and hygiene (waste cleaned, ads approved, budget not leaking). One number
-  that goes up when things are healthy.
-- **Per-channel Health** (0–100, traffic-light): quick "is this channel ok" read.
-- **Streaks** 🔥: consecutive days the cockpit was checked / recommendations actioned.
-- **Quests / missions**: weekly objectives — "Add 3 negatives", "Get cost-per-lead under $30",
-  "Approve this week's content batch". Completing them awards **XP** and nudges the score.
-- **Leak meter** 💧: live "wasted spend" gauge — money going to 0-conversion search terms. Plugging
-  leaks visibly drops the meter and feels good.
-- **Badges / levels**: lightweight rewards for milestones (first 10 leads, first $X day, 30-day streak).
-- Keep it **honest**: the score must track real business outcomes (leads, cost-per-lead, sales), not
-  vanity. Gamify the *right* behaviour.
+Decision: keep it light — useful signals, not a full game. **Two mechanics only:**
+- **Per-channel Health (0–100, traffic-light):** a quick "is this channel ok" read, blended from real
+  outcomes (cost-per-lead vs target, CTR, % budget not wasted, ads approved, has conversions). Green/
+  amber/red. Honest — tracks business results, not vanity.
+- **Leak meter 💧:** a live "wasted spend" gauge — money going to 0-conversion search terms. Applying
+  negatives visibly drops it, which gives instant, satisfying feedback without dressing it up as a game.
+
+_Deliberately **out of scope** for now (can revisit later): the 0–1000 Marketing Score, streaks, XP,
+quests/missions, badges/levels. We can add any of these later if the light version proves it wants more._
 
 ## 7. Tech stack (recommendation — confirm against cnccut.app)
 
@@ -152,10 +158,9 @@ The goal: turn "boring admin" into a loop Lee *wants* to check daily. Mechanics:
   current scope).
 - **Hosting of the brain** — Claude calls run server-side on Vercel? Or a separate worker for the
   scheduled monitor? (Vercel functions have time limits; the monitor may want a small worker/cron.)
-- **How much autonomy, eventually** — start strict (every change a click). Later, do we let Claude
-  auto-apply *low-risk* changes (e.g. adding obvious junk negatives) and only ask for the big ones?
-- **Gamification appetite** — full game layer (score/quests/badges) from the start, or add it once the
-  core cockpit feels good?
+- ~~How much autonomy~~ **DECIDED:** start strict; later auto-apply only `risk:low` actions, ask for
+  everything with money/reach (see §4 "Autonomy — graduated").
+- ~~Gamification appetite~~ **DECIDED:** light — Health score + Leak meter only (see §6).
 
 ---
 

@@ -112,9 +112,11 @@ the draft check). Respect platform rate limits.
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **Social Media Organiser module** following brief `05-social-media-organiser.md` and the
-> shared conventions in `01-foundation-cockpit-shell.md`. Foundation shell + `docs/marketing/` +
-> the asset library (Brief 03) should exist. Ship the MVP for **Instagram** end-to-end: a content
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/05-social-media-organiser.md`
+> plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **Social Media Organiser module**. The asset library
+> (Brief 03) should exist. Ship the MVP for **Instagram** end-to-end: a content
 > **calendar + status pipeline** (idea→draft→approved→scheduled→posted) on `/marketing/social`, a
 > `tools/social.mjs draft` that writes captions in `SOCIAL-VOICE` (value-first, no emoji) with a Gate-1
 > self-check and attaches a library asset, the shared Approval drawer for Gate 2, and — since Later has

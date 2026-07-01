@@ -113,9 +113,11 @@ unless permissioned. Human approval before any asset is used externally.
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **Config Asset Creator module** following brief `04-config-asset-creator.md` and the
-> shared conventions in `01-foundation-cockpit-shell.md`. Foundation shell + `docs/marketing/` +
-> the Studio render pipeline (Brief 03) should exist — reuse the render pipeline, don't duplicate it.
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/04-config-asset-creator.md`
+> plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **Config Asset Creator module**. The Studio render
+> pipeline (Brief 03) should exist — reuse it, don't duplicate it.
 > First, find where product **configurations/quotes** live in this repo/DB and document it in
 > `docs/marketing/APP-NOTES.md`. Then ship the MVP: pick a real configuration (start with Radius Pro
 > or the Formwork Builder job), map its real fields into a content JSON, render an on-brand

@@ -109,9 +109,11 @@ finals; `CONFIRM=1` for final-model spend. Nothing ships without Gate 2.
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **Studio (image/video generator) module** following brief `03-image-video-generator.md`
-> and the shared conventions in `01-foundation-cockpit-shell.md`. The Foundation shell +
-> `docs/marketing/` must exist. Port the existing `pipeline/` render system (content JSON + HTML
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/03-image-video-generator.md`
+> plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **Studio (image/video generator) module**. Port the
+> existing `pipeline/` render system (content JSON + HTML
 > template → PNG via Playwright + sharp) into a `tools/studio.mjs` backend and a `/marketing/studio`
 > page. Ship the MVP: render a brand template to a finished PNG, run the `QUALITY-DOCTRINE` Gate-1
 > adherence check, and land it in an asset library as `needs-approval` with provenance, approvable via

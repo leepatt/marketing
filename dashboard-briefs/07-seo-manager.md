@@ -112,8 +112,10 @@ Respect Perplexity/Firecrawl rate limits + costs.
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **SEO Manager module** following brief `07-seo-manager.md` and the shared conventions in
-> `01-foundation-cockpit-shell.md`. Foundation shell + `docs/marketing/` should exist. Ship the MVP on
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/07-seo-manager.md` plus
+> the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **SEO Manager module**. Ship the MVP on
 > `/marketing/seo`: load `docs/marketing/brand/keyword-plan.md` into a **coverage table** mapped to live
 > Shopify pages (flag gaps), a `tools/seo.mjs audit` that scores the key product pages
 > (title/meta/alt/JSON-LD/links) with fixes, and a `tools/seo.mjs brief --keyword <term>` that produces

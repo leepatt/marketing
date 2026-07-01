@@ -105,9 +105,10 @@ confirm Meta Pixel/CAPI before enabling purchase-optimised campaigns).
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **Meta Ads module** in the marketing cockpit, following brief `02-meta-ads.md` and the
-> shared conventions in `01-foundation-cockpit-shell.md` / `docs/marketing/APP-NOTES.md`. The
-> Foundation shell and `docs/marketing/` sync must already exist — if not, stop and flag it.
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/02-meta-ads.md` plus the
+> shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **Meta Ads module** in the marketing cockpit.
 > Extend the existing `tools/meta-ads.mjs` (keep its `CONFIRM=1` guardrail); do not rewrite it. Ship
 > the MVP slice: a weekly Meta report (spend/results/ROAS/CTR by campaign→ad set→ad + IG insights)
 > rendered on a `/marketing/meta` page with wasted-spend flags, plus ONE write path (pause ad / add

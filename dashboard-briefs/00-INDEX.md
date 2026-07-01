@@ -35,9 +35,18 @@ approve → then it posts/sends/spends. Nothing auto-publishes.
 
 ## How to use a brief
 
-Open a new session in the **cnccut.app** repo, on a new branch, and paste that brief's
-**"Kickoff prompt"** (bottom of each file) as your first message. The prompt tells the session to
-read the Foundation brief, respect the shared conventions, and build the MVP slice.
+Open a new session in the **cnccut.app** repo, on a new branch. Then:
+
+- **Foundation (01) — the first session:** cnccut.app can't read this repo yet, so paste the **full
+  text** of `01-foundation-cockpit-shell.md` (or the self-contained kickoff block) as your first
+  message. Build it and **merge it** — that session sets up `docs/marketing/` and syncs copies of
+  every brief into the cnccut.app repo.
+- **Tools (02–07) — after Foundation is merged:** the briefs now physically exist in the repo under
+  `docs/marketing/dashboard-briefs/`, so you only paste that tool's short **"Kickoff prompt"** (bottom
+  of its file). It tells the session to open and read its full brief + `APP-NOTES.md` from the repo,
+  then build the MVP slice. One-line paste, no inlining needed.
+- **Caveat:** the one-line paste only works once Foundation is merged. To run a tool session *before*
+  that, you must inline the full brief text like the Foundation session.
 
 ## The recurring answer: how tools read the marketing md files
 

@@ -108,9 +108,11 @@ footer is present. Confirm list source/consent (lead-magnet opt-ins). No emoji; 
 
 ## Kickoff prompt (paste into a fresh cnccut.app session)
 
-> Build the **Newsletter Generator module** following brief `06-newsletter-generator.md` and the
-> shared conventions in `01-foundation-cockpit-shell.md`. Foundation shell + `docs/marketing/` should
-> exist. Email platform is **Shopify Email** (already connected — no new key). First confirm whether the
+> Foundation (Brief 01) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+> and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/06-newsletter-generator.md`
+> plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+> `docs/marketing/APP-NOTES.md`, then build the **Newsletter Generator module**. Email platform is
+> **Shopify Email** (already connected — no new key). First confirm whether the
 > Shopify Email API/MCP supports programmatic campaign create+send or requires a human click, and note
 > it in `docs/marketing/APP-NOTES.md`. Ship the MVP on `/marketing/newsletter`: a `tools/newsletter.mjs`
 > that assembles a suggested issue from recent approved assets/posts/products, drafts subject +

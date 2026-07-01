@@ -63,20 +63,18 @@ paste. **No broad match** to start. Keep tight; expand from the weekly Search Te
 _Sourced from Lee spotting real Google searches + `generateKeywordIdeas` volumes (AU). All phrase
 unless `[exact]`. Both AU "moulding" and US "molding" spellings added where relevant._
 
-**Radius Pro** (curved wall panels / plates / MDF — from "curved walls" + "curved plates ply" searches):
+**Radius Pro** (curved ply / plates / MDF — from "curved walls" + "curved plates ply" searches):
 ```
 "rounded plywood"            (90/mo)   [rounded plywood]
-"curved wall panels"         (140/mo)  [curved wall panels]
-"curved wall panelling"      (140/mo)
-"curved wall cladding"       (40/mo)
 "curved mdf"                 (50/mo)   [curved mdf]
 "bending mdf"                (50/mo)
 "curving mdf"                (50/mo)
 "curved plywood plates"
 "curved ply plates"
 ```
-⚠ Watch: "curved wall panelling/cladding" may attract decorative fluted/acoustic-panel intent — prune
-from Search Terms if off-product. Assumes Radius Pro (curved MDF/ply) covers curved wall panels.
+❌ **Removed 2026-07-01** (Lee: Craftons does NOT do curved wall panelling/cladding):
+`curved wall panels` (phrase+exact), `curved wall panelling`, `curved wall cladding` — pulled back +
+added as negatives (see `negative-keywords.md`).
 
 **Curved Architraves** (moulding cluster — page ranks #1 for "architrave" but was invisible for "moulding"):
 ```

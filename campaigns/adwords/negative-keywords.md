@@ -83,6 +83,26 @@ ikea
 kmart
 ```
 
+## Added 2026-07-01 (applied live to campaign 23983924746) — off-product protection
+Craftons does NOT make curved skirting, cornices, or curved wall panelling/cladding (confirmed w/ Lee),
+and the moulding/curved-walls research surfaced adjacent non-product intent. Added as phrase negatives:
+```
+skirting
+cornice
+cladding
+panelling
+paneling
+plaster
+tile
+gabion
+acoustic
+fluted
+slat
+crown moulding
+crown molding
+baseboard
+```
+
 ## Notes
 - **Hobby terms** (skateboard, guitar, furniture, chair, boat…) are the big savers for the Radius Pro
   group — that's who searches "bendy ply" without buying building products.

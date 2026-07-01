@@ -30,6 +30,8 @@ approve → then it posts/sends/spends. Nothing auto-publishes.
    - `05-social-media-organiser.md` — FB/IG/LinkedIn content calendar + draft→approve→schedule pipeline
    - `06-newsletter-generator.md` — fortnightly newsletter draft + Shopify Email send
    - `07-seo-manager.md` — keyword/content/technical SEO tracking + brief generation
+3. **`08-execution-order.md`** — dependency map, recommended build sequence, parallelisation, and the
+   cross-session guardrails. Read this to decide *what to build when* and *what to build in parallel*.
 
 ## How to use a brief
 

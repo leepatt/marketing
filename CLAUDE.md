@@ -20,6 +20,7 @@ This repo is the entry point for working on Craftons marketing — especially fr
 
 ## Start here
 
+- **This repo `STATUS.md` — the living status + plan. READ THIS FIRST each session** (what's done, what's next, open questions, doc index — so we never repeat work).
 - This repo `SETUP.md` — the step-by-step setup sequence + the integrations/API-key checklist for standing the engine up.
 - Drive `02 Strategy/Craftons-Marketing-Engine-Plan.md` — the phased build plan.
 - Drive `02 Strategy/Craftons-Marketing-Engine-Notes.md` — decisions, targets, the Gozney playbook, benchmarks.

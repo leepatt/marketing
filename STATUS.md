@@ -70,10 +70,16 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] **Google Ads API Basic access GRANTED (2026-06-30)** — dev token approved on MCC **275-347-3695**
   (15k ops/day). Engine can reach the API from the cloud (verified). `tools/google-ads.mjs` built
   (read-only: `accounts` + `report`); writes pending behind CONFIRM=1 after connect.
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** — into the environment's **secret store**
-  (persists across sessions; not repo/chat). 6 vars listed in `api-access.md`. ← **the only blocker to connect**
-- [ ] **Confirm Craftons advertiser customer id** — docs conflict; resolve via `google-ads.mjs accounts`
-  (pick the account with ~23 purchases + 443 leads). Then deploy is human-approved (real $).
+- [x] **Creds mirrored + CONNECTED (2026-07-02)** — `google-ads.mjs accounts`/`report` verified read-only.
+- [x] **Craftons account CONFIRMED = `3104912421`** ("Craftons Google Ads account", 84 conv/30d). MCC
+  `2753473695` = "Craftons Marketing". ⚠️ The advertiser is reached **directly, NOT via the MCC** (not
+  linked in the API) — tool now auto-falls-back login-customer-id. Optional: set
+  `GOOGLE_ADS_LOGIN_CUSTOMER_ID=3104912421`, or link the account under the MCC in Google Ads.
+- [!] **Engine did NOT deploy our campaign.** Existing live campaigns in the account (7d): **Cavity
+  Battens Performance Max** ($191, 5 conv, CTR 1.1%) is the main spender; **"Craftons – Customised
+  Building Products"** (our spec's name, manually created) is live but barely running ($6.99, 2 clicks,
+  0 conv); "Cavity Battens June 25" paused. Next: diagnose why the search campaign isn't getting traffic,
+  then human-approved changes.
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ---

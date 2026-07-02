@@ -48,12 +48,30 @@ async function loadApi() {
   }
 }
 
-function newCustomer(api, customerId) {
+function customerFor(api, customerId, loginId) {
   return api.Customer({
     customer_id: clean(customerId),
-    login_customer_id: clean(process.env.GOOGLE_ADS_LOGIN_CUSTOMER_ID),
+    login_customer_id: clean(loginId),
     refresh_token: process.env.GOOGLE_ADS_REFRESH_TOKEN,
   });
+}
+
+// Query with a login-customer-id fallback. The Craftons advertiser (3104912421)
+// is reached DIRECTLY, not through the MCC (2753473695) — they aren't linked in
+// the API. So try the configured login first, and if the account isn't reachable
+// that way, retry with the account as its own login-customer-id.
+async function gaql(api, customerId, query) {
+  const configured = process.env.GOOGLE_ADS_LOGIN_CUSTOMER_ID || customerId;
+  try {
+    return await customerFor(api, customerId, configured).query(query);
+  } catch (e) {
+    const msg = String(e?.message || '') + ' ' +
+      (Array.isArray(e?.errors) ? e.errors.map((x) => x?.message || '').join(' ') : '');
+    if (/permission/i.test(msg) && clean(configured) !== clean(customerId)) {
+      return await customerFor(api, customerId, customerId).query(query);
+    }
+    throw e;
+  }
 }
 
 // --- accounts: list accessible customers + name/currency/conversions ----------
@@ -72,13 +90,12 @@ async function cmdAccounts() {
   for (const rn of resource_names) {
     const id = rn.split('/')[1];
     try {
-      const customer = newCustomer(api, id);
-      const rows = await customer.query(
+      const rows = await gaql(api, id,
         'SELECT customer.id, customer.descriptive_name, customer.currency_code, customer.manager FROM customer LIMIT 1');
       const c = rows[0]?.customer || {};
       let conv = '';
       try {
-        const m = await customer.query(
+        const m = await gaql(api, id,
           'SELECT metrics.conversions FROM customer WHERE segments.date DURING LAST_30_DAYS');
         const total = m.reduce((s, r) => s + Number(r.metrics?.conversions || 0), 0);
         conv = `  conv(30d)=${total.toFixed(0)}`;
@@ -102,10 +119,10 @@ async function cmdReport(days) {
     client_secret: process.env.GOOGLE_ADS_CLIENT_SECRET,
     developer_token: process.env.GOOGLE_ADS_DEVELOPER_TOKEN,
   });
-  const customer = newCustomer(api, process.env.GOOGLE_ADS_CUSTOMER_ID);
+  const custId = process.env.GOOGLE_ADS_CUSTOMER_ID;
   const range = days === 30 ? 'LAST_30_DAYS' : 'LAST_7_DAYS';
 
-  const campaigns = await customer.query(
+  const campaigns = await gaql(api, custId,
     `SELECT campaign.name, metrics.cost_micros, metrics.clicks, metrics.conversions, ` +
     `metrics.ctr, metrics.average_cpc, metrics.cost_per_conversion ` +
     `FROM campaign WHERE segments.date DURING ${range} ORDER BY metrics.cost_micros DESC`);
@@ -129,7 +146,7 @@ async function cmdReport(days) {
     }
   }
 
-  const terms = await customer.query(
+  const terms = await gaql(api, custId,
     `SELECT search_term_view.search_term, metrics.clicks, metrics.cost_micros, metrics.conversions ` +
     `FROM search_term_view WHERE segments.date DURING ${range} AND metrics.clicks > 0 ` +
     `ORDER BY metrics.cost_micros DESC LIMIT 25`);

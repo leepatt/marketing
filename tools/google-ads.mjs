@@ -160,6 +160,74 @@ async function cmdReport(days) {
   }
 }
 
+// --- write helpers (behind CONFIRM=1) ----------------------------------------
+async function findCampaign(api, custId) {
+  const camps = await gaql(api, custId,
+    'SELECT campaign.id, campaign.name, campaign.resource_name FROM campaign');
+  const camp = camps.find((r) => (r.campaign?.name || '').includes('Customised Building Products'));
+  if (!camp) throw new Error('Campaign "Craftons – Customised Building Products" not found');
+  return camp.campaign;
+}
+
+// The advertiser is directly owned, so use it as its own login-customer-id for writes.
+function writeCustomer(api, custId) {
+  return customerFor(api, custId, custId);
+}
+
+function apiFrom() {
+  return loadApi().then((GoogleAdsApi) => new GoogleAdsApi({
+    client_id: process.env.GOOGLE_ADS_CLIENT_ID,
+    client_secret: process.env.GOOGLE_ADS_CLIENT_SECRET,
+    developer_token: process.env.GOOGLE_ADS_DEVELOPER_TOKEN,
+  }));
+}
+
+// bids <dollars> — set max CPC on the campaign's ad groups (dry-run unless CONFIRM=1)
+async function cmdBids(amount) {
+  need([...BASE_ENV, 'GOOGLE_ADS_CUSTOMER_ID']);
+  if (!(amount > 0)) { console.error('Usage: CONFIRM=1 node google-ads.mjs bids <dollars>'); process.exit(1); }
+  const api = await apiFrom();
+  const custId = process.env.GOOGLE_ADS_CUSTOMER_ID;
+  const camp = await findCampaign(api, custId);
+  const ags = await gaql(api, custId,
+    `SELECT ad_group.name, ad_group.resource_name, ad_group.cpc_bid_micros FROM ad_group ` +
+    `WHERE campaign.id = ${camp.id} AND ad_group.status != 'REMOVED'`);
+  console.log(`Campaign: ${camp.name}`);
+  console.log(`Change: set max CPC → $${amount.toFixed(2)} on ${ags.length} ad group(s):`);
+  for (const r of ags) console.log(`  ${r.ad_group.name}: $${dollars(r.ad_group.cpc_bid_micros)} → $${amount.toFixed(2)}`);
+  if (process.env.CONFIRM !== '1') { console.log('\nDRY RUN — re-run with CONFIRM=1 to apply.'); return; }
+  const customer = writeCustomer(api, custId);
+  await customer.adGroups.update(ags.map((r) => ({
+    resource_name: r.ad_group.resource_name, cpc_bid_micros: Math.round(amount * 1e6),
+  })));
+  console.log(`\n✓ Applied max CPC $${amount.toFixed(2)} to ${ags.length} ad groups.`);
+}
+
+// add-geo <geoId,geoId> — add location targets to the campaign (dry-run unless CONFIRM=1)
+async function cmdAddGeo(idsCsv) {
+  need([...BASE_ENV, 'GOOGLE_ADS_CUSTOMER_ID']);
+  const ids = (idsCsv || '').split(',').map((s) => s.trim()).filter(Boolean);
+  if (!ids.length) { console.error('Usage: CONFIRM=1 node google-ads.mjs add-geo <geoId,geoId>'); process.exit(1); }
+  const api = await apiFrom();
+  const custId = process.env.GOOGLE_ADS_CUSTOMER_ID;
+  const camp = await findCampaign(api, custId);
+  const names = {};
+  try {
+    for (const r of await gaql(api, custId,
+      `SELECT geo_target_constant.id, geo_target_constant.canonical_name FROM geo_target_constant ` +
+      `WHERE geo_target_constant.id IN (${ids.join(',')})`)) names[r.geo_target_constant.id] = r.geo_target_constant.canonical_name;
+  } catch { /* names are cosmetic */ }
+  console.log(`Campaign: ${camp.name}`);
+  console.log(`Add ${ids.length} location target(s):`);
+  for (const id of ids) console.log(`  geoTargetConstants/${id}  ${names[id] || ''}`);
+  if (process.env.CONFIRM !== '1') { console.log('\nDRY RUN — re-run with CONFIRM=1 to apply.'); return; }
+  const customer = writeCustomer(api, custId);
+  await customer.campaignCriteria.create(ids.map((id) => ({
+    campaign: camp.resource_name, location: { geo_target_constant: `geoTargetConstants/${id}` },
+  })));
+  console.log(`\n✓ Added ${ids.length} location target(s) to ${camp.name}.`);
+}
+
 // --- main --------------------------------------------------------------------
 const argv = process.argv.slice(2);
 const cmd = argv[0];
@@ -168,8 +236,11 @@ const daysFlag = argv.includes('--days') ? parseInt(argv[argv.indexOf('--days') 
 try {
   if (cmd === 'accounts') await cmdAccounts();
   else if (cmd === 'report') await cmdReport(daysFlag);
+  else if (cmd === 'bids') await cmdBids(parseFloat(argv[1]));
+  else if (cmd === 'add-geo') await cmdAddGeo(argv[1]);
   else {
-    console.log('Usage:\n  node google-ads.mjs accounts\n  node google-ads.mjs report [--days 7|30]');
+    console.log('Usage:\n  node google-ads.mjs accounts\n  node google-ads.mjs report [--days 7|30]\n' +
+      '  CONFIRM=1 node google-ads.mjs bids <dollars>\n  CONFIRM=1 node google-ads.mjs add-geo <geoId,geoId>');
     process.exit(cmd ? 1 : 0);
   }
 } catch (e) {

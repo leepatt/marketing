@@ -75,11 +75,13 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   `2753473695` = "Craftons Marketing". ⚠️ The advertiser is reached **directly, NOT via the MCC** (not
   linked in the API) — tool now auto-falls-back login-customer-id. Optional: set
   `GOOGLE_ADS_LOGIN_CUSTOMER_ID=3104912421`, or link the account under the MCC in Google Ads.
-- [!] **Engine did NOT deploy our campaign.** Existing live campaigns in the account (7d): **Cavity
-  Battens Performance Max** ($191, 5 conv, CTR 1.1%) is the main spender; **"Craftons – Customised
-  Building Products"** (our spec's name, manually created) is live but barely running ($6.99, 2 clicks,
-  0 conv); "Cavity Battens June 25" paused. Next: diagnose why the search campaign isn't getting traffic,
-  then human-approved changes.
+- [x] **First engine writes applied (2026-07-02, human-approved)** → `craftons-change-log.md`. The
+  "Craftons – Customised Building Products" search campaign was rank-limited (IS 36%; 64% lost to rank,
+  0% budget). Raised max CPC $3.50→**$6.00** ×3 ad groups; added **Sydney + Brisbane** geo. Verified live.
+  `google-ads.mjs` now has CONFIRM-gated `bids` + `add-geo` commands.
+  - **Watch:** spend climbing (was $7 of $50/day), IS rising / rank-lost falling, cost-per-lead, and
+    whether interstate leads convert given freight. The **Cavity Battens Performance Max** campaign
+    ($191/7d, 5 conv) remains the account's main spender/converter — separate from our search campaign.
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ---

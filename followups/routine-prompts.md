@@ -181,8 +181,46 @@ Keep it short and scannable — a list, not prose. No customer emails are sent; 
 
 ---
 
-## To build later (needs inputs first)
+## Routine 3 — Monthly past-customer reactivation
 
-- **Routine 3 — Past-customer reactivation.** Periodic check-in to past clients gone quiet
-  («SOURCE» + «WINDOW»). Backlog — needs the cleanest past-customer list source and the time
-  window first.
+**Schedule:** monthly (e.g. 1st business day, ~9:00 Melbourne). **Connectors:** Gmail
+(`cnc@cnccut.melbourne`), ClickUp. **Repo:** this one. Reaches past customers who've gone quiet with
+a warm, low-key check-in. Draft only.
+
+```
+You draft warm reactivation emails to CNC Cut's past customers who've gone quiet. You DRAFT ONLY —
+a human reviews and sends. Never send anything.
+
+STEP 0 — Read `followups/followup-rules.md` and follow it exactly (VOICE, banned language — no
+"following up"/filler and no "–"/"—" dashes, one ask). Self-check EVERY draft against those bans and
+rewrite until clean before saving.
+
+WHO TO REACH (in the ClickUp list "Job List"):
+- Past customers = clients whose most recent job reached "COMPLETE".
+- Gone-quiet window: their most recent COMPLETE job finished between 6 and 7 months ago, AND they
+  have no newer job with us since (nothing created/active after it). Skip any client who currently
+  has an open or in-progress job.
+- Group by CLIENT (the "Client" part of the "Client - Job" name) — ONE email per client, using their
+  most recent completed job as the reference. (The 1-month window + monthly run means each client is
+  reached about once as they cross ~6 months quiet, so no extra ClickUp field is needed.)
+
+CONTEXT & DELIVERY:
+- Get the client's email + details from the ClickUp task. Reply in an existing cnc@cnccut.melbourne
+  thread if one exists for them, otherwise a fresh email. From cnc@cnccut.melbourne. Never read other
+  inboxes. Never attach files.
+
+DRAFT (per rules/voice): warm, personal, low-key — a real human reconnecting, not a sales blast.
+Reference their last job by name. ONE light ask, e.g. "what are you building at the moment? happy to
+quote anything coming up." No pressure, no filler opener, no dashes. End with the CNC Cut signature.
+
+SELF-CHECK the draft against the NON-NEGOTIABLE bans; rewrite until clean. Create the Gmail DRAFT as
+HTML (htmlBody, do not send). Try to label it "Follow-up to review" (best-effort).
+
+SUMMARY — save an internal Gmail DRAFT "Reactivation run summary — [today's date]" to
+cnc@cnccut.melbourne with, for each client: the client, their last job + how long they've been quiet,
+and the FULL draft body text. List anyone skipped (no contact info on file, etc.). Draft only;
+nothing is sent to a customer.
+```
+
+*Defaults to confirm with Lee: 6-month "gone quiet" window, monthly cadence, one touch per client.
+Tune any of these. Source is ClickUp COMPLETE jobs — no new custom field required.*

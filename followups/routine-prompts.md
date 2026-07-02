@@ -28,6 +28,17 @@ Open `followups/followup-rules.md` in the connected repo and follow it exactly �
 CNC Cut VOICE, the BANNED language, the one-idea/one-question discipline, the date reasoning, and
 the rules on internal notes (never leak) and Ravi-tagged comments (never use).
 
+NON-NEGOTIABLE — after writing EACH draft, re-read it against this list and REWRITE until it passes.
+Never save a draft that breaks any of these:
+- NO filler opener or phrase anywhere: never use "following up", "just following up", "checking
+  in", "touching base", "circling back", "any update". Open with the real reason.
+- NO dashes as connectors: never use "–", "—", or " - " in the body. Use a full stop or comma, or
+  rewrite the sentence.
+- ONE ask only, short, in CNC Cut's voice.
+- Part B review requests MUST contain the clickable review link.
+(These mirror followups/followup-rules.md — they're the ones most often missed, so verify them
+explicitly on every draft before saving it.)
+
 All jobs live in the ClickUp list "Job List" — only act on tasks there.
 
 THE CLICKUP PIPELINE (important — controls when we send):
@@ -48,7 +59,7 @@ CONTEXT & DELIVERY (read carefully):
 - Everything sends from cnc@cnccut.melbourne. REPLY WITHIN the existing email thread whenever one
   exists for this job — keep the follow-up in the same conversation. Start a FRESH email ONLY when
   there's no Gmail thread (Craftons jobs, ClickUp form submissions that never emailed; subject like
-  "[Job] – Quote #[number]").
+  "[Job] Quote #[number]").
 - Do NOT read or chase any other inbox (cnccutmelbourne@gmail.com, hello@craftons.com.au). A missing
   thread is NEVER a reason to skip — just send a fresh email.
 - Every Job List task is a CNC Cut job → send from cnc@cnccut.melbourne. Pure Craftons jobs are
@@ -94,11 +105,13 @@ no banned phrases. Use the angle for the touch:
   rough window that suits and a number, and we'll call them then. One ask.
 - TOUCH 3 — the close-off / break-up: give permission to say no, then we stop.
 Delivery: reply on the existing thread if there is one; otherwise send a FRESH email to the
-customer (subject "[Job] – Quote #[number]"). From: cnc@cnccut.melbourne. Sign off "Cheers," then
+customer (subject "[Job] Quote #[number]"). From: cnc@cnccut.melbourne. Sign off "Cheers," then
 the CNC Cut HTML signature from followups/followup-rules.md (§ Email signature).
 
-A6 — Create the Gmail DRAFT as HTML (htmlBody, do not send) — message as simple HTML paragraphs,
-ending with the CNC Cut signature block. Try to label its thread "Follow-up to review" (create the
+A6 — SELF-CHECK first: re-read the draft against the NON-NEGOTIABLE list (no "following up"/filler
+opener, no "–"/"—" dashes, one ask, CNC Cut voice); rewrite until it passes. Then create the Gmail
+DRAFT as HTML (htmlBody, do not send) — message as simple HTML paragraphs, ending with the CNC Cut
+signature block. Try to label its thread "Follow-up to review" (create the
 label if needed) — BEST-EFFORT: if labelling errors, carry on, the draft is what matters.
 Update the job: set `Follow-Up Email` to the new stage and `Last follow-up` to today.
 
@@ -123,8 +136,9 @@ two easy asks:
 Light, not pushy. Reply within the existing thread if one exists; otherwise a fresh email. From
 cnc@cnccut.melbourne, end with the CNC Cut signature. (Best sent Tue–Thu, late morning.)
 
-B4 — Create the Gmail DRAFT as HTML (htmlBody, do not send), ending with the CNC Cut signature
-block. Try to label it "Follow-up to review" (best-effort — skip if it errors). Set
+B4 — SELF-CHECK first: re-read the draft against the NON-NEGOTIABLE list (no filler opener, no
+"–"/"—" dashes, one ask, and the clickable review link IS present); rewrite until it passes. Then
+create the Gmail DRAFT as HTML (htmlBody, do not send), ending with the CNC Cut signature block. Try to label it "Follow-up to review" (best-effort — skip if it errors). Set
 `Follow-Up Email` to "Request Email". Ask each customer only once.
 
 =================================================================

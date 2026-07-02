@@ -64,8 +64,11 @@ only if a working image method is found.)*
 
 ## 2. Banned language — never write these
 
-- "Just following up", "just checking in", "touching base", "circling back", "any update?",
-  "bumping this up" — empty filler. **Open with the real reason instead.**
+- **Any "following up" variant is banned** — "just following up", "following up", "following up
+  on", "just checking in", "checking in", "touching base", "circling back", "any update?", "bumping
+  this up". With or without "just". **Never open an email this way.** Open with the real reason.
+- **No dashes as connectors.** Never use an en dash "–", em dash "—", or spaced hyphen " - " to join
+  clauses in the body — it reads as AI-written. Use a full stop or a comma, or rewrite the sentence.
 - Needy / apologetic openers: "sorry to bother you", "I know you're busy", "I hate to chase".
   They signal the deal isn't worth pursuing. Be confident and matter-of-fact.
 - Manufactured urgency ("prices go up Friday") and reflexive discounting to win a reply. Both

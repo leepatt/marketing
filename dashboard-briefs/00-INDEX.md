@@ -20,9 +20,14 @@ approve → then it posts/sends/spends. Nothing auto-publishes.
 
 ## Build order
 
-1. **`01-foundation-cockpit-shell.md`** — build this FIRST. Shared shell, auth, design system,
-   data layer, the `docs/marketing/` doc-sync mechanism, and the `tools/*.mjs` conventions every
-   other tool depends on.
+> **Update 2026-07-07:** the first build is now **`09-cockpit-v1-google-ads-build.md`** — it absorbs
+> Brief 01 (Foundation) and adds the live Google Ads dashboard (API Basic access is APPROVED), Meta
+> KPI tiles on the Overview, and the chat assistant. Use Brief 09's self-contained kickoff block for
+> the first cnccut.app session instead of Brief 01's. Briefs 02–07 are unchanged and come after.
+
+1. **`01-foundation-cockpit-shell.md`** — the foundation spec (shared shell, auth, design system,
+   data layer, `docs/marketing/` doc-sync, `tools/*.mjs` conventions). Now built as part of Brief 09
+   rather than standalone; still the reference for the shared conventions.
 2. Then the six tools, in any order (each is an MVP vertical slice, independently shippable):
    - `02-meta-ads.md` — Meta (FB/IG) ads: insights + human-approved campaign drafting
    - `03-image-video-generator.md` — on-brand image/video generation (Replicate/Glif + render pipeline)

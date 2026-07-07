@@ -25,7 +25,7 @@ self-contained** — paste it into a fresh cnccut.app session (which cannot read
    and CNC Cut spend under the MCC.
 4. **Overview page** with cross-channel KPI tiles: Google Ads live + Meta (via the existing
    `tools/meta-ads.mjs`) — GoHighLevel-style dense marketing snapshot.
-5. **Chat assistant** docked at the bottom of the cockpit ("Alex") — server-side LLM route that can
+5. **Chat assistant** docked at the bottom of the cockpit — server-side LLM route that can
    call the report tools and answer "how are ads going?", produce daily/weekly reports on demand.
    **Read-only**: it can draft proposals into `approvals` but can never execute a write.
 

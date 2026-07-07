@@ -1,67 +1,16 @@
-# Brief 09 — Cockpit v1: Foundation + Google Ads dashboard + Meta KPIs + chat assistant
+# Paste blocks — one per cnccut.app session
 
-_Decided 2026-07-07: collapse the first real build into one effort. This brief **absorbs Brief 01**
-(Foundation) and adds the Google Ads dashboard as the flagship module, Meta KPI tiles on the
-Overview, and a GoHighLevel-style chat assistant. The kickoff block at the bottom is **fully
-self-contained** — paste it into a fresh cnccut.app session (which cannot read this repo)._
+_The copy-paste sheet. Each block below is the first message for one fresh session in the
+**cnccut.app** repo. Canonical specs live in the numbered briefs; this file is the convenience
+sheet (kept in sync manually — if a brief changes, refresh its block here)._
 
-**Status changes since the earlier briefs (bake these in):**
-- ✅ **Google Ads API Basic access APPROVED** (confirmed by Lee 2026-07-07). Live account data is
-  pullable via the API with the rotated creds already in Vercel.
-- ✅ An **LLM API key already exists in the app's Vercel env** — the session should find and use it
-  for the chat assistant.
-- The CNC Cut account reassessment (vs. the 2026-06-30 baseline) is due ~2026-07-07 — the new
-  dashboard's first real job.
-
-## What v1 contains
-
-1. **Foundation shell** (everything from Brief 01): `/marketing` cockpit, auth, Craftons theme,
-   doc-sync into `docs/marketing/`, shared data layer (`runs`/`approvals`/`assets`/`metrics_cache`),
-   shared UI primitives, `tools/*.mjs` conventions.
-2. **`tools/google-ads.mjs`** — the engine's Google Ads tool (report mode read-only by default,
-   change mode behind `CONFIRM=1`), per `campaigns/adwords/api-access.md` + `api-tool-design.md`.
-3. **Google Ads dashboard page** (`/marketing/google-ads`) — live KPIs, trends, campaign → ad group →
-   keyword → search-terms drill-down, wasted-spend flags, for both the Craftons advertiser account
-   and CNC Cut spend under the MCC.
-4. **Overview page** with cross-channel KPI tiles: Google Ads live + Meta (via the existing
-   `tools/meta-ads.mjs`) — GoHighLevel-style dense marketing snapshot.
-5. **Chat assistant** docked at the bottom of the cockpit — server-side LLM route that can
-   call the report tools and answer "how are ads going?", produce daily/weekly reports on demand.
-   **Read-only**: it can draft proposals into `approvals` but can never execute a write.
-
-## Design inspiration
-
-GoHighLevel-style marketing command centre: dense KPI tile row up top (spend, clicks, conversions,
-cost/conversion, CTR, ROAS where derivable), trend charts (7/30-day), channel cards, a campaign
-table, and a persistent assistant/chat dock at the bottom. Rendered in the **Craftons design system**
-(dark forest green `#194431`, warm off-white, Aeonik/Inter, no gradients, no emoji) — not GHL's look,
-its **information density and workflow**.
-
-## Account facts (from the marketing repo — treat as ground truth)
-
-- MCC / manager: **Craftons Marketing `275-347-3695`** → `GOOGLE_ADS_LOGIN_CUSTOMER_ID=2753473695`
-- Advertiser account: **`310-491-2421`** → `GOOGLE_ADS_CUSTOMER_ID=3104912421`
-- Open structural question: whether the new Craftons campaigns live in the same account as CNC Cut's
-  existing campaigns — the dashboard should **list accessible accounts under the MCC** and handle
-  one-or-many gracefully.
-- CNC Cut baseline (June 2026): A$2,069.83 spend / 321 clicks / $6.45 CPC / 9.16% CTR / 0 tracked
-  conversions; tightened 2026-06-30 (Industry Specific paused, CPC capped ~$3.50, partners/display
-  off, negatives added). The dashboard should make the vs-baseline comparison easy.
-- Craftons Shopify conversion tracking is verified solid (Purchases + lead forms primary).
-
-## Non-negotiables
-
-- Read-only by default everywhere; any write (budget, bid, pause, negative) = UI approval +
-  `CONFIRM=1`. Chat assistant can *propose*, never execute.
-- Secrets stay in `.env`/Vercel; never logged, never committed, never echoed by the assistant.
-- Later tool modules (social, newsletter, SEO, studio, config assets) still come as separate
-  sessions per Briefs 02–07 — v1 must not preclude them (nav shows them as "coming soon").
+**Order:** Block 1 (v1) first, and **merge it** before any others. Then recommended:
+Block 2 (Studio) + Block 3 (SEO) in parallel → Block 4 (Social) + Block 5 (Meta) → Block 6
+(Config Assets, after Studio) → Block 7 (Newsletter, last). See `08-execution-order.md`.
 
 ---
 
-## Kickoff block — copy everything below the line into a fresh cnccut.app session
-
----
+## BLOCK 1 — Cockpit v1: Foundation + Google Ads dashboard + Meta KPIs + chat (Brief 09)
 
 Build **v1 of the Marketing Cockpit** in this repo (cnccut.app): the foundation shell + a live
 **Google Ads dashboard** + Meta KPI tiles + a chat assistant. Take workflow inspiration from
@@ -98,8 +47,9 @@ stop and ask me rather than assuming).
 copies, recording the source SHA in `docs/marketing/SYNC.md`. Docs only — never secrets. Seed the
 manifest with: `CLAUDE.md`, `STATUS.md`, `CONTENT-PILLARS.md`, `SOCIAL-VOICE.md`,
 `QUALITY-DOCTRINE.md`, `INTEGRATIONS.md`, `SETUP.md`, `brand/*.md`,
-`.claude/skills/craftons-design/BRAND.md`, `pipeline/tokens.css`, `campaigns/adwords/` (all md),
-and `dashboard-briefs/` (all md). If raw fetch needs auth that isn't available, stop and tell me.
+`.claude/skills/craftons-design/BRAND.md`, `pipeline/` (README, tokens.css, render.mjs,
+templates/, content/ examples), `campaigns/adwords/` (all md), and `dashboard-briefs/` (all md).
+If raw fetch needs auth that isn't available, stop and tell me.
 
 **STEP 3 — Cockpit shell.** Route `/marketing`, gated behind internal auth (Lee + Jake only; reuse
 existing app auth if present, else a simple email allowlist). Left nav: Overview, Google Ads, Meta
@@ -171,3 +121,103 @@ history per user in the data layer.
 6. No secrets in code, logs, or chat output.
 
 Deploy the branch as a Vercel preview and give me the URL to review before anything merges.
+
+---
+
+## BLOCK 2 — Studio: image/video generator (Brief 03)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/03-image-video-generator.md`
+plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **Studio (image/video generator) module**. Port the
+render system synced under `docs/marketing/pipeline/` (content JSON + HTML template → PNG via
+Playwright + sharp; if the pipeline source isn't synced, extend the sync manifest and re-run it)
+into a `tools/studio.mjs` backend and a `/marketing/studio` page. Ship the MVP: render a brand
+template to a finished PNG, run the `QUALITY-DOCTRINE` Gate-1 adherence check, and land it in an
+asset library as `needs-approval` with provenance, approvable via the shared Approval drawer. Then
+wire one AI-gen path (Glif/Replicate from a locked style) through the same flow with a pre-run cost
+estimate and `CONFIRM=1` for final-model spend. Hero geometry/dimensions are rendered from real
+data, never AI-imagined; nothing ships without human approval. New branch, logical commits.
+
+---
+
+## BLOCK 3 — SEO Manager (Brief 07)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/07-seo-manager.md` plus
+the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **SEO Manager module**. Ship the MVP on
+`/marketing/seo`: load `docs/marketing/brand/keyword-plan.md` into a **coverage table** mapped to
+live Shopify pages (flag gaps), a `tools/seo.mjs audit` that scores the key product pages
+(title/meta/alt/JSON-LD/links) with fixes, and a `tools/seo.mjs brief --keyword <term>` that
+produces a SERP-aware content brief (Perplexity + Firecrawl + the `seo-content` skill logic, with
+PAA + Article/FAQ JSON-LD stub). Briefs land `needs-approval` via the shared Approval drawer. No
+writes to the live Shopify store without approval + `CONFIRM=1`. Decide with me whether to wire
+Google Search Console now or defer (see Open Questions). New branch, logical commits.
+
+---
+
+## BLOCK 4 — Social Media Organiser (Brief 05)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/05-social-media-organiser.md`
+plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **Social Media Organiser module**. The asset library
+(Brief 03) should exist. Ship the MVP for **Instagram** end-to-end: a content **calendar + status
+pipeline** (idea→draft→approved→scheduled→posted) on `/marketing/social`, a `tools/social.mjs
+draft` that writes captions in `SOCIAL-VOICE` (value-first, no emoji) with a Gate-1 self-check and
+attaches a library asset, the shared Approval drawer for Gate 2, and — since Later has no API — an
+**export** step that packages an approved post for Later and marks it scheduled. Pull IG organic
+insights back into a scorecard (optimise for saves + shares). Nothing auto-posts. Leave FB/LinkedIn
+as stubs pending the API decisions in the brief. New branch, logical commits.
+
+---
+
+## BLOCK 5 — Meta Ads full module (Brief 02)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/02-meta-ads.md` plus the
+shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **Meta Ads module** in the marketing cockpit (v1 put
+Meta KPI tiles on the Overview; this builds the full `/marketing/meta` page). Extend the existing
+`tools/meta-ads.mjs` (keep its `CONFIRM=1` guardrail); do not rewrite it. Ship the MVP slice: a
+weekly Meta report (spend/results/ROAS/CTR by campaign→ad set→ad + IG insights) rendered on
+`/marketing/meta` with wasted-spend flags, plus ONE write path (pause ad / add exclusion) going
+through the shared Approval drawer → `CONFIRM=1` → logged. Pull voice/targeting from
+`docs/marketing/`. Read-only by default; never spend or launch without approval. New branch,
+logical commits.
+
+---
+
+## BLOCK 6 — Config Asset Creator (Brief 04)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/04-config-asset-creator.md`
+plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **Config Asset Creator module**. The Studio render
+pipeline (Brief 03) should exist — reuse it, don't duplicate it. First, find where product
+**configurations/quotes** live in this repo/DB and document it in `docs/marketing/APP-NOTES.md`.
+Then ship the MVP: pick a real configuration (start with Radius Pro or the Formwork Builder job),
+map its real fields into a content JSON, render an on-brand **spec/proof card** (spec stamps +
+ALL-CAPS compliance callouts + curve motif, specs pulled from the config, never AI-invented), run
+the Gate-1 brand-check, and land it in the asset library `needs-approval` with the source config id
+as provenance. Anonymise customer data. If my scope read is wrong (see the brief's Interpretation
+flag), stop and ask before building. New branch, logical commits.
+
+---
+
+## BLOCK 7 — Newsletter Generator (Brief 06)
+
+Cockpit v1 (Brief 09) must already be built and merged — if `docs/marketing/` doesn't exist, stop
+and flag it. Open and read the full brief `docs/marketing/dashboard-briefs/06-newsletter-generator.md`
+plus the shared conventions in `docs/marketing/dashboard-briefs/01-foundation-cockpit-shell.md` and
+`docs/marketing/APP-NOTES.md`, then build the **Newsletter Generator module**. Email platform is
+**Shopify Email** (already connected — no new key). First confirm whether the Shopify Email API/MCP
+supports programmatic campaign create+send or requires a human click, and note it in
+`docs/marketing/APP-NOTES.md`. Ship the MVP on `/marketing/newsletter`: a `tools/newsletter.mjs`
+that assembles a suggested issue from recent approved assets/posts/products, drafts subject +
+sections in brand voice, renders an **email-safe HTML** preview (desktop + mobile) with a Gate-1
+brand-check, goes through the shared Approval drawer, and does a **test-send to self** via Shopify
+Email. Block the real list-send behind approval + test-send + `CONFIRM=1` (or hand off to Shopify
+admin if the API can't send). No emoji; brand voice, not social-caption tone. New branch, logical
+commits.

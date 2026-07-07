@@ -148,7 +148,7 @@ cross-channel KPI row (Google Ads live from Step 5; Meta spend/results/CTR via t
 pending approvals), and the flags feed. If the Meta token lacks a scope, degrade gracefully and
 note it in APP-NOTES rather than failing the page.
 
-**STEP 8 — Chat assistant ("Alex").** A persistent chat dock at the bottom of the cockpit (collapsible),
+**STEP 8 — Chat assistant.** A persistent chat dock at the bottom of the cockpit (collapsible),
 GoHighLevel-assistant style. Server-side API route using the LLM key found in Step 1 (if it's an
 Anthropic key, use the Messages API with tool use; default to the latest Claude model, e.g.
 `claude-sonnet-5`). System prompt: it is the Craftons marketing assistant; ground it in the synced

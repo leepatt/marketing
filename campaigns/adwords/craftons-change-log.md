@@ -22,3 +22,30 @@ Compounded by low search volume on niche curved-product terms.
 - Cost-per-lead — with $6 CPC, watch it stays sane vs job value.
 - **Interstate leads:** confirm Sydney/Brisbane leads actually convert given **freight on bulky
   curved products** — if freight kills the economics, pull those geos back.
+
+## 2026-07-08 — split out a dedicated Curved Architraves campaign (hero push)
+**Why:** week-2 data showed the single campaign spending ~$65/day with ~1 conv — architraves the only
+converter ("curved architrave" → 1 conv @ $9), good margins, upgraded site configurator. Budget + geo
+are per-campaign, so a split was required to give architraves its own budget/geo.
+
+**Built (Lee-approved, created PAUSED pending review):**
+- **Craftons – Curved Architraves** (campaign id 24006679434): **$100/day** dedicated budget, Search only
+  (Partners + Display OFF), Manual CPC, max CPC $6, presence-only geo.
+- Geo: Melbourne + Geelong + Surf Coast + Mornington + **Sydney + Brisbane** (national test w/ new site).
+- 1 ad group (Curved Architraves), **47 keywords** (generic + moulding synonyms + **Intrim / Australian
+  Moulding & Door** Exact-match conquesting), **21 negatives**, 1 RSA (under review). See
+  `architraves-keyword-expansion.md`.
+
+**✅ Executed / LIVE 2026-07-08 (Lee approved "make ads live"):**
+- New **Craftons – Curved Architraves** campaign **ENABLED** ($100/day).
+- Old "Customised Building Products": **Curved Architraves ad group PAUSED**; **Sydney + Brisbane
+  removed** → Radius Pro + Formwork now **local only** (Melbourne + Geelong + Surf Coast + Mornington),
+  $50/day.
+- Total live spend now **~$150/day** ($100 architraves + $50 ply/formwork).
+- Note: **Cavity Battens Performance Max is PAUSED** ($0 spend) — that's why it dropped to $0 earlier.
+  It was the account's main converter; flag to Lee whether that pause was intentional.
+
+**Watch (next few days):**
+- New architraves ad enters **review** — confirm it gets approved (was "under review" at build).
+- Architraves spend/conversions vs the $100 budget; is the competitor (Intrim/AMDC) conquesting working?
+- Ply/formwork now local — spend should drop and waste (interstate) should stop.

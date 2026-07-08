@@ -75,13 +75,17 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   `2753473695` = "Craftons Marketing". ⚠️ The advertiser is reached **directly, NOT via the MCC** (not
   linked in the API) — tool now auto-falls-back login-customer-id. Optional: set
   `GOOGLE_ADS_LOGIN_CUSTOMER_ID=3104912421`, or link the account under the MCC in Google Ads.
-- [x] **First engine writes applied (2026-07-02, human-approved)** → `craftons-change-log.md`. The
-  "Craftons – Customised Building Products" search campaign was rank-limited (IS 36%; 64% lost to rank,
-  0% budget). Raised max CPC $3.50→**$6.00** ×3 ad groups; added **Sydney + Brisbane** geo. Verified live.
-  `google-ads.mjs` now has CONFIRM-gated `bids` + `add-geo` commands.
-  - **Watch:** spend climbing (was $7 of $50/day), IS rising / rank-lost falling, cost-per-lead, and
-    whether interstate leads convert given freight. The **Cavity Battens Performance Max** campaign
-    ($191/7d, 5 conv) remains the account's main spender/converter — separate from our search campaign.
+- [x] **Engine now creates campaigns.** First writes (2026-07-02): raised CPC $3.50→$6 + added Sydney/
+  Brisbane on the one campaign. Week-2 data showed ~$65/day, ~1 conv — architraves the only converter.
+- [x] **Restructured into 2 campaigns + went LIVE (2026-07-08, Lee-approved)** → `craftons-change-log.md`:
+  - **Craftons – Curved Architraves** (NEW hero) — **$100/day**, national (Melb+shires+Sydney+Brisbane),
+    47 keywords incl. **Intrim / Australian Moulding & Door conquesting**, built PAUSED then enabled.
+  - **Craftons – Customised Building Products** — now **Radius Pro + Formwork only**, **$50/day**, **local**
+    (architraves ad group paused, Sydney/Brisbane removed).
+  - **~$150/day total live.** `google-ads.mjs` now has CONFIRM-gated `bids` + `add-geo`; full campaign
+    creation done via script (in change log).
+  - **Watch:** new architrave ad approval; architraves conversions vs $100 budget; ⚠️ **Cavity Battens
+    PMax is PAUSED** (was the main converter — confirm intentional).
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ---

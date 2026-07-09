@@ -15,9 +15,10 @@ embed and commit.
 - Pipeline render (`pipeline/`) → `@import "../.claude/skills/craftons-design/craftons-fonts.css";`
   or copy it next to the template.
 
-## Aeonik (display) — pending
-The brand guidelines call for **Aeonik** on display/headlines. Aeonik is a **licensed** font
-(`.otf` in Drive `fonts/`), and web-embedding it needs a **webfont licence** — it is not deployed
-on the live site. Options: keep web docs on Inter (matches the live site) and use Aeonik only in
-**PDF exports** (desktop-licence-clean via the pipeline); or, with a webfont licence, add Aeonik
-`@font-face` blocks here too. Decision pending with Lee.
+## Aeonik (display) — DECIDED: not used for web docs
+**Decision (Lee, 2026-07-08): Inter everywhere**, matching the live site. Produced digital documents
+standardise on **Inter for both body and headlines**. The guidelines PDF still lists Aeonik as the
+display face, but the live craftons.com.au theme ships Inter, Aeonik is a **licensed** font not
+deployed on the web, and we're keeping one consistent, licence-clean brand type. Don't re-open this
+per document. (If a true-to-guidelines Aeonik piece is ever needed, render it as a **PDF** via the
+pipeline using the Drive `.otf` — desktop-licence-clean — rather than embedding Aeonik on the web.)

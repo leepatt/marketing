@@ -31,6 +31,12 @@ components for builders; the reader knows their trade, so respect their time.
   (see *Email signature* below). No separate name line.
 - **Banned corporate-speak:** "reach out", "touch base", "circle back", "as per", "kindly", "at
   your earliest convenience" (on top of the banned filler in §2).
+- **Learn our voice from our real emails — always.** Before writing, look at how CNC Cut has
+  actually written (in this customer's thread and our past replies) and match that tone, phrasing
+  and sign-off. When in doubt, sound like our previous emails, not a template.
+- **Our real patterns** (from our sent mail): open with "Hi [name],"; keep it short and practical;
+  "Thanks for your email"; "Let me know if you have any questions"; sign off with "Cheers,"
+  ("All the best" when declining). First name, no fuss.
 
 ## Email signature
 
@@ -42,15 +48,14 @@ review requests — with `Cheers,` then this exact block, verbatim:
   <tr><td>0466 146 744</td></tr>
   <tr><td>45 Sparks Avenue, Fairfield VIC 3078</td></tr>
   <tr><td><a href="https://cnccut.melbourne" style="color:#1155cc">cnccut.melbourne</a></td></tr>
-  <tr><td style="padding-top:10px;font-style:italic;color:#3c803c">Need Custom Radius &amp; Curves? &ndash; <a href="https://craftons.com.au/products/radius-online" style="color:#3c803c;font-weight:bold;font-style:italic">Try Craftons Radius Pro</a></td></tr>
 </table>
 ```
 
 Write the message itself as simple HTML (short paragraphs) above the signature.
 
-*(No logo/wordmark by choice (option B) — clean contact + Radius Pro CTA. An `<img>` logo isn't
-viable: Gmail strips externally-hosted images from API-created drafts, so it won't render. Revisit
-only if a working image method is found.)*
+*(No logo/wordmark by choice (option B); clean contact details only, no Radius Pro line — this is
+CNC Cut, not Craftons. An `<img>` logo isn't viable: Gmail strips externally-hosted images from
+API-created drafts, so it won't render.)*
 
 ## 1. Mindset
 
@@ -67,8 +72,10 @@ only if a working image method is found.)*
 - **Any "following up" variant is banned** — "just following up", "following up", "following up
   on", "just checking in", "checking in", "touching base", "circling back", "any update?", "bumping
   this up". With or without "just". **Never open an email this way.** Open with the real reason.
-- **No dashes as connectors.** Never use an en dash "–", em dash "—", or spaced hyphen " - " to join
-  clauses in the body — it reads as AI-written. Use a full stop or a comma, or rewrite the sentence.
+- **Never use "—" (em dash) or "–" (en dash). Ever.** Lee has flagged this repeatedly; the long dash
+  is the #1 AI tell. Not to join clauses, not anywhere in the body. Use a full stop or a comma, or
+  rewrite the sentence. (An ordinary hyphen inside a word, like "top-and-bottom plates", is fine; the
+  banned ones are the long dashes and " - " used to join clauses.)
 - Needy / apologetic openers: "sorry to bother you", "I know you're busy", "I hate to chase".
   They signal the deal isn't worth pursuing. Be confident and matter-of-fact.
 - Manufactured urgency ("prices go up Friday") and reflexive discounting to win a reply. Both

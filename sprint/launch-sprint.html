@@ -1,0 +1,611 @@
+<title>Craftons Launch Sprint — Oct 1</title>
+<style>
+  /* ============================================================
+     Craftons design tokens (canonical: colors_and_type.css, Drive)
+     Webfonts (@import) and Aeonik .otf are blocked by the artifact
+     CSP, so we inline the tokens and rely on the brand's own
+     defined fallback stacks (system-ui geometric / Inter).
+     ============================================================ */
+  :root {
+    /* brand */
+    --craftons-green: #194431;
+    --craftons-green-700: #123022;
+    --craftons-green-900: #0a1c14;
+    --line-green: #2d8a5b;
+
+    /* neutrals (warm, no blue cast) */
+    --ink: #0e0e0c;
+    --slate: #5a5a55;
+    --stone: #8c8c85;
+    --rule: #d8d6d0;
+    --paper: #f4f2ec;
+    --paper-2: #ebe8df;
+    --white: #ffffff;
+
+    /* semantic — status colours are NOT the accent */
+    --success: #2d8a5b;
+    --warning: #d6a23a;
+    --danger:  #b3402b;
+
+    /* type */
+    --font-display: "Aeonik", "Inter", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-condensed: "HWTArtz", "Big Shoulders Display", "Anton", "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+    --tracking-tight: -0.02em;
+    --tracking-tighter: -0.03em;
+    --tracking-wide: 0.04em;
+    --tracking-wider: 0.12em;
+    --tracking-widest: 0.18em;
+
+    /* spacing (4px scale) */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px;
+    --sp-6:24px; --sp-7:32px; --sp-8:40px; --sp-9:48px; --sp-10:64px;
+    --sp-11:80px; --sp-12:96px; --sp-13:128px;
+
+    --r-sm:4px; --r-md:6px; --r-lg:10px; --r-xl:16px; --r-pill:999px;
+
+    --shadow-2: 0 2px 4px -1px rgba(20,20,18,0.08), 0 4px 12px -2px rgba(20,20,18,0.08);
+    --shadow-3: 0 8px 24px -8px rgba(20,20,18,0.18), 0 4px 8px -2px rgba(20,20,18,0.08);
+    --ease-out: cubic-bezier(0.22,0.61,0.36,1);
+
+    /* semantic surface tokens — LIGHT (default) */
+    --bg: var(--paper);
+    --surface: var(--white);
+    --surface-2: var(--paper-2);
+    --fg: var(--ink);
+    --fg-muted: var(--slate);
+    --fg-soft: var(--stone);
+    --border: var(--rule);
+    --border-strong: rgba(14,14,12,0.16);
+    --accent: var(--craftons-green);
+    --track: rgba(14,14,12,0.09);
+    --card-shadow: var(--shadow-2);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: var(--craftons-green-900);
+      --surface: #10261b;
+      --surface-2: #0d2016;
+      --fg: #eef1ea;
+      --fg-muted: #a6b3aa;
+      --fg-soft: #74857a;
+      --border: rgba(238,241,234,0.11);
+      --border-strong: rgba(238,241,234,0.22);
+      --accent: #4fae7e;
+      --track: rgba(238,241,234,0.10);
+      --card-shadow: 0 8px 28px -12px rgba(0,0,0,0.6);
+    }
+  }
+  /* explicit toggle wins in both directions */
+  :root[data-theme="light"] {
+    --bg: var(--paper); --surface: var(--white); --surface-2: var(--paper-2);
+    --fg: var(--ink); --fg-muted: var(--slate); --fg-soft: var(--stone);
+    --border: var(--rule); --border-strong: rgba(14,14,12,0.16);
+    --accent: var(--craftons-green); --track: rgba(14,14,12,0.09);
+    --card-shadow: var(--shadow-2);
+  }
+  :root[data-theme="dark"] {
+    --bg: var(--craftons-green-900); --surface: #10261b; --surface-2: #0d2016;
+    --fg: #eef1ea; --fg-muted: #a6b3aa; --fg-soft: #74857a;
+    --border: rgba(238,241,234,0.11); --border-strong: rgba(238,241,234,0.22);
+    --accent: #4fae7e; --track: rgba(238,241,234,0.10);
+    --card-shadow: 0 8px 28px -12px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--sp-6); }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: var(--tracking-widest);
+    text-transform: uppercase; font-weight: 700; color: var(--fg-soft);
+  }
+
+  h1,h2,h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: var(--tracking-tight); margin: 0; text-wrap: balance; }
+
+  /* ---------- HERO (always dark green + motif — brand device) ---------- */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--craftons-green-900);
+    color: #eef1ea;
+    border-bottom: 1px solid rgba(45,138,91,0.35);
+  }
+  #motif { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.55; }
+  .hero-inner { position: relative; z-index: 2; padding: var(--sp-10) 0 var(--sp-9); }
+  .hero .eyebrow { color: var(--line-green); }
+  .hero h1 {
+    font-size: clamp(44px, 7vw, 96px); line-height: 1.0;
+    letter-spacing: var(--tracking-tighter); margin: var(--sp-4) 0 var(--sp-3);
+  }
+  .hero .lede { font-size: clamp(17px, 2.2vw, 22px); color: #c9d4cd; max-width: 46ch; margin: 0; }
+
+  .countdown { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-8); }
+  .cd {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(238,241,234,0.14);
+    border-radius: var(--r-lg); padding: var(--sp-4) var(--sp-5); min-width: 116px;
+  }
+  .cd .num {
+    font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 600;
+    line-height: 1; letter-spacing: var(--tracking-tight); color: #ffffff;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd .lbl { font-size: 11px; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: #8fa598; margin-top: var(--sp-2); }
+  .cd.accent { border-color: rgba(45,138,91,0.55); background: rgba(45,138,91,0.12); }
+
+  .sprint-rail { margin-top: var(--sp-7); }
+  .sprint-rail .rail-labels { display: flex; justify-content: space-between; font-size: 12px; color: #8fa598; margin-bottom: var(--sp-2); letter-spacing: var(--tracking-wide); }
+  .rail { height: 8px; background: rgba(238,241,234,0.12); border-radius: var(--r-pill); overflow: hidden; }
+  .rail > span { display: block; height: 100%; background: linear-gradient(90deg, var(--line-green), #6fd3a0); border-radius: var(--r-pill); }
+
+  /* theme toggle */
+  .toggle {
+    position: absolute; top: var(--sp-5); right: var(--sp-6); z-index: 3;
+    display: inline-flex; align-items: center; gap: var(--sp-2);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(238,241,234,0.16);
+    color: #c9d4cd; border-radius: var(--r-pill); padding: var(--sp-2) var(--sp-4);
+    font-size: 12px; letter-spacing: var(--tracking-wide); cursor: pointer;
+    font-family: var(--font-body); transition: background var(--ease-out) 160ms;
+  }
+  .toggle:hover { background: rgba(255,255,255,0.12); }
+  .toggle:focus-visible { outline: 2px solid var(--line-green); outline-offset: 2px; }
+
+  /* ---------- KPI strip ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); margin-top: calc(-1 * var(--sp-8)); position: relative; z-index: 4; }
+  .kpi {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+    padding: var(--sp-5) var(--sp-5); box-shadow: var(--card-shadow);
+  }
+  .kpi .k-num { font-family: var(--font-display); font-size: 34px; font-weight: 600; line-height: 1; letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; }
+  .kpi .k-lbl { font-size: 12px; color: var(--fg-muted); margin-top: var(--sp-3); letter-spacing: var(--tracking-wide); }
+  .kpi .k-sub { font-size: 12px; color: var(--fg-soft); margin-top: var(--sp-1); }
+
+  /* ---------- sections ---------- */
+  section { padding: var(--sp-11) 0 0; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: var(--sp-4); margin-bottom: var(--sp-7); }
+  .sec-head h2 { font-size: clamp(28px, 3.6vw, 42px); }
+  .sec-head .sec-meta { font-size: 13px; color: var(--fg-muted); }
+  .sec-num { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: var(--tracking-wide); }
+
+  /* products grid */
+  .grid { display: grid; gap: var(--sp-4); }
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+    padding: var(--sp-6); box-shadow: var(--card-shadow);
+  }
+  .prod-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-3); }
+  .prod-name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: var(--tracking-tight); }
+  .prod-desc { color: var(--fg-muted); font-size: 14px; margin: var(--sp-2) 0 var(--sp-5); min-height: 1.2em; }
+  .prod-meta { display: flex; align-items: center; justify-content: space-between; margin-top: var(--sp-4); font-size: 13px; color: var(--fg-muted); }
+  .owner { display: inline-flex; align-items: center; gap: var(--sp-2); }
+  .owner .dot { width: 22px; height: 22px; border-radius: var(--r-pill); background: var(--surface-2); border: 1px solid var(--border); display: grid; place-items: center; font-size: 10px; font-weight: 700; color: var(--fg-muted); letter-spacing: 0; }
+
+  .steps-line { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); }
+  .steps-line .bar { flex: 1; height: 6px; background: var(--track); border-radius: var(--r-pill); overflow: hidden; }
+  .steps-line .bar > span { display: block; height: 100%; border-radius: var(--r-pill); background: var(--accent); }
+  .steps-line .frac { font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* status pill */
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: 4px 10px; border-radius: var(--r-pill); border: 1px solid transparent; white-space: nowrap; }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .pill.done { color: var(--success); background: color-mix(in srgb, var(--success) 14%, transparent); border-color: color-mix(in srgb, var(--success) 32%, transparent); }
+  .pill.prog { color: var(--accent); background: color-mix(in srgb, var(--accent) 13%, transparent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .pill.queued { color: var(--fg-soft); background: var(--track); border-color: var(--border); }
+  .pill.stuck { color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, transparent); border-color: color-mix(in srgb, var(--danger) 30%, transparent); }
+  .pill.hold { color: var(--warning); background: color-mix(in srgb, var(--warning) 15%, transparent); border-color: color-mix(in srgb, var(--warning) 34%, transparent); }
+
+  /* marketing groups */
+  .mkt { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .mcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--card-shadow); overflow: hidden; }
+  .mcard > header { padding: var(--sp-5) var(--sp-6); border-bottom: 1px solid var(--border); }
+  .mcard .m-title-row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); }
+  .mcard h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: var(--tracking-tight); }
+  .mcard .m-goal { font-size: 13px; color: var(--fg-muted); margin-top: var(--sp-2); }
+  .mbar { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); }
+  .mbar .bar { flex: 1; height: 6px; background: var(--track); border-radius: var(--r-pill); overflow: hidden; }
+  .mbar .bar > span { display: block; height: 100%; background: var(--accent); border-radius: var(--r-pill); }
+  .mbar .frac { font-family: var(--font-mono); font-size: 11.5px; color: var(--fg-muted); font-variant-numeric: tabular-nums; }
+
+  ul.tasks { list-style: none; margin: 0; padding: var(--sp-3) var(--sp-6) var(--sp-5); display: flex; flex-direction: column; }
+  ul.tasks li { display: flex; align-items: flex-start; gap: var(--sp-3); padding: var(--sp-3) 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+  ul.tasks li:last-child { border-bottom: none; }
+  .tick { flex: none; width: 18px; height: 18px; border-radius: var(--r-sm); border: 1.5px solid var(--border-strong); margin-top: 2px; display: grid; place-items: center; }
+  .tick.done { background: var(--success); border-color: var(--success); }
+  .tick.done::after { content: "✓"; color: #fff; font-size: 11px; font-weight: 700; line-height: 1; }
+  .tick.prog { border-color: var(--accent); }
+  .tick.prog::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .t-body { flex: 1; }
+  .t-title { color: var(--fg); }
+  li.is-done .t-title { color: var(--fg-muted); text-decoration: line-through; text-decoration-color: var(--border-strong); }
+  .t-note { display: block; font-size: 12.5px; color: var(--fg-soft); margin-top: 2px; }
+  .t-tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--fg-soft); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 1px 6px; margin-left: auto; align-self: center; white-space: nowrap; }
+  .t-tag.win { color: var(--success); border-color: color-mix(in srgb, var(--success) 40%, transparent); }
+
+  /* extras */
+  .extras { grid-template-columns: repeat(3, 1fr); }
+  .xcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-6); box-shadow: var(--card-shadow); }
+  .xcard h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: var(--tracking-tight); margin-bottom: var(--sp-2); }
+  .xcard .x-goal { font-size: 13px; color: var(--fg-muted); margin-bottom: var(--sp-4); }
+  .xcard ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-3); }
+  .xcard ul li { display: flex; gap: var(--sp-3); font-size: 13.5px; color: var(--fg-muted); align-items: flex-start; }
+  .xcard ul li::before { content: ""; flex: none; width: 14px; height: 14px; margin-top: 3px; border-radius: var(--r-sm); border: 1.5px dashed var(--border-strong); }
+  .scaffold-tag { display: inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--warning); border: 1px solid color-mix(in srgb, var(--warning) 40%, transparent); border-radius: var(--r-pill); padding: 2px 10px; margin-bottom: var(--sp-4); }
+
+  /* footer */
+  footer { margin-top: var(--sp-11); border-top: 1px solid var(--border); }
+  .foot-inner { padding: var(--sp-8) 0 var(--sp-10); display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--sp-8); }
+  footer h4 { font-family: var(--font-display); font-size: 16px; margin: 0 0 var(--sp-3); font-weight: 600; }
+  footer p, footer li { font-size: 13px; color: var(--fg-muted); }
+  footer ul { margin: 0; padding-left: var(--sp-5); }
+  footer a { color: var(--accent); text-underline-offset: 3px; }
+  .marquee { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; white-space: nowrap; background: var(--surface-2); }
+  .marquee span { display: inline-block; padding: var(--sp-3) 0; font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--fg-soft); font-size: 13px; animation: slide 32s linear infinite; }
+  @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  @media (max-width: 860px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .products, .mkt, .extras { grid-template-columns: 1fr; }
+    .foot-inner { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee span { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<div class="hero">
+  <canvas id="motif" aria-hidden="true"></canvas>
+  <button class="toggle" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Craftons · Build Sprint · Lee &amp; Jake</div>
+    <h1>Launch Sprint.</h1>
+    <p class="lede">Heads-down for one quarter. Build the products, stock the content, finish the engine — then launch the lot on October 1.</p>
+
+    <div class="countdown" id="countdown">
+      <div class="cd accent"><div class="num" id="cdDays">—</div><div class="lbl">Days to launch</div></div>
+      <div class="cd"><div class="num" id="cdWeek">—</div><div class="lbl">Sprint week</div></div>
+      <div class="cd"><div class="num">Oct 1</div><div class="lbl">Launch day · 2026</div></div>
+    </div>
+
+    <div class="sprint-rail">
+      <div class="rail-labels"><span id="railStart">10 Jul</span><span id="railPct">Week — of 12</span><span>1 Oct</span></div>
+      <div class="rail"><span id="railFill" style="width:0%"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><div class="k-num" id="kProd">—</div><div class="k-lbl">Products build-complete</div><div class="k-sub" id="kProdSub">of 5 in the pipeline</div></div>
+    <div class="kpi"><div class="k-num" id="kMkt">—</div><div class="k-lbl">Launch readiness</div><div class="k-sub">marketing tasks done</div></div>
+    <div class="kpi"><div class="k-num" id="kWeeks">—</div><div class="k-lbl">Weeks remaining</div><div class="k-sub">to Oct 1</div></div>
+    <div class="kpi"><div class="k-num">2</div><div class="k-lbl">Channels to stand up</div><div class="k-sub">LinkedIn · Newsletter</div></div>
+  </div>
+
+  <!-- ============ PRODUCTS ============ -->
+  <section id="products">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">01 / Products</div>
+        <h2>What we're building</h2>
+      </div>
+      <div class="sec-meta">Live from ClickUp · Craftons ▸ Product Development · synced <span id="syncDate">—</span></div>
+    </div>
+    <div class="grid products" id="productGrid"></div>
+    <p class="sec-meta" style="margin-top:var(--sp-4)">Badge is derived from ClickUp subtask completion (parent tasks all read “to do” in ClickUp regardless of progress). <a id="cuLink" href="https://app.clickup.com/36684820/v/l/li/901607662897" target="_blank" rel="noopener">Open the list ↗</a></p>
+  </section>
+
+  <!-- ============ MARKETING ============ -->
+  <section id="marketing">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">02 / Marketing</div>
+        <h2>Everything that must be live on launch day</h2>
+      </div>
+      <div class="sec-meta">Live from ClickUp · Craftons ▸ Launch Marketing · synced <span id="syncDate2">—</span><br>Not just switched on — working in full.</div>
+    </div>
+    <div class="grid mkt" id="mktGrid"></div>
+    <p class="sec-meta" style="margin-top:var(--sp-4)">Each workstream is a ClickUp task; the checklist items are its subtasks. <a href="https://app.clickup.com/36684820/v/l/li/901615813456" target="_blank" rel="noopener">Open the list ↗</a></p>
+  </section>
+
+  <!-- ============ EXTRAS ============ -->
+  <section id="extras">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">03 / Also on the list</div>
+        <h2>Supporting work</h2>
+      </div>
+      <div class="sec-meta">Scaffolded — Lee &amp; Jake to fill in.</div>
+    </div>
+    <div class="grid extras" id="extraGrid"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="marquee" aria-hidden="true"><span id="marqueeText"></span></div>
+  <div class="wrap foot-inner">
+    <div>
+      <h4>How this doc stays current</h4>
+      <p>This is a live document. A weekly Claude routine re-pulls the Product Development and Launch Marketing lists from ClickUp, recomputes every status, and re-publishes this page to the same link — so Products and Marketing always reflect reality without anyone editing them by hand. Update a task in ClickUp and it shows here on the next refresh. Extras and sprint targets are authored here and reviewed each week.</p>
+      <p style="color:var(--fg-soft)">Control model: Claude drafts → Lee approves. Nothing auto-publishes.</p>
+    </div>
+    <div>
+      <h4>Sources</h4>
+      <ul>
+        <li>Products — ClickUp · Craftons space · Product Development</li>
+        <li>Marketing — ClickUp · Craftons space · Launch Marketing</li>
+        <li>Design — Craftons design system (Drive brain)</li>
+      </ul>
+      <p style="margin-top:var(--sp-4)">Last refreshed <strong id="footDate">—</strong></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     DATA — refreshed weekly. Products mirror the ClickUp snapshot;
+     marketing/extras are authored. To refresh: re-pull ClickUp,
+     update PRODUCTS + LAST_SYNC, re-publish.
+     ============================================================ */
+  const LAUNCH = new Date(2026, 9, 1);          // Oct 1 2026 (month is 0-indexed)
+  const SPRINT_START = new Date(2026, 6, 10);    // Jul 10 2026
+  const LAST_SYNC = "10 Jul 2026";
+
+  const PRODUCTS = [
+    { name: "Formwork Builder", owner: "Lee Pattinson", done: 21, total: 21,
+      desc: "Flagship world-first configurator — the hero product story.",
+      url: "https://app.clickup.com/t/86d1az1mj" },
+    { name: "Concrete Stair Builder", owner: "Lee Pattinson", done: 0, total: 21,
+      desc: "LVL / formply stringers, custom risers & going, 45° back-cut.",
+      url: "https://app.clickup.com/t/86d2rw71v" },
+    { name: "Formliners", owner: "Jake Williamson", done: 0, total: 14,
+      desc: "Custom-profile concrete form liners.",
+      url: "https://app.clickup.com/t/86d22zhvy" },
+    { name: "Foam Letters", owner: "Lee Pattinson", done: 0, total: 14,
+      desc: "CNC-cut foam signage letters & shapes.",
+      url: "https://app.clickup.com/t/86d240zd1" },
+    { name: "Plastic Profiles & Moulding", owner: "Lee Pattinson", done: 0, total: 14,
+      desc: "Custom plastic profiles and mouldings.",
+      url: "https://app.clickup.com/t/86d2atkzr" },
+  ];
+
+  // task state: "done" | "prog" | "todo"
+  const MARKETING = [
+    {
+      title: "Marketing Cockpit — 100% built & working",
+      url: "https://app.clickup.com/t/86d3nkqer",
+      goal: "The dashboard in cnccut.app doing the job end-to-end, not just live.",
+      tasks: [
+        { t: "Content calendar — plan + schedule view", s: "todo" },
+        { t: "Asset library — indexes Drive, Tia's catalogue searchable", s: "todo" },
+        { t: "Status pipeline — idea → draft → approved → scheduled → posted", s: "todo" },
+        { t: "Performance panel — IG + Meta insights pulled in live", s: "todo" },
+        { t: "Ideas backlog + weekly Trend Radar feeding it", s: "todo" },
+        { t: "End-to-end test — a post travels the whole pipeline", s: "todo" },
+      ],
+    },
+    {
+      title: "Ads — dialled in & ready to scale",
+      url: "https://app.clickup.com/t/86d3nkqey",
+      goal: "Stable, tracked, profitable before we add funds.",
+      tasks: [
+        { t: "Craftons conversion tracking verified solid", s: "done", tag: "win" },
+        { t: "Google campaigns built — RSAs, keywords, extensions ready", s: "done", tag: "win" },
+        { t: "Google Ads API Basic access granted", s: "prog", note: "Application prepared; awaiting Google." },
+        { t: "Google campaigns live + optimised to target CPA", s: "todo" },
+        { t: "Meta/IG ad account + token verified in env", s: "prog", note: "Token collected 2026-06-15, pending place/verify." },
+        { t: "Meta creative from Tia's catalogue; retarget configurator visitors", s: "todo" },
+        { t: "Both channels hit a stable ROAS — cleared to scale budget", s: "todo" },
+      ],
+    },
+    {
+      title: "Tia's content catalogue — full per product",
+      url: "https://app.clickup.com/t/86d3nkqf1",
+      goal: "A library deep enough to post consistently from Oct 1.",
+      tasks: [
+        { t: "Content pillars + shoot briefs locked", s: "done", tag: "win" },
+        { t: "Coverage set shot for each of the 5 products", s: "todo" },
+        { t: "Core range (Radius Pro, Formply, Cavity Batten) covered", s: "todo" },
+        { t: "Craft Macro + How-To + In-the-Workshop sessions banked", s: "prog", note: "Ep.2 storyboard exists; Session A to shoot." },
+        { t: "Each shoot atomised into reels + stills + carousel frames", s: "todo" },
+        { t: "~12 weeks of posting runway queued & approved", s: "todo" },
+      ],
+    },
+    {
+      title: "Instagram — consistent posting engine",
+      url: "https://app.clickup.com/t/86d3nkqf4",
+      goal: "The channel we already run, made reliable.",
+      tasks: [
+        { t: "Social voice + 4 pillars + flagship locked", s: "done", tag: "win" },
+        { t: "Cadence set (~3 reels + 1–2 carousels / week)", s: "done", tag: "win" },
+        { t: "Later.com scheduling wired to the approval flow", s: "todo" },
+        { t: "4 weeks queued ahead at all times by launch", s: "todo" },
+      ],
+    },
+    {
+      title: "LinkedIn — build from zero",
+      url: "https://app.clickup.com/t/86d3nkqf7",
+      goal: "Founder-led (Jake/Lee) presence, not started yet.",
+      tasks: [
+        { t: "Company page set up + branded", s: "todo" },
+        { t: "Jake & Lee founder profiles optimised", s: "todo" },
+        { t: "Content plan — repurpose IG + founder POV posts", s: "todo" },
+        { t: "Posting cadence agreed + first 4 weeks queued", s: "todo" },
+      ],
+    },
+    {
+      title: "Newsletter — build from zero",
+      url: "https://app.clickup.com/t/86d3nkqfc",
+      goal: "Owned channel off the configurator lead list. Not started.",
+      tasks: [
+        { t: "Platform confirmed — Shopify Email", s: "done", tag: "win" },
+        { t: "List building off configurator / calculator lead magnet", s: "todo" },
+        { t: "On-brand template + layout built", s: "todo" },
+        { t: "Cadence set (fortnightly) + first 2 issues drafted", s: "todo" },
+      ],
+    },
+  ];
+
+  const EXTRAS = [
+    { title: "Website audit", goal: "Full pass on the Craftons storefront before we drive paid traffic to it.",
+      items: ["Core Web Vitals / page speed", "Mobile UX + navigation", "Product-page conversion review", "SEO — titles, meta, schema, internal links", "Tracking & analytics sanity check", "Configurator UX + checkout flow", "Trust signals — reviews, compliance, delivery"] },
+    { title: "Workshop additions", goal: "What the workshop needs to support build + in-house content.",
+      items: ["In-house filming setup (lighting, angles, mounts)", "Product display / photography corner", "Machinery / tooling additions", "Signage & branded environment", "Safe capture zones for machine footage"] },
+    { title: "Updated Craftons design system", goal: "Evolve the system from storefront-only to product + app.",
+      items: ["Re-sync tokens from latest brand guidelines", "App / configurator UI-kit components", "Dashboard + data components (this doc's kit)", "Motion + interaction guidelines", "Publish + version in the Drive brain"] },
+  ];
+
+  /* ---------------- render ---------------- */
+  const $ = (id) => document.getElementById(id);
+  const pct = (d, t) => t ? Math.round((d / t) * 100) : 0;
+
+  function statusOf(p) {
+    if (p.done >= p.total && p.total > 0) return { cls: "done", label: "Build complete" };
+    if (p.done > 0) return { cls: "prog", label: "In progress" };
+    return { cls: "queued", label: "Queued" };
+  }
+  function initials(name) { return name.split(" ").map(w => w[0]).slice(0,2).join(""); }
+
+  function renderProducts() {
+    // build-complete first, then by progress
+    const order = [...PRODUCTS].sort((a,b) => pct(b.done,b.total) - pct(a.done,a.total));
+    $("productGrid").innerHTML = order.map(p => {
+      const st = statusOf(p); const pc = pct(p.done, p.total);
+      return `<div class="card">
+        <div class="prod-top">
+          <div class="prod-name">${p.name}</div>
+          <span class="pill ${st.cls}">${st.label}</span>
+        </div>
+        <div class="prod-desc">${p.desc}</div>
+        <div class="prod-meta">
+          <span class="owner"><span class="dot">${initials(p.owner)}</span>${p.owner}</span>
+          <a href="${p.url}" target="_blank" rel="noopener" style="color:var(--accent);text-underline-offset:3px">ClickUp ↗</a>
+        </div>
+      </div>`;
+    }).join("");
+    const built = PRODUCTS.filter(p => p.done >= p.total && p.total > 0).length;
+    $("kProd").textContent = built;
+    $("kProdSub").textContent = `of ${PRODUCTS.length} in the pipeline`;
+  }
+
+  function renderMarketing() {
+    let allDone = 0, allTotal = 0;
+    $("mktGrid").innerHTML = MARKETING.map(g => {
+      const done = g.tasks.filter(t => t.s === "done").length;
+      const total = g.tasks.length;
+      allDone += done; allTotal += total;
+      const p = pct(done, total);
+      const items = g.tasks.map(t => {
+        const isDone = t.s === "done";
+        const tickCls = t.s === "done" ? "done" : (t.s === "prog" ? "prog" : "");
+        return `<li class="${isDone ? "is-done" : ""}">
+          <span class="tick ${tickCls}"></span>
+          <span class="t-body"><span class="t-title">${t.t}</span>${t.note ? `<span class="t-note">${t.note}</span>` : ""}</span>
+          ${t.tag ? `<span class="t-tag ${t.tag === "win" ? "win" : ""}">${t.tag === "win" ? "done" : t.tag}</span>` : ""}
+        </li>`;
+      }).join("");
+      return `<div class="mcard">
+        <header>
+          <div class="m-title-row"><h3>${g.title}</h3>${g.url ? `<a href="${g.url}" target="_blank" rel="noopener" style="color:var(--accent);font-size:12px;text-underline-offset:3px;white-space:nowrap">ClickUp ↗</a>` : ""}</div>
+          <div class="m-goal">${g.goal}</div>
+          <div class="mbar"><div class="bar"><span style="width:${p}%"></span></div><span class="frac">${done}/${total}</span></div>
+        </header>
+        <ul class="tasks">${items}</ul>
+      </div>`;
+    }).join("");
+    $("kMkt").textContent = pct(allDone, allTotal) + "%";
+  }
+
+  function renderExtras() {
+    $("extraGrid").innerHTML = EXTRAS.map(x => `
+      <div class="xcard">
+        <span class="scaffold-tag">Scaffold</span>
+        <h3>${x.title}</h3>
+        <div class="x-goal">${x.goal}</div>
+        <ul>${x.items.map(i => `<li>${i}</li>`).join("")}</ul>
+      </div>`).join("");
+  }
+
+  function renderClock() {
+    const now = new Date();
+    const dayMs = 86400000;
+    const daysLeft = Math.max(0, Math.ceil((LAUNCH - now) / dayMs));
+    const totalDays = Math.round((LAUNCH - SPRINT_START) / dayMs);
+    const elapsed = Math.min(totalDays, Math.max(0, Math.round((now - SPRINT_START) / dayMs)));
+    const totalWeeks = Math.max(1, Math.ceil(totalDays / 7));
+    const week = Math.min(totalWeeks, Math.floor(elapsed / 7) + 1);
+    const progress = Math.min(100, Math.round((elapsed / totalDays) * 100));
+
+    $("cdDays").textContent = daysLeft;
+    $("cdWeek").textContent = week;
+    $("kWeeks").textContent = Math.max(0, Math.ceil(daysLeft / 7));
+    $("railFill").style.width = progress + "%";
+    $("railPct").textContent = `Week ${week} of ${totalWeeks}`;
+    $("syncDate").textContent = LAST_SYNC;
+    $("syncDate2").textContent = LAST_SYNC;
+    $("footDate").textContent = LAST_SYNC;
+  }
+
+  /* ---------- curved-line motif (Lissajous), on canvas ---------- */
+  function drawMotif() {
+    const c = $("motif"); if (!c) return;
+    const ctx = c.getContext("2d"); if (!ctx) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr; ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1;
+    const cx = w * 0.72, cy = h * 0.5;
+    const R = Math.max(w, h) * 0.5;
+    const layers = 26;
+    for (let k = 0; k < layers; k++) {
+      const t = k / layers;
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(45,138,91,${0.05 + t * 0.16})`;
+      const a = 3 + t * 1.2, b = 4 - t * 1.1, phase = t * Math.PI;
+      const ax = R * (0.55 + t * 0.4), ay = R * (0.42 + t * 0.3);
+      for (let i = 0; i <= 240; i++) {
+        const th = (i / 240) * Math.PI * 2;
+        const x = cx + Math.sin(a * th + phase) * ax;
+        const y = cy + Math.sin(b * th) * ay;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  /* ---------- theme toggle ---------- */
+  function initTheme() {
+    const btn = $("themeBtn");
+    btn.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = cur === "dark" ? "light"
+        : cur === "light" ? "dark"
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", next);
+      btn.textContent = next === "dark" ? "Light mode" : "Dark mode";
+    });
+  }
+
+  renderProducts();
+  renderMarketing();
+  renderExtras();
+  renderClock();
+  initTheme();
+  $("marqueeText").textContent = "BUILD THE PRODUCTS  ·  STOCK THE CONTENT  ·  FINISH THE ENGINE  ·  LAUNCH OCT 1  ·  BUILD SMARTER STARTS HERE  ·  ".repeat(2);
+  drawMotif();
+  window.addEventListener("resize", drawMotif);
+</script>

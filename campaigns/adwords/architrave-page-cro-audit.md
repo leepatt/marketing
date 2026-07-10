@@ -50,3 +50,35 @@ form friction · 5. Confirm not sold-out.
 Website/configurator job (Shopify theme + the configurator app). Claude can produce the **shot list for
 Tia**, the **trust/how-it-works/FAQ copy**, and the **image alt text** — the dev wires them in. After the
 images + trust land, **retarget the ~20 who already viewed** the product (warm, live arch jobs).
+
+
+## 2026-07-10 (UPDATE — after Lee's mobile test + curl of the live page structure)
+Corrections to the initial audit (that was based on the product's Shopify *media* field; the page renders
+more via the theme):
+- **There ARE 4 images** (carousel: finished arches + an install shot `curved_architrave_install_1.png`) +
+  copy. My "1 image" was the Admin media count, not what the page shows. Alt text is empty (minor SEO miss).
+- **Add-to-cart DOES work** — the builder posts "ADD TO CART requests from calculator iframe". So it's an
+  instant-price → add-to-cart flow, not quote-only. (Corrects earlier inferred #4.)
+- Trust bits exist: **"Apply for Trade Account"**, and a "Need a Solution Beyond the Standard App? → Send
+  message" contact section. "You may also like" related products at the bottom.
+
+### The REAL problem (Lee's finding, mechanism confirmed): the builder is an IFRAME, front-and-centre
+The architrave builder is an **iframe-embedded calculator** (page is full of `IFRAME_HEIGHT_CHANGE` /
+`IFRAME_VIEWPORT_INFO` / `IFRAME_MODAL_OPEN` postMessage plumbing). On mobile an inline iframe is the classic
+cause of exactly what Lee saw: it takes the full width/height, scrolls internally (fighting the page), resizes
+awkwardly, and **dominates the first screen** — so the 4 images + copy (the desire/trust) get buried below it.
+A visitor from an ad lands on a *tool that demands work* before they've been given a reason to want the product.
+**Effort before desire/trust = bounce.** Matches the funnel (20 view-item, 1 form-start, 0 finish).
+
+### Fix (mostly a re-order + use the modal that already exists)
+1. **On mobile, don't embed the builder inline as the hero.** Lead with a **hero image** (best finished arch)
+   + headline + one-line value prop.
+2. **Put the builder behind a big "Design your arch → get instant price" button that opens it as a
+   full-screen modal** — the page already supports `IFRAME_MODAL_OPEN`, so the capability exists. Keeps the
+   landing focused on desire/trust; tool is one tap away.
+3. **Surface the images higher** (gallery of finished arches above/near the hero, not buried under the iframe).
+4. **Add the "How it works" strip** (design → instant price → CNC-cut → delivered 3 days) between hero and builder.
+5. **Test the iframe's mobile height/scroll** — the height-syncing can leave dead space or cut content.
+6. Fix empty image **alt text**.
+This is largely a theme/section re-order + a modal trigger — achievable without new tooling. The AI in-situ
+images + how-it-works from the 2026-07-10 discussion slot straight into #1/#3/#4.

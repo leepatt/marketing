@@ -235,7 +235,7 @@
   .t-tag.win { color: var(--success); border-color: color-mix(in srgb, var(--success) 40%, transparent); }
 
   /* extras */
-  .extras { grid-template-columns: repeat(3, 1fr); }
+  .extras { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .xcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--sp-6); box-shadow: var(--card-shadow); }
   .xcard h3 { font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: var(--tracking-tight); margin-bottom: var(--sp-2); }
   .xcard .x-goal { font-size: 13px; color: var(--fg-muted); margin-bottom: var(--sp-4); }
@@ -466,6 +466,8 @@
       items: ["In-house filming setup (lighting, angles, mounts)", "Product display / photography corner", "Machinery / tooling additions", "Signage & branded environment", "Safe capture zones for machine footage"] },
     { title: "Updated Craftons design system", goal: "Evolve the system from storefront-only to product + app.",
       items: ["Re-sync tokens from latest brand guidelines", "App / configurator UI-kit components", "Dashboard + data components (this doc's kit)", "Motion + interaction guidelines", "Publish + version in the Drive brain"] },
+    { title: "Security", goal: "Lock down the apps, store and data before we drive traffic and scale.",
+      items: ["Dependency / vulnerability audit", "Auth & access review — apps + admin", "Shopify app scopes & API permissions", "Secrets management — .env, key rotation", "Configurator input validation & abuse limits", "Lead / customer (PII) data handling", "Backups & recovery check"] },
   ];
 
   /* ---------------- render ---------------- */

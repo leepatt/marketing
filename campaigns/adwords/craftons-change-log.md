@@ -49,3 +49,32 @@ are per-campaign, so a split was required to give architraves its own budget/geo
 - New architraves ad enters **review** — confirm it gets approved (was "under review" at build).
 - Architraves spend/conversions vs the $100 budget; is the competitor (Intrim/AMDC) conquesting working?
 - Ply/formwork now local — spend should drop and waste (interstate) should stop.
+
+
+## 2026-07-10 — architrave conversion diagnosis + geo re-weight
+**Corrected earlier "we're blind" assumption — tracking works:**
+- Leads = "Craftons (web) form_submit" (PRIMARY, 53 in 30d). Purchases = "Google Shopping App Purchase"
+  (PRIMARY, 5 in 30d, via the Shopify Google&YouTube app). Architrave campaign activity IS attributed
+  (14d: 24 page views, 20 view-item, 1 form-start). Attribution is fine.
+- Old "Craftons (web) purchase" is HIDDEN (superseded by the Shopify app purchase) — harmless. file_download
+  already non-primary.
+
+**The real bottleneck = the configurator/page, not tracking or the ads.** Architrave ad clicks land and
+VIEW the product (20 view-item) but **0 add-to-cart, 0 checkout, 0 purchase, 0 form-submit** (only 1
+form-start). Site-wide add-to-cart ~3%, CR ~1-2%. The clicks are qualified; they bounce at the configurator.
+
+**Reframe:** architraves is lumpy/high-value — 6 orders/90d, single orders $2.5k, 7-week dry spells; 4 orders
+in the last 3 weeks (since the configurator upgrade). At ~$6 CPC needing ~30-50 clicks/order, "0 conv in 20
+clicks / 3 days" is statistically EXPECTED, not failure. High AOV/margin tolerates ~$200-300 CPA.
+
+**Changes applied (Lee-approved, 3 asks):**
+- (2) Re-weight to Victoria: Sydney + Brisbane **bid_modifier 0.30 (-70%)** on the architrave campaign
+  (home was starved — 90% of spend interstate, 0 conv). Negatives added: **skirting, bunnings**.
+- (1) Tracking audited = working (above); no blackout. Minor optional tidy only.
+- (3) Funnel confirmed: leak is the **architrave configurator page** (view -> no cart).
+
+**Next levers (where the conversions come from):**
+- **Improve the architrave configurator page** (design->instant price->order friction; trust/proof;
+  finished-arch gallery). Website/configurator job — the clicks are landing, the page must close them.
+- **Retarget** architrave product viewers (warm; ~20 already).
+- Give it 3-4 weeks with Victoria focus + tracking on before judging.

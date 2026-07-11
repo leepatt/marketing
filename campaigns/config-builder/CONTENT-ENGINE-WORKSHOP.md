@@ -92,4 +92,16 @@ Brief (Lee) → agent authors a TS "reel spec" (shots, configurator states, copy
 - **Music:** **Gozney pizza-video register** — warm, cinematic, tactile, premium-but-grounded, mid-tempo build. Pull the actual "Gozney playbook" from Drive `02 Strategy/Craftons-Marketing-Engine-Notes.md` at production time. Programmatic fetch via Epidemic Sound Music API.
 - **Brief = conversational.** Lee chats (here in Claude Code, or with the tool) → the agent emits a structured **reel-spec** (versioned JSON/TS). No rigid form.
 
-→ All gaps closed. See the standalone build spec: **`CONTENT-ENGINE-SPEC.md`** (the handoff doc for a cnccut-app session).
+→ See the standalone build spec: **`CONTENT-ENGINE-SPEC.md`** (the handoff doc for a cnccut-app session).
+
+## Answers — Round 4 (reference ad + benchmark + interaction)
+
+- Lee uploaded a **current 17s Radius Pro reel** as baseline (teardown now in the spec §2a). Verdict: right *type*
+  of shots ("clever SaaS shots") but **not the template** — make it more engaging; **one per product**.
+- **Benchmark corrected: Monday.com / modern SaaS** (bright, snappy, bold kinetic type, clean UI motion).
+  Gozney demoted to a secondary warmth cue for real-footage beats only.
+- **VO + captions both**, with a **per-reel choice** (toggle in the reel-spec).
+- **Interaction model answered** (spec §7a): start with **Claude Code as the chat** (Lee briefs in plain English,
+  agent drafts the reel-spec + renders + re-renders on direction); a dedicated dashboard chat box is a later option.
+- **Open creative call raised:** keep a recurring **talking-head presenter** (real or AI avatar) vs. go **pure
+  kinetic-UI SaaS** (no persistent presenter). To decide before locking the house template.

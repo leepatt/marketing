@@ -39,8 +39,10 @@ reel-spec renders the same reel, so specs become reusable templates and the week
 ## 2. What the reels are
 
 - **Format:** 1080×1920, 9:16, ~15–30s, IG Reels / TikTok. Fast, native — not slow agency-gloss.
-- **Register:** slick **SaaS product-demo** polish + **Gozney** warmth (tactile close-ups, premium-but-grounded,
-  mid-tempo musical build). Real footage leads; motion/3D extends. A human approves every asset.
+- **Register / benchmark:** **Monday.com and modern SaaS product videos** — bright, snappy, bold kinetic
+  typography, clean confident UI motion, energetic. (Gozney is a *secondary* warmth cue for the real-footage
+  beats — tactile close-ups, premium-but-grounded — **not** the primary bar.) Real footage leads; motion/3D
+  extends. A human approves every asset.
 - **Ingredients, mixed per reel:**
   1. The **real Craftons configurator UI** building/designing a product (mostly-real UI; small faked details fine).
   2. **Real footage** (Tia films actual completed jobs — no stock).
@@ -48,6 +50,23 @@ reel-spec renders the same reel, so specs become reusable templates and the week
   4. **The "match"**: real footage of a finished product next to the configurator building it at the exact dims
      (a signature move, not the only one — the tool is general-purpose).
   5. **Animated callouts / captions** composited over real video, in the Craftons design system.
+
+## 2a. Reference teardown — current Radius Pro ad (what to beat)
+A 17s Radius Pro reel exists (Drive/uploads) as the baseline. Structure = a proven skeleton to reuse:
+1. **Hook title card** (~0–1s): "SO WE BUILT CRAFTONS RADIUS PRO".
+2. **Config demo** (~1–5s): configurator on a phone, stepped captions — choose material → input radius → wall
+   dimensions → instant quote. _This beat is currently a low-fi phone screen-grab — it's the #1 thing our
+   pipeline upgrades: real UI, synthetic cursor, auto-zoom on the price, 60fps._
+3. **Screen→machine** (~6–7s): real factory/CNC footage — "From your screen to our cutting machines."
+4. **Real product** (~8–10s): real curved plywood parts + big kinetic type ("CURVED TOP AND BOTTOM PLATES").
+5. **Promise** (~11–12s): bold kinetic type ("DISPATCHED IN JUST 3 BUSINESS DAYS").
+6. **Presenter + logo outro** (~13–16s): talking-head, logo draw-on, wordmark.
+- Persistent talking-head presenter (VO) over everything + IG chrome.
+- **Verdict (Lee):** good type of shots ("clever SaaS shots"), but not the template — we make it more engaging,
+  and **one per product**. Benchmark shifts from this toward Monday.com-style energy.
+- **Open creative call:** keep a **talking-head presenter** (real Lee/Tia, or an AI avatar) as a recurring
+  device, or move to a **pure kinetic-UI SaaS** format (graphics/product-led, no persistent presenter)? Decide
+  before locking the house template.
 
 ## 3. The configurator it drives (facts)
 
@@ -159,6 +178,19 @@ Lee chats a brief (here in Claude Code or with the tool); the agent emits a vers
 }
 ```
 The agent decides sensible defaults (camera moves, easing, framing); Lee overrides by talking.
+
+## 7a. How Lee talks to the tool (interaction model)
+- **Model 1 — Claude Code IS the chat (start here, zero extra build).** Lee talks to the agent in Claude Code
+  (laptop/phone/web) in plain English. The agent drafts a **reel-spec** (saved file), renders a draft MP4, shows
+  it; Lee **directs changes in the same chat** ("shot 2 slower, zoom the price, captions not VO, swap music");
+  agent edits the spec and re-renders. Specs are versioned files → nothing lost; last week's reel = this week's
+  starting point. This matches how the workshop itself ran.
+- **Model 2 — dedicated chat box in the cnccut-app dashboard (later).** A web page where Lee types briefs and
+  sees previews inline; same engine underneath, driven via an endpoint (reuse the configurator's `/api/mcp`
+  pattern). Nicer non-technical/mobile surface; a Phase 5+ goal once templates are locked.
+- **The loop is identical either way:** brief → draft → Lee directs → re-render → approve → Later.com.
+- **VO vs captions is a per-reel choice** (`audio.vo` in the spec): both supported — VO (default = the existing
+  Gemini voice; ElevenLabs alt) and/or kinetic captions. Lee picks per reel in the chat.
 
 ## 8. Build phases (ship value early)
 - **Phase 0 — scaffold:** `content-engine/` package in cnccut-app; setup script (node, ffmpeg, chromium/

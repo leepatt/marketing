@@ -105,3 +105,43 @@ Brief (Lee) → agent authors a TS "reel spec" (shots, configurator states, copy
   agent drafts the reel-spec + renders + re-renders on direction); a dedicated dashboard chat box is a later option.
 - **Open creative call raised:** keep a recurring **talking-head presenter** (real or AI avatar) vs. go **pure
   kinetic-UI SaaS** (no persistent presenter). To decide before locking the house template.
+
+## State of play — 2026-07-11 (paused for more research before building in cnccut-app)
+
+### What we PROVED works
+- **Driving the real app with Playwright = pixel-identical UI.** Run the real `craftons-curves-calculator`
+  locally (`npm start` on `localhost:3000`), drive it with Playwright (set real inputs `#specifiedRadius`/
+  `#width`/`#angle` via native setter, scroll, click real Add Part), screenshot each frame → ffmpeg. Real
+  behaviour comes free (the "split into 2 sections / Joiner Blocks" note, Parts list, Order Summary).
+  Scripts: `sandbox/capture-clean.mjs` (clean, uses REAL logo) and `sandbox/capture-real.mjs` (branded).
+- **Deterministic frame-by-frame capture** (time → state → screenshot) is the right model; it's what Remotion
+  productionises. Same script → same clip → reusable weekly template.
+- The real **Craftons logo** is at `sandbox/assets/craftons_logo.png` (pulled from the Shopify CDN).
+
+### Hard-won LESSONS (don't repeat)
+- **Do NOT fabricate brand assets.** Hand-drawn logo / fake header / invented captions made a clean real UI
+  look amateur and unpostable. Use the REAL logo and real assets only; let the real UI carry the clip.
+- **The real app already looks good** — the value we add is smooth camera, exact dimensions, repeatability,
+  and (later) real footage + audio. Not chrome.
+- **This session's egress proxy blocks headless browsers** (curl works, Chromium resets — even example.com).
+  So we can't drive the *deployed* URL from a Claude web session; we run the app **locally** instead. On Lee's
+  Mac / a proper cloud box there's no proxy → can drive the live site directly.
+
+### KEY DECISION the research should resolve
+- **Custom code pipeline vs off-the-shelf.** Two real routes:
+  1. **Custom (Playwright → Remotion → ffmpeg + Blender):** fully automatable, repeatable, agent-driven, one
+     reel/week from a brief. Higher build cost; we've proven the capture half.
+  2. **Off-the-shelf, manual:** record the real site with **Screen Studio** (Mac, the category leader for
+     auto-zoom screen video) → edit in **CapCut**. Postable results this week with no build — but manual each
+     time, not a repeatable factory. Good stopgap / benchmark to compare the custom tool against.
+- **Where the tool lives** (cnccut-app package vs its own repo vs co-located with the configurator) and **who
+  builds/maintains it**.
+- **Look**: lock references (Ramp single-accent + Monday energy — see spec §2b), and decide presenter yes/no.
+
+### Where everything is saved (this repo, `campaigns/config-builder/`)
+- `CONTENT-ENGINE-SPEC.md` — the build spec (architecture, house style, phases, reel-spec).
+- `CONTENT-ENGINE-SHOTS-AND-CALENDAR.md` — shot library + first-month reels.
+- `CONFIG-BUILDER-BRIEF.md` — configurator/repo facts.
+- `sandbox/` — working capture scripts (`capture-clean.mjs`, `capture-real.mjs`, `scene.*` replica), fonts,
+  real logo, README. Runnable proof-of-concept.
+- Research banked in the spec/workshop: SaaS-video tooling, code-pipeline feasibility, Monday.com house style.

@@ -8,6 +8,12 @@
 
 ---
 
+## Guiding principle — "option for everything"
+Every element is a **modular toggle with a sensible default**, set per reel in the reel-spec: presenter
+(none/real/avatar), VO (on/off, voice choice), captions (on/off, style), 3D look (stylized/photoreal), real
+footage, music, motif, speed-ramps, aspect. **Default house template = presenter-free, Monday.com-style,
+captions-on.** Nothing is hard-wired; Lee flips any switch by talking to the tool.
+
 ## 0. TL;DR for the builder
 
 Build a **local-CLI / cloud-run pipeline** (its own self-contained package inside cnccut-app, e.g. `content-engine/`)
@@ -64,9 +70,8 @@ A 17s Radius Pro reel exists (Drive/uploads) as the baseline. Structure = a prov
 - Persistent talking-head presenter (VO) over everything + IG chrome.
 - **Verdict (Lee):** good type of shots ("clever SaaS shots"), but not the template — we make it more engaging,
   and **one per product**. Benchmark shifts from this toward Monday.com-style energy.
-- **Open creative call:** keep a **talking-head presenter** (real Lee/Tia, or an AI avatar) as a recurring
-  device, or move to a **pure kinetic-UI SaaS** format (graphics/product-led, no persistent presenter)? Decide
-  before locking the house template.
+- **Resolved:** presenter is an **optional, pluggable layer** — support **all** modes: none / real-footage
+  presenter (Lee/Tia) / AI avatar. **Default house template = presenter-free, Monday.com style** for now.
 
 ## 3. The configurator it drives (facts)
 
@@ -173,8 +178,10 @@ Lee chats a brief (here in Claude Code or with the tool); the agent emits a vers
     { "type": "native-3d", "move": "build-assemble", "style": "stylized" },
     { "type": "real-footage", "clip": "tia/bench-poured.mp4", "captions": ["Pre-Fab. Pre-Cut. Site-Ready."] }
   ],
-  "audio": { "musicMood": "gozney-warm-build", "vo": null },
-  "brand": { "captionFont": "Aeonik", "motif": true }
+  "presenter": "none",            // none | real:<clip> | avatar:<voice>
+  "audio": { "musicMood": "monday-snappy-build", "vo": null },  // vo: null | "gemini" | "elevenlabs:<id>"
+  "captions": { "on": true, "style": "kinetic-word", "font": "Aeonik" },
+  "brand": { "motif": true, "look": "stylized" }   // look: stylized | photoreal
 }
 ```
 The agent decides sensible defaults (camera moves, easing, framing); Lee overrides by talking.

@@ -84,11 +84,12 @@ Brief (Lee) → agent authors a TS "reel spec" (shots, configurator states, copy
  → npx remotion render → 1080×1920 MP4 → Lee reviews → approve → Later.com
 ```
 
-## OPEN QUESTIONS (being worked — Round 2+)
+## Answers — Round 3 (logistics locked)
 
-- Architecture fork: purpose-built cinematic renderer (reuse geometry, full camera control) vs. screen-capture the real app.
-- Blender vs web-3D split: what renders where.
-- The "match" workflow: how real footage is sourced/filmed and aligned to the configurator output.
-- Output granularity: finished reels vs. clean components assembled in CapCut; who edits.
-- Weekly workflow: input → output; how one-command vs hands-on.
-- Which products/scenes to support first.
+- **Compute = cloud-first.** Lee's laptop is old, no GPU (can get one). Yes to a **cloud box**. → Laptop is just the control surface (Claude Code); all rendering runs in the cloud, with an on-demand GPU box for photoreal (Cycles) hero shots.
+- **Home repo = `cnccut-app`** (option B). cnccut-app is the umbrella that hosts all calculators/tools; the configurator's actual code lives in the separate `craftons-curves-calculator` repo. The engine sits in cnccut-app and **drives the live configurator URL** (cross-repo) — it doesn't need the configurator source in-repo (can optionally import geometry as a shared module).
+- **VO:** AI VO fine; currently a **Gemini voice** — keep that as default (ElevenLabs as alt). Captions-over-music often preferred.
+- **Music:** **Gozney pizza-video register** — warm, cinematic, tactile, premium-but-grounded, mid-tempo build. Pull the actual "Gozney playbook" from Drive `02 Strategy/Craftons-Marketing-Engine-Notes.md` at production time. Programmatic fetch via Epidemic Sound Music API.
+- **Brief = conversational.** Lee chats (here in Claude Code, or with the tool) → the agent emits a structured **reel-spec** (versioned JSON/TS). No rigid form.
+
+→ All gaps closed. See the standalone build spec: **`CONTENT-ENGINE-SPEC.md`** (the handoff doc for a cnccut-app session).

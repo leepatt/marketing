@@ -3,99 +3,114 @@
 <head>
 <meta charset="utf-8"/>
 <style>
-@font-face { font-family:'SG'; src:url('fonts/sg-700.woff2') format('woff2'); font-weight:700; font-display:block; }
-@font-face { font-family:'SG'; src:url('fonts/sg-500.woff2') format('woff2'); font-weight:500; font-display:block; }
-@font-face { font-family:'SG'; src:url('fonts/sg-400.woff2') format('woff2'); font-weight:400; font-display:block; }
-@font-face { font-family:'JBM'; src:url('fonts/jbm-500.woff2') format('woff2'); font-weight:500; font-display:block; }
-:root{
-  --green:#194431; --green7:#123022; --line:#2d8a5b; --ink:#0e0e0c;
-  --paper:#f4f1ea; --paperwarm:#efe9dd; --stone:#8a8577; --rule:#d9d3c6; --white:#fff;
-}
-*{margin:0;padding:0;box-sizing:border-box}
+@font-face{font-family:'SG';src:url('fonts/sg-700.woff2') format('woff2');font-weight:700;font-display:block}
+@font-face{font-family:'SG';src:url('fonts/sg-500.woff2') format('woff2');font-weight:500;font-display:block}
+@font-face{font-family:'SG';src:url('fonts/sg-400.woff2') format('woff2');font-weight:400;font-display:block}
+:root{--green:#194431;--line:#2d8a5b;--ink:#111;--grey:#8a8a82;--rule:#e2e0d8;--card:#fff;--panel:#f4f3ef;--pageblk:#0c0d0c}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'SG',sans-serif}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
-#viewport{position:relative;width:1080px;height:1920px;overflow:hidden}
+#viewport{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--pageblk)}
 #stage{position:absolute;inset:0;transform-origin:0 0}
-#bg{position:absolute;inset:-800px}
-.motif{position:absolute;pointer-events:none}
-#headline{position:absolute;left:80px;right:80px;top:118px;z-index:5}
-#headline h1{font-family:'SG';font-weight:700;font-size:74px;line-height:1.0;letter-spacing:-0.03em}
-#headline .w{display:inline-block;white-space:pre}
-#eyebrow{font-family:'JBM';font-weight:500;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px}
-#eyebrow .dot{width:12px;height:12px;border-radius:50%;background:var(--line)}
-
-#card{position:absolute;left:70px;width:940px;top:430px;border-radius:26px;overflow:hidden;z-index:4;
-  background:var(--white);box-shadow:0 50px 90px -30px rgba(10,12,10,.55),0 8px 24px rgba(10,12,10,.12)}
-#chrome{height:78px;background:var(--paperwarm);display:flex;align-items:center;padding:0 26px;gap:16px;border-bottom:1px solid var(--rule)}
-#chrome .dots{display:flex;gap:9px}
-#chrome .dots i{width:15px;height:15px;border-radius:50%;background:#cfc9bb;display:block}
-#chrome .url{flex:1;height:46px;background:var(--white);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:9px;font-family:'JBM';font-size:24px;color:var(--ink)}
-#chrome .url svg{width:18px;height:18px;color:var(--stone)}
-#cardbody{padding:34px 36px 40px}
-.pvwrap{display:flex;gap:30px}
-#preview{width:360px;height:360px;flex:none;background:var(--paper);border-radius:16px}
-.fields{flex:1;display:flex;flex-direction:column;gap:18px}
-.field label{font-family:'SG';font-weight:500;font-size:26px;color:var(--ink);display:block;margin-bottom:9px}
-.field .inp{height:66px;border:2px solid var(--rule);border-radius:11px;display:flex;align-items:center;padding:0 20px;font-family:'JBM';font-size:30px;color:var(--ink);background:var(--white);position:relative}
-.field .inp.active{border-color:var(--line)}
-.field .inp .cur{width:3px;height:34px;background:var(--line);margin-left:2px;opacity:0}
-.row2{display:flex;gap:18px}.row2 .field{flex:1}
-.price{margin-top:26px;padding:26px 28px;background:var(--paper);border-radius:14px;display:flex;justify-content:space-between;align-items:center}
-.price .lab{font-family:'JBM';font-size:22px;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone)}
-.price .val{font-family:'SG';font-weight:700;font-size:58px;letter-spacing:-0.02em;color:var(--ink)}
-.actions{display:flex;gap:16px;margin-top:26px}
-.btn{height:78px;border-radius:12px;font-family:'SG';font-weight:700;font-size:30px;display:flex;align-items:center;justify-content:center;gap:12px}
-.btn.sec{flex:none;width:300px;background:var(--paperwarm);color:var(--ink);border:2px solid var(--rule)}
-.btn.pri{flex:1;background:var(--green);color:#fff;position:relative;overflow:hidden}
-.btn.pri .chk{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--green);opacity:0}
-
-#caption{position:absolute;left:80px;right:80px;bottom:250px;z-index:6;text-align:center}
-#caption .cap{display:inline-block;font-family:'SG';font-weight:700;font-size:56px;letter-spacing:-0.02em;color:var(--ink);background:var(--white);padding:14px 30px;border-radius:14px;box-shadow:0 14px 30px -12px rgba(10,12,10,.4)}
-
-#outro{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--green);opacity:0}
-#outro .mono{width:190px;height:190px;margin-bottom:40px}
-#outro .wm{font-family:'SG';font-weight:700;font-size:92px;color:#fff;letter-spacing:-0.03em}
-#outro .cta{font-family:'JBM';font-weight:500;font-size:30px;color:var(--line);margin-top:26px;letter-spacing:0.02em}
-
-#cursor{position:absolute;z-index:7;width:54px;height:54px;left:0;top:0;pointer-events:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.4))}
-#tapring{position:absolute;z-index:7;width:80px;height:80px;border:5px solid var(--line);border-radius:50%;opacity:0;pointer-events:none}
-#glow{position:absolute;z-index:5;border-radius:14px;box-shadow:0 0 0 0 rgba(45,138,91,.6);opacity:0;pointer-events:none}
+/* header */
+#header{position:absolute;top:0;left:0;width:1080px;height:150px;background:var(--green);display:flex;align-items:center;justify-content:space-between;padding:0 46px;z-index:20}
+#header .grp{display:flex;align-items:center;gap:34px}
+#header svg{display:block}
+#brand{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:18px}
+#brand .wm{font-weight:700;font-size:52px;color:#fff;letter-spacing:-0.02em}
+/* scroll region */
+#scroll{position:absolute;top:150px;left:0;width:1080px;height:1770px;overflow:hidden}
+#content{position:absolute;top:0;left:0;width:1080px}
+.card{margin:36px 40px 0;border-radius:24px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+#viz{background:var(--panel);height:640px;position:relative;overflow:hidden}
+#vsvg{position:absolute;inset:0;width:100%;height:100%}
+#cube{position:absolute;top:30px;right:30px;width:76px;height:76px;background:#fff;border-radius:16px;box-shadow:0 8px 20px -8px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+#cfg{background:var(--card);padding:44px 44px 54px}
+#cfg h1{font-weight:700;font-size:52px;color:var(--ink);letter-spacing:-0.02em;margin-bottom:34px}
+.lbl{font-weight:500;font-size:26px;letter-spacing:0.14em;color:var(--grey);text-transform:uppercase;margin-bottom:16px}
+.sel{background:var(--card);border:2px solid var(--rule);border-radius:14px;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-size:36px;color:var(--ink)}
+.sel .car{color:var(--grey);font-size:26px}
+.panel{background:var(--panel);border-radius:18px;padding:30px 30px 34px;margin-top:8px}
+.seg{display:flex;gap:18px;margin-bottom:30px}
+.seg .opt{flex:1;border:2px solid var(--rule);border-radius:14px;height:118px;display:flex;align-items:center;justify-content:center;gap:16px;font-weight:500;font-size:32px;color:var(--ink);text-align:center;line-height:1.05;background:#fff}
+.seg .opt.on{border-color:var(--ink);border-width:2.5px}
+.seg .opt .rd{width:34px;height:34px;border-radius:50%;border:2px solid #c9c7bd;flex:none;display:flex;align-items:center;justify-content:center}
+.seg .opt.on .rd{background:var(--ink);border-color:var(--ink)}
+.flab{font-weight:500;font-size:30px;color:var(--ink);margin-bottom:12px}
+.row{display:flex;gap:22px;margin-bottom:24px}
+.fld{flex:1}
+.inp{background:#fff;border:2px solid var(--rule);border-radius:12px;height:96px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.inp.act{border-color:var(--line)}
+.inp .v{font-size:40px;color:var(--ink)}
+.inp .v.ph{color:#b9b7ad}
+.inp .u{font-size:28px;color:var(--grey)}
+.hint{font-size:26px;color:var(--grey);line-height:1.3;margin-top:4px}
+.qty{display:flex;gap:22px;align-items:stretch}
+.step{flex:none;width:300px;background:#fff;border:2px solid var(--rule);border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-size:44px;color:var(--ink)}
+.step .pm{font-size:44px;color:var(--grey)}
+.addp{flex:1;background:#d3ecd9;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:16px;font-weight:700;font-size:38px;color:var(--green);position:relative;overflow:hidden}
+.addp .done{position:absolute;inset:0;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;opacity:0}
+/* overlays */
+#caption{position:absolute;left:80px;right:80px;bottom:110px;text-align:center;z-index:30}
+#caption .cap{display:inline-block;font-weight:700;font-size:52px;color:#fff;background:rgba(12,13,12,.82);padding:16px 34px;border-radius:16px;-webkit-backdrop-filter:blur(4px)}
+#cursor{position:absolute;z-index:40;width:52px;height:52px;left:0;top:0;filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+#tap{position:absolute;z-index:39;width:84px;height:84px;border:5px solid var(--line);border-radius:50%;opacity:0}
 </style>
 </head>
 <body>
-<div id="viewport">
-  <div id="stage">
-    <div id="bg"></div>
-    <div id="headline"><div id="eyebrow"><span class="dot"></span><span>Radius Pro · Online</span></div><h1 id="hl"></h1></div>
-    <div id="card">
-      <div id="chrome"><div class="dots"><i></i><i></i><i></i></div>
-        <div class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>craftons.com.au</div>
-      </div>
-      <div id="cardbody">
-        <div class="pvwrap">
-          <svg id="preview" viewBox="0 0 360 360"></svg>
-          <div class="fields">
-            <div class="field"><label>Material</label><div class="inp" id="f-mat"><span id="v-mat"></span><span class="cur"></span></div></div>
-            <div class="field"><label>Int. radius (r)</label><div class="inp" id="f-rad"><span id="v-rad"></span><span class="cur"></span></div></div>
-            <div class="row2">
-              <div class="field"><label>Width (w)</label><div class="inp" id="f-wid"><span id="v-wid"></span><span class="cur"></span></div></div>
-              <div class="field"><label>Angle (θ)</label><div class="inp" id="f-ang"><span id="v-ang"></span><span class="cur"></span></div></div>
-            </div>
-          </div>
-        </div>
-        <div class="price"><span class="lab">Live estimate</span><span class="val" id="v-price">$0.00</span></div>
-        <div class="actions">
-          <div class="btn sec">Save and share</div>
-          <div class="btn pri" id="cart">Add to cart<div class="chk">Added <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div></div>
-        </div>
-      </div>
+<div id="viewport"><div id="stage">
+  <div id="scroll"><div id="content">
+    <div id="viz" class="card"><svg id="vsvg" viewBox="0 0 1000 640"></svg>
+      <div id="cube"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#5a5a52" stroke-width="1.7"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 12l9-5M12 12v10M12 12L3 7"/></svg></div>
     </div>
-    <div id="glow"></div>
-    <div id="caption"></div>
-    <div id="outro"><svg class="mono" id="mono" viewBox="0 0 100 100"></svg><div class="wm">Craftons</div><div class="cta">Configure yours · craftons.com.au</div></div>
-    <svg id="cursor" viewBox="0 0 24 24" fill="#fff" stroke="#0a0a0a" stroke-width="1.4" stroke-linejoin="round"><path d="M5 2.5l4.4 17 2.7-6.7 6.6-1.7L5 2.5z"/></svg>
-    <div id="tapring"></div>
+    <div id="cfg" class="card">
+      <h1>Configure Curve</h1>
+      <div class="lbl">Material</div>
+      <div class="sel" id="f-mat"><span id="v-mat">Formply · 17mm · 2400×1200mm</span><span class="car">▾</span></div>
+      <div class="lbl" style="margin-top:34px">Dimensions</div>
+      <div class="panel">
+        <div class="lbl" style="font-size:23px;margin-bottom:14px">Radius defined by</div>
+        <div class="seg">
+          <div class="opt on" id="opt-int"><span class="rd"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Internal dimensions</div>
+          <div class="opt" id="opt-ext"><span class="rd"></span>External dimensions</div>
+        </div>
+        <div class="row">
+          <div class="fld"><div class="flab">Int. radius (r)</div><div class="inp" id="f-rad"><span class="v" id="v-rad">900</span><span class="u">mm</span></div></div>
+          <div class="fld"><div class="flab">Width (w)</div><div class="inp" id="f-wid"><span class="v" id="v-wid">100</span><span class="u">mm</span></div></div>
+        </div>
+        <div class="row">
+          <div class="fld"><div class="flab">Angle (θ)</div><div class="inp" id="f-ang"><span class="v" id="v-ang">90</span><span class="u">°</span></div></div>
+          <div class="fld"><div class="flab">Arc (L)</div><div class="inp" id="f-arc"><span class="v ph" id="v-arc">—</span><span class="u">mm</span></div></div>
+          <div class="fld"><div class="flab">Chord (c)</div><div class="inp" id="f-cho"><span class="v ph" id="v-cho">—</span><span class="u">mm</span></div></div>
+        </div>
+        <div class="hint">Enter any one of Angle, Arc or Chord — the other two fill in.</div>
+      </div>
+      <div class="lbl" style="margin-top:34px">Tangent legs</div>
+      <div class="panel"><div class="inp" style="justify-content:flex-start;gap:20px"><span class="rd" style="width:34px;height:34px;border-radius:50%;border:2px solid #c9c7bd;display:block"></span><span style="font-size:32px;color:var(--ink)">Add straights to curve ends</span></div></div>
+      <div class="lbl" style="margin-top:34px">Curve quantity</div>
+      <div class="qty">
+        <div class="step"><span class="pm">−</span><span>1</span><span class="pm">+</span></div>
+        <div class="addp" id="addp"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#194431" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>Add Part<div class="done">Added <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div></div>
+      </div>
+      <div class="hint" style="margin-top:16px">Enter radius, width and angle to add a part.</div>
+    </div>
+  </div></div>
+
+  <div id="header">
+    <div class="grp">
+      <svg width="46" height="46" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+    </div>
+    <div id="brand">
+      <svg width="60" height="60" viewBox="0 0 48 48" fill="none"><path d="M24 6c-5 0-8 3-8 8 0 3 2 5 4 6-3 1-6 3-6 8 0 5 4 8 10 8" stroke="#2d8a5b" stroke-width="4.5" stroke-linecap="round"/><path d="M24 6c5 0 8 3 8 8 0 3-2 5-4 6 3 1 6 3 6 8 0 5-4 8-10 8" stroke="#2d8a5b" stroke-width="4.5" stroke-linecap="round"/></svg>
+      <span class="wm">Craftons</span>
+    </div>
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M2 3h3l2.5 13h11l2-9H6"/></svg>
   </div>
+
+  <div id="tap"></div>
+  <svg id="cursor" viewBox="0 0 24 24" fill="#fff" stroke="#0a0a0a" stroke-width="1.3" stroke-linejoin="round"><path d="M5 2.5l4.4 17 2.7-6.7 6.6-1.7L5 2.5z"/></svg>
 </div>
+<div id="caption"></div></div>
 <script src="scene.js"></script>
 </body>
 </html>

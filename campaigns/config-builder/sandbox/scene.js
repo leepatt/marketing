@@ -1,215 +1,124 @@
-/* Deterministic config-demo scene. Every frame = pure function of t (seconds). */
-const DUR = 10.0;
-const DIMS = { r:800, w:450, ang:180, mat:'Formply 17mm' };
-const priceOf = (r,w,a)=>Math.max(45,(Math.PI*r*a/180)/1000*92 + (w/100)*6);
-const PRICE = priceOf(DIMS.r,DIMS.w,DIMS.ang); // 258.22
-
-/* ---- variants ---- */
-const V = {
-  0:{name:'base-paper',   theme:'paper', chrome:true,  fill:'wood', zoom:'med',    motif:true,  capCard:true,  pace:1.0, skew:0},
-  1:{name:'dark-mode',    theme:'dark',  chrome:true,  fill:'wood', zoom:'med',    motif:true,  capCard:true,  pace:1.0, skew:0},
-  2:{name:'green-ground', theme:'green', chrome:true,  fill:'green',zoom:'med',    motif:true,  capCard:true,  pace:1.0, skew:0},
-  3:{name:'bare-card',    theme:'paper', chrome:false, fill:'wood', zoom:'strong', motif:true,  capCard:true,  pace:1.0, skew:0},
-  4:{name:'punch-dark',   theme:'dark',  chrome:true,  fill:'ink',  zoom:'strong', motif:false, capCard:true,  pace:1.0, skew:0},
-  5:{name:'minimal',      theme:'paper', chrome:true,  fill:'wood', zoom:'subtle', motif:false, capCard:false, pace:1.0, skew:0},
-  6:{name:'fast-green',   theme:'green', chrome:true,  fill:'green',zoom:'med',    motif:true,  capCard:true,  pace:0.82,skew:0},
-  7:{name:'measured',     theme:'paper', chrome:true,  fill:'wood', zoom:'med',    motif:true,  capCard:true,  pace:1.25,skew:0},
-  8:{name:'iso-dark',     theme:'dark',  chrome:true,  fill:'wood', zoom:'med',    motif:true,  capCard:true,  pace:1.0, skew:14},
-  9:{name:'hero-preview', theme:'paper', chrome:true,  fill:'wood', zoom:'preview',motif:true,  capCard:true,  pace:1.0, skew:0},
-};
+/* Faithful Craftons "Configure Curve" demo. Frame = pure function of t (seconds). */
+const DUR = 11.0;
 const vid = parseInt(new URLSearchParams(location.search).get('v')||'0',10);
-const cfg = V[vid]||V[0];
+const PACE = ({0:1.0,1:0.85,2:1.2}[vid])||1.0;
+const T=(x)=>x*PACE;
 
-/* ---- easing ---- */
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const lerp=(a,b,t)=>a+(b-a)*t;
-const seg=(t,a,b)=>clamp((t-a)/(b-a));           // 0..1 across [a,b]
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
 const easeInOut=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const easeOut=t=>1-Math.pow(1-t,3);
-const easeOutBack=t=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);};
-const P=cfg.pace;                                 // pace multiplier
-const T=(x)=>x*P;                                 // scale a base time by pace
-
-/* ---- theme ---- */
 const el=id=>document.getElementById(id);
-const bg=el('bg'), stage=el('stage'), card=el('card');
-function theme(){
-  const ground = cfg.theme==='dark'?'#0e0e0c':cfg.theme==='green'?'#194431':'#f4f1ea';
-  document.body.style.background=ground; document.getElementById('viewport').style.background=ground;
-  bg.style.background=ground;
-  if(cfg.theme!=='paper'){ el('hl').style.color='#fff'; }
-  if(cfg.theme!=='paper'){ el('eyebrow').style.color='#e7efe9'; }
-  else { el('hl').style.color='#0e0e0c'; el('eyebrow').style.color='#194431'; }
-  if(!cfg.chrome){ el('chrome').style.display='none'; }
-  if(!cfg.capCard){ /* plain caption: no card bg */ }
-  if(cfg.skew){ el('preview').style.transform=`perspective(900px) rotateX(${cfg.skew}deg) rotateZ(-6deg)`; }
+
+/* ---- value timeline ---- */
+const START={r:900,w:100,a:90}, END={r:800,w:450,a:180};
+function vals(t){
+  const r=Math.round(lerp(START.r,END.r,easeInOut(seg(t,T(2.3),T(3.1)))));
+  const w=Math.round(lerp(START.w,END.w,easeInOut(seg(t,T(3.4),T(4.2)))));
+  const a=Math.round(lerp(START.a,END.a,easeInOut(seg(t,T(4.5),T(5.5)))));
+  return {r,w,a};
 }
 
-/* ---- motif (concentric curved strokes) ---- */
-function motif(){
-  if(!cfg.motif) return;
-  const c = cfg.theme==='paper' ? 'rgba(45,138,91,.16)' : 'rgba(45,138,91,.30)';
-  const mk=(cls,x,y,rot)=>{
-    let s=`<svg class="motif ${cls}" width="1400" height="1400" viewBox="0 0 1400 1400" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)">`;
-    for(let i=0;i<7;i++){const rr=300+i*90;s+=`<path d="M700 ${700-rr} A ${rr} ${rr} 0 0 1 ${700+rr} 700" fill="none" stroke="${c}" stroke-width="14"/>`;}
-    s+='</svg>'; return s;
-  };
-  bg.insertAdjacentHTML('beforeend', mk('tr',360,-620,18));
-  bg.insertAdjacentHTML('beforeend', mk('bl',-720,980,196));
+/* ---- visualizer ---- */
+const VS=el('vsvg');
+function drawViz(r,w,a){
+  const A=a*Math.PI/180, N=48;
+  const rIn=r, rOut=r+w;
+  const wp=(rr,ang)=>[rr*Math.cos(ang), rr*Math.sin(ang)];   // world, y-up, center origin
+  // bbox over sector
+  let xs=[0], ys=[0];
+  for(let i=0;i<=N;i++){const ang=A*i/N; [rIn,rOut].forEach(rr=>{const[x,y]=wp(rr,ang);xs.push(x);ys.push(y);});}
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const bw=maxX-minX, bh=maxY-minY;
+  const boxW=1000,boxH=640,padX=150,padTop=120,padBot=120;
+  const sc=Math.min((boxW-2*padX)/bw,(boxH-padTop-padBot)/bh);
+  const ox=(boxW-bw*sc)/2 - minX*sc;
+  const oy=boxH-padBot + minY*sc;   // flip
+  const S=(rr,ang)=>{const[x,y]=wp(rr,ang);return [ox+x*sc, oy - y*sc];};
+  const arc=(rr,a0,a1,N2=48)=>{let d='';for(let i=0;i<=N2;i++){const ang=lerp(a0,a1,i/N2);const[x,y]=S(rr,ang);d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}return d;};
+  const large=A>Math.PI?1:0;
+  const[ox0,oy0]=S(rOut,0),[oxe,oye]=S(rOut,A),[ix0,iy0]=S(rIn,0),[ixe,iye]=S(rIn,A);
+  const band=`M ${ox0} ${oy0} A ${rOut*sc} ${rOut*sc} 0 ${large} 0 ${oxe} ${oye} L ${ixe} ${iye} A ${rIn*sc} ${rIn*sc} 0 ${large} 1 ${ix0} ${iy0} Z`;
+  const cen=S(0,0);
+  const pill=(rr,ang,txt,col)=>{const[x,y]=S(rr,ang);const wpx=txt.length*17+34;
+    return `<g><rect x="${x-wpx/2}" y="${y-30}" width="${wpx}" height="52" rx="12" fill="#fff" stroke="#e2e0d8"/><text x="${x}" y="${y+6}" font-size="30" font-weight="700" fill="${col}" text-anchor="middle" font-family="SG">${txt}</text></g>`;};
+  const midA=A/2;
+  let s='';
+  // internal outline (green legs + inner arc) + chord (dashed)
+  s+=`<path d="M ${cen[0]} ${cen[1]} L ${ix0} ${iy0} ${arc(rIn,0,A).slice(1)} L ${cen[0]} ${cen[1]} Z" fill="none" stroke="#2d8a5b" stroke-width="3"/>`;
+  s+=`<line x1="${ix0}" y1="${iy0}" x2="${ixe}" y2="${iye}" stroke="#b9b7ad" stroke-width="2.5" stroke-dasharray="10 9"/>`;
+  // angle mini-arc
+  s+=`<path d="${arc(r*0.2,0,A,20)}" fill="none" stroke="#8a8a82" stroke-width="2.5"/>`;
+  // band (the part)
+  s+=`<path d="${band}" fill="#141414"/>`;
+  // pills
+  s+=pill((rIn+rOut)/2, 0, 'w:', '#2d8a5b');
+  s+=pill(rIn*0.55, 0.03, 'r:', '#111');
+  s+=pill(rOut+ w*0.0+ 40/sc, midA, 'L:', '#2a6fd6');
+  s+=pill(rIn*0.62, midA, 'c:', '#7c3aed');
+  s+=pill(r*0.2+70/sc, midA, 'θ:', '#c2560f');
+  VS.innerHTML=s;
 }
 
-/* ---- headline words ---- */
-const HL='Design a curved bench seat. Online.'.split(' ');
-el('hl').innerHTML = HL.map((w,i)=>`<span class="w" data-i="${i}">${w}${i<HL.length-1?' ':''}</span>`).join('');
-const words=[...document.querySelectorAll('#hl .w')];
+/* ---- targets ---- */
+const stage=el('stage');
+function rc(id){const s=stage.getBoundingClientRect(),r=el(id).getBoundingClientRect();return{x:r.left-s.left+r.width/2,y:r.top-s.top+r.height/2};}
 
-/* ---- preview arc ---- */
-const PV=el('preview');
-function drawPreview(f){ // f: 0..1 sweep progress
-  const size=360, cx=180, cy=246;
-  const scale=(size*0.44)/(DIMS.r+DIMS.w);
-  const rIn=DIMS.r*scale, rOut=(DIMS.r+DIMS.w)*scale;
-  const a=(DIMS.ang*Math.PI/180)*clamp(f);
-  if(a<0.001){ PV.innerHTML=''; return; }
-  const s=-Math.PI/2 - a/2, e=-Math.PI/2 + a/2;
-  const pt=(r,ang)=>[cx+r*Math.cos(ang), cy+r*Math.sin(ang)];
-  const[x1,y1]=pt(rOut,s),[x2,y2]=pt(rOut,e),[x3,y3]=pt(rIn,e),[x4,y4]=pt(rIn,s);
-  const large=a>Math.PI?1:0;
-  const d=`M ${x1} ${y1} A ${rOut} ${rOut} 0 ${large} 1 ${x2} ${y2} L ${x3} ${y3} A ${rIn} ${rIn} 0 ${large} 0 ${x4} ${y4} Z`;
-  let fill='#d9d2bf',stroke='#7a6a3a';
-  if(cfg.fill==='green'){fill='rgba(45,138,91,.16)';stroke='#2d8a5b';}
-  if(cfg.fill==='ink'){fill='#e7e4dc';stroke='#0e0e0c';}
-  let inner=`<defs><pattern id="wd" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)"><rect width="7" height="7" fill="${fill}"/><line x1="0" y1="0" x2="0" y2="7" stroke="#b8a880" stroke-width="0.6"/></pattern></defs>`;
-  const useFill = cfg.fill==='wood'?'url(#wd)':fill;
-  inner+=`<path d="${d}" fill="${useFill}" stroke="${stroke}" stroke-width="2"/>`;
-  inner+=`<circle cx="${cx}" cy="${cy}" r="3" fill="#0e0e0c"/>`;
-  PV.innerHTML=inner;
-}
-
-/* ---- typing helper ---- */
-const sub=(str,p)=>str.slice(0, Math.round(clamp(p)*str.length));
-
-/* ---- targets (rects in stage coords) ---- */
-let TG={};
-function measure(){
-  const sr=stage.getBoundingClientRect();
-  const c=(id)=>{const r=el(id).getBoundingClientRect();return{x:r.left-sr.left+r.width/2,y:r.top-sr.top+r.height/2,r:{x:r.left-sr.left,y:r.top-sr.top,w:r.width,h:r.height}};};
-  TG={mat:c('f-mat'),rad:c('f-rad'),wid:c('f-wid'),ang:c('f-ang'),price:c('v-price'),cart:c('cart')};
-}
-
-/* ---- cursor path waypoints (base times) ---- */
-const WP=[
-  {t:0.0, k:null, p:{x:980,y:1620}},
-  {t:1.9, k:'mat'},
-  {t:2.75,k:'rad'},
-  {t:3.95,k:'wid'},
-  {t:4.65,k:'ang'},
-  {t:5.7, k:'price'},
-  {t:7.05,k:'cart'},
-];
-function cursorAt(t){
-  const wps=WP.map(w=>({t:T(w.t),p:w.p||(TG[w.k]?{x:TG[w.k].x,y:TG[w.k].y}:{x:980,y:1620})}));
-  if(t<=wps[0].t) return wps[0].p;
-  for(let i=0;i<wps.length-1;i++){
-    if(t>=wps[i].t&&t<=wps[i+1].t){
-      const f=easeInOut(seg(t,wps[i].t,wps[i+1].t));
-      return {x:lerp(wps[i].p.x,wps[i+1].p.x,f), y:lerp(wps[i].p.y,wps[i+1].p.y,f)};
-    }
-  }
-  return wps[wps.length-1].p;
-}
-
-/* ---- zoom ---- */
-function zoomAt(t){
-  const strong=cfg.zoom==='strong', subtle=cfg.zoom==='subtle', prev=cfg.zoom==='preview';
-  let s=1, fx=540, fy=960;
-  const cardC={x:540,y:card.getBoundingClientRect().top+ (card.offsetHeight/2)};
-  // phases
-  const zBody = subtle?1.03: strong?1.16: prev?1.1:1.08;
-  const zPrice= subtle?1.12: strong?1.5:  prev?1.28:1.34;
-  const zCart = subtle?1.1:  strong?1.32: prev?1.18:1.22;
-  if(t<T(1.4)){ s=1; fx=540; fy=960; }
-  else if(t<T(5.1)){ const f=easeInOut(seg(t,T(1.4),T(2.0))); s=lerp(1,zBody,f);
-    const foc= prev? {x:360,y:760} : {x:540,y:820}; fx=foc.x; fy=foc.y; }
-  else if(t<T(6.5)){ const f=easeInOut(seg(t,T(5.1),T(5.7))); s=lerp(zBody,zPrice,f);
-    fx=(TG.price&&TG.price.x)||560; fy=(TG.price&&TG.price.y)||1150; }
-  else if(t<T(8.0)){ const f=easeInOut(seg(t,T(6.5),T(7.0))); s=lerp(zPrice,zCart,f);
-    fx=(TG.cart&&TG.cart.x)||620; fy=(TG.cart&&TG.cart.y)||1300; }
-  else { const f=easeInOut(seg(t,T(8.0),T(8.5))); s=lerp(zCart,1,f); fx=540; fy=960; }
+/* ---- scroll & zoom ---- */
+function scrollY(t){ return lerp(0, 900, easeInOut(seg(t,T(6.7),T(7.8)))); }
+function zoom(t){
+  let s=1,fx=540,fy=560;
+  if(t>=T(5.4)&&t<T(6.9)){ const f=easeInOut(seg(t,T(5.4),T(6.0))); s=lerp(1,1.12,f); fx=540; fy=470; }
+  else if(t>=T(6.9)){ s=1; }
   return {s,fx,fy};
 }
 
-/* ---- captions ---- */
-const CAPS=[
-  {a:1.35,b:2.45,txt:'Choose your material.'},
-  {a:2.5, b:3.65,txt:'Set the radius.'},
-  {a:3.7, b:5.05,txt:'Width and angle.'},
-  {a:5.25,b:6.5, txt:'Instant price.'},
-  {a:6.65,b:8.0, txt:'Add to cart. Done.'},
-];
-
-/* ---- outro monogram (two curved halves) ---- */
-el('mono').innerHTML=`<path d="M50 8 A 42 42 0 0 0 50 92" fill="none" stroke="#fff" stroke-width="9"/><path d="M50 8 A 42 42 0 0 1 50 92" fill="none" stroke="#2d8a5b" stroke-width="9"/><circle cx="50" cy="50" r="7" fill="#fff"/>`;
-
-/* ---- main render ---- */
-function render(t){
-  // headline word reveal
-  words.forEach((w,i)=>{
-    const a=T(0.25+i*0.12), f=easeOutBack(seg(t,a,a+T(0.5)));
-    w.style.opacity=clamp(f*1.6); w.style.transform=`translateY(${lerp(26,0,clamp(f))}px)`;
-  });
-  // card entrance
-  const ce=easeOutBack(seg(t,T(0.5),T(1.35)));
-  card.style.opacity=clamp(ce*1.4); card.style.transform=`scale(${lerp(0.9,1,clamp(ce))})`;
-  // field values
-  el('v-mat').textContent = t>T(1.6)? DIMS.mat : '';
-  el('v-rad').textContent = sub(String(DIMS.r), seg(t,T(2.55),T(3.35)));
-  el('v-wid').textContent = sub(String(DIMS.w), seg(t,T(3.8),T(4.35)));
-  el('v-ang').textContent = sub(String(DIMS.ang), seg(t,T(4.5),T(5.05)))+(seg(t,T(4.5),T(5.05))>=1?'°':'');
-  // active field borders
-  const setAct=(id,a,b)=>el(id).classList.toggle('active', t>=T(a)&&t<=T(b));
-  setAct('f-mat',1.5,2.4); setAct('f-rad',2.5,3.5); setAct('f-wid',3.75,4.4); setAct('f-ang',4.45,5.15);
-  // preview sweep: grows as radius+angle set
-  let pf=0;
-  pf=Math.max(seg(t,T(2.7),T(3.4))*0.15, seg(t,T(4.45),T(5.15))); // starts small when radius in, completes with angle
-  if(t>T(3.4)&&t<T(4.45)) pf=lerp(0.15,0.15,0); // hold thin until angle
-  if(t>=T(4.45)) pf=seg(t,T(4.45),T(5.15));
-  else if(t>=T(2.7)) pf=seg(t,T(2.7),T(3.4))*0.5;
-  drawPreview(pf);
-  // price count-up + glow
-  const pf2=easeOut(seg(t,T(5.2),T(6.2)));
-  el('v-price').textContent='$'+(PRICE*pf2).toFixed(2);
-  const gl=el('glow'), pr=TG.price&&TG.price.r;
-  if(pr){ const g=Math.sin(clamp(seg(t,T(5.9),T(6.6)))*Math.PI);
-    gl.style.left=(pr.x-8)+'px'; gl.style.top=(pr.y-8)+'px'; gl.style.width=(pr.w+16)+'px'; gl.style.height=(pr.h+16)+'px';
-    gl.style.opacity=g*0.9; gl.style.boxShadow=`0 0 ${20+g*30}px ${g*8}px rgba(45,138,91,${0.5*g})`; }
-  el('v-price').style.color = t>T(6.0)? '#194431' : '#0e0e0c';
-  // cursor
-  const cp=cursorAt(t); el('cursor').style.transform=`translate(${cp.x}px,${cp.y}px)`;
-  // tap ring on cart click
-  const tr=el('tapring'); const tclick=T(7.15);
-  if(TG.cart){ const g=Math.sin(clamp(seg(t,tclick,tclick+T(0.5)))*Math.PI);
-    tr.style.left=(TG.cart.x-40)+'px'; tr.style.top=(TG.cart.y-40)+'px'; tr.style.opacity=g; tr.style.transform=`scale(${lerp(0.4,1.3,clamp(seg(t,tclick,tclick+T(0.5))))})`; }
-  // cart added check
-  document.querySelector('#cart .chk').style.opacity = t>T(7.25)?clamp(seg(t,T(7.25),T(7.6))):0;
-  // caption
-  const capBox=el('caption'); let cur=null;
-  for(const c of CAPS){ if(t>=T(c.a)&&t<=T(c.b)) cur=c; }
-  if(cur){ const inF=easeOutBack(seg(t,T(cur.a),T(cur.a)+T(0.28))); const outF=1-seg(t,T(cur.b)-T(0.25),T(cur.b));
-    const op=clamp(Math.min(inF*1.5,outF*3));
-    const style=cfg.capCard? '' : 'background:transparent;box-shadow:none;color:'+(cfg.theme==='paper'?'#0e0e0c':'#fff');
-    capBox.innerHTML=`<span class="cap" style="${style};opacity:${op};transform:translateY(${lerp(16,0,clamp(inF))}px)">${cur.txt}</span>`;
-  } else capBox.innerHTML='';
-  // zoom transform
-  const z=zoomAt(t); stage.style.transform=`translate(${540-z.fx*z.s}px,${960-z.fy*z.s}px) scale(${z.s})`;
-  // outro
-  const oF=easeInOut(seg(t,T(8.2),T(9.0)));
-  const outro=el('outro'); outro.style.opacity=clamp(oF*1.2);
-  el('cursor').style.opacity = t>T(7.9)?clamp(1-seg(t,T(7.9),T(8.3))):(t<T(1.6)?clamp(seg(t,T(1.4),T(1.7))):1);
+/* ---- cursor waypoints ---- */
+const WP=[{t:0.0,p:{x:1180,y:1720}},{t:1.6,k:'f-mat'},{t:2.5,k:'f-rad'},{t:3.6,k:'f-wid'},{t:4.7,k:'f-ang'},{t:6.9,k:'f-ang'},{t:7.9,k:'addp'}];
+function cursor(t){
+  const w=WP.map(o=>({t:T(o.t),p:o.p?o.p:rc(o.k)}));
+  if(t<=w[0].t)return w[0].p;
+  for(let i=0;i<w.length-1;i++)if(t>=w[i].t&&t<=w[i+1].t){const f=easeInOut(seg(t,w[i].t,w[i+1].t));return{x:lerp(w[i].p.x,w[i+1].p.x,f),y:lerp(w[i].p.y,w[i+1].p.y,f)};}
+  return w[w.length-1].p;
 }
 
-/* ---- boot ---- */
-theme(); motif();
+/* ---- captions ---- */
+const CAP=[{a:1.5,b:2.4,t:'Pick your material.'},{a:2.5,b:3.5,t:'Set your radius.'},{a:3.6,b:4.5,t:'Set the width.'},{a:4.6,b:5.9,t:'Set the angle — it builds itself.'},{a:6.0,b:6.9,t:'Made to your millimetre.'},{a:7.3,b:8.8,t:'Add the part. Done.'}];
+
+/* ---- render ---- */
+function render(t){
+  const {r,w,a}=vals(t);
+  el('v-rad').textContent=r; el('v-wid').textContent=w; el('v-ang').textContent=a;
+  // arc & chord fill once angle editing starts
+  const showLC = t>T(4.6);
+  const L=Math.round(Math.PI*r*a/180), c=Math.round(2*r*Math.sin(a*Math.PI/360));
+  const av=el('v-arc'), cv=el('v-cho');
+  if(showLC){av.textContent=L;av.classList.remove('ph');cv.textContent=c;cv.classList.remove('ph');}
+  else {av.textContent='—';av.classList.add('ph');cv.textContent='—';cv.classList.add('ph');}
+  drawViz(r,w,a);
+  // active borders
+  const act=(id,x,y)=>el(id).classList.toggle('act',t>=T(x)&&t<=T(y));
+  el('f-mat').classList.toggle('act',t>=T(1.5)&&t<=T(2.3));
+  act('f-rad',2.3,3.3); act('f-wid',3.4,4.3); act('f-ang',4.5,5.6);
+  // scroll
+  el('content').style.transform=`translateY(${-scrollY(t)}px)`;
+  // zoom
+  const z=zoom(t); stage.style.transform=`translate(${540-z.fx*z.s}px,${960-z.fy*z.s}px) scale(${z.s})`;
+  // cursor
+  const cp=cursor(t); el('cursor').style.transform=`translate(${cp.x}px,${cp.y}px)`;
+  el('cursor').style.opacity = t<T(1.2)?clamp(seg(t,T(0.8),T(1.2))):(t>T(9.2)?clamp(1-seg(t,T(9.2),T(9.6))):1);
+  // tap on add part
+  const tap=el('tap'), tc=T(8.2);
+  if(t>T(7.9)){const tg=rc('addp');const g=Math.sin(clamp(seg(t,tc,tc+T(0.5)))*Math.PI);tap.style.left=(tg.x-42)+'px';tap.style.top=(tg.y-42)+'px';tap.style.opacity=g;tap.style.transform=`scale(${lerp(0.4,1.3,clamp(seg(t,tc,tc+T(0.5))))})`;}
+  else tap.style.opacity=0;
+  document.querySelector('#addp .done').style.opacity = t>T(8.3)?clamp(seg(t,T(8.3),T(8.7))):0;
+  // caption
+  const box=el('caption'); let cur=null; for(const c2 of CAP) if(t>=T(c2.a)&&t<=T(c2.b)) cur=c2;
+  if(cur){const inF=easeOut(seg(t,T(cur.a),T(cur.a)+T(0.25)));const outF=1-seg(t,T(cur.b)-T(0.2),T(cur.b));box.innerHTML=`<span class="cap" style="opacity:${clamp(Math.min(inF*1.5,outF*3))}">${cur.t}</span>`;}
+  else box.innerHTML='';
+}
+
 window.__ready=false;
-document.fonts.ready.then(()=>{ measure(); window.__ready=true; window.__seek=render; window.__duration=T(DUR); render(0); });
-window.__seek=(t)=>render(t); window.__duration=T(DUR);
+document.fonts.ready.then(()=>{ window.__seek=render; window.__duration=T(DUR); render(0); window.__ready=true; });
+window.__seek=render; window.__duration=T(DUR);

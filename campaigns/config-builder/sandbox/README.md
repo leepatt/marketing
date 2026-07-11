@@ -29,7 +29,26 @@ Requires `ffmpeg` on PATH and the Playwright Chromium at `/opt/pw-browsers/chrom
 - **Not yet**: real footage compositing, native/photoreal 3D, captions-from-VO, music — those are Remotion/Blender
   stages in `../CONTENT-ENGINE-SPEC.md`. This is the UI beat only, hand-built to lock the look/pacing template.
 
+## ⭐ `capture-real.mjs` — drives the REAL app (the production approach)
+This is the important one. Instead of the hand-built `scene.*` replica, it drives the **actual
+`craftons-curves-calculator` app** and captures pixel-identical UI:
+```bash
+# 1) run the real app locally (from the cloned repo)
+cd /workspace/craftons-curves-calculator && npm run build && PORT=3000 npm start
+# 2) drive + capture it
+cd <this sandbox> && node capture-real.mjs 30 10.5   # fps, duration -> out/real_demo.mp4
+```
+It sets the real React inputs (`#specifiedRadius`, `#width`, `#angle`) via the native value setter, scrolls the
+real page, injects a synthetic cursor + the green Craftons header + captions as DOM overlays (so they're in the
+screenshot), clicks the real **Add Part**, and screenshots each frame → ffmpeg. Because it's the real code, it
+even surfaces real behaviour (e.g. the "curve split into 2 sections / Joiner Blocks" note, the Parts list +
+Order Summary). **This is Stage A of the spec, proven.** Points `localhost` so no proxy is involved.
+
+Why not the deployed URL from a Claude session? This session's egress proxy blocks headless-browser tunnelling
+(curl works, Chromium resets — even example.com). Running the app locally sidesteps it entirely. On Lee's Mac /
+the production cloud box there's no such proxy, so it can drive the live site directly.
+
 ## Next
-- Pick the winning variant(s) → fold the knobs into the locked house template.
-- Swap Space Grotesk → licensed **Aeonik**; pull the real curve-motif PNG + logo from the Drive brain.
-- Port to Remotion for the full pipeline (real footage, 3D, audio, captions).
+- Make `capture-real.mjs` the spine; the `scene.*` replica is now just a fallback/reference.
+- Add post-compositing (Remotion/ffmpeg): real footage, 3D, brand fonts (Aeonik), music, VO, curve-motif transitions.
+- Fold the pacing/scroll/zoom knobs into a locked house template; drive from a reel-spec.

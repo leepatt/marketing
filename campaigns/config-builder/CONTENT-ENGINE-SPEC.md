@@ -139,7 +139,14 @@ _Type note: Aeonik is licensed (Drive `fonts/`); use a bold geometric fallback (
 
 ## 5. Architecture — the pipeline stages
 
-### Stage A — Capture the real configurator UI  (fidelity path)
+### Stage A — Capture the real configurator UI  (fidelity path) — ✅ PROVEN in sandbox
+_Validated 2026-07-11: `campaigns/config-builder/sandbox/capture-real.mjs` drives the real
+`craftons-curves-calculator` app (run locally on `localhost:3000`) with Playwright, sets the real inputs
+(`#specifiedRadius`/`#width`/`#angle`) via the native value setter, scrolls, injects a synthetic cursor + green
+Craftons header + captions as DOM overlays, clicks the real Add Part, and screenshots each frame → ffmpeg →
+pixel-identical MP4. Real behaviour comes for free (the "curve split / Joiner Blocks" note, Parts list, Order
+Summary). In production, point at the live URL instead of localhost (no proxy there)._
+
 - **Do NOT use Playwright's built-in video** (hardcoded ~1 Mbit/s → soft on 3D). Use **`puppeteer-capture`**
   (Chrome CDP `HeadlessExperimental.beginFrame`, pull-frames-on-demand) → deterministic, high-res, 60fps,
   frame-perfect regardless of render speed. (`puppeteer-screen-recorder` is a simpler fallback.)

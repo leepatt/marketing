@@ -73,6 +73,41 @@ A 17s Radius Pro reel exists (Drive/uploads) as the baseline. Structure = a prov
 - **Resolved:** presenter is an **optional, pluggable layer** — support **all** modes: none / real-footage
   presenter (Lee/Tia) / AI avatar. **Default house template = presenter-free, Monday.com style** for now.
 
+## 2b. House style (Monday.com energy, Craftons discipline)
+Benchmark = Monday.com's *motion energy*, but rebuilt with **one accent** like **Ramp** (Monday's rainbow is the
+one thing NOT to copy — Craftons has one green). One-line house style:
+> _Monday's satisfying self-assembling-UI energy + confident plain voice — rebuilt in one forest-green accent
+> instead of a rainbow, with the curved-line motif as the kinetic signature, real CNC/timber footage leading,
+> and the "snap-into-place" as the payoff beat._
+
+**Borrow (the energy):**
+- **State-flip payoff.** Monday flips a status dot green as the emotional beat. Craftons' version: the part
+  **snaps into place / price locks / Add-to-Cart confirms** — land it on a beat, green `#194431` glows on resolve, with a clunk/pop SFX.
+- **Self-assembling subject.** The part/curve builds itself (fields fill, preview draws, part nests) — snap +
+  spring easing (slight overshoot then settle). Most transferable move.
+- **Big bold sentence-case headline beside a floating UI card.** Aeonik Bold, one short phrase at a time,
+  word-by-word entry with soft spring. **Sentence case, minimal punctuation** (steal Monday's type rules).
+- **Comparison device:** CNC-precise part vs. hand-cut/gappy version (precision sells to builders).
+- **Captions-first** (reels play muted; kinetic Aeonik carries it) + SFX synced to each assembly beat.
+- **Arc** (9:16, ~8–15s): hook (jobsite truth, 0–3s) → precision reveal → self-assembly → snap payoff → CTA;
+  ~1–2s/beat; logo/curve-motif in first 3s; confident, fluff-free close.
+
+**Change (don't copy the rainbow):**
+- **One brand color = meaning.** Green is the "done/locked/active" accent ONLY (seated joint, price, CTA,
+  check) — like Ramp's single chartreuse. Black + warm off-white carry everything else.
+- **Curve motif is the kinetic signature** (replaces Monday's color-block wipes): a curve sweeps to wipe scenes,
+  draws on to underline, traces a cut edge, nests two shots (draw-on ~0.4–0.6s ease-out).
+- **Warm off-white** ground (not cool lavender); **near-black not pure #000** (softer/premium).
+- **Real footage leads, motion extends** — Craftons feels *made*, not illustrated. The **CNC toolpath itself**
+  can be the animated protagonist (glowing green path tracing the cut = our "self-building board").
+- **No mascot** — the material + the machine are the character.
+
+**Easing tokens (standardize weekly):** entrances = spring ~5–10% overshoot `cubic-bezier(0.34,1.56,0.64,1)`;
+curve-wipes = ease-in-out 0.4–0.6s; assembly snaps = fast ease-out + hard stop + SFX.
+
+_Type note: Aeonik is licensed (Drive `fonts/`); use a bold geometric fallback (Poppins/Space Grotesk) until the
+`.otf`s are loaded. Monday uses Poppins — a friendly geometric — so the fallback is on-register._
+
 ## 3. The configurator it drives (facts)
 
 - Repo: **`leepatt/craftons-curves-calculator`** — Next.js 15, TypeScript, Tailwind, **Three.js / React Three

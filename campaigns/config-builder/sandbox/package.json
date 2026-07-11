@@ -1,0 +1,7 @@
+{
+  "name": "craftons-config-demo-sandbox",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic config-demo reel prototype: time-driven HTML scene -> headless Chromium frame capture -> ffmpeg MP4.",
+  "dependencies": { "playwright-core": "1.49.0" }
+}

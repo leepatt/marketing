@@ -1,5 +1,20 @@
 # Architrave page — conversion audit (2026-07-10)
 
+## Where we landed (agreed 2026-07-10 — this supersedes the "re-order/modal" idea further down)
+Builders are a **known-intent** audience — they know what an architrave is and what a good one looks like.
+So **keep the builder front-and-centre**; do NOT re-architect the page around a hero image (that would add
+friction for a ready buyer). Instead:
+1. **Cheaply surface the proof** — a "See finished architraves ↓" link + thumbnail strip near the builder,
+   and 1–2 trust lines in the builder area (Australian made · dispatched in 3 days). No relocation of the tool.
+2. **Stop guessing — measure.** Add **Microsoft Clarity** (free session recordings + heatmaps) or read the
+   builder app's own funnel: do people open it, enter dimensions, see a price, then bail? That pinpoints the
+   real drop-off (images? price shock? iframe UX? or just too few clicks?).
+3. **Give it time.** 20 clicks on a lumpy, high-value product is too few to judge — let architraves run
+   3–4 weeks with the Victoria focus + conversion tracking, then fix what the data actually shows.
+
+The structural analysis below is kept for reference, but the re-order/modal restructuring is **parked**
+until data justifies it.
+
 **Page:** `/products/curved-architraves` (Craftons Architrave Builder). **Why:** ad clicks land and
 **view** the product (20 view-item in 14d) but **0 add-to-cart / 0 checkout / 0 lead** (1 form-start).
 Qualified traffic is arriving and bouncing at the page. This is the #1 architrave conversion lever.

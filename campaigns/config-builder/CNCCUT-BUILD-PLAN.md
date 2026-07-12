@@ -42,8 +42,11 @@ Stylized 3D (optional) = `@remotion/three` (native, no Blender). Photoreal 3D (l
 on a GPU box, composited as alpha frames.
 
 ## 4. Step 0 — install skills + scaffold
-- Install the Remotion agent skills FIRST: `npx skills add remotion-dev/skills` (or copy
-  `campaigns/config-builder/remotion-skills/` into `.claude/skills/`).
+- Install the Remotion agent skills FIRST, **inside the cnccut-app repo**: `npx skills add remotion-dev/skills`.
+  (Fallback if GitHub is unreachable: copy `campaigns/config-builder/remotion-skills/` from the marketing repo
+  into `.claude/skills/` — only works if the marketing repo is added to that session.) **Then commit the skills
+  into cnccut-app** (`.claude/skills/` + `.agents/skills/`) so they persist — remote sessions clone fresh each
+  time, and uncommitted skills disappear next session. Verify they load, then proceed.
 - Create a self-contained **`content-engine/`** package (its own `package.json`, own CLI) so the media pipeline
   doesn't entangle the Next.js app. It only needs the configurator running at a URL, so it stays decoupled.
 - Deps/setup: node, ffmpeg, playwright(-core) + the pre-installed Chromium, remotion, `@remotion/media`,

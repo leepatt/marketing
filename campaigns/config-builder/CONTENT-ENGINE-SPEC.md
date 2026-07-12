@@ -14,6 +14,28 @@ Every element is a **modular toggle with a sensible default**, set per reel in t
 footage, music, motif, speed-ramps, aspect. **Default house template = presenter-free, Monday.com-style,
 captions-on.** Nothing is hard-wired; Lee flips any switch by talking to the tool.
 
+## Agent skills to install FIRST (Remotion)
+Before building, install the official **Remotion agent skills** into this repo — they teach the agent to author
+the Remotion compositing/render layer (Stage E/F below):
+```bash
+npx skills add remotion-dev/skills    # → ./.agents/skills + symlinks into ./.claude/skills
+```
+A saved copy also lives in the marketing repo at `campaigns/config-builder/remotion-skills/` (copy into
+`.claude/skills/` if the installer can't reach GitHub). The 8 skills and where they apply:
+
+| Skill | Use in this build |
+|-------|-------------------|
+| `remotion-best-practices` | Umbrella — invoke when unsure which applies |
+| `remotion-create` | Scaffold the Remotion project / compositions (Tailwind, 9:16 layout) |
+| `remotion-markup` | The reel compositions — animation, layout, typography, media, audio, fonts, timing, transitions |
+| `remotion-render` | Render the final MP4 (incl. transparent renders for Blender-alpha composites) |
+| `remotion-captions` | Burn captions (import SRT / transcribe via Whisper / display) — Stage F |
+| `remotion-saas` | Architecture for a Remotion-powered app + product integration (player, framework, rendering) |
+| `remotion-interactivity` | Editable elements in Remotion Studio (for tweaking a reel-spec live) |
+| `mediabunny` | Read real-footage/audio metadata (dimensions, duration) before compositing |
+
+Also relevant: `@remotion/three` (native 3D — Stage B), `@remotion/captions`, `<OffthreadVideo>` (real footage — Stage D).
+
 ## 0. TL;DR for the builder
 
 Build a **local-CLI / cloud-run pipeline** (its own self-contained package inside cnccut-app, e.g. `content-engine/`)
@@ -242,8 +264,9 @@ The agent decides sensible defaults (camera moves, easing, framing); Lee overrid
   Gemini voice; ElevenLabs alt) and/or kinetic captions. Lee picks per reel in the chat.
 
 ## 8. Build phases (ship value early)
-- **Phase 0 — scaffold:** `content-engine/` package in cnccut-app; setup script (node, ffmpeg, chromium/
-  puppeteer, whisper.cpp, remotion); secrets (Epidemic Sound, Gemini/ElevenLabs). Reel-spec type + a sample.
+- **Phase 0 — scaffold:** install the **Remotion agent skills** (`npx skills add remotion-dev/skills` — see
+  "Agent skills to install FIRST" above); `content-engine/` package in cnccut-app; setup script (node, ffmpeg,
+  chromium/puppeteer, whisper.cpp, remotion); secrets (Epidemic Sound, Gemini/ElevenLabs). Reel-spec type + a sample.
 - **Phase 1 — MVP "real-UI reel":** puppeteer-capture of the live configurator → Remotion compose with the
   **spring cursor + auto-zoom** + brand captions + one Epidemic track → 1080×1920 MP4. One shot type, end to end.
   _This proves the hardest bespoke piece first._

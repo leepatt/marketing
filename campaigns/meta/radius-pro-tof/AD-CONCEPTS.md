@@ -1,128 +1,110 @@
-# Radius Pro — Top-of-Funnel · The 5 Static Ads (copy + creative spec)
+# Radius Pro — Top-of-Funnel · The 5 Ads (built to the 8 Hacks)
 
-> All 5 point to **Radius Pro**: `https://craftons.com.au/products/radius-online`
-> (self-serve online builder — design → instant price → delivered. **Never "send us your CAD."**)
-> Copy is drawn from the Lee-signed-off approved set (bible §5) + real customer voice (§3).
-> Split: **3 builder** (curved wall plates) · **2 concreter** (curved formwork). Trade word is baked
-> into every creative — the creative is the targeting (bible §6 hack 2).
+> Destination (all 5): `https://craftons.com.au/products/radius-online` · self-serve online builder.
+> **Never "send us your CAD."** Governed by `PLAYBOOK-8-HACKS.md`.
 >
-> Rendered files: `creative/adN-*_{1080x1350,1080x1080,1080x1920}.png`. Copy-paste the Meta fields
-> below straight into Ads Manager. CTA button: **Shop now** (test "Get quote" later).
-
-Meta field lengths to respect: **Primary text** front-load the punch in the first ~125 chars ·
-**Headline** ≤ ~40 chars · **Description** ≤ ~30 chars visible on some placements.
+> **The rules these ads follow:**
+> - **Native, not designed** (hack 4) — real curved-job photos, clean. No wordmark lockup, no CTA pill,
+>   no catalogue panel. The photo IS the content.
+> - **One identity trigger per ad** (hack 2) — the trade/job-type word does the targeting. 5 triggers.
+> - **Long-form body copy that does NOT sell** (hack 5 + the golden rule) — a real story in the trade's
+>   own voice, packed with the niche + related job-types + the real pain, so Andromeda has context to
+>   find the buyer. Soft close at most. We're funnelling the right people to the page, not selling.
+> - **Headline variants to split-test** (hack 6) — run them, mirror the winner on the `radius-online` page.
+>
+> **First line matters most:** Meta truncates the body at ~125 chars with "…more". The hook has to earn
+> the expand; the long-form underneath feeds the algorithm and the readers who open it.
 
 ---
 
-## AD1 · Builder — "The Pain" (native site photo)
-- **Audience:** builders / carpenters, curved top & bottom wall plates (the proven 73%-converting segment).
-- **Angle:** lead with the pain, then the escape (bible §4, §9 pain-first native). Reads as an organic
-  site photo, not an ad.
-- **Image:** real curved timber-framed wall on a curved slab (AI photoreal now → swap a genuine job
-  photo from Drive before final if we have one). Dark green scrim bottom for legibility.
-- **On-image text:** overline `BUILDERS —` · headline **"A curved wall used to be a day gone."** ·
-  subline *"Now it's a five-minute order."* · logo lockup + `RADIUS PRO`.
+## AD 1 · Identity trigger: **CONCRETERS**
+**Creative:** the real Ardreagh job — serpentine curved formwork for raised garden beds (clean, no overlay).
 
 **Primary text:**
-> Chippies — curved top and bottom plates used to eat a day and still not sit right. Price your radius online and we cut them to size, perfectly. Delivered this week. No hand-templating, no bog-and-sand.
+> This is the job everyone on site quietly dreads.
+>
+> Those curves are a run of raised garden beds going into an apartment courtyard. Normally, forming that up means someone's bending formply around the radius by hand — tacking it, packing it, praying it doesn't kink or blow out when the concrete goes in. Days of it.
+>
+> The concreter who did this didn't bend a single sheet. Every black formply panel turned up cut to the exact radius. He stood them up, braced them, poured. Done.
+>
+> If the curved work is the part of your jobs that always blows the program — garden beds, bench seats, planters, curved walls — you draw the radius and it comes cut to size. That's genuinely the whole thing.
 
-**Headline:** `Curved Wall Plates, Cut to Size`
-**Description:** `Price your radius online now.`
-**URL:** `…/radius-online?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=ad1_builder_pain`
+**Headline variants (split-test):** `Curved formply, cut to your radius` · `The curved bit, cut to size` · `Curved formwork without bending ply` · `Draw the radius. We cut it.`
+**Description:** `Curved formply cut to size. Priced online.`
 
 ---
 
-## AD2 · Builder — "Spec Stamp" (authority / brand graphic)
-- **Audience:** builders, curved wall plates.
-- **Angle:** compliance-stamp authority (bible §9 spec-stamp). Clean off-form curve + a stamped panel.
-  Says *precision + trust* in a glance.
-- **Image:** macro of a CNC-cut curved ply edge (AI) behind a patterned deep-green panel carrying a
-  compliance-style stamp in the condensed/stencil face.
-- **On-image text (ALL CAPS stamp, stencil face):** `CUT TO YOUR RADIUS · ANY PLY · DELIVERED THIS
-  WEEK` · small mono readout `RADIUS ____mm · TOP + BOTTOM PLATES` · logo + `RADIUS PRO`.
+## AD 2 · Identity trigger: **LANDSCAPERS**
+**Creative:** same Ardreagh garden-beds photo (it *is* a landscape feature — perfect scent).
 
 **Primary text:**
-> Send us the radius. We cut your top and bottom plates to size — ply, formply or MDF — and deliver this week. Curves cut perfectly, priced online on the spot. No hand-templating.
+> Landscapers — this is how the curved beds get done now.
+>
+> Raised garden beds for an apartment courtyard, every curve cut to the exact radius before it turned up on site. No templating, no bending ply for two days, no bloke swearing at a sheet of formply that won't hold the line.
+>
+> The curved formwork comes cut to size. You brace it and pour. Planters, tree surrounds, curved seat walls, retaining — if it's got a radius, you draw it and it's cut for you.
+>
+> Spend the day on the landscape, not fighting the formwork.
 
-**Headline:** `Curves Cut Perfectly`
-**Description:** `Whatever ply, cut to your radius.`
-**URL:** `…/radius-online?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=ad2_builder_spec`
+**Headline variants:** `Curved garden beds, cut to size` · `Curved planters & beds, done faster` · `Curves cut to the radius` · `The formwork, cut for you`
+**Description:** `Curved formwork cut to size. Priced online.`
 
 ---
 
-## AD3 · Builder — "Number Card" (configurator render)
-- **Audience:** builders, curved wall plates.
-- **Angle:** the instant price is the hook (bible §9 number card; §4 — the #1 friction in the old way
-  is *waiting on a manual quote*; the builder kills it). Configurator-style render + one number.
-- **Image:** vector render of a curved plate with a radius dimension line + node handles (built to look
-  like the online tool), curved-line motif behind, green-on-black.
-- **On-image text:** big mono `1300mm` `RADIUS` · **"Cut to size. Priced online."** · a faux
-  price-chip *"Your price: on the spot"* · logo + `RADIUS PRO`.
+## AD 3 · Identity trigger: **FORMWORKERS**
+**Creative:** the Ardreagh curved-formwork photo (or a dedicated curved-wall/off-form shot when we have one).
 
 **Primary text:**
-> Punch in your radius, get the price on the spot — no waiting on a manual quote. Curved top and bottom plates cut perfectly and delivered this week. Ply, formply or MDF.
+> Formworkers — what are you using for the curved stuff?
+>
+> Because the bit that always kills the program is the off-form curve: getting formply to bend to the radius without kinking, and still come up clean off the form. Laminating two sheets, strongbacks every hundred, hoping it holds the line.
+>
+> This job came cut to the exact radius, panel by panel. It turns up cut, you brace it, you pour — and the off-form finish is there because the curve was machined, not muscled.
+>
+> Curved walls, columns, bench seats, garden beds — you draw the radius, it comes cut to size.
 
-**Headline:** `Price Your Curved Plates Online`
-**Description:** `Send your radius, get the price.`
-**URL:** `…/radius-online?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=ad3_builder_number`
+**Headline variants:** `Curved formply for a clean off-form finish` · `The off-form curve, machined not muscled` · `Curved walls, cut to the radius` · `Curves that come up clean`
+**Description:** `Curved formply cut to size. Priced online.`
 
 ---
 
-## AD4 · Concreter — "The Question" (native site photo)
-- **Audience:** concreters / formworkers, curved formwork (biggest, least-converted segment — highest
-  upside). Points to Radius Pro for the **curved form ply, cut to size** (Radius Pro cuts curved
-  formply — bible §1).
-- **Angle:** their real question as the hook (bible §9 question hook; §3 "what ply for a good off-form
-  finish"). Reads as a site photo.
-- **Image:** real curved concrete formwork / bendy form ply on site (AI photoreal now → swap genuine
-  job photo before final if available). Dark green scrim.
-- **On-image text:** overline `CONCRETERS —` · headline **"What ply gets a clean off-form curve?"** ·
-  subline *"That's our call. Cut to your radius."* · logo + `RADIUS PRO`.
+## AD 4 · Identity trigger: **BUILDERS / CHIPPIES**
+**Creative:** a real curved-wall-plate job (need a photo — see the ask below; interim: reuse a curved-wall shot).
 
 **Primary text:**
-> Concreters — curved formwork used to mean a day bending ply and hoping for a clean finish. Send your radius, we cut the curved form ply to size and spec the ply for a clean off-form finish. Priced online.
+> Every chippy knows the curved wall is where the day goes.
+>
+> There's a curve on the plan, and now someone's templating the radius, cutting the top and bottom plates by hand, and it's still not quite fair when you stand back and sight down it.
+>
+> This is the bit you can just order. Draw the radius, and your curved top and bottom plates turn up cut to size — ply, formply or MDF, whatever you're framing in. Set them out, stand your studs, sheet it. Curved walls stop being the job nobody wants to pick up.
 
-**Headline:** `Curved Formply, Cut to Size`
-**Description:** `Priced online. Cut to your radius.`
-**URL:** `…/radius-online?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=ad4_concretor_question`
+**Headline variants:** `Curved wall plates, cut to your radius` · `Top & bottom plates, cut to size` · `The curved wall, cut for you` · `Curved plates, ply/formply/MDF`
+**Description:** `Curved wall plates cut to size. Priced online.`
 
 ---
 
-## AD5 · Concreter — "Ready to Pour" (identity card / brand graphic)
-- **Audience:** concreters, curved formwork (curved seats / walls).
-- **Angle:** identity-card + the escape (bible §6 hack 2 identity keyword; §9 identity/niche). Bold
-  trade-word panel, one job type, the payoff.
-- **Image:** deep-green patterned panel, big stencil `CONCRETERS`, a clean curved-form silhouette /
-  the curved-line motif; optional faint off-form curve photo.
-- **On-image text:** stencil `CONCRETERS` · headline **"Curved concrete seat? Sorted."** · stamp
-  `CURVED FORM PLY · CUT TO YOUR RADIUS` · logo + `RADIUS PRO`.
+## AD 5 · Identity trigger (job-type): **CURVED BENCH SEATS**
+**Creative:** a real curved bench-seat / seat-wall job (need a photo — see the ask; interim: the Ardreagh shot).
 
 **Primary text:**
-> Getting a curved seat or wall machined up? Send the radius — we cut the curved form ply to size, no day of bending ply. We'll spec the right ply for the finish. Price it online, delivered.
+> A curved bench seat used to be a week you didn't really want to quote.
+>
+> The curve is the whole feature, so it has to be fair — which meant someone bending formply by hand and hoping it came up clean. That's why the curved jobs got knocked back or priced sky-high.
+>
+> Not anymore. The curved formwork for the seat comes cut to the exact radius — braced and poured in a fraction of the time. Same for garden beds, planters, curved walls. Anything with a radius, you draw it, it's cut to size.
+>
+> Start quoting the curved jobs you used to hand off.
 
-**Headline:** `Curved Formwork, Cut to Size`
-**Description:** `Cut to your radius. Priced online.`
-**URL:** `…/radius-online?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=ad5_concretor_pour`
+**Headline variants:** `Curved bench seats, formed faster` · `Curved seat walls, cut to size` · `Quote the curved jobs again` · `The curve, cut to the radius`
+**Description:** `Curved formwork cut to size. Priced online.`
 
 ---
 
-## Why these 5 (the A/B test logic)
-
-Five **distinct angles**, so the test tells you *which message and which style wins*, not just which
-words — then you pour budget into the winning shape and spin identity-keyword variants off it (§7 of
-the guide).
-
-| Ad | Segment | Angle | Style | Imagery |
-|----|---------|-------|-------|---------|
-| 1 | Builder | Pain-first | Native photo | AI photoreal (→ real swap) |
-| 2 | Builder | Spec/authority | Brand graphic | AI macro + stamp |
-| 3 | Builder | Instant price | Configurator render | Vector (programmatic) |
-| 4 | Concreter | Real question | Native photo | AI photoreal (→ real swap) |
-| 5 | Concreter | Identity + payoff | Brand graphic | Motif + stencil |
-
-**Voice check (every ad):** builder-to-builder, action-first, period-terminated, no emoji, trade
-language only, ALL-CAPS reserved for the spec/compliance stamps. "We" = Craftons, "you" = the builder.
-
-**Pre-launch human check (bible standing rule):** a human approves every asset. Before you spend,
-eyeball each render at 100% — legible on a phone, story safe-zones clear, headline matches the Radius
-Pro page it lands on.
+## Launch notes
+- **UTMs:** `?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=` +
+  `ad1_concreters` / `ad2_landscapers` / `ad3_formworkers` / `ad4_builders` / `ad5_benchseats`.
+- **All 5 in one broad-AU ad set** (per `LAUNCH-GUIDE.md`) — the copy targets, Meta distributes.
+- **Creative honesty (bible standing rule):** real footage leads. AD1–3 run on the real Ardreagh photo
+  today. **AD4 (curved wall plates) and AD5 (bench seat) want their own real photos** — see the ask.
+- **This is hack 2/3 in action:** one real winning creative, cloned across 5 identity triggers. As more
+  real job photos come in, each trigger gets its own native visual and we widen the swipe file.

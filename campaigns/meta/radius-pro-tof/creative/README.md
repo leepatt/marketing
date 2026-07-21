@@ -1,35 +1,35 @@
 # Radius Pro TOF — creative assets index
 
-> The rendered ad images (`*.png`) are **gitignored** per repo policy (media lives in Google Drive,
+> The image files (`*.png` / `*.jpg`) are **gitignored** per repo policy (media lives in Google Drive,
 > not in git). This file is the tracked index of what the creative set is. Binaries are delivered to
 > Lee directly and belong in the Drive brain under `…/Marketing/03 Content/` (or the campaign folder).
 
-## Status: v1 DRAFT — imagery under review (2026-07-21)
+## Status: v2 — NATIVE direction (2026-07-21)
 
-The photo-based concepts (AD1, AD2, AD4) were rendered with **AI-generated placeholder imagery**
-(Replicate `flux-1.1-pro`) to prove out layout + copy. **Per the bible rule "real footage leads; AI
-extends," these are being workshopped** — the plan is to swap in **real Craftons curved-job photos**
-(and/or Craft Macro stills) before launch. AD3 + AD5 are pure brand-graphic / configurator renders
-and are launch-ready as-is.
+**v1 (ad-looking catalogue cards + AI placeholder imagery) was rejected** and replaced. The set now
+follows the source video's 8 hacks (see `../PLAYBOOK-8-HACKS.md`): **real curved-job photos, run as
+down-and-dirty native statics** — no wordmark lockups, no CTA pills, no brand panels. The photo is the
+content; long-form trade-specific copy does the targeting. One real winning creative is cloned across
+5 identity triggers (hack 2/3).
 
-## The set (each concept → 3 sizes)
+## The set (5 ads — copy in `../AD-CONCEPTS.md`)
 
-| File stem | Concept | Segment | Imagery (v1) | Launch-ready? |
-|-----------|---------|---------|--------------|---------------|
-| `ad1-builder-pain_*` | Pain-first native photo | Builder | AI (→ swap real) | pending photo |
-| `ad2-builder-spec_*` | Spec-stamp macro | Builder | AI (→ swap Craft Macro) | pending photo |
-| `ad3-builder-number_*` | Number card / configurator | Builder | vector, no photo | ✅ ready |
-| `ad4-concretor-question_*` | Question hook native photo | Concreter | AI (→ swap real) | pending photo |
-| `ad5-concretor-pour_*` | Identity card | Concreter | graphic + faint texture | ✅ ready |
+| Ad | Identity trigger | Creative (native, real) | Ready? |
+|----|------------------|-------------------------|--------|
+| AD1 | Concreters | **Ardreagh** — real curved formwork / raised garden beds (customer photo), clean | ✅ real photo in hand |
+| AD2 | Landscapers | same Ardreagh garden-beds photo | ✅ real photo in hand |
+| AD3 | Formworkers | Ardreagh curved-formwork photo (or a dedicated off-form shot) | ✅ interim / better with own |
+| AD4 | Builders / chippies | **needs a real curved-wall-plate photo** | ⏳ awaiting real photo |
+| AD5 | Curved bench seats | **needs a real curved bench-seat photo** | ⏳ awaiting real photo |
 
-Sizes per concept: `_1080x1350.png` (4:5 feed), `_1080x1080.png` (1:1 square),
-`_1080x1920.png` (9:16 stories/reels).
+Creative treatment: **clean real photo, no on-image sales copy.** The hook + long-form story live in
+the Meta primary text. Sizes to export once locked: 4:5 (1080×1350) feed, 1:1 (1080×1080), 9:16
+(1080×1920) stories/reels.
 
-## Reproduce / re-render
+## Source material
+- **Real customer photo:** Ardreagh / Wilson Ave curved garden-beds job (concreter, Radius Pro). Kept
+  non-identifying on-image; credit only with customer's OK.
+- **The fuel we still need (hack 4 — real native content):** real photos of a curved wall / top &
+  bottom plates job, and a curved bench seat / seat wall. Phone photos are ideal — raw is the point.
 
-The render pipeline (design system + templates + Playwright/sharp render) lives in the session
-scratchpad (`design.mjs`, `render.mjs`, `gen_images*.sh`). Fonts: Manrope (Aeonik stand-in — swap
-licensed Aeonik from Drive for final), Inter, Anton, JetBrains Mono. Wordmark is a typeset stand-in —
-swap the Drive `logo-wordmark.svg` before final.
-
-## Copy → see `../AD-CONCEPTS.md`. Launch plan → see `../LAUNCH-GUIDE.md`.
+## Copy → `../AD-CONCEPTS.md` · Playbook → `../PLAYBOOK-8-HACKS.md` · Launch plan → `../LAUNCH-GUIDE.md`

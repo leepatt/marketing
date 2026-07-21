@@ -5,7 +5,7 @@ Stage 1 output: raw verbatim quotes from real Australians, scraped from the sewe
 Feeds `DREAM-BUYER-AVATAR.md` (Stage 2). **AU-only · verbatim · no fabrication.**_
 
 > Run: 2026-07-21. Segments: concrete formwork · curved timber framing · architects/specifiers.
-> **Cluster status:** ✅ Architects/specifiers · ✅ AU forums · ⏳ Reddit · ⏳ YouTube · ⏳ Reviews/Q&A/competitor · ⬜ Facebook (Lee-fed).
+> **Cluster status:** ✅ Architects/specifiers · ✅ AU forums · ✅ Reviews/Q&A/competitor · ⏳ Reddit · ⏳ YouTube · ⬜ Facebook (Lee-fed).
 > Tags: pain · desire · objection · language · trigger.
 
 ---
@@ -95,8 +95,42 @@ Those core topics genuinely live on the blocked forums → need a browser (Lee) 
 ## CLUSTER: YouTube (transcripts + comments) ⏳
 _(agent running)_
 
-## CLUSTER: Reviews · Q&A · competitor complaints ⏳
-_(agent re-running with tool-load fix)_
+## CLUSTER: Reviews · Q&A · competitor complaints ✅
+
+_Coverage note: **the strongest, most offer-ready seam so far.** Curve-*specific* customer voice was thin
+here (Reddit/Bunnings Workshop/woodworkforums/Quora all bot-blocked), BUT **ProductReview.com.au** fetched
+cleanly and is a goldmine of **competitor-failure** + **lead-time/service desire** + **fit-fear** language —
+exactly what the Godfather offer and ads run on. Closest direct competitor mined: **Plyco** (Melbourne
+plywood/panel/veneer, cut-to-size — 2.4★, majority negative)._
+
+| # | Quote (verbatim) | Who | Tag | Source |
+|---|------------------|-----|-----|--------|
+| 27 | "I ordered Tasmanian Oak veneer 36mm thick… three of them came one colour and the fourth was pressed with the two downgrade backs facing out" | Peter, trade joiner (NT) | pain · competitor-fail | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 28 | "Without a doubt the worst panel distributor I have dealt with. Plyco sold me faulty products." | Bruce | competitor-fail | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 29 | "I knew Plyco was a gamble. I lost." | Jonny | objection (trust) | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 30 | "Ordered 22 sheets of plywood (which should have been in stock)… after 2 weeks… they had 'lost' the order" | Lex B. (VIC) | pain · competitor-fail | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 31 | "The stuffed that up… Needed to pay an additional $300 to get it delivered" | DBG | competitor-fail (delivery) | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 32 | "I placed an order in January and had to follow up and follow up… Zero communication and we are now 2+ months later." | Maree | competitor-fail (comms) | [Plyco](https://www.productreview.com.au/listings/plyco) |
+| 33 | "In 2026, what decent local business takes 5 - 9 business days to simply dispatch an order?" | Pete M | **desire (fast dispatch)** | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 34 | "So frustrating that you have slack click and collect staffs… nearly a month now, no email to collect" | Dons | competitor-fail (lead time) | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 35 | "Purchased an item for click and collect a week ago but have had zero word since!" | Robert M (NSW) | competitor-fail (comms) | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 36 | "No one got back - made 12 different attempts at contact over it." | Sara (NCAT claim) | competitor-fail | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 37 | "Edges don't align. Corner attachment out of alignment with the garden bed." | Nitin B | **objection (will-it-fit)** | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 38 | "miter 10 is RUBBISH TERRIBLE WET BAGS OF WOOD" | Bella | language · pain | [Mitre 10](https://www.productreview.com.au/listings/mitre-10) |
+| 39 | "Ordered timber on Monday for delivery on Friday. Waited all day Friday, no delivery." | Kam K. (NSW) | competitor-fail (trigger) | [Bunnings](https://www.productreview.com.au/listings/bunnings-warehouse) |
+| 40 | "There is never a problem getting samples sent to our office so that we can create our vision with the correct profile combination." | Renee Dunn, Architect | desire · language | [Intrim](https://www.productreview.com.au/listings/intrim-mouldings) |
+| 41 | "The samples always arrive to the office very quickly and are packaged and presented very nicely." | Alana (specifier) | desire (speed) | [Intrim](https://www.productreview.com.au/listings/intrim-mouldings) |
+| 42 | "The product was great, delivered on time and in good condition" | Andrew M (hospital fit-out) | desire (on-time, undamaged) | [Intrim](https://www.productreview.com.au/listings/intrim-mouldings) |
+
+**Patterns (this cluster = the offer/ad fuel):**
+- **Desire = SPEED + being kept informed** — "what decent business takes 5-9 days to dispatch?" (#33), "follow up and follow up… zero communication" (#32). → Craftons angle: **instant online price, fast dispatch, and we tell you exactly when it ships.**
+- **Objection = the fit / will-it-turn-up-right fear** — "edges don't align" (#37), the wrong-colour/downgrade-face veneer (#27), "a gamble. I lost." (#29). → Craftons angle: **cut to your set-out, fits first time, or we make it right** — the risk reversal answers this word-for-word.
+- **Competitor moat is service, not just product** — the loudest complaints are lost orders, no comms, botched delivery. A tight, communicative process is a real differentiator.
+- **Specifiers reward fast samples + the "correct profile"** (#40–42) → supports a specifier-facing sample/spec offer.
+
+**Competitor-friction data point (not a customer quote — flagged):** Australian Moulding & Door Co publicly charges a **"$200 setup fee for each size arc"** for curved architraves outside their range (australianmoulding.com.au). Real proof that "cost/setup of curves" is a live objection → Craftons undercuts it with **instant, setup-free curved pricing.**
+
+**⚠️ Blocked curve-specific threads to mine (browser/Lee-fed):** Bunnings Workshop "How to bend timber into a quarter circle" (/td-p/146015) & "curved patio and timber screen wall" (/discussion/326716); woodworkforums "How to make curved architraves?" (/f213/curved-architraves-168902).
 
 ## CLUSTER: Facebook groups ⬜
 _(Lee-fed — paste/screenshot threads and they get mined into the bank)_

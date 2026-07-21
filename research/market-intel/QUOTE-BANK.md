@@ -5,7 +5,7 @@ Stage 1 output: raw verbatim quotes from real Australians, scraped from the sewe
 Feeds `DREAM-BUYER-AVATAR.md` (Stage 2). **AU-only · verbatim · no fabrication.**_
 
 > Run: 2026-07-21. Segments: concrete formwork · curved timber framing · architects/specifiers.
-> **Cluster status:** ✅ Architects/specifiers · ⏳ Reddit · ⏳ AU forums · ⏳ YouTube · ⏳ Reviews/Q&A/competitor · ⬜ Facebook (Lee-fed).
+> **Cluster status:** ✅ Architects/specifiers · ✅ AU forums · ⏳ Reddit · ⏳ YouTube · ⏳ Reviews/Q&A/competitor · ⬜ Facebook (Lee-fed).
 > Tags: pain · desire · objection · language · trigger.
 
 ---
@@ -52,8 +52,45 @@ _Softer/adjacent (aesthetic framing, lower priority): Bronwyn Poole (Touch Inter
 ## CLUSTER: Reddit ⏳
 _(agent running)_
 
-## CLUSTER: AU trade & reno forums ⏳
-_(agent running)_
+## CLUSTER: AU trade & reno forums ✅
+
+_Coverage note: the richest AU curved-work forums — **woodworkforums.com** (has the "Bending Tight Radius
+in Ply" thread), **Bunnings Workshop**, **Homeone** — are all hard bot-blocked (Cloudflare 403 / CDN 503).
+The one reliably-fetchable AU forum (**Whirlpool**) is general-reno, not trade — so it yielded curved
+fencing / curved skirting / curved-design cost, but is thin on the core formwork + bending-ply technique.
+Those core topics genuinely live on the blocked forums → need a browser (Lee) or an archive route._
+
+| # | Quote (verbatim) | Who | Tag | Source |
+|---|------------------|-----|-----|--------|
+| 15 | "the driveway concrete that leads up to the front door is all curved and a square fence might look really odd." | Homeowner (thread starter) | trigger | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 16 | "i am looking for suggestions for an unobtrusive fence that can follow irregular lines or curves." | Homeowner | desire | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 17 | "I did look through their site and cannot see anything about being able to have curved or irregular fence panels?" | Homeowner | pain | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 18 | "Don't worry they can curve the steel, I had them come and quote. It's standard, I don't even think it would cost much more (they charge by the metre)." | Homeowner (got a quote) | language | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 19 | "there are ways (steam and pressure) to curve timber rails for eg, a picket fence." | Forum member | language | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 20 | "Height, colour, straight or curved it can all be done with steel." | Forum member | language | [Whirlpool](https://forums.whirlpool.net.au/archive/2581520) |
+| 21 | "the skirts are curved at the top and the curves don't match up when the 2 skirts meet" | Renovator (bullnose skirting) | pain | [Whirlpool](https://forums.whirlpool.net.au/archive/2234069) |
+| 22 | "you need to use a coping saw to scribed the joint into a little hook that fits over the bullnose" | Chippy | language | [Whirlpool](https://forums.whirlpool.net.au/archive/2234069) |
+| 23 | "these \"edgy\" building designs are much more expensive than traditional \"box\" buildings." | Owner-builder | objection | [Whirlpool](https://forums.whirlpool.net.au/archive/2763873) |
+| 24 | "Actually more expensive, which is why square/rectangular designs are so common. I looked at yurts… I really like the look and feel, unfortunately out of my price range." | Owner-builder (acreage) | objection | [Whirlpool](https://forums.whirlpool.net.au/archive/2763873) |
+| 25 | "What is the best way to cut curves e.g. around the floor waste? Would a diamond covered jig saw blade do the job?" | DIY tiler | pain | [Whirlpool](https://forums.whirlpool.net.au/archive/2246229) |
+| 26 | "I've always used an angle grinder with a diamond blade. Cut tiles to any shape you want." | Experienced DIYer | language | [Whirlpool](https://forums.whirlpool.net.au/archive/2246229) |
+
+**Patterns (echo the architect cluster):**
+- **"Who even does this?"** — the first hurdle is finding a supplier who'll do curves at all (#17). Craftons' opening.
+- **Curved = expensive by default** — a hard, repeated belief (#23, #24). Any offer must reverse "curves cost a fortune."
+- **Parts not lining up on site** — "the curves don't match up when the 2 skirts meet" (#21) = the pure on-site fit nightmare → the fit-guarantee value prop.
+- **Steel is the incumbent "curves are easy" material** — "straight or curved it can all be done with steel… charge by the metre" (#18, #20). What Craftons' timber/ply/concrete competes against.
+- **AU phrasing captured:** "charge by the metre," "bullnose," "skirts," "floor waste," "acreage," "box buildings."
+
+**⚠️ Blocked high-value threads — Lee can open in a browser and paste (the tool supports Lee-fed):**
+- `woodworkforums.com/f11/bending-tight-radius-ply-224423` — "Bending Tight Radius in Ply" (bendy ply limits, kerf, laminating) ⭐
+- `woodworkforums.com` archive `t-187851` — "Glue for laminated curves?"
+- `woodworkforums.com` archive `t-45345` — "how you create your curved templates"
+- `forum.homeone.com.au/viewtopic.php?f=18&t=875` — "Bending Fibro Board into a curve"
+- `workshop.bunnings.com.au/t5/Outdoor/How-can-I-make-a-curved-fence/td-p/228626`
+- `workshop.bunnings.com.au/t5/Living-and-Bedroom/D-I-Y-curved-bedhead/td-p/272615`
+- `workshop.bunnings.com.au/t5/Kitchen/How-to-a-corner-join-on-curved-benchtop-with-no-masons-mitre/td-p/256943`
+- `workshop.bunnings.com.au/discussion/343221/besser-retaining-wall-and-curved-bench-seat` ⭐
 
 ## CLUSTER: YouTube (transcripts + comments) ⏳
 _(agent running)_

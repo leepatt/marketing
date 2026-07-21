@@ -101,6 +101,9 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 **The doctrine (read above the rest):** `MARKETING-BIBLE.md` — the operating bible (Sabri Suby playbook
 → Craftons: pillars, the funnel, the Godfather offer, net-cash scoreboard) · `MARKETING-CHECKLIST.md` —
 the ordered, phased action list to execute it.
+**Market intel (the research engine):** `research/market-intel/QUOTE-BANK.md` (verbatim AU quotes) ·
+`research/market-intel/DREAM-BUYER-AVATAR.md` (the buyer avatar + first offer angles/headlines) ·
+skill `craftons-dream-buyer` (our build of King Kong's Kong — scrape → avatar → copy).
 **Strategy / brand:** `CONTENT-PILLARS.md` · `SOCIAL-VOICE.md` · `inspiration/SWIPE-FILE.md` ·
 `.claude/skills/craftons-design/BRAND.md` · `briefs/craft-macro-shoot-brief.md`
 **Skill suite + memory:** `.claude/skills/{keyword-research,seo-content,positioning-angles,direct-response-copy,content-atomizer}/` ·

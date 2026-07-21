@@ -10,6 +10,34 @@ _Created 2026-06-15 from a mobile session. Everything below is saved + pushed; n
   - [ ] **Remaining:** mirror the two new values into the **Jake cloud environment**; once verified,
         **delete** the disabled old secret in Cloud Console.
 
+## 🔎 Market intel — Facebook groups (desktop, browser) — added 2026-07-21
+> Why desktop: FB group discussion is walled to Claude (no API; scraping breaks ToS + risks the account).
+> Safe path = you read in a browser and feed threads in. See `MARKETING-BIBLE.md` §1 + the
+> `craftons-dream-buyer` skill (Cluster 6). Goal: AU verbatim voice on curved walls + curved formwork.
+- [ ] **Join the groups** (verified this session): [Tradies in Australia](https://www.facebook.com/groups/tradiesaustralia/),
+      [Melbourne Carpenters/chippy's](https://www.facebook.com/groups/1568128824025391/),
+      [Sydney builders & tradesmen](https://www.facebook.com/groups/1105399516186336/),
+      [Owner Builders Australia](https://www.facebook.com/groups/OwnerBuildersAustralia/),
+      [The Owner Builder Club (AU)](https://www.facebook.com/groups/OwnerBuilderClubAustralia/). Search+join
+      concreting/formwork groups (Concreters Australia, Formwork Australia, Decorative Concrete Australia).
+- [ ] **Don't browse — search inside each** for: curved · radius · bending/bendy ply · curved bench seat ·
+      off form · formwork curved · kerf. Screenshot post + top comments → paste to Claude → into `QUOTE-BANK.md`.
+- [ ] **Post 2–3 questions** (make them come to you): "curved walls — what bit does your head in?" ·
+      "curved formwork set-out, what's working?" · "where do you get curved stuff cut to size?" Post as
+      yourself (not the brand page) so answers stay candid + you don't get pinged as spam.
+- [ ] **(Optional) Claude for Chrome (Max):** let Claude read the ~15 search-result threads in your
+      logged-in tab, human-paced/targeted — NOT a bulk crawl (ToS + account risk).
+- [ ] **Mine the bot-blocked forums too** (same paste method) — top 3: woodworkforums *"Bending Tight
+      Radius in Ply"* + *"How to make curved architraves?"*; Bunnings Workshop *"besser retaining wall and curved bench seat"*.
+
+## 📣 Facebook page auto-capture (desktop — Zapier) — added 2026-07-21
+> Craftons FB page: https://www.facebook.com/profile.php?id=61574736366470 (new-Page URL format).
+> Captures OUR OWN page's posts/comments only (not other groups). Low near-term value (new page) —
+> it's plumbing for later + Lead-Ad capture. Zapier config: https://mcp.zapier.com/mcp/servers/1d8f79d5-5ec9-4104-8ff7-61fb14322f73/config
+- [ ] Connect Facebook Pages in Zapier (OAuth — must be an admin of the Page).
+- [ ] Build the Zap: trigger **Facebook Pages → New Comment/Post on our Page** → action **Google Sheets / ClickUp → new row/task**.
+- [ ] Tell Claude when it's live → Claude mines the sheet on a schedule.
+
 ## 🟠 Finish the design-system wiring
 - [ ] **Paste `colors_and_type.css` into the repo** for an in-repo token copy.
       Open `G:\…\00 Brain\Design-system\colors_and_type.css`, copy the plain text, paste to Claude →

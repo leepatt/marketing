@@ -5,7 +5,7 @@ Stage 1 output: raw verbatim quotes from real Australians, scraped from the sewe
 Feeds `DREAM-BUYER-AVATAR.md` (Stage 2). **AU-only · verbatim · no fabrication.**_
 
 > Run: 2026-07-21. Segments: concrete formwork · curved timber framing · architects/specifiers.
-> **Cluster status:** ✅ Architects/specifiers · ✅ AU forums · ✅ Reviews/Q&A/competitor · ⏳ Reddit · ⏳ YouTube · ⬜ Facebook (Lee-fed).
+> **Cluster status:** ✅ Architects/specifiers · ✅ AU forums · ✅ Reviews/Q&A/competitor · ✅ YouTube · ⏳ Reddit · ⬜ Facebook (Lee-fed).
 > Tags: pain · desire · objection · language · trigger.
 
 ---
@@ -92,8 +92,44 @@ Those core topics genuinely live on the blocked forums → need a browser (Lee) 
 - `workshop.bunnings.com.au/t5/Kitchen/How-to-a-corner-join-on-curved-benchtop-with-no-masons-mitre/td-p/256943`
 - `workshop.bunnings.com.au/discussion/343221/besser-retaining-wall-and-curved-bench-seat` ⭐
 
-## CLUSTER: YouTube (transcripts + comments) ⏳
-_(agent running)_
+## CLUSTER: YouTube (comments) ✅
+
+_Coverage note: the richest **tradie-voice** cluster. AU curved-work YouTube is dominated by one strong
+vein: **Dave Does Carpentry** (Melbourne/VIC, 159K subs — confirmed AU multiple ways), who's made curved
+work a repeated theme. His comment sections are full of real AU chippies, apprentices, formworkers and
+joiners reacting to curved builds. (Transcripts are now POT-gated/bot-blocked; **comments** were the
+workable source, pulled via YouTube's own API.) Sources: **[FRAME]** = ["How to frame a curved wall"](https://www.youtube.com/watch?v=nAxTF32EUI8)
+· **[BENCH]** = ["Curved backyard bench/firepit"](https://www.youtube.com/watch?v=hQ3VaLrJJB0). All are commenters, not creator narration._
+
+| # | Quote (verbatim) | Who | Tag | Src |
+|---|------------------|-----|-----|-----|
+| 43 | "I keep doing curved walls but every curve's last stud shows after plaster… what am I doing wrong?" | @gh0st330, tradie | pain | FRAME |
+| 44 | "start to finish a curved wall in a big house is a good day" | @carpentry.collective | pain (time) | FRAME |
+| 45 | "You make it look gard [hard] to layout that curved plate." | @henryfehr6202 | pain | FRAME |
+| 46 | "in our site, the foreman made the curved wall. I thought wow that's cool. After watching this, it looks pretty straightforward" | @loulei3653, site carpenter | trigger | FRAME |
+| 47 | "Shit yeah, I'd love a curved wall. Great video mate" | @Lenz_carpentry | desire | FRAME |
+| 48 | "Brisbane based, mature aged apprentice here, and this helped a lot!" | @444Aus, apprentice | desire | FRAME |
+| 49 | "always wanted to know how to do these in case I was ever asked at work.. I'm a formwork/labourer" | @VgniK88, formwork labourer | desire (fear of being caught out) | FRAME |
+| 50 | "Best and most accurate way I've seen our formworkers cut curves in ply is with a router/router jig… gives a perfect curve every time without having to freehand with a jigsaw" | @MetalheadPwd | language · desire | FRAME |
+| 51 | "As a commercial joiner and CNC programmer… Smooth clean radius with a perfect finish." | @danielforrest3232, joiner + CNC | language | FRAME |
+| 52 | "Where do I get curved drywall?😢" | @bradburnett7576 | **objection (sourcing)** | FRAME |
+| 53 | "Did you bend standard plasterboard, or did you use flexible plasterboard? Any advice?" | @noelhughson9638 | objection (how to sheet it) | FRAME |
+| 54 | "you have to make fresh curved ribs and not use the interior curve of the last one… the concentric circle radius has changed" | @ashsmoen | language (the fiddle) | FRAME |
+| 55 | "What a massive slog! Nice work mate you smashed it" | @azzman1769 | pain | BENCH |
+| 56 | "Great work mate. What a process" | @willgumley9639, on-the-tools | pain | BENCH |
+| 57 | "Tough job mate, good effort I would quote $20k for that job hopefully I don't get it" | @stevewhite1053, tradesman | **objection (priced-to-avoid)** | BENCH |
+| 58 | "Excellent adjustments to pretty severe radius with angled slats to keep everything looking even." | @jeffforbes3772 | language | BENCH |
+| 59 | "Hit a star picket into the ground and use a sfingline [stringline] for your radius" | @craighall2819 | language (set-out) | BENCH |
+| 60 | "your videos are grouse mate keep it up" | @lukewagstaff1261 | language (AU slang) | BENCH |
+
+_Src: FRAME = [youtu.be/nAxTF32EUI8](https://www.youtube.com/watch?v=nAxTF32EUI8) · BENCH = [youtu.be/hQ3VaLrJJB0](https://www.youtube.com/watch?v=hQ3VaLrJJB0). (Excluded: Tallow View Dreams — AU unconfirmed; two US/global comments held in agent notes only.)_
+
+**Patterns (this cluster = the tradie-voice language bank):**
+- **Curved work = the job nobody wants / prices to avoid** — "$20k… hopefully I don't get it" (#57), "a good day" for one wall (#44), "massive slog" (#55), "what a process" (#56). Curved is the dreaded, slow, high-labour job.
+- **Sourcing pain = Craftons' opening (again)** — "Where do I get curved drywall?😢" (#52). Buyers can't find pre-curved material → *buy the curve, don't make it.*
+- **Fear of being caught out** — "in case I was ever asked at work" (#49); curved treated as foreman/specialist-only (#46). Appetite is there ("I'd love a curved wall" #47).
+- **The desired end-state, in their words** — "perfect curve every time" (#50), "smooth clean radius with a perfect finish" (#51). ← exactly what CNC-cut curves deliver.
+- **Method vs pain** — pivot nail / jig / router / flush-trim / star picket + stringline (#50, #51, #59) vs the pain of "freehand with a jigsaw." AU voice markers: mate, bloke, chippy, grouse, star picket, plasterboard, nogs, 450 centres.
 
 ## CLUSTER: Reviews · Q&A · competitor complaints ✅
 

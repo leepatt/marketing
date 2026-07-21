@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-06-30. Branch: `claude/elegant-ramanujan-ct2p85`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -47,6 +47,18 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] Paused $19/click "Industry Specific"; capped CPC ~$3.50; Search Partners/Display off; negatives added;
   match types already exact; Brand bidding reined in → baseline + checklist in `campaigns/adwords/cnc-cut-review-log.md`
 
+### Inspiration → image-gen reference pipeline (NEW 2026-06-30)
+- [x] **`tools/video-frames.py`** — videos → deduped reference frames (1 frame/0.5s, perceptual-hash dedupe).
+- [x] **`tools/ig-collect.mjs`** — Playwright collector: pulls a profile's images+videos via a saved login
+  session. **Runs on desktop only** (cloud env + IG block headless/datacenter — verified). Reusable per brand.
+  Default output = Drive `01 Inspiration` mount. Autonomous via `tools/ig-collect.bat` +
+  `tools/install-schedule.cmd` (weekly Windows Task Scheduler job). Caveats: PC on, periodic IG re-login.
+- [x] **SessionStart hook** (`.claude/hooks/session-start.sh`) auto-installs ffmpeg + media tooling every
+  web session (fixes ffmpeg not persisting). **Activates once merged to default branch.**
+- First target: **@modernconcreteco** → Drive `01 Inspiration/modernconcreteco/`. Reference/mood use only.
+- See `tools/README.md` for the full loop. Open: image-engine (`pipeline/`) consumes prompts, not photos —
+  inspiration feeds the `craftons-design` prompt/style layer + a manifest, not `render.mjs` directly.
+
 ### Infrastructure / security
 - [x] **Google Ads creds rotated** (2026-06-23), placed in Vercel → `INTEGRATIONS.md` / `DESKTOP-TODO.md`
 - [x] **Drive connector permission fix** — tracked `.claude/settings.json` allow-lists Drive tools
@@ -55,9 +67,25 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 ---
 
 ## ⏳ Pending / in progress
-- [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
-  awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
-- [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
+- [x] **Google Ads API Basic access GRANTED (2026-06-30)** — dev token approved on MCC **275-347-3695**
+  (15k ops/day). Engine can reach the API from the cloud (verified). `tools/google-ads.mjs` built
+  (read-only: `accounts` + `report`); writes pending behind CONFIRM=1 after connect.
+- [x] **Creds mirrored + CONNECTED (2026-07-02)** — `google-ads.mjs accounts`/`report` verified read-only.
+- [x] **Craftons account CONFIRMED = `3104912421`** ("Craftons Google Ads account", 84 conv/30d). MCC
+  `2753473695` = "Craftons Marketing". ⚠️ The advertiser is reached **directly, NOT via the MCC** (not
+  linked in the API) — tool now auto-falls-back login-customer-id. Optional: set
+  `GOOGLE_ADS_LOGIN_CUSTOMER_ID=3104912421`, or link the account under the MCC in Google Ads.
+- [x] **Engine now creates campaigns.** First writes (2026-07-02): raised CPC $3.50→$6 + added Sydney/
+  Brisbane on the one campaign. Week-2 data showed ~$65/day, ~1 conv — architraves the only converter.
+- [x] **Restructured into 2 campaigns + went LIVE (2026-07-08, Lee-approved)** → `craftons-change-log.md`:
+  - **Craftons – Curved Architraves** (NEW hero) — **$100/day**, national (Melb+shires+Sydney+Brisbane),
+    47 keywords incl. **Intrim / Australian Moulding & Door conquesting**, built PAUSED then enabled.
+  - **Craftons – Customised Building Products** — now **Radius Pro + Formwork only**, **$50/day**, **local**
+    (architraves ad group paused, Sydney/Brisbane removed).
+  - **~$150/day total live.** `google-ads.mjs` now has CONFIRM-gated `bids` + `add-geo`; full campaign
+    creation done via script (in change log).
+  - **Watch:** new architrave ad approval; architraves conversions vs $100 budget; ⚠️ **Cavity Battens
+    PMax is PAUSED** (was the main converter — confirm intentional).
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
 
 ---
@@ -72,15 +100,31 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
-## ❓ Open questions / decisions needed (answer these to unblock)
-- **Account structure:** Is Craftons in the **same Google Ads account as CNC Cut (`310-491-2421`)** or separate?
-  (Decides where the engine builds the new campaigns. Craftons conversion tracking lives in the account with
-  23 purchases + 443 lead forms.)
-- **Sitelink "Get a Quote" URL** — confirm the real contact/quote page (placeholder `/pages/contact`).
-- **Call extension phone** — confirm best lead number (had `0466 146 744`).
-- **CNC Cut negatives:** do they offer **milling**? **engraving**? (If no → add as negatives.)
-- **Configurators:** do customers **check out & pay online**, or mostly **request a quote**? (purchase vs lead mix)
-- **Tidy:** demote `file_download` conversion from **Primary → Secondary** (don't optimise toward PDF-downloaders).
+## ❓ Open questions / decisions needed
+
+### ✅ Resolved 2026-06-30 (with receipts)
+- **Sitelink "Get a Quote" URL → `/pages/contact`.** Verified live on craftons.com.au: there is **no
+  dedicated quote page** — the contact page *is* the quote path. Placeholder was correct; caveat removed
+  in `ad-extensions.md`.
+- **CNC Cut milling/engraving → NO.** cnccut.melbourne advertises **2D & 3D router cutting only**. →
+  Added `milling / mill / engraving / engrave / engraver / laser` as negatives (`cnc-cut-review-log.md`).
+- **Configurators — purchase vs quote → BOTH, lead-dominant (~19:1).** The configurators support online
+  checkout (Radius Pro product page: "dispatched in 3 business days from checkout"; **23 purchases /
+  $17.3k** tracked) but the dominant action is **lead/quote forms (443 tracked)**. Implication for the
+  engine: keep **Purchase** Primary, but **"Submit lead form" is the main optimisation signal** — bid
+  toward leads, not just purchases.
+- **`file_download` conversion → demote Primary → Secondary.** Confirmed correct: don't optimise toward
+  PDF-downloaders. (Manual change in Google Ads UI — flagged in next-steps until API write access lands.)
+
+### ✅ Resolved by Lee 2026-06-30
+- **Account structure → SEPARATE accounts.** Craftons is **not** in the CNC Cut account (`310-491-2421`).
+  → The engine builds the new Craftons campaigns in **Craftons' own Google Ads account** (the one with the
+  23 purchases + 443 lead forms / Shopify Google&YouTube + GA4). CNC Cut stays separate.
+- **Call extension phone → `0411 689 166`.** Use the number published live on craftons.com.au so the ad
+  matches the site (supersedes the old `0466 146 744`). Finalised in `ad-extensions.md`.
+
+> **All open questions resolved.** Engine deployment is unblocked once Google Ads API Basic access lands
+> (see Pending / Next steps) — build in Craftons' own account, optimise toward "Submit lead form".
 
 ---
 
@@ -106,3 +150,17 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`
+
+
+## 2026-07-21 — decisions & refocus (Lee)
+- **Cavity Battens DISCONTINUED** — no longer manufacturing. Do **NOT** un-pause the Cavity Battens
+  Performance Max; it stays off. Wind down anything advertising cavity battens; archive the Shopify
+  product once remaining inventory clears. (This was the account's former best converter — accept that
+  it's gone; the account now has no active paid converter, which reinforces the demand-gen + content plan.)
+- **Architraves → demand-gen, not more search.** Build a Performance Max / Demand-Gen campaign fed by
+  finished-arch creative; keep the small architrave *search* campaign as a capture layer only.
+- **Architrave page:** let Microsoft Clarity gather data (installed 2026-07-21), do the cheap
+  image-surfacing + trust lines, retarget viewers, give it 3–4 weeks. No restructure. → `architrave-page-cro-audit.md`.
+- **PRIMARY FOCUS = the 2-month build to launch (~late Sept 2026).** Deliberate build of all the engine
+  tools + launch-readiness, not week-to-week ad tinkering. See the phased plan (Drive `02 Strategy/
+  Craftons-Marketing-Engine-Plan.md`) — consolidate into an 8-week roadmap.

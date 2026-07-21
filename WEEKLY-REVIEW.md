@@ -78,7 +78,7 @@ Apply the triggers below, make **one** set of changes, then fill in the Weekly L
 ## Weekly Log (fill in each Monday)
 | Week (Mon) | Ads spend | Ads conv | Cost/conv | Architrave spend | Arch conv | Site CR | Arch orders (Shopify) | Clarity note | Change made |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-07-20 | ~$264/7d | 1 | ~$195 | ~$69 | 0 | ~1–2% | (check) | Clarity just installed | Victoria re-weight + skirting/bunnings negatives |
+| 2026-07-20 | ~$278/7d | 1 | ~$278 | ~$89/14d | 0 (paid) | ~1–2% | 1 ($2,342, #1263 — **organic SEO**, not paid) | Clarity live 21 Jul; no rec of this sale (build was 19th) | Logged sale analysis: organic won, paid arch $88/0 conv → retarget + SEO images |
 |  |  |  |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |  |  |  |

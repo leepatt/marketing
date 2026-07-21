@@ -351,6 +351,64 @@ This bible doesn't replace the existing engine — it sits above it and exposes 
 
 ---
 
+## 9. THE META ADS PLAYBOOK (paid execution — Sabri's "8 hacks", $300M+ spend)
+
+> _Tactical layer for running Meta (Facebook/Instagram) ads. From the source's "8 hacks I wish I knew
+> sooner" video. Translated to Craftons. Sits under Pillar 3 (attention) + the Scoreboard (§6)._
+
+1. **Statics beat video — win on volume.** Meta's "Andromeda" AI is a hungry panda: it needs a constant
+   flood of fresh creative or ads fatigue. Statics are far cheaper/faster to produce than video, and the
+   algo shows *more* of them per session. → **Craftons: make statics the paid workhorse.** Tia's Craft
+   Macro stills + configurator renders + spec/number cards = near-infinite cheap statics. Block **1 hr/week**
+   to cut fresh creative from the winning offer. (Video still leads *organic* social; for *paid volume*, statics.)
+
+2. **The identity-keyword hack — the creative IS the targeting.** Andromeda reads your image/copy/offer/page
+   to find the buyer, so put the audience *in the ad*. Duplicate a winning ad and drop in the niche/identity
+   word. → **Craftons: our niches are the trades.** "Curved wall plates, cut to size" → "**Concreters** —
+   curved formwork, cut to size" / "**Builders** — curved wall plates this week" / "**Formworkers** — top,
+   bottom & face ply cut"; plus job-types (bench seats, curved stairs, arched doorways). Each niche word
+   opens a new audience pocket and drops CPL. *This is exactly why the ad copy is split by trade —*
+   `campaigns/adwords/customer-voice-ad-copy.md`.
+
+3. **Winning-format clone — never ride one winner.** When an ad wins, don't rest on it till it fatigues.
+   Feed it to AI → hundreds of variations (body copy → headlines → creative), run them in a CBO, let Meta
+   pivot spend. **Zombie campaign:** the high-conviction ads that got no spend → relaunch in their own ad
+   set → ~20% more winners. → **Craftons: systemise variation** off each winning customer-voice ad; keep a
+   swipe file of winners.
+
+4. **Don't make ads look like ads — run native.** People hate ads. Run content that already performs
+   *organically*. Burner-account trick: a fresh TikTok/IG following AU building/formwork/concreting pages →
+   copy what rises to the top. → **Craftons: our Craft Macro / real-job / how-to content that earns organic
+   reach IS the paid creative** — pour spend on the posts that already banged. (Reinforces Pillar 3.)
+
+5. **Broad targeting + super-specific creative.** The creative does the targeting; long-form copy gives Meta
+   a bigger context window to find buyers. Stop interest-stacking. → **Craftons: run broad AU, let the
+   trade-specific long-form copy target.** Test broad vs stacked side-by-side; read CPAs at 7 days.
+
+6. **Match the ad to the landing page (scent).** Meta is the best split-tester on earth — headlines get seen
+   ~1000× more than the page. Run 20–40 headline variants, mirror the winner on the page (headline, sub-head,
+   lead-in) → +15–20% conversion. Keep ≥3 split tests live. → **Craftons: the winning ad headline must match
+   the top of the builder page it points to.** If the ad says "Curved formwork, priced by the lineal metre,"
+   the **Formwork Builder** page must open with that line. (Ad↔builder congruence — a launch checklist item.)
+
+7. **Retarget with a *different* offer.** They didn't buy because *that* offer wasn't right for them. → **Craftons:
+   our product spread is the retargeting engine.** Bounced off Radius Pro → retarget with the Formwork Builder,
+   the Architrave Builder, or the Field Guide lead magnet. His fuller funnel: TOFU ad → page → high-value
+   content offer → **call every lead to mine objections** → build (a) objection-handling ads, (b) proof /
+   testimonial carousels (= *Built with Craftons*), (c) an other-offers CBO, (d) a value-in-itself "audit".
+   Those objection-mining calls feed straight back into Pillar One intel.
+
+8. **Track net free cash flow, not ROAS % (same as §6).** Find break-even ROAS, scale hard toward it; optimise
+   **blended** ROAS at the *business* level, not per-ad-account. Block **3 hrs/month** to eyeball the numbers
+   yourself — data → confidence → speed. → **Craftons: net cash is the scoreboard; don't cap spend on a ROAS %.**
+
+**The through-line:** feed the algorithm huge creative volume (statics), let it target (broad + trade-specific
+copy), match ad → builder page, retarget with our other products, and judge it all on net cash. Our edge: we
+already own the raw material — Craft Macro stills, configurator renders, real customer voice, and a product
+spread built for retargeting.
+
+---
+
 ## The Craftons marketing creed (pin this)
 
 1. Their fear, in their words — before we write anything.

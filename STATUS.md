@@ -150,3 +150,17 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`
+
+
+## 2026-07-21 — decisions & refocus (Lee)
+- **Cavity Battens DISCONTINUED** — no longer manufacturing. Do **NOT** un-pause the Cavity Battens
+  Performance Max; it stays off. Wind down anything advertising cavity battens; archive the Shopify
+  product once remaining inventory clears. (This was the account's former best converter — accept that
+  it's gone; the account now has no active paid converter, which reinforces the demand-gen + content plan.)
+- **Architraves → demand-gen, not more search.** Build a Performance Max / Demand-Gen campaign fed by
+  finished-arch creative; keep the small architrave *search* campaign as a capture layer only.
+- **Architrave page:** let Microsoft Clarity gather data (installed 2026-07-21), do the cheap
+  image-surfacing + trust lines, retarget viewers, give it 3–4 weeks. No restructure. → `architrave-page-cro-audit.md`.
+- **PRIMARY FOCUS = the 2-month build to launch (~late Sept 2026).** Deliberate build of all the engine
+  tools + launch-readiness, not week-to-week ad tinkering. See the phased plan (Drive `02 Strategy/
+  Craftons-Marketing-Engine-Plan.md`) — consolidate into an 8-week roadmap.

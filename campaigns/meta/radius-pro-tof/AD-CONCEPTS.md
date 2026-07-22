@@ -1,110 +1,144 @@
-# Radius Pro — Top-of-Funnel · The 5 Ads (built to the 8 Hacks)
+# Radius Pro. Top-of-Funnel. The 5 Ads (built to the 8 Hacks)
 
 > Destination (all 5): `https://craftons.com.au/products/radius-online` · self-serve online builder.
 > **Never "send us your CAD."** Governed by `PLAYBOOK-8-HACKS.md`.
 >
 > **The rules these ads follow:**
-> - **Native, not designed** (hack 4) — real curved-job photos, clean. No wordmark lockup, no CTA pill,
+> - **Native, not designed** (hack 4): real curved-job photos, clean. No wordmark lockup, no CTA pill,
 >   no catalogue panel. The photo IS the content.
-> - **One identity trigger per ad** (hack 2) — the trade/job-type word does the targeting. 5 triggers.
-> - **Long-form body copy that does NOT sell** (hack 5 + the golden rule) — a real story in the trade's
->   own voice, packed with the niche + related job-types + the real pain, so Andromeda has context to
->   find the buyer. Soft close at most. We're funnelling the right people to the page, not selling.
-> - **Headline variants to split-test** (hack 6) — run them, mirror the winner on the `radius-online` page.
+> - **We CUT, we don't bend.** Craftons cuts curved plates to the exact radius on a CNC. Never imply we
+>   bend ply. The old-way pain is *hand-cutting* curves (maths, jigsaw, waste); we cut them precisely.
+> - **One identity trigger per ad** (hack 2): the trade word sits IN the copy (line 2) so Andromeda
+>   targets that niche. Swap the word to clone the ad to a new audience.
+> - **Long-form body copy that does NOT sell** (hack 5 plus the golden rule): a real story in the
+>   trade's own voice. We're funnelling the right people to the page, not selling.
+> - **Headline variants to split-test** (hack 6): run them, mirror the winner on the `radius-online` page.
+> - **No em dashes. No en dashes. Ever.** (House rule. Use full stops, commas, colons, brackets.)
 >
-> **First line matters most:** Meta truncates the body at ~125 chars with "…more". The hook has to earn
-> the expand; the long-form underneath feeds the algorithm and the readers who open it.
+> **The winning structure (locked, from the Plattar reference plus the 8 hacks):**
+> Quoted-question hook, then "it's the first question every [trade] asks…" (identity), then agitate the
+> old hand-cut way, then the turn ("this one didn't go that way"), then proof (the finished job), then a
+> soft close. The first line earns the "…more" expand; the long-form underneath feeds the algorithm.
+>
+> **Creative:** the real **Ardreagh** job (concreter, Radius Pro: curved raised garden beds for an
+> apartment courtyard) as a **before/after carousel**, 1:1 (1080x1080). Formwork (2 angles) to finished
+> planted courtyard. The 4K finished clip is also a ready-made **Reel**.
 
 ---
 
-## AD 1 · Identity trigger: **CONCRETERS**
-**Creative:** the real Ardreagh job — serpentine curved formwork for raised garden beds (clean, no overlay).
+## AD 1 · Identity trigger: **CONCRETERS** (LOCKED)
+**Creative:** Ardreagh before/after carousel, **formwork-first** (concreters lead with their world).
+Slide 1 formwork (dramatic angle), Slide 2 formwork (wide, scale), Slide 3 finished courtyard (the
+S-curve payoff). All 1:1. Clean, no overlay.
 
 **Primary text:**
-> This is the job everyone on site quietly dreads.
+> "How would you even cut curves like these?"
 >
-> Those curves are a run of raised garden beds going into an apartment courtyard. Normally, forming that up means someone's bending formply around the radius by hand — tacking it, packing it, praying it doesn't kink or blow out when the concrete goes in. Days of it.
+> It's the first question every concreter asks when the plans get sent through.
 >
-> The concreter who did this didn't bend a single sheet. Every black formply panel turned up cut to the exact radius. He stood them up, braced them, poured. Done.
+> Curved raised garden beds and circular tree planters for an apartment courtyard. Normally it's a job you don't really want to quote, because the old way means ringing your Year 10 maths teacher to remember how Pythagoras works, marking out your curve, then snapping jigsaw blades chasing the line and hoping every plate comes out true.
 >
-> If the curved work is the part of your jobs that always blows the program — garden beds, bench seats, planters, curved walls — you draw the radius and it comes cut to size. That's genuinely the whole thing.
+> It takes days. The curve's never quite true. And you've used twice as many sheets.
+>
+> That's where the money goes on curved formwork.
+>
+> This one didn't go that way. Every formply plate turned up cut to the exact radius. Drawn online, machined, every part engraved, delivered. The crew stood them up, braced them, poured. No Pythagoras, no jigsaw, no waste.
+>
+> Swipe to the last frame. That's what it became.
+>
+> If the curved jobs are the ones that always blow your program, they don't have to be. Punch in your radius, we cut it, it turns up ready to stand.
 
-**Headline variants (split-test):** `Curved formply, cut to your radius` · `The curved bit, cut to size` · `Curved formwork without bending ply` · `Draw the radius. We cut it.`
+**Headline variants (split-test):** `Curved formply, cut to your radius` · `The curved bit, cut to size` · `Curves cut to the exact radius` · `Punch in the radius, we cut it`
 **Description:** `Curved formply cut to size. Priced online.`
 
 ---
 
-## AD 2 · Identity trigger: **LANDSCAPERS**
-**Creative:** same Ardreagh garden-beds photo (it *is* a landscape feature — perfect scent).
+## AD 2 · Identity trigger: **LANDSCAPERS** (LOCKED)
+**Creative:** same Ardreagh carousel. Optionally **lead with the finished courtyard** (Slide 1) for
+landscapers (they think in finished results), then reveal the formwork.
 
 **Primary text:**
-> Landscapers — this is how the curved beds get done now.
+> "How do you get a curve like this actually built?"
 >
-> Raised garden beds for an apartment courtyard, every curve cut to the exact radius before it turned up on site. No templating, no bending ply for two days, no bloke swearing at a sheet of formply that won't hold the line.
+> It's the first question every landscaper asks when a design like this lands on the desk.
 >
-> The curved formwork comes cut to size. You brace it and pour. Planters, tree surrounds, curved seat walls, retaining — if it's got a radius, you draw it and it's cut for you.
+> Curved raised garden beds and circular tree planters for an apartment courtyard. It looks brilliant on the plan, but a curve like that is where the budget's always gone, because someone still has to build the formwork by hand: marking it out, chasing the line with a jigsaw, and burning through twice the sheets to get it true.
 >
-> Spend the day on the landscape, not fighting the formwork.
+> So the good curves get value-engineered out. Straightened. Squared off. The thing that made the space special, gone.
+>
+> This one didn't go that way. Every formply plate was cut to the exact radius. Drawn online, machined, every part engraved, delivered ready to stand and brace. The curves came out exactly as they were drawn.
+>
+> Swipe to the last frame for the finished courtyard.
+>
+> If you've been squaring off your curves just to keep them buildable, you can stop. Punch in the radius, we cut it, and it comes out exactly as you drew it.
 
-**Headline variants:** `Curved garden beds, cut to size` · `Curved planters & beds, done faster` · `Curves cut to the radius` · `The formwork, cut for you`
+**Headline variants:** `Curved garden beds, cut to size` · `Your curves, exactly as drawn` · `Stop squaring off your curves` · `Curves cut to the exact radius`
 **Description:** `Curved formwork cut to size. Priced online.`
 
 ---
 
-## AD 3 · Identity trigger: **FORMWORKERS**
-**Creative:** the Ardreagh curved-formwork photo (or a dedicated curved-wall/off-form shot when we have one).
+## AD 3 · Identity trigger: **FORMWORKERS** (draft, needs own photo)
+**Creative:** the Ardreagh formwork (interim), then a dedicated stripped off-form curve when we have one.
 
-**Primary text:**
-> Formworkers — what are you using for the curved stuff?
+**Primary text (draft, same structure):**
+> "How do you get a curve that comes up clean off the form?"
 >
-> Because the bit that always kills the program is the off-form curve: getting formply to bend to the radius without kinking, and still come up clean off the form. Laminating two sheets, strongbacks every hundred, hoping it holds the line.
+> It's the first question every formworker asks on a curved job.
 >
-> This job came cut to the exact radius, panel by panel. It turns up cut, you brace it, you pour — and the off-form finish is there because the curve was machined, not muscled.
+> The old way is a jigsaw and a set of offsets: cutting each curved plate by hand, chasing the line, and still copping flat spots and steps you grind back after you strip it.
 >
-> Curved walls, columns, bench seats, garden beds — you draw the radius, it comes cut to size.
+> This one came cut to the exact radius, plate by plate. Drawn online, machined, every part engraved, delivered. Stand it, brace it, pour. The off-form curve was machined, not muscled.
+>
+> Curved walls, columns, bench seats, garden beds. Punch in the radius, we cut it.
 
-**Headline variants:** `Curved formply for a clean off-form finish` · `The off-form curve, machined not muscled` · `Curved walls, cut to the radius` · `Curves that come up clean`
+**Headline variants:** `Curved formply, cut to the exact radius` · `Off-form curves, machined not muscled` · `Curved walls, cut to size` · `Curves that come up clean`
 **Description:** `Curved formply cut to size. Priced online.`
 
 ---
 
-## AD 4 · Identity trigger: **BUILDERS / CHIPPIES**
-**Creative:** a real curved-wall-plate job (need a photo — see the ask below; interim: reuse a curved-wall shot).
+## AD 4 · Identity trigger: **BUILDERS / CHIPPIES** (draft, needs own photo)
+**Creative:** a real curved-wall / cut-plates job (see the ask).
 
-**Primary text:**
-> Every chippy knows the curved wall is where the day goes.
+**Primary text (draft, same structure):**
+> "How long's the curved wall going to cost me this time?"
 >
-> There's a curve on the plan, and now someone's templating the radius, cutting the top and bottom plates by hand, and it's still not quite fair when you stand back and sight down it.
+> It's the first thing every chippy thinks when there's a curve on the plan.
 >
-> This is the bit you can just order. Draw the radius, and your curved top and bottom plates turn up cut to size — ply, formply or MDF, whatever you're framing in. Set them out, stand your studs, sheet it. Curved walls stop being the job nobody wants to pick up.
+> The old way: template the radius, cut the top and bottom plates by hand, and it's still not fair when you sight down it.
+>
+> Not this time. Punch in the radius and your curved top and bottom plates turn up cut to size (ply, formply or MDF), every part engraved, delivered. Set them out, stand your studs, sheet it.
+>
+> Curved walls stop being the job nobody wants to pick up. Punch in your radius, we cut it.
 
-**Headline variants:** `Curved wall plates, cut to your radius` · `Top & bottom plates, cut to size` · `The curved wall, cut for you` · `Curved plates, ply/formply/MDF`
+**Headline variants:** `Curved wall plates, cut to your radius` · `Top and bottom plates, cut to size` · `The curved wall, cut for you` · `Curved plates, ply/formply/MDF`
 **Description:** `Curved wall plates cut to size. Priced online.`
 
 ---
 
-## AD 5 · Identity trigger (job-type): **CURVED BENCH SEATS**
-**Creative:** a real curved bench-seat / seat-wall job (need a photo — see the ask; interim: the Ardreagh shot).
+## AD 5 · Identity trigger (job-type): **CURVED BENCH SEATS** (draft, needs own photo)
+**Creative:** a real curved bench-seat / seat-wall job (see the ask).
 
-**Primary text:**
-> A curved bench seat used to be a week you didn't really want to quote.
+**Primary text (draft, same structure):**
+> "How would you even form up a curved seat like that?"
 >
-> The curve is the whole feature, so it has to be fair — which meant someone bending formply by hand and hoping it came up clean. That's why the curved jobs got knocked back or priced sky-high.
+> It's the job that used to be a week you didn't want to quote.
 >
-> Not anymore. The curved formwork for the seat comes cut to the exact radius — braced and poured in a fraction of the time. Same for garden beds, planters, curved walls. Anything with a radius, you draw it, it's cut to size.
+> The curve is the whole feature, so it has to be fair, which meant cutting every curved plate by hand, chasing the line, and copping the flat spots. So the curved jobs got knocked back or priced sky-high.
 >
-> Start quoting the curved jobs you used to hand off.
+> Not anymore. The curved formwork turns up cut to the exact radius. Machined, every part engraved, delivered ready to brace and pour. Same for garden beds, planters, curved walls.
+>
+> Start quoting the curved jobs you used to hand off. Punch in the radius, we cut it.
 
-**Headline variants:** `Curved bench seats, formed faster` · `Curved seat walls, cut to size` · `Quote the curved jobs again` · `The curve, cut to the radius`
+**Headline variants:** `Curved bench seats, cut to size` · `Curved seat walls, cut to the radius` · `Quote the curved jobs again` · `The curve, cut to the exact radius`
 **Description:** `Curved formwork cut to size. Priced online.`
 
 ---
 
 ## Launch notes
-- **UTMs:** `?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=` +
+- **UTMs:** `?utm_source=meta&utm_medium=paid_social&utm_campaign=radiuspro_tof_jul26&utm_content=` plus
   `ad1_concreters` / `ad2_landscapers` / `ad3_formworkers` / `ad4_builders` / `ad5_benchseats`.
-- **All 5 in one broad-AU ad set** (per `LAUNCH-GUIDE.md`) — the copy targets, Meta distributes.
-- **Creative honesty (bible standing rule):** real footage leads. AD1–3 run on the real Ardreagh photo
-  today. **AD4 (curved wall plates) and AD5 (bench seat) want their own real photos** — see the ask.
-- **This is hack 2/3 in action:** one real winning creative, cloned across 5 identity triggers. As more
-  real job photos come in, each trigger gets its own native visual and we widen the swipe file.
+- **All 5 in one broad-AU ad set** (per `LAUNCH-GUIDE.md`): the copy targets, Meta distributes.
+- **Ready now:** AD1 (concreters) plus AD2 (landscapers). Real Ardreagh before/after carousel, copy locked.
+- **AD3 to AD5 are drafts** pending their own real photos (formwork off-form, curved wall plates, bench
+  seat). Copy follows the AD1 structure; swap in the real photo and they're live.
+- **This is hack 2/3 in action:** one real winning job, cloned across identity triggers. Judge on net cash.

@@ -36,7 +36,9 @@ A same-viewpoint before/after:
 ### Studs
 - **90 x 35** pine framing (site timber, not Formply).
 - Standing **plumb**, **evenly spaced**, following the curve.
-- Spacing: Lee said **"90mm spacing"** (see open question 1: centres vs clear gap).
+- Spacing: **150mm centres** (LOCKED. Earlier "90mm" was a misread.)
+- We see the **narrow 35mm face** to the room (standard 90mm-thick wall; the 90mm dimension runs
+  through the wall depth, flush with the 90mm plate). LOCKED.
 - Must line up with the plate (plate is 90mm wide to match, flush both faces).
 
 ### Noggins
@@ -47,10 +49,11 @@ A same-viewpoint before/after:
   a perfect line.
 
 ### Geometry
-- **NOT a cylinder, not a full drum.** A **single, soft curved wall** (one gentle convex curve).
-- The shape MUST match the finished curved wall in `IMG_5539` (the wall that bulges out into the
-  hallway). Not a random curve. This is the single most important thing.
-- Full height (floor to ceiling/truss). [confirm: open question 3]
+- **NOT a cylinder, not a full drum.** A **single, soft curved wall**: a **curve that joins two
+  straight walls** (the curved section sweeps between two straight wall runs). LOCKED.
+- The shape MUST match the finished curved wall in `IMG_5539` (the convex curve that bulges out into
+  the hallway). Not a random curve. This is the single most important thing.
+- **Full height**, floor to the underside of the trusses. LOCKED.
 
 ### The scene (genuine mid-build, zero finished work)
 - **Concrete slab floor**: real building site, not super clean, but **tidy and swept** (a bit dusty).
@@ -80,17 +83,12 @@ not lose them:
 - The winning direction so far: derive the frame from `IMG_5539` (locks shape + viewpoint), then get the
   build detail (90mm studs, doubled black plates flush, imperfect noggin row) correct on top of it.
 
-## OPEN QUESTIONS (need Lee before next generation)
+## ANSWERS (locked 2026-07-22)
 
-1. **Stud spacing.** "90mm spacing" = 90mm **centres** (so ~55mm clear gap between 35mm studs), or 90mm
-   **clear gap** between studs? Which?
-2. **Visible stud face.** With a 90mm plate and studs flush both sides, we look at the **35mm face** of
-   each stud (standard 90mm wall). Correct?
-3. **Full height.** Does the curved wall run full height, floor to the underside of the trusses?
-4. **The `IMG_5539` shape/layout.** What is the curved wall actually part of, so we frame the right
-   thing: a rounded END of a partition (a bullnose), or a curved section between two straight walls? What
-   is on each side of it (the opening on the left, and what is on the right / behind)?
-5. **Top plate.** The top plate is also the doubled 34mm black Formply, and should be visible where the
-   studs meet the trusses. Correct?
-6. **Reveal still on?** Confirm the plan is still the finished-to-frame swipe pair (Slide 1 reworked
-   finished, Slide 2 this frame), both matched to `IMG_5539`.
+1. **Wall shape:** a **curve joining two straight walls** (matches `IMG_5539`, convex to camera).
+2. **Stud spacing:** **150mm centres.**
+3. **Stud face:** the **35mm face** shows to the room (standard 90mm wall).
+4. **Full height:** yes, floor to trusses.
+5. **Top plate:** also the doubled 34mm black Formply (assumed, not contradicted).
+6. **Reveal:** deferred. Priority right now is to **nail one accurate frame image**. The finished-to-frame
+   swipe pair is a later decision.

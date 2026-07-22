@@ -36,7 +36,7 @@ A same-viewpoint before/after:
 ### Studs
 - **90 x 35** pine framing (site timber, not Formply).
 - Standing **plumb**, **evenly spaced**, following the curve.
-- Spacing: **150mm centres** (LOCKED. Earlier "90mm" was a misread.)
+- Spacing: **125mm centres** (LOCKED. Earlier "90mm" was a misread; 150 was updated to 125.)
 - We see the **narrow 35mm face** to the room (standard 90mm-thick wall; the 90mm dimension runs
   through the wall depth, flush with the 90mm plate). LOCKED.
 - Must line up with the plate (plate is 90mm wide to match, flush both faces).
@@ -86,7 +86,7 @@ not lose them:
 ## ANSWERS (locked 2026-07-22)
 
 1. **Wall shape:** a **curve joining two straight walls** (matches `IMG_5539`, convex to camera).
-2. **Stud spacing:** **150mm centres.**
+2. **Stud spacing:** **125mm centres.**
 3. **Stud face:** the **35mm face** shows to the room (standard 90mm wall).
 4. **Full height:** yes, floor to trusses.
 5. **Top plate:** also the doubled 34mm black Formply (assumed, not contradicted).

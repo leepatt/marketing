@@ -54,25 +54,27 @@ S-curve payoff). All 1:1. Clean, no overlay.
 ---
 
 ## AD 2 · Identity trigger: **LANDSCAPERS** (LOCKED)
-**Creative:** same Ardreagh carousel. Optionally **lead with the finished courtyard** (Slide 1) for
-landscapers (they think in finished results), then reveal the formwork.
+**Creative:** same Ardreagh carousel as AD1 (formwork-first).
 
-**Primary text:**
-> "How do you get a curve like this actually built?"
+**Primary text:** AD1 clone, one word swapped ("concreter" to "landscaper"). This is hack 2/3: take the
+winner, insert the keyword, leave the rest as-is.
+> "How would you even cut curves like these?"
 >
-> It's the first question every landscaper asks when a design like this lands on the desk.
+> It's the first question every landscaper asks when the plans get sent through.
 >
-> Curved raised garden beds and circular tree planters for an apartment courtyard. It looks brilliant on the plan, but a curve like that is where the budget's always gone, because someone still has to build the formwork by hand: marking it out, chasing the line with a jigsaw, and burning through twice the sheets to get it true.
+> Curved raised garden beds and circular tree planters for an apartment courtyard. Normally it's a job you don't really want to quote, because the old way means ringing your Year 10 maths teacher to remember how Pythagoras works, marking out your curve, then snapping jigsaw blades chasing the line and hoping every plate comes out true.
 >
-> So the good curves get value-engineered out. Straightened. Squared off. The thing that made the space special, gone.
+> It takes days. The curve's never quite true. And you've used twice as many sheets.
 >
-> This one didn't go that way. Every formply plate was cut to the exact radius. Drawn online, machined, every part engraved, delivered ready to stand and brace. The curves came out exactly as they were drawn.
+> That's where the money goes on curved formwork.
 >
-> Swipe to the last frame for the finished courtyard.
+> This one didn't go that way. Every formply plate turned up cut to the exact radius. Drawn online, machined, every part engraved, delivered. The crew stood them up, braced them, poured. No Pythagoras, no jigsaw, no waste.
 >
-> If you've been squaring off your curves just to keep them buildable, you can stop. Punch in the radius, we cut it, and it comes out exactly as you drew it.
+> Swipe to the last frame. That's what it became.
+>
+> If the curved jobs are the ones that always blow your program, they don't have to be. Punch in your radius, we cut it, it turns up ready to stand.
 
-**Headline variants:** `Curved garden beds, cut to size` · `Your curves, exactly as drawn` · `Stop squaring off your curves` · `Curves cut to the exact radius`
+**Headline variants:** `Curved formply, cut to your radius` · `The curved bit, cut to size` · `Curves cut to the exact radius` · `Punch in the radius, we cut it`
 **Description:** `Curved formwork cut to size. Priced online.`
 
 ---

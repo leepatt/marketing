@@ -1,9 +1,12 @@
 # Meta Ads Playbook: Sabri's 8 Hacks (reusable template)
 
 > Source: Sabri Suby, "I've spent over $300M on Meta ads, these are the 8 hacks I wish I knew sooner."
-> This is the in-depth, reusable version. Use it to launch any new Craftons Meta campaign the same way
-> the Radius Pro TOF campaign was built (see the worked example at the bottom, and the live record in
-> `campaigns/meta/radius-pro-tof/`).
+> **We rely heavily on this video. It is the doctrine for how we run Meta ads.** This file is the
+> in-depth, distilled, reusable version. The full verbatim transcript is saved next to it at
+> `playbooks/SABRI-8-HACKS-TRANSCRIPT.md`, which is the ground truth to go back to whenever there is
+> any doubt about what a hack actually says.
+> Use this to launch any new Craftons Meta campaign the same way the Radius Pro TOF campaign was built
+> (see the worked example at the bottom, and the live record in `campaigns/meta/radius-pro-tof/`).
 >
 > House rules for everything in here: builder-to-builder voice, no em dashes or en dashes ever, and
 > only claim what is true about the product (for Craftons: we CUT curved plates, we do not bend).

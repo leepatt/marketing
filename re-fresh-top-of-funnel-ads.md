@@ -9,6 +9,14 @@ sends photos.
 First actions: `git checkout claude/radius-pro-top-funnel-ads-x2odkm`, then read
 `campaigns/meta/radius-pro-tof/LAUNCHED.md`.
 
+## This whole approach relies heavily on the Sabri video. Read it first.
+Every decision here comes from Sabri Suby's "8 hacks I wish I knew sooner" Meta ads video. It is the
+doctrine, not a nice-to-have. Before doing any ads work, read these two, in order:
+- `playbooks/SABRI-8-HACKS-TRANSCRIPT.md` - the full verbatim transcript (the source of truth).
+- `playbooks/META-ADS-SABRI-8-HACKS.md` - the distilled, actionable version (each hack plus the
+  Craftons move, the copy template, the exact Meta build settings, the anti-patterns).
+When in doubt about what to do, go back to the transcript. Do not freelance away from the method.
+
 ## Where things stand
 - 5-ad native TOF set built to Sabri's 8 hacks: real-photo carousels, NOT designed ad-cards (the
   ad-card version was rejected, never go back to it). Copy is the long-form question-hook structure,
@@ -49,14 +57,16 @@ First actions: `git checkout claude/radius-pro-top-funnel-ads-x2odkm`, then read
 4. Keep shipping fresh statics weekly (hack 1).
 
 ## Files to open (read these, do not re-derive). All under `campaigns/meta/radius-pro-tof/` unless noted.
-- `LAUNCHED.md` — the live campaign record, all IDs and settings. Start here.
-- `AD-CONCEPTS.md` — the 5 ads. AD1 and AD2 copy locked, AD3 to AD5 are drafts.
-- `playbooks/META-ADS-SABRI-8-HACKS.md` (repo root `playbooks/`) — the reusable method and copy
-  template. The doctrine for building any new ad.
-- `PHOTO-BRIEF.md` — the exact shots needed for AD4 and AD5.
-- `PIXEL-TRACKING-SPEC.md` and `TRACKING-VERIFICATION.md` — the tracking work and the Events Manager
+- `LAUNCHED.md`: the live campaign record, all IDs and settings. Start here.
+- `AD-CONCEPTS.md`: the 5 ads. AD1 and AD2 copy locked, AD3 to AD5 are drafts.
+- `playbooks/SABRI-8-HACKS-TRANSCRIPT.md` (repo root `playbooks/`): the full Sabri video transcript.
+  The source of truth. Read it first, we rely on it heavily.
+- `playbooks/META-ADS-SABRI-8-HACKS.md` (repo root `playbooks/`): the reusable method and copy
+  template distilled from that video. The doctrine for building any new ad.
+- `PHOTO-BRIEF.md`: the exact shots needed for AD4 and AD5.
+- `PIXEL-TRACKING-SPEC.md` and `TRACKING-VERIFICATION.md`: the tracking work and the Events Manager
   go-live checklist to confirm once the dev deploys.
-- `LAUNCH-GUIDE.md` — budget ramp and kill/scale rules (some v1 detail is stale, the ramp and
+- `LAUNCH-GUIDE.md`: budget ramp and kill/scale rules (some v1 detail is stale, the ramp and
   measurement rules still hold).
 
 ## Carried-over data (surfaced so the next session has it)

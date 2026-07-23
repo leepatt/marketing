@@ -78,7 +78,12 @@ cost. Work top-down by priority.
 - **Env vars:** `META_ACCESS_TOKEN`, `META_APP_ID`, `META_APP_SECRET`, `META_AD_ACCOUNT_ID`, `IG_BUSINESS_ACCOUNT_ID`
 - **Note:** `tools/meta-ads.mjs` already exists in cnccut.app with a `CONFIRM=1` guardrail —
   check which env vars it already expects and reuse those names.
-- **Status:** ✅ `META_ACCESS_TOKEN` + `META_AD_ACCOUNT_ID` collected 2026-06-15 — pending placement + verify. (Still TBC: `META_APP_ID`/`META_APP_SECRET`/`IG_BUSINESS_ACCOUNT_ID` — check what `meta-ads.mjs` actually needs.)
+- **Status:** ✅ **VERIFIED LIVE 2026-07-23.** `META_ACCESS_TOKEN` + `META_AD_ACCOUNT_ID` in the web-session
+  env and working — read the real account via the Marketing API (`act_1650412872259063`, "Craftons's ad
+  account", AUD). 3 active campaigns (BOF retargeting + RadiusPro TOF + a boosted IG post), 8 paused.
+  First pulse → `campaigns/meta/2026-07-23-pulse.md`. (Still TBC for *write*/tooling: `META_APP_ID`/
+  `META_APP_SECRET`/`IG_BUSINESS_ACCOUNT_ID` — reads work with the token alone.)
+- **Reproducible read:** `GET https://graph.facebook.com/v21.0/act_<id>/insights?level=campaign&date_preset=last_30d&fields=campaign_name,spend,impressions,clicks,ctr,cpc,actions,action_values,purchase_roas` with `access_token=$META_ACCESS_TOKEN`. Budgets are in cents (÷100); insights spend/values are dollars.
 
 ### B7 · Google Ads API — draft search/awareness campaigns
 - **Unlocks:** programmatic campaign drafting (Phase 5). Account already exists.

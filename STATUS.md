@@ -47,6 +47,14 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] Paused $19/click "Industry Specific"; capped CPC ~$3.50; Search Partners/Display off; negatives added;
   match types already exact; Brand bidding reined in → baseline + checklist in `campaigns/adwords/cnc-cut-review-log.md`
 
+### Meta Ads (verified live)
+- [x] **Meta Marketing API read access VERIFIED** (2026-07-23) — `META_ACCESS_TOKEN` + `META_AD_ACCOUNT_ID`
+  live in the web-session env; pulled the real account (`act_1650412872259063`). **3 active campaigns:**
+  BOF **Retargeting** (30d: $449 spend → 14 purchases / $15.2k / **34× ROAS** — the money-maker), **RadiusPro
+  TOF** (new Jul 22, $100/day, CTR 8.96% / CPC $0.09 but 0 carts yet — Traffic objective), boosted **IG
+  Campbell St**. Full pulse → `campaigns/meta/2026-07-23-pulse.md`. **Cross-insight:** RadiusPro TOF fires
+  cheap mobile clicks at a site that (per Clarity) bounces on mobile — the mobile fix is the real lever.
+
 ### Website behaviour analytics
 - [x] **Microsoft Clarity LIVE** (2026-07-23) — installed on Craftons Shopify + Data Export token in the
   web-session env (`CLARITY_API_TOKEN`). API verified pulling real data; MCP server wired in root `.mcp.json`

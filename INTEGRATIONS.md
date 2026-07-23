@@ -112,6 +112,36 @@ cost. Work top-down by priority.
 
 ---
 
+## Priority 6 — Website behaviour analytics (the "why" behind GA4)
+
+### B10 · Microsoft Clarity — heatmaps, session recordings, movement
+- **Unlocks:** how *potential customers actually move* on the Craftons site — where they hesitate,
+  mis-click (rage/dead clicks), how far they scroll, where they drop. Complements GA4: **GA4 = what/
+  how many; Clarity = why/how.** Free and unlimited.
+- **Reality — dashboard vs API (important):**
+  - The rich "watch them move" analysis — **session replays + click/scroll heatmaps** — lives in the
+    **Clarity dashboard UI**, not the API. Raw recordings/heatmap pixels are *not* exposed to tooling.
+  - The **Data Export API** returns **aggregated** metrics only: traffic, sessions, distinct users,
+    pages/session, engagement time, **scroll depth**, bot sessions — sliced by up to **3 dimensions**
+    (device, browser, OS, country/region, URL, source…). Good for a scheduled behavioural pulse; not
+    a bulk session dump.
+  - **API limits:** 10 requests/project/day · last **1–3 days** only · ≤3 dimensions/request · no
+    pagination past ~1,000 rows (use the dashboard's manual export, up to 100k sessions, for bulk).
+- **Recommended path — official Clarity MCP server** (fits the "prefer MCP connectors" principle):
+  `npx @microsoft/clarity-mcp-server --clarity_api_token=$CLARITY_API_TOKEN` → query Clarity in plain
+  language from any session (desktop *or* mobile). Repo GitHub: `microsoft/clarity-mcp-server`.
+  Alternative: a small `tools/clarity.mjs` scheduled pull for a weekly report. Both read the same token.
+- **Prereqs (Lee — need your logins, I can't do these):**
+  1. **Install on Shopify:** Shopify App Store → official **Microsoft Clarity** app → *Add app*. Data
+     appears within a few hours. (No Clarity on the site yet — this is the gate.)
+  2. **Get the token:** Clarity → **Settings → Data Export → Generate new API token**.
+- **Env var:** `CLARITY_API_TOKEN` (code repo `.env` + web-session env vars — never the Drive brain).
+- **Cost:** free (Clarity is free/unlimited; MCP server is open-source).
+- **Status:** ☐ Not installed — awaiting (1) Shopify install + (2) API token from Lee. Then Claude wires
+  the MCP server + builds a weekly Clarity pulse report.
+
+---
+
 ## What unblocks what
 
 ```
@@ -124,6 +154,7 @@ B5 Later ─────────► Step posting (operating loop)
 B6 Meta/IG ───────► Step 5 dashboard insights + Step 6 Meta ads
 B7 Google Ads ────► Step 6 Google ads
 B8 Klaviyo ───────► Step 4 newsletter
+B10 Clarity ──────► Website behaviour (dashboard heatmaps/recordings + API scroll/engagement pulse)
 ```
 
 ## Suggested order to knock out

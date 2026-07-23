@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-07-23. Branch: `claude/clarity-api-customer-analysis-m14kn8`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -59,6 +59,12 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
 - [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
+- [ ] **Microsoft Clarity (website behaviour analytics)** — evaluated 2026-07-23, worth doing (free/unlimited;
+  the "why" behind GA4). **Gated on Lee:** (1) install the official **Clarity** app on the Craftons Shopify
+  store, (2) generate a Data Export token → `CLARITY_API_TOKEN`. Then Claude wires the official **Clarity MCP
+  server** + builds a weekly Clarity pulse report. **Key learning:** the API/MCP returns *aggregate* metrics
+  (scroll depth, engagement, traffic by device/browser/URL) only — session **recordings + heatmaps** stay in
+  the dashboard UI. Limits: 10 req/project/day, last 1–3 days, ≤3 dimensions/req. Full spec → `INTEGRATIONS.md` B10.
 
 ---
 

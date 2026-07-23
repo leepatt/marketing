@@ -82,6 +82,7 @@ Google Ads can be bridged via Zapier instead of raw keys for some flows — see 
 | B7 | **Google Ads API** | Draft search/awareness campaigns programmatically | Account exists; need API + developer token | code repo `.env` | ✅ All 5 values collected 2026-06-15 (Basic-access approval pending) |
 | B8 | **Shopify Email** (decided, was Klaviyo) | Newsletter send + list off the calculator lead magnet | Nothing — uses existing Shopify connection | n/a | ✅ Decided 2026-06-15: Shopify Email (free ≤10k sends/mo) |
 | B9 | **Local media tooling** | Video/image assembly (`ffmpeg`, `sharp`/Pillow/OpenCV) | Install in env / setup script | n/a (no key) | ☐ Add to setup script |
+| B10 | **Microsoft Clarity** | Website behaviour — heatmaps + session recordings (dashboard) & scroll/engagement pulse (API/MCP) | Install Clarity Shopify app + generate Data Export token | code repo `.env` (`CLARITY_API_TOKEN`) | ☐ Awaiting Shopify install + token (Lee) |
 
 > **Efficiency note:** for anything that should "just work" in future sessions, prefer enabling
 > it as an MCP connector on the session environment, or add a setup/SessionStart script so the

@@ -186,10 +186,21 @@ hangers (structurally nonsense, absent from the reference).
   v19 via the feathered `mask3` band → **v31 = pick** (rest is byte-v19, corner is clean joists).
   v30 = full clean version if a graft seam ever shows.
 
+## Round 8 — pine top plate butts square into the black curved plate (v32–v35, 2026-07-23)
+
+Lee approved the joist beam (v31) and asked for one junction fix: where the straight wall's PINE
+top plate meets the curved wall's BLACK Formply top plate, the pine plate must STOP, be cut square,
+and butt cleanly into the black plate (not overlap/run past it); the black curved plate stays
+continuous. Method: Nano Banana Pro on v31 (aspect 2:3), v32 best (v33 hit a rate limit), then
+grafted the top-right junction region from v32 onto exact v31 via a feathered rounded-rect mask →
+**v35 = pick** (clean square butt joint, seamless graft, rest = v31).
+
 ## Next steps
 
-- [x] R1 (v1–v3) … wedge fix (v19–v21), bearer/hanger removal (v25–v31).
-- [ ] Lee confirms v31 as the locked frame.
+- [x] R1 (v1–v3) … bearer/hanger removal (v25–v31), pine-plate butt joint (v32–v35).
+- [ ] Lee confirms v35 as the LOCKED frame.
+- [ ] On lock: upload v35 to the Drive brain (archive the set); link it here.
+- [ ] Later: decide the finished→frame reveal pair (deferred).
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.
 - [ ] Optional: strip the last grey lining panels on the side walls (fully open framing), if wanted.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

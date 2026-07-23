@@ -137,8 +137,21 @@ cost. Work top-down by priority.
   2. **Get the token:** Clarity → **Settings → Data Export → Generate new API token**.
 - **Env var:** `CLARITY_API_TOKEN` (code repo `.env` + web-session env vars — never the Drive brain).
 - **Cost:** free (Clarity is free/unlimited; MCP server is open-source).
-- **Status:** ☐ Not installed — awaiting (1) Shopify install + (2) API token from Lee. Then Claude wires
-  the MCP server + builds a weekly Clarity pulse report.
+- **Status:** ✅ **LIVE 2026-07-23.** Installed on Shopify + token generated (Lee); `CLARITY_API_TOKEN`
+  present in the web-session env. MCP server wired via root `.mcp.json` (server key `clarity`; token
+  injected as `${CLARITY_API_TOKEN}`, allow-listed in `.claude/settings.json` — **loads on next session**).
+  First pulse pulled + analysed → `research/clarity/2026-07-23-pulse.md`.
+- **Reproducible API (no MCP needed):**
+  ```
+  GET https://www.clarity.ms/export-data/api/v1/project-live-insights?numOfDays=3&dimension1=Device
+  GET https://www.clarity.ms/export-data/api/v1/project-live-insights?numOfDays=3&dimension1=URL
+  Header: Authorization: Bearer $CLARITY_API_TOKEN
+  ```
+  Dimensions: `Device`, `Browser`, `OS`, `Country`, `URL`, `Source`, `Medium`, `Campaign` (≤3/call).
+  **Gotchas:** the URL dimension returns the page under key **`Url`** (not `URL`); caps at **1,000 rows**;
+  includes noise rows (`https://Electron`, `Url:null` aggregate) — filter to `craftons.com.au`. Metrics:
+  Traffic, EngagementTime, ScrollDepth + DeadClick/RageClick/Quickback/ExcessiveScroll/ScriptError/ErrorClick.
+- **Still dashboard-only:** session recordings + heatmaps (the raw "movement") — API gives aggregates only.
 
 ---
 

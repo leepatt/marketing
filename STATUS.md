@@ -47,6 +47,13 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] Paused $19/click "Industry Specific"; capped CPC ~$3.50; Search Partners/Display off; negatives added;
   match types already exact; Brand bidding reined in → baseline + checklist in `campaigns/adwords/cnc-cut-review-log.md`
 
+### Website behaviour analytics
+- [x] **Microsoft Clarity LIVE** (2026-07-23) — installed on Craftons Shopify + Data Export token in the
+  web-session env (`CLARITY_API_TOKEN`). API verified pulling real data; MCP server wired in root `.mcp.json`
+  (conversational queries next session). First analysis → `research/clarity/2026-07-23-pulse.md`. Full
+  spec + reproducible calls → `INTEGRATIONS.md` B10. (Free/unlimited; the behavioural "why" behind GA4.)
+  Note: API = aggregates only; recordings + heatmaps live in the dashboard UI.
+
 ### Infrastructure / security
 - [x] **Google Ads creds rotated** (2026-06-23), placed in Vercel → `INTEGRATIONS.md` / `DESKTOP-TODO.md`
 - [x] **Drive connector permission fix** — tracked `.claude/settings.json` allow-lists Drive tools
@@ -59,12 +66,10 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
 - [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
-- [ ] **Microsoft Clarity (website behaviour analytics)** — evaluated 2026-07-23, worth doing (free/unlimited;
-  the "why" behind GA4). **Gated on Lee:** (1) install the official **Clarity** app on the Craftons Shopify
-  store, (2) generate a Data Export token → `CLARITY_API_TOKEN`. Then Claude wires the official **Clarity MCP
-  server** + builds a weekly Clarity pulse report. **Key learning:** the API/MCP returns *aggregate* metrics
-  (scroll depth, engagement, traffic by device/browser/URL) only — session **recordings + heatmaps** stay in
-  the dashboard UI. Limits: 10 req/project/day, last 1–3 days, ≤3 dimensions/req. Full spec → `INTEGRATIONS.md` B10.
+- [ ] **Clarity: mobile-first audit + re-pulse in a week.** First pull (2026-07-23) shows **92% of traffic
+  is mobile and mobile barely engages** (scroll 19% vs 51% desktop; active 19s vs 118s; 1.14 vs 2.11 pages/
+  session). Next: watch mobile recordings on the configurator pages, check the 2.8% mobile JS errors, verify
+  the `/pages/contact` dead-click signal (23%), then re-pulse for a stable baseline (per-page n too small now).
 
 ---
 

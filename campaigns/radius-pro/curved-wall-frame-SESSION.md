@@ -233,10 +233,45 @@ drive.google.com/drive/folders/1sXrwj-cYZWbKBmT-K53ZM9hJ2I2Is1CD).
 - Micro-joinery details (a specific butt joint) are at the edge of what the model controls
   round-to-round — expect several tries or accept "close enough".
 
-## Next steps (later, optional)
+## Finished slide (reveal pair) — IN PROGRESS (2026-07-23)
 
-- [ ] File the master in the Drive Radius Pro folder (Lee has it).
-- [ ] Decide the finished→frame reveal pair (deferred in the spec).
+Started slide 1 (finished) of the reveal pair.
+- **Approach:** base the finished slide on the real inspo photo, reworked into OUR OWN image (not the
+  literal photo — needed for rights + spec). NOT generated from the frame. (Lee chose this.)
+- **Inspo:** `IMG_5539.png` = a screenshot of **lawlessconstruction's "CASA SOL" Instagram post**
+  (1179×2556). Stripped the IG chrome → clean photo 1179×1892; centre-cropped to 4:5 to match the
+  frame (`fin_centercrop`) for swipe alignment. The frame's curve drifted from IMG_5539 through
+  editing, so alignment is CLOSE, not pixel-exact — Lee accepted that.
+- **Look (locked by Lee):** mid-century-modern mood (warm, warm-white plaster, warm daylight); NO
+  herringbone; wide timber floorboards; empty space; keep the curved wall + door + window +
+  composition.
+- **Floor material:** blackbutt → **American oak** (Lee's change). Achieved in `finished_v47`
+  (good oak grain + tone).
+- **Floor DIRECTION — UNRESOLVED:** Lee wants the boards flipped 90° to run ACROSS the hall. Nano
+  Banana WILL NOT do this — strong prior re-lays them lengthwise every time (tried v43–v45, v46–v48;
+  all failed; verified against the original). Fix = deterministic: perspective-map an oak plank
+  texture across the floor and blend with v47's lighting. Pending Lee's go-ahead vs accepting
+  lengthwise oak. **Current best finished candidate: `finished_v47`** (oak, mid-century, boards
+  lengthwise).
+
+## HANDOFF to next session
+
+- Working images (all `vNN`, `finished_vNN`, crops) live in THIS session's ephemeral scratchpad and
+  will NOT survive into a new container. Lee holds the images that were sent to him. This repo doc is
+  the durable record; image masters are with Lee / to go to the Drive brain.
+- Lee is bringing **new curved-wall FRAME images** to use in the new session. Re-upload whatever base
+  is needed there (the new frame images; and `finished_v47` if continuing the finished slide).
+- Method recap lives in the round logs above (image-to-image Nano Banana to lock shape/viewpoint;
+  flux-fill crop→composite for surgical removals; Nano Banana + region-graft for structural edits;
+  force `aspect_ratio:"2:3"`/`"4:5"` not match_input_image with a mismatched 2nd input).
+
+## Next steps
+
+- [ ] New session: Lee provides new curved-wall frame images (frame slide).
+- [ ] Finished slide: resolve floor direction (manual perspective composite for across-boards, or
+  accept lengthwise oak `finished_v47`), then finalize the mid-century finished look.
+- [ ] Build the finished→frame swipe pair (match dimensions, show together).
+- [ ] File the masters in the Drive Radius Pro folder (Lee has them).
 - [ ] On lock: upload v35 to the Drive brain (archive the set); link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.

@@ -204,10 +204,39 @@ into the thick black curved Formply plate), and keep the joist beam as ONE solid
 rate-limit retries), grafted v37's junction onto exact v35 → **v39 = pick**. Sent with a
 top-over-bottom comparison crop for Lee to verify the match.
 
-## Next steps
+## LOCKED — final chosen frame (2026-07-23)
 
-- [x] R1 (v1–v3) … pine-plate butt joint (v32–v35), top-matches-bottom (v36–v39).
-- [ ] Lee confirms v39 (top connection now matches bottom) or marks the exact bottom detail to copy.
+**Lee locked the frame.** After 9 rounds he chose a specific frame (`IMG_5548.jpeg`, 1179×1474
+portrait JPEG — his own export) and called it: "We'll never get it perfectly correct. I've chosen
+to go with this image." No further edits.
+
+The locked frame delivers everything in the spec: the convex curve matching `IMG_5539`'s viewpoint,
+doubled black Formply plates top + bottom on the RADIUS only, pine straight-wall plates, single
+imperfect mid noggin row, chipboard second-floor underside, exposed joists, a solid single joist
+beam, bare swept concrete slab, no plasterboard/doors/finishes. This is the AD4/AD5 Radius Pro
+top-of-funnel frame asset.
+
+**Master:** the file Lee uploaded (his device / Drive). Not committed here — repo policy keeps media
+in the Drive brain (`.gitignore` excludes images). To file it with the campaign, drop it in the
+Radius Pro folder in Drive (e.g. Lee's `Radius Pro` folder,
+drive.google.com/drive/folders/1sXrwj-cYZWbKBmT-K53ZM9hJ2I2Is1CD).
+
+**Method that worked (for the next asset):**
+- Derive from the real client photo (image-to-image, Nano Banana Pro on Replicate) to lock shape +
+  viewpoint; text-to-image gets the curve wrong.
+- Combine your own best outputs as multi-image inputs to merge strengths.
+- Surgical edits: for removing FOREGROUND clutter use flux-fill masked inpaint via the
+  crop→fill→feathered-composite pipeline (zero drift, full res); flux-fill CANNOT remove a
+  structural member (it redraws it). For structural/semantic changes use Nano Banana Pro, then graft
+  only the changed region back onto the approved frame so the rest stays byte-identical.
+- Force `aspect_ratio:"2:3"` (not match_input_image) when a landscape reference is a 2nd input.
+- Micro-joinery details (a specific butt joint) are at the edge of what the model controls
+  round-to-round — expect several tries or accept "close enough".
+
+## Next steps (later, optional)
+
+- [ ] File the master in the Drive Radius Pro folder (Lee has it).
+- [ ] Decide the finished→frame reveal pair (deferred in the spec).
 - [ ] On lock: upload v35 to the Drive brain (archive the set); link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.

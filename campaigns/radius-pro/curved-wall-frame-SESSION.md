@@ -61,9 +61,31 @@ plasterboard, exposed joists, left doorway as raw opening, framing visible beyon
 doubled* (two 17mm sheets = 34mm, black faces + pale ply-grain edges). Refinement target for the
 next pass — emphasise the visible lamination line / ply edge on the plate.
 
+## Combine pass — v4/v5/v6 (2026-07-23)
+
+Took the pros from each first-round variant and fed them back in. This is the strongest lever we
+have: Nano Banana Pro accepts multiple `image_input` images, so we combined our own attempts.
+
+- **Method:** three inputs — `image_input: [frame_v2.png (base look), IMG_5539 (viewpoint/curve
+  ground truth), frame_v3.png (doubled-plate + hangered-joist detail donor)]`, same settings as
+  before (2K, match_input_image, block_only_high). Prompt in `scratchpad/gen_frame2.py`.
+- **Result:** the doubled 34mm black-Formply plate now reads **unmistakably** (thick black band +
+  pale ply-grain edge sweeping around the base on the slab) — the main first-round gap is fixed.
+  Kept v2's elegant convex curve + even slender studs, gained v3's realistic exposed joists with
+  galv hangers.
+- **v5 — new front-runner.** Best balance: elegant curve, clearest doubled black plate money shot,
+  hangered joists, and the hero curve still reads OPEN (see-through).
+- **v4 — close second.** Same strengths, plate slightly less pronounced.
+- **v6 — third.** Beautiful plate + joists, but the curved wall has a solid tan backing (less
+  see-through), the one recurring con.
+- **Residual nitpick (all):** some grey/tan sheet lining lingers between studs on the flanking
+  walls — reads faintly like backing behind the frame. Fixable with a masked inpaint if we want it
+  fully open, without disturbing the rest.
+
 ## Next steps
 
-- [ ] Lee picks the winning variant.
-- [ ] Upload the winner (and archive all three) to the Drive brain; link it here.
-- [ ] Optional refinement pass to make the doubled-34mm black-Formply plate unmistakable.
+- [x] Round 1 (v1–v3) + combine pass (v4–v6). Doubled-plate legibility fixed via the combine.
+- [ ] Lee picks the winner (currently leaning v5).
+- [ ] Optional masked-inpaint pass to strip the last lining panels so it's fully open framing.
+- [ ] Upload the winner (and archive the set) to the Drive brain; link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

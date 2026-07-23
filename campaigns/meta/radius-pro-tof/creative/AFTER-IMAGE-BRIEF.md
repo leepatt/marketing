@@ -73,6 +73,30 @@ The colour legend, from Lee (the geometry authority for the AFTER; do not let th
 Process (Lee's): lock the LAYOUT first from this legend, then a second pass on furnishings, soft
 furnishings and materials, THEN write the Replicate prompt. Questions to Lee before generating.
 
+## LAYOUT v1 (Lee's answers, 2026-07-23. Workshopping until right, THEN textures)
+
+- **Base photo: the IMG_5566 shot** (the photo under the markup), NOT photo A. Lee: the whole feature
+  is the curve, the photo-A crops cut it off, so the photo-A crop windows in
+  `CURVED-WALL-CREATIVE-LOG.md` are RETIRED. **Still needed from Lee: the CLEAN unmarked IMG_5566**
+  (for the BEFORE slide and as the generation base).
+- **Ratio:** the markup is native 4:5 (1080x1350) with the full curve in frame. Run BOTH carousel
+  cards at 4:5; DROP the 1:1 square (it cannot hold both curves). Pending Lee's OK.
+- **Camera space:** living/dining area, the high-ceiling purple zone. Not really visible in frame;
+  the finished foreground treatment is Claude's to propose, Lee approves.
+- **The curve:** plastered exactly on the purple junction lines, high ceiling above, upper floor
+  level below.
+- **The corridor (yellow):** lower level. Floor drops at the green line by TWO RISERS (one step with
+  two rises, "maybe just two for now"). Lower ceiling on the yellow top line, with a bulkhead taking
+  the height change where purple meets yellow.
+- **Corridor right wall + light:** approved direction from the options: timber front door at the end
+  (blue box) with a sidelight beside it throwing daylight down the corridor. Confirm exact glazing in
+  the next workshop round.
+- **Left wall (red box):** the walk-in robe opening, sliding door. Door style and material decided at
+  the materials pass.
+
+Open before generation: clean IMG_5566 upload, sidelight confirmation, 1:1-drop confirmation, then
+the furnishings/soft-furnishings/materials pass, then the prompt draft for sign-off.
+
 ## The generation prompt (v1, keep in sync with what is actually run)
 
 Transform this construction site photo into the exact same house completely finished, photographed

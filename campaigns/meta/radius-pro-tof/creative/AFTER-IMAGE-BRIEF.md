@@ -140,6 +140,27 @@ Model: google/nano-banana on Replicate, multi-image input, in this order:
 Output must hold the base photo's exact framing (native 4:5). Export 1080x1350. The BEFORE slide is
 the clean base as-is.
 
+### Generation round 1 (2026-07-23, 5 attempts + cleanup, Lee signed off the prompt)
+
+- Attempt 1: style right (curve, skirting, oak, timber door + sidelight) but the curve shrank to a
+  soft corner and the step went UP. Rejected.
+- Attempts 2 to 3 (curve-scale + step-down wording hardened): curve scale now matches the base
+  photo. New problem: markup colours leaked into the output (purple junction lines, green step
+  strip, and the "4/5" pager badge copied from the 5568 screenshot). Step still UP.
+- Attempts 4 to 5 (5568 badge cropped out, "no coloured lines" hardened, step rewritten): best
+  results. Colour leak reduced but not gone. Step STILL up, five for five.
+- **Step direction finding:** the model keeps stepping UP because the BASE PHOTO's slab does: there
+  is a visible slab edge with a yellow timber ramp over it, the corridor slab sits higher than the
+  camera-side slab. The model follows the concrete. AWAITING LEE: confirm whether the corridor is
+  truly the higher floor (as generated) with "lower level" meaning the camera side, or the render
+  must fight the slab and step down.
+- Cleanup pass (nano, single image, "remove coloured lines only"): attempt 4 near-perfect (faint
+  yellow skirting trace + green threshold tinge remain, one more targeted pass will kill them);
+  attempt 5's purple survived. **Lead candidate: `out/after-v3-nano_attempt4_clean.png`.**
+- Open technical item: nano output drifts off 4:5 (992x1056 etc). Before final export the approved
+  AFTER needs reframing to true 4:5 1080x1350 to pair with the BEFORE (flux-kontext aspect_ratio
+  4:5 pass, or matched crop of both slides).
+
 ### Prompt (v3 draft)
 
 The first image is a construction photo of a timber framed curved wall in a house being built. The

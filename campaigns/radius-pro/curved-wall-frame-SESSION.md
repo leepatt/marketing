@@ -195,10 +195,19 @@ continuous. Method: Nano Banana Pro on v31 (aspect 2:3), v32 best (v33 hit a rat
 grafted the top-right junction region from v32 onto exact v31 via a feathered rounded-rect mask →
 **v35 = pick** (clean square butt joint, seamless graft, rest = v31).
 
+## Round 9 — top connection to match the bottom (v36–v39, 2026-07-23)
+
+Lee: v35's top junction still didn't match the BOTTOM plate connection. Instruction: the top
+pine-plate→black-curved-plate connection must look EXACTLY like the bottom one (pine butts square
+into the thick black curved Formply plate), and keep the joist beam as ONE solid single timber
+(per IMG_5548). Nano Banana Pro on v35 with a "mirror the bottom connection" prompt (v36–v38;
+rate-limit retries), grafted v37's junction onto exact v35 → **v39 = pick**. Sent with a
+top-over-bottom comparison crop for Lee to verify the match.
+
 ## Next steps
 
-- [x] R1 (v1–v3) … bearer/hanger removal (v25–v31), pine-plate butt joint (v32–v35).
-- [ ] Lee confirms v35 as the LOCKED frame.
+- [x] R1 (v1–v3) … pine-plate butt joint (v32–v35), top-matches-bottom (v36–v39).
+- [ ] Lee confirms v39 (top connection now matches bottom) or marks the exact bottom detail to copy.
 - [ ] On lock: upload v35 to the Drive brain (archive the set); link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.

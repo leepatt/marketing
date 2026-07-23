@@ -70,10 +70,19 @@ matters (hack 8: net cash at the business level, not ROAS %). Tradies call rathe
 phone volume is likely the real conversion path and the online pixel numbers are undercounting true
 response. Implication: performance is better than the online-only read, which strengthens the case to
 scale the winner at the day-3 read.
-- TO CAPTURE (so we can attribute): ask every caller "how did you hear about us?" and tally; confirm how
-  many calls/day vs normal and whether they are curved/radius enquiries specifically.
+- TO CAPTURE (so we can attribute): ask every caller "how did you hear about us?" and tally.
 - CONSIDER: a call-tracking number on the radius-online page to attribute calls per-ad (this audience
   phones, so it is worth the setup).
+
+**Refined read (2026-07-23, per Lee):** calls are about ALL things Craftons, not just radius, and
+running about **3x normal volume**. So the ad is a top-of-funnel driver for the WHOLE business: it lands
+tradies on the site, they browse the range, and convert (often by phone) on whatever fits. This is the
+blended net-cash win (hack 8), judged at the business level, not per-product ROAS. It also means the two
+orders above (#1264 Formwork Builder, #1265 Bendy Formply) are credibly part of this lift after all.
+Implications: (1) online pixel undercounts true return, real performance is stronger; (2) phone is the
+conversion path, so the phone number / click-to-call must be prominent on radius-online and site-wide
+(hack 6 congruence) or we leak calls; (3) raises confidence to scale AD2 Landscapers at the day-3 read
+and to clone the winner across more trades AND products, since the whole range benefits.
 
 ## Tracking status (2026-07-23 morning)
 - **AddToCart and InitiateCheckout hit the pixel for the first time**: 9 ATC + 3 IC, all in the

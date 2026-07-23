@@ -119,7 +119,49 @@ the furnishings/soft-furnishings/materials pass, then the prompt draft for sign-
   white/warm plastered curve, a curved skirting following the base of the curve, pale oak
   herringbone floor, warm light washing the curve. STYLE GUIDANCE ONLY, not ours to reproduce.
 
-## STYLE v1 proposal (Claude's synthesis, awaiting Lee's calls)
+## STYLE LOCKED (Lee, 2026-07-23)
+
+- Floor: wide pale oak boards, laid STRAIGHT, both levels.
+- Walls: plasterboard throughout (no ply lining). White. The 5568 ref stands for mood, floor and
+  warmth only.
+- The curve: crisp white set plaster, curved skirting following the base (5539 as the read).
+- Front door: Claude's to detail. Solid timber, vertical boards, a warm tone that does not contrast
+  the floor too much (sits close to the pale oak).
+- Everything else per LAYOUT v1 + v2 above.
+
+## THE GENERATION PLAN + PROMPT (draft, for Lee's sign-off BEFORE running)
+
+Model: google/nano-banana on Replicate, multi-image input, in this order:
+1. `IMG_5566-clean-BASE.jpeg` (the photo to transform)
+2. `IMG_5566-markup-junctions.jpeg` (the geometry authority)
+3. `style-ref-IMG_5539-finished-curve.jpeg` (how the plastered curve reads)
+4. `style-ref-IMG_5568-ply-interior.jpeg` (floor + light + warmth mood)
+
+Output must hold the base photo's exact framing (native 4:5). Export 1080x1350. The BEFORE slide is
+the clean base as-is.
+
+### Prompt (v3 draft)
+
+The first image is a construction photo of a timber framed curved wall in a house being built. The
+second image is the identical photo with coloured markup lines showing exactly where the finished
+wall junctions sit. Transform the first photo into the exact same house completely finished, from
+the exact same camera position with the exact same framing. Follow the marked junctions precisely.
+The purple lines are the curved wall's junctions: the wall becomes smooth white set plasterboard
+following that exact curve, meeting a flat white plasterboard ceiling exactly along the upper purple
+line, and meeting the floor exactly along the lower purple line, finished with a low white skirting
+board that follows the curve, like the third image. The camera side is the upper level: wide pale
+oak floorboards laid straight. The yellow lines are the corridor's wall junctions: the corridor is a
+lower level, its white plasterboard ceiling lower than the main ceiling, with a clean white
+plasterboard bulkhead taking up the height change where the two ceilings meet. At the green line the
+floor steps down to the corridor level: one straight full-width step of two equal risers, the same
+oak boards continuing over both levels. The red marked opening becomes a closed flush white sliding
+door to a walk in robe. The blue marked opening at the end of the corridor becomes a closed solid
+timber front door with vertical boards in a warm pale oak tone close to the floor colour, with a
+narrow full height sidelight window beside it letting daylight down the corridor. All other framing
+becomes finished flat white plasterboard walls with white skirting. The concrete slab becomes the
+oak floor. The sky becomes the ceilings. Empty just-completed home, no furniture, warm natural
+daylight like the fourth image, soft shadows, bright and airy, photorealistic real estate
+photography, no people, no text, no watermarks, no logos, no markup lines in the output.
 
 - The curve and ceilings: crisp white set plaster, warm light washing the curve, and the curved
   skirting detail following the curve base (per 5539).

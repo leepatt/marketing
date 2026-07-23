@@ -109,14 +109,12 @@ Clean, native, no on-image text. Governed by `AD4-AD5-BRIEF.md` + `CURVED-WALL-B
 The builder stands the studs, blocks and sheets it. We CUT the plates, we never bend. Old way = marking
 out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
 
-**Primary text (LOCKED):**
-> "How would you even frame a curve like this?"
+**Primary text (LOCKED, 2026-07-23). BUILDER version:**
+> Every architect is drawing curved walls now. None of them have to build one.
 >
-> It's the first question every builder and chippy asks when a curved wall turns up on the plans.
+> It's the detail every builder reads on the plans and quietly sighs at, because the curve is the whole feature and it has to be fair.
 >
-> A curved feature wall, the one that makes the whole room. Normally it's the job you don't really want to price, because the old way means marking out the radius by hand and then cutting every curved plate with a jigsaw, chasing the line and hoping it comes up fair.
->
-> It's tedious. It eats a day you didn't have. And one plate off the line, or a bin full of offcuts, is money straight out of the job.
+> The old way means marking out the radius by hand, then cutting every curved plate with a jigsaw, chasing the line and hoping it comes up true. It's tedious. It eats a day you didn't have. And one plate off the line, or a bin full of offcuts, is money straight out of the job.
 >
 > That's where the time and the margin go on a curved wall.
 >
@@ -124,23 +122,27 @@ out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy
 >
 > Swipe to the last frame. That's what it became.
 >
-> If the curved walls are the ones that always blow your program, they don't have to be. Punch in your radius, we cut the plates, they turn up ready to stand.
+> Curved walls are only getting more common. They don't have to be the job that blows your program. Punch in your radius, we cut the plates, they turn up ready to stand.
 
-**A/B test (Lee, 2026-07-23): slide order.**
-- **Variant A, frame-first:** Slide A frame, Slide B finished. Hook stays "How would you even frame a
-  curve like this?" · utm_content `ad4_curvedwall_framefirst`
-- **Variant B, finished-first:** Slide B finished, Slide A frame. Swap first line to
-  "How would you even build a curve like this?" (the swipe reveals the how) · utm_content
-  `ad4_curvedwall_finishedfirst`
-- Both into the one CBO, Meta distributes (hack 1/5). Judge on net cash + phone.
+**CHIPPY version (hack 2 clone, ONE word swapped):** identical, except line 2 reads
+"It's the detail every **chippy** reads on the plans and quietly sighs at...". We run both, builder vs
+chippy, to open both pockets.
+
+**The test matrix (Lee, 2026-07-23):**
+- **Identity (run both):** builder version vs chippy version (the one-word swap above).
+- **Slide order (A/B):**
+  - Frame-first: Slide A frame, Slide B finished. Opener as written. utm_content suffix `_framefirst`.
+  - Finished-first: Slide B finished, Slide A frame. Swap the opener's second sentence to
+    "Here's how this one actually got built." (the swipe reveals the frame). utm_content suffix
+    `_finishedfirst`.
+- utm_content: `ad4_curvedwall_builder_framefirst` / `..._builder_finishedfirst` /
+  `ad5_curvedwall_chippy_framefirst` / `..._chippy_finishedfirst`.
+- All into the one CBO, Meta distributes (hack 1/5). Judge on net cash + phone, not CTR alone.
 
 **Headline variants (split-test, hack 6):** `Curved wall plates, cut to your radius` · `Top and bottom
 plates, cut to the exact radius` · `We cut the curved plates, you stand the wall` · `Punch in the
 radius, we cut the plates`
 **Description:** `Curved Formply wall plates, cut to size. Priced online.`
-
-**Hack 2 clone option:** copy names both trades. If we want to open the pockets separately, clone to a
-builder-only and a chippy-only version by swapping that one word. Do it once a slide-order winner shows.
 
 *(Prior AD5 concept, curved bench seats, is PARKED. Focus is the curved wall for builders + carpenters.)*
 

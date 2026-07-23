@@ -47,6 +47,23 @@ Marketing API. This file is the record of exactly what is running.
   phase left alone. Numbers are healthy (all well under the $1/LPV worry line).
 - No orders attributable yet (last Shopify order predates launch). Judge on net cash at the day-3 read.
 
+## ~24h read (pulled 2026-07-23, spend $98.09, 956 LPV, blended $0.103/LPV)
+| Ad | Spend | Link CTR | LPVs | Cost/LPV |
+|---|---|---|---|---|
+| AD2 Landscapers | $76.10 | 9.1% | 785 | $0.097 |
+| AD1 Concreters | $19.78 | 7.9% | 163 | $0.121 |
+| AD2b Landscapers finished-first | $2.21 | 3.9% | 8 | $0.276 |
+
+- Meta has chosen: ~78% of spend on AD2 Landscapers (best CTR, cheapest LPV). Landscaper beats
+  Concreter; process-first beats finished-first (Meta all but paused AD2b at 3.9% CTR). Strong signal
+  for the day-3 read: scale AD2, clone the winner to Formworkers + the curved-wall builder/chippy ads.
+- Held per doctrine: day 1 to 2 is gut-check only, learning phase left alone.
+- Tracking now flowing: pixel AddToCart 25, InitiateCheckout 9, Purchase 3 in the ~24h window (up from
+  9 ATC the morning before). The fix is live.
+- Net cash (hack 8, judged honestly): 2 new Craftons orders since launch, #1264 Formwork Builder $881
+  and #1265 Bendy Formply $640, but NEITHER is a radius-online order and #1265 is a repeat customer, so
+  not attributable to these ads. No direct Radius Pro sale yet. Fine at ~1 day for TOF.
+
 ## Tracking status (2026-07-23 morning)
 - **AddToCart and InitiateCheckout hit the pixel for the first time**: 9 ATC + 3 IC, all in the
   19:00 UTC hour (about 5am AEST Jul 23), none before, no Purchase after. Pattern matches the go-live

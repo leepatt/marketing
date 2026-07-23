@@ -105,10 +105,33 @@ chipboard + plate, v9 a near-twin with strong hangers). **v7 missed the chipboar
 voids in the ceiling). Residual across the set: faint grey sheet lining still lingers between studs
 on the flanking side walls (reads like wrap/backing) — optional masked-inpaint cleanup.
 
+## Round 4 — targeted edit of v9 (v10–v12, 2026-07-23)
+
+Lee marked up v9 (`IMG_5546.png`) with three edits and "keep everything else the same". Method:
+targeted image edit, inputs `image_input: [frame_v9 (clean base to preserve), IMG_5546 (annotated
+location guide — red/green markup, told model NOT to render the marks)]`. Prompt in
+`scratchpad/gen_frame4.py`. This is the "keep it all, change only X" pattern — feed the clean base
++ an annotated guide, whole-image edit. (For zero drift on unrelated areas, masked inpaint is the
+alternative.)
+
+The three edits:
+1. **Continuous beam:** a ceiling joist read as broken where it crossed the curve top → made one
+   continuous unbroken beam.
+2. **Pine straight plates:** the straight-wall top & bottom plates were still rendering BLACK → now
+   pine. Black Formply is on the curved radius ONLY (top + bottom). (Refines the round-3 split,
+   which had left the right straight wall's plates black.)
+3. **Slimmer curve top plate:** the black top plate was too thick/deep vs the bottom → slimmed to
+   match.
+
+Results: all three achieved cleanly in v10/v11/v12, no markup bleed. **v10 is the front-runner**
+(tall elegant curve best preserved), **v12** a close twin, **v11** slightly more compressed at the
+top. Whole-image edit drifts unrelated detail very slightly; composition + all requested elements
+held.
+
 ## Next steps
 
-- [x] Round 1 (v1–v3), combine pass (v4–v6), Lee-directed corrections (v7–v9).
-- [ ] Lee picks the winner (leaning v8 / v9).
-- [ ] Optional masked-inpaint pass to strip the last grey lining panels so it's fully open framing.
+- [x] Round 1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked-up edit (v10–v12).
+- [ ] Lee picks the winner (leaning v10 / v12).
+- [ ] Optional masked-inpaint pass for the last grey lining panels (fully open framing), if wanted.
 - [ ] Upload the winner (and archive the set) to the Drive brain; link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

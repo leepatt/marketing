@@ -97,6 +97,16 @@ furnishings and materials, THEN write the Replicate prompt. Questions to Lee bef
 Open before generation: clean IMG_5566 upload, sidelight confirmation, 1:1-drop confirmation, then
 the furnishings/soft-furnishings/materials pass, then the prompt draft for sign-off.
 
+## LAYOUT v2 additions (Lee, 2026-07-23). Layout now closed, style pass next
+
+- Front door: CLOSED. The timber door is the feature, the sidelight does the light work.
+- WIR sliding door: CLOSED, flush and calm so nothing competes with the curve.
+- Foreground: empty edges, clean floor, no furniture creeping into frame. Any furnishing hints come
+  in the furnishings pass under Lee's direction.
+- Step: straight across the corridor, full width, two equal risers at the green line.
+- Next: the interior STYLE pass. Lee supplying sample/reference images of interiors he likes; feed
+  them alongside the geometry refs at generation (nano-banana takes multiple image inputs).
+
 ## The generation prompt (v1, keep in sync with what is actually run)
 
 Transform this construction site photo into the exact same house completely finished, photographed

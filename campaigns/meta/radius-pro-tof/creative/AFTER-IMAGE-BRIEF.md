@@ -59,6 +59,20 @@ Technical notes kept for the next round: flux-kontext-pro outputs 880x1184 from 
 exports need a 1.23x upscale, run a proper upscaler on the approved final); nano-banana accepts
 multiple reference images, so the annotated guide plus the clean frame photo can be fed together.
 
+## Lee's annotated junction guide (2026-07-23, `refs/IMG_5566-markup-junctions.jpeg`, 1080x1350)
+
+The colour legend, from Lee (the geometry authority for the AFTER; do not let the model invent):
+- **PURPLE:** the curved wall's top and bottom plates, the HIGH-level wall junctions. Purple top =
+  ceiling junction at the higher ceiling, purple bottom = floor junction at the upper floor level.
+- **YELLOW:** top and bottom plate lines of the straight corridor run, the LOWER level. Lower floor
+  and lower ceiling; a bulkhead (or similar) takes up the ceiling change where purple meets yellow.
+- **GREEN:** the step down to the lower level, across the corridor floor.
+- **RED box** (left wall): walk-in robe opening. Gets a door, potentially a sliding door.
+- **BLUE box** (corridor end): the front door. A nice timber front door.
+
+Process (Lee's): lock the LAYOUT first from this legend, then a second pass on furnishings, soft
+furnishings and materials, THEN write the Replicate prompt. Questions to Lee before generating.
+
 ## The generation prompt (v1, keep in sync with what is actually run)
 
 Transform this construction site photo into the exact same house completely finished, photographed

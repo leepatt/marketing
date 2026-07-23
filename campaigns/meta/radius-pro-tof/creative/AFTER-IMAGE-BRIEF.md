@@ -107,6 +107,32 @@ the furnishings/soft-furnishings/materials pass, then the prompt draft for sign-
 - Next: the interior STYLE pass. Lee supplying sample/reference images of interiors he likes; feed
   them alongside the geometry refs at generation (nano-banana takes multiple image inputs).
 
+## Base + style refs received (2026-07-23, staged in `refs/`)
+
+- **`IMG_5566-clean-BASE.jpeg` (1080x1350):** the clean unmarked base photo. Native 4:5 with the
+  full curve in frame. THE BEFORE SLIDE IS THIS FILE AS-IS, no crop. The AFTER generates from it at
+  the same frame. (Supersedes all photo-A crop work.)
+- **`style-ref-IMG_5568-ply-interior.jpeg`:** interior style sample. Pale birch plywood lined walls,
+  wide pale oak boards laid straight, white ceiling, big skylight, warm light, mid-century furniture
+  (black leather safari chair, round timber coffee table, terracotta accents).
+- **`style-ref-IMG_5539-finished-curve.jpeg`:** the finished-curve reference (tight crop). Crisp
+  white/warm plastered curve, a curved skirting following the base of the curve, pale oak
+  herringbone floor, warm light washing the curve. STYLE GUIDANCE ONLY, not ours to reproduce.
+
+## STYLE v1 proposal (Claude's synthesis, awaiting Lee's calls)
+
+- The curve and ceilings: crisp white set plaster, warm light washing the curve, and the curved
+  skirting detail following the curve base (per 5539).
+- Floor: wide pale oak boards laid straight (per 5568). OPEN: Lee to pick straight boards vs 5539's
+  herringbone.
+- OPEN, the big style question: are the other walls white plaster throughout (5568 read as mood,
+  floor and furniture ref only), or is the pale ply wall lining from 5568 wanted as a literal
+  feature (say the corridor or WIR wall in ply)?
+- Front door: no ref supplied yet. Proposal: solid timber, vertical boards, warm oak tone. OPEN for
+  a ref or a yes.
+- Furniture: foreground locked empty; 5568's furniture palette noted in case Lee wants a subtle hint
+  at the living/dining frame edge later.
+
 ## The generation prompt (v1, keep in sync with what is actually run)
 
 Transform this construction site photo into the exact same house completely finished, photographed

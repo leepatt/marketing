@@ -152,10 +152,27 @@ for any further edits: v17.
 Tooling note: for "change ONLY this spot", use the crop→flux-fill→composite pipeline (zero drift,
 full res). For semantic changes across the frame, use Nano Banana Pro image edit (drifts slightly).
 
+## Round 6 — fix the black-wedge artifact from round 5 (v19–v21, 2026-07-23)
+
+Lee (rightly) flagged a black wedge "in front of the floor joist" in v16. Root cause (diagnosed via
+v10↔v16 diff, 77.6k pixels turned near-black, all inside the round-5 strip, nothing else changed):
+the round-5 removal mask was too TALL (reached up in front of the ceiling joists) AND its prompt
+mentioned "black plate / dark gap" → the fill painted the band black instead of rebuilding joists.
+
+Fix (`wedge_prep.py`, `gen_inpaint_crop2.py`, `composite2.py`): isolate the wedge precisely from the
+diff (pixels that changed AND went near-black — this excludes the legit black curved arch plate,
+which was black in both), tight-crop, flux-fill with a ceiling-only prompt (NO black words), feather
+composite back onto v16. Verified pixels outside the crop are byte-identical to v16; full res.
+Result: clean continuous timber joists/bearer + chipboard, no black. **v19 = pick** (v20/v21 leave a
+thin dark gap).
+
+LESSON (write into any future removal): keep the mask hugging ONLY the object; never let the fill
+prompt mention "black" near a ceiling/joist area, or flux-fill will paint black.
+
 ## Next steps
 
-- [x] R1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked edit (v10–v12), surgical removal (v16–v18).
-- [ ] Lee confirms v17 as the locked frame.
+- [x] R1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked edit (v10–v12), removal (v16–v18), wedge fix (v19–v21).
+- [ ] Lee confirms v19 as the locked frame (or marks the top bearer if it should also go).
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.
 - [ ] Optional: strip the last grey lining panels on the side walls (fully open framing), if wanted.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

@@ -169,10 +169,27 @@ thin dark gap).
 LESSON (write into any future removal): keep the mask hugging ONLY the object; never let the fill
 prompt mention "black" near a ceiling/joist area, or flux-fill will paint black.
 
+## Round 7 — remove the extra bearer + dangling-hanger row (v25–v31, 2026-07-23)
+
+Lee gave a reference (`IMG_5548`) of how the joist beam should look and flagged an "extra piece":
+in v19 the top-right had a thick horizontal bearer with a ROW of ~5 dangling galvanised joist
+hangers (structurally nonsense, absent from the reference).
+
+- flux-fill (v22–v24) FAILED here: masking a structural beam mid-ceiling just makes it redraw the
+  beam from surrounding context. Inpaint is good at removing *foreground clutter*, bad at removing a
+  *structural member* the scene implies.
+- Nano Banana Pro semantic edit worked. Gotcha: with a landscape 2nd input image and
+  `aspect_ratio:"match_input_image"`, it matched the REFERENCE's landscape aspect and reframed the
+  whole shot (v25–v27, junk). Fix: force `aspect_ratio:"2:3"` → v28–v30 kept v19's portrait framing
+  and removed the bearer/hanger row cleanly. Whole-frame drift was tiny (~2%, no structural move).
+- To honour "keep everything else the same", grafted ONLY the fixed corner from v30 onto the exact
+  v19 via the feathered `mask3` band → **v31 = pick** (rest is byte-v19, corner is clean joists).
+  v30 = full clean version if a graft seam ever shows.
+
 ## Next steps
 
-- [x] R1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked edit (v10–v12), removal (v16–v18), wedge fix (v19–v21).
-- [ ] Lee confirms v19 as the locked frame (or marks the top bearer if it should also go).
+- [x] R1 (v1–v3) … wedge fix (v19–v21), bearer/hanger removal (v25–v31).
+- [ ] Lee confirms v31 as the locked frame.
 - [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.
 - [ ] Optional: strip the last grey lining panels on the side walls (fully open framing), if wanted.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

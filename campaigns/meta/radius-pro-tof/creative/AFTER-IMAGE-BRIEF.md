@@ -42,15 +42,22 @@ over, and the framed curve is now a fair, crisp white plastered feature wall.
    and 1080x1080.
 4. Lee approves the pair. Nothing goes live from this session.
 
-## Status 2026-07-23
+## Status 2026-07-23: v1 and v2 REJECTED. Restarting from a Lee-authored brief
 
-Two drafts generated with flux-kontext-pro from the full master and delivered to Lee with the locked
-crops applied: **v1** (prompt below; lovely light and realism, but the camera drifted back so the
-wall sits smaller than the master) and **v2** (v1 prompt reworked to open with "changing nothing
-about the camera... same scale, large and close, curved top edge near the top of the frame", which
-held the wall's position and scale much closer to the master, the better swipe match). Model output
-is 880x1184, so 1080 exports are a mild 1.23x upscale; if the approved version needs to be crisper,
-run a proper upscaler pass on the full frame before final export. Awaiting Lee's pick.
+Lee rejected both flux-kontext drafts: the generated curve was a totally different shape from the
+framed wall. The model smoothed the real plate line into a generic rounded pod and changed the wall
+proportions instead of plastering over the actual frame. **Creative decisions are back with Lee.**
+The "Creative choices (recommended)" section below no longer stands; a new brief will be written by
+Lee from scratch.
+
+**The new workflow (Lee's):** Lee will annotate the timber frame photo, highlighting the bottom
+plate line where the wall junction meets the floor, and the same for the ceiling junction at the
+top. The annotated image then drives generation so the model knows exactly where the wall junctions
+sit and holds the true geometry. Nothing gets generated until Lee's annotated image and brief are in.
+
+Technical notes kept for the next round: flux-kontext-pro outputs 880x1184 from this master (1080
+exports need a 1.23x upscale, run a proper upscaler on the approved final); nano-banana accepts
+multiple reference images, so the annotated guide plus the clean frame photo can be fed together.
 
 ## The generation prompt (v1, keep in sync with what is actually run)
 

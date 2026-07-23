@@ -64,6 +64,17 @@ Marketing API. This file is the record of exactly what is running.
   and #1265 Bendy Formply $640, but NEITHER is a radius-online order and #1265 is a repeat customer, so
   not attributable to these ads. No direct Radius Pro sale yet. Fine at ~1 day for TOF.
 
+## OFFLINE SIGNAL: phone ringing non-stop since launch (2026-07-23)
+Lee reports the phone has been ringing non-stop since the ads went live. This is the metric that
+matters (hack 8: net cash at the business level, not ROAS %). Tradies call rather than self-serve, so
+phone volume is likely the real conversion path and the online pixel numbers are undercounting true
+response. Implication: performance is better than the online-only read, which strengthens the case to
+scale the winner at the day-3 read.
+- TO CAPTURE (so we can attribute): ask every caller "how did you hear about us?" and tally; confirm how
+  many calls/day vs normal and whether they are curved/radius enquiries specifically.
+- CONSIDER: a call-tracking number on the radius-online page to attribute calls per-ad (this audience
+  phones, so it is worth the setup).
+
 ## Tracking status (2026-07-23 morning)
 - **AddToCart and InitiateCheckout hit the pixel for the first time**: 9 ATC + 3 IC, all in the
   19:00 UTC hour (about 5am AEST Jul 23), none before, no Purchase after. Pattern matches the go-live

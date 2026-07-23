@@ -128,10 +128,34 @@ Results: all three achieved cleanly in v10/v11/v12, no markup bleed. **v10 is th
 top. Whole-image edit drifts unrelated detail very slightly; composition + all requested elements
 held.
 
+## Round 5 — surgical removal of an added timber piece (v16–v18, 2026-07-23)
+
+Lee marked v10 (`IMG_5547.png`, purple) to remove one horizontal timber rail added across the top
+of the curve, "keep everything else the same". This is the true zero-drift case → **masked
+inpaint**, not a whole-image edit. Full pipeline (scripts in scratchpad):
+1. `build_mask.py`: detect the purple marker pixels in the annotated image, restrict to the
+   top-right region (kills a window false-positive), morphologically CLOSE into one continuous
+   band, upscale to the base resolution. Preview overlay to verify coverage before spending.
+2. `crop_prep.py`: crop a tight bbox around the mask (1387×634) — kept under flux-fill-pro's
+   ~1440px long-side cap so it is NOT downscaled (the full-frame call had silently shrunk 1696×2528
+   → 966×1440, which loses res AND breaks pixel-preservation).
+3. `gen_inpaint_crop.py`: flux-fill-pro (`black-forest-labs/flux-fill-pro`) inpaints just the crop,
+   3 seeds, full-res.
+4. `composite.py`: paste the fill back into the sharp v10 through a feathered mask — masked pixels =
+   fill, everything else = exact v10. Verified: pixels outside the crop bbox are byte-identical to
+   v10; output is full 1696×2528.
+
+Result: the added rail is gone; studs run up to the black curved top plate with a natural dark gap
+and joist hangers behind. **v17 = pick** (v18 near-twin; v16 slightly heavier shadow). Current base
+for any further edits: v17.
+
+Tooling note: for "change ONLY this spot", use the crop→flux-fill→composite pipeline (zero drift,
+full res). For semantic changes across the frame, use Nano Banana Pro image edit (drifts slightly).
+
 ## Next steps
 
-- [x] Round 1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked-up edit (v10–v12).
-- [ ] Lee picks the winner (leaning v10 / v12).
-- [ ] Optional masked-inpaint pass for the last grey lining panels (fully open framing), if wanted.
-- [ ] Upload the winner (and archive the set) to the Drive brain; link it here.
+- [x] R1 (v1–v3), combine (v4–v6), corrections (v7–v9), marked edit (v10–v12), surgical removal (v16–v18).
+- [ ] Lee confirms v17 as the locked frame.
+- [ ] Upload the locked frame (and archive the set) to the Drive brain; link it here.
+- [ ] Optional: strip the last grey lining panels on the side walls (fully open framing), if wanted.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

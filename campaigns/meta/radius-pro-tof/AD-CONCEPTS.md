@@ -98,41 +98,51 @@ winner, insert the keyword, leave the rest as-is.
 
 ---
 
-## AD 4 · Identity trigger: **BUILDERS / CHIPPIES** (draft, needs own photo)
-**Creative:** a real curved-wall / cut-plates job (see the ask).
+## AD 4 / AD 5 · CURVED WALL · Identity trigger: **BUILDERS + CARPENTERS** (LOCKED copy, 2026-07-23)
+**Creative:** before/after carousel of the curved timber feature wall. Slide A = the timber FRAME
+(`IMG_5548`, refined AI-gen to `CURVED-WALL-BUILD-SPEC.md`). Slide B = the FINISHED curved wall
+(AI-reworked from the reference so it is ours; we do NOT have rights to the client's literal photo).
+Clean, native, no on-image text. Governed by `AD4-AD5-BRIEF.md` + `CURVED-WALL-BUILD-SPEC.md`.
 
-**Primary text (draft, same structure):**
-> "How long's the curved wall going to cost me this time?"
->
-> It's the first thing every chippy thinks when there's a curve on the plan.
->
-> The old way: template the radius, cut the top and bottom plates by hand, and it's still not fair when you sight down it.
->
-> Not this time. Punch in the radius and your curved top and bottom plates turn up cut to size (ply, formply or MDF), every part engraved, delivered. Set them out, stand your studs, sheet it.
->
-> Curved walls stop being the job nobody wants to pick up. Punch in your radius, we cut it.
+**Product truth (only claim this):** we supply ONLY the curved top and bottom **wall plates**, in
+**Formply**, **doubled to 34mm** (two 17mm sheets), **cut to the exact radius**, engraved, delivered.
+The builder stands the studs, blocks and sheets it. We CUT the plates, we never bend. Old way = marking
+out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
 
-**Headline variants:** `Curved wall plates, cut to your radius` · `Top and bottom plates, cut to size` · `The curved wall, cut for you` · `Curved plates, ply/formply/MDF`
-**Description:** `Curved wall plates cut to size. Priced online.`
-
----
-
-## AD 5 · Identity trigger (job-type): **CURVED BENCH SEATS** (draft, needs own photo)
-**Creative:** a real curved bench-seat / seat-wall job (see the ask).
-
-**Primary text (draft, same structure):**
-> "How would you even form up a curved seat like that?"
+**Primary text (LOCKED):**
+> "How would you even frame a curve like this?"
 >
-> It's the job that used to be a week you didn't want to quote.
+> It's the first question every builder and chippy asks when a curved wall turns up on the plans.
 >
-> The curve is the whole feature, so it has to be fair, which meant cutting every curved plate by hand, chasing the line, and copping the flat spots. So the curved jobs got knocked back or priced sky-high.
+> A curved feature wall, the one that makes the whole room. Normally it's the job you don't really want to price, because the old way means marking out the radius by hand and then cutting every curved plate with a jigsaw, chasing the line and hoping it comes up fair.
 >
-> Not anymore. The curved formwork turns up cut to the exact radius. Machined, every part engraved, delivered ready to brace and pour. Same for garden beds, planters, curved walls.
+> It's tedious. It eats a day you didn't have. And one plate off the line, or a bin full of offcuts, is money straight out of the job.
 >
-> Start quoting the curved jobs you used to hand off. Punch in the radius, we cut it.
+> That's where the time and the margin go on a curved wall.
+>
+> This one didn't go that way. The curved top and bottom plates turned up cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, every part engraved, delivered. The crew set them out, stood the studs, blocked it and sheeted it.
+>
+> Swipe to the last frame. That's what it became.
+>
+> If the curved walls are the ones that always blow your program, they don't have to be. Punch in your radius, we cut the plates, they turn up ready to stand.
 
-**Headline variants:** `Curved bench seats, cut to size` · `Curved seat walls, cut to the radius` · `Quote the curved jobs again` · `The curve, cut to the exact radius`
-**Description:** `Curved formwork cut to size. Priced online.`
+**A/B test (Lee, 2026-07-23): slide order.**
+- **Variant A, frame-first:** Slide A frame, Slide B finished. Hook stays "How would you even frame a
+  curve like this?" · utm_content `ad4_curvedwall_framefirst`
+- **Variant B, finished-first:** Slide B finished, Slide A frame. Swap first line to
+  "How would you even build a curve like this?" (the swipe reveals the how) · utm_content
+  `ad4_curvedwall_finishedfirst`
+- Both into the one CBO, Meta distributes (hack 1/5). Judge on net cash + phone.
+
+**Headline variants (split-test, hack 6):** `Curved wall plates, cut to your radius` · `Top and bottom
+plates, cut to the exact radius` · `We cut the curved plates, you stand the wall` · `Punch in the
+radius, we cut the plates`
+**Description:** `Curved Formply wall plates, cut to size. Priced online.`
+
+**Hack 2 clone option:** copy names both trades. If we want to open the pockets separately, clone to a
+builder-only and a chippy-only version by swapping that one word. Do it once a slide-order winner shows.
+
+*(Prior AD5 concept, curved bench seats, is PARKED. Focus is the curved wall for builders + carpenters.)*
 
 ---
 

@@ -82,10 +82,33 @@ have: Nano Banana Pro accepts multiple `image_input` images, so we combined our 
   walls — reads faintly like backing behind the frame. Fixable with a masked inpaint if we want it
   fully open, without disturbing the rest.
 
+## Round 3 — Lee's element sourcing + corrections (v7–v9, 2026-07-23)
+
+Lee reviewed v1–v3 and directed the combine by element, plus three build corrections. Method:
+four inputs `image_input: [IMG_5539 (viewpoint), frame_v2 (studs+noggins + clean through-door
+wall + open frame + neutral light), frame_v1 (door opening + radius plate & stud-to-plate
+connection), frame_v3 (ceiling/upper-floor joist structure)]`. Prompt in `scratchpad/gen_frame3.py`.
+
+Lee's element sourcing: studs+noggins = V2; door opening = V1; radius plate + stud connection =
+V1; ceiling/second-floor = V3.
+
+Three corrections (now LOCKED in the spec understanding):
+1. **Room through the left doorway:** its right-hand wall is a clean, solid straight stud wall with
+   NO door opening (V1/V3 wrongly showed a door; use V2's clean wall).
+2. **Second-floor underside = chipboard**, not black: tan particleboard/chipboard flooring sheets as
+   the underside of the floor above, between the joists (keep V3's joists + galv hangers).
+3. **Plate material split:** the Craftons black-faced Formply doubled ~34mm plate is on the CURVED
+   RADIUS ONLY (top AND bottom of the curve). ALL straight top and bottom plates are PINE, not black.
+
+Results: all three corrections achieved in **v8 and v9** (front-runners; v8 slightly cleaner
+chipboard + plate, v9 a near-twin with strong hangers). **v7 missed the chipboard** (still dark
+voids in the ceiling). Residual across the set: faint grey sheet lining still lingers between studs
+on the flanking side walls (reads like wrap/backing) — optional masked-inpaint cleanup.
+
 ## Next steps
 
-- [x] Round 1 (v1–v3) + combine pass (v4–v6). Doubled-plate legibility fixed via the combine.
-- [ ] Lee picks the winner (currently leaning v5).
-- [ ] Optional masked-inpaint pass to strip the last lining panels so it's fully open framing.
+- [x] Round 1 (v1–v3), combine pass (v4–v6), Lee-directed corrections (v7–v9).
+- [ ] Lee picks the winner (leaning v8 / v9).
+- [ ] Optional masked-inpaint pass to strip the last grey lining panels so it's fully open framing.
 - [ ] Upload the winner (and archive the set) to the Drive brain; link it here.
 - [ ] Later: decide the finished→frame reveal pair (deferred).

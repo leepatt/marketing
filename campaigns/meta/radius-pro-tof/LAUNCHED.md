@@ -104,12 +104,14 @@ All **PAUSED**. Copy locked in `AD-CONCEPTS.md` (architect-vs-builder hook, @law
 credited). Image `creative/refs/IMG_5566-clean-BASE.jpeg` (real job, permission granted), image_hash
 `923c0b632935f8af124c792e1b56d3f9`.
 
-- **AD4 Builders** · ad ID `120247222879340186` · creative `1728285318422905` · utm_content `ad4_curvedwall_builder`
-- **AD5 Chippies** · ad ID `120247222879990186` · creative `1793453378453651` · utm_content `ad5_curvedwall_chippy`
-- **AD6 Carpenters** · ad ID `120247222880330186` · creative `3276441942527863` · utm_content `ad6_curvedwall_carpenter`
+- **AD4 Builders** · ad ID `120247222879340186` · creative `883978048104405` · utm_content `ad4_curvedwall_builder`
+- **AD5 Chippies** · ad ID `120247222879990186` · creative `1347855387557688` · utm_content `ad5_curvedwall_chippy`
+- **AD6 Carpenters** · ad ID `120247222880330186` · creative `1030098886572890` · utm_content `ad6_curvedwall_carpenter`
+- (Headline swapped 2026-07-24, creatives repointed; superseded creatives `1728285318422905` /
+  `1793453378453651` / `3276441942527863` are orphaned, ignore.)
 
-- **Format:** single image 4:5 (1080x1350), not carousel. Headline `Curved wall plates, cut to your
-  radius`. Description `Curved Formply wall plates, cut to size. Priced online.` CTA Learn more.
+- **Format:** single image 4:5 (1080x1350), not carousel. Headline `Curved walls, without the
+  guesswork`. Description `Curved Formply wall plates, cut to size. Priced online.` CTA Learn more.
   Destination `craftons.com.au/products/radius-online` + per-ad UTMs.
 - **The @lawlessconstruction tag is a written credit only** in a dark-post ad (does not hotlink or
   notify). To honour the tag promise, post the photo organically tagging them (by hand, IG app),

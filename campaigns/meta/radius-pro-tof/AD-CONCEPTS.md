@@ -148,9 +148,10 @@ does the targeting (hack 5); the dense carpentry context reaches the trade regar
 - utm_content: `ad4_curvedwall_builder` / `ad5_curvedwall_chippy` / `ad6_curvedwall_carpenter`.
 - All three into the one CBO, Meta distributes (hacks 1/5). Judge on net cash + phone, not CTR alone.
 
-**Headline variants (split-test, hack 6):** `Curved wall plates, cut to your radius` · `Top and bottom
-plates, cut to the exact radius` · `We cut the curved plates, you stand the wall` · `Punch in the
-radius, we cut the plates`
+**Headline (LIVE, Lee picked 2026-07-24):** `Curved walls, without the guesswork` (benefit-led, ties
+to the old-way pain in the body). Other tested options held for a future headline split-test (hack 6):
+`Curved wall plates, cut to your radius` · `We cut the curve, you stand the wall` · `Frame a curved
+wall without the jigsaw` · `Punch in the radius, we cut the plates`
 **Description:** `Curved Formply wall plates, cut to size. Priced online.`
 
 *(Prior AD5 concept, curved bench seats, is PARKED. Focus is the curved wall for builders + carpenters.)*

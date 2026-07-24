@@ -97,7 +97,9 @@ and to clone the winner across more trades AND products, since the whole range b
 - **Still optimising Landing Page Views.** Do NOT switch to AddToCart until the walk-through is
   confirmed and volume holds around 15 to 25 per week of real (non-test) events.
 
-## Curved-wall ads BUILT PAUSED (2026-07-24, awaiting Lee's activation)
+## Curved-wall ads ACTIVE (2026-07-24, Lee approved, flipped live)
+Built paused, previewed, then set ACTIVE by Lee on 2026-07-24 (effective_status IN_PROCESS at flip,
+i.e. Meta ad review, then delivers). Now competing for spend in the CBO alongside the Ardreagh ads.
 Three single-image identity clones off the real Lawless Construction curved-wall frame photo, built
 via the Meta Marketing API into the SAME live ad set `120247183658270186` (one CBO, Meta distributes).
 All **PAUSED**. Copy locked in `AD-CONCEPTS.md` (architect-vs-builder hook, @lawlessconstruction

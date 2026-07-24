@@ -24,8 +24,12 @@ A same-viewpoint before/after:
 
 ### Plates (this is our product: Radius Pro Formply, cut to the radius)
 - Plates are **17mm Formply**, used on **both top and bottom**.
-- They are **doubled up**: two 17mm sheets laminated = a **34mm** plate, top and bottom. The final image
-  MUST clearly show the doubled 34mm plate.
+- **What we supply vs what the builder does (product-truth, corrected 2026-07-24):** we cut and
+  deliver the curved plates as **17mm** Formply to the exact radius. **The BUILDER laminates two
+  together to 34mm on site.** We do NOT laminate. Copy must never imply the plates arrive doubled or
+  that we laminate them.
+- The finished wall ends up **doubled to 34mm** (two 17mm plates laminated), top and bottom. The
+  final image MUST clearly show the doubled 34mm plate.
 - The flat **top and bottom faces are BLACK** (the phenolic Formply face). The **edges show plywood
   grain** (the laminated plies).
 - The plate is the **same width as the studs (90mm)** and sits **flush with the stud faces on BOTH the

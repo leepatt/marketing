@@ -109,9 +109,10 @@ we can add a real before/after, but this ad ships as one real frame. Governed by
 + `CURVED-WALL-BUILD-SPEC.md`.
 
 **Product truth (only claim this):** we supply ONLY the curved top and bottom **wall plates**, in
-**Formply**, **doubled to 34mm** (two 17mm sheets), **cut to the exact radius**, engraved, delivered.
-The builder stands the studs, blocks and sheets it. We CUT the plates, we never bend. Old way = marking
-out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
+**17mm Formply**, **cut to the exact radius**, machined, engraved, delivered. **The BUILDER laminates
+two plates to 34mm** on site, then stands the studs, blocks and sheets it. We CUT the 17mm curved
+plates, we never bend, and we do NOT laminate (that is the builder's step). Old way = marking out by
+hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
 
 **Primary text (LOCKED single-image, 2026-07-24, Lee's edit). BUILDER version:**
 > Any architect can draw a curve. Now any builder can frame one.
@@ -120,9 +121,9 @@ out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy
 >
 > The old way is some maths, a jigsaw, and a day you didn't have. Cutting every curved plate by hand, following the line, and binning half a pack of ply when it doesn't go to plan.
 >
-> This one turned up solved. The curved top and bottom plates came cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, engraved, delivered. The curve was never in question.
+> This one turned up solved. The curved top and bottom plates came cut to the exact radius. 17mm Formply, machined, engraved, delivered. The curve was never in question.
 >
-> Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates, they turn up ready to stand.
+> Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates. Laminate two to 34mm and stand your wall.
 
 **CHIPPY version (hack 2 clone, ONE word swapped):** identical, except the hook's second sentence
 reads "Now any **chippy** can frame one." The identity word now lives in the HOOK (line 1), which is

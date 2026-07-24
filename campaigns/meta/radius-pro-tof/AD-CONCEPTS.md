@@ -125,15 +125,22 @@ hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get
 >
 > Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates. Laminate two to 34mm and stand your wall.
 
-**CHIPPY version (hack 2 clone, ONE word swapped):** identical, except the hook's second sentence
-reads "Now any **chippy** can frame one." The identity word now lives in the HOOK (line 1), which is
-the strongest place for it (hacks 2 + 5). We run both, builder vs chippy, to open both pockets.
+**Identity clones (hack 2, ONE word swapped in the hook).** The identity word lives in the HOOK, the
+strongest place for it (hacks 2 + 5). Run THREE, all identical except the hook's second sentence:
+- **BUILDER:** "Now any **builder** can frame one."
+- **CHIPPY:** "Now any **chippy** can frame one."
+- **CARPENTER:** "Now any **carpenter** can frame one."
+
+Why three (Lee, 2026-07-24): "chippy" is the native, scroll-stopping term but it is slang, so rather
+than guess whether Meta reaches carpenters off it, we run "carpenter" alongside and let the data
+decide. Meta no longer offers reliable job-title targeting anyway, so we run broad AU and the creative
+does the targeting (hack 5); the dense carpentry context reaches the trade regardless of the one word.
 
 **The test matrix (Lee, 2026-07-24, single-image):**
-- **Identity (run both):** builder version vs chippy version (the one-word swap in the hook).
-- Slide-order A/B is RETIRED (no carousel). Both variants use the one real frame photo.
-- utm_content: `ad4_curvedwall_builder` / `ad5_curvedwall_chippy`.
-- Both into the one CBO, Meta distributes (hacks 1/5). Judge on net cash + phone, not CTR alone.
+- **Identity (run all three):** builder vs chippy vs carpenter (the one-word swap in the hook).
+- Slide-order A/B is RETIRED (no carousel). All three use the one real frame photo.
+- utm_content: `ad4_curvedwall_builder` / `ad5_curvedwall_chippy` / `ad6_curvedwall_carpenter`.
+- All three into the one CBO, Meta distributes (hacks 1/5). Judge on net cash + phone, not CTR alone.
 
 **Headline variants (split-test, hack 6):** `Curved wall plates, cut to your radius` · `Top and bottom
 plates, cut to the exact radius` · `We cut the curved plates, you stand the wall` · `Punch in the

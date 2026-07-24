@@ -8,7 +8,9 @@ Marketing API. This file is the record of exactly what is running.
 - **Campaign ID:** `120247183657950186`
 - **Ad account:** `act_1650412872259063` (Craftons, AUD, Australia/Melbourne)
 - **Objective:** Traffic (OUTCOME_TRAFFIC)
-- **Budget:** $100/day AUD, campaign budget (CBO), lowest cost
+- **Budget:** $130/day AUD, campaign budget (CBO), lowest cost (raised from $100 on 2026-07-24,
+  +30%, single safe step; Friday into the weekend + phone at 3x justified feeding it. Read net cash
+  Monday, step again <=30% every 2 to 3 days only while net cash holds.)
 - **Status:** ACTIVE
 
 ## Ad set

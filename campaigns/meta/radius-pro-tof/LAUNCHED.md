@@ -97,6 +97,29 @@ and to clone the winner across more trades AND products, since the whole range b
 - **Still optimising Landing Page Views.** Do NOT switch to AddToCart until the walk-through is
   confirmed and volume holds around 15 to 25 per week of real (non-test) events.
 
+## Curved-wall ads BUILT PAUSED (2026-07-24, awaiting Lee's activation)
+Three single-image identity clones off the real Lawless Construction curved-wall frame photo, built
+via the Meta Marketing API into the SAME live ad set `120247183658270186` (one CBO, Meta distributes).
+All **PAUSED**. Copy locked in `AD-CONCEPTS.md` (architect-vs-builder hook, @lawlessconstruction
+credited). Image `creative/refs/IMG_5566-clean-BASE.jpeg` (real job, permission granted), image_hash
+`923c0b632935f8af124c792e1b56d3f9`.
+
+- **AD4 Builders** · ad ID `120247222879340186` · creative `1728285318422905` · utm_content `ad4_curvedwall_builder`
+- **AD5 Chippies** · ad ID `120247222879990186` · creative `1793453378453651` · utm_content `ad5_curvedwall_chippy`
+- **AD6 Carpenters** · ad ID `120247222880330186` · creative `3276441942527863` · utm_content `ad6_curvedwall_carpenter`
+
+- **Format:** single image 4:5 (1080x1350), not carousel. Headline `Curved wall plates, cut to your
+  radius`. Description `Curved Formply wall plates, cut to size. Priced online.` CTA Learn more.
+  Destination `craftons.com.au/products/radius-online` + per-ad UTMs.
+- **The @lawlessconstruction tag is a written credit only** in a dark-post ad (does not hotlink or
+  notify). To honour the tag promise, post the photo organically tagging them (by hand, IG app),
+  separate from these ads.
+- **Before activating (Lee):** review each ad's real Meta preview, confirm the tradie photo reads
+  native and the caption renders clean, then flip to Active. Standard-enhancements not opted out at
+  build (deprecated field); toggle per-ad in the preview if you want it off to stay native.
+- **Read:** builder vs chippy vs carpenter on net cash + phone volume (hack 8), which also settles
+  whether "chippy" reaches carpenters as well as the formal word.
+
 ## Watch / next
 - Day 1 to 2: gut-check CTR + cost per landing page view. If clearly failing, pause. Otherwise do not touch.
 - 3 to 4 days: read concreter vs landscaper. Scale the winner (raise campaign budget <=30% every 2 to 3

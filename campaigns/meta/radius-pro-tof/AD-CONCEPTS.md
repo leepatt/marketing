@@ -98,46 +98,41 @@ winner, insert the keyword, leave the rest as-is.
 
 ---
 
-## AD 4 / AD 5 · CURVED WALL · Identity trigger: **BUILDERS + CARPENTERS** (LOCKED copy, 2026-07-23)
-**Creative:** before/after carousel of the curved timber feature wall. Slide A = the timber FRAME
-(`IMG_5548`, refined AI-gen to `CURVED-WALL-BUILD-SPEC.md`). Slide B = the FINISHED curved wall
-(AI-reworked from the reference so it is ours; we do NOT have rights to the client's literal photo).
-Clean, native, no on-image text. Governed by `AD4-AD5-BRIEF.md` + `CURVED-WALL-BUILD-SPEC.md`.
+## AD 4 / AD 5 · CURVED WALL · Identity trigger: **BUILDERS + CARPENTERS** (LOCKED copy, 2026-07-24)
+**Creative: SINGLE real photo** of the curved timber feature wall framed on site by a real carpenter,
+a real job using our curved Formply plates. `creative/refs/IMG_5566-clean-BASE.jpeg` (native 4:5,
+1080x1350), the full convex curve in frame with the curved top and bottom plates visible. No AI, no
+carousel, no on-image text. This is a down-and-dirty native static (hacks 1 + 4): the photo does the
+stopping, the caption does the funnelling. The AI-generated finished AFTER was abandoned (see
+`creative/AFTER-IMAGE-BRIEF.md`); if the carpenter later shoots the finished wall from the same spot
+we can add a real before/after, but this ad ships as one real frame. Governed by `AD4-AD5-BRIEF.md`
++ `CURVED-WALL-BUILD-SPEC.md`.
 
 **Product truth (only claim this):** we supply ONLY the curved top and bottom **wall plates**, in
 **Formply**, **doubled to 34mm** (two 17mm sheets), **cut to the exact radius**, engraved, delivered.
 The builder stands the studs, blocks and sheets it. We CUT the plates, we never bend. Old way = marking
 out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
 
-**Primary text (LOCKED, 2026-07-23). BUILDER version:**
-> Every architect is drawing curved walls now. None of them have to build one.
+**Primary text (LOCKED single-image, 2026-07-24). BUILDER version:**
+> Any architect can draw a curve. Now any builder can frame one.
 >
-> It's the detail every builder reads on the plans and quietly sighs at, because the curve is the whole feature and it has to be fair.
+> The curved feature wall is the bit that looks unreal in the render and then lands on your site to be built fair.
 >
-> The old way means marking out the radius by hand, then cutting every curved plate with a jigsaw, chasing the line and hoping it comes up true. It's tedious. It eats a day you didn't have. And one plate off the line, or a bin full of offcuts, is money straight out of the job.
+> The old way is a string line, a jigsaw, and a day you didn't have. Cutting every curved plate by hand, chasing the line, hoping the wall runs true, and binning half a pack of ply when it doesn't.
 >
-> That's where the time and the margin go on a curved wall.
+> This one turned up solved. The curved top and bottom plates came cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, engraved, delivered. The crew set them out, stood the studs and blocked it. The curve was never in question.
 >
-> This one didn't go that way. The curved top and bottom plates turned up cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, every part engraved, delivered. The crew set them out, stood the studs, blocked it and sheeted it.
->
-> Swipe to the last frame. That's what it became.
->
-> Curved walls are only getting more common. They don't have to be the job that blows your program. Punch in your radius, we cut the plates, they turn up ready to stand.
+> Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates, they turn up ready to stand.
 
-**CHIPPY version (hack 2 clone, ONE word swapped):** identical, except line 2 reads
-"It's the detail every **chippy** reads on the plans and quietly sighs at...". We run both, builder vs
-chippy, to open both pockets.
+**CHIPPY version (hack 2 clone, ONE word swapped):** identical, except the hook's second sentence
+reads "Now any **chippy** can frame one." The identity word now lives in the HOOK (line 1), which is
+the strongest place for it (hacks 2 + 5). We run both, builder vs chippy, to open both pockets.
 
-**The test matrix (Lee, 2026-07-23):**
-- **Identity (run both):** builder version vs chippy version (the one-word swap above).
-- **Slide order (A/B):**
-  - Frame-first: Slide A frame, Slide B finished. Opener as written. utm_content suffix `_framefirst`.
-  - Finished-first: Slide B finished, Slide A frame. Swap the opener's second sentence to
-    "Here's how this one actually got built." (the swipe reveals the frame). utm_content suffix
-    `_finishedfirst`.
-- utm_content: `ad4_curvedwall_builder_framefirst` / `..._builder_finishedfirst` /
-  `ad5_curvedwall_chippy_framefirst` / `..._chippy_finishedfirst`.
-- All into the one CBO, Meta distributes (hack 1/5). Judge on net cash + phone, not CTR alone.
+**The test matrix (Lee, 2026-07-24, single-image):**
+- **Identity (run both):** builder version vs chippy version (the one-word swap in the hook).
+- Slide-order A/B is RETIRED (no carousel). Both variants use the one real frame photo.
+- utm_content: `ad4_curvedwall_builder` / `ad5_curvedwall_chippy`.
+- Both into the one CBO, Meta distributes (hacks 1/5). Judge on net cash + phone, not CTR alone.
 
 **Headline variants (split-test, hack 6):** `Curved wall plates, cut to your radius` · `Top and bottom
 plates, cut to the exact radius` · `We cut the curved plates, you stand the wall` · `Punch in the

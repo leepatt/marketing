@@ -104,9 +104,15 @@ a real job using our curved Formply plates. `creative/refs/IMG_5566-clean-BASE.j
 1080x1350), the full convex curve in frame with the curved top and bottom plates visible. No AI, no
 carousel, no on-image text. This is a down-and-dirty native static (hacks 1 + 4): the photo does the
 stopping, the caption does the funnelling. The AI-generated finished AFTER was abandoned (see
-`creative/AFTER-IMAGE-BRIEF.md`); if the carpenter later shoots the finished wall from the same spot
+`creative/AFTER-IMAGE-BRIEF.md`); if the builder later shoots the finished wall from the same spot
 we can add a real before/after, but this ad ships as one real frame. Governed by `AD4-AD5-BRIEF.md`
 + `CURVED-WALL-BUILD-SPEC.md`.
+
+**Real job + permission (2026-07-24):** the wall was framed by **@lawlessconstruction** (real Lawless
+Construction job, our curved plates). Permission GRANTED to run the photo as a paid ad, and they
+asked to be tagged. The **@lawlessconstruction tag is REQUIRED in the caption** (woven into the proof
+line, see below) and should be tagged on the image too when built in Meta. Same credit across all
+three identity variants.
 
 **Product truth (only claim this):** we supply ONLY the curved top and bottom **wall plates**, in
 **17mm Formply**, **cut to the exact radius**, machined, engraved, delivered. **The BUILDER laminates
@@ -121,7 +127,7 @@ hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get
 >
 > The old way is some maths, a jigsaw, and a day you didn't have. Cutting every curved plate by hand, following the line, and binning half a pack of ply when it doesn't go to plan.
 >
-> This one turned up solved. The curved top and bottom plates came cut to the exact radius. 17mm Formply, machined, engraved, delivered. The curve was never in question.
+> This one turned up solved. The curved top and bottom plates came cut to the exact radius. 17mm Formply, machined, engraved, delivered. @lawlessconstruction framed this one up, and the curve was never in question.
 >
 > Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates. Laminate two to 34mm and stand your wall.
 

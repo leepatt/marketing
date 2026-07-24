@@ -209,3 +209,14 @@ becomes the finished interior of the same home: on the left a doorway into a bri
 the right the hallway continuing along the straight wall. Empty just-completed home with no
 furniture, warm natural afternoon daylight, soft shadows, bright and airy, photorealistic real
 estate photography, no people, no text, no logos.
+
+## STOPPED (Lee, 2026-07-23)
+
+Lee called it after round 1: "way off", not confident the AI AFTER will work, no more time to be
+spent. No further generations. Standing options recorded for a future session:
+1. (Recommended) Get the REAL after: the job is a live build; ask the carpenter for one photo from
+   the IMG_5566 camera position once plastered and floored. Fully real pair, doctrine-pure.
+2. Run AD4/AD5 now with the two real frame angles (A + B) as the carousel; needs Lee's OK to tweak
+   the one caption line that assumes a finished shot.
+3. Resume the AI route from this file's state (lead candidate out/after-v3-nano_attempt4_clean.png,
+   step-direction question still open).

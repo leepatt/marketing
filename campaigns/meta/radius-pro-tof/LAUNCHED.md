@@ -99,6 +99,21 @@ and to clone the winner across more trades AND products, since the whole range b
 - **Still optimising Landing Page Views.** Do NOT switch to AddToCart until the walk-through is
   confirmed and volume holds around 15 to 25 per week of real (non-test) events.
 
+## ⚠️ ATTRIBUTION IS UNDER-COUNTING (2026-07-24). Do NOT judge configurator conversion on Meta's number
+The Radius Pro configurator runs in a cross-origin iframe (craftons-curves-calculator.vercel.app) on
+the Shopify page. The Meta click ID (`_fbc` from `fbclid`) lives on craftons.com.au and frequently
+does NOT reach the configurator's AddToCart event, so Meta files ad-driven adds as unattributed.
+
+- Pixel TOTAL AddToCart (all traffic): ~55 in 24h and growing. Configurator works and is used.
+- Meta AD-ATTRIBUTED AddToCart: ~2. This is a measurement artefact, NOT low usage.
+- The ads are almost certainly driving many more configurator adds than the report shows.
+
+**Implication for decisions:** judge these ads on CTR, cost/LPV, net cash and PHONE volume (hack 8),
+NOT on ad-attributed AddToCart, until the tracking is fixed. Do not pause an ad for "low AddToCart".
+Fix + full diagnosis: bug-and-fix brief for the craftons-curves-calculator repo (root cause = click
+ID lost across the iframe boundary; fix = forward fbclid into the iframe src). Verify via Meta Events
+Manager AddToCart match quality (share of events carrying `fbc`).
+
 ## Curved-wall ads ACTIVE (2026-07-24, Lee approved, flipped live)
 Built paused, previewed, then set ACTIVE by Lee on 2026-07-24 (effective_status IN_PROCESS at flip,
 i.e. Meta ad review, then delivers). Now competing for spend in the CBO alongside the Ardreagh ads.

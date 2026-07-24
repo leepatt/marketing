@@ -113,14 +113,14 @@ we can add a real before/after, but this ad ships as one real frame. Governed by
 The builder stands the studs, blocks and sheets it. We CUT the plates, we never bend. Old way = marking
 out by hand and cutting every plate with a jigsaw: tedious, slow, wasteful, easy to get wrong.
 
-**Primary text (LOCKED single-image, 2026-07-24). BUILDER version:**
+**Primary text (LOCKED single-image, 2026-07-24, Lee's edit). BUILDER version:**
 > Any architect can draw a curve. Now any builder can frame one.
 >
-> The curved feature wall is the bit that looks unreal in the render and then lands on your site to be built fair.
+> The curved feature wall is the bit that looks unreal in the render and then causes you headaches on site.
 >
-> The old way is a string line, a jigsaw, and a day you didn't have. Cutting every curved plate by hand, chasing the line, hoping the wall runs true, and binning half a pack of ply when it doesn't.
+> The old way is some maths, a jigsaw, and a day you didn't have. Cutting every curved plate by hand, following the line, and binning half a pack of ply when it doesn't go to plan.
 >
-> This one turned up solved. The curved top and bottom plates came cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, engraved, delivered. The crew set them out, stood the studs and blocked it. The curve was never in question.
+> This one turned up solved. The curved top and bottom plates came cut to the exact radius. Two sheets of 17mm Formply laminated to 34mm, machined, engraved, delivered. The curve was never in question.
 >
 > Architects aren't going to stop drawing them. Now they don't have to be your problem. Punch in the radius, we cut the plates, they turn up ready to stand.
 

@@ -66,3 +66,20 @@ Marketing API. This file is the record of exactly what is running.
 - **Next:** keep feeding the wall-frame winner; add a Formworkers one-word clone (hack 2) on the
   concreter formwork creative; still need the curved bench-seat photo (`PHOTO-BRIEF.md` AD5). The
   wall-plate photo (Lawless) has landed and is the current winner.
+
+### 2026-07-27 weekend read + tracking and funnel audit
+- **Weekend (Sat 25 + Sun 26):** $240 spend, 3,666 landing page views at $0.066, ~10% CTR, frequency
+  ~1.05 (no fatigue). AD5 Chippies took 80% of spend and held $0.066/LPV across 35k impressions. Daily
+  trend since launch: cost per LPV fell $0.094 to $0.063 while volume rose 678 to 1,968 LPV/day.
+- **Budget raised $130 to $170/day** (+30%, second scale step) on 2026-07-27.
+- **Tracking CONFIRMED LIVE (correcting the earlier day-3 note).** The configurator pixel fires:
+  ConfiguratorStarted 8 then 70, AddToCart 6 then 30 across Sat/Sun on pixel 677437638374055. The
+  "PageView only" statement was stale, from before the fix deployed. AddToCart and ConfiguratorStarted
+  now register. Note: in-app-browser matching means these do not all attribute back to the TOF ad in
+  the TOF insights, but they do fire and they do build audiences.
+- **BOF retargeting is already live and profitable.** Campaign `120232888615730186` (OUTCOME_SALES)
+  retargets All Website Visitors (30/60/180d) and AddToCart-no-purchase (30/60/180d) off the same
+  pixel. Last 7d: reach 4,052, frequency 2.05, $104 spend, 4 purchases at $26 each, 17 AddToCarts. This
+  is the engine the TOF campaign feeds: every TOF visitor enters the website-visitor pool, every
+  configure-and-add enters the AddToCart pool. BOF spend is capped by pool size, not budget, so the way
+  to grow it is to keep feeding it with TOF, not to crank its budget (that just raises frequency).

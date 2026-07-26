@@ -13,11 +13,13 @@ purest proof of the golden rule (self-serve online builder, we never say send us
   TOF opener.
 - **Framing: curved wall plates, for chippies.** Matches the winning live ad (AD5) and the number-one
   target. Captions frame the curve as wall plates.
-- **Hook: identity, matching the winner.** "Now any chippy can frame a curve." Carries the winning ad's
-  angle straight into the demo (hack 2 identity trigger, hack 6 scent match).
-- **Audio: silent + kinetic captions.** Feed and Reels autoplay muted, so the captions carry it.
-- **Scent (hack 6):** captions and CTA echo the live winning language ("cut to the exact radius",
-  "priced online", "punch in your radius") so the ad, the reel and the page all say the same thing.
+- **Build: 1200mm radius, 90mm wide plate, 90 degree angle, quantity 8.** A real order, so the instant
+  price at the end is a meaningful number, not a single-part figure.
+- **Hook: identity, matching the winner.** "Now any chippy can frame a curve." (hack 2, hack 6).
+- **Audio: silent + kinetic captions** for the muted ad. Voiceover is a later optional layer for the
+  sound-on product-page cut (see Runtime and VO below).
+- **Scent (hack 6):** captions and CTA echo the live winning language ("cut to the radius", "priced
+  online", "punch in your radius").
 - **House rules:** we cut, we do not bend. No em or en dashes anywhere.
 
 ## The reel-spec (paste into `content-engine/specs/radius-pro-wall-plates.json`)
@@ -28,7 +30,7 @@ purest proof of the golden rule (self-serve online builder, we never say send us
   "meta": {
     "title": "Curved wall plates",
     "product": "curves",
-    "dims": { "radius": 900, "width": 140, "angle": 135 },
+    "dims": { "radius": 1200, "width": 90, "angle": 90, "quantity": 8 },
     "material": "form-17",
     "aspect": "9:16",
     "fps": 30
@@ -36,13 +38,14 @@ purest proof of the golden rule (self-serve online builder, we never say send us
   "capture": {
     "url": "http://localhost:3000/",
     "fields": [
-      { "beat": "radius", "id": "specifiedRadius", "from": 1200, "to": 900, "dur": 1.1 },
-      { "beat": "width",  "id": "width",           "from": 100,  "to": 140, "dur": 1.0 },
-      { "beat": "angle",  "id": "angle",           "from": 90,   "to": 135, "dur": 1.2 }
+      { "beat": "radius",   "id": "specifiedRadius", "from": 900, "to": 1200, "dur": 0.9 },
+      { "beat": "width",    "id": "width",           "from": 140, "to": 90,   "dur": 0.4 },
+      { "beat": "angle",    "id": "angle",           "from": 45,  "to": 90,   "dur": 0.9 },
+      { "beat": "quantity", "id": "quantity",        "from": 1,   "to": 8,    "dur": 0.7 }
     ],
     "click": { "text": "Add Part" },
     "summaryHeading": "Order Summary",
-    "beats": { "settle": 1.0, "hold": 1.6 }
+    "beats": { "settle": 0.4, "breathe": 0.5, "summary": 0.7, "hold": 1.0 }
   },
   "shots": [
     { "type": "hook", "headline": "Now any chippy can frame a curve." },
@@ -50,11 +53,11 @@ purest proof of the golden rule (self-serve online builder, we never say send us
       "type": "ui-capture",
       "autozoom": true,
       "captions": [
-        { "beat": "radius",  "text": "Set your radius." },
-        { "beat": "width",   "text": "Plate width." },
-        { "beat": "angle",   "text": "Sweep the wall." },
-        { "beat": "summary", "text": "Cut to the exact radius." },
-        { "beat": "hold",    "text": "Priced online. Ready to order.", "pos": "top" }
+        { "beat": "radius",   "text": "Your radius." },
+        { "beat": "angle",    "text": "The angle." },
+        { "beat": "quantity", "text": "Eight parts." },
+        { "beat": "summary",  "text": "Cut to the radius." },
+        { "beat": "hold",     "text": "Priced online.", "pos": "top" }
       ]
     },
     { "type": "cta", "line": "Punch in your radius", "url": "craftons.com.au" }
@@ -65,28 +68,35 @@ purest proof of the golden rule (self-serve online builder, we never say send us
 }
 ```
 
-## Run it
+## Runtime and VO
 
-```bash
-# 1) real configurator running once (separate repo)
-cd /workspace/craftons-curves-calculator && npm install && npm run build && PORT=3000 npm start &
-# 2) from content-engine/
-npm install
-npm run render -- specs/radius-pro-wall-plates.json
-```
+The reel is **hook (2.2s, `HOOK_FRAMES` in `remotion/Reel.tsx`) + the capture + CTA (3.2s, `CTA_FRAMES`)**.
+With the beats above the capture is roughly 7 seconds, so the **whole reel lands around 12 seconds**.
+
+- **Under 10s is not worth forcing.** The hook and CTA alone are 5.4s, so a sub-10 total means a rushed
+  capture and a rushed price reveal. About 12s is the right length for a retarget and product-page demo
+  (under 15s is the threshold that matters).
+- **To go tighter to about 11s:** trim `CTA_FRAMES` from 96 to about 60 in `remotion/Reel.tsx` and pull
+  the `hold` beat down. That is a code change, not a copy change. Copy length does not drive runtime.
+- **Voiceover:** captions are the copy for the muted ad (feed and Reels autoplay silent), so keep them
+  short as above. VO is a separate optional layer for the sound-on product-page cut. Lee's instinct is
+  right: render the silent reel first, read the exact runtime off the render, then script the VO to fit
+  (about 12s is roughly 28 to 32 words). Do not block the ad on VO.
 
 ## Confirm before rendering (no guessing, verify against the live configurator)
 
-1. **Dimensions read as a wall plate.** The from/to values sit inside the ranges the bench-seat and
-   formwork specs already use, so they are safe, but open the configurator and check the built shape
-   reads as a feature-wall arc. If the tool allows a bigger radius, a larger, gentler curve looks more
-   like a wall. Nudge radius up for drama if it is in range.
-2. **Field IDs, click text, material.** `#specifiedRadius`, `#width`, `#angle`, the "Add Part" button,
-   the "Order Summary" heading, and material `form-17` (17mm Formply) all match the bench-seat spec, but
-   confirm they are current on the curves product before the run.
-3. **Hook alt for maximum scent match.** If you want the reel to mirror the live ad word for word, swap
-   the hook headline to the full winning line: "Any architect can draw a curve. Now any chippy can frame
-   one." Kept the shorter version above per the workshop pick.
+1. **Quantity input.** The spec animates a `quantity` field from 1 to 8. This assumes the configurator has
+   a numeric quantity INPUT with `id="quantity"`. **Confirm the real id** (could be `qty`, `partQty`, etc.).
+   If quantity is a plus/minus stepper rather than a text input, the capture script needs a small tweak
+   (the native setter only works on an input with an id). Tell me the id or point me at the calculator
+   repo and I will lock it.
+2. **Dimensions in range.** Targets radius 1200, width 90, angle 90 are Lee's. The from values (900, 140,
+   45) just give a visible sweep. Confirm 90mm width and 45 degree start are inside the configurator's
+   valid input ranges, adjust the from values if not (keep the to targets).
+3. **Plumbing current:** `#specifiedRadius`, `#width`, `#angle`, the "Add Part" button, "Order Summary"
+   heading, and material `form-17` all match the bench-seat spec, confirm they are still right.
+4. **Hook alt for maximum scent:** to mirror the live ad word for word, swap the hook to "Any architect
+   can draw a curve. Now any chippy can frame one." Kept the shorter version per the workshop pick.
 
 ## Where it goes once rendered
 

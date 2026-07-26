@@ -51,12 +51,12 @@ phone mockup of the configurator (Int. Radius 900, Width 90, Angle 90, Arc Lengt
     "fps": 30
   },
   "capture": {
-    "url": "http://localhost:3000/",
+    "url": "http://localhost:3000/apps/radius-pro",
     "fields": [
       { "beat": "radius",   "id": "specifiedRadius", "from": 900, "to": 1200, "dur": 0.9 },
       { "beat": "width",    "id": "width",           "from": 140, "to": 90,   "dur": 0.4 },
       { "beat": "angle",    "id": "angle",           "from": 45,  "to": 90,   "dur": 0.9 },
-      { "beat": "quantity", "id": "quantity",        "from": 1,   "to": 8,    "dur": 0.7 }
+      { "beat": "quantity", "id": "part-quantity",   "from": 1,   "to": 8,    "dur": 0.7 }
     ],
     "click": { "text": "Add Part" },
     "summaryHeading": "Order Summary",
@@ -98,26 +98,34 @@ With the beats above the capture is roughly 7 seconds, so the **whole reel lands
   right: render the silent reel first, read the exact runtime off the render, then script the VO to fit
   (about 12s is roughly 28 to 32 words). Do not block the ad on VO.
 
-## Confirm before rendering (no guessing, verify against the live configurator)
+## Verified against the calculator repo (leepatt/craftons-curves-calculator)
 
-1. **Quantity: does it even exist on the config screen?** The static retarget ad shows the config panel
-   with radius, width, angle and computed lengths, but **no quantity field**. So quantity to 8 may live at
-   the cart or parts-list stage, not on the config screen. Confirm: is there a numeric quantity INPUT
-   (and its id) on the config screen? If yes, the spec's `quantity` beat works (fix the id). If quantity
-   is only in the cart, or is a plus/minus stepper, either drop the quantity beat (show the single-part
-   price) or extend the capture to set quantity in the cart step (a longer clip). Do not render the
-   quantity beat until this is confirmed.
-2. **The payoff button: "Add Part" or "Add to Cart"?** The bench-seat spec clicks "Add Part"; the static
-   ad mockup shows "Add to Cart". The capture aborts if it clicks text that is not on screen. Confirm the
-   real button text on the config screen and set `capture.click.text` to match.
-3. **Dimensions in range.** Targets radius 1200, width 90, angle 90 are Lee's. The from values (900, 140,
-   45) just give a visible sweep. Confirm 90mm width and 45 degree start are inside the configurator's
-   valid input ranges, adjust the from values if not (keep the to targets).
-4. **Plumbing current:** `#specifiedRadius`, `#width`, `#angle` (labels Int. Radius / Width / Angle on
-   the static confirm these three inputs), "Order Summary" heading, and material `form-17` all match the
-   bench-seat spec, confirm they are still right.
-5. **Hook alt for maximum scent:** to mirror the live ad word for word, swap the hook to "Any architect
-   can draw a curve. Now any chippy can frame one." Kept the shorter version per the workshop pick.
+Checked in code, so the spec is render-ready with no guesses:
+- **App route:** the Radius Pro app is at `/apps/radius-pro` (`src/app/apps/radius-pro/page.tsx`), so the
+  capture URL is `http://localhost:3000/apps/radius-pro`. This is the radius-online configurator, not the
+  generic curves builder at `/`.
+- **Inputs (with valid ranges):** `specifiedRadius` (min 1, max 50000), `width` (min 1, max 1190),
+  `angle` (min 1, max 359.9). Every from and to value in the spec sits inside these.
+- **Quantity:** a real number input, `id="part-quantity"` (type number, min 1). The native setter drives
+  it straight to 8.
+- **Button:** "Add Part" (confirmed in `RadiusProBuilderForm.tsx`), matching the spec.
+- **Material:** `form-17` is a valid id (Formply, 17mm), so the reel shows 17mm Formply, matching the
+  winning ad.
+- **Radius type** defaults to internal (the static's "Int. Radius"), so nothing to set there.
+
+## One render-quality check
+
+`part-quantity` sits BELOW the radius, width and angle inputs, and the capture sets all fields while the
+view is still at the top of the form. The value and the price update correctly (the 8-part price shows at
+the summary), but the qty stepper ticking to 8 may not be framed on screen at the moment it is set. On
+the first render, eyeball the quantity beat. If you want it visibly framed, either move the "Eight parts"
+caption to the summary beat, or add a small scroll to the qty field in `capture/capture.mjs` (a code
+tweak, not a spec change). The 8-part price payoff lands either way.
+
+## Hook alt for maximum scent
+
+To mirror the live ad word for word, swap the hook to "Any architect can draw a curve. Now any chippy can
+frame one." Kept the shorter version per the workshop pick.
 
 ## Where it goes once rendered
 

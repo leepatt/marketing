@@ -22,6 +22,21 @@ purest proof of the golden rule (self-serve online builder, we never say send us
   online", "punch in your radius").
 - **House rules:** we cut, we do not bend. No em or en dashes anywhere.
 
+## Visual reference (the live static retarget ad this reel challenges)
+
+The current static (screenshot from Lee): 9:16 dark ground, green eyebrow "RADIUS PRO . ONLINE
+CONFIGURATOR", headline "Design custom curves and radius parts. Online." with "Online." in green, a
+phone mockup of the configurator (Int. Radius 900, Width 90, Angle 90, Arc Length 1414, Chord Length
+1273), the curve motif top right, Craftons wordmark.
+- **Match the look:** same dark ground, green accent, curve motif, "Online" emphasis, Aeonik. The spec's
+  `brand.motif: true` and `look: "stylized"` cover this.
+- **Different on purpose:** the static is a phone-in-phone mockup with a designed mechanism headline. The
+  reel captures the REAL UI in motion (more native, hack 4) and leads with the identity hook. So the A/B
+  is polished-static vs authentic-motion AND mechanism vs identity, a real hack-7 different-angle test,
+  not a duplicate.
+- The static's dims (r900 w90 angle90) are the same shape the reel builds (ends r1200 w90 angle90), so
+  the ad and the reel stay visually consistent.
+
 ## The reel-spec (paste into `content-engine/specs/radius-pro-wall-plates.json`)
 
 ```json
@@ -85,17 +100,23 @@ With the beats above the capture is roughly 7 seconds, so the **whole reel lands
 
 ## Confirm before rendering (no guessing, verify against the live configurator)
 
-1. **Quantity input.** The spec animates a `quantity` field from 1 to 8. This assumes the configurator has
-   a numeric quantity INPUT with `id="quantity"`. **Confirm the real id** (could be `qty`, `partQty`, etc.).
-   If quantity is a plus/minus stepper rather than a text input, the capture script needs a small tweak
-   (the native setter only works on an input with an id). Tell me the id or point me at the calculator
-   repo and I will lock it.
-2. **Dimensions in range.** Targets radius 1200, width 90, angle 90 are Lee's. The from values (900, 140,
+1. **Quantity: does it even exist on the config screen?** The static retarget ad shows the config panel
+   with radius, width, angle and computed lengths, but **no quantity field**. So quantity to 8 may live at
+   the cart or parts-list stage, not on the config screen. Confirm: is there a numeric quantity INPUT
+   (and its id) on the config screen? If yes, the spec's `quantity` beat works (fix the id). If quantity
+   is only in the cart, or is a plus/minus stepper, either drop the quantity beat (show the single-part
+   price) or extend the capture to set quantity in the cart step (a longer clip). Do not render the
+   quantity beat until this is confirmed.
+2. **The payoff button: "Add Part" or "Add to Cart"?** The bench-seat spec clicks "Add Part"; the static
+   ad mockup shows "Add to Cart". The capture aborts if it clicks text that is not on screen. Confirm the
+   real button text on the config screen and set `capture.click.text` to match.
+3. **Dimensions in range.** Targets radius 1200, width 90, angle 90 are Lee's. The from values (900, 140,
    45) just give a visible sweep. Confirm 90mm width and 45 degree start are inside the configurator's
    valid input ranges, adjust the from values if not (keep the to targets).
-3. **Plumbing current:** `#specifiedRadius`, `#width`, `#angle`, the "Add Part" button, "Order Summary"
-   heading, and material `form-17` all match the bench-seat spec, confirm they are still right.
-4. **Hook alt for maximum scent:** to mirror the live ad word for word, swap the hook to "Any architect
+4. **Plumbing current:** `#specifiedRadius`, `#width`, `#angle` (labels Int. Radius / Width / Angle on
+   the static confirm these three inputs), "Order Summary" heading, and material `form-17` all match the
+   bench-seat spec, confirm they are still right.
+5. **Hook alt for maximum scent:** to mirror the live ad word for word, swap the hook to "Any architect
    can draw a curve. Now any chippy can frame one." Kept the shorter version per the workshop pick.
 
 ## Where it goes once rendered

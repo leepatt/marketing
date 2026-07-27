@@ -75,29 +75,35 @@ not bend. No em or en dashes.
 Delivery is locked at 2 days (matches the "2 Days" turnaround on the screen grab). Fields named are real:
 Width is the on-screen "Width (w)" field.
 
-## Generating the presenter with Veo 3
+## Generating the presenter with Veo 3 (from Lee's avatar image)
 
-Veo 3 does native dialogue and lip-sync, so it can speak the VO. Clips are short (about 8 seconds), so the
-~12s leaner cut is two clips, the ~18s primary is three. Keep the same character across clips (reuse the
-description word for word, and use the last frame of clip 1 as the reference image for clip 2).
+We animate a specific still Lee provided: a friendly presenter at a podcast mic in a warm home studio,
+landscape. Veo 3 (in Gemini) does image-to-video with native dialogue and lip-sync. Clips run about 8
+seconds, so the primary VO is two clips. Feed the same still as the start frame each time. To smooth the
+join, use the last frame of clip 1 as the start image for clip 2, or cut to the screen grab on the seam.
 
-**Reusable scene + character block (put this in every clip prompt):**
+**Final layout (matches the Instagram reference):** 9:16 vertical, the landscape Radius Pro screen grab on
+top, this landscape avatar below. So generate the avatar in 16:9 landscape, matching the image.
 
-> A rugged Australian carpenter in his 30s, hi-vis work shirt, standing in a bright timber workshop with
-> curved plywood offcuts on the bench behind him. Natural daylight. He talks straight to camera like he is
-> telling a mate, relaxed and genuine, light Australian accent. Framed in the lower two thirds of a 9:16
-> vertical frame, with a plain wall and workshop space in the upper third above his head (leave that space
-> clear for a graphic overlay). Handheld, natural, unpolished. No subtitles, no on-screen text, no captions.
+**Paste into Gemini (attach the image), swap the line per clip:**
 
-**Then append the spoken line per clip, in quotes, e.g.:**
-- Clip 1: `He says: "Radius Pro is dead simple. I just add every curved plate off my plans to the parts list."`
-- Clip 2: `He says: "Set the angle, the width, the quantity, check out, and they turn up cut to size, two days later."`
+> Animate this photo into a natural talking-head video. The man looks straight into the camera and talks to
+> it like he is chatting to a mate: warm, easy, confident, relaxed Australian accent. Give him subtle life:
+> small head movements and nods, natural blinking, a slight friendly smile, easy breathing and light
+> shoulder movement. He stays seated at the podcast mic. Keep the background, lighting and framing exactly
+> as in the image. Accurate lip-sync to the words. Clean close-mic voice with soft warm room tone, no music.
+> 16:9 landscape, matching the photo. No subtitles, no captions, no on-screen text.
+>
+> He says: "[LINE]"
 
-**Veo 3 notes:**
-- The upper-third framing leaves room for the Radius Pro screen grab to sit in the top third in edit.
-- Keep it looking unpolished. If Veo makes him too glossy or corporate, regenerate. Native is the point.
-- No burned-in captions from Veo (we add our own for silent autoplay).
-- Vertical 9:16. Generate a few takes and pick the most natural, human one.
+**Lines (our approved copy, primary cut, two clips):**
+- Clip 1: `"Radius Pro is so simple to use. I just go through my plans and add all my curved plates to the parts list."`
+- Clip 2: `"You set the angle, the width and the quantity, then check out, and they turn up cut to size, two days later."`
+
+**Notes:**
+- Generate a few takes per clip and pick the most natural, least stiff one.
+- No burned-in captions from Gemini (we add our own for silent autoplay).
+- Keep it human. If he looks too glossy or robotic, regenerate. A too-slick avatar reads as an ad.
 
 **Copy notes (from the hacks):**
 - Native first (hack 4): a real person's workflow, unpolished. If it sounds like a voiceover artist, redo it.

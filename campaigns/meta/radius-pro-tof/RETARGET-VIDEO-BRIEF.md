@@ -107,28 +107,32 @@ top, this landscape avatar below. So generate the avatar in 16:9 landscape, matc
 - No burned-in captions from Gemini (we add our own for silent autoplay).
 - Keep it human. If he looks too glossy or robotic, regenerate. A too-slick avatar reads as an ad.
 
-## Stronger variant: the carpenter on site (fixes hack 4 + hack 2)
+## Stronger variant: the boss on a high-end job (fixes hack 4 + hack 2)
 
-The polished podcast presenter reads as a professional "presenter ad". A tradie on a job site reads as a
-real person filming himself, which is the whole native advantage (hack 4), and it makes the identity
-trigger visual and instant (hack 2): a builder sees one of their own before a word is spoken. Keep the
-same face and framing for continuity by editing the existing avatar photo, then animate that.
+The polished podcast presenter reads as a professional "presenter ad". The same man as the boss on a
+near-finished high-end job reads as a real person filming himself, which is the whole native advantage
+(hack 4), and it makes the identity trigger visual and instant (hack 2): a builder sees one of their own
+before a word is spoken. Keep the same face and framing by editing the existing V2 avatar photo, then
+animate that. Decisions (with Lee): same guy, khaki shirt + plain black puffer (no logo), no hard hat,
+a subtle curved feature wall behind him.
 
-**Step 1. Image-edit the existing avatar photo (Gemini), keep the man and framing:**
+**Step 1. Image-edit the existing V2 avatar photo (Gemini), keep the man and framing:**
 
-> Edit this photo. Keep the same man, his face, pose and the camera framing exactly. Change his clothing
-> to a carpenter's work outfit: a dusty hi-vis work shirt over a t-shirt, with a tool belt. Replace the
-> home-studio background with a residential building site: timber wall framing, a partially built house,
-> tools on a workbench, natural overcast daylight. Remove the podcast microphone. Keep it looking like a
-> real, slightly unpolished phone photo taken on site, candid and natural, not a studio shot. 16:9 landscape.
+> Edit this photo. Keep the same man, his face, hair, pose and the camera framing exactly. Change his
+> clothing to a khaki button-up work shirt with a plain black puffer vest over the top, no logos or text on
+> it. He should look put-together and confident, like the boss of the job. Replace the home-studio
+> background with the interior of a high-end house at finishing stage: a warm, near-finished room with a
+> subtle curved feature wall visible behind him (present but not the focus), and protective cardboard sheets
+> laid over the floor. Natural indoor daylight. Remove the podcast microphone. Keep it looking like a real,
+> candid phone photo taken on site, natural and believable, not a glossy studio shot. 16:9 landscape.
 
 **Step 2. Animate the edited photo (Gemini / Veo 3), same settings, swap the line per clip:**
 
-> Animate this photo into a natural talking-head video. The carpenter looks straight into the camera and
-> talks like he is telling a mate on site: warm, easy, confident. Subtle life: small head movements and
-> nods, natural blinking, a slight friendly smile, easy breathing and light shoulder movement. Keep the
-> building-site background, lighting and framing exactly as in the image. Accurate lip-sync. Clean voice
-> with light outdoor site ambience, no music. 16:9 landscape. No subtitles, no captions, no on-screen text.
+> Animate this photo into a natural talking-head video. The man looks straight into the camera and talks
+> like he is telling a mate on the job: warm, easy, confident. Subtle life: small head movements and nods,
+> natural blinking, a slight friendly smile, easy breathing and light shoulder movement. Keep the interior
+> background, lighting and framing exactly as in the image. Accurate lip-sync. Clean voice with quiet indoor
+> room tone, no music. 16:9 landscape. No subtitles, no captions, no on-screen text.
 >
 > Voice: Zubenelgenubi. Accent: Australian, casual and warm. Temperature: 1.2.
 >

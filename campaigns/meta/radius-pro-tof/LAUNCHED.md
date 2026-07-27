@@ -49,6 +49,27 @@ Marketing API. This file is the record of exactly what is running.
   days), then clone the winner to Formworkers and to the AD4/AD5 job types once we have those photos.
 - Judge on net cash, not ROAS % or Meta's Opportunity Score.
 
+## Retargeting (BOF) video A/B, live 2026-07-27
+
+The boss-avatar config video went live in the existing BOF retargeting ad set to run head to head against
+the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the producer, test against it).
+
+- **Campaign:** `120232888615730186` Retargeting Campaign - Bottom Of Funnel (OUTCOME_SALES)
+- **Ad set:** `120232888615720186` "- Add To Cart", optimising OFFSITE_CONVERSIONS (Add To Cart).
+  **Budget raised $15 to $30/day** on 2026-07-27.
+- **New ad:** `120247285566810186` "Retargeting - Radius Pro boss video (highlights)", video
+  `2576437746132450`, creative `1379110744170312`. CTA Shop Now to
+  `products/radius-online` with `utm_content=boss_video_highlights`. Preview:
+  https://fb.me/21UH35mEPhS8k3H
+- **Competing against:** `120233970244410186` "Bottom Of Funnel - Ad 2" (the incumbent, 45 add-to-carts
+  and $5,092 value over the last 30 days) and `120245221715860186` "Configurator Hero Ad D".
+- **The creative:** 9:16 10s. Top panel is a real screen recording of the Radius Pro configurator
+  (radius 1200, width 90, angle 90, qty 8, Add Part, scroll to the $367 order summary and Add to Cart).
+  Bottom panel is the AI boss avatar on a high-end job speaking the approved first-person VO. Highlight
+  captions in Aeonik Regular.
+- **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
+  incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
+
 ## Performance log
 
 ### 2026-07-25 day-3 read (lifetime Jul 22 to 25, $331.66 spend, 4,003 landing page views, blended $0.083 per LPV, frequency ~1.05 across all ads so no fatigue)

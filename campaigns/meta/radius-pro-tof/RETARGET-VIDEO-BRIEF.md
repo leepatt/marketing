@@ -155,3 +155,22 @@ Same two lines as above. This slots straight into the composite in place of the 
 2. Screen grab the Radius Pro flow (or reuse the config-demo capture) for the top third.
 3. Edit: screen grab top third, presenter below, burned-in captions for silent autoplay.
 4. Run it in the retargeting ad set as a second creative against the static and the config-demo reel.
+
+## The published ad caption (Sabri structure)
+
+Used on the live retarget video ad (2026-07-27). Problem, agitate, the turn with real numbers, the
+triplet, soft mechanism close. No em or en dashes.
+
+```
+The curved wall is always the bit that blows the program.
+
+Marking it out, snapping jigsaw blades chasing the line, binning half a pack of ply, and it's still never quite true.
+
+Radius Pro is the other way. Pull your curved plates off the plans, punch in the radius, the width and the angle, set how many you need, and check out. Every plate turns up cut to the exact radius out of 17mm formply, engraved and ready to stand. Two days.
+
+No marking out. No jigsaw. No waste.
+
+If the curved jobs are the ones that always cost you a day, they don't have to. Punch in your radius, we cut the plates.
+
+Design yours online at craftons.com.au
+```

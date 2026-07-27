@@ -61,22 +61,43 @@ not bend. No em or en dashes.
 |---|---|
 | "Radius Pro is so simple to use." | Radius Pro open |
 | "I just go through my plans and add all my curved plates to the parts list." | Adding parts, the list filling up |
-| "You set the angle, the thickness, the quantity for each one." | Editing angle, material, quantity |
-| "Then check out, and they turn up cut to size, three days later." | Order summary, then checkout |
+| "You set the angle, the width, the quantity for each one." | Editing angle, width, quantity |
+| "Then check out, and they turn up cut to size, two days later." | Order summary, then checkout |
 
 **Leaner cut (about 12 seconds):**
 
 | VO (talking head, first person) | Top-third screen grab |
 |---|---|
 | "Radius Pro is dead simple." | Radius Pro open |
-| "I add every curved plate off my plans to the list, set the angle, thickness and quantity, and check out." | Parts list + editing fields + checkout |
-| "They turn up cut to size a few days later." | Order summary |
+| "I add every curved plate off my plans to the list, set the angle, width and quantity, and check out." | Parts list + editing fields + checkout |
+| "They turn up cut to size, two days later." | Order summary |
 
-**To confirm before recording:**
-- **Delivery number:** the configurator shows "2 Days" turnaround on screen. Lee's draft says arrive
-  "3 days later". Use whichever is the true delivered timeframe, and make sure the number spoken matches
-  what the screen grab shows.
-- **"Thickness":** natural to say, but the on-screen field is "Material" (Formply 17mm sets the thickness).
+Delivery is locked at 2 days (matches the "2 Days" turnaround on the screen grab). Fields named are real:
+Width is the on-screen "Width (w)" field.
+
+## Generating the presenter with Veo 3
+
+Veo 3 does native dialogue and lip-sync, so it can speak the VO. Clips are short (about 8 seconds), so the
+~12s leaner cut is two clips, the ~18s primary is three. Keep the same character across clips (reuse the
+description word for word, and use the last frame of clip 1 as the reference image for clip 2).
+
+**Reusable scene + character block (put this in every clip prompt):**
+
+> A rugged Australian carpenter in his 30s, hi-vis work shirt, standing in a bright timber workshop with
+> curved plywood offcuts on the bench behind him. Natural daylight. He talks straight to camera like he is
+> telling a mate, relaxed and genuine, light Australian accent. Framed in the lower two thirds of a 9:16
+> vertical frame, with a plain wall and workshop space in the upper third above his head (leave that space
+> clear for a graphic overlay). Handheld, natural, unpolished. No subtitles, no on-screen text, no captions.
+
+**Then append the spoken line per clip, in quotes, e.g.:**
+- Clip 1: `He says: "Radius Pro is dead simple. I just add every curved plate off my plans to the parts list."`
+- Clip 2: `He says: "Set the angle, the width, the quantity, check out, and they turn up cut to size, two days later."`
+
+**Veo 3 notes:**
+- The upper-third framing leaves room for the Radius Pro screen grab to sit in the top third in edit.
+- Keep it looking unpolished. If Veo makes him too glossy or corporate, regenerate. Native is the point.
+- No burned-in captions from Veo (we add our own for silent autoplay).
+- Vertical 9:16. Generate a few takes and pick the most natural, human one.
 
 **Copy notes (from the hacks):**
 - Native first (hack 4): a real person's workflow, unpolished. If it sounds like a voiceover artist, redo it.

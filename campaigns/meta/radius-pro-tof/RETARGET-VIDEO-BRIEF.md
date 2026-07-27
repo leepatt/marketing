@@ -128,11 +128,13 @@ a subtle curved feature wall behind him.
 
 **Step 2. Animate the edited photo (Gemini / Veo 3), same settings, swap the line per clip:**
 
-> Animate this photo into a natural talking-head video. The man looks straight into the camera and talks
-> like he is telling a mate on the job: warm, easy, confident. Subtle life: small head movements and nods,
-> natural blinking, a slight friendly smile, easy breathing and light shoulder movement. Keep the interior
-> background, lighting and framing exactly as in the image. Accurate lip-sync. Clean voice with quiet indoor
-> room tone, no music. 16:9 landscape. No subtitles, no captions, no on-screen text.
+> Animate this photo into a natural talking-head video. The man stays standing in one spot and talks
+> straight to the camera like he is telling a mate on the job: warm, easy, confident. He does not walk or
+> move around the room, and the camera is locked off, static, with no panning, zooming or camera movement.
+> Only subtle, natural life: small head movements and nods, natural blinking, a slight friendly smile, easy
+> breathing and a light shoulder or hand gesture. Keep the interior background, lighting and framing exactly
+> as in the image. Accurate lip-sync. Clean voice with quiet indoor room tone, no music. 16:9 landscape. No
+> subtitles, no captions, no on-screen text.
 >
 > Voice: Zubenelgenubi. Accent: Australian, casual and warm. Temperature: 1.2.
 >

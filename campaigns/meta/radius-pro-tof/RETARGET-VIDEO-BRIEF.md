@@ -100,6 +100,11 @@ top, this landscape avatar below. So generate the avatar in 16:9 landscape, matc
 - Clip 1: `"Radius Pro is so simple to use. I just go through my plans and add all my curved plates to the parts list."`
 - Clip 2: `"You set the angle, the width and the quantity, then check out, and they turn up cut to size, two days later."`
 
+**Generation settings (Gemini):**
+- Voice: Zubenelgenubi
+- Accent: Australian
+- Temperature: 1.2
+
 **Notes:**
 - Generate a few takes per clip and pick the most natural, least stiff one.
 - No burned-in captions from Gemini (we add our own for silent autoplay).

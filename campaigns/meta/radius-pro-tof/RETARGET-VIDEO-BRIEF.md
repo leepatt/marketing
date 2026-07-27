@@ -47,35 +47,42 @@ NOT watch the footage or hear the audio. Everything below is split into confirme
 - **Presenter:** builder-to-builder voice. Works whether it is Lee or an actual chippy. Real beats polished.
 - **Production:** phone camera, direct screen grab, one take. Native is the goal, not a studio look.
 
-## The script (scripted from the 8 hacks copy template)
+## The script: a short how-to on the Radius Pro tool
 
-Structure follows the validated template: quoted-question hook, identity line, agitate the old way, the
-turn, the proof with real numbers, soft mechanism close. The numbers are the real ones from the live
-configurator. We cut, we do not bend. No em or en dashes.
+This is a pure walk-through, not the story ad. For the retargeting audience (they already know the
+product) the sharpest angle is "watch how fast this is" (hack 7: a different angle for the warm bouncer).
+Every line is one on-screen action, so the VO and the screen grab move together. Numbers are the real
+ones from the live configurator. We cut, we do not bend. No em or en dashes.
 
-| Time | Presenter says (talking head) | Top-third screen grab shows |
-|---|---|---|
-| 0 to 4s | "If you have got a curved wall coming up, watch this before you start marking out plates by hand." | Radius Pro page open, the curve on screen |
-| 4 to 9s | "Every chippy hits the same job. The architect draws a curve, and now it is your problem to frame it." | The curved plate in the viewer |
-| 9 to 16s | "The old way is Year 10 maths, a jigsaw, and a day you did not have. Cutting every plate by hand, chasing the line, binning half a pack of ply." | Still on the curve |
-| 16 to 24s | "Here is the other way. Punch in your radius. Your width. The angle. How many you need." | Typing 1200, then 90, then 90, then quantity 8 |
-| 24 to 31s | "That is eight curved plates, cut to the exact radius out of 17 mil formply. Three hundred and seventy one dollars, turns up in two days, every part engraved." | The order summary: Qty 8, $371.98, 2 days |
-| 31 to 36s | "No Pythagoras, no jigsaw, no waste. Laminate two and stand your wall." | Add to cart / the finished part |
-| 36 to 40s | Soft close, pick one below. | Craftons logo, craftons.com.au |
+**Primary cut (about 15 seconds):**
 
-**Two CTA options for the close:**
-- Direct: "It is all online at craftons dot com dot au. Punch in your radius, we cut the plates."
-- Comment mechanic (mirrors the reference, hack 7): "Comment RADIUS and I will send you the link." This
-  drives comments and builds a warm list you can DM and retarget.
+| VO (talking head) | Top-third screen grab |
+|---|---|
+| "Curved wall plates, priced in about ten seconds." | Radius Pro open, the curve |
+| "Open Radius Pro. Punch in your radius. Your width. Your angle. And how many you need." | Typing 1200, 90, 90, qty 8 |
+| "There is your price. Cut to the exact radius, delivered in two days." | Order summary: Qty 8, $371.98, 2 days |
+| "Add to cart, and stand your wall." | Add to cart, then logo |
+
+**Longer cut (about 22 seconds), if you want the real numbers called out:**
+
+| VO (talking head) | Top-third screen grab |
+|---|---|
+| "Here is how to price a curved wall plate without leaving the site." | Radius Pro open |
+| "Open Radius Pro. Punch in your internal radius, twelve hundred. Plate width, ninety. Angle, ninety degrees. How many, say eight." | Typing 1200, 90, 90, qty 8 |
+| "There is your price. Eight plates, cut to the exact radius out of 17 mil formply. Three seventy one, delivered in two days, every part engraved." | Order summary: Qty 8, $371.98, 2 days |
+| "Add to cart. We cut them, you stand the wall." | Add to cart, then logo |
+
+**Two CTA options for the last line:**
+- Direct: "It is all online at craftons dot com dot au."
+- Comment mechanic (mirrors the reference, hack 7): "Comment RADIUS and I will send you the link." Drives
+  comments and builds a warm list to DM and retarget.
 
 **Copy notes (from the hacks):**
-- Hook passes U-U-S-U: it is specific (curved wall), useful (watch before you cut), and urgent (before
-  you start).
-- Identity word ("chippy") in the opening lines (hack 2). Swap it to "builder", "carpenter",
-  "shopfitter" or "formworker" to clone the same script for another trade.
+- Keep it a how-to, no selling and no problem story. The tool doing the work IS the pitch.
+- Swap one word to clone it for another trade: chippy, builder, carpenter, shopfitter, formworker (hack 2).
 - Every number is true (1200, 90, 8, 17mm, $371.98, 2 days). Never invent specs.
-- Scent match (hack 6): "punch in your radius", "cut to the exact radius", "priced online" all match the
-  live ads and the landing page.
+- Scent match (hack 6): "punch in your radius", "cut to the exact radius", "priced" all match the live ads
+  and the landing page.
 - Product truth: we CUT the plates, we never bend. Self-serve only, never "send us your plans".
 
 ## Next steps

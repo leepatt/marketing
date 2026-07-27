@@ -94,16 +94,13 @@ top, this landscape avatar below. So generate the avatar in 16:9 landscape, matc
 > as in the image. Accurate lip-sync to the words. Clean close-mic voice with soft warm room tone, no music.
 > 16:9 landscape, matching the photo. No subtitles, no captions, no on-screen text.
 >
+> Voice: Zubenelgenubi. Accent: Australian, casual and warm. Temperature: 1.2.
+>
 > He says: "[LINE]"
 
 **Lines (our approved copy, primary cut, two clips):**
 - Clip 1: `"Radius Pro is so simple to use. I just go through my plans and add all my curved plates to the parts list."`
 - Clip 2: `"You set the angle, the width and the quantity, then check out, and they turn up cut to size, two days later."`
-
-**Generation settings (Gemini):**
-- Voice: Zubenelgenubi
-- Accent: Australian
-- Temperature: 1.2
 
 **Notes:**
 - Generate a few takes per clip and pick the most natural, least stiff one.

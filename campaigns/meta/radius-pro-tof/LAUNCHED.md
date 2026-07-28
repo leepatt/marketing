@@ -80,6 +80,13 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
     raised (MarginV 470) out of the bottom UI band.
   - **Rule for any future video ad: never ship a lone 9:16 to feed placements.** Build the 4:5 for feed
     and the 9:16 for stories/reels, and keep captions inside the safe zone.
+- **2026-07-28 layout v4 (current, approved).** A first attempt shrank the config into a card on green to
+  give the avatar height. Lee rejected it. The approved layout keeps the **config full width and fully
+  visible** (1080x608, nothing clipped, the $367 total and Add to Cart readable) and instead **zooms into
+  the avatar and crops his lower body away** so his head and shoulders fill the lower box, with captions
+  moved up over his chest. Live creative `1460862622515293`, videos 4:5 `2568143297034491` and 9:16
+  `1031224343103271`. Preview https://fb.me/ylV2s9P1twL1A1h
+  **Lesson: to give the presenter more presence, crop INTO the presenter. Do not shrink the product demo.**
 - **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
   incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
 - **2026-07-27 decisions:** Ad 2 left running untouched (it is the producer, 11.68 ROAS over 30 days).

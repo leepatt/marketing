@@ -156,24 +156,24 @@ Same two lines as above. This slots straight into the composite in place of the 
 3. Edit: screen grab top third, presenter below, burned-in captions for silent autoplay.
 4. Run it in the retargeting ad set as a second creative against the static and the config-demo reel.
 
-## The published ad caption (first person, matches the video)
+## The published ad caption (live, v5)
 
-Live on the retarget video ad from 2026-07-27 (creative `1729446611812943`). Reworked from the original
-cold problem-story caption: this ad runs to a WARM retarget audience who already know the pain and have
-already seen the site, so the caption matches the video's relaxed first-person workflow instead of
-re-selling the problem. Real numbers off the actual screen. No em or en dashes.
+Live on the retarget video ad, creative `1858580765547683`. First-person to match the video and the warm
+retarget audience. The spelled-out price and the engraving mention were cut on Lee's call: the number
+dates the copy and the video already shows the real total on screen. No em or en dashes.
 
 ```
 This is how I price curved wall plates now.
 
 Pull the curves off the plans, punch in the radius, the width and the angle, then tell it how many you need. The price updates as you go.
 
-The one on screen is eight curved plates, 1200 radius, 90 wide, out of 17mm formply. Three hundred and sixty seven dollars, every part engraved, cut to size, here in two business days.
+The one on screen is eight curved plates, 1200 radius, 90 wide, out of 17mm formply. Cut to size, here in two business days.
 
 No marking out. No jigsaw. No waste.
 
 Punch in your radius at craftons.com.au and see what your curve costs.
 ```
 
-**Superseded (v1, cold problem-story version, kept for reference):** opened "The curved wall is always the
-bit that blows the program." Right structure for a COLD audience, wrong temperature for retargeting.
+**Superseded:** v1 the cold problem-story caption ("The curved wall is always the bit that blows the
+program"), right structure for cold traffic but the wrong temperature for a warm retarget pool. v4 was
+this same copy but still carried "Three hundred and sixty seven dollars, every part engraved".

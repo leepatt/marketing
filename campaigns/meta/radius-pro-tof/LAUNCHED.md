@@ -69,6 +69,17 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   (radius 1200, width 90, angle 90, qty 8, Add Part, scroll to the $367 order summary and Add to Cart).
   Bottom panel is the AI boss avatar on a high-end job speaking the approved first-person VO. Highlight
   captions in Aeonik Regular.
+- **2026-07-28 CROP FIX (important, do not regress).** The single 9:16 video was being centre-cropped in
+  the Instagram feed (IG feed caps at 4:5), cutting the top off the configurator and pushing the captions
+  under the nav bar. Fixed by building placement-specific sizes and a placement-customised creative
+  `1047936567593444` (asset_feed_spec with asset_customization_rules):
+  - **4:5 `1080x1350`, video `1514548613329069`** to FB feed / video feeds / marketplace / search and IG
+    stream / explore / search. Config sits full width at the top (1080x608), avatar below (1080x742),
+    captions over his chest clear of the feed UI.
+  - **9:16 `1080x1920`, video `1228564626028777`** to FB and IG stories and reels, with the captions
+    raised (MarginV 470) out of the bottom UI band.
+  - **Rule for any future video ad: never ship a lone 9:16 to feed placements.** Build the 4:5 for feed
+    and the 9:16 for stories/reels, and keep captions inside the safe zone.
 - **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
   incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
 - **2026-07-27 decisions:** Ad 2 left running untouched (it is the producer, 11.68 ROAS over 30 days).

@@ -69,6 +69,11 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   captions in Aeonik Regular.
 - **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
   incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
+- **2026-07-27 decisions:** Ad 2 left running untouched (it is the producer, 11.68 ROAS over 30 days).
+  Ad set budget raised $15 to $30/day. **"Configurator Hero Ad D" `120245221715860186` PAUSED** (4
+  add-to-carts, 0.29 ROAS) so the bigger budget concentrates on Ad 2 and the new video and the A/B stays
+  clean. Reassess after 3 days (a check-in is scheduled for about 2026-07-31): compare add-to-carts,
+  value, cost per add-to-cart and ROAS. Judge on net cash, not CTR.
 
 ## Performance log
 

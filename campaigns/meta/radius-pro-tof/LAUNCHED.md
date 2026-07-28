@@ -59,8 +59,10 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   **Budget raised $15 to $30/day** on 2026-07-27.
 - **New ad:** `120247285566810186` "Retargeting - Radius Pro boss video (highlights)", video
   `2576437746132450`, creative `1379110744170312`. CTA Shop Now to
-  `products/radius-online` with `utm_content=boss_video_highlights`. Preview:
-  https://fb.me/21UH35mEPhS8k3H
+  `products/radius-online` with `utm_content=boss_video_highlights`. Caption reworked to the first-person
+  version on 2026-07-27 (creative `1729446611812943`, replacing `1379110744170312`, because the cold
+  problem-story copy was the wrong temperature for a warm retarget pool). Preview:
+  https://fb.me/37jXDrCtbEfoEi7
 - **Competing against:** `120233970244410186` "Bottom Of Funnel - Ad 2" (the incumbent, 45 add-to-carts
   and $5,092 value over the last 30 days) and `120245221715860186` "Configurator Hero Ad D".
 - **The creative:** 9:16 10s. Top panel is a real screen recording of the Radius Pro configurator

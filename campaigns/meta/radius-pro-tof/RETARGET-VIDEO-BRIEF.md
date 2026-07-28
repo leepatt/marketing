@@ -156,21 +156,24 @@ Same two lines as above. This slots straight into the composite in place of the 
 3. Edit: screen grab top third, presenter below, burned-in captions for silent autoplay.
 4. Run it in the retargeting ad set as a second creative against the static and the config-demo reel.
 
-## The published ad caption (Sabri structure)
+## The published ad caption (first person, matches the video)
 
-Used on the live retarget video ad (2026-07-27). Problem, agitate, the turn with real numbers, the
-triplet, soft mechanism close. No em or en dashes.
+Live on the retarget video ad from 2026-07-27 (creative `1729446611812943`). Reworked from the original
+cold problem-story caption: this ad runs to a WARM retarget audience who already know the pain and have
+already seen the site, so the caption matches the video's relaxed first-person workflow instead of
+re-selling the problem. Real numbers off the actual screen. No em or en dashes.
 
 ```
-The curved wall is always the bit that blows the program.
+This is how I price curved wall plates now.
 
-Marking it out, snapping jigsaw blades chasing the line, binning half a pack of ply, and it's still never quite true.
+Pull the curves off the plans, punch in the radius, the width and the angle, then tell it how many you need. The price updates as you go.
 
-Radius Pro is the other way. Pull your curved plates off the plans, punch in the radius, the width and the angle, set how many you need, and check out. Every plate turns up cut to the exact radius out of 17mm formply, engraved and ready to stand. Two days.
+The one on screen is eight curved plates, 1200 radius, 90 wide, out of 17mm formply. Three hundred and sixty seven dollars, every part engraved, cut to size, here in two business days.
 
 No marking out. No jigsaw. No waste.
 
-If the curved jobs are the ones that always cost you a day, they don't have to. Punch in your radius, we cut the plates.
-
-Design yours online at craftons.com.au
+Punch in your radius at craftons.com.au and see what your curve costs.
 ```
+
+**Superseded (v1, cold problem-story version, kept for reference):** opened "The curved wall is always the
+bit that blows the program." Right structure for a COLD audience, wrong temperature for retargeting.

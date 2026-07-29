@@ -141,8 +141,27 @@ attributed ATC or purchases. BOF lifetime by contrast: $2,726.67 spend, 216 ATC,
    **Note: Meta accepted conversion optimisation on an OUTCOME_TRAFFIC campaign, so no rebuild was needed.**
 2. **Campaign budget $170 to $70/day.** Traffic is proven, conversion is not, so stop funding the
    experiment at full price.
-3. BOF left completely untouched at $30/day (Ad 2 + the boss video running, Ad D and Ad 1 paused). AD2b
-   remains PAUSED (verified status=PAUSED; ads show IN_PROCESS only while Meta re-reviews the edit).
+3. **BOF ad set budget $30 to $60/day** (doubled, not quadrupled. See the pool note below). Ad 2 + the
+   boss video still running, Ad D and Ad 1 still paused. AD2b in TOF remains PAUSED (verified
+   status=PAUSED; all ads read IN_PROCESS only while Meta re-reviews the edit).
+
+**Why BOF went to $60 and not $130 (the full freed $100).** Retargeting spend is capped by POOL SIZE, not
+budget. BOF averaged only $17/day against its $30 budget from Jul 16 to 27 (about 57% utilisation), so it
+physically could not have spent $130. Dumping the lot in would just have driven frequency up on a small
+audience and burnt money on repetition.
+**But there is real good news here:** on Jul 28 and 29 BOF spent $32.47 and $29.22, i.e. 108% and 97% of
+budget, with reach jumping from about 800/day to about 1,400/day. **The TOF traffic grew the retargeting
+pool enough that BOF doubled its own delivery.** That is the first concrete evidence TOF is contributing
+something, even though Meta cannot attribute it. Frequency is still healthy at about 1.5 (fatigue starts
+around 2.5), so there is headroom.
+**Next step on BOF:** if it keeps maxing $60/day and frequency stays under about 2.5, step it up again
+(50% increments). If frequency climbs past 2.5 while spend stalls, the pool is tapped and the answer is
+more top-of-funnel reach, not more BOF budget.
+
+**Total committed spend is now $130/day (TOF $70 + BOF $60), down from $200/day.** The unallocated $70 is
+saved, not reallocated, on purpose: there is no point forcing spend into an audience that cannot absorb it.
+Note the audience-size API returns a "~20" placeholder for these website custom audiences, which is a
+reporting floor, not the real size. The daily reach figures (about 1,400) are the reliable signal.
 
 **Expect a re-learning period.** Changing the optimisation goal resets learning, so impressions and cost
 per result will look worse for a few days before Meta finds add-to-cart-likely people. Judge this on

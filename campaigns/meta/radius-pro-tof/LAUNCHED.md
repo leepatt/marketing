@@ -117,6 +117,38 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   clean. Reassess after 3 days (a check-in is scheduled for about 2026-07-31): compare add-to-carts,
   value, cost per add-to-cart and ROAS. Judge on net cash, not CTR.
 
+## 2026-07-30 MAJOR CHANGE: TOF switched to AddToCart optimisation, budget cut
+
+**Why.** Shopify data settled the question Meta could not. Since TOF launched (Jul 22) sessions went from
+about 85/day to about 1,700/day (12,604 of 13,280 sessions in 9 days are "social", so it is our ads), but
+**sessions with cart additions did not increase at all** (1 to 8/day before, 0 to 5/day after) and site
+conversion rate fell from 1 to 3.8% down to 0.0 to 0.2%. Revenue per business day went $3,423 to $1,285 and
+orders per business day 2.2 to 1.17. The revenue fall is probably lumpiness (orders are few and large, one
+job swings a week) and 6 business days is a small sample, so do NOT claim the ads caused it. But the flat
+cart-adds cannot be explained away: about 12,500 extra visits for $1,003 produced no measurable lift.
+
+**Diagnosis.** The ad set was optimising for **Landing Page Views**, so Meta was hunting the people
+cheapest to make click, not people who buy. A 10% CTR alongside a 0.15% cart-add rate is the signature of
+that (plus accidental in-app-browser taps). TOF lifetime: $1,002.89 spend, 12,563 LPV at $0.080, zero
+attributed ATC or purchases. BOF lifetime by contrast: $2,726.67 spend, 216 ATC, 53 purchases, $44,122,
+**16.2 ROAS**.
+
+**Changes made (both reversible).**
+1. **Ad set `120247183658270186` optimisation LANDING_PAGE_VIEWS to OFFSITE_CONVERSIONS / ADD_TO_CART**
+   (promoted_object pixel `677437638374055`, custom_event_type ADD_TO_CART). Renamed to
+   `TOF | Broad AU | AddToCart`. This was only possible now because the configurator tracking is live: the
+   pixel is doing 18 to 25 AddToCarts a day, about 130 to 175/week, above Meta's ~50/week threshold.
+   **Note: Meta accepted conversion optimisation on an OUTCOME_TRAFFIC campaign, so no rebuild was needed.**
+2. **Campaign budget $170 to $70/day.** Traffic is proven, conversion is not, so stop funding the
+   experiment at full price.
+3. BOF left completely untouched at $30/day (Ad 2 + the boss video running, Ad D and Ad 1 paused). AD2b
+   remains PAUSED (verified status=PAUSED; ads show IN_PROCESS only while Meta re-reviews the edit).
+
+**Expect a re-learning period.** Changing the optimisation goal resets learning, so impressions and cost
+per result will look worse for a few days before Meta finds add-to-cart-likely people. Judge this on
+**add-to-carts and Shopify revenue**, not CTR or cost per landing page view. Re-read in about 4 to 7 days:
+if cart additions per day rise above the pre-TOF baseline of 1 to 8, the switch worked.
+
 ## Performance log
 
 ### 2026-07-25 day-3 read (lifetime Jul 22 to 25, $331.66 spend, 4,003 landing page views, blended $0.083 per LPV, frequency ~1.05 across all ads so no fatigue)

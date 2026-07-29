@@ -87,6 +87,16 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   moved up over his chest. Live creative `1460862622515293`, videos 4:5 `2568143297034491` and 9:16
   `1031224343103271`. Preview https://fb.me/ylV2s9P1twL1A1h
   **Lesson: to give the presenter more presence, crop INTO the presenter. Do not shrink the product demo.**
+- **2026-07-29 story (9:16) rebuild, current.** The 9:16 avatar was visibly STRETCHED: a landscape crop
+  (1010x700) was force-fitted into a portrait box (1080x1312), a 75% vertical stretch. **Rule: crop and
+  destination box must share the same aspect ratio, always scale uniformly.**
+  The approved 9:16 layout is now: **real Craftons mobile site header** (Lee supplied the screenshot,
+  1080x165, background sampled at `#1E3428`, so it matches the page users land on) | **config full width
+  and uncropped** (1080x608) | **avatar filling everything to the bottom edge** (1080x1147, crop 678x720,
+  uniform scale 1.593, no green base). Live creative `1049483434443954`, new 9:16 video
+  `1569194157904324`. Preview https://fb.me/1UVV4m8eSsWVheH
+  The **4:5 feed asset and the caption were deliberately left untouched** (feed video kept as-is).
+  Note: Meta re-encodes on publish, so live video ids differ from the upload ids.
 - **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
   incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
 - **2026-07-27 decisions:** Ad 2 left running untouched (it is the producer, 11.68 ROAS over 30 days).

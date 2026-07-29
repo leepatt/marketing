@@ -52,6 +52,18 @@ your curve, cut to your set-out. Check your numbers before you check out.
 You're responsible for the set-out you enter. But if you spot it early, tell us straight away — if the
 job hasn't hit the machine yet, we can adjust it. Once it's cut, it's cut.
 
+**Does anyone check my set-out before it's cut?**
+No, and that's the point. What you enter is what the machine cuts — there's nobody in the middle
+reinterpreting your numbers, no drawing getting misread, and nothing quietly "corrected" on our end.
+It cuts both ways: no misreadings, but the set-out is yours to own. Use the 3D preview before you pay —
+spin it, check your radius and chord against the plan, then check it once more. Measure twice, order
+once. And if you do spot something after ordering, tell us quick: if it hasn't hit the machine, we can
+still fix it.
+
+**Do you do trade pricing?**
+Yes. Apply for a trade account and we'll get your rates sorted —
+[craftons.com.au/pages/trade-account](https://craftons.com.au/pages/trade-account).
+
 ---
 
 ## Radius Pro block
@@ -118,6 +130,10 @@ AI overviews, and site search all parse it.
       "acceptedAnswer": { "@type": "Answer", "text": "No. Every Craftons part is made to order from your dimensions, so returns aren't available. Check your numbers before you check out." } },
     { "@type": "Question", "name": "What if I get my dimensions wrong?",
       "acceptedAnswer": { "@type": "Answer", "text": "You're responsible for the set-out you enter. If you tell us before the job goes to manufacturing, we can adjust it." } },
+    { "@type": "Question", "name": "Does anyone check my set-out before it's cut?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. What you enter is what the machine cuts — nobody reinterprets your numbers and nothing is changed on our end. The set-out is the customer's responsibility. Use the 3D preview to check your radius and chord before paying. If you spot a mistake before the job reaches the machine, we can still adjust it." } },
+    { "@type": "Question", "name": "Do you do trade pricing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Apply for a trade account at https://craftons.com.au/pages/trade-account and we'll set up your rates." } },
     { "@type": "Question", "name": "How accurate is the cut?",
       "acceptedAnswer": { "@type": "Answer", "text": "±0.5mm CNC tolerance." } },
     { "@type": "Question", "name": "What materials and thicknesses can I get for Radius Pro?",
@@ -136,17 +152,21 @@ AI overviews, and site search all parse it.
 
 ---
 
-## Still needed before publish
+## Two notes on wording
 
-Two answers I've deliberately left out rather than guess:
+**The "nobody checks it" answer.** Lee asked for this to be framed cleverly, and the honest reframe is
+the strongest one available: no human review is a *consequence* of going straight from screen to
+machine, and the upside is real — nothing gets misread, reinterpreted, or silently changed between the
+set-out and the cut. That's a genuine advantage over emailing a drawing to a shop and hoping.
 
-- **Trade accounts.** `/pages/trade-account` exists and took 59 sessions in 90 days, but I don't know
-  the terms. Worth an FAQ entry — "Do you do trade pricing?" is a question every builder asks. Send me
-  the terms and I'll write it.
-- **Does anyone check my file before it's cut?** Your answer to Q5 says the customer owns the set-out
-  and you can adjust pre-manufacture. What I don't know is whether a human actually eyeballs each job
-  first. If someone does, say so — it's the single most reassuring thing you can tell a first-time
-  buyer spending $800 on parts they can't return.
+What the answer must not do is imply anyone is checking. It states plainly that the set-out is the
+customer's responsibility, points at the 3D preview as the check, and closes with the pre-manufacture
+fix. If a customer ever disputes a wrong part, this wording is what you'll be standing on — so it needs
+to be unambiguous, and it is.
+
+**Trade pricing.** Written thin on purpose: it confirms trade pricing exists and sends people to the
+application page, without inventing discount rates or thresholds. If there's a headline number worth
+leading with — a percentage, a spend threshold, terms — send it and this becomes a much stronger answer.
 
 ---
 

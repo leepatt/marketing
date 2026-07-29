@@ -97,6 +97,18 @@ the incumbent video ad (hack 7: same warm pool, different angle. Do not kill the
   `1569194157904324`. Preview https://fb.me/1UVV4m8eSsWVheH
   The **4:5 feed asset and the caption were deliberately left untouched** (feed video kept as-is).
   Note: Meta re-encodes on publish, so live video ids differ from the upload ids.
+- **2026-07-29 story safe-zone fix (CURRENT LIVE).** In the real IG Story render the header collided with
+  Instagram's own chrome: our header sat at y0-165 while IG's progress bar, profile circle, `craftons.au`
+  handle and X button occupy roughly y0-129. Worst part was the handle landing beside our Craftons
+  wordmark, reading as two brand marks jammed together. Fix: **100px of header-green padding above the
+  header**, pushing the whole stack down (Meta advises keeping key elements out of the top ~250px in
+  Stories). Also removed a light seam line: the top row of Lee's header screenshot is a lighter edge
+  artifact `(56,77,68)` vs the true header green `(29,53,40)`, so that row is trimmed and the pad uses the
+  header's own interior colour.
+  Final story layout: **pad 100 + header 164 | config 608 (full width, uncropped) | avatar 1048**
+  (crop 742x720, uniform scale 1.455). Captions raised above the Shop Now button.
+  Live creative `2277520083017723`, 9:16 video `1024781750266335`. Preview https://fb.me/2g91ixv3qdTzje6
+  **The 4:5 feed video and the caption were again left untouched.**
 - **Watch:** this is an AI avatar, so the hack 4 native-trust question is live. If it underperforms the
   incumbent, test a real-person cut (Lee or an actual chippy on a phone) before dropping the format.
 - **2026-07-27 decisions:** Ad 2 left running untouched (it is the producer, 11.68 ROAS over 30 days).

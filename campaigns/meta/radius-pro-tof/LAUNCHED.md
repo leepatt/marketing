@@ -170,6 +170,38 @@ if cart additions per day rise above the pre-TOF baseline of 1 to 8, the switch 
 
 ## Performance log
 
+### 2026-07-31 day-3 BOF A/B read (boss video vs incumbent Ad 2)
+Last 3 days (Jul 28 to 30), ad set `120232888615720186`, frequency healthy at 1.65 on both:
+
+| ad | spend | ATC | $/ATC | purchases | value | ROAS |
+|---|---|---|---|---|---|---|
+| Boss video `120247285566810186` | $79.18 | 19 | **$4.17** | **0** | $0 | **0.0** |
+| Ad 2 `120233970244410186` | $46.95 | 11 | $4.27 | 1 | $3,266 | **69.6** |
+
+**Verdict: the video does NOT beat Ad 2. It ties on add-to-carts and loses on the only thing that matters.**
+- The video's earlier cost-per-ATC edge has evaporated: it was $3.17 vs $5.84, now $4.17 vs $4.27, a dead heat.
+- Lifetime the video is $102.20 / 22 ATC / **0 purchases**. Ad 2 is $2,201 / 189 ATC / **47 purchases /
+  $39,163 / 17.8 ROAS**. Ad 2 converts about 25% of its add-to-carts into purchases; the video has
+  converted none.
+- **Not yet statistically damning.** At Ad 2's rate (1 purchase per ~$47 spend) you would expect about 2
+  purchases from the video's $102. Getting 0 when 2 are expected happens ~13% of the time by chance, and
+  purchase attribution lags several days on a 4-day-old ad. So this is a warning, not a conviction.
+- **The trap to watch:** the ad set optimises for ADD_TO_CART, so Meta pushes budget to whichever ad makes
+  add-to-carts, which is the video (it took $44.29 of Jul 30's $64.37 while Ad 2 took $20.08). But
+  add-to-carts are not cash. We are currently paying Meta to buy cheap ATCs that are not converting.
+  Classic hack 8 failure mode: optimising the proxy, not the money.
+
+**Decision: do NOT scale the ad set budget yet** (the brief said scale if the video wins or matches, but it
+only matches on the proxy metric, not on net cash). Hold $60/day and let purchase attribution catch up.
+**Re-read about 2026-08-03.** If the video is still at 0 purchases by roughly $200 spend (about 4x Ad 2's
+per-purchase spend rate) that is a real signal, and the next test is a **real-person cut** (Lee or an actual
+chippy filmed on a phone) rather than binning the talking-head format, because the open question is whether
+the AI avatar dents native trust (hack 4).
+
+**Budget note (good news):** the $30 to $60 raise is being absorbed. Jul 30 spent **$64.37** with reach
+3,067 and frequency still only 1.45, so the pool grown by TOF can carry the larger budget without fatigue.
+
+
 ### 2026-07-25 day-3 read (lifetime Jul 22 to 25, $331.66 spend, 4,003 landing page views, blended $0.083 per LPV, frequency ~1.05 across all ads so no fatigue)
 - **Winner: the curved-wall-frame creative (Lawless), on the chippies and carpenters identity.** AD5
   Chippies $0.064 per LPV at 11.1% CTR (1,612 LPV, $103.25). AD6 Carpenters $0.064 per LPV at 9.6% CTR.

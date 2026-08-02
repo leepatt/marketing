@@ -63,7 +63,12 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
     (3) Reels = 72% of spend → 0 purchases; (4) 14.4k junk sessions **poisoned the retargeting pool**
     (ROAS 61.8 → 10.3, purchases 9 → 1); (5) purchase-optimised BOF ad set is PAUSED.
   - **Creative + landing page are fine.** Structure and measurement are the failure.
-- [ ] **Awaiting Lee's sign-off** on recommended account changes (nothing executed — see §5 of the audit)
+- [x] **EXECUTED 2026-08-02 (Lee authorised)** → `campaigns/meta/meta-change-log.md`
+  - TOF campaign **PAUSED** · retargeting ad set cut **$60/day → $15/day** · daily exposure **~$130 → $15**
+- [ ] **Open decision:** switch live BOF ad set from Add-To-Cart to Purchase optimisation
+  (`BOF – Purchase` ad set is still paused). Recommended in audit §5.2, not yet authorised.
+- [ ] **Reassess retargeting ~2026-08-16.** If it hasn't recovered at $15/day, the poisoned audience
+  pool is the cause, not budget (30-day pool clears ~2026-09-01; 180-day ~2027-01-29).
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /

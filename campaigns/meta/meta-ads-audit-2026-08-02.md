@@ -189,8 +189,13 @@ Nothing below has been executed — these are account changes and need Lee's sig
 
 1. **Pause `RadiusPro | TOF | Ardreagh | Jul26`.** It has spent $1,277 for 0 purchases and is
    actively degrading the retargeting audience. Every extra day makes the pool worse.
-2. **Un-pause the `Bottom Of Funnel – Purchase` ad set**, pause the `Add To Cart` ad set. Optimise
-   for the thing we actually want.
+2. ~~**Un-pause the `Bottom Of Funnel – Purchase` ad set**, pause the `Add To Cart` ad set.~~
+   **⚠️ CORRECTED 2026-08-02 — do not do this as written.** This recommendation was made from ad-set
+   settings without checking the creative inside them. The Purchase ad set contained a single ad,
+   idle since Oct 2025, with **0 lifetime purchases**, pointing at `/collections/all`. The Add-To-Cart
+   ad set held `Ad 2` — **8 of the campaign's 10 purchases, 37x ROAS**. Executing this verbatim would
+   have turned the best ad off and a dead ad on. What was actually done — move the winning creative
+   into the Purchase ad set first, then switch — is in `meta-change-log.md`.
 3. **Cut BOF daily budget back to ~$15–20/day** until the audience pool recovers. It was working at
    that level; the 4x scale-up is what broke it.
 

@@ -64,7 +64,7 @@ The visitors were worthless. Not "low quality" — worthless. They behaved as if
 
 ---
 
-## What went wrong — four failures
+## What went wrong — five failures
 
 ### Failure 1 — We told Facebook to buy the wrong thing
 
@@ -221,7 +221,7 @@ pointed blame away from me. It's corrected in the record.
 
 ---
 
-## The seven rules
+## The eight rules
 
 These are now standing rules for all paid advertising — Google as well as Meta.
 
@@ -237,6 +237,8 @@ These are now standing rules for all paid advertising — Google as well as Meta
    and on what date, so the decision isn't made emotionally later.
 7. **Protect the retargeting list.** Never let untested cold traffic feed the audience that already
    converts.
+8. **Check the built campaign against the brief before launch.** Every deviation justified in
+   writing, or corrected.
 
 ---
 

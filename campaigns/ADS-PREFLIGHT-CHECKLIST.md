@@ -115,7 +115,13 @@ Only after Sections A–E are complete with evidence:
 - [ ] Every box in **Section E** is ✅
 - [ ] Baseline Shopify numbers recorded — orders/day and sales/day for the last 30 days
 - [ ] Kill rule and review dates written down
+- [ ] **The campaign as actually built has been checked line by line against the approved brief** —
+      placements, formats, audience, destination. Every deviation justified in writing or corrected.
 - [ ] **Lee has seen this filled-in checklist and said go**
+
+> **Why the brief check is its own line:** in July there *was* an approved brief (Drive
+> `02 Strategy/META-ADS-BRIEF.md`). It specified static images in feed. What ran was 72% Reels video.
+> Nobody compared the built campaign to the plan, so the gap went unnoticed for twelve days.
 
 Launched by: ............... Date: ............... Approved by: ...............
 

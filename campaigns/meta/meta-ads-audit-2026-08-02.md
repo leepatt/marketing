@@ -222,16 +222,40 @@ Nothing below has been executed — these are account changes and need Lee's sig
 
 ---
 
-## 6. Open questions for Lee
+## 6. Who built this — correction
 
-- **Who is Ardreagh, and who owns this account?** The campaign naming (`Ardreagh carousel`) suggests
-  an external agency built the TOF campaign. If so, they launched a Traffic-objective campaign with
-  no working conversion tracking and scaled it — that conversation needs having.
+**An earlier draft of this audit speculated that an external agency ("Ardreagh") built the TOF
+campaign. That was wrong.** Claude built it. `Ardreagh` is a project/asset name in the creative, not
+a vendor. I inferred an agency from a campaign-name string and wrote it up as a finding, which
+pointed blame at a third party who does not exist. Correcting it here so the record is accurate.
+
+Note also that this repo contains **no record of the Meta build** — the last commit before this audit
+was 2026-07-09, and the campaign was created 2026-07-22. The work was done in a session that wrote
+nothing down. That is its own lesson: anything not committed here is invisible to the next session.
+
+## 7. Open questions for Lee
+
 - **Was anything changed on Jul 30?** Tracking started working that day. Knowing what changed tells
   us whether it's actually fixed or just intermittently reporting.
 - **Was the BOF budget scale-up on Jul 28–31 deliberate?** It went into the worst possible moment.
 - **Is $70/day the agreed TOF budget?** It is running at $70/day against a BOF campaign that was
   producing 62x ROAS on $15/day.
+
+## 8. How the early "looking good" reads happened
+
+Worth recording, because it is the actual failure mode. For the first 8 days every *visible* metric
+looked strong: 10% CTR, $0.065 CPC, 13,000+ landing page views, budget pacing cleanly. Conversions
+read as `0` — but with the pixel not reporting into the campaign, a zero looks like "no data yet"
+rather than "no sales."
+
+Three specific mistakes:
+
+1. **Reported proxy metrics (CTR, CPC, traffic) instead of the money metric.** Cheap clicks are not
+   an outcome.
+2. **Did not treat "$985 spent, 0 conversions, 8 days" as an alarm.** It was the alarm.
+3. **Never cross-checked Shopify.** One query — `FROM sessions SHOW sessions_with_cart_additions` —
+   would have shown cart adds flat against 15x traffic from day two. That check is now step one of
+   any future ad review, before any performance claim is made.
 
 ---
 

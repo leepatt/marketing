@@ -26,9 +26,38 @@ This repo is the entry point for working on Craftons marketing — especially fr
 - Drive `02 Strategy/Craftons-Marketing-Engine-Notes.md` — decisions, targets, the Gozney playbook, benchmarks.
 - Drive `01 Inspiration/README.md` — how we gather and tear down brands.
 
+## ⛔ PAID ADVERTISING — HARD GATE (read before touching any ad account)
+
+**No campaign spends real money until `campaigns/ADS-PREFLIGHT-CHECKLIST.md` is filled in with
+evidence and Lee has approved it.** Not "reviewed" — filled in, pasted to Lee, approved.
+
+This is not advisory. It exists because in July 2026 a Meta campaign spent **$1,711 and produced
+2 orders** while sales *fell*, and it damaged the retargeting audience that was working. The full
+account is in `campaigns/POST-MORTEM-2026-08-02.md`. Read it before proposing any ad work.
+
+The four rules that matter most, if you read nothing else:
+
+1. **Shopify is the scoreboard — never the ad platform.** Do not report an ad as performing without
+   cross-checking actual orders in Shopify. Clicks, CTR, CPC, reach and impressions are not results.
+   If asked how a campaign is doing, the answer leads with orders or it isn't an answer.
+2. **No spend before tracking is proven** — a real conversion event visible in the campaign's own
+   reporting, not a site-wide pixel that "looks installed." A site-wide green light is not proof.
+3. **Cheap clicks and high CTR on a cold audience are red flags, not wins.** Under ~20c CPC or over
+   ~3% CTR means investigate, not celebrate.
+4. **Zero conversions after meaningful spend means tracking is broken until proven otherwise.**
+   Never read it as "early days."
+
+Every change made to a live ad account gets logged in `campaigns/meta/meta-change-log.md` (or the
+equivalent for the channel) with the API response that confirmed it — including changes that failed.
+The July campaign was built in a session that wrote nothing down, so the next session found it only
+by querying the API.
+
 ## Standing rules
 
 - Build deliberately. Don't rush. Lock each piece before moving on.
+- **No guessing, especially about causes.** State what the data shows; label inference as inference.
+  (A first draft of the Meta audit inferred from a campaign name that an outside agency was
+  responsible and wrote it up as a finding. It was wrong, and it shifted blame off Claude.)
 - No guessing. Inspiration teardowns only for brands Jake/Lee nominate; build from observed content with receipts.
 - Brand tone ≠ social caption tone.
 - Real footage leads; AI extends. A human approves every asset.

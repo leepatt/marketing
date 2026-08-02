@@ -70,6 +70,15 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [ ] **Reassess retargeting ~2026-08-16.** If it hasn't recovered at $15/day, the poisoned audience
   pool is the cause, not budget (30-day pool clears ~2026-09-01; 180-day ~2027-01-29).
 
+### ⛔ Paid-ads gate now in force (2026-08-02)
+- [x] **Post-mortem written in plain language** → `campaigns/POST-MORTEM-2026-08-02.md`
+- [x] **Pre-flight checklist created** → `campaigns/ADS-PREFLIGHT-CHECKLIST.md` — must be filled in
+  with evidence and approved by Lee **before any campaign spends real money**. Sections B (tracking)
+  and E (money safety) are hard blocks.
+- [x] **Gate wired into `CLAUDE.md`** so every future session picks it up at startup.
+- ⚠️ **This applies to the Google Ads campaigns too.** They are built and waiting to deploy
+  (`campaigns/adwords/`) — they must go through the checklist before launch, not straight live.
+
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`

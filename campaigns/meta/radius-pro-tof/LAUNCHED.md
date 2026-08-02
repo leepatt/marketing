@@ -170,6 +170,52 @@ if cart additions per day rise above the pre-TOF baseline of 1 to 8, the switch 
 
 ## Performance log
 
+### 2026-08-03 four-day read on the Jul 30 changes. RECOMMENDATION: PAUSE TOF
+
+**The switch did NOT lift Shopify cart additions. That was the pass/fail test and it failed.**
+
+| era | revenue/day | Shopify cart adds/day | ad spend/day | blended ROAS |
+|---|---|---|---|---|
+| Pre-TOF (Jul 13 to 21) | $2,715 | 2.67 | $15 | **181** |
+| TOF on Landing Page Views (Jul 22 to 29) | $963 | 2.38 | $142 | 6.8 |
+| Post-switch (Jul 30 to Aug 2) | $416 | **2.25** | $133 | **3.1** |
+
+Cart additions have never moved off their pre-TOF baseline through any phase: 2.67, then 2.38, then 2.25
+per day. Meanwhile ad spend went from $15/day to $133/day and revenue per day fell from $2,715 to $416.
+
+**The AddToCart switch DID work at the Meta level, and that is the trap.** TOF went from zero attributed
+add-to-carts to **56 in four days** (AD4 Builders 26 at $5.44, AD5 Chippies 18 at $6.46, AD6 Carpenters 12
+at **$2.34**, and the Ardreagh carousels have been starved down to nothing). But Shopify logged only **9**
+sessions with cart additions over the same four days.
+
+**Root cause of the mismatch: our pixel fires `AddToCart` on the configurator's "add part to list", which
+is an internal action, NOT a Shopify cart addition.** So optimising on it just told Meta to go find people
+who fiddle with the configurator. We replaced one proxy metric (cheap clicks) with a deeper proxy
+(configurator fiddling). Still not buyers. **If we ever optimise TOF again it must be on
+`InitiateCheckout` or `Purchase`, or the ATC event must be re-mapped to the real Shopify cart.**
+
+**BOF also deteriorated.** Last four days: boss video $199.79 / 25 ATC / **1 purchase / $371 / ROAS 1.9**;
+Ad 2 $38.83 / 11 ATC / 0 purchases. Ad set ROAS about **1.55 against a 16.2 lifetime**. Frequency is fine
+(1.56 and 1.41) and it is fully spending the $60, so this is not fatigue or budget.
+**Hypothesis worth acting on: audience pollution.** The retargeting audiences are All Website Visitors
+30/60/180d, so roughly 15,000 low-intent TOF visitors have been poured into the pool BOF depends on. BOF
+reach roughly quadrupled while purchases did not follow. That is what dilution looks like, and it means TOF
+may not merely be wasting money, it may be degrading the one campaign that was working.
+
+**Recommendation (put to Lee, not yet actioned):**
+1. **Pause TOF entirely.** About $1,300 lifetime, zero measurable revenue lift across two different
+   optimisation goals, and Shopify cart additions flat throughout.
+2. **Hold BOF at $60/day, do not step it up** despite it maxing budget with healthy frequency. Its recent
+   ROAS does not justify more until the pool recovers.
+3. **Rebuild the retargeting audiences on high-intent events** (InitiateCheckout, or Shopify cart adds)
+   instead of All Website Visitors, so the pool is not defined by TOF traffic.
+4. Re-read about a week after pausing. If revenue per day recovers toward the pre-TOF $2,715 with only BOF
+   running, that settles the causation question.
+
+**Caveat, stated honestly:** revenue here is lumpy and low-count (single orders of $9,943 and $5,475 swing
+a whole week), 4 days is a small sample, and correlation is not proof the ads caused the decline. But there
+is no evidence the ads are adding anything, and the burden of proof sits with $133/day of spend.
+
 ### 2026-07-31 day-3 BOF A/B read (boss video vs incumbent Ad 2)
 Last 3 days (Jul 28 to 30), ad set `120232888615720186`, frequency healthy at 1.65 on both:
 

@@ -20,6 +20,10 @@ This repo is the entry point for working on Craftons marketing — especially fr
 
 ## Start here
 
+- **`DRIVE-INDEX.md` — what's in the Drive brain and where. READ BEFORE ANY MARKETING WORK.**
+  Drive holds the doctrine (`MARKETING-BIBLE.md`), the execution plan (`MARKETING-CHECKLIST.md`),
+  the ad briefs and the customer research. **Never conclude something "isn't documented" without
+  checking Drive** — that claim has already been made once and was wrong.
 - **This repo `STATUS.md` — the living status + plan. READ THIS FIRST each session** (what's done, what's next, open questions, doc index — so we never repeat work).
 - This repo `SETUP.md` — the step-by-step setup sequence + the integrations/API-key checklist for standing the engine up.
 - Drive `02 Strategy/Craftons-Marketing-Engine-Plan.md` — the phased build plan.

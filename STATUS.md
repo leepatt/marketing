@@ -78,6 +78,16 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 - [x] **Gate wired into `CLAUDE.md`** so every future session picks it up at startup.
 - ⚠️ **This applies to the Google Ads campaigns too.** They are built and waiting to deploy
   (`campaigns/adwords/`) — they must go through the checklist before launch, not straight live.
+- [x] **`DRIVE-INDEX.md` created** — maps the Drive brain so no session again concludes something
+  "isn't documented" when it is. Wired into `CLAUDE.md` start-here.
+- [ ] **Reconcile the doctrine.** Drive `MARKETING-BIBLE.md` (27KB, §6 scoreboard / §9 Meta playbook)
+  and `MARKETING-CHECKLIST.md` (phased plan) already contained "verify tracking before spend" and
+  "judge on net cash, not ROAS" — written 2026-07-21, violated 2026-07-22. The post-mortem's eight
+  rules overlap them. Merge into **one** doctrine rather than two competing ones.
+- [ ] **Resolve duplicated docs.** `CONTENT-PILLARS.md` and `SOCIAL-VOICE.md` exist in both the repo
+  and Drive `02 Strategy/`. Pick one home each before treating either as authoritative.
+- [ ] **Delete two superseded Drive files** (`Ads-PostMortem-2026-08-02.md`,
+  `Ads-PreFlight-Checklist.md` — the ones without `-v2-CURRENT`). Connector can't delete.
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /

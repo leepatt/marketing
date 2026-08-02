@@ -54,6 +54,17 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
+### Meta Ads — AUDITED 2026-08-02 (⚠️ action needed)
+- [x] **Full account audit** → `campaigns/meta/meta-ads-audit-2026-08-02.md` (live API pull, not estimates)
+  - **Finding:** sales *fell* since ads launched Jul 22 — orders/day −42%, conv. rate 1.49% → 0.066%.
+    Traffic up 15x, cart adds flat. $1,711 spent → 2 Shopify-attributed orders / $398.
+  - **Root causes:** (1) conversion tracking dead Jul 22–29, $985 spent blind; (2) campaign objective is
+    `OUTCOME_TRAFFIC` while ad set claims `OFFSITE_CONVERSIONS` — Meta bought cheap clicks;
+    (3) Reels = 72% of spend → 0 purchases; (4) 14.4k junk sessions **poisoned the retargeting pool**
+    (ROAS 61.8 → 10.3, purchases 9 → 1); (5) purchase-optimised BOF ad set is PAUSED.
+  - **Creative + landing page are fine.** Structure and measurement are the failure.
+- [ ] **Awaiting Lee's sign-off** on recommended account changes (nothing executed — see §5 of the audit)
+
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`

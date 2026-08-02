@@ -49,8 +49,11 @@ The four rules that matter most, if you read nothing else:
 
 Every change made to a live ad account gets logged in `campaigns/meta/meta-change-log.md` (or the
 equivalent for the channel) with the API response that confirmed it — including changes that failed.
-The July campaign was built in a session that wrote nothing down, so the next session found it only
-by querying the API.
+
+**Check Drive before assuming something wasn't documented.** The July campaign *was* briefed —
+Drive `02 Strategy/META-ADS-BRIEF.md`, dated the day before launch — but nothing in this repo pointed
+to it, so a repo-side session found the campaign only by querying the API. When ad work spans both
+homes, cross-link them.
 
 ## Standing rules
 

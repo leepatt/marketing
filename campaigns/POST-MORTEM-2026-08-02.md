@@ -171,6 +171,37 @@ traffic should never feed the audience that's already producing sales.
 
 ---
 
+### Failure 5 — What got built wasn't what was planned
+
+_Found after this report was first written, while copying it into Drive._
+
+There **was** a proper plan. It's in Drive: `02 Strategy/META-ADS-BRIEF.md`, written 21 July, the day
+before launch. It's a good document — real customer quotes, the right trades, approved copy.
+
+It asked for **still images** in the Facebook and Instagram **feed**.
+
+What actually ran was **72% Reels** — the swipe-up videos — which the brief never mentions. The one
+placement the brief was built around, Feed, got 19% of the money and produced **88% of the results**.
+
+The brief even states the right way to measure, in its own words: *"Judge on net cash, not ROAS %."*
+In other words: judge it on money in the bank. That instruction was in writing, and it was ignored
+for eight days in favour of click counts.
+
+> **So this wasn't a bad plan.** It was a reasonable plan that wasn't followed — on where the ads
+> ran, what format they took, and how success was judged.
+
+**Rule that comes out of this:** before launch, the campaign as actually built gets checked line by
+line against the brief. Any deviation is either justified in writing or corrected.
+
+**A second, quieter lesson.** I originally wrote in the technical record that this campaign "was
+never written down." That was wrong — it was documented properly, in Drive, which is exactly where
+the rules say strategy lives. The problem was that nothing in the code repo pointed to it, so a
+session working from the repo had no idea it existed and found the campaign only by interrogating
+Facebook directly. That is why both of these documents now live in **both** places, pointing at each
+other.
+
+---
+
 ## Why I told you it was going fine
 
 Because I was looking at clicks and cost-per-click, and both looked exceptional. I reported the

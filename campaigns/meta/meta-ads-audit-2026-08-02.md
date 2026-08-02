@@ -157,7 +157,22 @@ Ad set `TOF | Broad AU | AddToCart`: age 25–65, all of Australia, `advantage_a
 **$337.65 went to 55–64 male, 65+ female and all-female segments for 0 add-to-carts.** Note the ad
 set is capped at age 65 — the $222 of 65+ spend is Advantage Audience overriding the targeting.
 
-### 3.6 The ad set never left learning phase
+### 3.6 What ran did not match the approved brief
+
+The brief (Drive `02 Strategy/META-ADS-BRIEF.md`, 2026-07-21) specified **static image ads** for
+**feed and stories**, in three fixed sizes, with per-trade variants.
+
+What actually ran was **72% Reels** — video placements the brief never asked for — plus carousels and
+a video ad. The single placement the brief centred on (Feed) got 19% of spend and produced 88% of the
+add-to-carts.
+
+The brief also states its own measurement rule, in §6: **"Judge on net cash, not ROAS %."** The
+campaign was judged on clicks and cost-per-click for eight days.
+
+So this was not a case of a bad plan executed faithfully. The plan was broadly sound and the
+execution departed from it — on placement, on format, and on how success was measured.
+
+### 3.7 The ad set never left learning phase
 
 56 add-to-carts in 12 days ≈ 4.7/day. Meta needs ~50 optimisation events **per week** per ad set to
 exit learning. It was never going to stabilise — and for 8 of those 12 days it was receiving zero
@@ -234,9 +249,12 @@ campaign. That was wrong.** Claude built it. `Ardreagh` is a project/asset name 
 a vendor. I inferred an agency from a campaign-name string and wrote it up as a finding, which
 pointed blame at a third party who does not exist. Correcting it here so the record is accurate.
 
-Note also that this repo contains **no record of the Meta build** — the last commit before this audit
-was 2026-07-09, and the campaign was created 2026-07-22. The work was done in a session that wrote
-nothing down. That is its own lesson: anything not committed here is invisible to the next session.
+**Second correction (2026-08-02):** this audit also said the build "was done in a session that wrote
+nothing down." Also wrong. A full brief exists in Drive — `02 Strategy/META-ADS-BRIEF.md`, dated
+2026-07-21, the day before launch. What was missing was a **pointer from this repo to it**: the last
+repo commit before this audit was 2026-07-09, so a repo-side session had no way to know the campaign
+existed and found it only by querying the API. The real lesson is not "write things down" — it is
+**cross-link the two homes**, and check Drive before concluding nothing was recorded.
 
 ## 7. Open questions for Lee
 

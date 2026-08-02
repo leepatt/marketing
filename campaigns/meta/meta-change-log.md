@@ -3,8 +3,13 @@
 _Account: `act_1650412872259063` (Craftons, AUD) · Pixel: `677437638374055`_
 
 Every change made to the live Meta ad account gets recorded here, with the API response that
-confirmed it. This exists because the Jul 22 campaign build was never written down — the next
-session had no idea it existed. Don't repeat that.
+confirmed it.
+
+**Correction (2026-08-02):** an earlier version of this note said the Jul 22 build "was never written
+down." That was wrong. It **was** documented — in Drive at
+`02 Strategy/META-ADS-BRIEF.md`, dated 2026-07-21, the day before launch. What was missing was a
+**pointer from the repo to it**, so a repo-side session found the campaign only by querying the API.
+The two homes are now cross-linked. Log account changes here *and* keep Drive in step.
 
 ---
 

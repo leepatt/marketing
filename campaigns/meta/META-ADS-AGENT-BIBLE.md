@@ -887,7 +887,24 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 
 | Tool | Why | Cost | Priority |
 |---|---|---|---|
-| **`META_APP_ID` + `META_APP_SECRET`** | Required for the publish chain; long-lived token refresh | Free | 🔴 Phase 1 |
+| **`META_APP_ID`** = `993965426717610` | ✅ **Already exists — app "Craftons Ads API".** No lookup needed | Free | 🟢 tidy-up |
+| **`META_APP_SECRET`** | `appsecret_proof` request signing only — **not** token refresh | Free | 🟢 optional |
+
+> ### ⚠️ Corrected 2026-08-03 — this row said "required for long-lived token refresh"
+>
+> **The access token does not expire.** Checked via `/debug_token`:
+>
+> ```
+> type: SYSTEM_USER · expires_at: 0 · data_access_expires_at: 0 · is_valid: True
+> scopes: ads_management, ads_read, business_management
+> ```
+>
+> `expires_at: 0` means never — that is how system-user tokens work. There is no refresh flow to
+> build and no expiry cliff coming, so the app secret is **not** a Phase 1 blocker. Its only use here
+> is `appsecret_proof` request signing, which is optional unless the app is set to require it.
+>
+> Also settled: the "second dataset `993965426717610` (Craftons Ads API, app-type)" in earlier notes
+> is **not a dataset** — it is the **app ID**.
 | **Meta Marketing API access level** | Dev tier = 60 quota points / 300s. Standard = 9,000, needs App Review | Free, but App Review has lead time — **start early** | 🔴 Phase 1 |
 | **Meta Pixel + CAPI on Shopify** | Phase 0 gate | Free | 🔴 Phase 0 |
 | **HeyGen** (`HEYGEN_API_KEY`) | AI avatar presenters (§4.2) — ~4 of the launch 15–20 creatives | ~$30–90/mo depending on tier | 🟠 Phase 3 |

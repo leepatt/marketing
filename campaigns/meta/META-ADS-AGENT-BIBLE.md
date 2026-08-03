@@ -568,6 +568,31 @@ dark, which makes this a clean moment to restart properly.
 **Ruling: optimise for a combined high-intent Lead event (quote request + configurator submission),
 NOT Purchase — while measuring the scoreboard exclusively in sales.**
 
+> ### 🔄 REFINED 2026-08-03 — the specific events are now known
+>
+> The ruling below stands; the arithmetic that produced it was right. But it was written before I read
+> the configurator's tracking code, and the concrete answer is better than the plan.
+>
+> **There is no need to build a `QuoteRequested` event — `InitiateCheckout` already is it.** The
+> configurator fires it on handoff to the Shopify cart, with the real cart total, only after parts
+> have been configured. Measured volumes:
+>
+> | Candidate | Per week | vs ~50/wk threshold |
+> |---|---|---|
+> | Purchase (real, 36/mo) | ~8 | ❌ 6× short |
+> | **InitiateCheckout** (193/mo) | **~45** | ✅ at threshold |
+> | **InitiateCheckout + Purchase** | **~53** | ✅ **clears it** |
+> | AddToCart (920/mo) | ~215 | ❌ fires per part; the July failure |
+> | ConfiguratorStarted (812/mo) | ~190 | ❌ top of funnel |
+>
+> **Final: optimise on a custom conversion of `InitiateCheckout` OR `Purchase` (~53/week).** This is
+> the first configuration that genuinely clears Meta's learning threshold at $2k/month, which the
+> original analysis concluded nothing would. Nothing needs building — only the custom conversion.
+>
+> Caveat: a buyer fires both events, so "results" is not a clean headcount. That's a stronger
+> optimisation signal, not a corrupted one — but **read revenue, not result count, as the scoreboard.**
+> Setup steps → `campaigns/meta/conversion-tracking.md` §Step 4–5.
+
 That looks like a contradiction. It isn't, and here's the arithmetic that forces it.
 
 ### Why not Purchase

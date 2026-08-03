@@ -147,7 +147,7 @@ Every element is evidenced: *send us the plan* (how they buy), *snap to the arch
 own promise), *the plates* (their word for the product). And it maps onto the Drive bible's Godfather
 Offer, which starts *"Send us your set-out."*
 
-> ### ⛔ Corrected 2026-08-04 — do not run this angle yet
+> ### ⛔ Corrected 2026-08-03 (later pass) — do not run this angle yet
 >
 > **This inbox is the CNC Cut bespoke funnel, not the Craftons self-serve funnel**, and Drive
 > `META-ADS-BRIEF.md` carries an explicit golden rule: *"ads sell the self-serve online builders.

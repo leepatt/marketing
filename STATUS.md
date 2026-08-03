@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-08-04. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-08-03. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -12,7 +12,7 @@ six misleading live-ready ads. Both were preventable in about ninety seconds:
 
 1. **Drive `MARKETING-BIBLE.md` went unread** until 2026-08-03 — it contains the verbatim law that the
    first Meta ad batch broke.
-2. **A complete Lee-approved verbatim research pass (2026-07-21) went unfound** until 2026-08-04. It was
+2. **A complete Lee-approved verbatim research pass (2026-07-21) went unfound** until 2026-08-03 (later pass). It was
    in Drive `META-ADS-BRIEF.md` and on branch `claude/marketing-video-transcript-cy49qx`. A session
    re-derived a *worse* version of it from the wrong inbox and drew an angle the brief forbids.
 
@@ -129,7 +129,7 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 
 ---
 
-### Meta ads copy — RECONCILED & REWRITTEN (2026-08-04)
+### Meta ads copy — RECONCILED & REWRITTEN (2026-08-03 (later pass))
 - [x] **Drive bible + checklist + brief all read** — the standing rule that had been skipped
 - [x] **Lost intel corpus recovered** onto this branch from `claude/marketing-video-transcript-cy49qx`:
   `VOICE-OF-CUSTOMER-curved-jobs.md` · `CURVED-JOBS-WINLOSS.md` ·
@@ -154,7 +154,8 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
    **combined custom conversion** (account write — last Phase 0 gate), (d) **before/after photography**.
 2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
    `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
-3. **Check EMQ > 7** — was 24–48h out from 2026-08-03, so readable now.
+3. **Check EMQ > 7** — needs 24–48h of pixel traffic from 2026-08-03. **Not readable yet**; earliest
+   2026-08-04, safest 2026-08-05.
 4. **Verify `brand-check`'s vision path live** — built, never run. Sunday's cron is its first real run.
 5. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
 2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved

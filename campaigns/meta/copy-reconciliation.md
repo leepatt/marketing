@@ -1,6 +1,6 @@
 # Copy reconciliation — resolving three intel sources into one corrected ad set
 
-_Written 2026-08-04. Closes the "rewrite all ad copy from verbatim language" blocker in
+_Written 2026-08-03 (later pass). Closes the "rewrite all ad copy from verbatim language" blocker in
 `BUILD-CHECKLIST.md` Part C1/C2, as far as it can be closed without Lee._
 
 > **The short version:** the ad copy problem was never a shortage of research. A full verbatim pass

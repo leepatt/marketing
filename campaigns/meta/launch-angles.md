@@ -3,7 +3,7 @@
 _The creative brief every ad in the launch batch reads from. Written 2026-08-03._
 _Closes bible Phase 2.2 ("rank pain points, top 3 become the launch angles")._
 
-> ### ⚠️ Superseded in part, 2026-08-04 → `copy-reconciliation.md`
+> ### ⚠️ Superseded in part, 2026-08-03 (later pass) → `copy-reconciliation.md`
 >
 > **The three angles stand.** The ranking (demo → problem → outcome) is unchanged and still correct.
 > What changed is the copy underneath them:

@@ -186,7 +186,56 @@ learning threshold with margin, and both events mean someone with a configured c
 
 ---
 
-## Step 5 — Build the combined custom conversion 🟠
+## Step 5 — Build the combined custom conversion ✅ **DONE 2026-08-03**
+
+> ### ✅ CREATED — live on the account
+>
+> | | |
+> |---|---|
+> | **Name** | `Sales Intent — Checkout or Purchase` |
+> | **ID** | `27686282527680441` |
+> | **Rule** | `{"or":[{"event_name":{"eq":"InitiateCheckout"}},{"event_name":{"eq":"Purchase"}}]}` |
+> | **Category** | `OTHER` (see gotcha) · **Pixel** `677437638374055` · not archived |
+>
+> Created on Lee's explicit go-ahead ("let's dial in the custom conversion — we want sales, not
+> attention"). Creating a custom conversion does not spend money or change delivery; it takes effect
+> only when an ad set's `promoted_object` points at it. **That wiring is still to do at launch.**
+>
+> ### ⚠️ API gotcha — cost four failed attempts, worth encoding in `meta-ads.mjs`
+>
+> **The rule key is `event_name`, NOT `event`.** With `event` the API returns
+> *"A conversion rule is required at creation time"* — which reads like a missing parameter, not a
+> wrong key, and sends you looking in the wrong place. Also:
+> - `custom_event_type` must be **`OTHER`** for a mixed rule. Naming a specific category makes Meta
+>   demand every event in the rule map to it, which a mixed IC-or-Purchase rule can never satisfy.
+> - The enum is `INITIATED_CHECKOUT` (past tense), not `INITIATE_CHECKOUT`.
+> - **Deletes archive rather than remove.** Two test objects (`1955138551836799`, `1554276013020463`)
+>   are `is_archived: true` on the account. Harmless and hidden from the active list, but they exist.
+>
+> ### The volume reality — this does NOT clear the learning threshold
+>
+> Measured against ground truth (**38 real Shopify orders in 30 days**; pixel counts run **2.55×**
+> higher pre-dedup):
+>
+> | Event | Real/30d | Per week | vs Meta's ~50/wk |
+> |---|---:|---:|---|
+> | Purchase | 38 | 8.8 | below |
+> | InitiateCheckout | 75 | 17.5 | below |
+> | **IC + Purchase (this conversion)** | **113** | **26.3** | **still below** |
+> | _AddToCart_ | _358_ | _83.3_ | _clears — but see below_ |
+>
+> **Be honest about this: 26/week is still Learning Limited.** It is 3× the signal of Purchase alone
+> and it is the best available *without* dropping to a browse-intent event, which is the trade Lee
+> explicitly refused.
+>
+> **Why not AddToCart, which would clear the bar:**
+> - **IC → Purchase = 51%.** Half of everyone who starts checkout buys.
+> - **ATC → Purchase = 11%.** In the configurator, adding to cart is how you *see a price* — it's a
+>   browse action, not intent.
+>
+> Optimising on ATC buys volume at the cost of intent. That is precisely "attention, not sales".
+
+### Original plan (retained — this is what was executed)
 
 1. **Events Manager → Custom conversions → Create custom conversion**.
 2. **Data source:** Craftons Web.

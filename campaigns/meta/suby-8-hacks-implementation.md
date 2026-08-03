@@ -44,14 +44,45 @@ has ever run. It was not the failure.
 
 ### What actually failed
 
-**The optimisation event had no signal to learn from.** The ad set optimised for `ADD_TO_CART`. The
-account produces roughly **15 ATC and 13 purchases a month** — far under the **~50 events/week** Meta
-needs to exit the learning phase. Starved of conversion signal, delivery collapses to whoever clicks
-cheapest. That is exactly the observed signature: huge CTR, $0.08 traffic, almost nothing downstream
-(9,244 landing page views → 15 add-to-carts).
+**The optimisation event had no signal to learn from.** The ad set optimised for `ADD_TO_CART` and
+accumulated **15 ATC across its whole life** — against the **~50 events/week** Meta needs to exit the
+learning phase. Starved of signal, delivery collapses to whoever clicks cheapest. That is exactly the
+observed signature: huge CTR, $0.08 traffic, almost nothing downstream.
 
 **The "$758/result" figure divided real spend by a broken denominator.** It was evidence about event
 volume, not about creative.
+
+> ### ⚠️ Correction to an earlier version of this section — 2026-08-03
+>
+> This doc first said *"the account produces roughly 15 ATC and 13 purchases a month."* **That was
+> wrong.** Those were the figures attributed to *one ad*, not sitewide. Measured properly against
+> ground truth (38 real Shopify orders/30d, pixel counts 2.55× higher pre-dedup):
+>
+> | Event | Real / 30 days | Per week |
+> |---|---:|---:|
+> | AddToCart | ~358 | 83 |
+> | InitiateCheckout | ~75 | 17.5 |
+> | Purchase | **38** | 8.8 |
+>
+> **The site generates plenty of AddToCart. The ads didn't.** That distinction matters, because it
+> means "the account can't generate enough events" was not the right diagnosis.
+>
+> ### So the honest read on July is more mixed than my last framing
+>
+> I over-corrected. Both of these are true and they compound:
+>
+> - **Lee is right.** The creative pulled a 10.45% CTR with 132 reactions and 12 saves, "trade
+>   segmentation" never happened, and the results metric was measuring the wrong thing. The
+>   "$758/result" conclusion was unfounded.
+> - **But the traffic genuinely underconverted.** AD5 sent 9,244 landing page views and produced 15
+>   add-to-carts — **0.16%, against a site-wide rate of roughly 1.5%. Ten times worse than normal
+>   traffic.** That is not purely a measurement artefact.
+>
+> The two readings can't be separated from this data: an ad set that never exits learning delivers to
+> cheap clickers, *and* cheap clickers don't convert. Each explains the other.
+>
+> **What survives either way — and it's what matters:** optimise on a sales-intent event so Meta
+> hunts buyers instead of clickers. That is exactly what the new custom conversion is for.
 
 ### The three real lessons
 

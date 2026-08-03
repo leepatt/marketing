@@ -208,9 +208,28 @@ more than the copy:
 
 ---
 
+### ✅ Custom conversion CREATED — 2026-08-03 (Phase 0 gate closed)
+`Sales Intent — Checkout or Purchase` · ID **`27686282527680441`** · rule
+`{"or":[{"event_name":{"eq":"InitiateCheckout"}},{"event_name":{"eq":"Purchase"}}]}` · category `OTHER`.
+Created on Lee's go-ahead — *"we want sales, not attention."*
+- ⚠️ **API gotcha worth encoding in `meta-ads.mjs`:** the rule key is **`event_name`, not `event`**.
+  With `event` the API says *"A conversion rule is required at creation time"*, which reads like a
+  missing param. `custom_event_type` must be **`OTHER`** for a mixed rule; the IC enum is
+  `INITIATED_CHECKOUT` (past tense). **Deletes archive, not remove** — two `ZZTEST` objects are
+  archived on the account.
+- ⚠️ **It does NOT clear the learning threshold, and that's expected.** Ground truth: 38 real orders
+  /30d, pixel counts 2.55× higher pre-dedup. Purchase 8.8/wk · IC 17.5/wk · **combined 26.3/wk** vs
+  Meta's ~50/wk. It is 3× Purchase alone and the best available without dropping to browse intent.
+- **Why not AddToCart** (which would clear 50/wk at 83/wk): **IC→Purchase is 51%, ATC→Purchase is 11%.**
+  In the configurator, adding to cart is how you see a price. Optimising on it buys attention.
+- ⬜ **Still to wire:** the ad set's `promoted_object` must point at this conversion at launch.
+  Creating it changed nothing about delivery on its own.
+
+---
+
 ## ⏭ Next steps (in order)
-1. 🔴 **Create the combined custom conversion (IC OR Purchase)** — gate is clear, awaiting Lee's word.
-   Last Phase 0 item.
+1. ⬜ **Wire the ad set to the new custom conversion at launch** (`promoted_object` →
+   `27686282527680441`). The object exists; nothing uses it yet.
 2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
    `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
    **Still the biggest open item** — the words are fixed, the images are not.

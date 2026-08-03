@@ -177,12 +177,74 @@ image have to move together — a true headline over a misleading image is still
 Narrowed from thirty-one interview questions to **four decisions**. Everything else is either answered
 above or not blocking.
 
-| # | Decision | Why it's blocking | Default if no answer |
+### ✅ Answered by Lee, 2026-08-03
+
+| # | Decision | Lee's answer | Consequence |
 |---|---|---|---|
-| 1 | **Is Plan Scan advertisable yet?** Live and producing orders, but the golden rule predates it | Decides whether the strongest evidenced pain (file friction) can be used at all | Hold it back. Launch on the configurator |
-| 2 | **The fit guarantee** — approve/sharpen, and set the boundary between our error and a bad set-out, plus freight cap | Drive bible §4: every ad is supposed to carry the same offer + risk reversal. None currently do | Launch without it. Weaker, not blocked |
-| 3 | **Combined custom conversion (IC OR Purchase)** — account write | Last Phase 0 gate | Blocked. Needs the say-so |
-| 4 | **Before/after photography** | Unblocks the strongest execution of Angle 2 | `before_after` family stays at 0 |
+| 1 | **Is Plan Scan advertisable yet?** | ❌ **No — in beta testing** | **The golden rule stands unchanged.** No ad, headline or CTA may say "send us your plan / your CAD / your drawing". Ads sell the self-serve configurator only. Revisit when Plan Scan leaves beta |
+| 3 | **Combined custom conversion (IC OR Purchase)** | "Waiting for an order" | ✅ **The order landed 2026-08-03.** Gate is clear — see below |
+| 4 | **Before/after photography** | 🟡 In progress — "trying to get some" | `before_after` family stays at 0 until they exist. Still the highest-value asset Lee can supply |
+| 2 | **The fit guarantee** | ⏸ **Not yet — launch without one.** Revisit after the first month | No ad carries a guarantee. See §5.1 |
+
+**On #1 — this retires the open question in `enquiry-language.md`.** Plan Scan produces orders
+(#1271 carries `_source: "plan-scanner"`), but producing orders in beta is not the same as being
+advertisable. **File friction remains the best-evidenced pain in the market and we still cannot
+address it in an ad.** That is a real constraint on the copy, not a technicality — it is worth
+re-asking the moment beta ends.
+
+**On #3 — the gate is clear, verified from the pixel, not assumed:**
+
+| Event | Last fired | Count |
+|---|---|---|
+| `InitiateCheckout` | 2026-08-02 22:00 UTC | 2 |
+| `Purchase` | 2026-08-03 04:00 UTC | 6 (pre-dedup) |
+
+Matching Shopify orders **#1274** ($2,336) and **#1275** ($1,048), both PAID, 04:43 and 04:44 UTC.
+`act_1650412872259063/customconversions` returns `{"data":[]}` — nothing partially built.
+
+⚠️ The 6-vs-2 ratio is the **known pre-dedup counting artefact** already closed in
+`step1-duplicate-purchase.md` (`/stats` reports browser + server before they collapse on `event_id`).
+It is higher than the 2 browser + 2 server recorded there at the time, which is worth a glance on the
+next Shop Pay order — **but it is not new, not a fault, and not a blocker.**
+
+**Still needs Lee's explicit say-so to create** — it is an account write, and rung 0 means propose only.
+
+### 5.1 The fit guarantee — deferred, 2026-08-03
+
+> **Lee's decision: launch without a guarantee. Reassess after the first month, against CAC data.**
+>
+> **This costs nothing in rework** — none of the 15 creatives in §4 carry a guarantee, so the copy
+> stands as written. What it costs is offer strength: Drive bible §4 wants one promise plus a risk
+> reversal in every ad, and we are launching with the promise and without the reversal. That is a
+> known, deliberate gap, not an oversight.
+>
+> **What to measure so the reassessment is real** (otherwise "decide after a month" becomes "never"):
+> true CAC vs the $322 break-even, and checkout→sale close rate against today's 39.4%. If CAC sits
+> comfortably inside break-even, the guarantee isn't needed. If it's pressing break-even, the
+> guarantee is the lever with the most headroom — and §4 copy can absorb it without a rewrite.
+>
+> **The option that was recommended, kept on file for that conversation:** first-order-only, no-fault
+> — *"First order with us: if it doesn't fit, we re-cut it free and cover the freight."* Exposure caps
+> at one order per new customer, and first orders skew small ($196–$800), so the downside is bounded
+> while the effect lands exactly where cold-traffic CAC is decided.
+
+_Retained below: the explanation of what the guarantee is, written in response to Lee's "?"._
+
+Drive `MARKETING-BIBLE.md` §4 says every ad should carry **one promise plus a risk reversal** — where
+*we* take on the thing the buyer is afraid of. The doctrine's line: *"if your offer doesn't keep you up
+at night, it isn't strong enough."*
+
+The buyer's fear, per the bible: **the curve not fitting on site and blowing the programme in front of
+the builder.** A guarantee flips his question from *"what if it doesn't fit?"* to *"how are they
+confident enough to promise that?"*
+
+**Why this is far cheaper for Craftons than it sounds:** the configurator writes the full spec into the
+order (`Radius:`, `Width:`, `Split:`, material) — we saw it in `lineItems.customAttributes`. So any
+dispute reduces to a machine-checkable question: **did we cut to the spec on the order?** The bespoke
+funnel could never do this. The self-serve funnel can, which makes the boundary objective rather than
+an argument.
+
+The decision is only **how far past our own error the promise goes** — see the options put to Lee.
 
 **No longer blocking:** the five §1 interview claims (settled in §3 above), the audience question
 (two-funnel model), turnaround (order data), joins (order data), bending ply (approved copy).

@@ -148,12 +148,28 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 
 ---
 
+### ✅ Lee's four decisions — ANSWERED 2026-08-03
+- ❌ **Plan Scan is NOT advertisable — in beta testing.** The Drive golden rule stands unchanged: no ad
+  may say "send us your plan / your CAD / your drawing". Ads sell the self-serve configurator only.
+  **File friction is the best-evidenced pain in the market and we still can't address it.** Re-ask when
+  beta ends.
+- ⏸ **Fit guarantee: launch without one**, reassess after the first month against CAC. Costs no rework
+  (no §4 creative carries one); costs offer strength. → `copy-reconciliation.md` §5.1
+- ✅ **Custom conversion gate is CLEAR** — the order Lee was waiting on landed 2026-08-03.
+  `InitiateCheckout` ×2 (08-02 22:00 UTC) · `Purchase` ×6 pre-dedup (08-03 04:00 UTC) · orders #1274
+  $2,336 + #1275 $1,048, both PAID. `customconversions` returns `{"data":[]}` — nothing half-built.
+  **Still needs Lee's explicit word to create — it's an account write and we're at rung 0.**
+- 🟡 **Before/after photography in progress** — Lee "trying to get some". `before_after` family stays
+  at 0 until they exist.
+
+---
+
 ## ⏭ Next steps (in order)
-1. 🔴 **Lee's four decisions** → `campaigns/meta/copy-reconciliation.md` §5: (a) is **Plan Scan**
-   advertisable yet? (b) approve the **fit guarantee** + its boundary and freight cap, (c) create the
-   **combined custom conversion** (account write — last Phase 0 gate), (d) **before/after photography**.
+1. 🔴 **Create the combined custom conversion (IC OR Purchase)** — gate is clear, awaiting Lee's word.
+   Last Phase 0 item.
 2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
    `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
+   **Still the biggest open item** — the words are fixed, the images are not.
 3. **Check EMQ > 7** — needs 24–48h of pixel traffic from 2026-08-03. **Not readable yet**; earliest
    2026-08-04, safest 2026-08-05.
 4. **Verify `brand-check`'s vision path live** — built, never run. Sunday's cron is its first real run.

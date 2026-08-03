@@ -54,6 +54,20 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
+### Meta Ads agent — designed (2026-08-03)
+- [x] **Meta Ads Agent Bible** written → `campaigns/meta/META-ADS-AGENT-BIBLE.md`
+  - Digested from the Isenberg × Cody Schneider "marketing agents" episode; translated to Craftons.
+  - **Scope locked:** Craftons only · **Radius Pro only** to start · human-approves first, autonomy
+    earned via a 5-rung ladder · code lives in `leepatt/cnccut-app` · lightweight data layer (no
+    Airbyte/ClickHouse — Neon + `marketing_metrics_cache` already does the job).
+- [x] **Recon of `leepatt/cnccut-app` done** (HEAD `01f69e3`) — **resolves the "blocked on repo scope"
+  TODO in `INTEGRATIONS.md`.** Env var names confirmed against `docs/marketing/APP-NOTES.md`.
+  - ⚠️ **Our notes were badly out of date.** Far more is built than this repo assumed: the four
+    `marketing_*` tables (runs/approvals/assets/metrics_cache) on Neon, a **live** `meta-ads.mjs report`,
+    `google-ads.mjs` with a full propose→approve→apply pattern, `studio.mjs generate` + **`brand-check`**,
+    and the `/marketing` Cockpit with all 8 modules `status: "built"`.
+  - **Most of the video's architecture already exists** under different names. The build is *extend*, not *create*.
+
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
@@ -105,4 +119,5 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
+**Meta Ads:** `campaigns/meta/META-ADS-AGENT-BIBLE.md` (the agent design + phased build plan)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

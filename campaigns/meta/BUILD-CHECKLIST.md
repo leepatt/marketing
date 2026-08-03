@@ -127,13 +127,18 @@ product, not the market's words about their problem.
 
 | # | Item | Status | Owner |
 |---|---|---|---|
-| C1.1 | Stand up `research/market-intel/` (pains · desires · objections · language · triggers) | ❌ | Claude |
-| C1.2 | **Mine the 443 lead-form submissions** — first-party, competitors can't see it | ❌ | Claude + 👤 access |
-| C1.3 | Mine call notes / email replies / configurator sessions | ❌ | Claude + 👤 access |
-| C1.4 | Reddit: r/AusConstruction, r/carpentry, r/Formwork1 | 🟡 | Ran, but returned **US woodworkers**, not AU tradies |
-| C1.5 | AU Facebook trade groups | ❌ | Claude |
+| C1.1 | Stand up `research/market-intel/` (pains · desires · objections · language · triggers) | ✅ | **Was done 2026-07-21, not found until 2026-08-04.** Recovered — 7 files now on this branch |
+| C1.2 | **Mine the 443 lead-form submissions** — first-party, competitors can't see it | ✅ | ClickUp Job List + Gmail, 68 jobs → `CURVED-JOBS-WINLOSS.md` |
+| C1.3 | Mine call notes / email replies / configurator sessions | ✅ | `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim, won+lost) · `enquiry-language.md` |
+| C1.4 | Reddit: r/AusConstruction, r/carpentry, r/Formwork1 | 🟡 | Ran, but returned **US woodworkers**, not AU tradies. Superseded — first-party beats it |
+| C1.5 | AU Facebook trade groups | ❌ | Claude — low priority now |
 | C1.6 | Competitor **one-star reviews** (their failures = our positioning) | ❌ | Claude |
-| C1.7 | Rank pains by frequency | ❌ | Claude |
+| C1.7 | Rank pains by frequency | 🟡 | No counts, but win/loss gives something better: **Radius Pro 73%, formwork 50%** |
+
+> ✅ **Resolved 2026-08-04 → `copy-reconciliation.md`.** The verbatim law is no longer being broken:
+> a Lee-approved verbatim copy set from 2026-07-21 was recovered, and all copy is now rewritten
+> against cross-validated customer language. The failure was never missing research — it was
+> **not finding research that already existed.**
 
 ## C2. 🔴 Product facts are unverified — the interview
 
@@ -141,13 +146,15 @@ I asserted these in live ad copy without confirming them with anyone who makes t
 
 | Claim used in an ad | Verified? |
 |---|---|
-| "dispatched in three business days" | ❌ |
-| "Part IDs engraved" | ❌ |
-| "nothing to fill at the join" | ❌ **and probably false** — big curves auto-split, so there ARE joins |
-| "On site in three days" | ❌ **overclaim** — its own sub-line says *dispatched* |
-| Bending ply framing | ❌ — Craftons appears to **sell** bending ply; "bendy ply" is a confirmed job-winner |
+| "dispatched in three business days" | ⚠️ **Imprecise** — turnaround is 2 days typical, scales to 5. Use "cut this week" |
+| "Part IDs engraved" | ✅ **TRUE** — `_part_id_engraving: "Included"` on every order |
+| "nothing to fill at the join" | ❌ **FALSE** — joiner blocks ship with every split. Customer's word: *"splice piece for every join"* |
+| "On site in three days" | ❌ **Killed** — overclaim, dispatch ≠ delivered |
+| Bending ply framing | ❌ **Killed** — Craftons sells bendy formply (Rip Pro); "bendy ply" is a confirmed job-winner |
 
-**→ Interview needed. Questions in `radius-pro-interview.md`.**
+> ✅ **Resolved 2026-08-04 from order data + the recovered Lee-approved copy → `copy-reconciliation.md` §3.**
+> Four of five settled without the interview. The interview is still worth answering for §4 (the buyer),
+> §5 (the fear) and §7 (proof) — but it **no longer blocks the rewrite**.
 
 ## C3. 🟠 The offer doesn't exist in the ads
 
@@ -190,8 +197,17 @@ facts, the offer) are where the work is — and they're what makes the differenc
 money and ads that make it.
 
 **Do not run the test until at minimum:**
-1. The product interview clears the unverified claims (**C2**) — misleading copy is not a "fix later"
-2. The custom conversion exists (**C4.3**)
-3. Copy is rewritten against real customer language (**C1**)
+1. ~~The product interview clears the unverified claims (**C2**)~~ — ✅ **done 2026-08-04** from order
+   data + recovered approved copy
+2. The custom conversion exists (**C4.3**) — 👤 **still the gate.** Account write, needs Lee
+3. ~~Copy is rewritten against real customer language (**C1**)~~ — ✅ **done 2026-08-04** →
+   `copy-reconciliation.md` §4
+4. 🆕 **Creative re-rendered to match.** The words are fixed; the images still show a 900mm decorative
+   arc, which is the wrong product. A true headline over a misleading image is still a misleading ad
 
-Items 1 and 3 are the ones I got wrong by rushing. Better to find that here than in market.
+Items 1 and 3 were the ones I got wrong by rushing. Better to find that here than in market.
+
+> **The deeper lesson, logged 2026-08-04:** both failures were the same failure. The Drive bible went
+> unread, and then a full verbatim research pass went unfound — so it got re-derived, worse. The fix
+> isn't "research harder", it's **look for the work before doing the work.** `STATUS.md` exists for
+> exactly this and was three sessions stale.

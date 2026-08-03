@@ -147,6 +147,28 @@ Every element is evidenced: *send us the plan* (how they buy), *snap to the arch
 own promise), *the plates* (their word for the product). And it maps onto the Drive bible's Godfather
 Offer, which starts *"Send us your set-out."*
 
+> ### ⛔ Corrected 2026-08-04 — do not run this angle yet
+>
+> **This inbox is the CNC Cut bespoke funnel, not the Craftons self-serve funnel**, and Drive
+> `META-ADS-BRIEF.md` carries an explicit golden rule: *"ads sell the self-serve online builders.
+> **NEVER 'send us your CAD'** — that's the bespoke CNC Cut service, our intel source, not what we
+> advertise."*
+>
+> So the angle above is the one framing the brief forbids, derived from the one inbox the brief names
+> as intel-only. The whole doc was mined from the wrong funnel for the purpose it was used for.
+>
+> **What survives:** the *language* — "top and bottom plates", "profile", "lead time", "can you give
+> us a price" — which cross-validates against Shopify order data and the Lee-approved copy. That part
+> is solid and is now the anchor of `campaigns/meta/copy-reconciliation.md` §4.
+>
+> **What doesn't:** the angle, the audience "correction" (it describes the CNC Cut buyer — see
+> `brand/audience.md`), and the lead-time alarm (2 days is Radius Pro; 3–4 weeks is bespoke CNC —
+> two different products, no contradiction).
+>
+> **One genuine open question it raises:** Plan Scan is now live and producing self-serve orders
+> (`_source: "plan-scanner"`), which postdates the golden rule. "Send us the plan" may now be a
+> *self-serve builder* rather than the bespoke service. **Lee's call** — see reconciliation §5.
+
 ---
 
 ## Still to mine

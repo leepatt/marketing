@@ -3,6 +3,27 @@
 _The creative brief every ad in the launch batch reads from. Written 2026-08-03._
 _Closes bible Phase 2.2 ("rank pain points, top 3 become the launch angles")._
 
+> ### ⚠️ Superseded in part, 2026-08-04 → `copy-reconciliation.md`
+>
+> **The three angles stand.** The ranking (demo → problem → outcome) is unchanged and still correct.
+> What changed is the copy underneath them:
+>
+> - **Angle 3's own title is now wrong.** *"Dispatched in three days"* is imprecise — order data says
+>   turnaround is **2 days typical**, scaling to 5 on big jobs. The angle is sound; the number isn't.
+>   Use *"cut this week"* (Lee-approved). Its proof line now leads on **joiner blocks** and
+>   **engraved Part IDs**, both confirmed in order data.
+> - **Angle 2's headline is weaker than it looked.** "Bog-and-sand" never appears in a customer
+>   enquiry — it's positioning language, not transactional language. Keep it in the mix; don't let it
+>   carry the angle.
+> - **The verbatim below is US-Reddit woodworkers.** It was honestly caveated at the time, but it has
+>   since been superseded by first-party AU intel: `VOICE-OF-CUSTOMER-curved-jobs.md`,
+>   `CURVED-JOBS-WINLOSS.md`, `CURVED-JOBS-DOLLARS-AND-BOTTLENECK.md`, and Shopify order attributes.
+>   **Write from those, not from this table.**
+> - **The anti-angle (never segment by trade at launch) is confirmed** and now reconciled with Suby's
+>   identity hack — see `BUILD-CHECKLIST.md` B2.
+>
+> The rewritten batch is `copy-reconciliation.md` §4.
+
 > **Companion docs:** `META-ADS-AGENT-BIBLE.md` (§4.1 product, §4.3 creative families, §4.5 account
 > post-mortem) · `../../brand/audience.md` (the pain points, from real customers) ·
 > `../../brand/keyword-plan.md` (proven converting language) · `../../QUALITY-DOCTRINE.md`.

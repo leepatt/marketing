@@ -1,7 +1,30 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-06-30. Branch: `claude/peninsula-studio-marketing-access-3uwvoz`._
+_Living handoff doc. Last updated 2026-08-04. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
+
+---
+
+## 🚨 BEFORE YOU RESEARCH ANYTHING — check it isn't already done
+
+**This repo has now lost the same work twice.** Both times the cost was days of re-derivation and, once,
+six misleading live-ready ads. Both were preventable in about ninety seconds:
+
+1. **Drive `MARKETING-BIBLE.md` went unread** until 2026-08-03 — it contains the verbatim law that the
+   first Meta ad batch broke.
+2. **A complete Lee-approved verbatim research pass (2026-07-21) went unfound** until 2026-08-04. It was
+   in Drive `META-ADS-BRIEF.md` and on branch `claude/marketing-video-transcript-cy49qx`. A session
+   re-derived a *worse* version of it from the wrong inbox and drew an angle the brief forbids.
+
+**So, first three moves of any session:**
+
+```
+1. Read this file, then Drive MARKETING-BIBLE.md + META-ADS-BRIEF.md
+2. git fetch origin --prune && git branch -r          # work hides on other branches
+3. Search before writing:  for b in $(git branch -r); do git ls-tree -r --name-only $b | grep -i <topic>; done
+```
+
+**Work is spread across ~25 branches and Drive. Nothing is authoritative just because it's on your branch.**
 
 ---
 
@@ -106,8 +129,34 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 
 ---
 
+### Meta ads copy — RECONCILED & REWRITTEN (2026-08-04)
+- [x] **Drive bible + checklist + brief all read** — the standing rule that had been skipped
+- [x] **Lost intel corpus recovered** onto this branch from `claude/marketing-video-transcript-cy49qx`:
+  `VOICE-OF-CUSTOMER-curved-jobs.md` · `CURVED-JOBS-WINLOSS.md` ·
+  `CURVED-JOBS-DOLLARS-AND-BOTTLENECK.md` · `DREAM-BUYER-AVATAR.md` · `QUOTE-BANK.md` ·
+  `campaigns/adwords/customer-voice-ad-copy.md` (**Lee-approved 2026-07-21**)
+- [x] **The two-funnel model** — resolves every apparent contradiction between the intel docs.
+  **Craftons self-serve** (configurator, 2-day turnaround, builders, 73% win rate) ≠ **CNC Cut bespoke**
+  (email a drawing, 3–4 weeks, PMs/site engineers, closed by phone). Ads target the former; the latter
+  is intel-only per the Drive golden rule. → `campaigns/meta/copy-reconciliation.md` §2
+- [x] **4 of 5 unverified ad claims settled from data** — no interview needed. Part IDs engraved ✅ true ·
+  "nothing to fill at the join" ❌ false (joiner blocks; the market's word is *"splice piece for every
+  join"*) · "on site in three days" ❌ killed · bendy-ply attack ❌ killed (we sell it)
+- [x] **15 corrected creatives written** from cross-validated verbatim → `copy-reconciliation.md` §4
+- [ ] ⚠️ **Creative still needs re-rendering** — the words are fixed, the images still show a 900mm
+  decorative arc, which order data says is the wrong product. Blocked on the `cnccut-app` repo
+
+---
+
 ## ⏭ Next steps (in order)
-1. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
+1. 🔴 **Lee's four decisions** → `campaigns/meta/copy-reconciliation.md` §5: (a) is **Plan Scan**
+   advertisable yet? (b) approve the **fit guarantee** + its boundary and freight cap, (c) create the
+   **combined custom conversion** (account write — last Phase 0 gate), (d) **before/after photography**.
+2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
+   `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
+3. **Check EMQ > 7** — was 24–48h out from 2026-08-03, so readable now.
+4. **Verify `brand-check`'s vision path live** — built, never run. Sunday's cron is its first real run.
+5. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
 2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved
    writes), mirrors creds into env, and **the engine deploys the Craftons campaigns** (the goal: engine-run, tracked from day 1).
 3. **Set up the weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
@@ -138,6 +187,16 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 - **Reading file *content* from Drive** needs the connector allow-list (search works without it). PDFs in this
   env: `pip install pdfminer.six cffi` then `pdfminer.high_level.extract_text` (poppler not installed).
 - **Voice:** brand-caption tone ≠ paid-search-ad tone. Ads use direct CTAs; social is value-first/soft-CTA.
+- 🔑 **Two funnels, two buyers — never mix them.** **Craftons self-serve** (configurator → instant price
+  → checkout; 2-day turnaround; builders ordering plates by qty) vs **CNC Cut bespoke** (email a
+  drawing; quoted in Quotient; 3–4 weeks; PMs/site engineers; closed on the phone). The CNC Cut inbox
+  is our richest intel source and is **explicitly not what we advertise** (Drive golden rule). Mining it
+  and then writing Craftons ads from its *offer* is how the 2026-08-03 batch went wrong. The **language**
+  crosses over; the **offer and lead time do not.**
+- **Lead times are per-product, not per-company.** 2 days = Radius Pro. 3–4 weeks = bespoke CNC. An ad
+  that blurs them is a broken promise waiting to happen.
+- **"Awaiting approval" ≠ the customer said no.** On 11 of 12 stalled jobs no quote was ever sent. The
+  biggest conversion lever found so far is **internal quoting speed**, not copy.
 
 ---
 
@@ -149,5 +208,20 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
-**Meta Ads:** `campaigns/meta/META-ADS-AGENT-BIBLE.md` (the agent design + phased build plan)
+**Meta Ads:** `campaigns/meta/` → `BUILD-CHECKLIST.md` (**start here** — every item, machine vs marketing) ·
+`copy-reconciliation.md` (**the corrected copy + what needs Lee**) · `META-ADS-AGENT-BIBLE.md` (agent
+design + phased build) · `launch-angles.md` (⚠️ partly superseded) · `conversion-tracking.md` ·
+`radius-pro-interview.md` (§4/§5/§7 still worth answering; no longer blocking)
+
+**🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
+`VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`
+(68 jobs, win rate by product) · `CURVED-JOBS-DOLLARS-AND-BOTTLENECK.md` ($ sizing + the quoting
+bottleneck) · `DREAM-BUYER-AVATAR.md` · `QUOTE-BANK.md` · `radius-pro-orders.md` (what customers
+actually order, from Shopify) · `enquiry-language.md` (⚠️ correct language, superseded conclusion) ·
+`campaigns/adwords/customer-voice-ad-copy.md` (**Lee-approved 2026-07-21**)
+
+**In Google Drive** `Peninsula Studio/01 Craftons/Marketing/` — **not optional reading:**
+`MARKETING-BIBLE.md` (Suby doctrine · Godfather Offer · the verbatim law · the 8 hacks §9) ·
+`MARKETING-CHECKLIST.md` (the phased action list) · `META-ADS-BRIEF.md` (**the golden rule** + approved copy)
+
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

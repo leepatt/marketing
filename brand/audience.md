@@ -1,5 +1,18 @@
 # Audience — Craftons
 
+> ⚠️ **Read `campaigns/meta/copy-reconciliation.md` §2 first — there are two funnels, two buyers.**
+>
+> - **Craftons self-serve** (Shopify configurator, 2-day turnaround) → the buyer described below.
+>   Ordering curved top/bottom plates by quantity, projects named by address. **This is who the ads
+>   target.** Win rate 73% — the proven workhorse.
+> - **CNC Cut bespoke** (email a drawing, quoted via Quotient, 3–4 week lead times) → **PMs, site
+>   engineers, contracts administrators and directors** at commercial contractors. Real, valuable,
+>   closed by phone — and explicitly **not what we advertise** (Drive `META-ADS-BRIEF.md` golden rule).
+>
+> A 2026-08-03 pass read the CNC Cut inbox and concluded this file was wrong about the buyer. It
+> wasn't — it was being marked against the wrong funnel. Both buyers are real. The *language* is
+> shared; the *offer* is not.
+
 ## Primary: builders / tradies (on the tools)
 - Carpenters, formworkers, shopfitters, cabinetmakers building curved/complex work.
 - **Sophistication: high.** They know trade terms, NCC, set-out, tolerances. Don't explain basics.

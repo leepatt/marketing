@@ -99,19 +99,21 @@ cost. Work top-down by priority.
      trigger + a *Reply to Review* action, using Zapier's own approved access. No Google approval
      wait, same-day. Enable via `enable_zapier_action` (`selected_api: GoogleMyBusinessCLIAPI`) then
      authorise the Google account that owns the profiles.
-  2. **Direct API** — reviews still live on the legacy v4 surface:
+  2. **Direct API** (chosen 2026-08-03) — reviews still live on the legacy v4 surface:
      `PUT https://mybusiness.googleapis.com/v4/accounts/{a}/locations/{l}/reviews/{r}/reply`.
-     Enable the Business Profile APIs in a Cloud project → OAuth client → submit the **API access
-     request form** (approval takes days to weeks, like the Google Ads dev token — apply early).
-     Verified locations only. Approved projects get ~300 req/min per API.
+     Submit the **Basic API access application** (project number required; approval takes days to
+     weeks, like the Google Ads dev token) → enable the 8 APIs → OAuth client → refresh token.
+     Verified locations only. Quota is 0 QPM until approved, 300 QPM after.
+     **Application package with drafted answers → `followups/gbp-api-access.md`.**
 - **Env vars (direct route):** `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`,
   `GBP_ACCOUNT_ID` — scope `https://www.googleapis.com/auth/business.manage`. Can reuse the existing
   Cloud project from B7.
 - **Cost:** free (both routes; Zapier covered by the existing plan).
 - **Guardrail:** a review reply is **public and instant** — there is no draft state in the API.
   Default stays Claude drafts → Lee approves and posts. Never auto-reply to negative reviews.
-- **Status:** ☐ Researched 2026-08-03, not wired. Needs Lee's go-ahead to enable the Zapier action
-  and/or start the API access request.
+- **Status:** ☐ **Direct API chosen 2026-08-03; application package prepared, not yet submitted.**
+  Blocked on Lee: confirm Owner-level access on the Craftons profile, get the Cloud project number,
+  submit the form → `followups/gbp-api-access.md`.
 
 ---
 

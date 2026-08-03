@@ -76,13 +76,16 @@ Scope: https://www.googleapis.com/auth/business.manage
 - `reviews.deleteReply` — remove a reply
 - **Only works on verified locations.**
 
-**The gate (the part with lead time):** enable the Business Profile APIs in a Google Cloud project,
-create an OAuth client, then submit the **Business Profile API access request form**. Google reviews
-who you are, what you're building, and how many locations you manage. **Approval takes days to
-weeks** and thin applications get rejected — same shape as the Google Ads Basic-access wait already
-tracked in `INTEGRATIONS.md` B7. Approved projects get a default quota of ~300 requests/minute per
-API, which is enormous for four locations. A verified profile active 60+ days and a real business
-website are expected; both are true for us.
+**The gate (the part with lead time):** take a Google Cloud project's **project number** and submit
+the **Basic API access application** at
+[support.google.com/business/contact/api_default](https://support.google.com/business/contact/api_default)
+— access is granted per project, and the project's quota sits at **0 QPM until approved** (every
+call 429s), flipping to 300 QPM on approval. Only then is enabling the eight APIs useful. Google
+states 7–10 business days; assume up to a fortnight. Thin or grandiose applications get rejected,
+and the application must come from an **Owner** of the profile, not a Manager. A verified profile
+active 60+ days and a real business website are required; both are true for us.
+
+**→ The full application package, with drafted answers, is in `gbp-api-access.md`.**
 
 **Real-time notifications (optional, Path B only):** the Notifications API v1
 (`accounts.updateNotificationSetting`) pushes `NEW_REVIEW` events to a Cloud Pub/Sub topic, so a

@@ -59,11 +59,14 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
 - [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
-- [ ] **Google review replies** — researched 2026-08-03, not wired. Replies post to the Business
-  Profile, **not** via Gmail. Two routes: Zapier bridge (same-day, no approval) or the direct GBP
-  API v4 (approval takes days–weeks — apply early). Craftons has its own profile; notifications land
-  in `cnc@cnccut.melbourne` alongside CNC Cut Melbourne, CNC Cut Geelong, Cavity Battens. Needs
-  Lee's go-ahead → `followups/google-reviews.md` + `INTEGRATIONS.md` B10
+- [ ] **Google review replies — GBP API Basic access application PREPARED, not submitted.** Replies
+  post to the Business Profile, **not** via Gmail. Direct-API route chosen 2026-08-03; drafted form
+  answers ready → `followups/gbp-api-access.md` (research: `followups/google-reviews.md`,
+  `INTEGRATIONS.md` B10). Craftons has its own profile (live since ≥ Jul 2025, so the 60-day rule is
+  met); notifications land in `cnc@cnccut.melbourne` alongside CNC Cut Melbourne, CNC Cut Geelong,
+  Cavity Battens — one integration covers all four.
+  **Blocked on Lee:** (a) confirm `cnc@cnccut.melbourne` is **Owner** not Manager on the Craftons
+  profile — applying as a Manager is the #1 rejection cause; (b) Cloud project number; (c) submit.
 
 ---
 
@@ -111,5 +114,6 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
 **Follow-ups / reviews:** `followups/README.md` · `followup-rules.md` · `routine-prompts.md` ·
-`google-reviews.md` (replying to Google reviews — research + wiring paths)
+`google-reviews.md` (replying to Google reviews — research + wiring paths) ·
+`gbp-api-access.md` (GBP API Basic access application package)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

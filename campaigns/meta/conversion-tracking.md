@@ -95,6 +95,10 @@ Each has an action and a **verification**. Don't tick one you haven't verified.
 
 ## Step 1 — Kill the duplicate Purchase 🔴
 
+> 📄 **Full diagnosis + fix order → `step1-duplicate-purchase.md`.** The daily data has since pinned
+> it down precisely: **browser is correct; the SERVER side fires exactly 2× per order, and browser and
+> server aren't deduplicating.** Net = every order counted three times.
+
 **Do this first.** Everything downstream is polluted until it's fixed. The configurator is cleared, so
 look only at Shopify:
 

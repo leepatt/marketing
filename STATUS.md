@@ -66,6 +66,8 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 1. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
 2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved
    writes), mirrors creds into env, and **the engine deploys the Craftons campaigns** (the goal: engine-run, tracked from day 1).
+   → **Build against API `v25` via direct REST, no client library** — decision + upgrade routine in
+   `campaigns/adwords/api-versioning.md`. (Google ships no official Node library; the community one lags.)
 3. **Set up the weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
 4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
 5. **Content production** (independent of ads): Tia shoots Craft Macro Session A; build out How-To Series shot lists.
@@ -91,6 +93,10 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   changes **only apply on a new session**. `settings.local.json` is gitignored → doesn't carry to fresh sessions.
 - **Engine-run ads need:** (a) Basic access, (b) creds in this env, (c) a `google-ads.mjs` tool. Basic access
   alone is NOT enough, and is NOT required to launch manually.
+- **Google Ads API versions sunset ~12 months after release — ~2 upgrades/year, forever.** Pin the version
+  as a single constant so an upgrade is a one-line change + a proto-diff review. Google has **no official
+  Node client library**; the community `google-ads-api` package sits ~1 version behind and is outside
+  Google's 20-week overlap guarantee → we call REST directly. See `campaigns/adwords/api-versioning.md`.
 - **Reading file *content* from Drive** needs the connector allow-list (search works without it). PDFs in this
   env: `pip install pdfminer.six cffi` then `pdfminer.high_level.extract_text` (poppler not installed).
 - **Voice:** brand-caption tone ≠ paid-search-ad tone. Ads use direct CTAs; social is value-first/soft-CTA.
@@ -104,5 +110,5 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 `brand/{voice-profile,audience,competitors,keyword-plan,assets}.md`
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
-`cnc-cut-review-log.md`
+`api-versioning.md` · `cnc-cut-review-log.md`
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

@@ -5,9 +5,10 @@
  * Pulls performance data from our own Google Ads account via the REST API + GAQL.
  * Design doc: campaigns/adwords/api-tool-design.md
  *
- * Control model: this file is read-only by design. Any write operation (negatives,
- * pausing keywords, bid/budget changes) must land in a separate code path gated behind
- * an explicit CONFIRM=1 human approval — see the design doc. Claude reports, Lee approves.
+ * Control model: reads are unrestricted. Every write is DRY-RUN by default and only executes
+ * when the operator passes CONFIRM=1 in the environment. Claude proposes, Lee approves.
+ * Writes are deliberately limited to the reversible operations below — there is no code path
+ * that creates ads, raises budgets above a cap, or deletes anything permanently.
  *
  * Env vars required:
  *   GOOGLE_ADS_DEVELOPER_TOKEN  GOOGLE_ADS_CLIENT_ID  GOOGLE_ADS_CLIENT_SECRET
@@ -15,10 +16,17 @@
  *   GOOGLE_ADS_LOGIN_CUSTOMER_ID (optional — only needed when the target account is a
  *                                 child of that manager account)
  *
- * Usage:
+ * Usage — read:
  *   node tools/google-ads.mjs accounts
  *   node tools/google-ads.mjs report [--days 30] [--customer 3104912421]
  *   node tools/google-ads.mjs raw "SELECT campaign.name FROM campaign"
+ *
+ * Usage — write (dry-run unless CONFIRM=1):
+ *   node tools/google-ads.mjs add-negatives --campaign <id> --terms "a,b,c" [--match PHRASE]
+ *   node tools/google-ads.mjs pause-keywords --ids <resourceName,resourceName>
+ *   node tools/google-ads.mjs pause-ad --ids <resourceName,resourceName>
+ *   node tools/google-ads.mjs set-budget --campaign <id> --amount 25
+ *   CONFIRM=1 node tools/google-ads.mjs set-budget --campaign 24006679434 --amount 25
  */
 
 const API_VERSION = 'v22';
@@ -350,6 +358,83 @@ async function report(customerId, range) {
   return out.join('\n');
 }
 
+// ── writes (CONFIRM=1 gated) ──────────────────────────────────────────────────
+/** Hard ceiling so a typo can never set a four-figure daily budget. */
+const MAX_DAILY_BUDGET_AUD = 200;
+
+const confirmed = () => process.env.CONFIRM === '1';
+
+/**
+ * Run a mutate, or print what it would do. Every write in this file goes through here,
+ * so the CONFIRM gate cannot be bypassed by adding a new command.
+ */
+async function mutate(customerId, endpoint, operations, describe) {
+  console.log(`\n${confirmed() ? '▶ APPLYING' : '⧗ DRY RUN'} — ${describe} (${operations.length} operation${operations.length === 1 ? '' : 's'})`);
+  for (const line of operations.map((o) => JSON.stringify(o))) console.log(`   ${line}`);
+  if (!confirmed()) {
+    console.log('\n   Nothing was changed. Re-run with CONFIRM=1 to apply.');
+    return null;
+  }
+  const res = await call(`customers/${customerId}/${endpoint}:mutate`, {
+    body: { operations, partialFailure: true },
+  });
+  const failure = res.partialFailureError;
+  if (failure) console.error(`   ⚠ partial failure: ${failure.message}`);
+  console.log(`   ✅ applied ${res.results?.length || 0}`);
+  return res;
+}
+
+async function addNegatives(customerId, campaignId, terms, matchType = 'PHRASE') {
+  const ops = terms.map((text) => ({
+    create: {
+      campaign: `customers/${customerId}/campaigns/${campaignId}`,
+      negative: true,
+      keyword: { text, matchType },
+    },
+  }));
+  return mutate(customerId, 'campaignCriteria', ops, `add ${terms.length} ${matchType} negatives to campaign ${campaignId}`);
+}
+
+/** Pause (not remove) keywords, so the change is reversible and history is kept. */
+async function pauseKeywords(customerId, resourceNames) {
+  const ops = resourceNames.map((resourceName) => ({
+    update: { resourceName, status: 'PAUSED' },
+    updateMask: 'status',
+  }));
+  return mutate(customerId, 'adGroupCriteria', ops, `pause ${resourceNames.length} keyword(s)`);
+}
+
+async function pauseAds(customerId, resourceNames) {
+  const ops = resourceNames.map((resourceName) => ({
+    update: { resourceName, status: 'PAUSED' },
+    updateMask: 'status',
+  }));
+  return mutate(customerId, 'adGroupAds', ops, `pause ${resourceNames.length} ad(s)`);
+}
+
+async function setBudget(customerId, campaignId, amountAud) {
+  if (!(amountAud > 0) || amountAud > MAX_DAILY_BUDGET_AUD) {
+    throw new Error(`Refusing budget of $${amountAud}/day — allowed range is $0–$${MAX_DAILY_BUDGET_AUD}.`);
+  }
+  const [row] = await gaql(
+    customerId,
+    `SELECT campaign.name, campaign_budget.resource_name, campaign_budget.amount_micros
+     FROM campaign WHERE campaign.id = ${campaignId}`
+  );
+  if (!row) throw new Error(`Campaign ${campaignId} not found`);
+  const current = money(row.campaignBudget.amountMicros);
+  console.log(`   ${row.campaign.name}: $${current.toFixed(2)}/day → $${amountAud.toFixed(2)}/day`);
+  return mutate(
+    customerId,
+    'campaignBudgets',
+    [{
+      update: { resourceName: row.campaignBudget.resourceName, amountMicros: String(Math.round(amountAud * 1e6)) },
+      updateMask: 'amount_micros',
+    }],
+    `set budget for "${row.campaign.name}"`
+  );
+}
+
 // ── CLI ───────────────────────────────────────────────────────────────────────
 const [cmd, ...rest] = process.argv.slice(2);
 const flag = (name, def) => {
@@ -377,8 +462,28 @@ try {
   } else if (cmd === 'raw') {
     const rows = await gaql(flag('customer', env('GOOGLE_ADS_CUSTOMER_ID')), rest[0]);
     console.log(JSON.stringify(rows, null, 2));
+  } else if (cmd === 'add-negatives') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    const terms = (flag('terms', '') || '').split(',').map((s) => s.trim()).filter(Boolean);
+    if (!terms.length) throw new Error('--terms is required (comma separated)');
+    await addNegatives(cid, flag('campaign'), terms, flag('match', 'PHRASE'));
+  } else if (cmd === 'pause-keywords') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    await pauseKeywords(cid, (flag('ids', '') || '').split(',').map((s) => s.trim()).filter(Boolean));
+  } else if (cmd === 'pause-ad') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    await pauseAds(cid, (flag('ids', '') || '').split(',').map((s) => s.trim()).filter(Boolean));
+  } else if (cmd === 'set-budget') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    await setBudget(cid, flag('campaign'), Number(flag('amount')));
   } else {
-    console.log('Usage: node tools/google-ads.mjs <accounts|report|raw> [--days N] [--customer ID]');
+    console.log(`Usage:
+  read:   accounts | report [--days N] | raw "<GAQL>"
+  write:  add-negatives --campaign <id> --terms "a,b,c" [--match PHRASE]
+          pause-keywords --ids <resourceName,...>
+          pause-ad --ids <resourceName,...>
+          set-budget --campaign <id> --amount <aud>
+  Writes are DRY RUN unless CONFIRM=1 is set.`);
     process.exit(1);
   }
 } catch (e) {

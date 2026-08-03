@@ -88,3 +88,35 @@ kmart
   group — that's who searches "bendy ply" without buying building products.
 - **hire / rent / rental / lease** — important for the Formwork group: we *sell* kits, we don't hire.
 - Keep the list growing from the weekly **Search Terms report** — that's where new waste shows up.
+
+## Applied to the live account — 2026-08-03
+
+Added via `tools/google-ads.mjs add-negatives` (CONFIRM=1). Verified live.
+
+**Both campaigns (8 new, phrase match):**
+```
+intrim
+formatube
+banquette
+booth
+scallop
+inch
+doors
+metal
+```
+- `intrim`, `formatube` — competitor brands. We were also *bidding* on 4 `intrim` keywords
+  (QS 1, $28.54, 0 conversions); those are now paused.
+- `doors` (plural) deliberately, so `arch door trim` / `arch door moulding` still serve.
+- `inch` blocks imperial-unit searches — we're a metric market.
+
+**Curved Architraves campaign — synced 69 negatives from the main campaign.**
+It was running with only 23 negatives against the main campaign's 84, so it had almost none of the
+hobbyist/DIY/research blockers. Now at 100 vs the main campaign's 92.
+
+### Deliberately NOT added (judgement calls for Lee)
+| Term | Why held back |
+|---|---|
+| `beading` | "curved beading for bottom of stairs" ($12) is plausibly a real curved-trim job |
+| `kit` | "door archway kit" — our configured architraves arguably *are* a kit |
+| `circle` | "circle plywood" / "plywood circle" is a genuine CNC job — possibly a **CNC Cut** lead being shown a Craftons ad, worth routing rather than blocking |
+| `seating` | would block `circular concrete seating`, which is real formwork demand |

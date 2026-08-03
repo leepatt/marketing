@@ -7,7 +7,9 @@ Craftons actually has, actually sells, and actually needs._
 **Created:** 2026-08-03 · **Branch:** `claude/marketing-agents-setup-qamq2f`
 **Status:** design locked, not yet built.
 **Scope decisions (Lee, 2026-08-03):** Craftons only · human-approves first, autonomy earned ·
-code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius Pro only** to start.
+code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius Pro only** to start ·
+**AI avatars approved** (§4.2) · **$2,000/month ceiling** with a staged ramp (§4.6) ·
+**optimise on combined high-intent Lead, score on sales** (§4.5).
 
 > **Read `STATUS.md` first, then this.** This doc is the *what and why*. The build steps in Part 5
 > are the *how*. Nothing here has been implemented yet.
@@ -322,39 +324,57 @@ contact, not scraped Reddit:
 > discovery. We already know the pains. What we don't have is the exact phrasing tradies use when
 > they're venting — and that's what makes ad copy land.
 
-## 4.2 Doctrine conflict — AI avatar UGC is banned for Craftons
+## 4.2 AI avatars — APPROVED, with one hard line
 
-Cody's video pipeline is HeyGen AI-avatar UGC at volume. **This must not be adopted, and the reason
-isn't squeamishness — it's that it would not work.**
+**Decision (Lee, 2026-08-03): AI avatar UGC is approved for Meta ads.** The operational reason is
+sound — real footage is pending, and the agent needs creative volume now to hit Andromeda's diversity
+floor. Waiting on Tia's supply would mean not running ads for months.
 
-`QUALITY-DOCTRINE.md` states: *"Render real things; constrain the AI; a human curates"*, and
-*"AI never generates the product's hero geometry or exact dimensions."* `CLAUDE.md` states: *"Real
-footage leads; AI extends."*
-
-Beyond the standing rule, the audience is the problem. Tradies with high domain sophistication will
-clock a synthetic spokesperson instantly, and a fake tradie talking about set-out tolerances is a
-credibility hole in a product whose entire promise is *precision*. The cost of being caught is much
-higher than the creative saved.
+This is a deliberate, scoped exception to *"Real footage leads; AI extends"*, not a repeal of it.
+When real content lands, it leads; avatars fill the gap until then and remain as one creative family
+among several.
 
 **Ruling:**
 
 | Use | Allowed? |
 |---|---|
-| AI-generated backgrounds, atmosphere, b-roll, explainer illustration | ✅ Yes — per doctrine, these are "the edges" |
+| **AI avatar as presenter/narrator** — explaining Radius Pro, walking through the problem, reading a pain point | ✅ **Yes** |
+| AI-generated backgrounds, atmosphere, b-roll, explainer illustration | ✅ Yes |
 | AI-generated statics seeded from real Craftons photography | ✅ Yes, through `studio.mjs brand-check` |
-| Rendered-from-CAD product geometry | ✅ Yes — this is the doctrine's preferred path |
-| **AI avatar / synthetic person delivering a testimonial or pitch** | ❌ **No** |
-| AI-generated curved parts, dimensions, or fake install photos | ❌ **No** |
+| Rendered-from-CAD product geometry | ✅ Yes — the doctrine's preferred path |
+| **AI avatar delivering a first-person testimonial** — "I used this on my job last week", "this saved me two days" | ❌ **No — see below** |
+| AI-generated curved parts, dimensions, or fake install photos | ❌ No — still banned, this is the geometry rule |
+
+### The one hard line: presenter ≠ testimonial
+
+This is a legal constraint, not a taste preference, so it survives the approval above.
+
+A synthetic person **presenting** information is ordinary advertising — the same as a voiceover or a
+hired actor, and universally accepted. A synthetic person giving a **first-person testimonial about
+their own experience** with the product is a fabricated endorsement. Under **Australian Consumer Law**
+(ACL s18 and s29(1)(e), misleading or deceptive conduct and false testimonials), a testimonial from a
+person who does not exist and did not use the product is a straightforward breach — and the ACCC has
+pursued exactly this. Meta's own advertising policies prohibit it as well.
+
+**The practical test:** would the ad still be true if a caption read *"presenter is AI-generated"*?
+- *"Curved plywood, cut to your set-out, dispatched in three days"* → true regardless of who says it. ✅
+- *"I'm a chippie from Preston and this saved me two days on site"* → false the moment the speaker isn't real. ❌
+
+Write avatar scripts in **second person about the product**, never first person about experience.
+This costs nothing in performance — the pain-point angles from §4.1 are all phrased as *"stop
+bog-and-sanding curves on site"*, which is presenter copy already.
+
+**Encode this in `studio.mjs brand-check`** as an automated gate: flag any avatar script containing
+first-person experience claims. That turns a policy into something the agent enforces on itself.
 
 ## 4.3 The creative-supply problem — and the answer
 
-**This is the hardest genuine problem in the whole build, and the video does not help with it.**
+Andromeda wants 15–25 diverse creatives per ad set. Tia supplies ~2–3 hero pieces per month (per
+`SETUP.md`), and real content is still pending. AI avatars (§4.2) close part of that gap, but they
+should not be the *only* answer — an ad set of 20 talking heads is not creative diversity, it's one
+creative twenty times, and Andromeda reads it that way.
 
-Andromeda wants 15–25 diverse creatives per ad set. Cody gets there with AI avatars and synthetic
-UGC. We've just banned that. Tia supplies ~2–3 hero pieces per month (per `SETUP.md`). Naively, the
-maths doesn't work.
-
-**The answer: the configurator is the creative engine.**
+**The other half of the answer: the configurator is the creative engine.**
 
 Craftons has something Cody's WordPress startup doesn't — **a real interactive product that produces
 infinite, genuinely different, 100% real visual output.** Every curve a person designs in Radius Pro
@@ -362,32 +382,170 @@ is a new, true, on-brand piece of creative. `content-engine/` already has the ma
 Playwright capture (`content-engine/capture/capture.mjs`), the brand kit (Aeonik fonts, logo, motif),
 and real photography (`shop-radiuspro.png`, `shop-formwork.png`, `tradie-portrait.png`).
 
-**Five creative families, all doctrine-compliant, all scalable without a camera:**
+**Six creative families. Target roughly the mix below for the launch ad set of 15–20:**
 
-1. **Configurator screen-captures** — designing a specific curve, end to end. Infinite variants (different
-   radii, materials, part counts). Rendered from the real UI via Playwright. *Real, not imagined.*
-2. **CAD renders** — the auto-split with Part IDs engraved, exploded views. Pixel-exact from real geometry.
-3. **Tia's real footage, atomised** — each hero piece cut into many hooks, as `SETUP.md` already
-   requires for social.
-4. **Static text-on-craft** — real macro photography (the Craft Macro shoot brief already exists) with
-   pain-point copy set in Aeonik. This is where the 15–25 diversity target actually gets hit cheaply.
-5. **Before/after site reality** — bog-and-sand vs. parts that arrive cut. The strongest angle available,
-   and it needs real photos of both.
+| # | Family | Launch share | Notes |
+|---|---|---|---|
+| 1 | **Configurator screen-captures** — designing a specific curve end to end. Infinite variants (radii, materials, part counts). Driven through the real UI by Playwright | ~5 ads | *Real, not imagined.* The highest-leverage family — it scales without a camera and shows the product working |
+| 2 | **AI avatar presenter** — reading a ranked pain point, second person, never first-person testimonial (§4.2) | ~4 ads | Fills the volume gap while real footage is pending |
+| 3 | **Static text-on-craft** — real macro photography + pain-point copy in Aeonik | ~4 ads | Cheapest diversity. Craft Macro shoot brief already exists |
+| 4 | **CAD renders** — auto-split with Part IDs engraved, exploded views | ~3 ads | Pixel-exact from real geometry |
+| 5 | **Tia's real footage, atomised** | as it lands | Each hero piece cut into many hooks, per `SETUP.md`. **Takes over the top slots when it arrives** |
+| 6 | **Before/after site reality** — bog-and-sand vs. parts that arrive cut | blocked | Likely the strongest angle available, and the one thing that genuinely cannot be assembled from existing assets. Needs real photos of both states |
 
-> **This reframes the whole build.** The agent's creative job for Craftons is not "generate images with
-> AI". It is **"combinatorially assemble real assets against ranked pain points, and let Meta tell us
-> which combination wins."** That is more defensible than Cody's approach, not less — and it's the
-> reason the anti-slop doctrine and Andromeda's diversity requirement can both be satisfied at once.
+> **This reframes the agent's creative job.** It is not "generate images with AI". It is
+> **"combinatorially assemble assets against ranked pain points, and let Meta tell us which
+> combination wins."** Diversity comes from spanning families, not from generating twenty variations
+> inside one. **A batch drawn from a single family should fail the brand-check gate** — that's the
+> cheapest possible defence against the entropy problem in §1.6, applied from day one instead of month three.
 
-## 4.4 Cold start
+## 4.4 The business, in real numbers
 
-Meta ad history for Craftons appears to be **zero**. `META_ACCESS_TOKEN` and `META_AD_ACCOUNT_ID` were
-collected 2026-06-15 but the account has no documented spend, and `marketing_metrics_cache` will be
-empty on the Meta side.
+Pulled live from Shopify 2026-08-03. **These numbers drive the optimisation-event decision in §4.5 —
+they are the "learn from last campaign" evidence.**
 
-**Implication:** the agent has no winners to learn from on day one. Phase 1 is deliberately
-human-heavy — not because we don't trust the agent, but because it has nothing to read yet. The
-feedback loop needs roughly 2–3 batches before its judgement is worth anything.
+**Radius Pro, trailing 365 days:**
+
+| Metric | Value |
+|---|---|
+| Orders | **202** |
+| Gross sales | **$124,164** |
+| **AOV** | **$614.67** |
+| Rate | ~17 orders/month · ~4/week |
+
+Radius Pro is **60% of all Craftons orders** and the clear right choice to start with.
+
+**Whole store, monthly trend — the business is compounding:**
+
+| Month | Orders | Gross |
+|---|---|---|
+| Aug 2025 | 7 | $2,186 |
+| Jan 2026 | 21 | $10,204 |
+| Apr 2026 | 20 | $16,187 |
+| May 2026 | 33 | $21,823 |
+| Jun 2026 | 34 | $36,363 |
+| **Jul 2026** | **39** | **$41,560** |
+
+~35 orders/month and ~$33k/month at current run rate — roughly **5× order growth YoY**. Ads are being
+added to something already working, which is the right time to do it.
+
+**Funnel, trailing 90 days:** 22,626 sessions → 216 cart adds → 131 reached checkout → 100 purchases.
+**Site conversion rate 0.44%** — normal for a considered, custom-manufactured B2B purchase.
+
+**Attribution, trailing 365 days:**
+
+| Source | Orders | Gross |
+|---|---|---|
+| Direct / unattributed | 99 | $107,053 |
+| `craftons` (direct) | 41 | $40,064 |
+| **Curves calculator** (configurator, all deploys) | **~54** | **~$26,800** |
+| `search / google` | 37 | $18,612 |
+| `social / instagram` | 6 | $7,907 |
+| `search / bing` | 6 | $4,164 |
+| **`social / facebook`** | **3** | **$729** |
+
+**Three things fall out of this table:**
+
+1. **Meta is a genuine cold start** — 3 orders, $729, all time. No pixel history worth anything.
+2. **But Instagram already converts organically** — 6 orders at ~$1,318 AOV, *more than double the site
+   average*. The Meta audience is not hypothetical; it's under-exploited. This is the single most
+   encouraging number for this build.
+3. **The configurator is the top attributable path** (~54 orders). It converts. That's independent
+   evidence for making it the creative engine in §4.3 — we're advertising the thing that already works.
+
+> **Cold-start implication for the agent:** with no Meta pixel history, the agent has no winners to
+> learn from on day one. Phases 1–4 are deliberately human-heavy — not from distrust, but because
+> there is nothing yet for it to read. The feedback loop needs **2–3 batches** before its judgement is
+> worth anything, which is also why the autonomy ladder in Part 6 starts where it does.
+
+## 4.5 Optimisation event — the decision
+
+> **Lee's brief:** *"You tell me. At the end of the day we want and need sales."*
+
+**Ruling: optimise for a combined high-intent Lead event (quote request + configurator submission),
+NOT Purchase — while measuring the scoreboard exclusively in sales.**
+
+That looks like a contradiction. It isn't, and here's the arithmetic that forces it.
+
+### Why not Purchase
+
+Meta's learning phase needs roughly **50 optimisation events per ad set per week** to exit. Below
+that, an ad set sits in *Learning Limited*: delivery gets erratic, CPMs rise, and — critically under
+Andromeda — **the algorithm has too little conversion signal to correlate against creative**, which is
+the entire mechanism we're relying on.
+
+Now the volumes, at $2,000/month = **~$65/day**:
+
+| Candidate event | Actual volume | Per week | vs 50/wk threshold |
+|---|---|---|---|
+| **Purchase** (Radius Pro) | ~17/mo | **~4** | ❌ **12× short** |
+| Purchase (whole store) | ~35/mo | ~8 | ❌ 6× short |
+| Reached checkout | ~44/mo | ~10 | ❌ 5× short |
+| Add to cart | ~72/mo | ~17 | ❌ 3× short |
+| **Lead forms** (Google-tracked) | 443 tracked | ~8–34 | ⚠️ Closest available |
+
+**The finding that matters more than the purchase-vs-lead question: at this budget and this AOV,
+*nothing* in this business reaches 50 events/week.** Anyone promising otherwise hasn't done the
+arithmetic. So the job is not "pick the perfect event" — it's **maximise signal density and stop
+diluting it.**
+
+Purchase optimisation at ~4 events/week would leave the ad set permanently learning-limited, spending
+$65/day while telling Andromeda almost nothing. That is how you burn $2k/month and conclude "Meta
+doesn't work for us."
+
+### The design that makes it work anyway
+
+1. **ONE campaign, ONE ad set. Never split.** Every event concentrates in a single learning entity.
+   This happens to be exactly what Andromeda wants anyway (1 ad set × 25 creatives beat 5 × 5).
+   Here it's not an optimisation — it's survival. **Splitting the ad set is the single fastest way to
+   kill this account.**
+2. **Combine events into one custom conversion.** Count quote request **and** configurator submission
+   **and** purchase as the same optimisation event. Maximum density from the same traffic.
+3. **High-intent leads only.** The event is a *configured quote request* — someone who has specified a
+   curve. **Not** a generic contact form. This is what keeps "lead" tethered to "sale" and stops the
+   agent optimising toward tyre-kickers.
+4. **Send Purchase with real `value` via CAPI from day one**, even though we don't optimise on it.
+   This builds the history so switching to Purchase/Value optimisation later is a step change, not a
+   cold start.
+5. **Score on revenue, never on cost-per-lead.** Track lead → sale close rate so CPL converts to true
+   CAC. Cost-per-lead is the dial we turn; **revenue is the only number that judges it.**
+
+### Graduation to Purchase optimisation
+
+Switch when Meta-attributed purchases sustain **~30+/month for two consecutive months**. At that point
+the signal supports it and value-based optimisation becomes the better setting. Until then, switching
+early is the classic way to stall an account.
+
+### The CAC maths — what "working" means
+
+| | |
+|---|---|
+| Radius Pro AOV | **$614.67** |
+| Gross margin (assumed ~45% — **needs confirming, see §9**) | ~$277/order |
+| **Break-even CAC** | **~$277** |
+| Break-even volume at $2k/mo | **~7.2 orders/month** |
+| Healthy target (3× ROAS) | ~10–12 orders/month at **CAC < $180** |
+
+**Ten extra Radius Pro orders per month would lift it from ~17 to ~27 — a ~60% increase on the
+product line.** Ambitious, not fantasy, for a business already growing 5× YoY.
+
+**Kill criteria, agreed up front:** if after 6 full weeks at full budget CAC is above ~$277
+(break-even) with no improving trend, stop and reassess. Deciding this now is what prevents the sunk-cost
+argument later.
+
+## 4.6 Budget and ramp
+
+**$2,000/month ceiling, enforced in code before every write. Start small, ramp on evidence.**
+
+| Stage | Daily | Monthly pace | Gate to advance |
+|---|---|---|---|
+| **1. Validation** (wk 1–2) | **$35/day** | ~$1,050 | Tracking fires correctly, EMQ > 7, no policy rejections, creative approved |
+| **2. Signal** (wk 3–6) | **$65/day** | ~$2,000 | Ad set out of erratic delivery; CPL established; at least one clear winner |
+| **3. Sustain** (wk 7+) | **$65/day** | $2,000 | Hold. This is the ceiling |
+| **4. Ramp** | above $65/day | — | **Only** on sustained CAC < $180 **and** Lee's explicit approval. Raise ≤20% at a time — bigger jumps reset learning |
+
+**Do not spread $2k across multiple ad sets to "test more".** At this volume that guarantees every ad
+set starves. Budget concentration *is* the test.
 
 ---
 
@@ -405,10 +563,12 @@ Nothing else starts until this is green. This is the lesson STATUS.md already pa
 - [ ] **0.2** Enable **Conversions API** alongside the pixel — Shopify has native CAPI support; both must run
 - [ ] **0.3** Verify **Event Match Quality > 7** in Events Manager. Below 7, Andromeda cannot read creative properly — fix before proceeding
 - [ ] **0.4** Confirm the Radius Pro conversion path end-to-end: configurator → add to cart → purchase, **and** the quote-request path
-- [ ] **0.5** Decide the optimisation event — **purchase vs lead**. Open question, see §8
-- [ ] **0.6** Document it all in `campaigns/meta/conversion-tracking.md`, mirroring the AdWords equivalent
+- [ ] **0.5** **Build the combined custom conversion** (§4.5): configured quote request **+** configurator submission **+** purchase, as one optimisation event. High-intent only — a generic contact form must not qualify
+- [ ] **0.6** **Send `Purchase` with real `value` (AUD) via CAPI from day one**, even though we optimise on the combined event — this builds the history for the later switch to value optimisation
+- [ ] **0.7** Instrument **lead → sale close rate** so cost-per-lead can be converted to true CAC. Without this the scoreboard is a vanity metric
+- [ ] **0.8** Document it all in `campaigns/meta/conversion-tracking.md`, mirroring the AdWords equivalent
 
-**Done when:** a test purchase and a test lead both appear in Events Manager with EMQ > 7 via both pixel and CAPI.
+**Done when:** a test purchase and a test quote request both appear in Events Manager with **EMQ > 7** via both pixel and CAPI, and purchase events carry a value.
 
 ## Phase 1 — Make the existing tool real
 
@@ -451,7 +611,7 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 - [ ] **4.1** Implement the Meta publish chain: **`POST /adimages`** (upload) → **`POST /adcreatives`** (build creative) → **`POST /ads`** (create, `status=PAUSED`)
 - [ ] **4.2** **Always create paused.** Human flips to active in Phase 4. This is the approval gate at its most literal
-- [ ] **4.3** Campaign structure per Andromeda: **one campaign, one ad set, many creatives.** Resist the instinct to segment — Meta's own test says 1×25 beats 5×5
+- [ ] **4.3** Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.5) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
 - [ ] **4.4** Add `meta-ads.mjs publish --approval_id=<uuid>` behind the standard guards
 - [ ] **4.5** Surface the whole batch in the Cockpit Run panel for one-screen approval — approving 15 ads one at a time will not survive contact with a working week
 
@@ -524,6 +684,12 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 | **`META_APP_ID` + `META_APP_SECRET`** | Required for the publish chain; long-lived token refresh | Free | 🔴 Phase 1 |
 | **Meta Marketing API access level** | Dev tier = 60 quota points / 300s. Standard = 9,000, needs App Review | Free, but App Review has lead time — **start early** | 🔴 Phase 1 |
 | **Meta Pixel + CAPI on Shopify** | Phase 0 gate | Free | 🔴 Phase 0 |
+| **HeyGen** (`HEYGEN_API_KEY`) | AI avatar presenters (§4.2) — ~4 of the launch 15–20 creatives | ~$30–90/mo depending on tier | 🟠 Phase 3 |
+
+> **Note:** the **HyperFrames by HeyGen MCP connector is already live in this session**, so avatar
+> video may be reachable without a raw API key at all. Check the connector before buying a plan —
+> per the standing "invest in integrations" rule, the connector is the cheaper durable path if it covers
+> the need.
 
 ## Explicitly NOT needed (and why)
 
@@ -532,7 +698,6 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 | **Airbyte** | ❌ | 3 sources, all with direct APIs. `cacheMetric()` already does this |
 | **ClickHouse** | ❌ | Neon Postgres is live and adequate at this volume. Revisit only if the data outgrows it |
 | **Heroku / Railway** | ❌ | Vercel is already the deploy target |
-| **HeyGen** | ❌ | AI avatars banned for Craftons (§4.2) |
 | **Seedance** | ⏸ | Possible later for b-roll only, never for product geometry |
 | **Kie.ai** | ⏸ | Replicate + Glif already wired. Only if we need a model neither has |
 | **Virlo** | ⏸ | Phase 6 entropy. Real value, but not before there's a loop to un-stick |
@@ -556,44 +721,60 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 **From Craftons' own doctrine:**
 - Nothing publishes active. Ads are created `PAUSED`
 - `brand-check` gates every asset, always
-- Real leads, AI extends. Never AI-generate product geometry or dimensions
-- Hard spend ceiling in code, checked before every write
+- Never AI-generate product geometry or dimensions — that rule survives the avatar approval
+- **Hard $2,000/month ceiling in code**, checked before every write (§4.6)
 - Australian/British spelling in all copy ("Optimise", "Centre")
 - Ad tone ≠ social tone
 
 **New, specific to this build:**
+- **ONE ad set. The publish path must refuse to create a second one** — at Craftons' event volume,
+  splitting starves everything (§4.5)
 - **Never kill an ad inside 48 hours** — Cody's own window is 2–3 days for initial signal
 - **Never kill on insufficient spend** — no data is not the same as bad data
+- **Avatar scripts: second person about the product, never first person about experience.** Enforced
+  automatically in `brand-check` (§4.2) — a fabricated testimonial is an ACL breach, not a style choice
+- **A creative batch drawn from a single family fails brand-check** — day-one entropy defence (§4.3)
 - **Log every autonomous decision with its reasoning**, so a bad rule can be traced and reverted
-- **Watch for entropy from week one.** Do not wait for performance to decay to notice convergence
+- **Score on revenue, never on cost-per-lead** — CPL is the dial, revenue is the judge
 
 ---
 
 # PART 9 — Open questions
 
-Blocking Phase 0:
+### ✅ Resolved 2026-08-03
 
-1. **Optimisation event — purchase or lead?** Radius Pro can be bought online *and* quote-requested.
-   Andromeda optimises hard toward whichever it's told. Craftons' Google data shows 23 purchases vs
-   443 lead forms — which suggests lead volume dwarfs purchase volume, and that the right answer may
-   be *lead*, at least initially. Needs a call.
-2. **Monthly Meta budget ceiling?** Not answered. Needed before any write path goes live, because the
-   ceiling is enforced in code. For reference, CNC Cut historically ran ~$2k/mo on Google.
-3. **Is the Meta ad account clean?** Zero history assumed. If there's prior spend or a policy strike,
-   that changes the cold-start plan.
+1. ~~**Optimisation event?**~~ → **Combined high-intent Lead** (quote + configurator + purchase as one
+   custom conversion), scored on revenue. Full reasoning and arithmetic in **§4.5**.
+2. ~~**Budget ceiling?**~~ → **$2,000/month**, enforced in code, with the staged ramp in **§4.6**.
+3. ~~**AI avatars?**~~ → **Approved as presenters**, banned as testimonial-givers (**§4.2**).
+4. ~~**Is the Meta account clean?**~~ → Effectively virgin: **3 orders / $729 all time**. True cold start.
 
-Blocking Phase 3:
+### 🔴 Still blocking
 
-4. **Do we have real before/after site photography?** §4.3 calls this the strongest available angle,
-   and it's the one thing on the list that genuinely cannot be assembled from existing assets.
-5. **Confirm Tia's footage rights** for paid use, if any of it goes into ads.
+5. **What is the actual gross margin on Radius Pro?** The §4.5 CAC maths assumes **~45%** (→ ~$277
+   break-even CAC). This assumption sets the kill criteria and the ramp trigger, so a wrong number
+   here means we either kill a working channel or keep funding a losing one. **Xero is connected — I
+   can derive this if you'd rather not dig it out.**
+6. **Where does a "configured quote request" fire?** §4.5 depends on a high-intent lead event existing
+   and being distinguishable from a generic contact form. Needs confirming in the Shopify/configurator
+   setup before Phase 0 can be completed.
 
-Not blocking, decide later:
+### 🟡 Blocking Phase 3
 
-6. **Does the Cockpit need a Meta-specific approval UI**, or does the existing Run panel carry it?
-   Approving 15 creatives one at a time will not survive a real week (§4.5 flags this).
-7. **When does CNC Cut get the same treatment?** Architecture should stay multi-account-capable even
-   though we're building Craftons-only, so this isn't a rewrite later.
+7. **Real before/after site photography** — the strongest angle available (§4.3, family 6) and the only
+   one that cannot be assembled from existing assets. Two photos: a bog-and-sanded on-site curve, and
+   Craftons parts arriving cut.
+8. **Confirm footage rights** for any of Tia's material used in paid ads.
+9. **Which HeyGen avatar + voice?** Needs to be picked once and locked, then reused — a different
+   presenter every batch reads as inconsistent rather than diverse. Note the **HyperFrames/HeyGen MCP
+   connector is already live in this session**.
+
+### 🟢 Decide later
+
+10. **Does the Cockpit need a Meta-specific approval UI?** Approving 15 creatives one at a time will
+    not survive a real week (Phase 4.5).
+11. **When does CNC Cut get the same treatment?** Keep the architecture multi-account-capable so this
+    isn't a rewrite.
 
 ---
 

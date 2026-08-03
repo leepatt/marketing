@@ -435,6 +435,59 @@ async function setBudget(customerId, campaignId, amountAud) {
   );
 }
 
+/** Hard ceiling so a fat-fingered bid can't run away. */
+const MAX_CPC_BID_AUD = 15;
+
+async function setAdGroupBid(customerId, adGroupIds, amountAud) {
+  if (!(amountAud > 0) || amountAud > MAX_CPC_BID_AUD) {
+    throw new Error(`Refusing max CPC of $${amountAud} — allowed range is $0–$${MAX_CPC_BID_AUD}.`);
+  }
+  const ops = adGroupIds.map((id) => ({
+    update: {
+      resourceName: `customers/${customerId}/adGroups/${id}`,
+      cpcBidMicros: String(Math.round(amountAud * 1e6)),
+    },
+    updateMask: 'cpc_bid_micros',
+  }));
+  return mutate(customerId, 'adGroups', ops, `set max CPC $${amountAud.toFixed(2)} on ${ops.length} ad group(s)`);
+}
+
+/**
+ * Create a responsive search ad from a reviewed JSON definition, so the copy lives in the repo
+ * under version control rather than being typed into a command line.
+ */
+async function createRsa(customerId, def) {
+  const problems = [];
+  if (!def.adGroupId) problems.push('adGroupId is required');
+  if (!def.finalUrl) problems.push('finalUrl is required');
+  const heads = def.headlines || [], descs = def.descriptions || [];
+  if (heads.length < 3 || heads.length > 15) problems.push(`need 3–15 headlines, got ${heads.length}`);
+  if (descs.length < 2 || descs.length > 4) problems.push(`need 2–4 descriptions, got ${descs.length}`);
+  heads.forEach((h) => h.length > 30 && problems.push(`headline over 30 chars (${h.length}): "${h}"`));
+  descs.forEach((d) => d.length > 90 && problems.push(`description over 90 chars (${d.length}): "${d}"`));
+  [def.path1, def.path2].forEach((p) => p && p.length > 15 && problems.push(`path over 15 chars: "${p}"`));
+  if (problems.length) throw new Error(`Ad definition invalid:\n  - ${problems.join('\n  - ')}`);
+
+  console.log(`   ${heads.length} headlines / ${descs.length} descriptions → ad group ${def.adGroupId} (${def.adGroupName || '?'})`);
+  console.log(`   nothing pinned · ${def.finalUrl}`);
+  const op = {
+    create: {
+      adGroup: `customers/${customerId}/adGroups/${def.adGroupId}`,
+      status: 'ENABLED',
+      ad: {
+        finalUrls: [def.finalUrl],
+        responsiveSearchAd: {
+          headlines: heads.map((text) => ({ text })),
+          descriptions: descs.map((text) => ({ text })),
+          ...(def.path1 ? { path1: def.path1 } : {}),
+          ...(def.path2 ? { path2: def.path2 } : {}),
+        },
+      },
+    },
+  };
+  return mutate(customerId, 'adGroupAds', [op], `create responsive search ad`);
+}
+
 // ── CLI ───────────────────────────────────────────────────────────────────────
 const [cmd, ...rest] = process.argv.slice(2);
 const flag = (name, def) => {
@@ -476,6 +529,17 @@ try {
   } else if (cmd === 'set-budget') {
     const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
     await setBudget(cid, flag('campaign'), Number(flag('amount')));
+  } else if (cmd === 'set-bid') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    const ids = (flag('ad-groups', '') || '').split(',').map((s) => s.trim()).filter(Boolean);
+    if (!ids.length) throw new Error('--ad-groups is required (comma separated ids)');
+    await setAdGroupBid(cid, ids, Number(flag('amount')));
+  } else if (cmd === 'create-rsa') {
+    const cid = flag('customer', env('GOOGLE_ADS_CUSTOMER_ID'));
+    const path = flag('file');
+    if (!path) throw new Error('--file is required (path to the reviewed ad JSON)');
+    const def = JSON.parse(await (await import('node:fs/promises')).readFile(path, 'utf8'));
+    await createRsa(cid, def);
   } else {
     console.log(`Usage:
   read:   accounts | report [--days N] | raw "<GAQL>"

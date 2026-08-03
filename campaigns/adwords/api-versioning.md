@@ -10,19 +10,41 @@ Checked 2026-08-03._
 live, and calling the API. It powers the Marketing Cockpit's Google Ads module. **The plan docs in
 this folder (`api-access.md`, `api-tool-design.md`) describe it as not-yet-built — they are stale.**
 
-**A sunset migration was done on 2026-08-03.** Google emailed a warning: the developer token on MCC
-275-347-3695 was sending **v21** requests, and v21 stopped accepting them **2026-08-05**. The code
-default was already `v22`, so the v21 traffic came from a stale `GOOGLE_ADS_API_VERSION` env override
-silently outranking the code. Fixed on branch `claude/google-ads-api-migration-ofqe83`:
+**Bumped v22 → v25 on 2026-08-03** (branch `claude/google-ads-api-migration-ofqe83`). Verified: no
+field this tool queries was removed or renamed in v23/v24/v25, so it was a one-line change.
 
-- default bumped to **v25**
-- an override naming a **sunset** version is now ignored with a warning (it would fail 100% of
-  requests, so it's never intended config)
-- verified: no field this tool queries was removed or renamed in v23/v24/v25
+### ⚠️ UNRESOLVED: something else is calling v21
 
-**The lesson worth keeping:** the code was on a live version the whole time. An environment variable
-put production on a dying one, and nothing surfaced it until Google sent an email. Config overrides
-need to be as visible as code.
+Google emailed on ~2026-08-03: the developer token on MCC **275-347-3695** had *recently submitted
+requests to v21*, which sunset **2026-08-05**. **That caller has not been found.** What's been ruled
+out, conclusively:
+
+| Suspect | Verdict |
+|---|---|
+| `cnccut-app/tools/google-ads.mjs` | **Not it.** Written 2026-07-08 with `v22`, never changed until the v25 bump. `v21` appears nowhere in 286 commits across all branches. |
+| A `GOOGLE_ADS_API_VERSION` env override | **Not it.** The variable is not set in Vercel (confirmed by Lee). |
+| `cnccut-website` | **Not it.** No Google Ads code at all. |
+| `marketing` (this repo) | **Not it.** No Google Ads code at all. |
+
+So the v21 caller is **outside all three repos**, authenticating with the same developer token.
+Leading hypothesis (unverified): a one-off verification call made during the 2026-06-15 setup or the
+2026-06-23 credential rotation — a hand-rolled `curl` or throwaway script would plausibly have used
+v21, which was current from Aug 2025. If so it's already dead and there is nothing to fix.
+
+**To resolve it:** Cloud Console → APIs & Services → Google Ads API → **METRICS** → **Methods**. That
+is the only place that sees every request made with the token, with versions and timestamps. Recurring
+v21 traffic = something live that broke on 2026-08-05. A single old spike = the one-off theory, closed.
+
+**Who holds the developer token?** This is the question that actually resolves it, and it's answered
+nowhere. The token is one string tied to the MCC, and *anything* holding it calls the API in our
+name — Google attributes the request to us regardless of what made it. Known holder: cnccut-app's
+Vercel env. Unknown: local `.env` files, one-off scripts, anything it was pasted into during the
+2026-06-15 setup. Worth an inventory.
+
+**The correction worth remembering:** the production tool was on **v22** (sunset Oct 2026) and was
+never at risk from the Aug 5 deadline. The sunset email named a version nothing in the codebase used
+— it was a warning about the *token*, not about the deployed code. Don't assume an API sunset email
+refers to your main integration; check which version your code actually pins before acting.
 
 ## The versioning contract
 

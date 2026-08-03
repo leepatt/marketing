@@ -162,6 +162,26 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 - 🟡 **Before/after photography in progress** — Lee "trying to get some". `before_after` family stays
   at 0 until they exist.
 
+### 🔴 Lee's product briefing — 2026-08-03 → `campaigns/meta/radius-pro-product-truth.md`
+Lee gave the full Radius Pro description after flagging that ad copy had "gone off track". It corrected
+more than the copy:
+- **The pain was wrong in every ad so far.** It is **not** bog-and-sand or kerfing — Lee: *"that's just
+  not related to the job at all."* It is: **do the maths → draw the radius on a sheet → cut it with a
+  jigsaw**, which is slow, not everyone can do it, workers make mistakes, and most of the sheet goes
+  in the bin. **Those words are banned from Radius Pro copy now**, which retires launch Angle 2 and
+  overrides the 2026-07-21 approved line "no hand-templating, no bog-and-sand".
+- **🆕 The software NESTS parts for minimum waste.** Never used in any ad. Client-fed, a cost argument,
+  and no competitor makes it. Probably the strongest unused asset we have.
+- **Engraving is the RADIUS measurement, not a part ID.** Four 900mm plates all arrive engraved 900mm.
+  The Shopify attribute `_part_id_engraving` misled the earlier reading.
+- **Joiner blocks are CONCRETERS ONLY** — not carpenters. Can't carry general copy.
+- **2–3 days delivered, Australia-wide via FedEx**, interstate included. Reverses the earlier
+  over-cautious kill of the three-day claim.
+- **Tails** (extend the leg 100–300mm to meet a straight frame) and **doubling up** plates confirmed.
+- ⚠️ **Lee suggested trade-targeted copy for concreters/landscapers.** Right instinct, wrong time —
+  July's trade-segmented ads cost $758/result and $370 for zero. Hold until one ad wins, then clone.
+- [x] **Copy rewritten from it** → `campaigns/meta/radius-pro-ad-copy.md` (15 creatives, v2)
+
 ---
 
 ## ⏭ Next steps (in order)
@@ -225,10 +245,12 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
-**Meta Ads:** `campaigns/meta/` → `BUILD-CHECKLIST.md` (**start here** — every item, machine vs marketing) ·
-`copy-reconciliation.md` (**the corrected copy + what needs Lee**) · `META-ADS-AGENT-BIBLE.md` (agent
-design + phased build) · `launch-angles.md` (⚠️ partly superseded) · `conversion-tracking.md` ·
-`radius-pro-interview.md` (§4/§5/§7 still worth answering; no longer blocking)
+**Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
+words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
+**`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs
+marketing) · `copy-reconciliation.md` (the two-funnel model + claim verdicts; **§4 copy superseded**) ·
+`META-ADS-AGENT-BIBLE.md` (agent design + phased build) · `launch-angles.md` (⚠️ Angle 2 retired) ·
+`conversion-tracking.md` · `radius-pro-interview.md` (mostly answered by the product truth doc)
 
 **🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
 `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`

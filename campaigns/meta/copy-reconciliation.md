@@ -104,6 +104,24 @@ carry an ad on its own, and it shouldn't have been the #2 launch angle's headlin
 
 ## 4. The corrected copy
 
+> ### ⛔ SUPERSEDED 2026-08-03 (same day) → `radius-pro-ad-copy.md`
+>
+> Lee gave a full product briefing hours after this was written, and it corrected three things here:
+>
+> - **"No hand-templating, no bog-and-sand"** — Lee: *"that's just not related to the job at all."*
+>   This retires the phrase even though it was in the Lee-approved 2026-07-21 set. The approval was
+>   real; the instruction is later and more specific.
+> - **"Every Part ID Engraved"** — it engraves the **radius measurement**, not a part ID. The Shopify
+>   attribute `_part_id_engraving` misled the reading.
+> - **Joiner blocks are concreters only** — so they can't carry general-audience copy. Two ads did.
+>
+> It also surfaced the thing missing from every ad ever written for this product: **the software nests
+> the parts to minimise waste.** And it confirms **2–3 days delivered, Australia-wide via FedEx** —
+> which reverses the over-cautious kill of the three-day claim in §3 below.
+>
+> **The §2 two-funnel model and the §3 claim verdicts still stand** (except the turnaround row).
+> Only the copy in this section is dead. Product truth: `radius-pro-product-truth.md`.
+
 Anchored on the **Lee-approved 2026-07-21 set**, corrected by the Shopify order data, and extended for
 Meta (which allows longer copy than the Google set was written for).
 

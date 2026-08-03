@@ -12,9 +12,11 @@ _Closes bible Phase 2.2 ("rank pain points, top 3 become the launch angles")._
 >   turnaround is **2 days typical**, scaling to 5 on big jobs. The angle is sound; the number isn't.
 >   Use *"cut this week"* (Lee-approved). Its proof line now leads on **joiner blocks** and
 >   **engraved Part IDs**, both confirmed in order data.
-> - **Angle 2's headline is weaker than it looked.** "Bog-and-sand" never appears in a customer
->   enquiry — it's positioning language, not transactional language. Keep it in the mix; don't let it
->   carry the angle.
+> - **⛔ Angle 2 is RETIRED, not weakened.** Lee, 2026-08-03: *"it talks about curve bending and
+>   bogging and all of this stuff. That's just not related to the job at all."* Bog-and-sand, kerfing
+>   and curve-bending are banned from Radius Pro copy outright. The real pain is **the maths, marking
+>   the radius out on a sheet, jigsaw mistakes and waste** — see `radius-pro-product-truth.md`.
+>   The replacement angle is *"nobody's marking out curves"* plus the **nesting/waste** argument.
 > - **The verbatim below is US-Reddit woodworkers.** It was honestly caveated at the time, but it has
 >   since been superseded by first-party AU intel: `VOICE-OF-CUSTOMER-curved-jobs.md`,
 >   `CURVED-JOBS-WINLOSS.md`, `CURVED-JOBS-DOLLARS-AND-BOTTLENECK.md`, and Shopify order attributes.

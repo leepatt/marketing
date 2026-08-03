@@ -67,6 +67,25 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
     `google-ads.mjs` with a full propose→approve→apply pattern, `studio.mjs generate` + **`brand-check`**,
     and the `/marketing` Cockpit with all 8 modules `status: "built"`.
   - **Most of the video's architecture already exists** under different names. The build is *extend*, not *create*.
+- [x] **Meta ads agent BUILT** in `leepatt/cnccut-app` on branch `claude/marketing-agents-setup-qamq2f`
+  - `tools/_meta-policy.mjs` (new) — all guardrails as pure, credential-free functions
+  - `tools/meta-ads.mjs` (rewritten) — `report` · `doctor` · `evaluate` · `check-batch` · `propose` · `apply`
+  - Verified live: **13/13 guardrail self-checks pass**, `report` returns real account data,
+    `evaluate` closes the loop, `tsc --noEmit` clean.
+  - Enforced in code: $2k/mo ceiling · one ad set · +20% max budget step · kill needs no-results
+    AND 72h AND $25 · ads always created PAUSED · autonomy rung 0 (propose only) by default.
+
+### ⚠️ CORRECTION — the Meta account is NOT a cold start (2026-08-03)
+Earlier notes (and Shopify's referrer attribution, which shows `social/facebook` at 3 orders / $729
+all time) implied Meta was unused. **Wrong — Shopify last-click undercounts Meta by >10×.**
+Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results · $17,285 revenue ·
+~8.7× ROAS.** Account `act_1650412872259063`. Currently **paused** (0 live ad sets).
+- **Last campaign's lesson:** when spend scaled ~13× (22–28 Jul), clicks rose ~150× and results went
+  to **zero**. 8.35% CTR at $0.09 CPC with no conversions = cheap junk traffic.
+- **Causes:** optimised on `AddToCart` (too high in the funnel) · creative hand-segmented by trade
+  (pre-Andromeda thinking) · budget scaled in one step (resets learning).
+- **Retargeting produced 19 of 21 results on ~$657**; TOF prospecting spent ~$1,300 for ~2.
+- Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /

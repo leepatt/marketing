@@ -5,14 +5,17 @@ _The reference doc for standing up an autonomous Meta ads agent for **Craftons**
 Craftons actually has, actually sells, and actually needs._
 
 **Created:** 2026-08-03 · **Branch:** `claude/marketing-agents-setup-qamq2f`
-**Status:** design locked, not yet built.
+**Status:** design locked · **Phases 1, 2 (partial) and 5 BUILT** in `leepatt/cnccut-app` on the same
+branch — `tools/_meta-policy.mjs` + a rewritten `tools/meta-ads.mjs`. Verified against the live
+account 2026-08-03: 13/13 guardrail self-checks pass, `report` returns real data, `evaluate` closes
+the loop. **Phase 0 (tracking) and Phases 3–4 (creative + publish) remain.**
 **Scope decisions (Lee, 2026-08-03):** Craftons only · human-approves first, autonomy earned ·
 code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius Pro only** to start ·
 **AI avatars approved** (§4.2) · **$2,000/month ceiling** with a staged ramp (§4.6) ·
-**optimise on combined high-intent Lead, score on sales** (§4.5).
+**optimise on combined high-intent Lead, score on sales** (§4.6).
 
 > **Read `STATUS.md` first, then this.** This doc is the *what and why*. The build steps in Part 5
-> are the *how*. Nothing here has been implemented yet.
+> are the *how*, with the built items ticked.
 
 ---
 
@@ -401,7 +404,7 @@ and real photography (`shop-radiuspro.png`, `shop-formwork.png`, `tradie-portrai
 
 ## 4.4 The business, in real numbers
 
-Pulled live from Shopify 2026-08-03. **These numbers drive the optimisation-event decision in §4.5 —
+Pulled live from Shopify 2026-08-03. **These numbers drive the optimisation-event decision in §4.6 —
 they are the "learn from last campaign" evidence.**
 
 **Radius Pro, trailing 365 days:**
@@ -444,21 +447,89 @@ added to something already working, which is the right time to do it.
 | `search / bing` | 6 | $4,164 |
 | **`social / facebook`** | **3** | **$729** |
 
-**Three things fall out of this table:**
+**Two things fall out of this table:**
 
-1. **Meta is a genuine cold start** — 3 orders, $729, all time. No pixel history worth anything.
-2. **But Instagram already converts organically** — 6 orders at ~$1,318 AOV, *more than double the site
-   average*. The Meta audience is not hypothetical; it's under-exploited. This is the single most
-   encouraging number for this build.
-3. **The configurator is the top attributable path** (~54 orders). It converts. That's independent
+1. **Instagram already converts organically** — 6 orders at ~$1,318 AOV, *more than double the site
+   average*. The Meta audience is not hypothetical.
+2. **The configurator is the top attributable path** (~54 orders). It converts. That's independent
    evidence for making it the creative engine in §4.3 — we're advertising the thing that already works.
 
-> **Cold-start implication for the agent:** with no Meta pixel history, the agent has no winners to
-> learn from on day one. Phases 1–4 are deliberately human-heavy — not from distrust, but because
-> there is nothing yet for it to read. The feedback loop needs **2–3 batches** before its judgement is
-> worth anything, which is also why the autonomy ladder in Part 6 starts where it does.
+> ⚠️ **Do NOT read Meta performance off this table.** It shows `social/facebook` at 3 orders / $729
+> all time, which suggested a cold start. **That is wrong** — see §4.5. Shopify's last-click referrer
+> attribution undercounts Meta by more than an order of magnitude (iOS restrictions, view-through,
+> dark social). The Meta account itself reports **$17,285 of tracked revenue in the last 30 days
+> alone.** Always read Meta performance from Meta.
 
-## 4.5 Optimisation event — the decision
+## 4.5 The existing Meta account — and what the last campaign taught us
+
+Pulled live from the Meta Marketing API on 2026-08-03, via the tool built this session.
+**This is the "learn from last campaign" evidence, and it is the most useful data in this document.**
+
+**Account `act_1650412872259063` is live, instrumented and has real history — not a cold start.**
+
+| Last 30 days | |
+|---|---|
+| Spend | **$1,977.82** |
+| Results | **21** |
+| Revenue | **$17,285** |
+| **ROAS** | **~8.7×** |
+| Cost per result | **$94.18** |
+| CTR / CPC | 8.35% / $0.09 |
+
+**An 8.7× ROAS is a good account.** The strategic question is not "does Meta work for Craftons" —
+it demonstrably does. It's "why did it stop working when it scaled", and the daily data answers that
+precisely.
+
+### The scaling failure, day by day
+
+| Date | Spend | Clicks | Results |
+|---|---|---|---|
+| 17 Jul | $13.46 | 18 | 1 |
+| 20 Jul | $14.43 | 23 | 1 |
+| 21 Jul | $15.34 | 15 | **3** |
+| 22 Jul | $86.12 | 784 | 2 |
+| 23 Jul | $117.60 | 1,021 | 1 |
+| 24 Jul | $146.02 | 2,244 | **0** |
+| 25 Jul | $121.58 | 1,910 | **0** |
+| 26 Jul | $149.70 | 2,468 | **0** |
+| 27 Jul | $167.21 | 2,757 | **0** |
+| 28 Jul | $201.01 | 2,476 | **0** |
+
+**Spend went up ~13×. Clicks went up ~150×. Results went to zero.**
+
+An **8.35% CTR at a $0.09 CPC with no conversions** is the unmistakable signature of cheap junk
+traffic. The account bought an enormous amount of the least valuable attention available.
+
+### Why it happened — three causes, all fixable
+
+1. **The ad set optimised for `AddToCart`** (`TOF | Broad AU | AddToCart`). That is an upper-funnel
+   event, and optimising there teaches Meta to find people who browse cheaply, not people who buy.
+   **This is direct account evidence for the optimisation-event decision in §4.6** — we no longer have
+   to reason from first principles, it was tried here and it failed exactly this way.
+2. **Creative was segmented by trade** — separate ads for Landscapers, Concreters, Carpenters,
+   Builders, Chippies. That is pre-Andromeda interest-thinking. Under Andromeda the creative *is* the
+   targeting; hand-segmenting by trade fragments signal for no benefit.
+3. **The budget was scaled ~13× in a single step.** Meta resets learning on large budget jumps. This
+   is exactly what `MAX_BUDGET_INCREASE_FRACTION` (20%) in `tools/_meta-policy.mjs` now prevents.
+
+### What actually produced the results
+
+| Campaign | Spend (30d) | Results |
+|---|---|---|
+| **Retargeting — Bottom of Funnel** | ~$657 | **19 of 21** |
+| TOF prospecting (all trade-segmented ads) | ~$1,300 | **~2** |
+
+**Retargeting is carrying the entire account.** Top-of-funnel prospecting spent roughly twice as much
+for a tenth of the outcome.
+
+> **This does not mean "only run retargeting."** A retargeting pool needs new people entering it, and
+> starved of TOF it decays. It means the TOF *approach* was wrong — wrong optimisation event, wrong
+> segmentation, wrong ramp — not that TOF is wrong.
+
+**Current state:** everything is paused (0 live ad sets), $248.26 spent month-to-date. The account is
+dark, which makes this a clean moment to restart properly.
+
+## 4.6 Optimisation event — the decision
 
 > **Lee's brief:** *"You tell me. At the end of the day we want and need sales."*
 
@@ -533,7 +604,7 @@ product line.** Ambitious, not fantasy, for a business already growing 5× YoY.
 (break-even) with no improving trend, stop and reassess. Deciding this now is what prevents the sunk-cost
 argument later.
 
-## 4.6 Budget and ramp
+## 4.7 Budget and ramp
 
 **$2,000/month ceiling, enforced in code before every write. Start small, ramp on evidence.**
 
@@ -574,13 +645,13 @@ Nothing else starts until this is green. This is the lesson STATUS.md already pa
 
 Turn the stub into a working read/write tool. No agent yet.
 
-- [ ] **1.1** Bump `GRAPH_VERSION` off `v19.0` (`tools/meta-ads.mjs:37`) to current; add a note on Meta's deprecation cadence
-- [ ] **1.2** Verify `META_ACCESS_TOKEN` / `META_AD_ACCOUNT_ID` are live in Vercel; run `node tools/meta-ads.mjs report` and confirm it returns real data rather than the `configured: false` sample
-- [ ] **1.3** Extend `report` to pull **creative-level** fields (`creative{id,name,object_story_spec}`) — needed for the feedback loop to know *what* won, not just *which ad ID*
-- [ ] **1.4** **Implement the real write** in `pauseCampaign` — replace the stub at `meta-ads.mjs:416` with an actual `POST` to `{ad_id}` setting `status=PAUSED`, keeping both existing guards (`CONFIRM=1` **and** an approved `marketing_approvals` row)
-- [ ] **1.5** Add `pause-ad` (ad-level, not just campaign) — the loop kills ads, not campaigns
-- [ ] **1.6** Add `set-budget` behind the same guards
-- [ ] **1.7** Copy `google-ads.mjs`'s `propose` → `apply` pattern into `meta-ads.mjs` verbatim in shape
+- [x] **1.1** ✅ Bump `GRAPH_VERSION` off `v19.0` (`tools/meta-ads.mjs:37`) to current; add a note on Meta's deprecation cadence
+- [x] **1.2** ✅ Verify `META_ACCESS_TOKEN` / `META_AD_ACCOUNT_ID` are live in Vercel; run `node tools/meta-ads.mjs report` and confirm it returns real data rather than the `configured: false` sample
+- [x] **1.3** ✅ Extend `report` to pull **creative-level** fields (`creative{id,name,object_story_spec}`) — needed for the feedback loop to know *what* won, not just *which ad ID*
+- [x] **1.4** ✅ **Implement the real write** in `pauseCampaign` — replace the stub at `meta-ads.mjs:416` with an actual `POST` to `{ad_id}` setting `status=PAUSED`, keeping both existing guards (`CONFIRM=1` **and** an approved `marketing_approvals` row)
+- [x] **1.5** ✅ Add `pause-ad` (ad-level, not just campaign) — the loop kills ads, not campaigns
+- [x] **1.6** ✅ Add `set-budget` behind the same guards
+- [x] **1.7** ✅ Copy `google-ads.mjs`'s `propose` → `apply` pattern into `meta-ads.mjs` verbatim in shape
 
 **Done when:** a real ad can be paused from the CLI, only with `CONFIRM=1` + an approved row, and it shows in `marketing_runs`.
 
@@ -600,10 +671,10 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 - [ ] **3.1** Build the **configurator capture pipeline** — Playwright drives Radius Pro through N different curve designs, records each. Extend `content-engine/capture/capture.mjs`
 - [ ] **3.2** Build the **static template set** in `content-engine/` — real photography + Aeonik + pain-point copy, on brand tokens
-- [ ] **3.3** Wire `studio.mjs brand-check` as a **mandatory gate** on every generated asset — this is Cody's vision-model check, already built, currently unused for ads
+- [x] **3.3** ✅ (partial) Batch gate built as `meta-ads.mjs check-batch`; wire `studio.mjs brand-check` as a **mandatory gate** on every generated asset — this is Cody's vision-model check, already built, currently unused for ads
 - [ ] **3.4** Copy comes from the **`direct-response-copy`** skill + **`craftons-voice`**, both installed. ⚠️ Per STATUS.md's own learning: **ad tone ≠ social tone.** Ads use direct CTAs; social is value-first/soft-CTA. Do not let the social voice profile leak into paid
 - [ ] **3.5** **Store the recipe, not just the asset** — write the full generation spec (template ID, angle ID, copy variant, source asset, params) into `marketing_assets.provenance`. **This is the single highest-leverage step in the build** — it's what makes the feedback loop compound instead of just reporting
-- [ ] **3.6** Target **15–20 diverse creatives** for the first ad set, per Andromeda's diversity floor
+- [x] **3.6** ✅ Enforced in code (`MIN_CREATIVES_PER_BATCH`). Target **15–20 diverse creatives** for the first ad set, per Andromeda's diversity floor
 
 **Done when:** 15+ brand-checked Radius Pro creatives exist as `marketing_assets` rows, each with a complete, replayable recipe in `provenance`.
 
@@ -611,7 +682,7 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 - [ ] **4.1** Implement the Meta publish chain: **`POST /adimages`** (upload) → **`POST /adcreatives`** (build creative) → **`POST /ads`** (create, `status=PAUSED`)
 - [ ] **4.2** **Always create paused.** Human flips to active in Phase 4. This is the approval gate at its most literal
-- [ ] **4.3** Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.5) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
+- [ ] **4.3** Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.6) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
 - [ ] **4.4** Add `meta-ads.mjs publish --approval_id=<uuid>` behind the standard guards
 - [ ] **4.5** Surface the whole batch in the Cockpit Run panel for one-screen approval — approving 15 ads one at a time will not survive contact with a working week
 
@@ -619,12 +690,12 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 ## Phase 5 — The loop (this is where it becomes an agent)
 
-- [ ] **5.1** Add `meta-ads.mjs evaluate` — read `marketing_metrics_cache` (**not** the API — Cody's rule), apply kill/keep rules
-- [ ] **5.2** Kill rules, explicit and tunable. Starting point: **≥3 days live AND ≥$X spend AND zero results** → propose pause. Never kill on under-spend; never kill inside 48h
+- [x] **5.1** ✅ Add `meta-ads.mjs evaluate` — read `marketing_metrics_cache` (**not** the API — Cody's rule), apply kill/keep rules
+- [x] **5.2** ✅ Kill rules, explicit and tunable. Starting point: **≥3 days live AND ≥$X spend AND zero results** → propose pause. Never kill on under-spend; never kill inside 48h
 - [ ] **5.3** **Winners pool** — surviving ads compete for budget
 - [ ] **5.4** **The compounding step:** join winners back to their `provenance` recipes and generate the next batch weighted toward winning *recipe patterns* — hook type, composition, angle — not winning images
 - [ ] **5.5** **Cadence** via Vercel Cron. Start weekly, not daily. Cody runs 10 ads/day for clients with real budget; Craftons at Melbourne-metro scale needs a slower clock or it'll burn budget on noise
-- [ ] **5.6** Every cycle proposes; a human approves. Autonomy is Phase 6
+- [x] **5.6** ✅ Every cycle proposes; a human approves. Autonomy is Phase 6
 
 **Done when:** a scheduled run reads real performance, proposes kills and a next batch, and files them as approval rows without being asked.
 
@@ -728,7 +799,7 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 
 **New, specific to this build:**
 - **ONE ad set. The publish path must refuse to create a second one** — at Craftons' event volume,
-  splitting starves everything (§4.5)
+  splitting starves everything (§4.6)
 - **Never kill an ad inside 48 hours** — Cody's own window is 2–3 days for initial signal
 - **Never kill on insufficient spend** — no data is not the same as bad data
 - **Avatar scripts: second person about the product, never first person about experience.** Enforced
@@ -744,18 +815,20 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 ### ✅ Resolved 2026-08-03
 
 1. ~~**Optimisation event?**~~ → **Combined high-intent Lead** (quote + configurator + purchase as one
-   custom conversion), scored on revenue. Full reasoning and arithmetic in **§4.5**.
-2. ~~**Budget ceiling?**~~ → **$2,000/month**, enforced in code, with the staged ramp in **§4.6**.
+   custom conversion), scored on revenue. Full reasoning and arithmetic in **§4.6**.
+2. ~~**Budget ceiling?**~~ → **$2,000/month**, enforced in code, with the staged ramp in **§4.7**.
 3. ~~**AI avatars?**~~ → **Approved as presenters**, banned as testimonial-givers (**§4.2**).
-4. ~~**Is the Meta account clean?**~~ → Effectively virgin: **3 orders / $729 all time**. True cold start.
+4. ~~**Is the Meta account clean?**~~ → **Corrected 2026-08-03.** Not a cold start at all — it is live,
+   instrumented, and running at **~8.7x ROAS** over 30 days. The earlier "3 orders / $729" reading came
+   from Shopify referrer attribution, which undercounts Meta by more than 10x. Full post-mortem in **§4.5**.
 
 ### 🔴 Still blocking
 
-5. **What is the actual gross margin on Radius Pro?** The §4.5 CAC maths assumes **~45%** (→ ~$277
+5. **What is the actual gross margin on Radius Pro?** The §4.6 CAC maths assumes **~45%** (→ ~$277
    break-even CAC). This assumption sets the kill criteria and the ramp trigger, so a wrong number
    here means we either kill a working channel or keep funding a losing one. **Xero is connected — I
    can derive this if you'd rather not dig it out.**
-6. **Where does a "configured quote request" fire?** §4.5 depends on a high-intent lead event existing
+6. **Where does a "configured quote request" fire?** §4.6 depends on a high-intent lead event existing
    and being distinguishable from a generic contact form. Needs confirming in the Shopify/configurator
    setup before Phase 0 can be completed.
 

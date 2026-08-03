@@ -1,34 +1,41 @@
-# Step 1 — The duplicate Purchase question
+# Step 1 — The duplicate Purchase question: RESOLVED, no fault
 
-> ## ⚠️ REVISED 2026-08-03 — severity walked back, cause unproven
+> ## ✅ CLOSED 2026-08-03 — there was no duplication. Measurement artefact.
 >
-> Every configuration surface has now been checked and **all of them show a single, correctly
-> configured source**:
-> - **Shopify → Customer events:** one Meta entry (Facebook & Instagram, Server + Web, "Optimized" —
->   the highest data-sharing tier). No rogue custom pixel. Chatty and Microsoft Clarity are Web-only
->   and not Meta; Google & YouTube is Google's.
-> - **Shopify → Sales channels:** Facebook & Instagram installed 30 Apr 2025, Pixels **Connected**,
->   Data access **Optimized**.
-> - **Events Manager → Integrations:** exactly two entries — one Conversions API, one Meta Pixel.
-> - **Events Manager → Actions:** flags **match quality**, and does **not** flag duplicate events.
+> **Settled with a live production test.** Two real orders landed in the same hour:
+> `#1274` 04:43:02 UTC ($2,336) and `#1275` 04:44:40 UTC ($1,048).
 >
-> **The measurement stands** (97 pixel Purchase vs 36 Shopify orders, 66 server / 31 browser).
-> **The diagnosis below does not.** The "two senders duplicating" theory has no supporting evidence
-> left. Two explanations remain, and one is benign:
+> The pixel recorded, in that hour: **2 BROWSER + 2 SERVER**, all on `craftons.com.au`.
 >
-> **(a)** Shopify's integration fires server-side more than once per order — plausible given Purchase
-> splits `craftons.com.au` 73 / `shop.app` 24, so Shop Pay may fire on its own surface.
-> **(b)** Meta's `/stats` endpoint reports **pre-deduplication** counts. Browser and server share an
-> `event_id`, are counted separately in raw stats, then collapse for attribution — in which case
-> nothing is broken.
+> **That is exactly one browser and one server event per order — correct behaviour.**
 >
-> **(b) is now the leading explanation**, mainly because Meta detects genuine duplication and would
-> normally flag it in Actions. It didn't.
+> ### What went wrong in the analysis
 >
-> **Do not remove anything on the strength of this doc.** Removing the only Conversions API source
-> would cost most of the conversion signal, given 72% iPhone traffic. Settle it with the live test at
-> the bottom first.
+> Meta's `/{pixel_id}/stats` endpoint reports events **before deduplication**. Browser and server
+> each get counted, then collapse by shared `event_id` for actual attribution. The original finding
+> (97 pixel Purchase events vs 36 Shopify orders) compared a **raw pre-dedup event count** against an
+> **order count** — not a like-for-like comparison, and not evidence of a fault.
+>
+> The signal that should have caught this sooner: **Meta's own Actions tab never flagged duplicate
+> events.** Meta detects genuine duplication reliably. That absence was noted and under-weighted.
+>
+> ### One loose end, not a blocker
+>
+> Historically the daily split showed server ≈ 2× orders while browser ≈ 1× (e.g. 21 Jul: 3 orders,
+> 3 browser, 6 server). Today's orders produced 1 server each. The difference: today's two orders
+> were both on `craftons.com.au` with **no `shop.app`** involvement, whereas 24 of the 30-day Purchase
+> events came from `shop.app` (Shop Pay).
+>
+> **Hypothesis: Shop Pay checkouts fire an additional server-side Purchase.** Worth confirming on a
+> future Shop Pay order, but it is not a blocker and nothing should be removed over it.
+>
+> ### Conclusion
+>
+> **No action required. Nothing to remove. Phase 0's blocker does not exist.**
+> The sections below are retained as the diagnostic record only — **their conclusions are superseded
+> by this box.**
 
+---
 
 _The single highest-value fix in Phase 0. Diagnosed 2026-08-03 from the pixel's own data._
 _Parent doc: `conversion-tracking.md`._

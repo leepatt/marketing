@@ -54,7 +54,17 @@ allow-list, not an active source.) **The configurator is cleared as a duplicate 
 
 ---
 
-## 🔴 The one real problem: Purchase is inflated ~2.7×
+## ✅ RESOLVED — Purchase is NOT inflated (closed 2026-08-03)
+
+**A live test settled this: two real orders in one hour produced 2 browser + 2 server events —
+exactly one of each per order. Correct behaviour, no duplication, nothing to fix.**
+
+Meta's `/stats` endpoint reports **pre-deduplication** counts, so comparing it to an order count was
+never like-for-like. Full record → `step1-duplicate-purchase.md`.
+
+<details><summary>Superseded: the original (incorrect) finding</summary>
+
+## ~~🔴 The one real problem: Purchase is inflated ~2.7×~~
 
 | Source | Purchases, last 30 days |
 |---|---|
@@ -73,6 +83,8 @@ the Shopify side:
 2. **A manual `fbq('track','Purchase')` snippet** in the theme or in Settings → Customer events.
 
 Both firing = exactly the ~2× you'd expect. That's Step 1.
+
+</details>
 
 ## 🔴 Advanced Matching is OFF
 

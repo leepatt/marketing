@@ -649,15 +649,15 @@ early is the classic way to stall an account.
 | | |
 |---|---|
 | Radius Pro AOV | **$614.67** |
-| Gross margin (assumed ~45% — **needs confirming, see §9**) | ~$277/order |
-| **Break-even CAC** | **~$277** |
-| Break-even volume at $2k/mo | **~7.2 orders/month** |
+| **Gross margin — MEASURED 52.4%** (Xero, Feb–Jul 2026) | **~$322/order** |
+| **Break-even CAC** | **~$322** |
+| Break-even volume at $2k/mo | **~6.2 orders/month** |
 | Healthy target (3× ROAS) | ~10–12 orders/month at **CAC < $180** |
 
 **Ten extra Radius Pro orders per month would lift it from ~17 to ~27 — a ~60% increase on the
 product line.** Ambitious, not fantasy, for a business already growing 5× YoY.
 
-**Kill criteria, agreed up front:** if after 6 full weeks at full budget CAC is above ~$277
+**Kill criteria, agreed up front:** if after 6 full weeks at full budget CAC is above ~$322
 (break-even) with no improving trend, stop and reassess. Deciding this now is what prevents the sunk-cost
 argument later.
 
@@ -891,10 +891,14 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 
 ### 🔴 Still blocking
 
-5. **What is the actual gross margin on Radius Pro?** The §4.6 CAC maths assumes **~45%** (→ ~$277
-   break-even CAC). This assumption sets the kill criteria and the ramp trigger, so a wrong number
-   here means we either kill a working channel or keep funding a losing one. **Xero is connected — I
-   can derive this if you'd rather not dig it out.**
+5. ~~**What is the actual gross margin?**~~ ✅ **RESOLVED 2026-08-03 from Xero.**
+   Peninsula Studio, Feb–Jul 2026: income **$594,223**, COGS **$282,592**, gross profit **$311,631**
+   → **gross margin 52.4%**. On a $614.67 Radius Pro AOV that is **~$322 gross profit per order**,
+   so **break-even CAC ≈ $322** (my 45% assumption was slightly conservative — there is more headroom,
+   not less). Break-even volume at $2k/month drops to **~6.2 orders**.
+   ⚠️ **Caveat:** this is business-wide margin. Craftons is $165,140 of the $594,223 income, and
+   Radius Pro specifically may differ from the blended figure. Good enough to set kill criteria;
+   worth refining if Craftons-only COGS can be split out.
 6. **Where does a "configured quote request" fire?** §4.6 depends on a high-intent lead event existing
    and being distinguishable from a generic contact form. Needs confirming in the Shopify/configurator
    setup before Phase 0 can be completed.

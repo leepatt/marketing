@@ -68,9 +68,15 @@ comes straight from client feedback, and no competitor makes it.
 four plates that were 900 millimetres, all of those plates would engrave 900 millimetres on the plate.
 Just saves set-out time."*
 
-⚠️ **What gets engraved is the RADIUS MEASUREMENT, not a part ID.** Earlier copy said *"Part IDs
-engraved"* and *"Part IDs cut into the face"*. That came from the Shopify order attribute
-`_part_id_engraving: "Included"` — the attribute name misled the reading. **Open question for Lee below.**
+> ✅ **Resolved by Lee on review:** *"Sometimes it's part radius, sometimes part ID. I think saying
+> part ID is safe to use in copy."*
+>
+> **So it's both, depending on the job — and "part ID" is the safe blanket claim.** A copy line saying
+> *"every plate says its radius"* would be false on some orders. Use **part ID**.
+>
+> Worth noting: the original copy said "Part IDs engraved" and I *corrected* it to "radius" mid-session
+> off Lee's 900mm example. That correction was wrong. The Shopify attribute `_part_id_engraving` was
+> right all along.
 
 ### Joiner blocks — CONCRETERS ONLY
 
@@ -144,17 +150,20 @@ variants — and *that* is where the joiner-block copy goes, because it's true f
 
 ---
 
-## Open questions for Lee
+## ✅ Answered by Lee, 2026-08-03
 
-1. **Engraving:** is it *only* the radius measurement, or also a part number/ID? The order attribute is
-   called `_part_id_engraving`, which is what misled the earlier copy.
-2. **The 2–3 day promise on big jobs:** order data shows `_total_turnaround: "2 days"` on most orders
-   but **5 days on a 27-sheet job**. Is "2–3 days" safe as a blanket ad claim, or should it read
-   "most orders"? It's a promise, so it matters.
-3. **Waste — is there a number?** *"Minimal waste"* is vague; a figure is far stronger (e.g. "most
-   jobs come off one sheet fewer"). Do you know a typical saving vs marking out by hand?
-4. **Materials:** order data shows 17mm formply dominant, then 25mm BC structural ply. Is the full
+| Q | Answer | Effect on copy |
+|---|---|---|
+| **Engraving** — radius or part ID? | **Both, job-dependent. "Part ID" is safe to use** | Copy says *"engraved with its part ID"*. A blanket "says its radius" would be false on some jobs |
+| **2–3 days on big jobs?** | **Hedge it — "most orders in 2–3 days"** | Applied to ads #3 and #12. Protects the promise against a 27-sheet job |
+| **Radius limits?** | **No practical limit in normal use** | *"Any radius"* is fair. Used in #13. Multi-metre radii are normal and worth showing |
+
+## Still open
+
+1. **Waste — is there a number?** *"Minimal waste"* is vague, and this is now the strongest unused
+   argument we have. A figure would make it far stronger — *"most jobs come off a sheet fewer"* or a
+   percentage. Even a rough comparison from two or three real jobs (sheets nested vs sheets if marked
+   out by hand) would do. **Highest-value outstanding answer.**
+2. **Materials:** order data shows 17mm formply dominant, then 25mm BC structural ply. Is the full
    list formply / structural ply / MDF? Anything we should *not* name?
-5. **Radius limits:** smallest and largest radius, and max material thickness? Needed before any ad
-   says "any radius".
-6. **Pool builders:** worth confirming what they actually use it for, or park it?
+3. **Pool builders:** confirm what they use it for, or park it? No copy until confirmed.

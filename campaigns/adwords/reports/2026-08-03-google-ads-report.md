@@ -59,6 +59,39 @@ Week on week is flat: 20–26 Jul $304.17 / 66 clicks / 1 conv → 27 Jul–2 Au
 
 ---
 
+## 1a. How the month actually played out
+
+| Date | Event |
+|---|---|
+| 29 Jun | Cavity Battens PMax spends for the last time |
+| 1 Jul | "Customised Building Products" goes live, $50/day |
+| 2 Jul | The single purchase — $1,265 |
+| 8 Jul | "Curved Architraves" built (campaign + budget + ad group + ad + 47 keywords + 27 negatives); duplicate Architraves ad group in the main campaign paused |
+| 11 Jul | 2 negatives added — **last change made to the account** |
+| 13 / 15 / 23 Jul | Three lead-form submissions |
+| 23 Jul → 3 Aug | No conversions for 11 days |
+
+**Nobody has touched the account since 11 July** — 23 days of unattended spend (per `change_event`).
+
+**Weekly trend**
+
+| Week | Spend | Clicks | Avg CPC | Conv |
+|---|---|---|---|---|
+| 6 Jul | $421.35 | 73 | $5.77 | 0 |
+| 13 Jul | $304.45 | 61 | $4.99 | 2 |
+| 20 Jul | $304.17 | 66 | $4.61 | 1 |
+| 27 Jul | $310.00 | 65 | $4.77 | 0 |
+
+Blended CPC improved only because Architraves warmed up ($5.72 → $3.04). The main campaign is pinned
+at **$5.13 / $5.80 / $5.74 / $5.84 / $5.82** — dead flat, i.e. Manual CPC paying its maximum bid on
+essentially every click. That's the signature of weak Ad Rank being topped up with money.
+
+**Last 10 days:** $115.70, 21 search terms, **zero conversions** — and ~35% of it on terms that could
+never convert (`curved beading` $12.00, `curved banquette` $11.40, `intrim` $11.04, `scallop mdf
+panel` $5.99). The real money terms `curved architrave` + `curved architraves` drew $7.07 between them.
+
+---
+
 ## 2. The Performance Max shutdown — the headline
 
 The "Cavity Battens" PMax campaign is **paused**, last spend **29 June 2026**. The new search

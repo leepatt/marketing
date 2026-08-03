@@ -59,6 +59,11 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
 - [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)
 - [ ] **Delete the disabled old Google Ads secret** in Cloud Console (post-rotation tidy)
+- [ ] **Google review replies** — researched 2026-08-03, not wired. Replies post to the Business
+  Profile, **not** via Gmail. Two routes: Zapier bridge (same-day, no approval) or the direct GBP
+  API v4 (approval takes days–weeks — apply early). Craftons has its own profile; notifications land
+  in `cnc@cnccut.melbourne` alongside CNC Cut Melbourne, CNC Cut Geelong, Cavity Battens. Needs
+  Lee's go-ahead → `followups/google-reviews.md` + `INTEGRATIONS.md` B10
 
 ---
 
@@ -105,4 +110,6 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
+**Follow-ups / reviews:** `followups/README.md` · `followup-rules.md` · `routine-prompts.md` ·
+`google-reviews.md` (replying to Google reviews — research + wiring paths)
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

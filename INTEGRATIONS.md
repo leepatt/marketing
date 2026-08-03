@@ -88,6 +88,31 @@ cost. Work top-down by priority.
 - **Accounts (set up 2026-06-15):** Manager (MCC) `Craftons Marketing` = `275-347-3695` → `GOOGLE_ADS_LOGIN_CUSTOMER_ID=2753473695`; advertiser account `310-491-2421` → `GOOGLE_ADS_CUSTOMER_ID=3104912421`. OAuth client is a **Web application** with redirect URI `https://developers.google.com/oauthplayground`; refresh token minted via OAuth Playground (own creds, offline + force-consent).
 - **Status:** ✅ Values collected 2026-06-15. **Basic-access approval still pending** (dev token is Test-access until granted; manual campaign building is fine meanwhile). ✅ **Rotated 2026-06-23** — leaked client secret + refresh token revoked: deleted the "Craftons Ads" OAuth grant, disabled the leaked secret in Cloud Console (added a new secret), re-minted the refresh token via OAuth Playground, placed the two new values in **Vercel** env vars + redeployed. ⏳ Remaining (desktop): mirror the two new values into the Jake cloud environment; delete the disabled old secret once verified.
 
+### B10 · Google Business Profile API — read + reply to Google reviews
+- **Unlocks:** programmatic replies to Google reviews across all four profiles (Craftons · CNC Cut
+  Melbourne · CNC Cut Geelong · Cavity Battens), plus review reads for reporting. Closes the loop
+  with the review *requests* already drafted in `followups/` Routine 1 Part B.
+- **Note:** replies do **not** go through Gmail — Gmail only receives the notification. Full
+  research, both integration paths, and the drafting rules → `followups/google-reviews.md`.
+- **Two routes:**
+  1. **Zapier bridge** (recommended first) — the Google Business Profile app has a *New Review*
+     trigger + a *Reply to Review* action, using Zapier's own approved access. No Google approval
+     wait, same-day. Enable via `enable_zapier_action` (`selected_api: GoogleMyBusinessCLIAPI`) then
+     authorise the Google account that owns the profiles.
+  2. **Direct API** — reviews still live on the legacy v4 surface:
+     `PUT https://mybusiness.googleapis.com/v4/accounts/{a}/locations/{l}/reviews/{r}/reply`.
+     Enable the Business Profile APIs in a Cloud project → OAuth client → submit the **API access
+     request form** (approval takes days to weeks, like the Google Ads dev token — apply early).
+     Verified locations only. Approved projects get ~300 req/min per API.
+- **Env vars (direct route):** `GBP_CLIENT_ID`, `GBP_CLIENT_SECRET`, `GBP_REFRESH_TOKEN`,
+  `GBP_ACCOUNT_ID` — scope `https://www.googleapis.com/auth/business.manage`. Can reuse the existing
+  Cloud project from B7.
+- **Cost:** free (both routes; Zapier covered by the existing plan).
+- **Guardrail:** a review reply is **public and instant** — there is no draft state in the API.
+  Default stays Claude drafts → Lee approves and posts. Never auto-reply to negative reviews.
+- **Status:** ☐ Researched 2026-08-03, not wired. Needs Lee's go-ahead to enable the Zapier action
+  and/or start the API access request.
+
 ---
 
 ## Priority 4 — Newsletter
@@ -124,6 +149,7 @@ B5 Later ─────────► Step posting (operating loop)
 B6 Meta/IG ───────► Step 5 dashboard insights + Step 6 Meta ads
 B7 Google Ads ────► Step 6 Google ads
 B8 Klaviyo ───────► Step 4 newsletter
+B10 GBP API ──────► Review replies (reputation loop, pairs with followups/)
 ```
 
 ## Suggested order to knock out

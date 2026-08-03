@@ -808,9 +808,30 @@ Per §4.3 — assembling real assets, not generating fake ones.
   > archive is not open. The **web UI at `facebook.com/ads/library` remains browsable by hand**, so
   > manual swipe-file gathering still works — it just isn't automatable yet.
   >
-  > **Action for Lee:** apply at `facebook.com/ads/library/api` if we want this automated. The code
-  > path is built and will start returning data the moment access is granted — `entropy` reports the
-  > exact block reason rather than failing silently.
+  > ### 🛑 Do NOT apply for API access — it would not help
+  >
+  > Checked Meta's own `ads_archive` reference before recommending the application. The
+  > `ad_reached_countries` parameter documentation states:
+  >
+  > > *"Ads that did not reach any location in the EU will only return if they are about social
+  > > issues, elections or politics."*
+  >
+  > **Craftons' competitors are Melbourne building-products suppliers advertising to Australia.**
+  > They never reach the EU and they are not political — so they are **not in the archive at all**.
+  > A fully-verified, fully-approved app would return an **empty set** for any AU query.
+  >
+  > **This is a coverage limit, not a permissions one.** The government-ID verification would have
+  > bought nothing. Worth knowing before anyone repeats the exercise.
+  >
+  > **What actually works:**
+  > - **The web UI at `facebook.com/ads/library`** does show Australian commercial ads and needs no
+  >   API access whatsoever. Swipe-file gathering is a manual job — that's the honest answer
+  > - **The API is genuinely useful for EU/UK** reference, where commercial ads *are* archived.
+  >   `entropy --countries=GB` works if we ever want overseas creative as fresh DNA
+  >
+  > Consequence for Phase 6: **entropy cannot be fully automated from competitor ads in Australia.**
+  > The novelty check (6.4) carries more weight here than it would elsewhere, because it's the
+  > anti-convergence mechanism that doesn't depend on an external feed.
 - [ ] **6.2** **Virlo API** (`virlo.ai`) — trending short-form formats, if the category justifies the cost
 - [ ] **6.3** Trade YouTube/podcast transcript mining for angles
 - [x] **6.4** ✅ **Novelty check** — built into `meta-ads.mjs entropy` + `checkNovelty()` in policy.

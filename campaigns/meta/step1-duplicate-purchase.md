@@ -1,4 +1,34 @@
-# Step 1 — Kill the duplicate Purchase event
+# Step 1 — The duplicate Purchase question
+
+> ## ⚠️ REVISED 2026-08-03 — severity walked back, cause unproven
+>
+> Every configuration surface has now been checked and **all of them show a single, correctly
+> configured source**:
+> - **Shopify → Customer events:** one Meta entry (Facebook & Instagram, Server + Web, "Optimized" —
+>   the highest data-sharing tier). No rogue custom pixel. Chatty and Microsoft Clarity are Web-only
+>   and not Meta; Google & YouTube is Google's.
+> - **Shopify → Sales channels:** Facebook & Instagram installed 30 Apr 2025, Pixels **Connected**,
+>   Data access **Optimized**.
+> - **Events Manager → Integrations:** exactly two entries — one Conversions API, one Meta Pixel.
+> - **Events Manager → Actions:** flags **match quality**, and does **not** flag duplicate events.
+>
+> **The measurement stands** (97 pixel Purchase vs 36 Shopify orders, 66 server / 31 browser).
+> **The diagnosis below does not.** The "two senders duplicating" theory has no supporting evidence
+> left. Two explanations remain, and one is benign:
+>
+> **(a)** Shopify's integration fires server-side more than once per order — plausible given Purchase
+> splits `craftons.com.au` 73 / `shop.app` 24, so Shop Pay may fire on its own surface.
+> **(b)** Meta's `/stats` endpoint reports **pre-deduplication** counts. Browser and server share an
+> `event_id`, are counted separately in raw stats, then collapse for attribution — in which case
+> nothing is broken.
+>
+> **(b) is now the leading explanation**, mainly because Meta detects genuine duplication and would
+> normally flag it in Actions. It didn't.
+>
+> **Do not remove anything on the strength of this doc.** Removing the only Conversions API source
+> would cost most of the conversion signal, given 72% iPhone traffic. Settle it with the live test at
+> the bottom first.
+
 
 _The single highest-value fix in Phase 0. Diagnosed 2026-08-03 from the pixel's own data._
 _Parent doc: `conversion-tracking.md`._
@@ -130,7 +160,23 @@ comparison and tell you whether it landed, rather than you eyeballing dashboards
 
 ---
 
-## Why this is worth doing before anything else
+## How to settle it properly
+
+**Test Events has a limitation:** its test code applies to browser events. Shopify's server-side
+Purchase won't carry the code, so **server events may not appear in the test panel at all** — which
+is precisely the half in question.
+
+**Better: use the real production path and count it.**
+
+1. Note the exact time.
+2. Place **one real order** (refund it afterwards).
+3. Wait ~30–60 minutes for Meta to process.
+4. Ask Claude to query the pixel for that window and count Purchase events by source.
+
+**One order → one counted Purchase** means nothing is broken and Phase 0 loses its blocker.
+**One order → three** confirms real duplication.
+
+## Why this mattered enough to chase
 
 Andromeda picks who sees your ads by correlating **creative** against **conversion signal**. Two of
 every three conversions it has been learning from never happened — so it has been optimising toward

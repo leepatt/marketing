@@ -669,9 +669,19 @@ Nothing else starts until this is green. This is the lesson STATUS.md already pa
 - [ ] **0.5** **Build the combined custom conversion** (§4.5): configured quote request **+** configurator submission **+** purchase, as one optimisation event. High-intent only — a generic contact form must not qualify
 - [ ] **0.6** **Send `Purchase` with real `value` (AUD) via CAPI from day one**, even though we optimise on the combined event — this builds the history for the later switch to value optimisation
 - [ ] **0.7** Instrument **lead → sale close rate** so cost-per-lead can be converted to true CAC. Without this the scoreboard is a vanity metric
-- [ ] **0.8** Document it all in `campaigns/meta/conversion-tracking.md`, mirroring the AdWords equivalent
+- [x] **0.8** ✅ **Written → `campaigns/meta/conversion-tracking.md`** — full step-by-step, grounded in live pixel recon
 
 **Done when:** a test purchase and a test quote request both appear in Events Manager with **EMQ > 7** via both pixel and CAPI, and purchase events carry a value.
+
+> 🔴 **Recon 2026-08-03 found the tracking is NOT clean, and one problem is serious.**
+> The pixel (`677437638374055`, "Craftons Web") is healthy and firing the full funnel — including an
+> existing `ConfiguratorStarted` custom event — **but it recorded 97 Purchases in 30 days against
+> Shopify's 36 actual orders. The conversion signal is inflated ~2.7×.**
+> Andromeda correlates creative against conversion signal, so roughly two of every three conversions
+> it learned from never happened. **This is a plausible contributor to the July collapse in §4.5.**
+> Also found: Advanced Matching is **off** (caps EMQ), **zero** custom conversions exist (so the
+> combined high-intent event doesn't yet), and traffic is **72% iPhone** (making CAPI critical).
+> Full diagnosis and the fix sequence → `campaigns/meta/conversion-tracking.md`.
 
 ## Phase 1 — Make the existing tool real
 

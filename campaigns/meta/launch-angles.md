@@ -94,7 +94,26 @@ Cross-checked against `keyword-plan.md`'s confirmed converters: **"bendy ply"**,
 
 ---
 
-## 🔴 The anti-angle — do not rebuild the July campaign
+## ~~🔴 The anti-angle — do not rebuild the July campaign~~
+
+> ### ⛔ THIS WHOLE SECTION IS WRONG — retracted 2026-08-03 → `suby-8-hacks-implementation.md`
+>
+> Lee challenged it and the account data proves him right.
+>
+> - **July never segmented the audience.** All five trade ads sat in **one ad set** —
+>   `TOF | Broad AU | AddToCart`, broad Australia, no interest targeting. That *is* Suby's hack #2:
+>   broad targeting, identity word in the creative. I mistook creative variation for an audience split.
+> - **The creative was the best hook the account has ever run** — AD5 Chippies at **10.45% CTR** and
+>   **$0.08 per landing page view**, plus 132 reactions and 12 saves.
+> - **What failed was the optimisation event.** The ad set optimised for `ADD_TO_CART`; the account
+>   generates ~15 ATC/month against the ~50/week Meta needs to exit learning. Starved of signal,
+>   delivery collapses to cheap clicks — exactly the observed pattern.
+> - **"$758/result" divided real spend by a broken denominator.** It was evidence about event volume,
+>   not creative.
+>
+> **Identity variants are reinstated** (`radius-pro-ad-copy.md` Angle 4). The rule that replaces this
+> section: *identity words on broad targeting, always — and never optimise on an event we can't
+> generate enough of.*
 
 **Never segment creative by trade.** July ran separate ads for Chippies, Carpenters, Builders,
 Concreters and Landscapers. Results (bible §4.5):

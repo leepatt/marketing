@@ -162,6 +162,30 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 - 🟡 **Before/after photography in progress** — Lee "trying to get some". `before_after` family stays
   at 0 until they exist.
 
+### 🔴 RETRACTED: the July post-mortem was wrong — 2026-08-03 → `campaigns/meta/suby-8-hacks-implementation.md`
+**Lee challenged the "trade segmentation failed" claim. The account data proves him right.** This claim
+had been repeated across four docs and was shaping the whole creative strategy.
+- **July never segmented the audience.** All five trade ads sat in **one ad set** —
+  `TOF | Broad AU | AddToCart`, broad Australia, **no interest targeting**. That *is* Suby's hack #2.
+  Creative variation was misread as an audience split.
+- **The trade creative was the best hook the account has run:** AD5 Chippies **10.45% CTR**,
+  **9,244 landing page views at $0.08**, 132 reactions, 12 saves. (The "winning" retargeting ad:
+  1.72% CTR, $1.40/LPV.)
+- **What failed was the optimisation event.** Optimised on `ADD_TO_CART`; the account makes ~15 ATC and
+  ~13 purchases a month against the **~50 events/week** Meta needs to exit learning. No signal →
+  delivery collapses to cheap clicks. Exactly the observed signature.
+- **"$758/result" divided real spend by a broken denominator.** Evidence about event volume, not creative.
+- 🔑 **This makes the combined custom conversion (IC OR Purchase) the fix for what actually broke** —
+  pooling events is how you clear the learning threshold. It is now the top priority, not a tidy-up.
+- 🔑 **~13,000 landing page views arrived in July and we captured zero emails.** Pillar 2's missing
+  middle, costing real money. Biggest structural gap in the whole build.
+- 🔑 **TOF probably did work** — retargeting made 11 purchases on $446 in the same month, off the
+  audience TOF built. Last-click credits the wrong ad.
+- [x] **Identity variants reinstated** — 9 added, batch now 24 → `radius-pro-ad-copy.md` Angle 4.
+  Joiner-block copy finally has a home (concreters-only, #20/#21).
+- **The tell I missed:** a 10.45% CTR next to "this creative failed" should never have passed. The
+  engagement numbers were in the same API response as the spend numbers.
+
 ### 🔴 Lee's product briefing — 2026-08-03 → `campaigns/meta/radius-pro-product-truth.md`
 Lee gave the full Radius Pro description after flagging that ad copy had "gone off track". It corrected
 more than the copy:
@@ -178,8 +202,8 @@ more than the copy:
 - **2–3 days delivered, Australia-wide via FedEx**, interstate included. Reverses the earlier
   over-cautious kill of the three-day claim.
 - **Tails** (extend the leg 100–300mm to meet a straight frame) and **doubling up** plates confirmed.
-- ⚠️ **Lee suggested trade-targeted copy for concreters/landscapers.** Right instinct, wrong time —
-  July's trade-segmented ads cost $758/result and $370 for zero. Hold until one ad wins, then clone.
+- ✅ **Lee suggested trade-targeted copy for concreters/landscapers — and he was right.** I pushed back
+  citing July's "$758/result"; the account data overturns that. **See below.**
 - [x] **Copy rewritten from it** → `campaigns/meta/radius-pro-ad-copy.md` (15 creatives, v2)
 
 ---
@@ -249,8 +273,9 @@ more than the copy:
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs
 marketing) · `copy-reconciliation.md` (the two-funnel model + claim verdicts; **§4 copy superseded**) ·
-`META-ADS-AGENT-BIBLE.md` (agent design + phased build) · `launch-angles.md` (⚠️ Angle 2 retired) ·
-`conversion-tracking.md` · `radius-pro-interview.md` (mostly answered by the product truth doc)
+**`suby-8-hacks-implementation.md` (⭐ the 8 hacks → concrete actions, + the corrected July post-mortem)** ·
+`META-ADS-AGENT-BIBLE.md` (agent design + phased build) · `launch-angles.md` (⚠️ Angle 2 retired,
+anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-interview.md` (mostly answered)
 
 **🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
 `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`

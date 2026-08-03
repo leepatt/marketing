@@ -22,7 +22,12 @@ make mistakes, and a lot of the sheet goes in the bin.
 **The answer:** the software draws it perfectly, nests it to save sheets, the CNC cuts it perfect,
 every part is engraved with its radius, and it's on site in 2–3 days anywhere in Australia.
 
-**Not in general copy:** joiner blocks (concreters only — hold for post-winner variants).
+**Not in general copy:** joiner blocks — concreters only, so they appear **only** in the concreter
+identity variants (#20, #21).
+
+**Aussie slang and trade words are wanted** (Lee, 2026-08-03): chippies, formies, sorted, mate, on the
+tools, blokes, off the plan. Sprinkled, never forced. The one exception is the banned list above —
+bog-and-sand *is* slang but it's slang about a job we don't do.
 
 ---
 
@@ -60,6 +65,37 @@ every part is engraved with its radius, and it's on site in 2–3 days anywhere 
 
 ---
 
+## Angle 4 — identity variants (Suby hack #2) ⭐
+
+_Added 2026-08-03 after the July post-mortem was overturned — see `suby-8-hacks-implementation.md`._
+
+**Why these are back.** The previous "never name the trade" rule was wrong. July's trade ads ran in
+**one broad AU ad set** with identity words in the creative — Suby's hack #2 exactly — and pulled
+**7.5–10.5% CTR at $0.08–$0.20 per landing page view**. That's the best hook the account has ever had.
+What broke was the optimisation event, not the identity word.
+
+**Hard rule:** these all run in **ONE broad AU ad set**. Never split into per-trade audiences, never
+add interest targeting. The creative does the targeting.
+
+**Register:** trade words and a bit of Aussie, the way it's said on site. No explaining down.
+
+| # | Family | Identity | Headline | Primary text |
+|---|---|---|---|---|
+| 16 | `static_craft` | Chippies | Chippies — Curved Wall Plates | Top and bottom plates for curved frames, cut on the CNC to the radius off your plan. Most orders in 2–3 days. |
+| 17 | `cad_render` | Chippies | Chippies, Put the Jigsaw Down | Nobody's marking out a radius on a sheet anymore. Type it in, we cut it, it turns up labelled. |
+| 18 | `static_craft` | Builders | Builders — Curved Walls, Sorted | Curved walls are everywhere in Aussie homes now. Take the radius off the plan and have the plates cut. |
+| 19 | `configurator` | Builders | Builders, Price It Yourself | Type the radius, pick your ply, see the price on the spot. No quote, no phone call, no waiting. |
+| 20 | `static_craft` | Concreters | Concreters — Curved Formwork | Top and bottom plates cut to your radius, with joiner blocks for where your frames meet. |
+| 21 | `cad_render` | Concreters | Joiner Blocks Come With It | Build the frame, stud it out, sheet it in bendy ply. Joiner blocks sit on top where the frames join. |
+| 22 | `static_craft` | Formworkers | Formworkers — Plates Cut to Size | 17mm formply, cut to your radius, nested to save sheets. Most orders on site in 2–3 days. |
+| 23 | `avatar` | Landscapers | Landscapers — Curved Seats | Curved plates for seats and garden walls, cut on the CNC. Any radius, priced online. |
+| 24 | `static_craft` | Any trade | Whatever You're On, We Cut It | Chippies, concreters, formies, landscapers. Same problem, same fix — type the radius, we cut the plates. |
+
+⚠️ **#20 and #21 are the only ads allowed to mention joiner blocks** — they're concreters-only per
+`radius-pro-product-truth.md`. That's the hack unlocking a true claim we'd otherwise had to shelve.
+
+---
+
 ## What changed from v1, and why
 
 | v1 said | v2 says | Why |
@@ -78,10 +114,11 @@ every part is engraved with its radius, and it's on site in 2–3 days anywhere 
 
 | Requirement | This batch |
 |---|---|
-| ≥15 creatives | ✅ 15 |
-| ≥3 distinct families | ✅ 4 — `static_craft` (6) · `configurator` (4) · `cad_render` (4) · `avatar` (2) |
-| ≤40% synthetic | ⚠️ Depends on render mix — `avatar` is 2/15 (13%) |
-| Avatar scripts pass the ACL first-person test | ✅ #3 and #13 make no first-person experience claim |
+| ≥15 creatives | ✅ **24** — raised for hack #1 (statics win on volume) |
+| ≥3 distinct families | ✅ 4 — `static_craft` (11) · `cad_render` (7) · `configurator` (5) · `avatar` (3) |
+| ≤40% synthetic | ⚠️ Depends on render mix — `avatar` is 3/24 (13%) |
+| Avatar scripts pass the ACL first-person test | ✅ #3, #13, #23 make no first-person experience claim |
+| **One ad set, broad AU** | ✅ Enforced by `MAX_AD_SETS = 1`. Identity variants must **not** be split |
 
 ⚠️ **Copy only.** The images still show a 900mm decorative arc; the product is 90mm plates at
 multi-metre radii in runs of 16–60. **Do not ship these words over those pictures.**

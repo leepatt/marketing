@@ -102,6 +102,13 @@ _Nothing here is marked done unless it has been **run and verified**, not merely
 
 ### ⚠️ B2 — the contradiction, and the resolution
 
+> **⛔ Resolved differently, 2026-08-03 — the resolution below picked the wrong side.**
+> July never segmented the audience: one ad set, broad AU, identity words in the creative — hack #2 as
+> written. It pulled **10.45% CTR at $0.08/landing page view**. What failed was optimising on
+> `ADD_TO_CART` with ~15 events/month against a ~50/week learning threshold.
+> **New rule: identity words on broad targeting, from launch. Never optimise on an event we can't
+> generate.** → `suby-8-hacks-implementation.md`
+
 `launch-angles.md` bans trade segmentation, citing July (AD5 Chippies, **$758/result**; three trade ads
 at **zero**). Suby's hack #2 says put the trade *in* the ad.
 

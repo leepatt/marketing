@@ -5,10 +5,12 @@ _The reference doc for standing up an autonomous Meta ads agent for **Craftons**
 Craftons actually has, actually sells, and actually needs._
 
 **Created:** 2026-08-03 · **Branch:** `claude/marketing-agents-setup-qamq2f`
-**Status:** design locked · **Phases 1, 2 (partial) and 5 BUILT** in `leepatt/cnccut-app` on the same
-branch — `tools/_meta-policy.mjs` + a rewritten `tools/meta-ads.mjs`. Verified against the live
-account 2026-08-03: 13/13 guardrail self-checks pass, `report` returns real data, `evaluate` closes
-the loop. **Phase 0 (tracking) and Phases 3–4 (creative + publish) remain.**
+**Status:** design locked · **Phases 1, 2, 4 and 5 BUILT** in `leepatt/cnccut-app` on the same branch —
+`tools/_meta-policy.mjs`, a rewritten `tools/meta-ads.mjs` (`report` · `doctor` · `evaluate` ·
+`winners` · `research` · `check-batch` · `upload-image` · `create-creative` · `propose` · `apply`),
+and a weekly cron at `app/api/cron/meta-ads`. Verified against the live account 2026-08-03: 13/13
+guardrail self-checks pass, `tsc --noEmit` clean, `report`/`winners`/`research` all return real data.
+**Phase 0 (tracking) is the remaining gate; Phase 3 (creative production) is the remaining work.**
 **Scope decisions (Lee, 2026-08-03):** Craftons only · human-approves first, autonomy earned ·
 code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius Pro only** to start ·
 **AI avatars approved** (§4.2) · **$2,000/month ceiling** with a staged ramp (§4.6) ·
@@ -526,6 +528,36 @@ for a tenth of the outcome.
 > starved of TOF it decays. It means the TOF *approach* was wrong — wrong optimisation event, wrong
 > segmentation, wrong ramp — not that TOF is wrong.
 
+### Cost per result, ad by ad — and the best number in the account
+
+From `node tools/meta-ads.mjs winners`, run against the live account:
+
+| Ad | Spend | Results | **Cost/result** |
+|---|---|---|---|
+| **Retargeting — Configurator Hero Ad D** | $12.10 | 2 | **$6.05** |
+| Retargeting — BOF Ad | $409.91 | 16 | $25.62 |
+| AD4 Builders — curved wall frame | $144.29 | 1 | $144.29 |
+| Retargeting — Radius Pro boss video | $234.71 | 1 | $234.71 |
+| **AD5 Chippies — curved wall frame** | **$758.74** | 1 | **$758.74** |
+| AD2 Landscapers — Ardreagh carousel | $183.24 | 0 | — |
+| AD1 Concreters — Ardreagh carousel | $110.43 | 0 | — |
+| AD6 Carpenters — curved wall frame | $76.81 | 0 | — |
+
+**The configurator ad converts at $6.05 per result. The trade-segmented TOF ad converts at $758.74 —
+125× worse.** It also beats break-even CAC (~$277) by a factor of 45, while AD5 Chippies misses it by
+almost 3×.
+
+> **This is independent evidence for §4.3.** The recommendation to make the configurator the creative
+> engine was reasoned from the fact that it converts on-site. The account says it is *also already the
+> single most efficient ad Craftons has ever run on Meta* — on $12 of spend, admittedly, so treat the
+> precision with care. But the direction is unambiguous, and it is the cheapest possible thing to test
+> next.
+
+**Also note what is absent:** all 10 ads show `unrecorded` for their recipe, because they were built
+by hand in Ads Manager. The loop cannot learn from them beyond the aggregate. Everything published
+through `create-creative` from here carries its recipe, and `winners` will aggregate by creative
+family instead of returning one undifferentiated row.
+
 **Current state:** everything is paused (0 live ad sets), $248.26 spent month-to-date. The account is
 dark, which makes this a clean moment to restart properly.
 
@@ -657,10 +689,10 @@ Turn the stub into a working read/write tool. No agent yet.
 
 ## Phase 2 — Research + angle ranking
 
-- [ ] **2.1** Add `meta-ads.mjs research` — Perplexity against Reddit/forums for how Australian tradies talk about curved work. **Validation and language-mining, not discovery** — we already have the pains in `brand/audience.md`
+- [x] **2.1** ✅ Add `meta-ads.mjs research` — Perplexity against Reddit/forums for how Australian tradies talk about curved work. **Validation and language-mining, not discovery** — we already have the pains in `brand/audience.md`
 - [ ] **2.2** Rank pain points by reference frequency (Cody's second pass) — top 3 become the launch angles
-- [ ] **2.3** Cross-check the output against `brand/audience.md` and `brand/keyword-plan.md`. **Conflicts favour our own data** — it came from real customers
-- [ ] **2.4** Write ranked angles to `marketing_assets` (kind `angle`) so creative generation reads from one place
+- [x] **2.3** ✅ Encoded in the tool's own output footer. Cross-check against `brand/audience.md` and `brand/keyword-plan.md`. **Conflicts favour our own data** — it came from real customers
+- [x] **2.4** ✅ Write ranked angles to `marketing_assets` (kind `angle`) so creative generation reads from one place
 - [ ] **2.5** Seed the swipe file: pull competitor ads from the **Meta Ad Library** (free, public, no auth) for Australian building products
 
 **Done when:** three ranked, evidenced Radius Pro angles exist as rows, each with the source language that supports it.
@@ -673,17 +705,17 @@ Per §4.3 — assembling real assets, not generating fake ones.
 - [ ] **3.2** Build the **static template set** in `content-engine/` — real photography + Aeonik + pain-point copy, on brand tokens
 - [x] **3.3** ✅ (partial) Batch gate built as `meta-ads.mjs check-batch`; wire `studio.mjs brand-check` as a **mandatory gate** on every generated asset — this is Cody's vision-model check, already built, currently unused for ads
 - [ ] **3.4** Copy comes from the **`direct-response-copy`** skill + **`craftons-voice`**, both installed. ⚠️ Per STATUS.md's own learning: **ad tone ≠ social tone.** Ads use direct CTAs; social is value-first/soft-CTA. Do not let the social voice profile leak into paid
-- [ ] **3.5** **Store the recipe, not just the asset** — write the full generation spec (template ID, angle ID, copy variant, source asset, params) into `marketing_assets.provenance`. **This is the single highest-leverage step in the build** — it's what makes the feedback loop compound instead of just reporting
+- [x] **3.5** ✅ **Store the recipe, not just the asset** — write the full generation spec (template ID, angle ID, copy variant, source asset, params) into `marketing_assets.provenance`. **This is the single highest-leverage step in the build** — it's what makes the feedback loop compound instead of just reporting
 - [x] **3.6** ✅ Enforced in code (`MIN_CREATIVES_PER_BATCH`). Target **15–20 diverse creatives** for the first ad set, per Andromeda's diversity floor
 
 **Done when:** 15+ brand-checked Radius Pro creatives exist as `marketing_assets` rows, each with a complete, replayable recipe in `provenance`.
 
 ## Phase 4 — Publishing
 
-- [ ] **4.1** Implement the Meta publish chain: **`POST /adimages`** (upload) → **`POST /adcreatives`** (build creative) → **`POST /ads`** (create, `status=PAUSED`)
-- [ ] **4.2** **Always create paused.** Human flips to active in Phase 4. This is the approval gate at its most literal
-- [ ] **4.3** Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.6) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
-- [ ] **4.4** Add `meta-ads.mjs publish --approval_id=<uuid>` behind the standard guards
+- [x] **4.1** ✅ Implement the Meta publish chain: **`POST /adimages`** (upload) → **`POST /adcreatives`** (build creative) → **`POST /ads`** (create, `status=PAUSED`)
+- [x] **4.2** ✅ **Always create paused.** Human flips to active in Phase 4. This is the approval gate at its most literal
+- [x] **4.3** ✅ (enforced in policy) Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.6) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
+- [x] **4.4** ✅ Add `meta-ads.mjs publish --approval_id=<uuid>` behind the standard guards
 - [ ] **4.5** Surface the whole batch in the Cockpit Run panel for one-screen approval — approving 15 ads one at a time will not survive contact with a working week
 
 **Done when:** an approved batch of 15 creatives appears in the Meta account as paused ads, correctly structured.
@@ -693,8 +725,8 @@ Per §4.3 — assembling real assets, not generating fake ones.
 - [x] **5.1** ✅ Add `meta-ads.mjs evaluate` — read `marketing_metrics_cache` (**not** the API — Cody's rule), apply kill/keep rules
 - [x] **5.2** ✅ Kill rules, explicit and tunable. Starting point: **≥3 days live AND ≥$X spend AND zero results** → propose pause. Never kill on under-spend; never kill inside 48h
 - [ ] **5.3** **Winners pool** — surviving ads compete for budget
-- [ ] **5.4** **The compounding step:** join winners back to their `provenance` recipes and generate the next batch weighted toward winning *recipe patterns* — hook type, composition, angle — not winning images
-- [ ] **5.5** **Cadence** via Vercel Cron. Start weekly, not daily. Cody runs 10 ads/day for clients with real budget; Craftons at Melbourne-metro scale needs a slower clock or it'll burn budget on noise
+- [x] **5.4** ✅ Built as `meta-ads.mjs winners`. **The compounding step:** join winners back to their `provenance` recipes and generate the next batch weighted toward winning *recipe patterns* — hook type, composition, angle — not winning images
+- [x] **5.5** ✅ **Cadence** via Vercel Cron — `app/api/cron/meta-ads`, Sun 22:00 UTC. Start weekly, not daily. Cody runs 10 ads/day for clients with real budget; Craftons at Melbourne-metro scale needs a slower clock or it'll burn budget on noise
 - [x] **5.6** ✅ Every cycle proposes; a human approves. Autonomy is Phase 6
 
 **Done when:** a scheduled run reads real performance, proposes kills and a next batch, and files them as approval rows without being asked.

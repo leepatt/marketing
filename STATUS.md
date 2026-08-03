@@ -74,6 +74,14 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
     `evaluate` closes the loop, `tsc --noEmit` clean.
   - Enforced in code: $2k/mo ceiling · one ad set · +20% max budget step · kill needs no-results
     AND 72h AND $25 · ads always created PAUSED · autonomy rung 0 (propose only) by default.
+  - **Full subcommand set:** `report` · `doctor` · `evaluate` · `winners` · `research` ·
+    `check-batch` · `upload-image` · `create-creative` · `propose` · `apply`
+  - **Cadence live:** `app/api/cron/meta-ads` weekly (Sun 22:00 UTC) → runs `report` then
+    `evaluate --file_proposals`. Cannot spend or change the account; only files proposals.
+  - **Recipe memory:** `create-creative` stores the generation spec in `marketing_assets.provenance`;
+    `winners` joins performance back to it and aggregates by creative family. This is the compounding step.
+  - **Remaining:** Phase 0 (Meta pixel + CAPI + EMQ>7) is the gate · Phase 3 (creative production).
+    Needs `META_PAGE_ID` for `create-creative`; `META_APP_ID`/`SECRET` only for long-lived token refresh.
 
 ### ⚠️ CORRECTION — the Meta account is NOT a cold start (2026-08-03)
 Earlier notes (and Shopify's referrer attribution, which shows `social/facebook` at 3 orders / $729
@@ -85,6 +93,9 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 - **Causes:** optimised on `AddToCart` (too high in the funnel) · creative hand-segmented by trade
   (pre-Andromeda thinking) · budget scaled in one step (resets learning).
 - **Retargeting produced 19 of 21 results on ~$657**; TOF prospecting spent ~$1,300 for ~2.
+- **Best ad in the account = "Retargeting – Configurator Hero Ad D" at $6.05/result** (on $12 spend,
+  so treat the precision carefully). Worst = "AD5 Chippies" at **$758.74/result**. That's 125× —
+  and independent evidence for making the configurator the creative engine.
 - Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
 
 ## ⏳ Pending / in progress

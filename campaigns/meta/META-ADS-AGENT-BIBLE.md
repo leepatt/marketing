@@ -741,6 +741,20 @@ Per §4.3 — assembling real assets, not generating fake ones.
 - [x] **3.3** ✅ (partial) Batch gate built as `meta-ads.mjs check-batch`; wire `studio.mjs brand-check` as a **mandatory gate** on every generated asset — this is Cody's vision-model check, already built, currently unused for ads
 - [ ] **3.4** Copy comes from the **`direct-response-copy`** skill + **`craftons-voice`**, both installed. ⚠️ Per STATUS.md's own learning: **ad tone ≠ social tone.** Ads use direct CTAs; social is value-first/soft-CTA. Do not let the social voice profile leak into paid
 - [x] **3.5** ✅ **Store the recipe, not just the asset** — write the full generation spec (template ID, angle ID, copy variant, source asset, params) into `marketing_assets.provenance`. **This is the single highest-leverage step in the build** — it's what makes the feedback loop compound instead of just reporting
+  > 🐞 **This was silently broken until 2026-08-03.** `recentAssets()` in `_lib.mjs` never selected the
+  > `provenance` column, so `asset.provenance.recipe` was **always `undefined`**. `winners` had been
+  > joining against recipes that could never be there — the compounding step compounded nothing, and
+  > nothing surfaced an error because a missing recipe just renders as "unrecorded".
+  >
+  > Found by building `entropy` on the same helper and getting "0 batches" immediately after a
+  > successful ingest. One column added to one SELECT. **Worth remembering: the recipe loop's failure
+  > mode is silence, not an exception** — if `winners` ever shows everything as `unrecorded` again,
+  > check the read path before assuming the writes are missing.
+- [x] **3.7** ✅ **The ingest seam** — `meta-ads.mjs ingest --file=<manifest.json>`. Turns produced
+  files + recipes into validated `marketing_assets` rows. Rejects: missing file, unknown family, no
+  angle, and any avatar script failing the ACL test. **Capture-agnostic by design** — it knows nothing
+  about how the pixels were made, which is exactly what lets the capture layer be swapped without
+  touching the publish path. This is where the capture pipeline plugs in.
 - [x] **3.6** ✅ Enforced in code (`MIN_CREATIVES_PER_BATCH`). Target **15–20 diverse creatives** for the first ad set, per Andromeda's diversity floor
 
 **Done when:** 15+ brand-checked Radius Pro creatives exist as `marketing_assets` rows, each with a complete, replayable recipe in `provenance`.
@@ -751,7 +765,13 @@ Per §4.3 — assembling real assets, not generating fake ones.
 - [x] **4.2** ✅ **Always create paused.** Human flips to active in Phase 4. This is the approval gate at its most literal
 - [x] **4.3** ✅ (enforced in policy) Campaign structure: **one campaign, one ad set, many creatives.** Meta's own test says 1×25 beats 5×5 — but at Craftons' event volume (§4.6) this is not an optimisation, it's survival. **Splitting the ad set starves every one of them and kills the account.** Enforce it in code: the publish path refuses to create a second ad set
 - [x] **4.4** ✅ Add `meta-ads.mjs publish --approval_id=<uuid>` behind the standard guards
-- [ ] **4.5** Surface the whole batch in the Cockpit Run panel for one-screen approval — approving 15 ads one at a time will not survive contact with a working week
+- [x] **4.5** ✅ Surface the whole batch in the Cockpit for one-screen approval — built as
+  `components/marketing/meta-ads/creative-batch-approval.tsx` + `POST /api/marketing/approvals/batch`.
+  Same human gate, one screen: every item individually selectable, **nothing pre-selected**, and
+  deliberately **no "approve all pending" shortcut** that skips looking at the list. Shows family mix
+  and synthetic share so the batch can be judged *as a batch* — a batch that is all one family passes
+  every per-item check and still fails the diversity rule. Capped at 50 per request; `decideApproval`
+  still refuses anything not currently pending, so a replayed request can't flip a decided row.
 
 **Done when:** an approved batch of 15 creatives appears in the Meta account as paused ads, correctly structured.
 
@@ -759,7 +779,18 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 - [x] **5.1** ✅ Add `meta-ads.mjs evaluate` — read `marketing_metrics_cache` (**not** the API — Cody's rule), apply kill/keep rules
 - [x] **5.2** ✅ Kill rules, explicit and tunable. Starting point: **≥3 days live AND ≥$X spend AND zero results** → propose pause. Never kill on under-spend; never kill inside 48h
-- [ ] **5.3** **Winners pool** — surviving ads compete for budget
+- [x] **5.3** ✅ **Winners pool** — built as `meta-ads.mjs pool`.
+  > ⚠️ **Corrected 2026-08-03: "surviving ads compete for budget" is not implementable as written.**
+  > On Meta the budget lives on the **ad set**, not on individual ads, and Craftons runs exactly one
+  > ad set (§4.6). There is no per-ad budget to shift between winners.
+  >
+  > What the pool actually is: **the set of ads left ACTIVE.** Meta's delivery optimisation then
+  > concentrates the ad set budget on whichever performs — which it does better than we could from
+  > outside. Our job is to curate the pool it chooses from, not to second-guess the allocation.
+  >
+  > Ranking is lexicographic, not a blended score: **an ad with results always outranks a cheaper one
+  > without.** A $0.09 CPC on zero conversions is the July failure, not a near miss. Pool size 8, and
+  > dropping below 5 flags "publish fresh creative" rather than letting the pool run thin.
 - [x] **5.4** ✅ Built as `meta-ads.mjs winners`. **The compounding step:** join winners back to their `provenance` recipes and generate the next batch weighted toward winning *recipe patterns* — hook type, composition, angle — not winning images
 - [x] **5.5** ✅ **Cadence** via Vercel Cron — `app/api/cron/meta-ads`, Sun 22:00 UTC. Start weekly, not daily. Cody runs 10 ads/day for clients with real budget; Craftons at Melbourne-metro scale needs a slower clock or it'll burn budget on noise
 - [x] **5.6** ✅ Every cycle proposes; a human approves. Autonomy is Phase 6
@@ -768,10 +799,26 @@ Per §4.3 — assembling real assets, not generating fake ones.
 
 ## Phase 6 — Entropy + earned autonomy
 
-- [ ] **6.1** **Meta Ad Library** puller — competitor creative as fresh DNA (free, no auth)
+- [~] **6.1** **Meta Ad Library** puller — client built inside `meta-ads.mjs entropy`, **but blocked on access**.
+  > 🔴 **Corrected 2026-08-03: it is NOT "free, no auth".** Tested live against `/ads_archive` both
+  > with and without a token — both return `OAuthException` code 10, **subcode 2332002**:
+  > *"To access the API, you'll need to follow the steps at facebook.com/ads/library/api."*
+  >
+  > The API needs a **separately approved app plus ID verification**. The general (non-political) ad
+  > archive is not open. The **web UI at `facebook.com/ads/library` remains browsable by hand**, so
+  > manual swipe-file gathering still works — it just isn't automatable yet.
+  >
+  > **Action for Lee:** apply at `facebook.com/ads/library/api` if we want this automated. The code
+  > path is built and will start returning data the moment access is granted — `entropy` reports the
+  > exact block reason rather than failing silently.
 - [ ] **6.2** **Virlo API** (`virlo.ai`) — trending short-form formats, if the category justifies the cost
 - [ ] **6.3** Trade YouTube/podcast transcript mining for angles
-- [ ] **6.4** **Novelty check** — flag when N consecutive batches are too similar. Cody's warning is that decay is invisible day to day; make it visible
+- [x] **6.4** ✅ **Novelty check** — built into `meta-ads.mjs entropy` + `checkNovelty()` in policy.
+  Compares a proposed batch against a **3-batch lookback window** (comparing against only the previous
+  batch reproduces exactly the blind spot Cody warns about). Flags >50% recipe reuse, and separately
+  flags **one idea repeated** — a batch of 8 with 1 distinct pattern fails even with no history.
+  Recipe signature is deliberately coarse: `family | angle | template`, **not** the image or exact
+  copy, because two photos carrying the same angle in the same format are the same idea twice.
 - [ ] **6.5** Begin the autonomy ladder (§6)
 
 ---

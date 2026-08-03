@@ -227,9 +227,34 @@ Created on Lee's go-ahead — *"we want sales, not attention."*
 
 ---
 
-## ⏭ Next steps (in order)
-1. ⬜ **Wire the ad set to the new custom conversion at launch** (`promoted_object` →
-   `27686282527680441`). The object exists; nothing uses it yet.
+### 🔴 CORRECTION — the account is NOT paused, it is spending (verified 2026-08-03)
+`STATUS.md` and the agent bible both said *"currently paused, 0 live ad sets."* **Wrong.**
+- **`Retargeting Campaign - Bottom Of Funnel` is ACTIVE** at $15/day — ad set `120233074187690186`.
+  Spent **$15.28 yesterday, $1.10 today**; last 3 days **$124.83 → 3 IC, 1 purchase** (inside the $322
+  break-even). **Don't switch it off to tidy the test** — it's making money.
+- `RadiusPro | TOF | Ardreagh | Jul26` spent **$132.69 over 3 days for zero IC and zero purchases**
+  before being paused. Same signature as July.
+- ⚠️ **The test does not start from zero.** Live retargeting will convert people the new TOF ads warm
+  up and take last-click credit — the exact trap from the July post-mortem. **Read blended at account
+  level, not per-campaign.**
+
+### ✅ `META_PAGE_ID` FOUND — `611852278682648` ("Craftons")
+Was recorded as missing because `me/accounts` returns empty for this SYSTEM_USER token. It resolves via
+the business: `GET /1006792137511423/owned_pages`. **Needs adding to session env + Vercel** —
+`create-creative` can't publish without it. This was a genuine hard blocker.
+⚠️ **No Instagram account linked to the ad account** (`instagram_accounts` empty) → Facebook-only
+placements unless connected.
+
+---
+
+## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
+1. ⬜ **Re-render the creative — right product AND native (hack #4) in one pass.** The whole job.
+   Images still show a 900mm decorative arc; the product is 90mm plates at multi-metre radii, qty
+   16–60. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
+2. ⬜ **Add `META_PAGE_ID=611852278682648`** to env.
+3. ⬜ **Wire the ad set to the custom conversion** (`promoted_object` → `27686282527680441`). The
+   object exists; nothing points at it yet.
+4. ⬜ **Run `brand-check` live on the new batch** — built, never run on a real image.
 2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
    `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
    **Still the biggest open item** — the words are fixed, the images are not.

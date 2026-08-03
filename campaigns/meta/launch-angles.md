@@ -11,23 +11,51 @@ _Closes bible Phase 2.2 ("rank pain points, top 3 become the launch angles")._
 
 ## How these were ranked (and why not the way the video says)
 
-Cody's pipeline ranks pain points by **how often they're referenced on Reddit**. We ran that pass —
-twice, through the built `meta-ads.mjs research` subcommand — and **it does not work for this niche.**
-Recording that plainly so nobody spends another session on it:
+Cody's pipeline ranks pain points by **how often they're referenced on Reddit**.
 
-| Run | Model | Result |
-|---|---|---|
-| 1 | `sonar` | Returned vendor how-to pages and generic woodworking videos. Refused to rank, correctly — no tradesperson commentary in the result set |
-| 2 | `sonar-pro`, forums named explicitly in the query | Returned r/AusRenovation threads about **finding and chasing tradies**. Nothing about forming curves |
+> ### ⚠️ Corrected 2026-08-03 — an earlier version of this section was wrong
+>
+> This doc originally said the Reddit seam "isn't there" and that the research pass was a dead end
+> for this niche. **That conclusion was wrong, and it was drawn too fast** — from two failed calls,
+> without checking whether the failure was the source or the query.
+>
+> It was the query. The original `research` prompt asked one compound question ("rank the pains AND
+> quote them AND list outcomes AND extract jargon") with no domain filter. Retrieval had nothing
+> narrow to match on. **Re-tested with `search_domain_filter: ["reddit.com"]` and one focused
+> question per call, the same API returns real verbatim comments with subreddit attribution.**
+>
+> Separately worth knowing: **reddit.com blocks Anthropic's crawler outright**, so direct fetching
+> can't reach it. Perplexity has its own access — which is the actual reason the research path is
+> routed through Perplexity rather than a plain fetch.
+>
+> `meta-ads.mjs research` has been rewritten to four narrow probes. A probe that finds nothing now
+> reports that instead of sinking the run.
 
-**The seam isn't there.** Australian tradies discussing the specifics of kerfing bending ply or setting
-out a radius is too thin a public corpus for a search-grounded model to mine. Both runs declined to
-invent evidence rather than hallucinating quotes, which is the correct behaviour and worth keeping.
+**Verbatim, from the working pass** — the language tradespeople actually use:
 
-**What that changes:** nothing important, because the bible already called this — *"run the research
-pass as validation and language-mining, not as discovery. We already know the pains."* We do, from
-real customer contact. The ranking below is therefore evidenced from **three sources we trust more
-than a scraped forum**:
+| Quote | Source |
+|---|---|
+| *"Just buy bendy ply, all the grain runs the same direction."* | r/BeginnerWoodWorking |
+| *"I've never liked kerf bending bc of the flats and the holes it leaves."* | r/woodworking |
+| *"Kerf cuts on inside of bend and veneer over to hide cuts"* | r/BeginnerWoodWorking |
+| *"Use 3/8" bender board/ply. Then 1 layer of 1/8" MDF to give a smooth surface and help with any irregularities."* | r/cabinetry |
+| *"There's plywoods on the market that bend without being kerfed and are affectionately known as **wiggle wood**."* | r/woodworking |
+| *"You could try kerf bending the ply, but due to the nature of the cross grain lamination, plywood is inherently stiff."* | r/woodworking |
+
+**Two findings that matter for copy:**
+
+1. **"bendy ply" appears organically** — the same term `keyword-plan.md` lists as a confirmed
+   converter. Independent confirmation from an unrelated source.
+2. **The kerfing complaint is real and specific:** *"the flats and the holes it leaves"*. That is
+   Angle 2's pain in the customer's own words, and better than anything we'd have written.
+
+Also surfaced as live trade vocabulary: **wiggle wood · wiggleboard · flexi-ply · luan**. Note these
+are largely US terms — treat as evidence the *concept* is discussed, not as AU copy. Not found in
+natural use: "bender board" as two words, "doorskin" for flexible ply.
+
+**What still hasn't been done:** a genuine *frequency* ranking. The probes return quotes, not counts,
+and a rigorous ranking needs more passes than one session justifies. So the ordering below remains
+evidenced from **three sources we trust more than comment volume**:
 
 1. **`brand/audience.md`** — pain points documented from actual Craftons customers
 2. **The live Meta account** (bible §4.5) — 30 days of real spend telling us which framing converts

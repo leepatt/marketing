@@ -88,23 +88,49 @@ el.dispatchEvent(new Event('change', { bubbles: true }));
 
 ---
 
-## The research pass does not work for this niche
+## The research pass — I called it a dead end, and I was wrong
 
-`meta-ads.mjs research` ran twice, successfully (both wrote `marketing_assets` rows). Both **honestly
-declined to produce a ranking** rather than inventing quotes — the correct behaviour, worth keeping.
+**Correction.** The first version of this doc said the Reddit seam "isn't there" for this niche. That
+was wrong. Two calls failed, and I concluded the *source* was empty without testing whether the
+*query* was the problem. It was the query.
 
-| Run | Model | Returned |
-|---|---|---|
-| 1 | `sonar` | Vendor how-to pages, generic woodworking videos |
-| 2 | `sonar-pro`, forums named in the query | r/AusRenovation threads about **finding and chasing tradies** |
+**What actually failed:** the original prompt asked one compound question — rank the pains AND quote
+them AND list outcomes AND extract jargon — with no domain filter. Retrieval had nothing narrow to
+match against, so it returned whatever was loosely topical (vendor how-to pages; then threads about
+homeowners chasing tradies).
 
-**Conclusion: stop spending sessions on this.** Australian tradies discussing the specifics of kerfing
-bending ply is too thin a public corpus to mine. `brand/audience.md` — real customer contact — is a
-better source and already exists. Cody's step one is a dead end here; the bible predicted as much.
+**What works:** `search_domain_filter: ["reddit.com"]` plus **one focused question per call.**
+Verified live — real verbatim comments with subreddit attribution came back immediately.
 
-**What it did earn:** trade jargon worth putting in copy —
-*kerf bend · kerfing · relief cuts · tear-out · splintering · good face · flush-trim · template ·
-registration cut · repeat accuracy · radius formwork*
+**Also worth knowing:** `reddit.com` **blocks Anthropic's crawler** (`WebSearch`/`WebFetch` on
+reddit.com returns a hard 400). Perplexity has its own access. *That* is the real reason research is
+routed through Perplexity rather than a plain fetch — not a preference. Several other trade forums
+(ContractorTalk, WoodworkingTalk) now sit behind **tollbit pay-per-crawl** and return HTTP 402.
+FineHomebuilding is still directly fetchable and does yield real builder quotes.
+
+**Fix applied:** `meta-ads.mjs research` rewritten from one compound prompt to **four narrow probes**
+(`technique_pain`, `failure_modes`, `time_cost`, `materials_language`), each with the domain filter,
+results stitched afterwards. A probe that finds nothing reports that instead of sinking the run. The
+probe set and domain filter are written into `provenance` so a run is repeatable and diagnosable.
+
+**Real language recovered:**
+
+> *"Just buy bendy ply, all the grain runs the same direction."* — r/BeginnerWoodWorking
+> *"I've never liked kerf bending bc of the flats and the holes it leaves."* — r/woodworking
+> *"Kerf cuts on inside of bend and veneer over to hide cuts"* — r/BeginnerWoodWorking
+> *"Use 3/8" bender board/ply. Then 1 layer of 1/8" MDF to give a smooth surface…"* — r/cabinetry
+> *"…affectionately known as **wiggle wood**."* — r/woodworking
+
+**"bendy ply" appearing organically independently confirms `keyword-plan.md`'s converter.** And
+*"the flats and the holes it leaves"* is Angle 2's pain better phrased than we'd have written it.
+
+⚠️ Still not done: a real **frequency ranking**. The probes return quotes, not counts. The angle
+ordering remains reasoned from customer contact + account data, not from comment volume.
+
+**Jargon, combined across passes:** *kerf bend · kerfing · relief cuts · tear-out · splintering ·
+good face · flush-trim · template · registration cut · repeat accuracy · radius formwork ·
+wiggle wood · wiggleboard · flexi-ply · luan* (the last four are US usage — evidence the concept is
+discussed, not AU copy).
 
 ---
 

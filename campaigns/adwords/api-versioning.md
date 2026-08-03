@@ -6,12 +6,23 @@ Checked 2026-08-03._
 
 ## Current state (2026-08-03)
 
-**Nothing to migrate.** This repo has no Google Ads code — no `tools/`, no `google-ads.mjs`, only the
-planning docs (`api-access.md`, `api-tool-design.md`). The build is still gated on Basic access.
-This doc exists so the version decision is made *before* the tool is written, not after.
+**The tool already exists — in `cnccut-app`, not here.** `cnccut-app/tools/google-ads.mjs` is built,
+live, and calling the API. It powers the Marketing Cockpit's Google Ads module. **The plan docs in
+this folder (`api-access.md`, `api-tool-design.md`) describe it as not-yet-built — they are stale.**
 
-⚠️ **Unverified:** whether anything else (e.g. cnccut-app) already calls the API on an older version.
-See "How to check what you're calling" below — takes 2 minutes.
+**A sunset migration was done on 2026-08-03.** Google emailed a warning: the developer token on MCC
+275-347-3695 was sending **v21** requests, and v21 stopped accepting them **2026-08-05**. The code
+default was already `v22`, so the v21 traffic came from a stale `GOOGLE_ADS_API_VERSION` env override
+silently outranking the code. Fixed on branch `claude/google-ads-api-migration-ofqe83`:
+
+- default bumped to **v25**
+- an override naming a **sunset** version is now ignored with a warning (it would fail 100% of
+  requests, so it's never intended config)
+- verified: no field this tool queries was removed or renamed in v23/v24/v25
+
+**The lesson worth keeping:** the code was on a live version the whole time. An environment variable
+put production on a dying one, and nothing surfaced it until Google sent an email. Config overrides
+need to be as visible as code.
 
 ## The versioning contract
 
@@ -53,10 +64,11 @@ The community package `google-ads-api` (Opteo) is at **24.1.0, published 2026-06
 **v24.1, not v25**. Single maintainer, structurally ~1 version behind Google, and outside the
 20-week overlap guarantee.
 
-### Decision: call REST directly, no client library
+### Decision: call REST directly, no client library — **already implemented**
 
-For a small read-mostly internal tool, the client library earns little and costs a dependency we
-don't control. Call the REST endpoint:
+`cnccut-app/tools/google-ads.mjs` already does exactly this (same reasoning, reached independently:
+dependency-light fetch matching the Xero/Gmail OAuth convention, and gRPC bundles poorly for
+serverless). Recorded here so it doesn't get re-litigated. The endpoint:
 
 ```
 POST https://googleads.googleapis.com/v25/customers/{customerId}/googleAds:searchStream

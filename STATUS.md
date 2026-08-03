@@ -64,10 +64,11 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ## ⏭ Next steps (in order)
 1. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
-2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved
-   writes), mirrors creds into env, and **the engine deploys the Craftons campaigns** (the goal: engine-run, tracked from day 1).
-   → **Build against API `v25` via direct REST, no client library** — decision + upgrade routine in
-   `campaigns/adwords/api-versioning.md`. (Google ships no official Node library; the community one lags.)
+2. ⚠️ **`tools/google-ads.mjs` ALREADY EXISTS — in `cnccut-app`, live and calling the API.** The plan docs
+   here (`api-access.md`, `api-tool-design.md`) say "to be built" and are **stale**. Reconcile them.
+   Migrated v22 → **v25** on 2026-08-03 (Google sunset v21 on 08-05; a stale `GOOGLE_ADS_API_VERSION`
+   env override had prod on it) → `campaigns/adwords/api-versioning.md`.
+   **Open:** clear the `GOOGLE_ADS_API_VERSION` override in Vercel + redeploy.
 3. **Set up the weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
 4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
 5. **Content production** (independent of ads): Tia shoots Craft Macro Session A; build out How-To Series shot lists.

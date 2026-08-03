@@ -93,11 +93,25 @@ Already the best of the three and already converting — leave the structure alo
 formwork · round column formwork · curved concrete formwork · curved bench seat* to the copy, since
 those are live search terms.
 
-### Mobile
+### Mobile — ⚠️ RETRACTED (2026-08-03)
 
-61% of spend, one-third the conversion rate, and the heaviest page. Worth a Lighthouse mobile run on
-all three. If the configurator can't render fast on mobile, a lightweight above-the-fold content block
-with the configurator lazy-loaded below would fix both the conversion gap and the QS component.
+**An earlier draft of this document recommended a mobile UX audit. That was wrong — do not do it.**
+
+The claim came from the ad account showing mobile at 61% of spend with 1 conversion vs desktop's 2.
+That's 3 conversions total: noise, not signal. Shopify session data settles it properly:
+
+| Source | Desktop CVR | Mobile CVR |
+|---|---|---|
+| **Direct** (highest intent) | 1.69% (41/2,421) | **1.72% (27/1,574)** |
+| Search | 0.77% (12/1,566) | 0.40% (7/1,744) |
+| Social | 0% (0/93) | 0.034% (5/14,711) |
+
+**On direct traffic, mobile and desktop convert identically.** The configurator is not broken on
+phones. The site-wide "mobile converts 6x worse" figure is a traffic-mix artefact — 81% of mobile
+sessions are social browse traffic.
+
+Page *speed* is still worth improving for Quality Score, but there is no mobile conversion problem to
+fix and no rebuild is warranted.
 
 ---
 
@@ -271,4 +285,5 @@ actively misdirect bidding, which is worse than a flat one.
 | 5 | Quality Score → landing pages | 📝 Page briefs above — needs Shopify work |
 | 6 | Lead conversion values | ⛔ Split-by-product chosen; needs close rate + a website tagging change |
 | 7 | **Extend Radius Pro interstate (NSW/QLD)** | 🔴 New — 23% of revenue is interstate with no ad support. Do after page fixes. |
-| 8 | Confirm what Rip Pro (Bendy Formply) is | ❓ May re-home some "bendy ply" traffic |
+| 8 | Rip Pro | ❌ Closed — not advertised (Lee, 2026-08-03). Bendy-ply traffic goes to Radius Pro as drafted. |
+| 9 | Sales growth plan | 📈 `sales-growth-plan-2026-08.md` |

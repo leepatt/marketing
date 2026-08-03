@@ -104,3 +104,13 @@ Against `craftons-voice`: outcome-first, fragments for punch, no questions in he
 timelines ("3 days"), Australian-made as a quiet trust signal, no banned words (no *streamline*,
 *premium*, *solutions*, *revolutionary*). "No Bending. No Springback." follows the locked three-beat
 negative pattern of "No on-site cutting. No improvising."
+
+## Rip Pro — resolved
+
+Shopify shows a `Craftons Rip Pro: Bendy Formply — Cut to Size` product, which raised the question of
+whether bendy-ply searchers should be routed there instead. **Lee's call (2026-08-03): Rip Pro is not
+advertised.** Ads run for Radius Pro, Architrave Builder and Formwork Builder only.
+
+So the reframe in this ad stands as written — bendy-ply traffic goes to Radius Pro, and the copy meets
+the search term before redirecting the intent. No cross-link to Rip Pro on the landing page.
+

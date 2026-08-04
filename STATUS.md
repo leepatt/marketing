@@ -248,7 +248,8 @@ placements unless connected.
 ---
 
 ### ✅ Creative REBUILT — 33 ads, brand-guide accurate (2026-08-03)
-Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content-engine/ads/`.
+Built in `leepatt/cnccut-app`, `content-engine/ads/`. **Now merged — see the note below for where it
+actually lives.**
 - 🆕 **Official social brand guide received** — `Craftons_BrandGuide_SocialLayouts01.pdf`
   (Residency Studios, 27.07.2026). **It corrected the type at the root:** headlines are **Aeonik
   Regular, not Bold** (previous renders were shouting), labels are **Akkurat Mono Bold** in caps
@@ -264,6 +265,48 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 - ⬜ **Still fails `check-batch`: 2 families vs a minimum of 3.** Not fixable by effort — every image
   asset is a product render on white. **Lee's photography unlocks this AND hack #4 together.**
 - Contact sheet at `content-engine/public/ads/static/_contact-sheet.png` for keep/bin review.
+  ✅ Committed to `main` along with all 35 rendered PNGs — it survives a fresh container.
+
+---
+
+### 📍 WHERE THE AGENT CODE LIVES — verified 2026-08-04
+
+**The agent is built and merged.** `leepatt/cnccut-app` **`main` @ `5cd7910`** — PR
+[#97](https://github.com/leepatt/cnccut-app/pull/97), **squash-merged 2026-08-04 00:27 UTC**.
+
+⚠️ **Two traps, both verified this session, both easy to get wrong:**
+
+1. **`claude/marketing-agents-setup-qamq2f` is dead history.** Because #97 was *squash*-merged, the
+   branch's 12 commits are **not ancestors of `main`** — `git merge-base --is-ancestor` says no, and
+   `git branch -r --contains HEAD` returns nothing. It looks unmerged and isn't. The content is
+   identical (`git diff origin/main HEAD -- content-engine/ads/` is empty). **Never stack new commits
+   on that branch.** Start follow-up work from `main`:
+   `git fetch origin main && git checkout -B <new-branch> origin/main`
+2. **`cnccut-app` is NOT in a fresh session by default.** This container had it at
+   `/workspace/cnccut-app`, but containers are reclaimed. A new session clones `leepatt/marketing`
+   only. To get the code: `add_repo(owner="leepatt", repo="cnccut-app")` → run the clone command it
+   returns → `register_repo_root`. **Do this before looking for the agent, not after concluding it's
+   missing.**
+
+**Paths inside `cnccut-app`** (the tools are at the repo root, *not* under `content-engine/`):
+
+| What | Path |
+|---|---|
+| Guardrails (pure, credential-free) | `tools/_meta-policy.mjs` |
+| The agent CLI — 15 subcommands | `tools/meta-ads.mjs` |
+| Ad copy + layout definitions (33 ads) | `content-engine/ads/ads.config.mjs` |
+| HTML→PNG renderer | `content-engine/ads/render-ads.mjs` |
+| Rendered PNGs + contact sheet | `content-engine/public/ads/static/` |
+| Weekly cron (report → evaluate) | `app/api/cron/meta-ads/route.ts` |
+| Cockpit UI | `app/marketing/meta-ads/page.tsx` |
+
+**Subcommands:** `report` · `doctor` · `evaluate` · `check-batch` · `winners` · `pool` · `cac` ·
+`entropy` · `ingest` · `research` · `upload-image` · `create-creative` · `propose` · `apply` ·
+`pause-campaign`
+
+**Policy constants** (`_meta-policy.mjs`): `MONTHLY_CEILING_AUD = 2000` · `MAX_AD_SETS = 1` ·
+`MIN_CREATIVES_PER_BATCH = 15` · `MAX_SYNTHETIC_FRACTION = 0.4` · `DEFAULT_AUTONOMY_RUNG = 0`
+(propose-only; the rung reads from env `META_AUTONOMY_RUNG`, never from code).
 
 ---
 

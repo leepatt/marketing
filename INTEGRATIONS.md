@@ -46,12 +46,40 @@ the values reach every member's sessions. Don't put Craftons credentials in a sh
 |---|---|---|---|
 | `META_ACCESS_TOKEN` | ✅ | Everything Meta reads/writes. SYSTEM_USER, never expires | — |
 | `PERPLEXITY_API_KEY` · `REPLICATE_API_TOKEN` · `GLIF_API_TOKEN` · `DATABASE_URL` | ✅ | Research, image gen, warehouse | — |
-| **`META_PAGE_ID`** | ❌ | **Publishing ads at all** — `create-creative` fails without it | 🔴 **Hard blocker.** Value is **`611852278682648`** — a public page ID, not a secret |
-| **`HEYGEN_API_KEY`** | ❌ | AI avatar video creative | 🔴 Blocks the avatar register entirely |
-| **`ANTHROPIC_API_KEY`** | ❌ | `brand-check` vision, avatar scripts, agent copy generation | 🟠 Needed for the quality gate |
+| **`PAGE_ID`** | ✅ **(renamed)** | **Publishing ads at all** — `create-creative` fails without it | ⚠️ **Arrived as `PAGE_ID`, but the code reads `META_PAGE_ID`.** See below |
+| **`HEYGEN_API_KEY`** | ✅ | AI avatar video creative | ✅ **Verified working 2026-08-04** — HTTP 200, 1,264 avatars, test render completed |
+| **`ANTHROPIC_API_KEY`** | ❌ **still missing** | `brand-check` vision, avatar scripts, agent copy generation | 🔴 **Blocks the quality gate.** Was believed added 2026-08-04; it is not in session env |
 | `META_APP_ID` · `META_APP_SECRET` | ❌ | Long-lived token refresh only | ⬜ **Skip.** The token is SYSTEM_USER and never expires — these buy nothing |
 
-**So it's three keys, and one of them is a number written above.**
+### ⚠️ Corrections verified in session env, 2026-08-04
+
+Three keys were recorded as added on 2026-08-04. Checked by length/prefix in the first session able to
+see them:
+
+1. **`HEYGEN_API_KEY` — present and working.** `sk_V2_…`, 54 chars. Avatar register is unblocked.
+2. **`META_PAGE_ID` — present under the wrong name.** The variable in session env is **`PAGE_ID`**
+   (value matches `611852278682648`). Every tool resolves it as `readEnv(["META_PAGE_ID"])`, so with
+   `PAGE_ID` alone `doctor` reports it missing and `create-creative` cannot publish.
+   **Fix: rename the env var to `META_PAGE_ID`** in the environment config and in Vercel. Until then
+   every tool invocation needs `META_PAGE_ID="$PAGE_ID"` prefixed, which is how this session ran them.
+3. **`ANTHROPIC_API_KEY` — genuinely absent.** Not a naming mismatch; no variant of the name exists.
+   `brand-check` correctly refuses and marks assets `skipped` rather than silently passing them, so
+   nothing is mis-labelled — but **its vision path has still never been executed.**
+
+### 🔐 Rotate `META_ACCESS_TOKEN`
+
+`GET /{pixel_id}/stats` returns the access token embedded in its own `paging.next` URL. A diagnostic
+script in this session printed that response, so **the token is in the session transcript.** It was not
+written to any repo file, commit, or the Drive brain. Low risk, but rotate it — it costs nothing.
+
+**Lesson for any future script:** scrub before printing. Every diagnostic in this session now runs
+output through `String(s).replace(/EAA[A-Za-z0-9]+/g, "<REDACTED>")`.
+
+### HeyGen v2 is deprecated
+
+`POST /v2/video/generate` works but returns a sunset warning: **legacy, removed 2026-10-31, migrate to
+`POST /v3/videos`.** The avatar test used v2 successfully. Anything built for production should target
+v3 so it does not break in October.
 
 ---
 

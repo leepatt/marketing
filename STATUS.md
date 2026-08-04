@@ -328,6 +328,69 @@ any session that was already open when they were added. Verified in-session with
 
 ---
 
+### ✅ Session 2026-08-04 — the agent run live for the first time
+
+**The machine is verified working against the real account. The launch is still gated on photography.**
+
+- [x] **`doctor` live: clean.** Credentials present, `missing_required` empty, **22/22 guardrail
+  self-checks pass**. `META_APP_ID`/`SECRET` still absent — token-refresh only, non-blocking.
+- [x] **`report` live: reads the account cleanly.** 30d (07-05 → 08-04): **$1,984.66 spend · 20 results ·
+  $16,898 revenue · 8.35% CTR · $0.09 CPC**. Retargeting carries it — **18 of 20 results on $660.90**,
+  while `RadiusPro | TOF | Ardreagh` spent **$1,279.94 for 2**.
+- [x] **`check-batch` run live on the 33-ad batch → FAIL, one problem, exactly as documented:**
+  `2 families (static_craft 28, configurator 5), min 3`.
+- [x] 🆕 **THE WINNING PHOTO IS RECOVERED.** Pulled from the ad account by image hash
+  `923c0b632935f8af124c792e1b56d3f9` → `content-engine/sandbox/real/site-lawless-curved-stud-wall.jpg`
+  (1080×1350). The account's best-ever creative was previously **not in the repo at all**.
+- [x] 🔑 **AD4, AD5 and AD6 all used the IDENTICAL image hash.** They differed only by the identity word,
+  and AD5 won. **This is the account's own proof that identity words multiply a proven winner rather
+  than finding one** — the rule was doctrine, it is now evidence.
+- [x] **`check-batch` now PASSES — honestly.** Added a real `real_footage` family (3 creatives off the
+  recovered photo) → 3 families, 36 creatives. **Nothing was relabelled.**
+- [x] **New `bare` template** in `render-ads.mjs` — emits the photograph and nothing else: no overlay,
+  no logo, no brand furniture, because that is what the winner was. Rendered and verified.
+  Also fixed: the photo loader hardcoded `image/png` and produced a blank frame for JPEGs.
+- [x] **Long-form copy set written** → `campaigns/meta/radius-pro-longform-copy.md`. LF1 is the July
+  winner with one word corrected; LF2 leads on **nesting/waste** (the strongest never-used argument);
+  LF3 is the marking-out pain in Lee's words; LF4/LF5 are identity clones **gated until a winner
+  exists**; LF6 is the configurator.
+- [x] **Avatar path verified end-to-end.** `HEYGEN_API_KEY` works (1,264 avatars); a 15.3s test video
+  rendered and downloaded. The **ACL checker was tested with negative controls** and catches every
+  first-person experience claim.
+- [x] **Custom conversion verified live** — `27686282527680441`, rule uses `event_name`, not archived.
+  **Confirmed nothing points at it:** every ad set on the account uses `custom_event_type` against the
+  raw pixel; not one references `custom_conversion_id`.
+- [x] **July's broad targeting independently re-confirmed** — `TOF | Broad AU | AddToCart` reads back as
+  `geo=["AU"]`, **`interests: 0`**. The trade-segmentation retraction stands.
+
+#### 🔴 Found this session — three things that were believed done and are not
+
+1. **`ANTHROPIC_API_KEY` is NOT in session env.** So **`brand-check`'s vision path has still never run.**
+   It refuses honestly (marks `skipped`, never silently passes), so nothing is mislabelled — but this
+   remains untested. It was the whole point of step 3. → `INTEGRATIONS.md`
+2. **`META_PAGE_ID` arrived as `PAGE_ID`.** Value is right; the name is wrong and every tool reads
+   `META_PAGE_ID`. Rename it in env + Vercel. Until then, prefix `META_PAGE_ID="$PAGE_ID"`.
+3. **The agent CANNOT wire the ad set to the custom conversion.** `promoted_object` appears nowhere in
+   `tools/`, and `apply` implements only `pause_ad`, `set_budget`, `publish_ad` — **there is no
+   `create_ad_set` executor.** The guardrail for it exists; the capability does not. Full settings spec
+   + recommendation → **`campaigns/meta/ad-set-wiring.md`**
+4. **EMQ is not readable via the API.** `event_match_quality` is not a permitted `stats` aggregation —
+   it is an Events Manager UI metric. Must be read by eye. → `ad-set-wiring.md`
+5. **An ad set targets the United States.** `Instagram post: CAMPBELL STREET` has
+   `geo_locations: {countries:["US"]}` and spent **$43.82 for 0 results**. Campaign is paused. Do not
+   un-pause as-is.
+6. **`META_ACCESS_TOKEN` should be rotated** — Meta's `stats` endpoint embeds the token in its own
+   paging URL and a diagnostic printed it into the session transcript. Not committed anywhere.
+
+#### ⚠️ Don't misread the event volume
+
+Raw pixel counts over 30d are **IC 163 + Purchase 88 = ~58/week**, which *looks* like it clears Meta's
+~50/week learning threshold. **It doesn't.** Those are pre-dedup; ground truth is ~38 real orders vs 88
+pixel Purchases (2.3× inflation). Deflated: **~25/week** — which matches the 26.3/week already recorded.
+**The existing figure was right.** The test runs Learning Limited; judge on CAC vs $322 break-even.
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
 
 ### Now unblocked by the keys (do these first)

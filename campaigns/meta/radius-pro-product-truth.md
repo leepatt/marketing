@@ -155,7 +155,7 @@ variants — and *that* is where the joiner-block copy goes, because it's true f
 | Q | Answer | Effect on copy |
 |---|---|---|
 | **Engraving** — radius or part ID? | **Both, job-dependent. "Part ID" is safe to use** | Copy says *"engraved with its part ID"*. A blanket "says its radius" would be false on some jobs |
-| **2–3 days on big jobs?** | **Hedge it — "most orders in 2–3 days"** | Applied to ads #3 and #12. Protects the promise against a 27-sheet job |
+| **2–3 days on big jobs?** | ~~Hedge it~~ → **REVERSED on review: "Safe to say orders delivered in 3 day. Not most orders."** | **Flat claim: "Delivered in 3 days."** No hedge, in every ad. Lee saw the hedged version rendered and overrode it — 3 days is the safe upper bound, so hedging bought nothing and cost the punch |
 | **Radius limits?** | **No practical limit in normal use** | *"Any radius"* is fair. Used in #13. Multi-metre radii are normal and worth showing |
 
 ## Still open

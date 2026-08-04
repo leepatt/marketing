@@ -247,10 +247,28 @@ placements unless connected.
 
 ---
 
+### ✅ Creative REBUILT — 33 ads, brand-guide accurate (2026-08-03)
+Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content-engine/ads/`.
+- 🆕 **Official social brand guide received** — `Craftons_BrandGuide_SocialLayouts01.pdf`
+  (Residency Studios, 27.07.2026). **It corrected the type at the root:** headlines are **Aeonik
+  Regular, not Bold** (previous renders were shouting), labels are **Akkurat Mono Bold** in caps
+  (there was no mono voice at all), body is Aeonik Regular 25pt/130%, and the palette gains
+  **sage `#dae6d2`**. Six-row grid, logo bottom-left, URL bottom-right in mono.
+- **Lee's review notes applied:** flat **"Delivered in 3 days"** (hedge reversed — seeing it rendered
+  changed his call) · **stat cards deleted** ("I def would not post") · **formwork/architrave imagery
+  banned** — Radius Pro only for now.
+- Guide's own approved lines used verbatim: **"LESS MEASURING. LESS CUTTING. MORE BUILDING."** and
+  **"Measure. Specify. Build."** Both land on the pain Lee described.
+- ⚠️ **Akkurat Mono is licensed and not in the repo — JetBrains Mono Bold substituted.** Get the real
+  file before spend.
+- ⬜ **Still fails `check-batch`: 2 families vs a minimum of 3.** Not fixable by effort — every image
+  asset is a product render on white. **Lee's photography unlocks this AND hack #4 together.**
+- Contact sheet at `content-engine/public/ads/static/_contact-sheet.png` for keep/bin review.
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
-1. ⬜ **Re-render the creative — right product AND native (hack #4) in one pass.** The whole job.
-   Images still show a 900mm decorative arc; the product is 90mm plates at multi-metre radii, qty
-   16–60. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
+1. ⬜ **Lee to flag keepers vs bin** from the 33-ad contact sheet, then regenerate into the gaps.
 2. ⬜ **Add `META_PAGE_ID=611852278682648`** to env.
 3. ⬜ **Wire the ad set to the custom conversion** (`promoted_object` → `27686282527680441`). The
    object exists; nothing points at it yet.

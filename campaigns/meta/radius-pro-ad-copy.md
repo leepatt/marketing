@@ -1,7 +1,32 @@
-# Radius Pro — Meta ad copy (v2, current)
+# Radius Pro — Meta ad copy (v2 → superseded by the rendered v3 batch)
 
-_Written 2026-08-03 from Lee's product briefing. **This is the live copy set.**_
+_Written 2026-08-03 from Lee's product briefing._
 _Source of truth for the product: `radius-pro-product-truth.md`. Supersedes `copy-reconciliation.md` §4._
+
+> ### ⚠️ The live copy now lives in the renderer, not here
+>
+> The **v3 batch (33 creatives)** is defined in `cnccut-app`
+> `content-engine/ads/ads.config.mjs`, rebuilt against the official social brand guide
+> (`Craftons_BrandGuide_SocialLayouts01.pdf`, Residency Studios, 27.07.2026).
+> **This file is the copy reasoning; that file is what actually ships.**
+>
+> **Lee's review notes on the rendered v2, all applied in v3:**
+> 1. *"Safe to say orders delivered in 3 day. Not most orders."* → the hedge is **gone**. Flat
+>    **"Delivered in 3 days"** everywhere. This reverses the hedge he chose in the abstract — seeing
+>    it rendered changed the call.
+> 2. *"I don't understand it. Not a great message. I def would not post."* (the 4–60 stat card) →
+>    **the stat template is deleted.** No abstract number cards.
+> 3. *"Wrong product. We are only running ads on radius pro for the time being."* → the formwork and
+>    architrave renders are **banned from this batch**. Radius Pro plate imagery only.
+>
+> **What the brand guide changed beyond copy:** headlines are **Aeonik Regular, not Bold** (the old
+> renders were shouting), labels are Akkurat Mono Bold in caps (there was no mono voice at all), and
+> the palette gained **sage `#dae6d2`**. Two of the guide's own approved lines beat anything written
+> here and are used verbatim: **"LESS MEASURING. LESS CUTTING. MORE BUILDING."** and
+> **"Measure. Specify. Build."** — both land exactly on the pain Lee described.
+>
+> ⚠️ **Akkurat Mono is licensed and not in the repo.** JetBrains Mono Bold is substituted. Get the
+> real file before this goes to spend.
 
 **All 15 point at `/products/radius-online`.** Format: **headline** (~27–40 chars) ·
 **primary text** (front-load the first ~125 chars — the rest truncates behind "…more").

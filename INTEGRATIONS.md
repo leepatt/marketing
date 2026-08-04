@@ -8,12 +8,35 @@ cost. Work top-down by priority.
 
 Keys live on the **environment**, not the session, so they persist across sessions.
 
-1. **claude.ai/code → Environments → pick the environment → Environment variables → add → save.**
-   Two environments exist (`Default` and `Default Cloud Environment`). Use whichever already holds
+> ⚠️ **There is no settings page and no direct URL for this.** An earlier version of this doc said
+> "claude.ai/code → Environments", which does not exist — that's why it couldn't be found.
+
+1. On **claude.ai/code**, click the **cloud icon in the row directly above the message box** — it shows
+   the current environment's name (e.g. `Default`). That is the only way in.
+2. **Hover the environment in the list → a gear icon appears on the right → click it.** The dialog has
+   Name, Network access, **Environment variables**, and Setup script.
+3. Enter variables in **`.env` format, one `KEY=value` per line**. No quotes needed for plain values.
+   Quote anything containing `#`, or the rest of the line is treated as a comment and dropped.
+4. Two environments exist (`Default`, `Default Cloud Environment`). Use whichever already holds
    `META_ACCESS_TOKEN` — that's the one these sessions run in.
-2. Values come from **vercel.com/craftons/cnccut-app → Settings → Environment Variables → reveal**.
-3. ⚠️ **Start a NEW session.** Env vars are read at session start; the session you're in when you save
-   will not see them. (Same gotcha as the connector permissions in `STATUS.md`.)
+5. Values come from **vercel.com/craftons/cnccut-app → Settings → Environment Variables → reveal**.
+6. ⚠️ **Start a NEW session.** Per Anthropic's docs: *"editing or adding variables affects sessions you
+   start afterward; sessions already running keep the values they started with."*
+
+### ⚠️ On putting secrets here at all
+
+Anthropic's docs are explicit: *"cloud environments have no dedicated secrets store, so don't add API
+keys or other credentials"*, and the dialog warns values are readable by **anyone using the
+environment**.
+
+**Why we do it anyway, knowingly:** these environments are *personal to Lee's account*, so "anyone
+using the environment" is Lee. `META_ACCESS_TOKEN`, `DATABASE_URL`, `PERPLEXITY_API_KEY`,
+`REPLICATE_API_TOKEN` and `GLIF_API_TOKEN` are already there on that basis.
+
+**Where this stops being acceptable:** an **organisation-shared** environment (admin settings), where
+the values reach every member's sessions. Don't put Craftons credentials in a shared environment.
+
+`META_PAGE_ID` is not a secret — it's a public Facebook page ID — so it carries no such tradeoff.
 
 **Never paste secret values into chat, into a repo file, or into the Drive brain.**
 

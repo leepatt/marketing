@@ -1,6 +1,7 @@
 # Cryo factory — setup task list
 
 _From Lee's walkthrough voice memo, 2026-08-04. Captured verbatim-faithful; nothing added that wasn't said._
+_➡️ **Working checklist of every task: `factory-setup-checklist.md`.** This doc is the context and reasoning._
 
 **Goal right now: get the factory functioning and working.** Not perfect — operational.
 

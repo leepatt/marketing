@@ -5,12 +5,12 @@ _From Lee's walkthrough voice memo, 2026-08-04. Captured verbatim-faithful; noth
 **Goal right now: get the factory functioning and working.** Not perfect — operational.
 
 **What it's meant to do:**
-- **Foam boards for Pro Fern** — the hope is all of these get done down here
+- **Foam boards for Profurn** (client) — the hope is all of these get done down here
 - **Other big production jobs** — e.g. timber skids, cut on the machine
 - **Assembly area** — for EcoKit and other assembly projects
 
-> ⚠️ Spellings to confirm: **"Pro Fern"**, **"Nixon"** (who did the clean-up), and **"battens"** (the memo
-> transcribed as "buttons" — three packs, read as battens). Correct these and the doc's right.
+**The clock: the EcoKit LVL job is hopefully ~2 weeks off.** That's the working window for everything
+below, and it sets a hard constraint on the panel saw (see P1).
 
 ---
 
@@ -38,14 +38,18 @@ moving it twice.
 - [ ] **Map out / design the workshop** (see above — material flow, stock locations, assembly area)
 - [ ] Install the pallet racking — lots of it on site, needs putting up
 
-### Panel saw — needs to move ⛔ blocked
-- [ ] Move the panel saw out of the way
+### Panel saw — relocate, don't remove (~2 week deadline)
+- [ ] **Move the panel saw to its permanent home — and keep it working.**
   - It's in a position where **sheets can't be moved past it**. That's the real problem.
   - Takes up a fair bit of room, and power.
   - "Sort of handy, but not really."
-- [ ] **Decide: sell it or keep it?** (open question — see Decisions below)
-- ⛔ **Blocked on EcoKit** coming back about the **LVLs** — those LVLs get cut on this saw, so nothing
-  moves until that answer lands.
+- ⏱ **The EcoKit LVL job is ~2 weeks off, and those LVLs get cut on this saw.** So:
+  - **It can't be sold before that job runs.** The sell/keep decision is a post-LVL decision.
+  - **The move has to happen before the job lands, not after** — otherwise you're cutting LVLs in the
+    spot that already blocks sheet movement, with a full workshop around it.
+  - Practical read: give it a proper position in the layout map now, move it there, run the LVL job
+    from there, then decide whether it stays.
+- [ ] **Decide: sell or keep?** — after the LVL job (see Decisions below)
 
 ### Clear-out (makes room for everything above)
 - [ ] Get rid of the timber that's going
@@ -90,17 +94,19 @@ The office **structure is complete and structurally sound** — this is fit-out,
 
 | Decision | Notes |
 |---|---|
-| **Panel saw — sell or keep?** | Handy but marginal. Eats room + power, blocks sheet movement. Can't act until EcoKit answers on the LVLs. |
+| **Panel saw — sell or keep?** | Handy but marginal. Eats room + power, blocks sheet movement. **Locked as "keep" until the EcoKit LVL job runs (~2 weeks)** — revisit after. |
 | **Automatic feeder — what happens to it?** | Leaning keep, no plan for it yet. |
 | **Rolling tables — confirm keep?** | Leaning keep, need a home for them in the layout. |
 | **Which offcuts stay, which get binned?** | Needs a walk-through with a bin next to you. |
 
 ---
 
-## ⛔ Waiting on
+## ⏱ The 2-week window
 
-- **EcoKit → LVLs.** Gates the panel saw move, which gates the sheet-handling path, which feeds into the
-  layout map. This is the one external dependency on the whole list.
+- **EcoKit LVL job — hopefully ~2 weeks off.** It's the only external dependency on the list, and it's
+  now a **deadline rather than a blocker**: the panel saw must be relocated, powered and cutting, with a
+  clear sheet path to it, by the time those LVLs arrive. Work backwards from that.
+- Everything in P1 wants to be done inside that window. P2 and P3 can run past it.
 
 ---
 
@@ -113,12 +119,16 @@ The office **structure is complete and structurally sound** — this is fit-out,
 
 ## Suggested order of attack
 
-1. Draw the workshop layout map _(unblocks racking + assembly area + saw position)_
+**Inside the 2-week window (before the EcoKit LVLs land):**
+1. Draw the workshop layout map — **include the panel saw's permanent position** _(unblocks racking,
+   assembly area and the saw move all at once)_
 2. Clear out — timber, offcuts, battens to Melbourne _(makes the space to work in)_
-3. Dust extraction rejig — hose, unit, bags _(the stated priority; machine can't run properly without it)_
-4. Install pallet racking to the map
-5. Move the panel saw _(the moment EcoKit answers on the LVLs)_
+3. Move the panel saw to its new home and confirm it's powered and cutting
+4. Dust extraction rejig — hose, unit, bags _(the stated priority; machine can't run properly without it)_
+5. Install pallet racking to the map
+
+**After that:**
 6. Office fit-out — floor, wall lining, lighting, lock, desk, skylight
 7. Acoustics — cladding, then roof + machine-facing wall
 8. Tool area — bench + wall holders
-9. Sell the saw; decide on feeder and rolling tables
+9. Sell the other saw; decide on feeder, rolling tables, and the panel saw's future

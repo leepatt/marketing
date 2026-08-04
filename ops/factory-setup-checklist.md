@@ -39,11 +39,16 @@ _Context, reasoning and sequencing → `factory-setup.md`_
 - [ ] `P1` ⏱ Dust bags
 - [ ] `P3` Upgrade the extractor — "doesn't quite cut it, but it's fine for now"
 
-## 5. Storage
+## 5. Automatic tool changer
+
+- [ ] `P2` **Build the automatic tool changer** — needs to be worked on and built
+  - _Assumed not gating the LVL job, so it sits outside the 2-week window. Bump it to `P1` ⏱ if it is._
+
+## 6. Storage
 
 - [ ] `P1` ⏱ Install the pallet racking (to the layout map, not before it)
 
-## 6. Office — fit-out
+## 7. Office — fit-out
 
 _Structure is complete and sound. This is all fit-out._
 
@@ -55,18 +60,18 @@ _Structure is complete and sound. This is all fit-out._
 - [ ] `P2` **Door lock**
 - [ ] `P2` **Lighting**
 
-## 7. Office — soundproofing
+## 8. Office — soundproofing
 
 - [ ] `P2` Finish the remaining cladding
 - [ ] `P2` Acoustic material on the roof
 - [ ] `P2` Acoustic material on the wall facing the machine
 
-## 8. Tool area _(the little space outside the office)_
+## 9. Tool area _(the little space outside the office)_
 
 - [ ] `P2` Bench
 - [ ] `P2` Tool holders on the wall
 
-## 9. Decide what to do with
+## 10. Decide what to do with
 
 - [ ] `P3` **Automatic feeder** — "something needs to happen with that." Leaning keep, no plan yet
 - [ ] `P3` **Rolling tables** — leaning keep, they'll be useful for something. Need a home in the layout

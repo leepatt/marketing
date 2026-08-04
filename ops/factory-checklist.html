@@ -1,0 +1,891 @@
+<title>Cryo Factory — Setup Checklist</title>
+
+<style>
+  /* ── Craftons design system ──────────────────────────────────────────────
+     Anchors from .claude/skills/craftons-design/BRAND.md.
+     Warm neutral ramp derived (brief: warm, no blue cast) — the canonical
+     colors_and_type.css in Drive could not be fetched this session.
+     Aeonik / Inter are licensed or CDN-hosted and cannot be embedded under
+     the artifact CSP, so display + body fall back to system stacks set to
+     the brand's scale and tracking.
+  ------------------------------------------------------------------------ */
+
+  :root {
+    /* brand anchors */
+    --green:        #194431;
+    --green-700:    #123022;
+    --green-900:    #0a1c14;
+    --line-green:   #2d8a5b;
+    --ink:          #0e0e0c;
+
+    /* warm neutral ramp (derived) */
+    --paper:        #f3f0e8;
+    --paper-2:      #e9e4d8;
+    --rule:         #dbd4c4;
+    --stone:        #918d82;
+    --slate:        #5d5b52;
+    --white:        #ffffff;
+
+    /* semantic — deliberately not the accent */
+    --flag:         #9a5f12;
+    --flag-bg:      #f6ecd9;
+
+    /* roles */
+    --bg:           var(--paper);
+    --surface:      var(--white);
+    --surface-2:    var(--paper-2);
+    --fg:           var(--ink);
+    --fg-muted:     var(--slate);
+    --fg-soft:      var(--stone);
+    --border:       var(--rule);
+    --border-strong:#c6bda8;
+    --accent:       var(--green);
+    --accent-hover: var(--green-700);
+    --accent-fg:    #ffffff;
+    --motif:        var(--green);
+    --motif-alpha:  0.10;
+
+    /* type */
+    --font-display: "Aeonik", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-body:    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-cond:    "HWT Artz", "Big Shoulders Display", "Oswald", "Arial Narrow", ui-sans-serif, sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* 4px spacing scale */
+    --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+    --sp-6: 24px; --sp-7: 32px; --sp-8: 40px; --sp-9: 48px; --sp-10: 64px;
+
+    /* radii */
+    --r-sm: 2px; --r-md: 6px; --r-lg: 10px; --r-pill: 999px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:            #08150f;
+      --surface:       #0d2118;
+      --surface-2:     #102a1e;
+      --fg:            #e9e6dc;
+      --fg-muted:      #9db0a5;
+      --fg-soft:       #6f8479;
+      --border:        #1d3a2b;
+      --border-strong: #2a5340;
+      --accent:        var(--line-green);
+      --accent-hover:  #38a56d;
+      --accent-fg:     #04120c;
+      --flag:          #dfa04a;
+      --flag-bg:       #2a2014;
+      --motif:         var(--line-green);
+      --motif-alpha:   0.16;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:            #08150f;
+    --surface:       #0d2118;
+    --surface-2:     #102a1e;
+    --fg:            #e9e6dc;
+    --fg-muted:      #9db0a5;
+    --fg-soft:       #6f8479;
+    --border:        #1d3a2b;
+    --border-strong: #2a5340;
+    --accent:        var(--line-green);
+    --accent-hover:  #38a56d;
+    --accent-fg:     #04120c;
+    --flag:          #dfa04a;
+    --flag-bg:       #2a2014;
+    --motif:         var(--line-green);
+    --motif-alpha:   0.16;
+  }
+
+  :root[data-theme="light"] {
+    --bg:            var(--paper);
+    --surface:       var(--white);
+    --surface-2:     var(--paper-2);
+    --fg:            var(--ink);
+    --fg-muted:      var(--slate);
+    --fg-soft:       var(--stone);
+    --border:        var(--rule);
+    --border-strong: #c6bda8;
+    --accent:        var(--green);
+    --accent-hover:  var(--green-700);
+    --accent-fg:     #ffffff;
+    --flag:          #9a5f12;
+    --flag-bg:       #f6ecd9;
+    --motif:         var(--green);
+    --motif-alpha:   0.10;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 var(--sp-5) var(--sp-10);
+  }
+
+  /* ── stamp: ALL CAPS is reserved for spec / compliance callouts ───────── */
+  .stamp {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* ── header ───────────────────────────────────────────────────────────── */
+  header {
+    position: relative;
+    overflow: hidden;
+    background: var(--green-900);
+    color: #eae7dd;
+    border-bottom: 1px solid var(--border);
+  }
+  #motif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+  .header-inner {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: var(--sp-8) var(--sp-5) var(--sp-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+  .brandline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--line-green);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(34px, 7vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.028em;
+    margin: 0;
+    text-wrap: balance;
+    color: #f2efe6;
+  }
+  .lede {
+    margin: 0;
+    max-width: 54ch;
+    color: #a9bcb1;
+    font-size: 16px;
+  }
+  .specstrip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-2) var(--sp-3);
+    padding-top: var(--sp-3);
+    border-top: 1px solid rgba(45,138,91,0.35);
+    color: var(--line-green);
+  }
+  .specstrip .sep { opacity: 0.45; }
+
+  /* ── theme toggle ─────────────────────────────────────────────────────── */
+  .toggle {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 11px;
+    background: transparent;
+    color: var(--line-green);
+    border: 1px solid rgba(45,138,91,0.5);
+    border-radius: var(--r-md);
+    padding: var(--sp-2) var(--sp-3);
+    cursor: pointer;
+  }
+  .toggle:hover { background: rgba(45,138,91,0.14); }
+
+  /* ── summary band ─────────────────────────────────────────────────────── */
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--sp-3);
+    margin-top: calc(var(--sp-7) * -1);
+    position: relative;
+    z-index: 2;
+  }
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--sp-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+  .tile .stamp { color: var(--fg-soft); }
+  .tile .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .tile .num small {
+    font-size: 15px;
+    color: var(--fg-soft);
+    font-weight: 400;
+  }
+  .tile.flagged { border-color: var(--flag); }
+  .tile.flagged .num { color: var(--flag); }
+
+  .bar {
+    height: 4px;
+    background: var(--surface-2);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+  }
+  .bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: var(--r-pill);
+    transition: width 240ms cubic-bezier(0.22,0.61,0.36,1);
+  }
+
+  /* ── critical path note ───────────────────────────────────────────────── */
+  .path {
+    margin-top: var(--sp-5);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--flag);
+    border-radius: var(--r-md);
+    padding: var(--sp-4) var(--sp-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+  .path .stamp { color: var(--flag); }
+  .path p { margin: 0; color: var(--fg-muted); font-size: 15px; }
+  .path b { color: var(--fg); font-weight: 600; }
+
+  /* ── filters ──────────────────────────────────────────────────────────── */
+  .filters {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg);
+    padding: var(--sp-5) 0 var(--sp-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--sp-6);
+  }
+  .chip {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 11px;
+    background: var(--surface);
+    color: var(--fg-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--sp-2) var(--sp-3);
+    cursor: pointer;
+    transition: background 140ms, color 140ms, border-color 140ms;
+  }
+  .chip:hover { border-color: var(--border-strong); color: var(--fg); }
+  .chip[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  /* ── sections ─────────────────────────────────────────────────────────── */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    margin-bottom: var(--sp-4);
+    overflow: hidden;
+  }
+  .section.is-empty { display: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding: var(--sp-5) var(--sp-5) var(--sp-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .section-head .count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    color: var(--fg-soft);
+    white-space: nowrap;
+  }
+  .section-note {
+    margin: 0;
+    padding: var(--sp-3) var(--sp-5) 0;
+    color: var(--fg-muted);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  ul.items { list-style: none; margin: 0; padding: var(--sp-2) 0; }
+
+  li.item { border-left: 3px solid transparent; }
+  li.item.deadline { border-left-color: var(--flag); }
+  li.item.hidden { display: none; }
+  li.item.sub { padding-left: var(--sp-7); }
+
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-5);
+    cursor: pointer;
+  }
+  .row:hover { background: var(--surface-2); }
+
+  .row input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: background 120ms, border-color 120ms;
+  }
+  .row input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .row input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--accent-fg);
+    border-width: 0 2px 2px 0;
+    transform: rotate(42deg);
+  }
+  .row input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .body { display: flex; flex-direction: column; gap: var(--sp-1); min-width: 0; }
+  .text { font-size: 15.5px; line-height: 1.45; }
+  .text b { font-weight: 600; }
+  .note { font-size: 13.5px; color: var(--fg-muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-1); }
+
+  .tag {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 10.5px;
+    line-height: 1;
+    padding: 4px var(--sp-2);
+    border-radius: var(--r-sm);
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .tag.p1 { color: var(--accent); border-color: var(--accent); }
+  .tag.p2 { color: var(--fg-muted); border-color: var(--border-strong); }
+  .tag.p3 { color: var(--fg-soft); border-color: var(--border); }
+  .tag.dl { color: var(--flag); border-color: var(--flag); background: var(--flag-bg); }
+
+  li.item.done .text,
+  li.item.done .note { color: var(--fg-soft); text-decoration: line-through; text-decoration-thickness: 1px; }
+  li.item.done .tags { opacity: 0.5; }
+
+  /* ── done panel ───────────────────────────────────────────────────────── */
+  .done-panel {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--sp-5);
+    margin-bottom: var(--sp-4);
+  }
+  .done-panel .stamp { color: var(--accent); }
+  .done-panel ul { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-2); }
+  .done-panel li { color: var(--fg-muted); font-size: 15px; }
+
+  /* ── footer ───────────────────────────────────────────────────────────── */
+  footer {
+    margin-top: var(--sp-8);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+  }
+  footer p { margin: 0; color: var(--fg-soft); font-size: 13px; max-width: 60ch; }
+  .reset {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 11px;
+    background: transparent;
+    color: var(--fg-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    padding: var(--sp-2) var(--sp-3);
+    cursor: pointer;
+  }
+  .reset:hover { color: var(--fg); border-color: var(--fg-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 560px) {
+    .summary { margin-top: var(--sp-5); }
+    .row { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+    .section-head { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+  }
+</style>
+
+<header>
+  <canvas id="motif" aria-hidden="true"></canvas>
+  <div class="header-inner">
+    <div class="brandline">
+      <span class="wordmark">Craftons</span>
+      <button class="toggle" id="themeToggle" type="button">Theme</button>
+    </div>
+    <h1>Cryo Factory Setup.</h1>
+    <p class="lede">Everything that needs to happen to get the factory functioning — from the
+      walkthrough on 4 August 2026. Tick items off as you go; the page remembers.</p>
+    <div class="specstrip">
+      <span class="stamp">Foam boards for Profurn</span><span class="sep">|</span>
+      <span class="stamp">Timber skids on the machine</span><span class="sep">|</span>
+      <span class="stamp">EcoKit assembly</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="summary">
+    <div class="tile">
+      <span class="stamp">Tasks done</span>
+      <span class="num"><span id="doneCount">0</span><small> / <span id="totalCount">0</span></small></span>
+      <div class="bar"><span id="taskBar" style="width:0%"></span></div>
+    </div>
+    <div class="tile flagged">
+      <span class="stamp">Before LVL job</span>
+      <span class="num"><span id="dlDone">0</span><small> / <span id="dlTotal">0</span></small></span>
+      <div class="bar"><span id="dlBar" style="width:0%"></span></div>
+    </div>
+    <div class="tile">
+      <span class="stamp">Materials sourced</span>
+      <span class="num"><span id="buyDone">0</span><small> / <span id="buyTotal">0</span></small></span>
+      <div class="bar"><span id="buyBar" style="width:0%"></span></div>
+    </div>
+  </div>
+
+  <div class="path">
+    <span class="stamp">The two-week window</span>
+    <p>The EcoKit LVL job is roughly two weeks off, and those LVLs get cut on the panel saw. So the saw has
+      to be <b>relocated, powered and cutting, with a clear sheet path to it</b>, before the job lands — and
+      it can't be sold until after. Work backwards: <b>layout map → clear out → move the saw → dust
+      extraction → racking.</b></p>
+  </div>
+
+  <nav class="filters" id="filters" aria-label="Filter tasks">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-filter="deadline" aria-pressed="false">Before LVL job</button>
+    <button class="chip" type="button" data-filter="P1" aria-pressed="false">P1</button>
+    <button class="chip" type="button" data-filter="P2" aria-pressed="false">P2</button>
+    <button class="chip" type="button" data-filter="P3" aria-pressed="false">P3</button>
+    <button class="chip" type="button" data-filter="open" aria-pressed="false">Outstanding</button>
+  </nav>
+
+  <main id="board"></main>
+
+  <div class="done-panel">
+    <span class="stamp">Already done</span>
+    <ul>
+      <li>Clean-up — Nixon did a great job.</li>
+      <li>Office structure — complete and structurally sound.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Priorities: P1 blocks a working factory. P2 makes it usable. P3 is later.
+      Ticks are stored on this device only.</p>
+    <button class="reset" id="reset" type="button">Clear all ticks</button>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA = [
+    { title: "Plan the space", note: "Do this before anything gets installed — racking, the assembly area and the saw position all depend on it.", items: [
+      { t: "<b>Map out and design the workshop layout</b>", p: "P1", d: true },
+      { t: "Where material goes", p: "P1", d: true, sub: true },
+      { t: "Where stock goes", p: "P1", d: true, sub: true },
+      { t: "Where the assembly area sits — EcoKit and other assembly projects", p: "P1", d: true, sub: true },
+      { t: "Where the panel saw permanently lives", p: "P1", d: true, sub: true },
+      { t: "The sheet path — how sheets move through without being blocked", p: "P1", d: true, sub: true }
+    ]},
+    { title: "Clear out", items: [
+      { t: "Get rid of the timber that's going", p: "P1", d: true },
+      { t: "Sort the offcuts in the corner — bin some, keep some", p: "P1", d: true },
+      { t: "Send the three packs of <b>battens</b> back up to Melbourne", p: "P1" },
+      { t: "List the saw on Facebook Marketplace", n: "The one earmarked for sale — not the panel saw.", p: "P3" }
+    ]},
+    { title: "Panel saw", note: "Relocate, don't remove. It's in a spot where sheets can't be moved past it, and it eats room and power.", items: [
+      { t: "<b>Move the panel saw to its permanent position</b>", p: "P1", d: true },
+      { t: "Confirm it's powered and cutting in the new spot", p: "P1", d: true },
+      { t: "Confirm sheets can now be moved past it", p: "P1", d: true },
+      { t: "Decide: sell or keep?", n: "After the LVL job runs, not before.", p: "P3" }
+    ]},
+    { title: "Dust extraction", note: "Called out on the walkthrough as a priority.", items: [
+      { t: "Rejig the dust extraction unit", p: "P1", d: true },
+      { t: "New hose", p: "P1", d: true },
+      { t: "New dust unit and ducting for the machine", p: "P1", d: true },
+      { t: "Dust bags", p: "P1", d: true },
+      { t: "Upgrade the extractor", n: "Doesn't quite cut it, but it's fine for now.", p: "P3" }
+    ]},
+    { title: "Automatic tool changer", items: [
+      { t: "<b>Build the automatic tool changer</b> — needs to be worked on and built", n: "Assumed not gating the LVL job, so it sits outside the two-week window. Move it up if it is.", p: "P2" }
+    ]},
+    { title: "Storage", items: [
+      { t: "Install the pallet racking", n: "To the layout map, not before it.", p: "P1", d: true }
+    ]},
+    { title: "Office — fit-out", note: "The structure is complete and sound. This is all fit-out.", items: [
+      { t: "<b>Floor</b> — it's very cold in there, needs a covering", p: "P2" },
+      { t: "<b>Line one of the walls</b>", p: "P2" },
+      { t: "<b>Skylight window</b> — clear sheet, acrylic or similar", p: "P2" },
+      { t: "Check the offcuts first before buying anything", p: "P2", sub: true },
+      { t: "<b>Desk</b>", p: "P2" },
+      { t: "<b>Door lock</b>", p: "P2" },
+      { t: "<b>Lighting</b>", p: "P2" }
+    ]},
+    { title: "Office — soundproofing", items: [
+      { t: "Finish the remaining cladding", p: "P2" },
+      { t: "Acoustic material on the roof", p: "P2" },
+      { t: "Acoustic material on the wall facing the machine", p: "P2" }
+    ]},
+    { title: "Tool area", note: "The little space on the outside of the office.", items: [
+      { t: "Bench", p: "P2" },
+      { t: "Tool holders on the wall", p: "P2" }
+    ]},
+    { title: "Still to decide", items: [
+      { t: "<b>Automatic feeder</b> — something needs to happen with it", n: "Leaning keep, no plan yet.", p: "P3" },
+      { t: "<b>Rolling tables</b> — confirm they're staying", n: "Leaning keep, they'll be useful for something. Need a home in the layout.", p: "P3" },
+      { t: "Move the rolling tables out of the way in the meantime", p: "P3" }
+    ]},
+    { title: "Things to buy or source", note: "Pulled from the items above so it's one trip, not six.", buy: true, items: [
+      { t: "Clear acrylic or polycarbonate sheet for the skylight", n: "Check offcuts first.", p: "P2" },
+      { t: "Floor covering for the office", p: "P2" },
+      { t: "Wall lining material — one wall", p: "P2" },
+      { t: "Cladding to finish the office", p: "P2" },
+      { t: "Acoustic material — roof and machine-facing wall", p: "P2" },
+      { t: "Desk", p: "P2" },
+      { t: "Door lock", p: "P2" },
+      { t: "Office lights", p: "P2" },
+      { t: "Dust hose", p: "P1", d: true },
+      { t: "Dust unit and ducting for the machine", p: "P1", d: true },
+      { t: "Dust bags", p: "P1", d: true },
+      { t: "Bench materials and wall tool holders", p: "P2" }
+    ]}
+  ];
+
+  var KEY = "craftons-cryo-factory-v1";
+  var THEME_KEY = "craftons-cryo-factory-theme";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { state = {}; }
+
+  var board = document.getElementById("board");
+  var filter = "all";
+
+  DATA.forEach(function (section, si) {
+    var sec = document.createElement("section");
+    sec.className = "section";
+    sec.dataset.buy = section.buy ? "1" : "0";
+
+    var head = document.createElement("div");
+    head.className = "section-head";
+    var h2 = document.createElement("h2");
+    h2.textContent = section.title;
+    var count = document.createElement("span");
+    count.className = "count";
+    head.appendChild(h2);
+    head.appendChild(count);
+    sec.appendChild(head);
+
+    if (section.note) {
+      var note = document.createElement("p");
+      note.className = "section-note";
+      note.textContent = section.note;
+      sec.appendChild(note);
+    }
+
+    var ul = document.createElement("ul");
+    ul.className = "items";
+
+    section.items.forEach(function (item, ii) {
+      var id = "s" + si + "i" + ii;
+      var li = document.createElement("li");
+      li.className = "item" + (item.d ? " deadline" : "") + (item.sub ? " sub" : "");
+      li.dataset.p = item.p;
+      li.dataset.d = item.d ? "1" : "0";
+      li.dataset.buy = section.buy ? "1" : "0";
+      li.dataset.id = id;
+
+      var label = document.createElement("label");
+      label.className = "row";
+
+      var box = document.createElement("input");
+      box.type = "checkbox";
+      box.checked = !!state[id];
+
+      var bodyEl = document.createElement("div");
+      bodyEl.className = "body";
+
+      var text = document.createElement("span");
+      text.className = "text";
+      text.innerHTML = item.t;
+      bodyEl.appendChild(text);
+
+      if (item.n) {
+        var n = document.createElement("span");
+        n.className = "note";
+        n.textContent = item.n;
+        bodyEl.appendChild(n);
+      }
+
+      if (!item.sub) {
+        var tags = document.createElement("div");
+        tags.className = "tags";
+        var pt = document.createElement("span");
+        pt.className = "tag " + item.p.toLowerCase();
+        pt.textContent = item.p;
+        tags.appendChild(pt);
+        if (item.d) {
+          var dt = document.createElement("span");
+          dt.className = "tag dl";
+          dt.textContent = "Before LVL job";
+          tags.appendChild(dt);
+        }
+        bodyEl.appendChild(tags);
+      }
+
+      label.appendChild(box);
+      label.appendChild(bodyEl);
+      li.appendChild(label);
+      ul.appendChild(li);
+
+      if (box.checked) { li.classList.add("done"); }
+
+      box.addEventListener("change", function () {
+        state[id] = box.checked;
+        li.classList.toggle("done", box.checked);
+        save();
+        refresh();
+      });
+    });
+
+    sec.appendChild(ul);
+    board.appendChild(sec);
+  });
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode */ }
+  }
+
+  function pct(a, b) { return b === 0 ? 0 : Math.round((a / b) * 100); }
+
+  function refresh() {
+    var all = Array.prototype.slice.call(document.querySelectorAll("li.item"));
+
+    var tasks = all.filter(function (li) { return li.dataset.buy === "0"; });
+    var buys  = all.filter(function (li) { return li.dataset.buy === "1"; });
+    var dls   = all.filter(function (li) { return li.dataset.d === "1" && li.dataset.buy === "0"; });
+
+    function doneOf(list) {
+      return list.filter(function (li) { return !!state[li.dataset.id]; }).length;
+    }
+
+    var td = doneOf(tasks), bd = doneOf(buys), dd = doneOf(dls);
+
+    document.getElementById("doneCount").textContent = td;
+    document.getElementById("totalCount").textContent = tasks.length;
+    document.getElementById("taskBar").style.width = pct(td, tasks.length) + "%";
+
+    document.getElementById("dlDone").textContent = dd;
+    document.getElementById("dlTotal").textContent = dls.length;
+    document.getElementById("dlBar").style.width = pct(dd, dls.length) + "%";
+
+    document.getElementById("buyDone").textContent = bd;
+    document.getElementById("buyTotal").textContent = buys.length;
+    document.getElementById("buyBar").style.width = pct(bd, buys.length) + "%";
+
+    all.forEach(function (li) {
+      var show = true;
+      if (filter === "deadline") { show = li.dataset.d === "1"; }
+      else if (filter === "open") { show = !state[li.dataset.id]; }
+      else if (filter === "P1" || filter === "P2" || filter === "P3") { show = li.dataset.p === filter; }
+      li.classList.toggle("hidden", !show);
+    });
+
+    document.querySelectorAll(".section").forEach(function (sec) {
+      var items = Array.prototype.slice.call(sec.querySelectorAll("li.item"));
+      var visible = items.filter(function (li) { return !li.classList.contains("hidden"); });
+      var done = items.filter(function (li) { return !!state[li.dataset.id]; }).length;
+      sec.classList.toggle("is-empty", visible.length === 0);
+      sec.querySelector(".count").textContent = done + " / " + items.length;
+    });
+  }
+
+  document.getElementById("filters").addEventListener("click", function (e) {
+    var btn = e.target.closest(".chip");
+    if (!btn) { return; }
+    filter = btn.dataset.filter;
+    document.querySelectorAll(".chip").forEach(function (c) {
+      c.setAttribute("aria-pressed", c === btn ? "true" : "false");
+    });
+    refresh();
+  });
+
+  document.getElementById("reset").addEventListener("click", function () {
+    state = {};
+    save();
+    document.querySelectorAll("li.item").forEach(function (li) {
+      li.classList.remove("done");
+      li.querySelector("input").checked = false;
+    });
+    refresh();
+  });
+
+  /* ── theme ────────────────────────────────────────────────────────────── */
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem(THEME_KEY);
+    if (saved) { root.setAttribute("data-theme", saved); }
+  } catch (e) { /* ignore */ }
+
+  document.getElementById("themeToggle").addEventListener("click", function () {
+    var current = root.getAttribute("data-theme");
+    if (!current) {
+      current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* ignore */ }
+    drawMotif();
+  });
+
+  /* ── the curved-line motif: wood grain abstracted into a Lissajous ─────── */
+  var canvas = document.getElementById("motif");
+  var ctx = canvas.getContext("2d");
+
+  function drawMotif() {
+    var host = canvas.parentElement;
+    var w = host.offsetWidth, h = host.offsetHeight;
+    if (!w || !h) { return; }
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    var css = getComputedStyle(root);
+    var stroke = css.getPropertyValue("--line-green").trim() || "#2d8a5b";
+
+    // one big figure, anchored right, bleeding off the edges
+    var cx = w * 0.78, cy = h * 0.5;
+    var rx = Math.max(w, h) * 0.52, ry = h * 0.62;
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = stroke;
+    ctx.lineCap = "round";
+
+    var LINES = 22;
+    for (var k = 0; k < LINES; k++) {
+      var t = k / (LINES - 1);
+      var phase = 0.55 + t * 0.5;
+      var spread = 1 - t * 0.34;
+      ctx.globalAlpha = 0.06 + Math.sin(t * Math.PI) * 0.16;
+      ctx.beginPath();
+      for (var i = 0; i <= 420; i++) {
+        var a = (i / 420) * Math.PI * 2;
+        var x = cx + Math.sin(a * 3 + phase) * rx * spread;
+        var y = cy + Math.sin(a * 2) * ry * spread;
+        if (i === 0) { ctx.moveTo(x, y); } else { ctx.lineTo(x, y); }
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(drawMotif, 120);
+  });
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawMotif);
+
+  drawMotif();
+  refresh();
+})();
+</script>

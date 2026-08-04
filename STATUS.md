@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-08-03. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-08-04. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -267,24 +267,62 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 
 ---
 
+## 🔑 Environment keys — state as of 2026-08-04
+
+Lee added three vars on 2026-08-04. **Env vars load at session start only**, so they are invisible to
+any session that was already open when they were added. Verified in-session with a length/prefix check
+(never print a secret's value).
+
+| Var | In env | Notes |
+|---|---|---|
+| `META_ACCESS_TOKEN` | ✅ | System-user token. Working all session |
+| `META_AD_ACCOUNT_ID` | ✅ | `act_16…` |
+| `ANTHROPIC_API_KEY` | ⬜ added, needs fresh session | **New key** — Vercel would not reveal the old one (encrypted on write), so a replacement was minted. Does not disturb the Vercel deployment. **API billing is separate from Lee's Max subscription** — if it 400s on credit balance, top up at platform.claude.com → Billing |
+| `HEYGEN_API_KEY` | ⬜ added, needs fresh session | Unblocks the `avatar` family |
+| `META_PAGE_ID` | ⬜ added, needs fresh session | `611852278682648`. **Not a secret** — it's a hard blocker for publishing, not a credential |
+
+**First move of the next session:** re-run the presence check before assuming anything is live.
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
-1. ⬜ **Lee to flag keepers vs bin** from the 33-ad contact sheet, then regenerate into the gaps.
-2. ⬜ **Add `META_PAGE_ID=611852278682648`** to env.
-3. ⬜ **Wire the ad set to the custom conversion** (`promoted_object` → `27686282527680441`). The
-   object exists; nothing points at it yet.
-4. ⬜ **Run `brand-check` live on the new batch** — built, never run on a real image.
-2. **Re-render the creative** against the corrected copy, then re-run `ingest` → `check-batch` →
-   `brand-check`. Needs `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`.
-   **Still the biggest open item** — the words are fixed, the images are not.
-3. **Check EMQ > 7** — needs 24–48h of pixel traffic from 2026-08-03. **Not readable yet**; earliest
-   2026-08-04, safest 2026-08-05.
-4. **Verify `brand-check`'s vision path live** — built, never run. Sunday's cron is its first real run.
-5. **Submit the Basic-access application** (Lee) — answers + PDF are ready (`api-access.md` / `api-tool-design.md`).
-2. **Once Basic access granted:** Claude builds `tools/google-ads.mjs` (read-only reports + human-approved
-   writes), mirrors creds into env, and **the engine deploys the Craftons campaigns** (the goal: engine-run, tracked from day 1).
-3. **Set up the weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
-4. **CNC Cut:** reassess in a week vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
-5. **Content production** (independent of ads): Tia shoots Craft Macro Session A; build out How-To Series shot lists.
+
+### Now unblocked by the keys (do these first)
+1. ⬜ **Verify all five vars are visible** in the fresh session.
+2. ⬜ **Run `brand-check` live on the 33-ad batch** — built, never once run against a real image.
+   Needs `ANTHROPIC_API_KEY`. This is also the first real test of its vision path.
+3. ⬜ **AI avatar tests** — needs `HEYGEN_API_KEY`. ⚠️ **ACL constraint already enforced in
+   `_meta-policy.mjs`:** a synthetic presenter may describe the product but **must never claim
+   first-person experience of it** (s18 / s29(1)(e)). Scripts stay second-person about the product.
+   Capped at 40% of a batch.
+
+### The creative work that actually decides the launch
+4. ⬜ **Photography — the single biggest lever.** One phone photo of a real curved wall frame
+   out-performed everything the account has ever run (10.45% CTR). There is exactly one such photo.
+   Unlocks the family gate **and** Suby hack #4 together. Shot list in `campaigns/meta/creative-strategy.md` §4.1.
+5. ⬜ **Capture the configurator in use** — screen recording of someone typing a radius and the price
+   appearing. Lee: *"our product is the configurator, is the tool."* Currently only a static screenshot
+   showing unrepresentative values.
+6. ⬜ **Lee to flag keepers vs bin** from the 33-ad contact sheet
+   (`content-engine/public/ads/static/_contact-sheet.png`), then regenerate into the gaps.
+7. ⬜ **Rewrite the long-form copy pattern from the winner.** Its copy is six paragraphs; every ad in
+   the current batch is short. The proven template is unused.
+
+### Launch mechanics
+8. ⬜ **Wire the ad set to the custom conversion** (`promoted_object` → `27686282527680441`). The
+   object exists and is verified; nothing points at it yet.
+9. ⬜ **Check EMQ > 7** — needs 24–48h of pixel traffic from 2026-08-03. Readable from **2026-08-04**,
+   safest 2026-08-05.
+10. ⬜ **Obtain the Akkurat Mono licence** — JetBrains Mono Bold is substituted in every render. Get the
+    real file before this goes to spend.
+
+### Google Ads track (independent of Meta)
+11. ⬜ **Submit the Basic-access application** (Lee) — answers + PDF ready (`api-access.md` / `api-tool-design.md`).
+12. ⬜ **Once granted:** build `tools/google-ads.mjs` (read-only reports + human-approved writes), mirror
+    creds into env, and let the engine deploy the Craftons campaigns — engine-run and tracked from day 1.
+13. ⬜ **Weekly-review routine** (Claude routine, web app) once campaigns are live → auto-report + advice.
+14. ⬜ **CNC Cut:** reassess vs the baseline (`cnc-cut-review-log.md`); add GA4-linked tracking if not attributing.
+15. ⬜ **Content production** (independent of ads): Tia shoots Craft Macro Session A; build How-To Series shot lists.
 
 ---
 

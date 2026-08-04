@@ -4,6 +4,34 @@ The per-integration "how to actually wire it" companion to `SETUP.md` Part B. On
 integration: what it unlocks, exactly how to get the key, the env var name, where it lives, and
 cost. Work top-down by priority.
 
+## 🔑 How to add an API key to the session environment (verified 2026-08-03)
+
+Keys live on the **environment**, not the session, so they persist across sessions.
+
+1. **claude.ai/code → Environments → pick the environment → Environment variables → add → save.**
+   Two environments exist (`Default` and `Default Cloud Environment`). Use whichever already holds
+   `META_ACCESS_TOKEN` — that's the one these sessions run in.
+2. Values come from **vercel.com/craftons/cnccut-app → Settings → Environment Variables → reveal**.
+3. ⚠️ **Start a NEW session.** Env vars are read at session start; the session you're in when you save
+   will not see them. (Same gotcha as the connector permissions in `STATUS.md`.)
+
+**Never paste secret values into chat, into a repo file, or into the Drive brain.**
+
+### Current state — what's actually missing, and whether it matters
+
+| Key | In session env? | What it unlocks | Priority |
+|---|---|---|---|
+| `META_ACCESS_TOKEN` | ✅ | Everything Meta reads/writes. SYSTEM_USER, never expires | — |
+| `PERPLEXITY_API_KEY` · `REPLICATE_API_TOKEN` · `GLIF_API_TOKEN` · `DATABASE_URL` | ✅ | Research, image gen, warehouse | — |
+| **`META_PAGE_ID`** | ❌ | **Publishing ads at all** — `create-creative` fails without it | 🔴 **Hard blocker.** Value is **`611852278682648`** — a public page ID, not a secret |
+| **`HEYGEN_API_KEY`** | ❌ | AI avatar video creative | 🔴 Blocks the avatar register entirely |
+| **`ANTHROPIC_API_KEY`** | ❌ | `brand-check` vision, avatar scripts, agent copy generation | 🟠 Needed for the quality gate |
+| `META_APP_ID` · `META_APP_SECRET` | ❌ | Long-lived token refresh only | ⬜ **Skip.** The token is SYSTEM_USER and never expires — these buy nothing |
+
+**So it's three keys, and one of them is a number written above.**
+
+---
+
 ## Ground rules (read once)
 
 - **Only you can obtain the keys** (they require logins to each service). I can wire each one

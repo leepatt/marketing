@@ -76,6 +76,12 @@ The office **structure is complete and structurally sound** — this is fit-out,
 - [ ] **Acoustic material on the roof**, and maybe on the **wall that faces the machine** — to minimise
       the machine noise getting into the office
 
+### Site services
+- [ ] **Organise internet to the warehouse**
+  - ⚠️ **Long lead time.** Providers routinely take weeks to connect a commercial site. It's `P2` by
+    importance but wants starting **now** by calendar — otherwise it ends up the last thing blocking a
+    finished office.
+
 ### Tool area (the little space on the outside of the office)
 - [ ] Build/install a **bench**
 - [ ] **Tool holders on the wall**

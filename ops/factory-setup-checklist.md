@@ -48,7 +48,13 @@ _Context, reasoning and sequencing → `factory-setup.md`_
 
 - [ ] `P1` ⏱ Install the pallet racking (to the layout map, not before it)
 
-## 7. Office — fit-out
+## 7. Site services
+
+- [ ] `P2` **Organise internet to the warehouse**
+  - _Long lead time — providers can take weeks to connect. Start this now even though it's `P2`, or it
+    becomes the thing everything else waits on._
+
+## 8. Office — fit-out
 
 _Structure is complete and sound. This is all fit-out._
 
@@ -60,18 +66,18 @@ _Structure is complete and sound. This is all fit-out._
 - [ ] `P2` **Door lock**
 - [ ] `P2` **Lighting**
 
-## 8. Office — soundproofing
+## 9. Office — soundproofing
 
 - [ ] `P2` Finish the remaining cladding
 - [ ] `P2` Acoustic material on the roof
 - [ ] `P2` Acoustic material on the wall facing the machine
 
-## 9. Tool area _(the little space outside the office)_
+## 10. Tool area _(the little space outside the office)_
 
 - [ ] `P2` Bench
 - [ ] `P2` Tool holders on the wall
 
-## 10. Decide what to do with
+## 11. Decide what to do with
 
 - [ ] `P3` **Automatic feeder** — "something needs to happen with that." Leaning keep, no plan yet
 - [ ] `P3` **Rolling tables** — leaning keep, they'll be useful for something. Need a home in the layout

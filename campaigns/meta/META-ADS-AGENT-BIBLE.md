@@ -21,6 +21,50 @@ code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius P
 
 ---
 
+# 🔒 LAW 1 — NO AD GOES LIVE WITHOUT LEE'S PERMISSION
+
+**Lee, 2026-08-05: _"No ads should go live without my permission."_**
+
+This outranks every other rule in this document. It is not a phase, not a default, and not something
+the autonomy ladder graduates away from. **There is no rung at which the agent may switch an ad on.**
+
+The agent may write copy, render creative, upload images, create ad creatives, file proposals and
+publish ads **in a paused state**. Turning an ad on is a human action, performed by Lee in Ads Manager.
+
+### What enforces it — verified in code 2026-08-05, not assumed
+
+| Layer | Mechanism | Where |
+|---|---|---|
+| Autonomy rung 0 | Report and propose only. Self-check *"Rung 0 permits nothing unattended"* passes | `_meta-policy.mjs` |
+| **Ads are created PAUSED, always** | `publish_ad` hard-codes `status: "PAUSED"`. No parameter overrides it | `meta-ads.mjs` |
+| **No "activate ad" mutation exists** | `apply` implements exactly three write types: `pause_ad`, `set_budget`, `publish_ad`. There is no code path that sets an ad ACTIVE | `meta-ads.mjs` |
+| `create_ad_set` always needs a human | In `ALWAYS_REQUIRES_APPROVAL` at *every* rung, including rung 4 | `_meta-policy.mjs` |
+| Writes need two independent things | `CONFIRM=1` **and** an approved `marketing_approvals` row. Either alone is a dry run | `meta-ads.mjs` |
+| The weekly cron cannot spend | Runs `report` then `evaluate --file_proposals`. It files proposals; it never applies them | `app/api/cron/meta-ads` |
+
+**The practical guarantee: the only way a Craftons ad goes live is Lee clicking the toggle.** The worst
+the agent can do unattended is leave a proposal in the Cockpit for a human to read.
+
+### Rules for anyone extending this agent
+
+1. **Never add a mutation that sets an ad, ad set or campaign to `ACTIVE`.** If a future task seems to
+   need one, that task is wrong — the human does it.
+2. **Never remove `status: "PAUSED"` from `publish_ad`,** and never make it a caller-supplied argument.
+3. **Never grant an autonomy rung the ability to activate.** The ladder governs pausing, budget
+   shifting and paused-publishing. It stops there.
+4. **If a guardrail self-check for this law is failing, stop and fix it before anything else.** A
+   failing check here is not a flaky test.
+5. **Unpausing is not "resuming".** Re-enabling a previously approved ad that has been paused still
+   requires Lee, because circumstances change while an ad is off.
+
+> **Related standing rule — 🇦🇺 Australia only (Lee, 2026-08-05).** Craftons manufactures in Fairfield
+> and ships Australia-wide via FedEx. There is no offer for anyone overseas. Enforced by
+> `ALLOWED_COUNTRIES` + `checkTargeting()` in `_meta-policy.mjs`, asserted by five `doctor` self-checks,
+> and audited live by `report` on every run. **An ad set with no geo set at all is a failure too** — it
+> runs worldwide rather than erroring, which is how the account ended up with three of them.
+
+---
+
 ## 0. Source & provenance (what this is built from, and how confident to be)
 
 | Source | Confidence |
@@ -854,14 +898,21 @@ graduation path. **Each rung requires the one below it to have run clean for the
 | **0 — Now** | Nothing. Reports and proposes only | Everything | — |
 | **1** | Pause ads meeting an explicit, pre-agreed kill rule | All spend increases, all new creative | 4 weeks at Rung 0, zero bad kill proposals |
 | **2** | Rung 1 + shift budget **between existing approved ads** within a fixed total | New creative, total budget changes | 4 weeks at Rung 1, positive trend |
-| **3** | Rung 2 + publish new creative **from already-approved templates and angles** | New angles, new templates, budget increases | 8 weeks at Rung 2, brand-check pass rate > 95% |
-| **4** | Full loop within a hard monthly spend ceiling | Ceiling changes, new product lines | Sustained performance + Lee's explicit call |
+| **3** | Rung 2 + publish new creative **PAUSED**, from already-approved templates and angles | New angles, new templates, budget increases, **switching any ad on** | 8 weeks at Rung 2, brand-check pass rate > 95% |
+| **4** | Full loop within a hard monthly spend ceiling — **still publishing paused only** | Ceiling changes, new product lines, **switching any ad on** | Sustained performance + Lee's explicit call |
+
+> 🔒 **The ladder never grants activation.** Read the "publish" rungs precisely: rung 3 and rung 4
+> permit publishing an ad **in a paused state**. Not one rung on this ladder — including rung 4 —
+> allows the agent to set an ad live. See **LAW 1** at the top of this document. "Full loop" at rung 4
+> means research → creative → paused publish → measure → propose, with Lee's toggle in the middle.
 
 **Implementation:** this is a policy table, not new code. `marketing_approvals` already exists; the
 ladder is a config listing which `action` values require a row at the current rung. Store the rung in
 config, not in code, so it can be lowered instantly if something goes wrong.
 
 **Non-negotiable at every rung:**
+- 🔒 **No ad goes live without Lee's permission (LAW 1). No rung changes this, ever.**
+- 🇦🇺 **Australia-only targeting** — enforced by `checkTargeting()`, audited live by `report`
 - Hard monthly spend ceiling, enforced in code, checked before every write
 - Kill switch — one setting that returns everything to Rung 0
 - Every autonomous action still writes a `marketing_runs` row
@@ -942,7 +993,11 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 - Use async jobs for heavy breakdowns — capped at 10/day/account
 
 **From Craftons' own doctrine:**
-- Nothing publishes active. Ads are created `PAUSED`
+- 🔒 **LAW 1 — no ad goes live without Lee's permission.** Nothing publishes active; ads are created
+  `PAUSED` and stay that way until Lee toggles them on. There is no "activate" mutation in the
+  codebase and no autonomy rung that grants one. Full enforcement table at the top of this doc
+- 🇦🇺 **Australia only.** `ALLOWED_COUNTRIES = ["AU"]`. An ad set with **no** geo set fails too — it
+  runs worldwide rather than erroring, which is how three of them got onto the account unnoticed
 - `brand-check` gates every asset, always
 - Never AI-generate product geometry or dimensions — that rule survives the avatar approval
 - **Hard $2,000/month ceiling in code**, checked before every write (§4.6)

@@ -391,6 +391,42 @@ pixel Purchases (2.3× inflation). Deflated: **~25/week** — which matches the 
 
 ---
 
+### 🔒 Lee's standing rules — 2026-08-05
+
+1. **Ads are AUSTRALIA ONLY.** Now enforced in code, not just written down: `ALLOWED_COUNTRIES` +
+   `checkTargeting()` in `_meta-policy.mjs`, asserted by 5 `doctor` self-checks (22 → **27 passing**),
+   and audited live by `report` on every run.
+   - **The live audit immediately found four offenders** — `Instagram post: CAMPBELL STREET` targets
+     **US** ($43.82, 0 results), and `Wed 23/7` + two `Adset 1` have **no country targeting at all**
+     (= worldwide). All `CAMPAIGN_PAUSED`, nothing spending. **Awaiting Lee's call to delete or fix.**
+   - Interest targeting is a *warning*, not a failure — "no interests" is a launch rule, not permanent.
+2. **No ad goes live without Lee's approval.** Verified in code, not assumed:
+   rung 0 permits nothing unattended · `publish_ad` hard-codes `status: "PAUSED"` · `create_ad_set` is
+   in `ALWAYS_REQUIRES_APPROVAL` at every rung · `apply` needs `CONFIRM=1` **and** an approved row ·
+   the weekly cron only files proposals · **there is no "activate ad" mutation in the codebase at all.**
+   The only way an ad goes live is Lee toggling it in Ads Manager.
+
+### 📋 `ANTHROPIC_API_KEY` — needs a NEW SESSION (2026-08-05)
+
+Lee confirms he added it. **It is not visible to this session** — scanned every variable *name* and
+every variable *value* for the `sk-ant-` prefix: zero matches. Only `ANTHROPIC_BASE_URL` exists.
+
+**Env is captured when the session container starts.** This session started ~Aug 4 10:46; anything added
+since is invisible regardless. **A fresh session will pick it up.**
+- ⚠️ **Check the saved name first.** Two of the three keys from the same 2026-08-04 batch *did* arrive
+  (`HEYGEN_API_KEY` ✅, `META_PAGE_ID` ✅ **but renamed to `PAGE_ID`**). Since one key in that batch had
+  its name altered, confirm this one saved as exactly `ANTHROPIC_API_KEY` — `CLAUDE_API_KEY` or
+  `ANTHROPIC_KEY` would fail the same way in a new session.
+- **First thing to do in the new session:** `studio.mjs brand-check` on the 36-ad batch. Still the one
+  built-and-never-run path.
+
+### 📄 New: `campaigns/meta/HOW-TO-create-the-ad-set.md`
+Step-by-step for building the launch ad set by hand (~5 min), the exact conversion-dropdown trap to
+avoid, the AU-only settings, the four offending ad sets, and the full list of what stops an ad going
+live. **Lee's action.**
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
 
 ### Now unblocked by the keys (do these first)

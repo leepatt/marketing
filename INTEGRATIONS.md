@@ -62,9 +62,30 @@ see them:
    `PAGE_ID` alone `doctor` reports it missing and `create-creative` cannot publish.
    **Fix: rename the env var to `META_PAGE_ID`** in the environment config and in Vercel. Until then
    every tool invocation needs `META_PAGE_ID="$PAGE_ID"` prefixed, which is how this session ran them.
-3. **`ANTHROPIC_API_KEY` — genuinely absent.** Not a naming mismatch; no variant of the name exists.
-   `brand-check` correctly refuses and marks assets `skipped` rather than silently passing them, so
-   nothing is mis-labelled — but **its vision path has still never been executed.**
+3. **`ANTHROPIC_API_KEY` — RESOLVED 2026-08-05: it is saved as `ANTHROPIC_KEY`.**
+   Confirmed by Lee from a session started after the key was added. The env holds:
+
+   | Var | State |
+   |---|---|
+   | `ANTHROPIC_KEY` | ✅ set, `sk-ant-api03-…` |
+   | `ANTHROPIC_BASE_URL` | ✅ set |
+   | **`ANTHROPIC_API_KEY`** | ❌ **not set** |
+
+   **Same failure mode as `META_PAGE_ID` → `PAGE_ID`: right value, wrong name.** Everything in this
+   repo — and the Anthropic SDK/CLIs by default — reads `ANTHROPIC_API_KEY`. `studio.mjs brand-check`
+   calls `readEnv(["ANTHROPIC_API_KEY"])`, so with only `ANTHROPIC_KEY` it still reports the key as
+   missing and marks assets `skipped`.
+
+   **Two fixes, either works:**
+   - **Permanent (preferred):** rename the variable to `ANTHROPIC_API_KEY` in the environment config
+     and in Vercel. Then everything works with no prefixes.
+   - **Per-command:** `ANTHROPIC_API_KEY="$ANTHROPIC_KEY" node tools/studio.mjs brand-check …`
+
+   ⚠️ **Two of three keys in that batch arrived misnamed.** When adding a key, paste the name as well
+   as the value — do not retype it. This has now cost two sessions.
+
+   🔐 **Do not print the key's value.** A session offered to; there is never a reason to. Check
+   presence by length and prefix only.
 
 ### 🔐 Rotate `META_ACCESS_TOKEN`
 

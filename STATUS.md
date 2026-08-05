@@ -406,7 +406,32 @@ pixel Purchases (2.3× inflation). Deflated: **~25/week** — which matches the 
    the weekly cron only files proposals · **there is no "activate ad" mutation in the codebase at all.**
    The only way an ad goes live is Lee toggling it in Ads Manager.
 
-### 📋 `ANTHROPIC_API_KEY` — needs a NEW SESSION (2026-08-05)
+### ✅ RESOLVED — the Anthropic key is saved as `ANTHROPIC_KEY`, not `ANTHROPIC_API_KEY` (2026-08-05)
+
+Lee confirmed from a fresh session: **`ANTHROPIC_KEY` is set** (`sk-ant-api03-…`), `ANTHROPIC_API_KEY`
+is **not**. Right value, wrong name — **exactly the same failure as `META_PAGE_ID` → `PAGE_ID`.**
+Every tool reads `ANTHROPIC_API_KEY`, so `brand-check` still reports it missing.
+**Fix: rename the env var** (preferred), or prefix `ANTHROPIC_API_KEY="$ANTHROPIC_KEY"` per command.
+→ full detail + the "paste the name, don't retype it" rule in `INTEGRATIONS.md`.
+
+### ⚠️ OUTSTANDING — 36 duplicate `pending` asset rows (2026-08-05)
+
+`ingest` was **not idempotent** and was run twice, so `marketing_assets` holds **72 pending rows for 36
+creatives** (module `meta-ads`). One title, `a3-three-days`, has 3 — so an earlier session duplicated too.
+
+**Consequence if not cleaned:** `brand-check` scores every asset twice (wasted API spend) and a human
+reviews each one twice.
+
+- [x] **Bug fixed** — `findAsset()` in `_lib.mjs`; `ingest` now skips already-present assets and reports
+  `0 accepted, 36 already present`. It also fixed a second bug in the same place: composition/novelty
+  were judged on newly-inserted rows only, so re-running an unchanged manifest judged a batch of
+  **zero** and failed the family floor — a false alarm indistinguishable from the real 2-family failure.
+- [ ] 🔴 **The 36 duplicate rows still exist.** Claude attempted the cleanup and the permission
+  classifier **blocked the DELETE** (correctly — destructive DB write). **Needs Lee's go-ahead.**
+  Scoped statement: `module='meta-ads' AND brand_check_status='pending'`, keep the newest row per
+  title, never touch `pass`/`fail`/`skipped`.
+
+### 📋 (superseded) `ANTHROPIC_API_KEY` — needed a NEW SESSION (2026-08-05)
 
 Lee confirms he added it. **It is not visible to this session** — scanned every variable *name* and
 every variable *value* for the `sk-ant-` prefix: zero matches. Only `ANTHROPIC_BASE_URL` exists.

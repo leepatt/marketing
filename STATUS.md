@@ -499,6 +499,29 @@ real pixels.** Full per-asset reasons live in `marketing_assets.provenance->'bra
 
 ---
 
+### ✅ Session 2026-08-06 (later) — full pipeline test, every step from the video
+
+**Lee asked for an end-to-end test with nothing going live. Nothing went live; nothing on the
+account changed at all.** 11 of 12 steps pass outright; the write chain is verified to the exact
+Graph payload but the three final POSTs are triple-gated and never executed. Full scorecard →
+`campaigns/meta/pipeline-test-2026-08-06.md`.
+
+- ✅ doctor 29/29 · check-batch PASS · ingest idempotent · research live (verbatim Reddit) ·
+  render byte-identical · brand-check 33/3/0 (earlier today) · evaluate/kill rule · winners/pool/
+  cac/entropy all read from the warehouse · cron's file-proposals path runs
+- ✅ Negative controls: avatar first-person script refused (5 violations cited) · $700 budget
+  refused at the $666.67 sanity cap · every write dry-runs without CONFIRM · publish mutation
+  hard-codes PAUSED
+- ⚠️ **The three Graph POSTs (upload image → create creative → publish PAUSED ad) have still never
+  executed** — the session permission classifier blocks any `CONFIRM=1` invocation, on top of the
+  tool gates and rung 0. Exact commands for Lee to close the loop are in the test doc.
+- 🔧 Fixed + pushed (`cnccut-app` `82abe7a`): the ACL screen's guidance line used banned
+  bog-and-sand copy as its example rewrite.
+- 🧹 Lee: REJECT two test proposal rows in the Cockpit queue — `c02c31f2…` (pause_campaign test)
+  and `0d6e5fd0…` (ZZTEST publish_ad, placeholder creative id).
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
 
 ### Now unblocked by the keys (do these first)

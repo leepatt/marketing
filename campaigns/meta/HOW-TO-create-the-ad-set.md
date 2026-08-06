@@ -128,17 +128,20 @@ render, which went to HeyGen and not to Meta.
 
 ---
 
-## 🇦🇺 Australia only — four ad sets need your attention
+## 🇦🇺 Australia only — six ad sets need your attention (was four)
 
-The new live audit found these. **All are `CAMPAIGN_PAUSED`, so nothing is spending right now**, but a
+The live audit found these. Re-run 2026-08-06: **six offenders, not the four first recorded** — two
+more no-geo ad sets surfaced. **All are `CAMPAIGN_PAUSED`, so nothing is spending right now**, but a
 paused ad set is one un-pause away:
 
-| Ad set | Problem |
-|---|---|
-| `Instagram post: CAMPBELL STREET \| Ground floor...` | Targets **US**. Spent **$43.82 for 0 results** |
-| `Wed 23/7` | **No country targeting at all** — runs worldwide |
-| `Adset 1` | **No country targeting at all** |
-| `Adset 1` (second one) | **No country targeting at all** |
+| Ad set | ID | Problem |
+|---|---|---|
+| `Instagram post: CAMPBELL STREET \| Ground floor...` | `120247181013720186` | Targets **US**. Spent **$43.82 for 0 results** |
+| `Wed 23/7` | `120229416414970186` | **No country targeting at all** — runs worldwide |
+| `Adset 1` | `120226532581940186` | **No country targeting at all** |
+| `Adset 1` | `120226531064770186` | **No country targeting at all** |
+| `Adset 1 – Copy` | `120226517457530186` | **No country targeting at all** |
+| `Adset 1` | `120224947087050186` | **No country targeting at all** |
 
 **Recommendation: delete them.** They are old boosted-post ad sets, they have no role in the plan, and
 deleting removes the risk permanently. If you would rather keep the history, set each one's location to

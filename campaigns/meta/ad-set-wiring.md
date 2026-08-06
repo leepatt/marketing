@@ -67,7 +67,8 @@ Every ad set on the account uses `custom_event_type` against the raw pixel. **No
 ```
 Campaign objective     Sales (OUTCOME_SALES)
 Ad set name            RadiusPro | TOF | Broad AU | SalesIntent | Aug26
-Daily budget           $50-100/day   (code ceiling: $2000/mo, validation stage default $35/day)
+Daily budget           $50-100/day   (⚠️ $100/day HARD CAP in code since 2026-08-06, Lee's call;
+                       monthly ceiling $2000; validation stage default $35/day)
 Optimisation goal      OFFSITE_CONVERSIONS
 Billing event          IMPRESSIONS
 promoted_object        { "pixel_id": "677437638374055",

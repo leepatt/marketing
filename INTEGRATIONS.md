@@ -81,6 +81,14 @@ see them:
      and in Vercel. Then everything works with no prefixes.
    - **Per-command:** `ANTHROPIC_API_KEY="$ANTHROPIC_KEY" node tools/studio.mjs brand-check …`
 
+   ✅ **Worked around in-session 2026-08-06** — exports added to `~/.bashrc` *above* the
+   `[ -z "$PS1" ] && return` guard (below it, non-interactive tool shells never reach them):
+   `export ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY:-$ANTHROPIC_KEY}"` and
+   `export META_PAGE_ID="${META_PAGE_ID:-${PAGE_ID:-611852278682648}}"`. Verified: `doctor` sees
+   both, `brand-check` ran 36 live vision calls. **Container-local — dies with the container.**
+   The rename remains the durable fix. (Also noted 2026-08-06: `PAGE_ID` was not visible in this
+   session's env either — only the recorded value made the alias possible.)
+
    ⚠️ **Two of three keys in that batch arrived misnamed.** When adding a key, paste the name as well
    as the value — do not retype it. This has now cost two sessions.
 

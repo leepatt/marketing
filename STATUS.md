@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-08-04. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-08-06. Branch: `claude/brand-check-launch-prep-jiyejg`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -452,12 +452,61 @@ live. **Lee's action.**
 
 ---
 
+### ✅ Session 2026-08-06 — brand-check ran live on all 36. The gate works.
+
+**The one built-and-never-run path has now run: 33 pass · 3 fail · 0 errors, every verdict from
+real pixels.** Full per-asset reasons live in `marketing_assets.provenance->'brand_check'`.
+
+- [x] **Env keys resolved in-session** — `ANTHROPIC_API_KEY="$ANTHROPIC_KEY"` and
+  `META_PAGE_ID=611852278682648` exported from `~/.bashrc` (inserted *before* the interactivity
+  guard so every tool shell inherits them). **Container-local only — renaming the env vars is still
+  the durable fix.** `doctor` passes with all keys visible.
+- [x] 🔴 **The first live run found a real bug; fix pushed** — `cnccut-app` @ `01bd418` on
+  `claude/craftons-real-footage-register`. `claude-fable-5` always thinks and thinking shares the
+  `max_tokens` budget, so the 500-token cap truncated every response mid-JSON
+  (`stop_reason: max_tokens`); the parse fallback then recorded the truncation as **fail, score 0 —
+  a false verdict written to the asset**. Now: 4,000-token cap, and truncation / refusal /
+  unparseable output throw an error so the asset stays outstanding instead of being mislabelled.
+- [x] **The duplicate-row DELETE was blocked by the permission classifier again**, exactly as
+  2026-08-05. Worked around without deleting anything: scored the 36 *keeper* rows (newest per
+  title) via per-asset `brand-check --asset_id` calls instead of the sweep, so nothing was scored
+  twice. **The 36 duplicate `pending` rows still exist and still need Lee's go-ahead** — scope
+  unchanged: `module='meta-ads' AND brand_check_status='pending'`, keep newest per title, never
+  touch pass/fail/skipped. ⚠️ Until then, a plain `studio.mjs brand-check` sweep would score the
+  duplicates (and revisit 6 old `skipped` ads from the superseded batch) — use per-asset calls.
+- [x] **The three fails split into a real catch and a rubric mismatch:**
+  - **`a4-chippies-jigsaw` (55) — real catch.** Two-thirds of the canvas is empty black; "reads as
+    unfinished... would ship looking broken at feed size." The same empty-canvas note drags
+    `a3-interstate` (70) and `a3-three-days` (74) down as low passes. Regenerate these three with
+    imagery in the void.
+  - **`lf2-pay-for-parts` (55) + `lf3-nobody-sets-out` (58) — rubric mismatch, NOT creative
+    failure.** These are `bare`-template real-footage creatives that carry no in-image text **by
+    design** (the account's best-ever ad was exactly that). The checker is told "the headline it
+    should carry: X" and fails them for missing it; it also dings genuine site photos for sky
+    ("blue cast"). `lf1-control-lawless` passed at 74 with the same notes. **Nothing was
+    relabelled.** The fix is teaching the checker that `bare` creatives carry copy as primary
+    text and that sky in real photography isn't a palette violation — but that changes what the
+    quality gate accepts, so it needs Lee's word before anyone touches the rubric.
+- [x] **AU audit re-run: SIX offenders, not four** — two more no-geo ad sets surfaced. All on
+  paused campaigns, nothing spending. IDs + table now in `HOW-TO-create-the-ad-set.md`.
+  Recommend deleting; account write, Lee's call.
+- [x] **Launch ad set still does not exist** — nothing on the account references
+  `custom_conversion_id`. The 5-minute build in `HOW-TO-create-the-ad-set.md` is still Lee's
+  move; send back the ad set ID for API verification of `promoted_object`.
+- **Account, 7 days to 08-06:** $441.15 spend · 5 results · $371 revenue · 7.80% CTR. Retargeting
+  is still the only active campaign ($229.74 → 3 results). Month-to-date $298.69 of the $2,000
+  ceiling.
+
+---
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
 
 ### Now unblocked by the keys (do these first)
-1. ⬜ **Verify all five vars are visible** in the fresh session.
-2. ⬜ **Run `brand-check` live on the 33-ad batch** — built, never once run against a real image.
-   Needs `ANTHROPIC_API_KEY`. This is also the first real test of its vision path.
+1. [x] **Verify all five vars are visible** — done 2026-08-06 via the `~/.bashrc` alias; rename in
+   the environment config still pending for future sessions.
+2. [x] **Run `brand-check` live on the batch** — DONE 2026-08-06, all 36 creatives, 33/3/0.
+   Vision path verified; truncation bug found and fixed. Remaining: regenerate the 3 empty-canvas
+   creatives, Lee to rule on the bare-template rubric question.
 3. ⬜ **AI avatar tests** — needs `HEYGEN_API_KEY`. ⚠️ **ACL constraint already enforced in
    `_meta-policy.mjs`:** a synthetic presenter may describe the product but **must never claim
    first-person experience of it** (s18 / s29(1)(e)). Scripts stay second-person about the product.
@@ -542,7 +591,8 @@ words. Read before writing a single line of copy. Beats every other doc on produ
 marketing) · `copy-reconciliation.md` (the two-funnel model + claim verdicts; **§4 copy superseded**) ·
 **`suby-8-hacks-implementation.md` (⭐ the 8 hacks → concrete actions, + the corrected July post-mortem)** ·
 `META-ADS-AGENT-BIBLE.md` (agent design + phased build) · `launch-angles.md` (⚠️ Angle 2 retired,
-anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-interview.md` (mostly answered)
+anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-interview.md` (mostly answered) ·
+`brand-check-results-2026-08-06.md` (the full 36-creative scorecard + the two fail patterns)
 
 **🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
 `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`

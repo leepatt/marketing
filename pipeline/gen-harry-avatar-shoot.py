@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
-"""Harry (Craftons head of marketing) — HeyGen photo-avatar training set.
+"""Harry (Craftons head of marketing) — HeyGen photo-avatar training set, batch 3.
 
-Ten 4:5 / 2K frames off one reference photo. Identity is locked verbatim on
-every prompt so the face cannot drift; only wardrobe, set, angle and framing
-move. Wardrobe is Harry's real rotation — no suits, no blazers, no ties.
+30 frames: 10 site interior, 10 studio/office, 10 outdoor building site with a
+concrete bench seat formed up ready to pour. Identity locked verbatim on every
+prompt; only wardrobe, set, angle and framing move.
 
-    REPLICATE_API_TOKEN=... python3 gen_harry.py <face-ref.png> <logo-mark.png> <out-dir>
+    REPLICATE_API_TOKEN=... python3 gen_harry_v3.py <face> <lockup-dark> <lockup-light> <out>
 
-Serial: a five-wide fan-out 429s on this account. Slugs already on disk are
-skipped, so a killed run resumes by re-invoking the same command.
+Branded garments carry the full Craftons lockup (mark + "Craftons" wordmark in
+Aeonik), passed in as a reference image rather than left to the model to invent.
+Two workers — five 429s, one is needlessly slow. Existing slugs are skipped.
 """
 import json, os, sys, time, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 TOKEN = os.environ["REPLICATE_API_TOKEN"]
 MODEL = "google/nano-banana-pro"
-FACE_REF, LOGO_REF, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
+FACE, LOCKUP_ON_DARK, LOCKUP_ON_LIGHT, OUT = sys.argv[1:5]
 os.makedirs(OUT, exist_ok=True)
 
-# Repeated verbatim on every prompt — this is what makes the set trainable.
 LOCK = (
     "This is the exact same man as in the first reference photo. Preserve his identity "
     "precisely: same face shape, same jawline and cheekbones, same nose, same blue-grey "
@@ -26,97 +27,167 @@ LOCK = (
     "every shot. Do not restyle his face or his beard. "
     "Photorealistic, shot on a full-frame camera with a 50mm lens, natural skin texture "
     "with visible pores, sharp focus on the eyes, no beauty retouching, no plastic skin, "
-    "not CGI, not illustrated. He is a marketing person, not a corporate executive — "
-    "absolutely no suit, no blazer, no sport coat, no tie."
+    "not CGI, not illustrated. Absolutely no suit, no blazer, no sport coat, no tie."
 )
 
-SITE = (
-    "The setting is the interior of a large near-finished high-end Australian home: "
-    "freshly painted plaster walls, premium joinery installed, large windows with soft "
-    "daylight, and the floor fully covered in brown protective cardboard sheeting taped "
-    "at the seams."
-)
-STUDIO = (
-    "The setting is a Craftons content studio / marketing office: clean modern space, "
-    "matte white and warm timber surfaces, a little video kit around the edges of frame, "
-    "soft even daylight. Relaxed creative workspace, not a corporate boardroom."
-)
-
-# Wardrobe — Harry's actual rotation.
+# Garments
 VEST = ("a black quilted puffer vest, unzipped, over a short-sleeved khaki work shirt "
         "with the collar open")
-POLO = "a plain black short-sleeved polo shirt, no logo"
-BLACK_JUMPER = ("a plain black crew-neck jumper with one small embroidered logo on the "
-                "left breast, matching the logo in the second reference image exactly — "
-                "green, small, subtle, roughly 5cm wide, no other branding anywhere")
-HOODIE = "a plain black hoodie with blue denim jeans"
-TEE = "a plain white crew-neck t-shirt with straight-leg trousers"
-GREEN_JUMPER = ("a deep forest green crew-neck jumper in Craftons green (hex #194431) with "
-                "one small embroidered logo on the left breast, matching the logo in the "
-                "second reference image exactly — small and subtle, roughly 5cm wide, no "
-                "other branding anywhere, worn with plain trousers")
-NAVY_SHIRT = ("a thick heavyweight navy overshirt worn buttoned over a plain tee, with "
-              "plain trousers")
+POLO = "a plain black short-sleeved polo shirt, no logo or branding of any kind"
+JUMPER_BLACK = "a plain black crew-neck jumper"
+HOODIE = "a plain black hoodie with blue denim jeans, no logo or branding of any kind"
+TEE = "a plain white crew-neck t-shirt with straight-leg trousers, no logo or print"
+JUMPER_GREEN = ("a crew-neck jumper in deep Craftons forest green (hex #194431), worn with "
+                "plain trousers")
+NAVY = ("a thick heavyweight navy overshirt, buttoned, over a plain tee, with plain "
+        "trousers, no logo or branding")
 
-# (slug, wardrobe, needs_logo_ref, scene+framing)
+# Sets
+SITE_IN = (
+    "The setting is the interior of a large near-finished high-end Australian home: "
+    "freshly painted plaster walls, premium joinery installed, large windows with soft "
+    "daylight, and the floor fully covered in brown corrugated cardboard protection "
+    "sheeting, clearly cardboard, taped at the seams."
+)
+STUDIO = (
+    "The setting is a clean modern Craftons marketing office: matte white walls, warm "
+    "timber desk surfaces, a few plants and some books, soft even daylight from a large "
+    "window. IMPORTANT: there is absolutely no camera equipment anywhere in the frame — "
+    "no cameras, no tripods, no studio lights, no softboxes, no light stands, no boom "
+    "arms, no microphones, no video gear of any kind. An ordinary quiet office."
+)
+SITE_OUT = (
+    "The setting is an outdoor residential building site in Australia on a bright day. "
+    "Clearly visible behind him is a curved concrete bench seat that has been formed up "
+    "and is ready to pour: smooth plywood formwork panels bent to a curve, held by timber "
+    "stakes and props, steel reinforcement mesh sitting inside the form, clean compacted "
+    "ground around it. Part-built landscaping and a rendered house wall further behind."
+)
+
+LOGO_NOTE_DARK = (
+    "\n\nThe second reference image is the Craftons logo lockup: the green four-lobe mark "
+    "followed by the word 'Craftons' set in the brand's geometric sans-serif. Embroider "
+    "that complete lockup — mark AND the word 'Craftons' beside it — small on his left "
+    "breast, about 9cm wide, wordmark in white with the mark in green, spelled exactly "
+    "'Craftons'. Reproduce the letterforms and the mark faithfully. No other branding "
+    "anywhere on the garment."
+)
+LOGO_NOTE_LIGHT = LOGO_NOTE_DARK.replace(
+    "wordmark in white with the mark in green", "wordmark and mark both in white")
+
+# (slug, needs_logo: None|'dark'|'light', prompt)
 SHOTS = [
-    # ---------- on site ----------
-    ("01-site-vest-front", VEST, False,
-     f"He wears {VEST}. {SITE} Waist-up, straight-on to camera at eye level, looking "
-     "directly into the lens, speaking to camera with an open friendly expression. "
-     "Standing in the middle of a large open living area, cardboard-covered floor "
-     "stretching away behind him. Soft natural daylight from tall windows."),
+    # ---------------- site interior ----------------
+    ("11-in-vest-front-living", None,
+     f"He wears {VEST}. {SITE_IN} Waist-up, straight-on to camera at eye level, looking "
+     "directly into the lens, speaking with an open friendly expression. Standing in a "
+     "large open living area. Soft natural daylight from tall windows."),
+    ("12-in-vest-threequarter-window", None,
+     f"He wears {VEST}. {SITE_IN} Chest-up, body turned about 35 degrees to his left, head "
+     "turned back to the lens, slight smile. Standing beside a tall window, soft wrap light."),
+    ("13-in-vest-low-doorway", None,
+     f"He wears {VEST}. {SITE_IN} Three-quarter length, camera slightly below eye level, "
+     "standing in a wide doorway with rooms visible beyond, hands relaxed, neutral expression "
+     "toward the lens."),
+    ("14-in-vest-profile-wall", None,
+     f"He wears {VEST}. {SITE_IN} Chest-up, near profile, head turned roughly 60 degrees to "
+     "his right away from the lens, looking off camera, thoughtful. Plain plastered wall "
+     "behind, soft side light."),
+    ("15-in-polo-front-kitchen", None,
+     f"He wears {POLO}. {SITE_IN} Waist-up, straight-on at eye level, one hand resting on a "
+     "stone kitchen benchtop, easy half smile to the lens. New cabinetry behind. Even daylight."),
+    ("16-in-polo-profile-hall", None,
+     f"He wears {POLO}. {SITE_IN} Chest-up, near profile, head turned roughly 55 degrees to "
+     "his left away from the lens. Standing in a wide hallway, doorways either side. "
+     "Directional light from one end of the hall."),
+    ("17-in-polo-threequarter-stairs", None,
+     f"He wears {POLO}. {SITE_IN} Wider three-quarter length, body angled about 40 degrees to "
+     "his right, glancing back to the lens. Standing at the bottom of a timber staircase, "
+     "cardboard sheeting on the treads. Light from a stairwell window above."),
+    ("18-in-jumper-front-open", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_IN} Waist-up, straight-on at eye level, arms relaxed at "
+     "his sides, calm confident expression into the lens. Large open room behind him falling "
+     "soft. Soft frontal daylight."),
+    ("19-in-jumper-threequarter-glazing", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_IN} Chest-up, body turned about 30 degrees to his right, "
+     "head back to the lens, mid-sentence speaking expression. Standing near a full-height "
+     "glazed wall, bright daylight through the glass."),
+    ("20-in-jumper-high-hallway", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_IN} Waist-up, camera slightly above eye level looking "
+     "gently down at him, hands in pockets, relaxed half smile. Wide hallway receding behind, "
+     "shallow depth of field."),
 
-    ("02-site-vest-kitchen-threequarter", VEST, False,
-     f"He wears {VEST}. {SITE} Wider waist-up, body turned about 35 degrees to his right "
-     "in three-quarter view, head turned back to the lens, one hand resting on a stone "
-     "kitchen benchtop. New cabinetry behind him, cardboard protection on the floor. "
-     "Even overhead daylight."),
+    # ---------------- studio / office ----------------
+    ("21-st-hoodie-front-desk", None,
+     f"He wears {HOODIE}. {STUDIO} Waist-up, straight-on at eye level, seated at a timber desk "
+     "leaning slightly forward on his forearms, calm confident expression into the lens. Soft "
+     "daylight from camera-left."),
+    ("22-st-hoodie-threequarter-standing", None,
+     f"He wears {HOODIE}. {STUDIO} Waist-up, body turned about 30 degrees to his right, head "
+     "back toward the lens, slight smile. Standing against a plain matte white wall."),
+    ("23-st-hoodie-low-walking", None,
+     f"He wears {HOODIE}. {STUDIO} Three-quarter length, camera slightly below eye level, "
+     "mid-stride walking through the office, glancing toward the lens, natural not posed."),
+    ("24-st-tee-front-standing", None,
+     f"He wears {TEE}. {STUDIO} Waist-up, straight-on at eye level, standing, arms loose, warm "
+     "open expression directly into the lens. Clean uncluttered background. Soft frontal key light."),
+    ("25-st-tee-profile", None,
+     f"He wears {TEE}. {STUDIO} Chest-up, near profile, head turned roughly 55 degrees to his "
+     "left away from the lens, neutral thoughtful expression. Directional side light from the "
+     "right, soft shadow across the far cheek."),
+    ("26-st-tee-high-seated", None,
+     f"He wears {TEE}. {STUDIO} Waist-up, camera slightly above eye level looking down at him, "
+     "seated at a timber table with a notebook, looking up to the lens, easy smile."),
+    ("27-st-green-front", 'light',
+     f"He wears {JUMPER_GREEN}. {STUDIO} Waist-up, straight-on at eye level, standing, relaxed "
+     "and warm, looking directly into the lens. Clean background falling soft. Soft even key "
+     "light from the front-left."),
+    ("28-st-green-threequarter", 'light',
+     f"He wears {JUMPER_GREEN}. {STUDIO} Chest-up, body turned about 35 degrees to his left, "
+     "head turned back to the lens, mid-sentence speaking expression. Bright diffused daylight."),
+    ("29-st-navy-front-seated", None,
+     f"He wears {NAVY}. {STUDIO} Waist-up, straight-on at eye level, seated, hands resting on "
+     "the desk, attentive listening expression toward the lens. Soft even daylight."),
+    ("30-st-navy-profile-lean", None,
+     f"He wears {NAVY}. {STUDIO} Chest-up, near profile, head turned roughly 60 degrees to his "
+     "right away from the lens, leaning against the edge of a desk. Directional side light."),
 
-    ("03-site-polo-profile", POLO, False,
-     f"He wears {POLO}. {SITE} Chest-up, near profile, head turned roughly 60 degrees away "
-     "from the lens, looking off camera toward a full-height glazed wall. Bright daylight "
-     "coming through the glazing, soft wrap light on the face, cool daylight tone."),
-
-    ("04-site-jumper-hallway", BLACK_JUMPER, True,
-     f"He wears {BLACK_JUMPER}. {SITE} Waist-up, straight-on at eye level, hands relaxed at "
-     "his sides, easy half smile toward the lens. Standing in a wide hallway with long "
-     "receding depth behind him, doorways either side, cardboard floor protection running "
-     "the length of the hall. Shallow depth of field so the hallway falls soft."),
-
-    ("05-site-jumper-filming-low", BLACK_JUMPER, True,
-     f"He wears {BLACK_JUMPER}. {SITE} Three-quarter length, camera slightly below eye level "
-     "looking up at him, standing at the bottom of a timber staircase holding a phone on a "
-     "small gimbal, filming content, glancing toward the lens between takes. Cardboard "
-     "sheeting on the treads and floor. Directional light from a stairwell window above."),
-
-    # ---------- studio / office ----------
-    ("06-studio-hoodie-desk-front", HOODIE, False,
-     f"He wears {HOODIE}. {STUDIO} Waist-up, straight-on to camera at eye level, seated at a "
-     "desk, leaning slightly forward on his forearms, calm confident expression directly "
-     "into the lens. Soft daylight from a large window to camera-left."),
-
-    ("07-studio-tee-threequarter", TEE, False,
-     f"He wears {TEE}. {STUDIO} Waist-up, body turned about 30 degrees to his left in "
-     "three-quarter view, head turned back toward the lens, slight smile, arms loose. "
-     "Standing in the open studio space. Bright diffused daylight, clean soft shadows."),
-
-    ("08-studio-green-jumper-front", GREEN_JUMPER, True,
-     f"He wears {GREEN_JUMPER}. {STUDIO} Waist-up, straight-on at eye level, standing, "
-     "relaxed and warm, looking directly into the lens. Clean uncluttered background falling "
-     "soft behind him. Soft even key light from the front-left."),
-
-    ("09-studio-navy-shirt-profile", NAVY_SHIRT, False,
-     f"He wears {NAVY_SHIRT}. {STUDIO} Chest-up, near profile, head turned roughly 55 degrees "
-     "away from the lens, looking off camera, neutral thoughtful expression, leaning against "
-     "the edge of a desk. Directional side light from the right, soft shadow falling across "
-     "the far cheek."),
-
-    ("10-studio-hoodie-editing-wide", HOODIE, False,
-     f"He wears {HOODIE}. {STUDIO} Wider three-quarter length from slightly above eye level, "
-     "seated at a large monitor reviewing footage, camera gear and a tripod visible at the "
-     "edge of frame, turning to glance toward the lens. Warm ambient light plus screen glow "
-     "on the face."),
+    # ---------------- outdoor building site ----------------
+    ("31-out-vest-front-formwork", None,
+     f"He wears {VEST}. {SITE_OUT} Waist-up, straight-on to camera at eye level, looking into "
+     "the lens, speaking to camera. The formed-up bench seat is clearly visible behind his "
+     "shoulder. Bright overcast daylight, soft shadows."),
+    ("32-out-vest-threequarter", None,
+     f"He wears {VEST}. {SITE_OUT} Chest-up, body turned about 35 degrees to his right, head "
+     "back to the lens, slight smile. Formwork behind him, slightly soft. Warm morning sunlight "
+     "from camera-left."),
+    ("33-out-vest-low-beside", None,
+     f"He wears {VEST}. {SITE_OUT} Three-quarter length, camera slightly below eye level, "
+     "standing beside the plywood formwork with one hand resting on the top edge of the form, "
+     "looking to the lens. Bright daylight, blue sky above."),
+    ("34-out-vest-profile", None,
+     f"He wears {VEST}. {SITE_OUT} Chest-up, near profile, head turned roughly 60 degrees to "
+     "his left away from the lens, looking along the line of the formwork. Overcast even light."),
+    ("35-out-polo-front", None,
+     f"He wears {POLO}. {SITE_OUT} Waist-up, straight-on at eye level, arms relaxed, calm "
+     "confident expression into the lens. Curved formwork clearly behind him. Bright daylight."),
+    ("36-out-polo-profile", None,
+     f"He wears {POLO}. {SITE_OUT} Chest-up, near profile, head turned roughly 55 degrees to "
+     "his right away from the lens, thoughtful. Late afternoon side light, warm tone."),
+    ("37-out-polo-wide-gesture", None,
+     f"He wears {POLO}. {SITE_OUT} Wider three-quarter length, body angled to his left, one "
+     "hand gesturing toward the formed-up bench seat, head turned back to the lens, explaining "
+     "something. Whole form visible in frame. Bright overcast light."),
+    ("38-out-jumper-front", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, straight-on at eye level, hands in "
+     "pockets, easy half smile to the lens. Formwork behind his shoulder. Soft overcast light."),
+    ("39-out-jumper-threequarter", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_OUT} Chest-up, body turned about 40 degrees to his left, "
+     "head back to the lens, mid-sentence speaking. Golden hour side light, long soft shadows."),
+    ("40-out-jumper-high", 'dark',
+     f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, camera slightly above eye level looking "
+     "gently down at him, neutral open expression. Standing on the compacted ground with the "
+     "formwork and reinforcement mesh behind. Bright even daylight."),
 ]
 
 
@@ -124,80 +195,70 @@ def api(path, data=None):
     req = urllib.request.Request(
         f"https://api.replicate.com/v1{path}",
         data=json.dumps(data).encode() if data else None,
-        headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"},
-    )
+        headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"})
     with urllib.request.urlopen(req) as r:
         return json.load(r)
 
 
 def upload(path):
-    boundary = "----craftonsharryboundary"
+    b = "----craftonsharryv3"
     body = b"".join([
-        f'--{boundary}\r\nContent-Disposition: form-data; name="content"; '
+        f'--{b}\r\nContent-Disposition: form-data; name="content"; '
         f'filename="{os.path.basename(path)}"\r\nContent-Type: image/png\r\n\r\n'.encode(),
-        open(path, "rb").read(),
-        f"\r\n--{boundary}--\r\n".encode(),
-    ])
+        open(path, "rb").read(), f"\r\n--{b}--\r\n".encode()])
     req = urllib.request.Request(
         "https://api.replicate.com/v1/files", data=body,
         headers={"Authorization": f"Bearer {TOKEN}",
-                 "Content-Type": f"multipart/form-data; boundary={boundary}"})
+                 "Content-Type": f"multipart/form-data; boundary={b}"})
     with urllib.request.urlopen(req) as r:
         return json.load(r)["urls"]["get"]
 
 
-def run(job, face_url, logo_url):
-    slug, _wardrobe, needs_logo, scene = job
+def run(job, urls):
+    slug, logo, scene = job
     dest = os.path.join(OUT, f"{slug}.png")
     if os.path.exists(dest) and os.path.getsize(dest) > 100_000:
         print(f"  skip {slug}", flush=True)
         return slug, dest, None
 
-    refs = [face_url] + ([logo_url] if needs_logo else [])
-    note = ("\n\nThe second reference image is the Craftons logo mark. Reproduce it exactly "
-            "as shown — same shape, same proportions — small on the left breast only. Do not "
-            "enlarge it, do not repeat it, do not add any text or wordmark."
-            if needs_logo else "")
-    prompt = f"{LOCK}\n\n{scene}{note}"
+    refs = [urls["face"]]
+    prompt = f"{LOCK}\n\n{scene}"
+    if logo == "dark":
+        refs.append(urls["dark"]);  prompt += LOGO_NOTE_DARK
+    elif logo == "light":
+        refs.append(urls["light"]); prompt += LOGO_NOTE_LIGHT
 
     for attempt in range(5):
         try:
             p = api(f"/models/{MODEL}/predictions", {"input": {
-                "prompt": prompt,
-                "image_input": refs,
-                "aspect_ratio": "4:5",
-                "resolution": "2K",
-                "output_format": "png",
-                "safety_filter_level": "block_only_high",
-            }})
+                "prompt": prompt, "image_input": refs, "aspect_ratio": "4:5",
+                "resolution": "2K", "output_format": "png",
+                "safety_filter_level": "block_only_high"}})
             while p["status"] not in ("succeeded", "failed", "canceled"):
                 time.sleep(3)
                 p = api(f"/predictions/{p['id']}")
             if p["status"] != "succeeded":
                 raise RuntimeError(p.get("error") or p["status"])
-            out = p["output"]
-            urllib.request.urlretrieve(out[0] if isinstance(out, list) else out, dest)
+            o = p["output"]
+            urllib.request.urlretrieve(o[0] if isinstance(o, list) else o, dest)
             print(f"  ok   {slug}  ({os.path.getsize(dest)//1024} KB)", flush=True)
             return slug, dest, prompt
         except Exception as e:
             print(f"  retry {slug} #{attempt+1}: {e}", flush=True)
-            time.sleep(20 * (attempt + 1))
+            time.sleep(15 * (attempt + 1))
     print(f"  FAIL {slug}", flush=True)
     return slug, None, prompt
 
 
 print("uploading references...", flush=True)
-face_url, logo_url = upload(FACE_REF), upload(LOGO_REF)
+urls = {"face": upload(FACE), "dark": upload(LOCKUP_ON_DARK), "light": upload(LOCKUP_ON_LIGHT)}
 print(f"generating {len(SHOTS)} images...", flush=True)
 
-results = []
-for j in SHOTS:
-    results.append(run(j, face_url, logo_url))
-    time.sleep(8)
+with ThreadPoolExecutor(max_workers=2) as ex:
+    results = list(ex.map(lambda j: run(j, urls), SHOTS))
 
 with open(os.path.join(OUT, "manifest.json"), "w") as fh:
-    json.dump({"model": MODEL, "face_reference": FACE_REF, "logo_reference": LOGO_REF,
+    json.dump({"model": MODEL, "face_reference": FACE,
                "shots": [{"slug": s, "file": f, "prompt": p} for s, f, p in results]},
               fh, indent=2)
-
 print(f"\n{sum(1 for _, f, _ in results if f)}/{len(SHOTS)} generated -> {OUT}")

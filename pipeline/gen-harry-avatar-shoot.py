@@ -40,11 +40,15 @@ LOCK = (
 # treatment and goes on black and khaki. On the Craftons-green jumper the green
 # mark would sit green-on-green and vanish, so that one runs all-white.
 _SIZE = (
-    "Embroider the complete lockup — the four-lobe mark AND the word 'Craftons' beside "
-    "it — on his left breast. Size it generously: about 20cm wide, roughly a quarter of "
-    "the width of his chest, clearly legible, not a tiny discreet badge. Spell it exactly "
-    "'Craftons' and reproduce the letterforms and the mark faithfully from the reference. "
-    "No other branding anywhere on the garment."
+    "Embroider the complete lockup on his left breast. "
+    "LAYOUT IS CRITICAL: the lockup is HORIZONTAL — the four-lobe mark sits to the LEFT "
+    "of the word 'Craftons', side by side on one single line, sharing a baseline, exactly "
+    "as in the reference image. Never stack the mark above the word. Never show the mark "
+    "on its own without the word. "
+    "Size it generously and consistently: the whole lockup is about a quarter of the width "
+    "of his chest, clearly legible, not a tiny discreet badge and not a huge print across "
+    "the whole chest. Spell it exactly 'Craftons' and reproduce the letterforms and the "
+    "mark faithfully from the reference. No other branding anywhere on the garment."
 )
 LOGO_2COL = ("\n\nThe second reference image is the Craftons logo lockup. " + _SIZE +
              " The mark is Craftons green and the word 'Craftons' is white.")
@@ -101,7 +105,7 @@ SHOTS = [
      "area. Soft natural daylight from tall windows."),
     ("12-in-vest-threequarter-window", '2col',
      f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
-     f"{SITE_IN} Chest-up, body turned about 35 degrees to his left, head turned back to "
+     f"{SITE_IN} Chest-up, body turned about 35 degrees to his right so his branded left breast stays toward camera, head turned back to "
      "the lens, slight smile. Standing beside a tall window, soft wrap light."),
     ("13-in-vest-low-doorway", '2col',
      f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
@@ -132,7 +136,7 @@ SHOTS = [
      "his sides, calm confident expression into the lens. Large open room behind him falling "
      "soft. Soft frontal daylight."),
     ("19-in-jumper-threequarter-glazing", '2col',
-     f"He wears {JUMPER_BLACK}. {SITE_IN} Chest-up, body turned about 30 degrees to his right, "
+     f"He wears {JUMPER_BLACK}. {SITE_IN} Chest-up, body turned about 30 degrees to his right so his branded left breast stays toward camera, "
      "head back to the lens, mid-sentence speaking expression. Standing near a full-height "
      "glazed wall, bright daylight through the glass."),
     ("20-in-jumper-high-hallway", '2col',
@@ -167,7 +171,7 @@ SHOTS = [
      "and warm, looking directly into the lens. Clean background falling soft. Soft even key "
      "light from the front-left."),
     ("28-st-green-threequarter", 'white',
-     f"He wears {JUMPER_GREEN}. {STUDIO} Chest-up, body turned about 35 degrees to his left, "
+     f"He wears {JUMPER_GREEN}. {STUDIO} Chest-up, body turned about 35 degrees to his right so his branded left breast stays toward camera, "
      "head turned back to the lens, mid-sentence speaking expression. Bright diffused daylight."),
     ("29-st-navy-front-seated", None,
      f"He wears {NAVY}. {STUDIO} Waist-up, straight-on at eye level, seated, hands resting on "
@@ -209,8 +213,8 @@ SHOTS = [
      f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, straight-on at eye level, hands in "
      "pockets, easy half smile to the lens. Formwork behind his shoulder. Soft overcast light."),
     ("39-out-jumper-threequarter", '2col',
-     f"He wears {JUMPER_BLACK}. {SITE_OUT} Chest-up, body turned about 40 degrees to his left, "
-     "head back to the lens, mid-sentence speaking. Golden hour side light, long soft shadows."),
+     f"He wears {JUMPER_BLACK}. {SITE_OUT} Chest-up, body turned about 40 degrees to his right so his branded left breast stays toward camera, "
+     "head back to the lens, mid-sentence speaking. Golden hour side light, long soft shadows; the jumper still reads clearly black, not brown or warm-tinted."),
     ("40-out-jumper-high", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, camera slightly above eye level looking "
      "gently down at him, neutral open expression. Standing on the compacted ground with the "

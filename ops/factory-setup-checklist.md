@@ -75,6 +75,8 @@ _Structure is complete and sound. This is all fit-out._
 ## 10. Tool area _(the little space outside the office)_
 
 - [ ] `P2` Bench
+- [ ] `P2` **Build the tool shop cabinetry** — **440mm deep × 1800–1820mm long × 1000mm high**
+  - _Length to confirm: 1800 was said first, then 1820. Pick one before cutting._
 - [ ] `P2` Tool holders on the wall
 
 ## 11. Decide what to do with

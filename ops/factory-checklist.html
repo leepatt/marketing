@@ -444,6 +444,42 @@
   .tag.p3 { color: var(--fg-soft); border-color: var(--border); }
   .tag.dl { color: var(--flag); border-color: var(--flag); background: var(--flag-bg); }
 
+  /* ── spec block: dimensions are a compliance/spec callout, so ALL CAPS
+        in the condensed face is the sanctioned treatment ──────────────── */
+  .spec {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2) var(--sp-5);
+    align-items: baseline;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: var(--sp-2);
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--r-sm);
+  }
+  .spec .pair { display: flex; flex-direction: column; gap: 3px; }
+  .spec .k {
+    font-family: var(--font-cond);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--fg-soft);
+  }
+  .spec .v {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    white-space: nowrap;
+  }
+
   li.item.done .text,
   li.item.done .note { color: var(--fg-soft); text-decoration: line-through; text-decoration-thickness: 1px; }
   li.item.done .tags { opacity: 0.5; }
@@ -628,6 +664,14 @@
     ]},
     { title: "Tool area", note: "The little space on the outside of the office.", items: [
       { t: "Bench", p: "P2" },
+      { t: "<b>Build the tool shop cabinetry</b>",
+        n: "Length still to confirm — 1800 was said first, then 1820. Pick one before cutting.",
+        spec: [
+          { k: "Depth",  v: "440 mm" },
+          { k: "Length", v: "1800 – 1820 mm" },
+          { k: "Height", v: "1000 mm" }
+        ],
+        p: "P2" },
       { t: "Tool holders on the wall", p: "P2" }
     ]},
     { title: "Still to decide", items: [
@@ -713,6 +757,25 @@
         n.className = "note";
         n.textContent = item.n;
         bodyEl.appendChild(n);
+      }
+
+      if (item.spec) {
+        var spec = document.createElement("div");
+        spec.className = "spec";
+        item.spec.forEach(function (pair) {
+          var wrap = document.createElement("div");
+          wrap.className = "pair";
+          var k = document.createElement("span");
+          k.className = "k";
+          k.textContent = pair.k;
+          var v = document.createElement("span");
+          v.className = "v";
+          v.textContent = pair.v;
+          wrap.appendChild(k);
+          wrap.appendChild(v);
+          spec.appendChild(wrap);
+        });
+        bodyEl.appendChild(spec);
       }
 
       if (!item.sub) {

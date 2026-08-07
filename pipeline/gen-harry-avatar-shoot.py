@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-"""Harry (Craftons head of marketing) — HeyGen photo-avatar training set, batch 3.
+"""Harry (Craftons head of marketing) — HeyGen photo-avatar training set.
 
-30 frames: 10 site interior, 10 studio/office, 10 outdoor building site with a
-concrete bench seat formed up ready to pour. Identity locked verbatim on every
-prompt; only wardrobe, set, angle and framing move.
+Identity is locked verbatim on every prompt so the face cannot drift between
+frames; only wardrobe, set, angle and framing move. That consistency is the
+whole point of the set.
 
-    REPLICATE_API_TOKEN=... python3 gen_harry_v3.py <face> <lockup-dark> <lockup-light> <out>
+    REPLICATE_API_TOKEN=... python3 gen-harry-avatar-shoot.py \
+        <face-ref.png> <lockup-2col.png> <lockup-white.png> <out-dir>
 
-Branded garments carry the full Craftons lockup (mark + "Craftons" wordmark in
-Aeonik), passed in as a reference image rather than left to the model to invent.
-Two workers — five 429s, one is needlessly slow. Existing slugs are skipped.
+Branded garments carry the real Craftons lockup, passed in as a reference image
+rather than left to the model to invent — render it from the app repo's
+craftons-logo.svg (see build_logo_refs.py alongside this file).
+
+Two workers: a five-wide fan-out 429s on this account. Slugs already written to
+the out-dir are skipped, so a killed or credit-starved run resumes by
+re-invoking the same command.
 """
 import json, os, sys, time, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 TOKEN = os.environ["REPLICATE_API_TOKEN"]
 MODEL = "google/nano-banana-pro"
-FACE, LOCKUP_ON_DARK, LOCKUP_ON_LIGHT, OUT = sys.argv[1:5]
+FACE, LOCKUP_2COL, LOCKUP_WHITE, OUT = sys.argv[1:5]
 os.makedirs(OUT, exist_ok=True)
 
 LOCK = (
@@ -30,19 +35,41 @@ LOCK = (
     "not CGI, not illustrated. Absolutely no suit, no blazer, no sport coat, no tie."
 )
 
-# Garments
+# --- the logo brief -------------------------------------------------------
+# Two colourways. Two-colour (green mark + white wordmark) is the house
+# treatment and goes on black and khaki. On the Craftons-green jumper the green
+# mark would sit green-on-green and vanish, so that one runs all-white.
+_SIZE = (
+    "Embroider the complete lockup — the four-lobe mark AND the word 'Craftons' beside "
+    "it — on his left breast. Size it generously: about 20cm wide, roughly a quarter of "
+    "the width of his chest, clearly legible, not a tiny discreet badge. Spell it exactly "
+    "'Craftons' and reproduce the letterforms and the mark faithfully from the reference. "
+    "No other branding anywhere on the garment."
+)
+LOGO_2COL = ("\n\nThe second reference image is the Craftons logo lockup. " + _SIZE +
+             " The mark is Craftons green and the word 'Craftons' is white.")
+LOGO_WHITE = ("\n\nThe second reference image is the Craftons logo lockup. " + _SIZE +
+              " Render the mark and the word both in white, so they read against the "
+              "dark green fabric.")
+
+# --- garments -------------------------------------------------------------
 VEST = ("a black quilted puffer vest, unzipped, over a short-sleeved khaki work shirt "
         "with the collar open")
 POLO = "a plain black short-sleeved polo shirt, no logo or branding of any kind"
 JUMPER_BLACK = "a plain black crew-neck jumper"
-HOODIE = "a plain black hoodie with blue denim jeans, no logo or branding of any kind"
-TEE = "a plain white crew-neck t-shirt with straight-leg trousers, no logo or print"
 JUMPER_GREEN = ("a crew-neck jumper in deep Craftons forest green (hex #194431), worn with "
                 "plain trousers")
-NAVY = ("a thick heavyweight navy overshirt, buttoned, over a plain tee, with plain "
-        "trousers, no logo or branding")
+HOODIE = ("a plain black hoodie with straight-leg blue denim jeans — the jeans are a "
+          "relaxed straight cut, loose through the thigh with a straight leg to the hem, "
+          "definitely not skinny, not tapered and not tight. No logo or branding")
+TEE = ("a plain white crew-neck t-shirt in a boxy relaxed cut — roomy through the chest "
+       "and body, slightly wide and square at the shoulder, sleeves loose on the upper "
+       "arm, hanging straight rather than clinging. Not fitted, not tight, not muscle-fit. "
+       "Worn with relaxed straight-leg trousers. No logo or print")
+NAVY = ("a thick heavyweight navy overshirt, buttoned, over a plain tee, with relaxed "
+        "straight-leg trousers, no logo or branding")
 
-# Sets
+# --- sets -----------------------------------------------------------------
 SITE_IN = (
     "The setting is the interior of a large near-finished high-end Australian home: "
     "freshly painted plaster walls, premium joinery installed, large windows with soft "
@@ -64,35 +91,29 @@ SITE_OUT = (
     "ground around it. Part-built landscaping and a rendered house wall further behind."
 )
 
-LOGO_NOTE_DARK = (
-    "\n\nThe second reference image is the Craftons logo lockup: the green four-lobe mark "
-    "followed by the word 'Craftons' set in the brand's geometric sans-serif. Embroider "
-    "that complete lockup — mark AND the word 'Craftons' beside it — small on his left "
-    "breast, about 9cm wide, wordmark in white with the mark in green, spelled exactly "
-    "'Craftons'. Reproduce the letterforms and the mark faithfully. No other branding "
-    "anywhere on the garment."
-)
-LOGO_NOTE_LIGHT = LOGO_NOTE_DARK.replace(
-    "wordmark in white with the mark in green", "wordmark and mark both in white")
-
-# (slug, needs_logo: None|'dark'|'light', prompt)
+# (slug, logo: None | '2col' | 'white', prompt)
 SHOTS = [
-    # ---------------- site interior ----------------
-    ("11-in-vest-front-living", None,
-     f"He wears {VEST}. {SITE_IN} Waist-up, straight-on to camera at eye level, looking "
-     "directly into the lens, speaking with an open friendly expression. Standing in a "
-     "large open living area. Soft natural daylight from tall windows."),
-    ("12-in-vest-threequarter-window", None,
-     f"He wears {VEST}. {SITE_IN} Chest-up, body turned about 35 degrees to his left, head "
-     "turned back to the lens, slight smile. Standing beside a tall window, soft wrap light."),
-    ("13-in-vest-low-doorway", None,
-     f"He wears {VEST}. {SITE_IN} Three-quarter length, camera slightly below eye level, "
-     "standing in a wide doorway with rooms visible beyond, hands relaxed, neutral expression "
-     "toward the lens."),
-    ("14-in-vest-profile-wall", None,
-     f"He wears {VEST}. {SITE_IN} Chest-up, near profile, head turned roughly 60 degrees to "
-     "his right away from the lens, looking off camera, thoughtful. Plain plastered wall "
-     "behind, soft side light."),
+    # ---------------- site interior: vest, now branded ----------------
+    ("11-in-vest-front-living", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_IN} Waist-up, straight-on to camera at eye level, looking directly into the "
+     "lens, speaking with an open friendly expression. Standing in a large open living "
+     "area. Soft natural daylight from tall windows."),
+    ("12-in-vest-threequarter-window", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_IN} Chest-up, body turned about 35 degrees to his left, head turned back to "
+     "the lens, slight smile. Standing beside a tall window, soft wrap light."),
+    ("13-in-vest-low-doorway", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_IN} Three-quarter length, camera slightly below eye level, standing in a wide "
+     "doorway with rooms visible beyond, hands relaxed, neutral expression toward the lens."),
+    ("14-in-vest-profile-wall", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_IN} Chest-up, near profile, head turned roughly 60 degrees to his right away "
+     "from the lens, looking off camera, thoughtful. Plain plastered wall behind, soft "
+     "side light."),
+
+    # ---------------- site interior: polo (unbranded, unchanged) ----------------
     ("15-in-polo-front-kitchen", None,
      f"He wears {POLO}. {SITE_IN} Waist-up, straight-on at eye level, one hand resting on a "
      "stone kitchen benchtop, easy half smile to the lens. New cabinetry behind. Even daylight."),
@@ -104,20 +125,22 @@ SHOTS = [
      f"He wears {POLO}. {SITE_IN} Wider three-quarter length, body angled about 40 degrees to "
      "his right, glancing back to the lens. Standing at the bottom of a timber staircase, "
      "cardboard sheeting on the treads. Light from a stairwell window above."),
-    ("18-in-jumper-front-open", 'dark',
+
+    # ---------------- site interior: black jumper ----------------
+    ("18-in-jumper-front-open", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_IN} Waist-up, straight-on at eye level, arms relaxed at "
      "his sides, calm confident expression into the lens. Large open room behind him falling "
      "soft. Soft frontal daylight."),
-    ("19-in-jumper-threequarter-glazing", 'dark',
+    ("19-in-jumper-threequarter-glazing", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_IN} Chest-up, body turned about 30 degrees to his right, "
      "head back to the lens, mid-sentence speaking expression. Standing near a full-height "
      "glazed wall, bright daylight through the glass."),
-    ("20-in-jumper-high-hallway", 'dark',
+    ("20-in-jumper-high-hallway", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_IN} Waist-up, camera slightly above eye level looking "
      "gently down at him, hands in pockets, relaxed half smile. Wide hallway receding behind, "
      "shallow depth of field."),
 
-    # ---------------- studio / office ----------------
+    # ---------------- studio ----------------
     ("21-st-hoodie-front-desk", None,
      f"He wears {HOODIE}. {STUDIO} Waist-up, straight-on at eye level, seated at a timber desk "
      "leaning slightly forward on his forearms, calm confident expression into the lens. Soft "
@@ -127,7 +150,8 @@ SHOTS = [
      "back toward the lens, slight smile. Standing against a plain matte white wall."),
     ("23-st-hoodie-low-walking", None,
      f"He wears {HOODIE}. {STUDIO} Three-quarter length, camera slightly below eye level, "
-     "mid-stride walking through the office, glancing toward the lens, natural not posed."),
+     "mid-stride walking through the office, glancing toward the lens, natural not posed. "
+     "The straight-leg jeans hang loose and break cleanly over the shoe."),
     ("24-st-tee-front-standing", None,
      f"He wears {TEE}. {STUDIO} Waist-up, straight-on at eye level, standing, arms loose, warm "
      "open expression directly into the lens. Clean uncluttered background. Soft frontal key light."),
@@ -138,11 +162,11 @@ SHOTS = [
     ("26-st-tee-high-seated", None,
      f"He wears {TEE}. {STUDIO} Waist-up, camera slightly above eye level looking down at him, "
      "seated at a timber table with a notebook, looking up to the lens, easy smile."),
-    ("27-st-green-front", 'light',
+    ("27-st-green-front", 'white',
      f"He wears {JUMPER_GREEN}. {STUDIO} Waist-up, straight-on at eye level, standing, relaxed "
      "and warm, looking directly into the lens. Clean background falling soft. Soft even key "
      "light from the front-left."),
-    ("28-st-green-threequarter", 'light',
+    ("28-st-green-threequarter", 'white',
      f"He wears {JUMPER_GREEN}. {STUDIO} Chest-up, body turned about 35 degrees to his left, "
      "head turned back to the lens, mid-sentence speaking expression. Bright diffused daylight."),
     ("29-st-navy-front-seated", None,
@@ -153,21 +177,24 @@ SHOTS = [
      "right away from the lens, leaning against the edge of a desk. Directional side light."),
 
     # ---------------- outdoor building site ----------------
-    ("31-out-vest-front-formwork", None,
-     f"He wears {VEST}. {SITE_OUT} Waist-up, straight-on to camera at eye level, looking into "
-     "the lens, speaking to camera. The formed-up bench seat is clearly visible behind his "
-     "shoulder. Bright overcast daylight, soft shadows."),
-    ("32-out-vest-threequarter", None,
-     f"He wears {VEST}. {SITE_OUT} Chest-up, body turned about 35 degrees to his right, head "
-     "back to the lens, slight smile. Formwork behind him, slightly soft. Warm morning sunlight "
-     "from camera-left."),
-    ("33-out-vest-low-beside", None,
-     f"He wears {VEST}. {SITE_OUT} Three-quarter length, camera slightly below eye level, "
-     "standing beside the plywood formwork with one hand resting on the top edge of the form, "
-     "looking to the lens. Bright daylight, blue sky above."),
-    ("34-out-vest-profile", None,
-     f"He wears {VEST}. {SITE_OUT} Chest-up, near profile, head turned roughly 60 degrees to "
-     "his left away from the lens, looking along the line of the formwork. Overcast even light."),
+    ("31-out-vest-front-formwork", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_OUT} Waist-up, straight-on to camera at eye level, looking into the lens, "
+     "speaking to camera. The formed-up bench seat is clearly visible behind his shoulder. "
+     "Bright overcast daylight, soft shadows."),
+    ("32-out-vest-threequarter", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_OUT} Chest-up, body turned about 35 degrees to his right, head back to the lens, "
+     "slight smile. Formwork behind him, slightly soft. Warm morning sunlight from camera-left."),
+    ("33-out-vest-low-beside", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_OUT} Three-quarter length, camera slightly below eye level, standing beside the "
+     "plywood formwork with one hand resting on the top edge of the form, looking to the lens. "
+     "Bright daylight, blue sky above."),
+    ("34-out-vest-profile", '2col',
+     f"He wears {VEST}, with the Craftons logo embroidered on the left breast of the vest. "
+     f"{SITE_OUT} Chest-up, near profile, head turned roughly 60 degrees to his left away from "
+     "the lens, looking along the line of the formwork. Overcast even light."),
     ("35-out-polo-front", None,
      f"He wears {POLO}. {SITE_OUT} Waist-up, straight-on at eye level, arms relaxed, calm "
      "confident expression into the lens. Curved formwork clearly behind him. Bright daylight."),
@@ -178,17 +205,22 @@ SHOTS = [
      f"He wears {POLO}. {SITE_OUT} Wider three-quarter length, body angled to his left, one "
      "hand gesturing toward the formed-up bench seat, head turned back to the lens, explaining "
      "something. Whole form visible in frame. Bright overcast light."),
-    ("38-out-jumper-front", 'dark',
+    ("38-out-jumper-front", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, straight-on at eye level, hands in "
      "pockets, easy half smile to the lens. Formwork behind his shoulder. Soft overcast light."),
-    ("39-out-jumper-threequarter", 'dark',
+    ("39-out-jumper-threequarter", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_OUT} Chest-up, body turned about 40 degrees to his left, "
      "head back to the lens, mid-sentence speaking. Golden hour side light, long soft shadows."),
-    ("40-out-jumper-high", 'dark',
+    ("40-out-jumper-high", '2col',
      f"He wears {JUMPER_BLACK}. {SITE_OUT} Waist-up, camera slightly above eye level looking "
      "gently down at him, neutral open expression. Standing on the compacted ground with the "
      "formwork and reinforcement mesh behind. Bright even daylight."),
 ]
+
+# Optional: pass a comma-separated slug-prefix filter as argv[5] to re-shoot a subset.
+if len(sys.argv) > 5:
+    keep = tuple(sys.argv[5].split(","))
+    SHOTS = [s for s in SHOTS if s[0].split("-")[0] in keep]
 
 
 def api(path, data=None):
@@ -201,7 +233,7 @@ def api(path, data=None):
 
 
 def upload(path):
-    b = "----craftonsharryv3"
+    b = "----craftonsharry"
     body = b"".join([
         f'--{b}\r\nContent-Disposition: form-data; name="content"; '
         f'filename="{os.path.basename(path)}"\r\nContent-Type: image/png\r\n\r\n'.encode(),
@@ -223,10 +255,10 @@ def run(job, urls):
 
     refs = [urls["face"]]
     prompt = f"{LOCK}\n\n{scene}"
-    if logo == "dark":
-        refs.append(urls["dark"]);  prompt += LOGO_NOTE_DARK
-    elif logo == "light":
-        refs.append(urls["light"]); prompt += LOGO_NOTE_LIGHT
+    if logo == "2col":
+        refs.append(urls["2col"]);  prompt += LOGO_2COL
+    elif logo == "white":
+        refs.append(urls["white"]); prompt += LOGO_WHITE
 
     for attempt in range(5):
         try:
@@ -251,7 +283,7 @@ def run(job, urls):
 
 
 print("uploading references...", flush=True)
-urls = {"face": upload(FACE), "dark": upload(LOCKUP_ON_DARK), "light": upload(LOCKUP_ON_LIGHT)}
+urls = {"face": upload(FACE), "2col": upload(LOCKUP_2COL), "white": upload(LOCKUP_WHITE)}
 print(f"generating {len(SHOTS)} images...", flush=True)
 
 with ThreadPoolExecutor(max_workers=2) as ex:

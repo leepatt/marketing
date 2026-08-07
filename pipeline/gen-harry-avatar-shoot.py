@@ -6,7 +6,11 @@ frames; only wardrobe, set, angle and framing move. That consistency is the
 whole point of the set.
 
     REPLICATE_API_TOKEN=... python3 gen-harry-avatar-shoot.py \
-        <face-ref.png> <lockup-2col.png> <lockup-white.png> <out-dir>
+        <face-ref.png> <lockup-2col.png> <lockup-white.png> <exemplar.png> <out-dir>
+
+<exemplar.png> is an approved frame showing the logo at the correct size and
+placement. Branded shots receive it as a third reference and are told to copy
+its scale — description alone did not hold it steady across runs.
 
 Branded garments carry the real Craftons lockup, passed in as a reference image
 rather than left to the model to invent — render it from the app repo's
@@ -21,7 +25,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 TOKEN = os.environ["REPLICATE_API_TOKEN"]
 MODEL = "google/nano-banana-pro"
-FACE, LOCKUP_2COL, LOCKUP_WHITE, OUT = sys.argv[1:5]
+FACE, LOCKUP_2COL, LOCKUP_WHITE, EXEMPLAR, OUT = sys.argv[1:6]
 os.makedirs(OUT, exist_ok=True)
 
 LOCK = (
@@ -39,22 +43,30 @@ LOCK = (
 # Two colourways. Two-colour (green mark + white wordmark) is the house
 # treatment and goes on black and khaki. On the Craftons-green jumper the green
 # mark would sit green-on-green and vanish, so that one runs all-white.
+# Scale is the part prompt adjectives could not hold — successive runs swung from
+# a discreet badge to a chest-wide print off the same words. So the brief carries
+# a worked example: an approved frame goes in as a third reference and the model
+# is told to copy its scale and placement rather than interpret a description.
 _SIZE = (
-    "Embroider the complete lockup on his left breast. "
+    "Embroider the complete lockup on his left breast, high on the chest just below the "
+    "collarbone, offset to his left — never centred across the middle of the chest. "
     "LAYOUT IS CRITICAL: the lockup is HORIZONTAL — the four-lobe mark sits to the LEFT "
-    "of the word 'Craftons', side by side on one single line, sharing a baseline, exactly "
-    "as in the reference image. Never stack the mark above the word. Never show the mark "
-    "on its own without the word. "
-    "Size it generously and consistently: the whole lockup is about a quarter of the width "
-    "of his chest, clearly legible, not a tiny discreet badge and not a huge print across "
-    "the whole chest. Spell it exactly 'Craftons' and reproduce the letterforms and the "
-    "mark faithfully from the reference. No other branding anywhere on the garment."
+    "of the word 'Craftons', side by side on one single line, sharing a baseline. Never "
+    "stack the mark above the word. Never show the mark on its own without the word. "
+    "SIZE IS CRITICAL: the THIRD reference image shows this same man wearing the logo at "
+    "exactly the correct size and position. Copy that scale and placement precisely. The "
+    "whole lockup spans about one sixth of the image width and the mark alone is about "
+    "one thirty-fifth of it — a modest chest badge, roughly 10cm wide on the real garment. "
+    "It must not be a large print spanning the chest. "
+    "Spell it exactly 'Craftons' and reproduce the letterforms and the mark faithfully. "
+    "No other branding anywhere on the garment."
 )
-LOGO_2COL = ("\n\nThe second reference image is the Craftons logo lockup. " + _SIZE +
+LOGO_2COL = ("\n\nThe second reference image is the Craftons logo artwork. " + _SIZE +
              " The mark is Craftons green and the word 'Craftons' is white.")
-LOGO_WHITE = ("\n\nThe second reference image is the Craftons logo lockup. " + _SIZE +
+LOGO_WHITE = ("\n\nThe second reference image is the Craftons logo artwork. " + _SIZE +
               " Render the mark and the word both in white, so they read against the "
-              "dark green fabric.")
+              "dark green fabric. Match the third reference for size and placement only, "
+              "not for colour.")
 
 # --- garments -------------------------------------------------------------
 VEST = ("a black quilted puffer vest, unzipped, over a short-sleeved khaki work shirt "
@@ -221,9 +233,9 @@ SHOTS = [
      "formwork and reinforcement mesh behind. Bright even daylight."),
 ]
 
-# Optional: pass a comma-separated slug-prefix filter as argv[5] to re-shoot a subset.
-if len(sys.argv) > 5:
-    keep = tuple(sys.argv[5].split(","))
+# Optional: pass a comma-separated slug-prefix filter as the last argument to re-shoot a subset.
+if len(sys.argv) > 6:
+    keep = tuple(sys.argv[6].split(","))
     SHOTS = [s for s in SHOTS if s[0].split("-")[0] in keep]
 
 
@@ -260,9 +272,9 @@ def run(job, urls):
     refs = [urls["face"]]
     prompt = f"{LOCK}\n\n{scene}"
     if logo == "2col":
-        refs.append(urls["2col"]);  prompt += LOGO_2COL
+        refs += [urls["2col"], urls["exemplar"]];  prompt += LOGO_2COL
     elif logo == "white":
-        refs.append(urls["white"]); prompt += LOGO_WHITE
+        refs += [urls["white"], urls["exemplar"]]; prompt += LOGO_WHITE
 
     for attempt in range(5):
         try:
@@ -287,7 +299,8 @@ def run(job, urls):
 
 
 print("uploading references...", flush=True)
-urls = {"face": upload(FACE), "2col": upload(LOCKUP_2COL), "white": upload(LOCKUP_WHITE)}
+urls = {"face": upload(FACE), "2col": upload(LOCKUP_2COL),
+        "white": upload(LOCKUP_WHITE), "exemplar": upload(EXEMPLAR)}
 print(f"generating {len(SHOTS)} images...", flush=True)
 
 with ThreadPoolExecutor(max_workers=2) as ex:

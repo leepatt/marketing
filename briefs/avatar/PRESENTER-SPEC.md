@@ -1,4 +1,4 @@
-# Craftons Presenter v1 — production state (2026-08-10)
+# Craftons Presenter v1 — production state (2026-08-10, v2 skin pass)
 
 ## Status
 - **Face LOCKED** (Lee approved 2026-08-10): "podcast guy" — blue-grey eyes, dark swept-back hair,
@@ -32,3 +32,10 @@ green crewneck (PLAIN for training) · navy wool overshirt
    session transcript) — use them as background plates
 6. Full guide: `briefs/heygen-avatar-build-guide.md` + artifact
    https://claude.ai/code/artifact/bace1853-75f1-4ce4-91d3-0182aa99296c
+
+## v2 pass (2026-08-10, later)
+- Lee's edits: green jumper = smooth cotton NOT wool (5 frames regenerated from ref-07 with cotton
+  language); natural unretouched skin on ALL frames.
+- Method that works: face-patch edit at native res, feather-composited back (full-frame edits DRIFT
+  IDENTITY — never edit skin at full frame). 4 frames needed a redness tone-down second pass.
+- Anchors in this folder are the v2 versions. Set delivered as craftons-presenter-v2_training-set.zip.

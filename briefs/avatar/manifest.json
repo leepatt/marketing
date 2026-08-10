@@ -1,0 +1,227 @@
+[
+ {
+  "file": "set-06-workkit-straight-neutral.png",
+  "outfit": "workkit",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "neutral",
+  "scene": "studio",
+  "ok": true
+ },
+ {
+  "file": "set-07-workkit-straight-talking.png",
+  "outfit": "workkit",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "talking",
+  "scene": "studio",
+  "ok": true
+ },
+ {
+  "file": "set-08-workkit-slight-smile.png",
+  "outfit": "workkit",
+  "angle": "slight",
+  "frame": "closeup",
+  "expr": "smile",
+  "scene": "unfinished",
+  "ok": true
+ },
+ {
+  "file": "set-09-workkit-slight-serious.png",
+  "outfit": "workkit",
+  "angle": "slight",
+  "frame": "half",
+  "expr": "serious",
+  "scene": "office",
+  "ok": true
+ },
+ {
+  "file": "set-10-workkit-threeq-neutral.png",
+  "outfit": "workkit",
+  "angle": "threeq",
+  "frame": "closeup",
+  "expr": "neutral",
+  "scene": "overcast",
+  "ok": true
+ },
+ {
+  "file": "set-11-workkit-threeq-listen.png",
+  "outfit": "workkit",
+  "angle": "threeq",
+  "frame": "half",
+  "expr": "listen",
+  "scene": "unfinished",
+  "ok": true
+ },
+ {
+  "file": "set-12-workkit-tiltup-neutral.png",
+  "outfit": "workkit",
+  "angle": "tiltup",
+  "frame": "half",
+  "expr": "neutral",
+  "scene": "studio",
+  "ok": true
+ },
+ {
+  "file": "set-13-workkit-straight-smile.png",
+  "outfit": "workkit",
+  "angle": "straight",
+  "frame": "wide",
+  "expr": "smile",
+  "scene": "unfinished",
+  "ok": true
+ },
+ {
+  "file": "set-14-khaki-straight-talking.png",
+  "outfit": "khaki",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "talking",
+  "scene": "office",
+  "ok": true
+ },
+ {
+  "file": "set-15-khaki-slight-neutral.png",
+  "outfit": "khaki",
+  "angle": "slight",
+  "frame": "half",
+  "expr": "neutral",
+  "scene": "overcast",
+  "ok": true
+ },
+ {
+  "file": "set-16-hoodie-straight-smile.png",
+  "outfit": "hoodie",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "smile",
+  "scene": "homeoffice",
+  "ok": true
+ },
+ {
+  "file": "set-17-hoodie-threeq-serious.png",
+  "outfit": "hoodie",
+  "angle": "threeq",
+  "frame": "closeup",
+  "expr": "serious",
+  "scene": "darkwall",
+  "ok": true
+ },
+ {
+  "file": "set-18-hoodie-slight-listen.png",
+  "outfit": "hoodie",
+  "angle": "slight",
+  "frame": "half",
+  "expr": "listen",
+  "scene": "homeoffice",
+  "ok": true
+ },
+ {
+  "file": "set-19-whitetee-straight-neutral.png",
+  "outfit": "whitetee",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "neutral",
+  "scene": "studio",
+  "ok": true
+ },
+ {
+  "file": "set-20-whitetee-slight-talking.png",
+  "outfit": "whitetee",
+  "angle": "slight",
+  "frame": "closeup",
+  "expr": "talking",
+  "scene": "homeoffice",
+  "ok": true
+ },
+ {
+  "file": "set-21-whitetee-threeq-smile.png",
+  "outfit": "whitetee",
+  "angle": "threeq",
+  "frame": "half",
+  "expr": "smile",
+  "scene": "overcast",
+  "ok": true
+ },
+ {
+  "file": "set-22-whitetee-tiltdown-neutral.png",
+  "outfit": "whitetee",
+  "angle": "tiltdown",
+  "frame": "half",
+  "expr": "neutral",
+  "scene": "office",
+  "ok": true
+ },
+ {
+  "file": "set-23-greencrew-straight-smile.png",
+  "outfit": "greencrew",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "smile",
+  "scene": "office",
+  "ok": true
+ },
+ {
+  "file": "set-24-greencrew-slight-neutral.png",
+  "outfit": "greencrew",
+  "angle": "slight",
+  "frame": "closeup",
+  "expr": "neutral",
+  "scene": "darkwall",
+  "ok": true
+ },
+ {
+  "file": "set-25-greencrew-straight-talking.png",
+  "outfit": "greencrew",
+  "angle": "straight",
+  "frame": "half",
+  "expr": "talking",
+  "scene": "homeoffice",
+  "ok": true
+ },
+ {
+  "file": "set-26-greencrew-threeq-listen.png",
+  "outfit": "greencrew",
+  "angle": "threeq",
+  "frame": "wide",
+  "expr": "listen",
+  "scene": "office",
+  "ok": true
+ },
+ {
+  "file": "set-27-navy-straight-neutral.png",
+  "outfit": "navy",
+  "angle": "straight",
+  "frame": "closeup",
+  "expr": "neutral",
+  "scene": "overcast",
+  "ok": true
+ },
+ {
+  "file": "set-28-navy-slight-serious.png",
+  "outfit": "navy",
+  "angle": "slight",
+  "frame": "closeup",
+  "expr": "serious",
+  "scene": "darkwall",
+  "ok": true
+ },
+ {
+  "file": "set-29-navy-straight-smile.png",
+  "outfit": "navy",
+  "angle": "straight",
+  "frame": "half",
+  "expr": "smile",
+  "scene": "homeoffice",
+  "ok": true
+ },
+ {
+  "file": "set-30-navy-slight-serious.png",
+  "outfit": "navy",
+  "angle": "slight",
+  "frame": "wide",
+  "expr": "serious",
+  "scene": "studio",
+  "ok": true
+ }
+]

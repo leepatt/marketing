@@ -1,0 +1,279 @@
+{
+ "results": [
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-06-workkit-straight-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Skin slightly over-retouched/smooth in a studio-lighting way but within tolerance; tiny dark speck on right shoulder of vest (looks like lint, not a garbled object). Ears, hair and beard clean.",
+   "verdict": "keep",
+   "notes": "Straight-on neutral, closed mouth, no teeth. Nose bridge, jawline, eye spacing, hairline sweep and beard density all match ground truth. Plain grey studio background, no hands, no text."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-07-workkit-straight-talking.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Upper teeth slightly uniform/veneer-like but individually defined and plausible for a mid-speech frame; no merged or extra teeth. Otherwise clean.",
+   "verdict": "keep",
+   "notes": "Filename encodes 'talking' \u2014 slightly open mid-speech mouth with visible upper teeth is the intended expression here, not a fault. Identity matches ground truth on nose, jaw, blue-grey eyes, hairline and beard pattern. Grey studio background, no hands, no logos or text."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-08-workkit-slight-smile.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Closed-mouth slight smile, no teeth \u2014 correct for filename. Strong identity match; this frame is closest in lighting and mood to the ground-truth reference. Background is a bright empty interior with a blurred window, no construction elements. No hands visible, no text anywhere."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-09-workkit-slight-serious.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Grey at the temples/sideburns is noticeably heavier than the ground truth and the other four frames, reading a few years older; a few small dark moles/specks on the bare right forearm; blurred dark object (office chair) in background is soft but not garbled.",
+   "verdict": "borderline",
+   "notes": "Bone structure, nose, eye spacing and beard pattern do match the ground truth, but the amplified temple grey creates an age/colour drift versus the rest of the set \u2014 inconsistent training signal for a face model. Fixable with a regenerate or a hair-colour touch-up. Expression is a closed-mouth serious look (correct), background is an interior hallway (no site/formwork), no hands fully visible, no text or logos."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-10-workkit-threeq-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Three-quarter body angle with face to camera, closed neutral mouth \u2014 correct for filename. Identity matches ground truth across nose, jaw, eyes and beard; grey flecking at temples is present but consistent with the reference. Interior wall plus window background, no hands, no logos or text."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-11-workkit-threeq-listen.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none \u2014 hair wave slightly heavier than ground truth but within range; skin mildly smoothed",
+   "verdict": "keep",
+   "notes": "Three-quarter pose, closed-mouth attentive expression matches 'listen'. Nose, jaw, eye spacing, hairline and beard pattern all match ground truth. Plain plastered interior with window, no text or logos, hands out of frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-12-workkit-tiltup-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none significant \u2014 eyes read a touch lighter grey-green than ground truth but still blue-grey family",
+   "verdict": "keep",
+   "notes": "Neutral grey studio backdrop, straight-on framing. Closed mouth, no teeth \u2014 matches 'neutral'. Identity flick-test passes on all points. Note: no actual tilt-up in the pose despite filename, but expression and all QC gates pass."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-13-workkit-straight-smile.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Dark smudge/stain marks on the vest near the zipper (mid-torso) read as garbled paint marks; face occupies a small portion of frame so identity detail is lower resolution",
+   "verdict": "borderline",
+   "notes": "Closed-lip smile, no teeth \u2014 correct for 'smile'. Identity matches on flick-test but the wider full-body crop gives the face model less facial detail, and the vest smudges are a minor generation artifact. Fixable by cropping tighter or cleaning the vest; usable but weakest of the set."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-14-khaki-straight-talking.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Upper teeth slightly soft/low-detail but plausible; no warping",
+   "verdict": "keep",
+   "notes": "Mouth slightly open mid-speech with upper teeth visible \u2014 correct for 'talking' per spec. Identity matches ground truth on nose, jaw, eye spacing, beard. Blurred office interior with plant and window, no text/logos, hands out of frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-15-khaki-slight-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Slightly more grey at the temples than ground truth; small natural-looking mark on forearm \u2014 otherwise clean",
+   "verdict": "keep",
+   "notes": "Slight-angle pose by a window, closed mouth with faint pleasant expression \u2014 valid 'neutral'. Identity flick-test passes. Exterior visible through window is blurred rooftops only \u2014 no construction, scaffolding or machinery. No text or logos, hands out of frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-21-whitetee-threeq-smile.png",
+   "identity_match": true,
+   "expression_ok": false,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none significant; slight over-smooth sheen on t-shirt fabric",
+   "verdict": "borderline",
+   "notes": "Identity holds (nose, jaw, blue-grey eyes, hairline, beard all match). Two intent misses: filename says three-quarter but pose is straight-on, and the 'smile' shows visible teeth through a slightly open mouth \u2014 rule requires closed mouth for smile. Regenerate with closed-lip smile at true 3/4 angle. Also near-duplicate of set-22."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-22-whitetee-tiltdown-neutral.png",
+   "identity_match": true,
+   "expression_ok": false,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none significant",
+   "verdict": "borderline",
+   "notes": "Identity matches ground truth. But intended 'tiltdown-neutral' is neither: head is level/straight-on and the mouth is open in a smile with teeth visible \u2014 neutral requires closed mouth, no teeth. Also a near-duplicate of set-21 (same pose, framing, background), which adds no training diversity. Fixable by regenerating with head tilted down and lips closed."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-23-greencrew-straight-smile.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none; sweater knit texture reads slightly synthetic in places but not distracting",
+   "verdict": "keep",
+   "notes": "Strong match \u2014 nose, jawline, eye spacing, hairline sweep and beard pattern all consistent with ground truth; a touch more grey in the beard but within the ground truth's range. Closed-lip soft smile satisfies the 'smile' rule. Blurred interior with bookshelf, no legible text. No hands in frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-24-greencrew-slight-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Same man \u2014 flick-test passes on nose, jaw, eye spacing, hairline and beard. Slight head angle as intended; mouth closed, no teeth (a faint contented set to the lips, acceptable as neutral). Plain grey studio background qualifies. No hands, no logos or text. Cleanest image of the batch."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-25-greencrew-straight-talking.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "upper teeth slightly generic/uniform in the open mouth but anatomically plausible; no other issues",
+   "verdict": "keep",
+   "notes": "Identity matches ground truth. Mid-speech open mouth is the intended 'talking' expression, so it is correct here. Interior office background with blurred bookshelf and plants; book spines are unreadable, so no text violation. Hands out of frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-16-hoodie-straight-smile.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Faint etched horizontal forehead lines look slightly graphic rather than organic; beard marginally patchier on cheeks than ground truth but same growth pattern. Minor.",
+   "verdict": "keep",
+   "notes": "Same man \u2014 nose bridge, blue-grey eyes, grey-flecked temples, swept-back hair all match. Closed-mouth slight smile as intended. Blank hoodie, blurred interior with plants, no hands in frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-17-hoodie-threeq-serious.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Hair has a slightly over-glossy, synthetic specular sheen and skin is mildly airbrushed under studio light; within tolerance.",
+   "verdict": "keep",
+   "notes": "Three-quarter pose, closed mouth, serious \u2014 matches brief. Identity holds from the angle: jawline, nose profile, eye colour, beard pattern all consistent. Clean dark studio background, no hands, no text."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-18-hoodie-slight-listen.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Slight head turn, attentive closed-mouth expression \u2014 correct for 'listen'. Identity matches ground truth. Interior with timber shelving and plants, all book/object spines blurred with no legible text. No hands visible."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-19-whitetee-straight-neutral.png",
+   "identity_match": true,
+   "expression_ok": false,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Beard slightly fuller/longer than ground truth but same pattern; otherwise clean.",
+   "verdict": "borderline",
+   "notes": "Expression mismatch: filename says neutral but he is smiling with teeth visible between parted lips \u2014 fails the closed-mouth rule for 'neutral'. Everything else passes (identity solid, plain white tee, plain grey studio, hands at sides look natural though partly cropped at frame edge). Fixable by regenerating with a closed neutral mouth."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-20-whitetee-slight-talking.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none significant \u2014 book spines on the left desk stack carry faint blurred markings but nothing legible; hands slightly cropped at lower frame but anatomy and finger count look correct.",
+   "verdict": "keep",
+   "notes": "'Talking' brief met: mouth slightly open mid-speech with upper teeth visible \u2014 correct, not a fault. Identity matches ground truth. Plain white tee, tidy interior with desk, plants and window. No logos or legible text."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-26-greencrew-threeq-listen.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Digital moire/weave-pattern patches on the green sweater (left shoulder and chest read as garbled synthetic texture); hair shows more grey streaking at the crown than the ground truth; faint over-sharpened strands above the part.",
+   "verdict": "borderline",
+   "notes": "Three-quarter listening pose reads as the same man (nose, jaw, beard pattern, blue-grey eyes all consistent) and mouth is closed as required. The sweater texture artifact is the only real problem \u2014 clothing-only, so croppable/fixable, but as-is it is a visible AI tell. Also slightly greyer hair than the approved face; acceptable variance but worth noting for set consistency."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-27-navy-straight-neutral.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Strong match to ground truth: eye spacing, nose bridge and tip, hairline peak, beard density and jaw all line up. Neutral closed mouth as intended. Interior room with blurred windows, no text or logos, no hands in frame. Clean frame."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-28-navy-slight-serious.png",
+   "identity_match": false,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Over-beautified rendering: unnaturally sculpted cheekbones and jawline, lips distinctly pinker and fuller than ground truth, skin has a retouched studio-plastic finish.",
+   "verdict": "cut",
+   "notes": "Flick-test fails: the face is leaner and more chiseled than the ground truth \u2014 higher cheekbones, narrower midface, fuller pink lips \u2014 reading as a 'model-ified' different man rather than the approved face. Serious closed-mouth expression, studio background, no logos, no hands are all fine, but identity doubt alone disqualifies it for training."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-29-navy-straight-smile.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "none",
+   "verdict": "keep",
+   "notes": "Closed-mouth smile with no teeth, matching the intended expression and the ground truth's expression style. Identity holds on all landmarks: nose, jaw, eye spacing, hairline, beard pattern. Bright interior with blurred shelf and plants, no readable text, no hands visible."
+  },
+  {
+   "file": "/tmp/claude-0/-home-user-marketing/773ce88e-3c57-559a-b80c-4ea9e2bd83ef/scratchpad/set-30-navy-slight-serious.png",
+   "identity_match": true,
+   "expression_ok": true,
+   "hands_ok": true,
+   "logo_text_free": true,
+   "background_ok": true,
+   "artifacts": "Mild plastic over-smooth skin from the studio-retouch look; partially visible right hand at bottom edge is slightly waxy but anatomically normal.",
+   "verdict": "borderline",
+   "notes": "Identity passes \u2014 nose, brow, eye spacing, hairline and beard pattern all match the ground truth despite the polished studio grade; noticeably closer to the approved face than set-28. Serious closed mouth correct, plain grey studio background, no logos. Borderline only for the over-retouched skin finish, which could bias the model toward plastic texture; usable if the set needs a studio-serious frame, otherwise prefer natural-light frames."
+  }
+ ]
+}

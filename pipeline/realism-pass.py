@@ -12,6 +12,13 @@ strength: 'subtle' | 'default' | 'strong'  (default: 'default')
 Run this on the hero frame first, approve it, then use the result as the face
 reference for the rest of the shoot — every downstream frame inherits the texture
 instead of needing its own pass.
+
+Two things to know about the output. It is a re-render, not a pixel edit: the
+frame comes back within about 1% of the original across the background, which is
+re-render noise rather than drift, but it is not byte-identical. And it tends to
+drop small generator watermarks from the source image on its own — convenient,
+but check the corners rather than assume, since it is not something this prompt
+asks for or can guarantee.
 """
 import json, os, sys, time, urllib.request
 

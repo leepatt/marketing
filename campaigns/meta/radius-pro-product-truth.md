@@ -104,7 +104,7 @@ join it to a wall frame, you can extend that by 100, 200, 300 millimetres, whate
 | **Carpenters & builders** | Curved timber **wall frames** | Top and bottom plates. *"Curved walls are getting really popular in houses in Australia at the moment."* Measurements come **off the plans** → into Radius Pro → cut to site. Some **double them up** — two at top, two at bottom, to strengthen the wall |
 | **Concreters** | Curved **concrete walls** | Build the frame, add **bendy ply** to form the curved former, pour concrete inside. The joiner-block user |
 | **Landscapers** | Similar method to concreters | |
-| **Pool designers / builders** | Enquiries received; Lee thinks **set-out**, unconfirmed | Don't write copy for this until confirmed |
+| **Pool builders** | ✅ **CONFIRMED 2026-08-13: concrete formwork for round spas and freeform pools — NOT set-out** | 3 companies, 4 orders, **$3,487**, AOV **$871.75** vs site $614.67. 100% 17mm Formply + joiner blocks + split segments. **All 3 full-circle (360°) orders in the account are theirs.** Copy written → `pool-builders.md` |
 
 ✅ **"Double top and double bottom"** independently confirms the Plan Scan quote in
 `enquiry-language.md` (*"all curved 90mm stud walls. Double top and double bottom"*) and the 90mm
@@ -166,4 +166,7 @@ variants — and *that* is where the joiner-block copy goes, because it's true f
    out by hand) would do. **Highest-value outstanding answer.**
 2. **Materials:** order data shows 17mm formply dominant, then 25mm BC structural ply. Is the full
    list formply / structural ply / MDF? Anything we should *not* name?
-3. **Pool builders:** confirm what they use it for, or park it? No copy until confirmed.
+3. ~~**Pool builders:** confirm what they use it for, or park it? No copy until confirmed.~~
+   ✅ **ANSWERED 2026-08-13 from order data — it is concrete formwork, not set-out.** → `pool-builders.md`
+   Still worth asking Cronulla Pools (repeat buyer) whether the 360° circles were spas, plunge pools or
+   water features — one reply settles the single word the copy leans on.

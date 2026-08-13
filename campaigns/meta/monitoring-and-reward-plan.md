@@ -58,6 +58,79 @@ proven winner; they do not find one.
 
 ---
 
+## ⏱ When do we cut ads, and when do we touch budget?
+
+All constants read from `_meta-policy.mjs`, not from memory.
+
+| Constant | Value |
+|---|---|
+| `MIN_AGE_HOURS_BEFORE_KILL` | **72h** |
+| `MIN_SPEND_AUD_BEFORE_KILL` | **$25** per ad |
+| `MAX_KILL_FRACTION_PER_RUN` | **50%** of the batch per pass |
+| `MAX_BUDGET_INCREASE_FRACTION` | **+20%** per step |
+| `MAX_DAILY_BUDGET_AUD` | **$100/day** (Lee's hard cap) |
+| `MONTHLY_CEILING_AUD` | **$2,000** |
+| `BREAK_EVEN_CAC_AUD` | **$322.09** |
+| `TARGET_CAC_AUD` | **$178.94** |
+
+### Cutting an ad — three conditions, ALL required
+
+**≥72 hours old** AND **≥$25 spent on that ad** AND **zero results.** Never more than half the batch
+in one pass.
+
+The third condition is the one people skip. **An ad Meta chose not to serve has told us nothing — no
+data is not bad data.** At $50/day across 6 ads, Meta will concentrate quickly: two or three ads will
+clear $25 within 1–2 days while the others may never get there. Those starved ads are not losers and
+must not be cut on a spend figure they never had a chance to reach.
+
+**So: first legitimate cuts land around day 3–5**, and only for ads with real spend and no results.
+
+### Touching budget — not until CAC is known, which takes weeks
+
+A budget decision needs a **readable CAC**, and that needs roughly **10 conversions**. The arithmetic:
+
+| Daily | Monthly | Conversions/month at $322 CAC | at $179 CAC |
+|---|---|---|---|
+| $35 (coded `validation` stage) | $1,050 | ~3 | ~6 |
+| **$50 (proposed)** | **$1,500** | **~4.7** | **~8.4** |
+| $65 (`signal` stage) | $1,950 | ~6 | ~11 |
+
+**So ~10 conversions is a 4–6 week sample at $50/day.** Anyone who wants a budget answer sooner is
+asking for one the data cannot give.
+
+**The ladder, once CAC is known and at or under break-even:**
+
+```
+$50 → $60 → $72 → $86 → $100 (hard cap)
+```
+
++20% per step, **at least a week between steps.** Meta resets the learning phase on large jumps, so
+four small raises beat one big one. July's 13×-in-one-step is unreachable in code now.
+
+**Do not raise budget on a good CTR.** Raise it on CAC at or under $322, ideally under $179.
+
+### 🔴 The one signal that justifies stopping early
+
+There is a legitimate early kill, and it is not "low CTR". It is **July's exact signature**:
+
+> **Lots of cheap clicks and ZERO InitiateCheckout.**
+
+If by roughly **$300–400 of spend** the ads have produced hundreds of landing page views and **not one
+IC**, the problem is downstream of the ad — the landing page, the offer, or the product match — and
+spending on to 10 conversions will not find it. Pause and diagnose instead.
+
+Conversely **a single IC in the first few days is a genuinely good sign** at this volume, and worth more
+than any CTR number.
+
+### ⚠️ Stage-vs-plan inconsistency to settle
+
+`BUDGET_STAGES.validation` is **$35/day** ("wk 1–2 — prove tracking + creative, not performance") but
+the proposed launch is **$50/day**. That is under the $100 hard cap and the stage is config-driven, so
+it is an override rather than a violation — but it should be a conscious choice. **$50 buys a readable
+sample roughly 40% faster than $35;** $35 is the more conservative read of "prove tracking first".
+
+---
+
 ## The schedule
 
 | When | What happens | Actions permitted |

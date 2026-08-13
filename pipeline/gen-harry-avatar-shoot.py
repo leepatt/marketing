@@ -79,8 +79,11 @@ VEST = ("a black quilted puffer vest, unzipped, over a short-sleeved khaki work 
         "with the collar open")
 POLO = "a plain black short-sleeved polo shirt, no logo or branding of any kind"
 JUMPER_BLACK = "a plain black crew-neck jumper"
+JUMPER_BLACK_PLAIN = ("a plain black crew-neck jumper with no logo, no print and no branding of any kind")
 JUMPER_GREEN = ("a crew-neck jumper in deep Craftons forest green (hex #194431), worn with "
                 "plain trousers")
+JUMPER_GREEN_PLAIN = ("a crew-neck jumper in deep Craftons forest green (hex #194431) with no logo, "
+                      "no print and no branding of any kind, worn with plain trousers")
 HOODIE = ("a plain black hoodie with straight-leg blue denim jeans — the jeans are a "
           "relaxed straight cut, loose through the thigh with a straight leg to the hem, "
           "definitely not skinny, not tapered and not tight. No logo or branding")
@@ -238,6 +241,22 @@ SHOTS = [
      "gently down at him, neutral open expression. Standing on the compacted ground with the "
      "formwork and reinforcement mesh behind. Bright even daylight."),
 ]
+
+# Branding is a switch, not a rewrite. CRAFTONS_LOGOS=off strips every logo from the
+# set — garments go plain, the lockup references go unused — so an unbranded run and a
+# branded one come off the same shot list rather than diverging into two scripts.
+if os.environ.get("CRAFTONS_LOGOS", "on").lower() == "off":
+    _plain = []
+    for slug, _logo, scene in SHOTS:
+        scene = scene.replace(
+            ", with the Craftons logo embroidered on the left breast of the vest", "")
+        scene = scene.replace(JUMPER_BLACK, JUMPER_BLACK_PLAIN)
+        scene = scene.replace(JUMPER_GREEN, JUMPER_GREEN_PLAIN)
+        scene += (" His clothing is completely unbranded: no logo, no wordmark, no embroidery, "
+                  "no print, no badge and no text anywhere on any garment.")
+        _plain.append((slug, None, scene))
+    SHOTS = _plain
+    print("CRAFTONS_LOGOS=off — generating unbranded garments", flush=True)
 
 # Optional: pass a comma-separated slug-prefix filter as the last argument to re-shoot a subset.
 if len(sys.argv) > 6:

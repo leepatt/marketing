@@ -122,12 +122,15 @@ spending on to 10 conversions will not find it. Pause and diagnose instead.
 Conversely **a single IC in the first few days is a genuinely good sign** at this volume, and worth more
 than any CTR number.
 
-### ⚠️ Stage-vs-plan inconsistency to settle
+### ✅ SETTLED — $50/day, confirmed by Lee 2026-08-13
 
-`BUDGET_STAGES.validation` is **$35/day** ("wk 1–2 — prove tracking + creative, not performance") but
-the proposed launch is **$50/day**. That is under the $100 hard cap and the stage is config-driven, so
-it is an override rather than a violation — but it should be a conscious choice. **$50 buys a readable
-sample roughly 40% faster than $35;** $35 is the more conservative read of "prove tracking first".
+`BUDGET_STAGES.validation` is **$35/day** ("wk 1–2 — prove tracking + creative, not performance").
+**Lee's call: launch at $50/day.** A deliberate override of the stage default, not a violation — it sits
+under the $100 hard cap and the stage is config-driven. It buys a readable sample roughly 40% faster
+than $35 would.
+
+The +20% ladder therefore starts from $50: **$50 → $60 → $72 → $86 → $100 (hard cap)**, a week between
+steps, and only once CAC is at or under $322.
 
 ---
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate ONE Harry frame at a time, as an edit of the approved hero.
 
-    REPLICATE_API_TOKEN=... python3 harry-shoot.py <hero.png> <out-dir> <shot-number> [attempts]
+    REPLICATE_API_TOKEN=... python3 harry-shoot.py <hero.png> <out-dir> <shot-number> [attempts] [seed-offset]
 
 Shot numbers follow HARRY-SHOT-LIST.md (1-30). Default 4 attempts.
 
@@ -56,6 +56,9 @@ TOKEN = os.environ["REPLICATE_API_TOKEN"]
 MODEL = "black-forest-labs/flux-kontext-max"
 HERO, OUT, N = sys.argv[1], sys.argv[2], int(sys.argv[3])
 ATTEMPTS = int(sys.argv[4]) if len(sys.argv) > 4 else 4
+# Seeds are deterministic so a re-run reproduces the same candidates. Pass an
+# offset to explore fresh ones without paying to regenerate the known ones.
+SEED_OFFSET = int(sys.argv[5]) if len(sys.argv) > 5 else 0
 os.makedirs(OUT, exist_ok=True)
 
 # Prepended to every edit. The face clauses do the work; the texture clauses stop
@@ -232,7 +235,7 @@ BG_MIN = 25.0
 
 best = None
 for i in range(ATTEMPTS):
-    seed = 1000 + i * 137          # fixed, so a re-run reproduces the same candidates
+    seed = 1000 + (i + SEED_OFFSET) * 137
     tmp = os.path.join(tmpdir, f"{N:02d}-seed{seed}.png")
     try:
         generate(seed, tmp)

@@ -24,12 +24,18 @@ for n in $(seq "$FIRST" "$LAST"); do
   cleared=0
   for block in 0 6 12 18; do
     echo "--- shot $n, seed block $block" | tee -a "$LOG"
-    if python3 "$HERE/harry-shoot.py" "$HERO" "$SANDBOX/candidates" "$n" 6 "$block" \
-         2>&1 | grep -vE "^(Applied|find model|set det|download|/usr/local|  tform)" | tee -a "$LOG"
-    then
+    # Capture the exit status directly. Piping the run into tee makes the
+    # pipeline's status tee's, not the generator's, so every shot reads as
+    # cleared and the gate silently stops gating. pipefail covers it here, but
+    # the quick one-off drivers written without it promoted four failing frames
+    # before this was caught — so don't rely on the shell option being set.
+    out=$(mktemp)
+    if python3 "$HERE/harry-shoot.py" "$HERO" "$SANDBOX/candidates" "$n" 6 "$block" > "$out" 2>&1; then
       cleared=1
-      break
     fi
+    grep -vE "^(Applied|find model|set det|download|/usr/local|  tform)" "$out" | tee -a "$LOG"
+    rm -f "$out"
+    [ "$cleared" = 1 ] && break
   done
 
   f=$(ls "$SANDBOX/candidates"/$(printf '%02d' "$n")-*.png 2>/dev/null | head -1)

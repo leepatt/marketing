@@ -1,9 +1,27 @@
 #!/usr/bin/env python3
 """Generate ONE Harry frame at a time, as an edit of the approved hero.
 
-    REPLICATE_API_TOKEN=... python3 harry-shoot.py <hero.png> <out-dir> <shot-number>
+    REPLICATE_API_TOKEN=... python3 harry-shoot.py <hero.png> <out-dir> <shot-number> [attempts]
 
-Shot numbers follow HARRY-SHOT-LIST.md (1-30). Pair with face-check.py.
+Shot numbers follow HARRY-SHOT-LIST.md (1-30). Default 4 attempts.
+
+## Why best-of-N, and why the score alone cannot pick the winner
+
+The same prompt at different seeds swings hard on likeness — one boxy-polo brief
+scored 0.909, 0.892 and 0.640 across three seeds. A single roll is therefore a
+coin toss, and re-rolling by hand until it looks right is exactly the judgement
+that drifts over thirty frames. So each shot generates several candidates and
+scores every one against the hero.
+
+But picking purely on score is a trap: similarity is highest when the edit did
+the least, so the top scorer is often the candidate that quietly ignored half
+the brief. The first best-of-4 run proved it — the 0.907 winner had changed the
+polo and left the room exactly as the hero's.
+
+So a candidate must clear two gates, not one: the face has to match AND the
+scene has to have actually changed. Room changes are verified by measuring how
+much the background moved away from the hero, with the centre of frame masked
+out so the subject himself does not count toward it.
 
 ## Why this is an edit, not a generation
 
@@ -37,6 +55,7 @@ import json, os, sys, time, urllib.request
 TOKEN = os.environ["REPLICATE_API_TOKEN"]
 MODEL = "black-forest-labs/flux-kontext-max"
 HERO, OUT, N = sys.argv[1], sys.argv[2], int(sys.argv[3])
+ATTEMPTS = int(sys.argv[4]) if len(sys.argv) > 4 else 4
 os.makedirs(OUT, exist_ok=True)
 
 # Prepended to every edit. The face clauses do the work; the texture clauses stop
@@ -160,19 +179,90 @@ def upload(path):
         return json.load(r)["urls"]["get"]
 
 
-p = api(f"/models/{MODEL}/predictions", {"input": {
-    "prompt": KEEP + edit,
-    "input_image": upload(src),
-    "aspect_ratio": "match_input_image",
-    "output_format": "png",
-    "safety_tolerance": 2,
-}})
-while p["status"] not in ("succeeded", "failed", "canceled"):
-    time.sleep(3)
-    p = api(f"/predictions/{p['id']}")
-if p["status"] != "succeeded":
-    raise SystemExit(f"failed: {p.get('error') or p['status']}")
+def generate(seed, path):
+    p = api(f"/models/{MODEL}/predictions", {"input": {
+        "prompt": KEEP + edit,
+        "input_image": src_url,
+        "aspect_ratio": "match_input_image",
+        "output_format": "png",
+        "safety_tolerance": 2,
+        "seed": seed,
+    }})
+    while p["status"] not in ("succeeded", "failed", "canceled"):
+        time.sleep(3)
+        p = api(f"/predictions/{p['id']}")
+    if p["status"] != "succeeded":
+        raise RuntimeError(p.get("error") or p["status"])
+    o = p["output"]
+    urllib.request.urlretrieve(o[0] if isinstance(o, list) else o, path)
 
-o = p["output"]
-urllib.request.urlretrieve(o[0] if isinstance(o, list) else o, dest)
-print(f"shot {N:02d}  {slug}  -> {dest}  ({os.path.getsize(dest)//1024} KB)")
+
+# face-check.py has a hyphen in its name, so it cannot be imported by name.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location(
+    "face_check", os.path.join(os.path.dirname(os.path.abspath(__file__)), "face-check.py"))
+_fc = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_fc)
+compare = _fc.compare
+
+src_url = upload(src)
+tmpdir = os.path.join(OUT, ".attempts")
+os.makedirs(tmpdir, exist_ok=True)
+
+def bg_moved(path):
+    """How far the background has travelled from the hero, subject masked out.
+
+    Guards against the top-scoring candidate being the one that ignored the
+    room change — similarity rewards doing nothing, so this has to be checked
+    separately rather than trusted to the score.
+    """
+    from PIL import Image as _I
+    import numpy as _np
+    a = _np.asarray(_I.open(HERO).convert("L").resize((320, 180), _I.LANCZOS)).astype(float)
+    b = _np.asarray(_I.open(path).convert("L").resize((320, 180), _I.LANCZOS)).astype(float)
+    mask = _np.ones_like(a, bool)
+    mask[:, 100:220] = False
+    return float(_np.abs(a - b)[mask].mean())
+
+
+# Shots whose brief moves the room have to show it in the pixels. Measured: a
+# candidate that kept the hero's room scored 16.9 here, so the bar sits above it.
+NEEDS_NEW_ROOM = base == "hero" and "the room is" in edit or "he is " in edit
+BG_MIN = 25.0
+
+best = None
+for i in range(ATTEMPTS):
+    seed = 1000 + i * 137          # fixed, so a re-run reproduces the same candidates
+    tmp = os.path.join(tmpdir, f"{N:02d}-seed{seed}.png")
+    try:
+        generate(seed, tmp)
+    except Exception as e:
+        print(f"  seed {seed}: generation failed — {e}", flush=True)
+        continue
+    verdict, score, yaw, bar = compare(HERO, tmp)
+    bg = bg_moved(tmp)
+    room_ok = (not NEEDS_NEW_ROOM) or bg >= BG_MIN
+    flag = "" if room_ok else "  (room unchanged — rejected)"
+    print(f"  seed {seed}: face {score:.3f} {verdict}   bg {bg:.1f}{flag}", flush=True)
+    if not room_ok:
+        continue
+    if best is None or score > best[0]:
+        best = (score, tmp, verdict, yaw, bar)
+
+if best is None:
+    raise SystemExit(
+        f"no candidate cleared both gates in {ATTEMPTS} attempts — "
+        "either the face never matched or the room never changed. Re-run with more "
+        "attempts, or reword the shot if it keeps ignoring the room.")
+
+score, tmp, verdict, yaw, bar = best
+os.replace(tmp, dest)
+for leftover in os.listdir(tmpdir):
+    os.remove(os.path.join(tmpdir, leftover))
+os.rmdir(tmpdir)
+
+compare(HERO, dest, os.path.join(os.path.dirname(OUT), "compare", f"{N:02d}-compare.jpg")
+        if os.path.isdir(os.path.join(os.path.dirname(OUT), "compare")) else None)
+
+print(f"shot {N:02d}  {slug}  best {score:.3f} of {ATTEMPTS}  {verdict}  -> {dest}")
+sys.exit(0 if verdict == "PASS" else 1)

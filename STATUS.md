@@ -391,6 +391,40 @@ pixel Purchases (2.3× inflation). Deflated: **~25/week** — which matches the 
 
 ---
 
+### ✅ Session 2026-08-05 (later) — launch structure buildable, account cleaned
+
+- [x] **Duplicate asset rows resolved.** `brand-check` had already run in Lee's keyed session
+  (**33 pass · 3 fail**); 36 redundant `pending` rows removed → clean 1:1 for 36 creatives.
+- [x] **Non-AU ad sets deleted — it was SIX, not four** (earlier count was truncated by a `grep -A8`,
+  not a tool miss). **5 deleted**, account 12 → 7 ad sets. Live retargeting untouched, still AU/ACTIVE.
+  - ⬜ **`Instagram post: CAMPBELL STREET` (US) cannot be removed via API** — it is a boosted Page post;
+    both DELETE (*"can only be deleted on your Page"*) and pause (*"Boosted post editing"*) are refused.
+    **Lee must delete it from the Page/Business Suite.** Campaign paused, not spending.
+- [x] **AU-only is now the DEFAULT, not just a check** — `DEFAULT_TARGETING` (frozen) +
+  `withDefaultTargeting()`. Covers the real failure: geo omitted entirely, which Meta delivers
+  **worldwide** rather than erroring.
+- [x] 🔴 **`brand-check` rubric was failing the proven register — fixed.** `lf1`/`lf2`/`lf3` are the
+  **identical photograph** (same file, same `bare` template, differing only in the headline string):
+  **74 PASS / 55 FAIL / 58 FAIL.** Reasons given were *"no headline is present anywhere in the image"*
+  and *"blue sky conflicts with the no-blue-cast palette rule"* — i.e. it penalised the defining
+  features of the account's best-ever creative. Added `FOOTAGE_RUBRIC` for `real_footage`/`before_after`;
+  it keeps teeth (stock/staged/AI, fake product, unusable frames, unsafe work, third-party logos).
+  Extracted `buildBrandCheckPrompt()` as a pure export — **12 offline assertions, no API key needed.**
+  - ⬜ **`lf2`/`lf3` still need re-checking from a keyed session.** This session has no Anthropic key.
+  - ✅ The third failure, `a4-chippies-jigsaw`, is a **genuine catch** — two-thirds empty black canvas.
+- [x] **`create_campaign` + `create_ad_set` executors built** (Lee's call). Both PAUSED, both require a
+  human at every rung. `doctor` **44/44**. Campaign proposal filed:
+  `9cf62557-0f55-495c-a17e-d6ed115df9fc` (**pending** — nothing touched the account).
+  Verified `apply` refuses `CONFIRM=1` against a pending row.
+- [x] 🔑 **Three payload bugs caught with `execution_options:["validate_only"]`**, all of which would
+  have failed at apply time: missing `bid_strategy` · `promoted_object` must be `{custom_conversion_id}`
+  **alone** (adding `pixel_id` is rejected) · campaign needs `is_adset_budget_sharing_enabled`.
+  **Use `validate_only` for every new Marketing API write.** → `ad-set-wiring.md`
+- [x] 🔑 **NEW ROOT CAUSE: July's campaign objective was `OUTCOME_TRAFFIC`**, with the ATC ad set inside
+  it. A traffic campaign buys clicks, and it bought 19,773 of them at 10% CTR for 2 results. The ad
+  set's own `OFFSITE_CONVERSIONS` goal does not rescue that. **Sits alongside the wrong-event
+  diagnosis, not instead of it.** `OUTCOME_SALES` is now a locked constant.
+
 ### 🔒 Lee's standing rules — 2026-08-05
 
 1. **Ads are AUSTRALIA ONLY.** Now enforced in code, not just written down: `ALLOWED_COUNTRIES` +

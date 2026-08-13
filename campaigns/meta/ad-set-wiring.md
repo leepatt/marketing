@@ -4,7 +4,50 @@ _Verified live against the account 2026-08-04. Everything here is read from the 
 
 ---
 
-## 🔴 The blocker nobody had found: the agent cannot do this step
+## ✅ RESOLVED 2026-08-05 — the agent CAN now do this step
+
+Lee's call: build the executor. Done, and validated against Meta rather than assumed.
+
+- **`create_campaign`** — objective locked to `OUTCOME_SALES`, created PAUSED.
+- **`create_ad_set`** — AU-only via `DEFAULT_TARGETING`, `promoted_object` → the Sales Intent custom
+  conversion, created PAUSED, $100/day hard cap.
+- Both are in `ALWAYS_REQUIRES_APPROVAL` at **every** rung. `doctor` is now **44/44**.
+- **Proposal already filed** for the campaign: approval `9cf62557-0f55-495c-a17e-d6ed115df9fc`,
+  status **pending**. Nothing has touched the account.
+
+**Verified the gate actually holds:** `apply` with `CONFIRM=1` against that *pending* row is refused —
+*"CONFIRM=1 is set but approval … is pending … Refusing to proceed."* Both an approved row **and**
+`CONFIRM=1` are required.
+
+### 🔴 Three payload bugs found by asking Meta to validate, not by reading the code
+
+Meta supports `execution_options: ["validate_only"]` — it type-checks a create without creating
+anything. **All three of these would have failed at apply time on the real launch:**
+
+| # | Symptom | Fix |
+|---|---|---|
+| 1 | *"Bid amount or bid constraints required for bid strategy"* | Set `bid_strategy: "LOWEST_COST_WITHOUT_CAP"` explicitly instead of inheriting the campaign's |
+| 2 | *"The promoted object … has an invalid combination of parameters"* | **`promoted_object` must be `{custom_conversion_id}` ALONE.** Adding `pixel_id` is rejected — the custom conversion already carries its pixel |
+| 3 | *"Must specify True or False in is_adset_budget_sharing_enabled"* | Set it `false` on the campaign — budget belongs on the ad set where the ceiling and daily cap can see it |
+
+Confirmed nothing was created: 7 ad sets and 11 campaigns before and after, zero `ZZTEST` strays.
+**Use `validate_only` for every new Marketing API write before trusting it.**
+
+### 🔴 A root cause nobody had recorded: July's campaign objective was TRAFFIC
+
+Read live from the account: **`RadiusPro | TOF | Ardreagh | Jul26` has `objective: OUTCOME_TRAFFIC`**,
+and the `ADD_TO_CART` ad set sat inside it.
+
+A traffic-objective campaign asks Meta to buy clicks — and it delivered exactly that: **19,773 clicks
+at 10.03% CTR for 2 results on $1,279.94.** The ad set's own `optimization_goal` was
+`OFFSITE_CONVERSIONS`, and that does **not** rescue a campaign whose objective is traffic.
+
+This sits *alongside* the wrong-event diagnosis, it does not replace it. Both were true. `OUTCOME_SALES`
+is now a locked constant and passing `OUTCOME_TRAFFIC` throws.
+
+---
+
+## (historical) The blocker as it stood on 2026-08-04
 
 `campaigns/meta/launch-readiness.md` lists B3 as *"wire the ad set to the custom conversion"* and the
 session plan treats it as a quick job. **It is not, because the code has no way to express it.**

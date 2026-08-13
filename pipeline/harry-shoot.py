@@ -105,11 +105,8 @@ NAVY = "a thick navy overshirt, buttoned, over a plain tee"
 # design: measured on this hero, a two-axis edit scores 0.95 and a four-axis edit
 # scores 0.83, and 0.83 is where it stops looking like the same man.
 #
-# Tier A (1-10) edits the hero directly, changing wardrobe and room together.
-# Tier B (11-30) edits an approved Tier A frame, changing a single axis — framing,
-# expression, camera height or light — so the variety compounds while each
-# individual step stays small. Every frame is still scored against the hero, not
-# against its base, so chained drift cannot creep past the gate.
+# Every shot is a single hop from the hero. Chaining edits off an approved frame
+# was tried and abandoned — see the note in the list below.
 SHOTS = [
     ("in-polo-kitchen", "hero", f"He now wears {POLO}, and {IN_KITCHEN}. Same framing, same camera position, same expression."),
     ("in-jumper-hall", "hero", f"He now wears {JUMPER}, and {IN_HALL}. Same framing, same camera position, same expression."),
@@ -122,26 +119,31 @@ SHOTS = [
     ("out-polo-form", "hero", f"He now wears {POLO}, and {OUT_FORM}. Same framing, same camera position, same expression."),
     ("out-jumper-form", "hero", f"He now wears {JUMPER}, and {OUT_FORM}. Same framing, same camera position, same expression."),
 
-    ("in-polo-kitchen-speaking", "in-polo-kitchen", "Change only his expression: he is speaking to camera mid-sentence with his mouth open. Everything else identical."),
-    ("in-polo-kitchen-close", "in-polo-kitchen", "Change only the framing: crop tighter to head and shoulders. Everything else identical."),
-    ("in-jumper-hall-smile", "in-jumper-hall", "Change only his expression: a relaxed genuine smile. Everything else identical."),
-    ("in-jumper-hall-low", "in-jumper-hall", "Change only the camera height: it sits a little lower, looking slightly up at him. Everything else identical."),
-    ("in-vest-stair-listening", "in-vest-stair", "Change only his expression: attentive and listening, mouth closed. Everything else identical."),
-    ("in-vest-stair-wide", "in-vest-stair", "Change only the framing: pull back wider with more room around him. Everything else identical."),
-    ("st-tee-speaking", "st-tee", "Change only his expression: speaking to camera mid-sentence with his mouth open. Everything else identical."),
-    ("st-tee-close", "st-tee", "Change only the framing: crop tighter to head and shoulders. Everything else identical."),
-    ("st-hoodie-seated", "st-hoodie", "Change only his posture: he is now seated at the desk leaning slightly forward on his forearms. Everything else identical."),
-    ("st-hoodie-smile", "st-hoodie", "Change only his expression: a warm open smile. Everything else identical."),
-    ("st-green-close", "st-green", "Change only the framing: crop tighter to head and shoulders. Everything else identical."),
-    ("st-green-high", "st-green", "Change only the camera height: it sits a little higher, looking slightly down at him as he looks up into the lens. Everything else identical."),
-    ("st-navy-seated", "st-navy", "Change only his posture: he is now seated with his hands resting on the desk. Everything else identical."),
-    ("st-navy-turned", "st-navy", "Change only his posture: his shoulders turn very slightly to his left while his face stays square to the lens. Everything else identical."),
-    ("out-vest-form-speaking", "out-vest-form", "Change only his expression: speaking to camera mid-sentence with his mouth open. Everything else identical."),
-    ("out-vest-form-wide", "out-vest-form", "Change only the framing: pull back wider so the whole formed-up bench seat is visible behind him. Everything else identical."),
-    ("out-polo-form-low", "out-polo-form", "Change only the camera height: it sits a little lower, looking slightly up at him. Everything else identical."),
-    ("out-polo-form-smile", "out-polo-form", "Change only his expression: an easy half smile. Everything else identical."),
-    ("out-jumper-form-golden", "out-jumper-form", "Change only the light: warm golden-hour side light with long soft shadows. The jumper still reads clearly black, not brown. Everything else identical."),
-    ("out-jumper-form-close", "out-jumper-form", "Change only the framing: crop tighter to head and shoulders. Everything else identical."),
+    # 11-30 were originally chained off an approved tier A frame. That failed badly:
+    # every kontext pass is lossy, so a two-hop edit landed at 0.85-0.89 at best and
+    # collapsed to 0.45-0.55 when the edit touched the mouth. Only 3 of 20 cleared.
+    # They are now single-hop off the hero like tier A, still two axes, which is the
+    # combination measured at 0.90+. Fewer exotic combinations, far more usable frames.
+    ("in-polo-speaking", "hero", f"He now wears {POLO}, and his expression changes: he is speaking to camera mid-sentence with his mouth open. Same room, same framing, same camera position."),
+    ("in-jumper-smile", "hero", f"He now wears {JUMPER}, and his expression changes to a relaxed genuine smile. Same room, same framing, same camera position."),
+    ("st-tee-speaking", "hero", f"He now wears {TEE}, and his expression changes: he is speaking to camera mid-sentence with his mouth open. Same room, same framing, same camera position."),
+    ("in-hoodie-listening", "hero", f"He now wears {HOODIE}, and his expression changes to attentive listening, mouth closed. Same room, same framing, same camera position."),
+    ("in-green-smile", "hero", f"He now wears {GREEN}, and his expression changes to a warm open smile. Same room, same framing, same camera position."),
+    ("in-navy-speaking", "hero", f"He now wears {NAVY}, and his expression changes: he is speaking to camera mid-sentence with his mouth open. Same room, same framing, same camera position."),
+    ("in-vest-close", "hero", "Change only the framing: crop much tighter, to head and shoulders. Same clothing, same room, same expression."),
+    ("in-vest-wide", "hero", "Change only the framing: pull back wider, showing him from the thighs up with room around him. Same clothing, same room, same expression."),
+    ("in-vest-low", "hero", "Change only the camera height: it sits lower, looking up at him from below eye level. Same clothing, same room, same expression."),
+    ("in-vest-high", "hero", "Change only the camera height: it sits higher, looking down at him as he looks up into the lens. Same clothing, same room, same expression."),
+    ("in-kitchen-close", "hero", f"{IN_KITCHEN}, and crop much tighter to head and shoulders. Same clothing, same expression."),
+    ("in-hall-wide", "hero", f"{IN_HALL}, and pull the framing back wider with room around him. Same clothing, same expression."),
+    ("in-stair-low", "hero", f"{IN_STAIR}, and the camera sits lower, looking up at him. Same clothing, same expression."),
+    ("st-studio-high", "hero", f"{STUDIO}, and the camera sits higher, looking down at him as he looks up into the lens. Same clothing, same expression."),
+    ("out-form-close", "hero", f"{OUT_FORM}, and crop much tighter to head and shoulders. Same clothing, same expression."),
+    ("out-form-low", "hero", f"{OUT_FORM}, and the camera sits lower, looking up at him. Same clothing, same expression."),
+    ("in-polo-close", "hero", f"He now wears {POLO}, and crop much tighter to head and shoulders. Same room, same expression."),
+    ("in-jumper-wide", "hero", f"He now wears {JUMPER}, and pull the framing back wider with room around him. Same room, same expression."),
+    ("st-tee-low", "hero", f"He now wears {TEE}, and the camera sits lower, looking up at him. Same room, same expression."),
+    ("out-form-golden", "hero", f"{OUT_FORM}, lit by warm golden-hour side light with long soft shadows. Same clothing, same framing, same expression."),
 ]
 
 if not 1 <= N <= len(SHOTS):

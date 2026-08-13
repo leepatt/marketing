@@ -31,10 +31,6 @@ Big camera rotations are out. Asked to turn him, the model either ignores it or
 swings his head away and loses the face (0.693). That is the right trade for a
 HeyGen avatar: it is trained on a talking head facing camera, so a consistent
 front-facing face is worth more than a dramatic angle that is not him.
-
-That is the right trade for a HeyGen avatar: it is trained on a talking head
-looking at camera, so a consistent front-facing face is worth more than a
-dramatic profile that no longer looks like him.
 """
 import json, os, sys, time, urllib.request
 
@@ -72,7 +68,9 @@ OUT_FORM = ("he is outdoors on a residential building site, and clearly behind h
             "by timber stakes, steel reinforcement mesh inside the form, compacted ground")
 
 VEST = "a black puffer vest over a short-sleeved khaki work shirt"
-POLO = "a plain black short-sleeved polo shirt"
+POLO = ("a plain black short-sleeved polo shirt in a boxy relaxed cut — roomy through "
+        "the chest and body, square at the shoulder, sleeves loose on the upper arm, "
+        "hanging straight rather than clinging. Not fitted, not tight, not muscle-fit")
 JUMPER = "a plain black crew-neck jumper"
 HOODIE = "a plain black hoodie with relaxed straight-leg blue jeans"
 TEE = "a boxy relaxed plain white crew-neck t-shirt, roomy and square at the shoulder"

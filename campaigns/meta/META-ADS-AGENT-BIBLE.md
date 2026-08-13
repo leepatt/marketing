@@ -21,41 +21,60 @@ code lives in `leepatt/cnccut-app` · lightweight data layer first · **Radius P
 
 ---
 
-# 🔒 LAW 1 — NO AD GOES LIVE WITHOUT LEE'S PERMISSION
+# 🔒 LAW 1 — NO AD GOES LIVE WITHOUT LEE'S EXPLICIT APPROVAL
 
 **Lee, 2026-08-05: _"No ads should go live without my permission."_**
+**Amended by Lee, 2026-08-13: _"Change bible so I can approve the ads to go live through Claude."_**
 
-This outranks every other rule in this document. It is not a phase, not a default, and not something
-the autonomy ladder graduates away from. **There is no rung at which the agent may switch an ad on.**
+This outranks every other rule in this document.
 
-The agent may write copy, render creative, upload images, create ad creatives, file proposals and
-publish ads **in a paused state**. Turning an ad on is a human action, performed by Lee in Ads Manager.
+**What the amendment changed: the mechanism, not the substance.** Lee's approval is still required for
+every single ad that goes live. What changed is *where he gives it* — he can now approve a proposal and
+have Claude apply it, instead of having to toggle in Ads Manager himself.
 
-### What enforces it — verified in code 2026-08-05, not assumed
+**What did NOT change, and must never change:** the agent cannot put an ad live on its own initiative,
+at any autonomy rung, ever. Activation requires an explicit, named human approval every time.
+
+### The three activation types
+
+`activate_campaign` · `activate_ad_set` · `activate_ad`
+
+All three are in **`ALWAYS_REQUIRES_APPROVAL`** — at *every* rung, including rung 4. They are the only
+mutations in the tool that can start money moving, so they carry more checks than anything else.
+
+### What enforces it — verified in code 2026-08-13, not assumed
 
 | Layer | Mechanism | Where |
 |---|---|---|
-| Autonomy rung 0 | Report and propose only. Self-check *"Rung 0 permits nothing unattended"* passes | `_meta-policy.mjs` |
-| **Ads are created PAUSED, always** | `publish_ad` hard-codes `status: "PAUSED"`. No parameter overrides it | `meta-ads.mjs` |
-| **No "activate ad" mutation exists** | `apply` implements exactly three write types: `pause_ad`, `set_budget`, `publish_ad`. There is no code path that sets an ad ACTIVE | `meta-ads.mjs` |
-| `create_ad_set` always needs a human | In `ALWAYS_REQUIRES_APPROVAL` at *every* rung, including rung 4 | `_meta-policy.mjs` |
-| Writes need two independent things | `CONFIRM=1` **and** an approved `marketing_approvals` row. Either alone is a dry run | `meta-ads.mjs` |
-| The weekly cron cannot spend | Runs `report` then `evaluate --file_proposals`. It files proposals; it never applies them | `app/api/cron/meta-ads` |
+| **Activation always needs a human** | All three types in `ALWAYS_REQUIRES_APPROVAL`, asserted at rung 4 by a self-check | `_meta-policy.mjs` |
+| **Two independent things required** | `CONFIRM=1` **and** an `approved` row. Proven live: `CONFIRM=1` against a pending activation returns *"Refusing to proceed"* | `meta-ads.mjs` |
+| **A named human approver** | `--approver` is required; `claude`/`agent`/`internal`/`bot`/`auto` are rejected | `meta-ads.mjs` |
+| 🆕 **Live preflight at execution** | Before going live, re-reads the account: AU-only targeting, the $100/day cap, and the $2,000 monthly ceiling. An approval that sat in the queue while the world changed is refused | `meta-ads.mjs` |
+| **Ads are still created PAUSED** | `publish_ad` hard-codes `status: "PAUSED"`. Creating and activating are separate, separately-approved steps | `meta-ads.mjs` |
+| **Nothing else can set ACTIVE** | Self-check asserts `pause_ad`, `set_budget`, `publish_ad`, `create_ad_set` can never produce `status: "ACTIVE"` | `meta-ads.mjs` |
+| **The weekly cron cannot spend** | Runs `report` then `evaluate --file_proposals`. It files proposals; it never applies them | `app/api/cron/meta-ads` |
+| **Rung 0 permits nothing unattended** | Self-check passes | `_meta-policy.mjs` |
 
-**The practical guarantee: the only way a Craftons ad goes live is Lee clicking the toggle.** The worst
-the agent can do unattended is leave a proposal in the Cockpit for a human to read.
+**The practical guarantee is unchanged: no Craftons ad goes live unless Lee said yes to that specific
+ad.** The worst the agent can do unattended is leave a proposal waiting.
 
 ### Rules for anyone extending this agent
 
-1. **Never add a mutation that sets an ad, ad set or campaign to `ACTIVE`.** If a future task seems to
-   need one, that task is wrong — the human does it.
-2. **Never remove `status: "PAUSED"` from `publish_ad`,** and never make it a caller-supplied argument.
-3. **Never grant an autonomy rung the ability to activate.** The ladder governs pausing, budget
-   shifting and paused-publishing. It stops there.
-4. **If a guardrail self-check for this law is failing, stop and fix it before anything else.** A
-   failing check here is not a flaky test.
-5. **Unpausing is not "resuming".** Re-enabling a previously approved ad that has been paused still
-   requires Lee, because circumstances change while an ad is off.
+1. **Never remove an activation type from `ALWAYS_REQUIRES_APPROVAL`.** That single line is what stands
+   between "Lee approves each launch" and "the agent can start spending on its own".
+2. **Never grant an autonomy rung the ability to activate.** The ladder governs pausing, budget
+   shifting and paused-publishing. It stops there. Rung 4 is *not* an exception.
+3. **Never remove `status: "PAUSED"` from `publish_ad`,** and never make it a caller-supplied argument.
+   Creating an ad and switching it on stay two separate approvals.
+4. **Never weaken the activation preflight.** It exists because an approved proposal can sit in the
+   queue for days; the AU rule and the spend caps must be true *at the moment of going live*, not when
+   the proposal was written.
+5. **Never let `--approver` accept a non-person.** An approval table whose approver reads "agent" is
+   not an audit trail, and the whole amendment rests on that trail being real.
+6. **If a guardrail self-check for this law fails, stop and fix it before anything else.** A failing
+   check here is not a flaky test.
+7. **Unpausing is not "resuming".** Re-enabling a previously approved ad that has since been paused is
+   a fresh activation and needs a fresh approval — circumstances change while an ad is off.
 
 > **Related standing rule — 🇦🇺 Australia only (Lee, 2026-08-05).** Craftons manufactures in Fairfield
 > and ships Australia-wide via FedEx. There is no offer for anyone overseas. Enforced by
@@ -901,17 +920,22 @@ graduation path. **Each rung requires the one below it to have run clean for the
 | **3** | Rung 2 + publish new creative **PAUSED**, from already-approved templates and angles | New angles, new templates, budget increases, **switching any ad on** | 8 weeks at Rung 2, brand-check pass rate > 95% |
 | **4** | Full loop within a hard monthly spend ceiling — **still publishing paused only** | Ceiling changes, new product lines, **switching any ad on** | Sustained performance + Lee's explicit call |
 
-> 🔒 **The ladder never grants activation.** Read the "publish" rungs precisely: rung 3 and rung 4
-> permit publishing an ad **in a paused state**. Not one rung on this ladder — including rung 4 —
-> allows the agent to set an ad live. See **LAW 1** at the top of this document. "Full loop" at rung 4
-> means research → creative → paused publish → measure → propose, with Lee's toggle in the middle.
+> 🔒 **The ladder never grants activation — including after the 2026-08-13 amendment.** Read the
+> "publish" rungs precisely: rung 3 and rung 4 permit publishing an ad **in a paused state**. Not one
+> rung on this ladder — including rung 4 — lets the agent set an ad live *unattended*.
+>
+> The amendment made activation *possible*, not *automatic*: `activate_campaign`/`activate_ad_set`/
+> `activate_ad` sit in `ALWAYS_REQUIRES_APPROVAL`, so every rung still needs Lee's explicit approval for
+> each one. See **LAW 1** at the top. "Full loop" at rung 4 means research → creative → paused publish
+> → measure → propose, with **Lee's approval** in the middle.
 
 **Implementation:** this is a policy table, not new code. `marketing_approvals` already exists; the
 ladder is a config listing which `action` values require a row at the current rung. Store the rung in
 config, not in code, so it can be lowered instantly if something goes wrong.
 
 **Non-negotiable at every rung:**
-- 🔒 **No ad goes live without Lee's permission (LAW 1). No rung changes this, ever.**
+- 🔒 **No ad goes live without Lee's explicit approval (LAW 1). No rung changes this, ever** — the
+  2026-08-13 amendment moved *where* he approves, never *whether* he approves.
 - 🇦🇺 **Australia-only targeting** — enforced by `checkTargeting()`, audited live by `report`
 - Hard monthly spend ceiling, enforced in code, checked before every write
 - Kill switch — one setting that returns everything to Rung 0
@@ -993,9 +1017,12 @@ config, not in code, so it can be lowered instantly if something goes wrong.
 - Use async jobs for heavy breakdowns — capped at 10/day/account
 
 **From Craftons' own doctrine:**
-- 🔒 **LAW 1 — no ad goes live without Lee's permission.** Nothing publishes active; ads are created
-  `PAUSED` and stay that way until Lee toggles them on. There is no "activate" mutation in the
-  codebase and no autonomy rung that grants one. Full enforcement table at the top of this doc
+- 🔒 **LAW 1 — no ad goes live without Lee's explicit approval.** Nothing publishes active; ads are
+  created `PAUSED` and stay that way until Lee approves an activation. Since 2026-08-13 the
+  `activate_*` mutations exist so he can approve through Claude instead of Ads Manager, but all three
+  sit in `ALWAYS_REQUIRES_APPROVAL` at every rung, need `CONFIRM=1` plus a named human approver, and
+  pass a live preflight (AU targeting + spend caps re-read from the account) before anything goes live.
+  **No autonomy rung grants activation.** Full enforcement table at the top of this doc
 - 🇦🇺 **Australia only.** `ALLOWED_COUNTRIES = ["AU"]`. An ad set with **no** geo set fails too — it
   runs worldwide rather than erroring, which is how three of them got onto the account unnoticed
 - `brand-check` gates every asset, always

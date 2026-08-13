@@ -153,10 +153,15 @@ if base == "hero":
     src = HERO
 else:
     idx = next(i for i, sh in enumerate(SHOTS) if sh[0] == base)
-    src = os.path.join(OUT, f"{idx + 1:02d}-{base}.png")
-    if not os.path.exists(src):
-        raise SystemExit(f"shot {N} builds on shot {idx + 1} ({base}), which is not in "
-                         f"{OUT} yet — approve and place that one first")
+    name = f"{idx + 1:02d}-{base}.png"
+    # Approved frames get moved out of the candidates dir, so look there too.
+    for d in (OUT, os.path.join(os.path.dirname(OUT), "approved")):
+        if os.path.exists(os.path.join(d, name)):
+            src = os.path.join(d, name)
+            break
+    else:
+        raise SystemExit(f"shot {N} builds on shot {idx + 1} ({base}), which has not been "
+                         f"generated yet — run and approve that one first")
 
 
 def api(path, data=None):
@@ -233,15 +238,23 @@ def bg_moved(path):
 NEEDS_NEW_ROOM = base == "hero" and "the room is" in edit or "he is " in edit
 BG_MIN = 25.0
 
-best = None
-for i in range(ATTEMPTS):
+def attempt(i):
     seed = 1000 + (i + SEED_OFFSET) * 137
     tmp = os.path.join(tmpdir, f"{N:02d}-seed{seed}.png")
     try:
         generate(seed, tmp)
     except Exception as e:
         print(f"  seed {seed}: generation failed — {e}", flush=True)
-        continue
+        return None
+    return seed, tmp
+
+
+from concurrent.futures import ThreadPoolExecutor
+with ThreadPoolExecutor(max_workers=3) as ex:
+    produced = [r for r in ex.map(attempt, range(ATTEMPTS)) if r]
+
+best = None
+for seed, tmp in produced:
     verdict, score, yaw, bar = compare(HERO, tmp)
     bg = bg_moved(tmp)
     room_ok = (not NEEDS_NEW_ROOM) or bg >= BG_MIN

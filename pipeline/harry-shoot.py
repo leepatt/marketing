@@ -124,7 +124,7 @@ SHOTS = [
     # collapsed to 0.45-0.55 when the edit touched the mouth. Only 3 of 20 cleared.
     # They are now single-hop off the hero like tier A, still two axes, which is the
     # combination measured at 0.90+. Fewer exotic combinations, far more usable frames.
-    ("in-polo-speaking", "hero", f"He now wears {POLO}, and his expression changes: he is speaking to camera mid-sentence with his mouth open. Same room, same framing, same camera position."),
+    ("in-polo-speaking", "hero", f"He now wears {POLO}, and his lips are parted slightly as if he has just begun to speak — a small natural opening, teeth barely visible, jaw almost closed, the rest of his face completely unchanged. Same room, same framing, same camera position."),
     ("in-jumper-smile", "hero", f"He now wears {JUMPER}, and his expression changes to a relaxed genuine smile. Same room, same framing, same camera position."),
     ("st-tee-speaking", "hero", f"He now wears {TEE}, and his expression changes: he is speaking to camera mid-sentence with his mouth open. Same room, same framing, same camera position."),
     ("in-hoodie-listening", "hero", f"He now wears {HOODIE}, and his expression changes to attentive listening, mouth closed. Same room, same framing, same camera position."),

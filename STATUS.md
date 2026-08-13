@@ -391,6 +391,38 @@ pixel Purchases (2.3× inflation). Deflated: **~25/week** — which matches the 
 
 ---
 
+### 🕐 DATE CORRECTION — this session's work happened **2026-08-13**, not 08-04/08-05
+
+**The container clock was ~8 days behind for most of this session** and corrected itself partway
+through. Verified at the end against three independent sources that all agree: network `Date:` header,
+Neon `now()`, and the scheduler — **2026-08-13 19:45 UTC**.
+
+So **every entry below labelled `2026-08-04` or `2026-08-05` for *this session's* work actually
+occurred on 2026-08-13.** Earlier sessions' dates (2026-08-03, 08-05, 08-06) are genuine — they are
+Neon-stamped and independently confirmed. Left in place rather than mass-edited, because a blanket
+find/replace would also have rewritten legitimate statements like *"EMQ readable from 2026-08-04"*.
+
+**Lesson: don't datestamp from `date` alone.** Cross-check against Neon `now()` or an HTTP `Date:`
+header before writing a date into the record.
+
+### 🔴 CORRECTION — `brand-check` did NOT run today. It ran 2026-08-05.
+
+An earlier claim this session — *"the state changed under me, brand-check has already run in your other
+session"* — **was wrong.** The 33 pass / 3 fail rows are Neon-stamped **2026-08-05T03:48Z, eight days
+ago.** They only looked minutes-old because the container clock was 8 days behind when I read them.
+
+What is still true and unaffected: the verdicts themselves (33 pass, 3 fail), the identical-photo
+scoring spread (74 PASS / 55 FAIL / 58 FAIL), the rubric diagnosis, and the fix. Only the *when* and
+the *who* were wrong. It also means **the Anthropic key was working on 2026-08-05**, which contradicts
+the note that it had "never been usable".
+
+### ⚠️ The approvals queue has 9 pending rows and two are landmines
+**Do not "approve all".** → hazard table in `campaigns/meta/monitoring-and-reward-plan.md`
+- ⛔ `0d6e5fd0…` — `ZZTEST | pipeline test — do not enable`, creative `ZZTEST_PLACEHOLDER_DO_NOT_APPROVE`
+- ⚠️ `61eedf31…` — `set_budget` **$100/day onto ad set `120247183658270186`**, the OLD July ad set inside
+  the **OUTCOME_TRAFFIC** campaign. Approving it funds the exact setup being replaced. **Reject both.**
+- ✅ Approve only `9cf62557-0f55-495c-a17e-d6ed115df9fc` (`create_campaign`, 2026-08-13).
+
 ### ✅ Session 2026-08-05 (later) — launch structure buildable, account cleaned
 
 - [x] **Duplicate asset rows resolved.** `brand-check` had already run in Lee's keyed session

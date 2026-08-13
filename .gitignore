@@ -17,3 +17,7 @@ node_modules/
 *.jpg
 *.jpeg
 *.psd
+
+# python bytecode
+__pycache__/
+*.pyc

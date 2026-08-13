@@ -34,9 +34,15 @@ LOCK = (
     "eyes, same eyebrows, same hairline and same dark brown side-swept hair, same age "
     "(late 30s), same skin tone. He keeps the same short, naturally kept dark beard in "
     "every shot. Do not restyle his face or his beard. "
-    "Photorealistic, shot on a full-frame camera with a 50mm lens, natural skin texture "
-    "with visible pores, sharp focus on the eyes, no beauty retouching, no plastic skin, "
-    "not CGI, not illustrated. Absolutely no suit, no blazer, no sport coat, no tie."
+    "Carry over his skin and beard exactly as they are in the reference: visible pores and "
+    "uneven complexion, crow's feet at the eyes, forehead lines, sun freckling on the "
+    "cheekbones, small natural blemishes, and grey hairs scattered through the beard and "
+    "temples. He is about forty and looks it. Do NOT smooth his skin, do NOT even out his "
+    "complexion, do NOT darken the grey out of his beard, do NOT make him younger or more "
+    "handsome than the reference. "
+    "Photorealistic, shot on a full-frame camera with a 50mm lens, sharp focus on the eyes, "
+    "no beauty retouching, no skin smoothing, no plastic skin, not CGI, not illustrated. "
+    "Absolutely no suit, no blazer, no sport coat, no tie."
 )
 
 # --- the logo brief -------------------------------------------------------

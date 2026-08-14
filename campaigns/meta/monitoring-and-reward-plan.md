@@ -58,6 +58,79 @@ proven winner; they do not find one.
 
 ---
 
+## 📊 READING 1 — 20.5h after go-live (2026-08-14 17:21 UTC)
+
+Live 2026-08-13 20:50 UTC at $75/day. **No actions taken — report only, per the plan.**
+
+`RadiusPro | TOF | Aug26`, since go-live:
+
+| Ad | Spend | Link CTR | $/link click | LPV | $/LPV | ATC | IC | Purch |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| AD5 Chippies (Lawless) | $39.33 | — | — | 142 | $0.28 | 0 | 0 | 0 |
+| **AD4 Builders (Lawless)** | $18.60 | — | — | 58 | $0.32 | **2** | **1** | 0 |
+| AD6 Carpenters (Lawless) | $4.65 | — | — | 21 | $0.22 | 0 | 0 | 0 |
+| AD2b / AD2 / AD1 carousels | $0.17 total | — | — | 1 | — | 0 | 0 | 0 |
+| **TOTAL** | **$62.75** | **~3.3%** | **$0.27** | **222** | **$0.28** | **2** | **1** | **0** |
+
+### 🔴 The headline CTR is a lie, and it is the same lie that misread July
+
+`report` shows **11.37% CTR at $0.08 CPC** — spectacular, and meaningless. That is computed on
+**all clicks**: only **229 of 785** were link clicks. The other 556 were likes, saves, post expands and
+photo views.
+
+**Real numbers: link CTR ~3.3%, cost per link click $0.27, cost per landing page view $0.28.**
+
+⚠️ **The repo's July figures carry the same inflation.** "8.35% CTR at $0.09 CPC" and AD5's "10.45% CTR"
+are all-clicks numbers. Any future comparison must use `inline_link_clicks`. *(July's "9,244 LPV at
+$0.08" is a genuine cost-per-LPV and is comparable — see below.)*
+
+### ✅ Click quality is excellent — 96.9% of link clicks loaded the page
+
+222 landing page views from 229 link clicks. **This is not a bounce problem.** An earlier draft of this
+reading computed 28% using all-clicks and would have raised a false alarm.
+
+### ✅ One InitiateCheckout, from AD4 Builders
+
+Plus 2 AddToCart. Per this plan's own rule: *"a single IC in the first few days is a genuinely good sign
+at this volume, and worth more than any CTR number."* **Zero purchases is expected** — $62.75 at a $322
+break-even buys ~0.2 of a purchase.
+
+### 🟠 Cost per LPV rose from $0.08 (July) to $0.28 — and that is the fix working
+
+July's campaign was `OUTCOME_TRAFFIC`, so Meta bought the cheapest possible page views. This one is
+`OUTCOME_SALES`, so it is hunting purchasers instead. **A 3.5× higher cost per page view is the expected
+consequence of the objective change, not a regression.**
+
+### ⚠️ #1 THING TO WATCH — the custom conversion is not attributing yet
+
+The pixel fired `offsite_conversion.fb_pixel_initiate_checkout` (1). But there is **NO
+`offsite_conversion.custom.27686282527680441` action on the campaign at all.** That is why `report` says
+**Results: 0** while ad-level data shows 1 IC.
+
+Most likely attribution lag on a single event. **But if IC events accumulate by 72h and the `custom.*`
+action still never appears, the ad set is optimising toward something Meta cannot measure — which is
+July's core failure wearing a new costume.** Flagged in the 72h check-in as the first thing to verify.
+
+### Delivery — Meta concentrated hard and fast
+
+**3 of 6 ads serving. AD5 alone took 63% of spend.** The three carousels got $0.01–$0.17 between them.
+Meta picked the three Lawless-photo ads and, of those, favoured **AD5 — the July winner**. Its own
+optimiser reached the same conclusion the July data did.
+
+**Do not read that as the carousels failing.** They have had no meaningful chance; no data is not bad
+data, and they are protected from the kill rule for exactly this reason.
+
+### Blended account read (7 days to 08-14)
+
+$176.55 spend · 7 results · $8,946 revenue · **$25.22 cost per result**. Flattering, and **retargeting
+produced all 7** while the new TOF campaign produced 0. This is the attribution trap: retargeting takes
+last-click credit for people TOF warms up. Judge the test on blended CAC over weeks, not on this.
+
+**Next: +72h check-in armed for 2026-08-16 21:00 UTC** — the first point at which the kill rule is
+eligible.
+
+---
+
 ## ⏱ When do we cut ads, and when do we touch budget?
 
 All constants read from `_meta-policy.mjs`, not from memory.

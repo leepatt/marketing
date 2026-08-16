@@ -131,6 +131,83 @@ eligible.
 
 ---
 
+## 🔴 READING 2 — 72.2h after go-live (2026-08-16 21:01 UTC)
+
+**No actions taken. The kill rule became eligible and was deliberately NOT applied — see below.**
+
+| Ad | Spend | Link CTR | $/link | LPV | $/LPV | ATC | IC | Purch |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| AD5 Chippies | $102.67 | 3.65% | $0.31 | 326 | $0.31 | 2 | 0 | 0 |
+| AD4 Builders | $38.62 | 3.43% | $0.31 | 123 | $0.31 | 2 | **1** | 0 |
+| AD6 Carpenters | $35.05 | 3.61% | $0.31 | 105 | $0.33 | 1 | 0 | 0 |
+| 3 carousels | $0.34 | — | — | 1 | — | 0 | 0 | 0 |
+| **TOTAL** | **$176.68** | **3.58%** | **$0.31** | **555** | **$0.32** | **5** | **1** | **0** |
+
+*(all_clicks 1,947 vs link_clicks 575 — the `report` headline of "12.13% CTR" is engagement-inflated
+again. Real link CTR is 3.58%.)*
+
+### 🔴🔴 THE CUSTOM CONVERSION HAS NEVER FIRED. The test is running blind.
+
+This was flagged as the #1 thing to check at 16h. **72 hours later it is confirmed, not lag.**
+
+| Evidence | Finding |
+|---|---|
+| `offsite_conversion.custom.27686282527680441` on the campaign | **ZERO — the action type does not appear at all** |
+| Ad set `conversions` field | **empty** |
+| Custom conversion `first_fired_time` / `last_fired_time` | **not returned — no record of it ever firing** |
+| **The pixel, same window** | **34 InitiateCheckout · 10 Purchase** ✅ |
+
+**The underlying events are firing perfectly. The custom conversion built on them is registering
+nothing.** The ad set's `promoted_object` points at a conversion Meta appears never to record, so the
+optimiser has had **no conversion signal at all for three days** — it has been buying whatever it
+guesses. That is precisely the July failure mechanism, in a new costume: July optimised on an event too
+sparse to learn from; this optimises on an event that does not arrive.
+
+Object looks correct on inspection — not archived, rule
+`{"or":[{"event_name":{"eq":"InitiateCheckout"}},{"event_name":{"eq":"Purchase"}}]}`, data source is the
+Craftons Web pixel. **Which is why this needs eyes in Events Manager, not more API poking.**
+
+**Fallback if it is genuinely dead:** optimise on the **standard `InitiateCheckout` event** instead. The
+pixel logged **34 IC in ~3.5 days ≈ 68/week raw**, and even deflated ~2.3× for pre-dedup inflation
+that is ~30/week — more signal than the pooled custom conversion was ever projected to deliver, and a
+standard event Meta definitely attributes. It loses the Purchase pooling; it gains actually existing.
+
+### ⛔ Why the kill rule was NOT applied, even though it fired
+
+At 72h the rule mechanically qualified **AD5 ($102.67), AD4 ($38.62) and AD6 ($35.05)** — all "≥72h AND
+≥$25 AND zero results". That is **all three serving ads**, exactly at the 50%-per-run cap.
+
+**Applying it would have been wrong, and the guardrail would have been the thing causing the damage.**
+
+1. **"Zero results" is measuring nothing** while the results counter depends on a conversion that never
+   attributes. The gate's third condition is unreliable, so the gate is unreliable.
+2. **AD4 did produce a result** — 1 IC and 2 ATC at pixel level. It reads as "zero" only because of the
+   attribution failure.
+3. It would have deleted **AD5 — the account's best-ever creative** — on a measurement artifact, and
+   left the ad set holding three carousels Meta has declined to serve.
+
+> **Rule to carry forward: never kill on "zero results" when results cannot be counted.** Fix the
+> measurement first. A kill rule fed a broken denominator is exactly the "$758/result" error the July
+> post-mortem already retracted once.
+
+### Signal quality — genuinely better than July, and worse than it needs to be
+
+- **LPV → ATC is 0.9%** (5 of 555). July AD5 managed **0.16%**. **5.6× better traffic quality** — the
+  objective change did improve who is arriving.
+- **But IC has not moved: 1 at hour 16, still 1 at hour 72**, across $114 of additional spend. ATC went
+  2 → 5. **People are adding to cart and not starting checkout.**
+- 0 purchases on $176.68 is still statistically unremarkable — at a $322 break-even that spend buys
+  ~0.5 of a purchase.
+
+### Blended account read (7 days to 08-16)
+
+$283.35 spend · 6 results · $8,946 revenue · $47.23 cost per result. **Retargeting produced all 6** on
+$106.67 while the new TOF campaign produced 0 on $176.68. Attribution trap unchanged.
+
+**Next: 7-day read armed for 2026-08-20 21:00 UTC.**
+
+---
+
 ## ⏱ When do we cut ads, and when do we touch budget?
 
 All constants read from `_meta-policy.mjs`, not from memory.

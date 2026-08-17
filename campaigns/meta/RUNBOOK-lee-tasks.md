@@ -1,5 +1,14 @@
 # Lee's tasks — step by step (updated 2026-08-17, second pass)
 
+> # 🟢 LAUNCHED 2026-08-17 — Lee's task list is EMPTY
+>
+> All three tasks are closed and **v2 is live at $65/day**. Task 1 (EMQ) read: IC 6.4 / Purchase 8.3.
+> Task 2 cancelled — misdiagnosis, nothing to fix. Task 3 done — US post archived.
+> Verified live state in the LAUNCHED section below. **Next action is a reading at ~72h (≈ Aug 20),
+> not before.** History of the task list follows.
+
+<details><summary>Task history (kept for the record)</summary>
+
 > # ✅ ONE TASK LEFT, AND IT IS A 60-SECOND READ
 >
 > Re-verified against the live API this session. **Tasks 2 and 3 are off the list:**
@@ -211,11 +220,40 @@ For reference it spent **$43.82 for 0 results**, targeting the **United States**
 event, so this would not directly move the 6.4 — it is a genuine but slow, indirect improvement, and
 holding $65/day of learning to chase it is a poor trade.
 
-## 🚦 STAGED FOR ACTIVATION — approved, not yet applied (2026-08-17)
+</details>
 
-Lee approved activation after reading EMQ. All 7 changes are **proposed and approved** in the approvals
-table; **none has been applied.** Nothing has touched the account. Each `apply` re-runs the live
-preflight (AU targeting, $100/day cap, monthly ceiling, `judgeLaunchReadiness`) and fails closed.
+## 🟢 LAUNCHED — all 7 applied and verified live (2026-08-17)
+
+**v2 is ACTIVE and spending.** Lee approved after reading EMQ; all 7 changes applied with `CONFIRM=1`,
+each passing the live activation preflight. **State read back from the Graph API afterwards, not taken
+from the success responses:**
+
+| Object | Verified state |
+|---|---|
+| v2 ad set `120247812165960186` | **`ACTIVE` / effective `ACTIVE`** · **$65.00/day** |
+| optimisation | `OFFSITE_CONVERSIONS` → `INITIATED_CHECKOUT` on pixel `677437638374055` ✅ |
+| geo | `["AU"]` ✅ |
+| 6 ads | **all `ACTIVE` / effective `ACTIVE`**, all the **`aug26 v2`** set (not v1) ✅ |
+| Campaign `120247706808370186` | `ACTIVE` |
+| v1 ad set `120247706822330186` | **`PAUSED`** — stayed retired ✅ |
+
+Blended daily spend is now ~**$80/day** (v2 $65 + retargeting $15).
+
+### What to watch, and when
+
+- **Do not judge before ~72h** (≈ Aug 20). Kill rule needs **≥72h AND ≥$25 AND zero results** — and
+  never kill while results cannot be counted.
+- **Readable CAC: 3–4 weeks.** Reported CAC will read somewhat **worse than true CAC** because
+  InitiateCheckout EMQ is 6.4. Judge the ladder against that, not against the raw number.
+- **Ladder:** $65 → $78 → $94 → $100, one step per week, **only** at CAC ≤ $322.
+- **Always read `inline_link_clicks`**, never the headline CTR — it runs ~3.5× inflated on these ads
+  (12% headline vs 3.6% link).
+
+### Original staging record
+
+Proposed and approved through the codebase's own path so an audit trail exists, rather than calling the
+Graph API directly. Each `apply` re-ran the live preflight (AU targeting, $100/day cap, monthly ceiling,
+`judgeLaunchReadiness`) and fails closed.
 
 | # | Change | Target | Approval ID |
 |---|---|---|---|

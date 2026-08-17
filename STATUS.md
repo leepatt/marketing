@@ -5,6 +5,24 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
+## 🟢 META ADS ARE LIVE — v2 launched 2026-08-17
+
+**v2 ad set `120247812165960186` is `ACTIVE` at $65/day**, optimising on standard `INITIATED_CHECKOUT`
+(pixel `677437638374055`), AU-only, with all 6 `aug26 v2` ads `ACTIVE`. v1 stayed `PAUSED`. Verified by
+reading state back from the Graph API, not from the mutation responses. Blended spend ~$80/day with
+retargeting.
+
+Lee approved after reading EMQ: **`InitiateCheckout` 6.4/10, `Purchase` 8.3/10** — the 6.4 accepted
+knowingly as an attribution drag, since Bible §4.7 sets the bar at >7. Applied through the
+propose/approve/apply path with an audit trail; approval IDs in `campaigns/meta/RUNBOOK-lee-tasks.md`.
+
+**Next action: a reading at ~72h (≈ Aug 20). Not before.** Kill rule needs ≥72h AND ≥$25 AND zero
+results, and never fires while results can't be counted. Readable CAC 3–4 weeks. Ladder
+$65 → $78 → $94 → $100, one step/week, only at CAC ≤ $322. **Always read `inline_link_clicks`** — the
+headline CTR runs ~3.5× inflated on these ads.
+
+---
+
 ## 🔴 CORRECTION — Meta match quality was MISDIAGNOSED (2026-08-17)
 
 **Advanced Matching was never broken. Do not "fix" it.** The Aug26 post-mortem's second root cause is

@@ -17,6 +17,58 @@ _Nothing here is marked done unless it has been **run and verified**, not merely
 
 ---
 
+# 🔴 THIS CHECKLIST WAS CORRECT AND WAS NOT EXECUTED (2026-08-17)
+
+The Aug26 launch spent **$192.08 for zero attributed conversions** and delivery collapsed 86% in three
+days, because the ad set optimised toward a custom conversion that **had never fired**.
+
+**Nothing new needed to be known to prevent it. Three items already on record said so:**
+
+| Where | What it already said | What actually happened |
+|---|---|---|
+| Line 4 of this file | *"Nothing here is marked done unless it has been **run and verified**, not merely written."* | The conversion was verified to **exist**, never to **fire**. Reported as "wired ✓" |
+| Line 109 of this file | *"**Never optimise on an event we can't generate.**"* | We optimised on an event that had never once been generated |
+| Bible §4.7 Stage 1, quoted at line 193 | Gate is *"**tracking fires**, EMQ > 7, no policy rejections, creative approved"* | Launched with tracking unproven |
+| **C4.4 — EMQ > 7** | 🟡 *"Can't read yet"* | **Still unread at launch, and launched anyway** |
+
+**The lesson is not "write a better checklist." It is that a document cannot enforce itself.**
+A markdown gate gets read once and skipped under momentum. So the blocking items are now **code that
+refuses**, and they were verified against the real broken ad set on 2026-08-17.
+
+## ✅ These items are now ENFORCED IN CODE, not merely written
+
+`judgeLaunchReadiness()` in `tools/_meta-policy.mjs`, called from the activation preflight in
+`tools/meta-ads.mjs` **at execution time**. It **fails closed** — no spend starts unless every check
+passes. 7 new `doctor` self-checks assert it (total **54/54**).
+
+| Gate | Refuses when |
+|---|---|
+| **Conversion has fired** | the target custom conversion has no `first_fired_time` — *the exact Aug26 failure* |
+| **EMQ acknowledged** | `emq_acknowledged` is not explicitly `true`. EMQ is not API-readable, so a human must confirm it in Events Manager rather than let it stay 🟡 |
+| **Pixel alive** | the pixel reports `is_unavailable`, or last fired > 7 days ago |
+| **A target exists** | `promoted_object` carries no conversion target at all |
+| **Australia only** | any non-AU geo, or no geo set (which Meta serves worldwide) |
+| **Budget caps** | daily > $100, or the $2,000 month ceiling already reached |
+
+**Proof it works, run against the live Aug26 ad set:**
+
+```
+## Meta Ads — apply blocked (activation preflight)
+- custom conversion 27686282527680441 has NEVER FIRED (no first_fired_time)…
+- EMQ has not been acknowledged…
+Fix these and propose again. Nothing was activated.
+```
+
+## Guardrail revised in the same pass
+
+`create_ad_set` previously rejected `custom_event_type` outright — a rule written because ATC broke
+July, which encoded "custom conversion good, standard event bad". Aug26 inverted the evidence, and that
+rule was blocking the correct fix. It now **accepts `INITIATED_CHECKOUT` and `PURCHASE`**, and still
+**refuses `ADD_TO_CART` by name**. Guardrails encode hypotheses; when the evidence flips, revise the
+guardrail rather than route around it.
+
+---
+
 # PART A — Video A: the machine
 
 ## A1. Unified data / the warehouse

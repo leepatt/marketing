@@ -5,7 +5,44 @@ Meta guidance. Companion to the reading log in `monitoring-and-reward-plan.md`._
 
 ---
 
-## VERDICT: SALVAGE. One component is broken, and it is a two-minute edit.
+## ✅ REBUILT 2026-08-17 — v2 built and verified, waiting on Lee's EMQ check
+
+**Correction to this doc's original fix.** It said the repair was a two-minute Ads Manager edit. **It is
+not possible.** Meta refuses: *"You can't edit your pixel, conversion event, custom conversion or
+optimisation for an ad set after the ad set has been published."* Lee was right to question it.
+So the fix was a rebuild, not an edit.
+
+| | v1 (retired) | **v2 (new)** |
+|---|---|---|
+| Ad set | `120247706822330186` | **`120247812165960186`** |
+| `promoted_object` | `custom_conversion_id 27686282527680441` (**never fired**) | **`pixel_id 677437638374055` + `custom_event_type INITIATED_CHECKOUT`** |
+| Status | **PAUSED** | PAUSED, 6 ads PAUSED |
+| Everything else | — | **byte-identical**: $65/day · OFFSITE_CONVERSIONS · LOWEST_COST_WITHOUT_CAP · AU · `frequently_in/home/recent` · age 25-65 · 0 interests · `advantage_audience: 1` |
+
+**Exactly one variable changed — the conversion event.** If v2 performs, we know why.
+
+Verified account-wide after the rebuild: **1 live ad set** (retargeting only), **0 non-AU ad sets**,
+0 active ads in either v1 or v2.
+
+### ⛔ What is deliberately NOT done: activation
+
+The new launch gate refuses it, correctly:
+
+```
+- EMQ has not been acknowledged. It is not readable via the API, so a human must
+  check it in Events Manager (target > 7) and pass emq_acknowledged=true.
+  Aug26 launched with this item unresolved.
+```
+
+**Lee's two steps to go live:**
+1. Read **EMQ** in [Events Manager](https://business.facebook.com/events_manager2/list/dataset/677437638374055/overview) — target > 7.
+2. Tell me the number. I then propose activation with `emq_acknowledged=true`, you approve, I apply.
+
+The gate will not let me skip step 1, which is the entire point of it.
+
+---
+
+## Original verdict (superseded above): SALVAGE — but not by an edit
 
 The campaign structure is right — objective, targeting, budget discipline and creative all verified
 working. **The single failure is that the ad set optimises toward a custom conversion that has never

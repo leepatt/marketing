@@ -16,18 +16,36 @@ withdrawn. Verified against the live API this session:
 - `event_source`: 7831 SERVER vs 4028 BROWSER — CAPI is live.
 
 **The error:** `/stats?aggregation=match_keys` returns **hourly buckets**. The first bucket held 6 events
-carrying only `external_id`, and that fragment was read as the whole window. Three of the four
-"independent sources" cited (Meta's UI warning, the `$118` figure, `/da_checks`) are the same match-rate
-metric restated — they agree by construction. `match_rate_approx` and `matched_entries`, quoted as
-`-1` and `0`, are **not valid aggregations at all**; the API rejects them.
+carrying only `external_id`, and that fragment was read as the whole window.
+
+**On the corroborating "sources" — each one checked individually:**
+
+- `match_rate_approx: -1` and `matched_entries: 0` **are real** — but they are **fields on the pixel
+  node, not stats aggregations** (as aggregations the API rejects them outright). They report
+  **offline / customer-list upload matching**, which this pixel has never used. `-1` is Meta's
+  "not applicable" sentinel. They say nothing about browser-event Advanced Matching.
+  _(An earlier version of this correction wrongly claimed these fields don't exist. They do.)_
+- `/da_checks` → `[failed] Pixel has low event source match rate` — **read its own `description`**:
+  _"Some content_ids sent from pixel fires by this pixel do not match any catalog associated to the
+  pixel…"_ That is a **product-catalog / DPA check about `content_id` alignment**. The title is
+  misleading; it is not a customer-identity match check at all.
+- Meta's UI warning and the `$118` figure derive from the same match-rate surface as each other.
+
+So the "four independent sources" were: one misread fragment, two fields about a different matching
+system entirely, and one check whose title does not describe what it measures.
 
 > **Rule to add to the two existing ones.** The old failures verified *configuration instead of
 > function*. This one verified *a fragment instead of the whole*. **Paginate before you conclude. A small
 > sample is a reason to widen the window, never a reason to lean harder on sources that already agree.**
 
 What remains true: match coverage is *partial* (~25–39% of TOF events carry PII, normal for guest
-browsing) and `/da_checks` still returns `[failed] Pixel has low event source match rate`. That is a mild
-drag, **not a launch blocker, and there is no pending Shopify fix behind it.**
+browsing). The one genuine open item `/da_checks` reports is a **catalog `content_id` mismatch**, which
+affects dynamic/catalog ads — worth a look later, **irrelevant to this launch**. Neither is a blocker,
+and **there is no pending Shopify fix behind either.**
+
+**EMQ itself is genuinely not in the API.** Probed this session as a node field
+(`event_match_quality`, `match_quality`, `data_quality`, `emq`, …), as an edge, and as a stats
+aggregation — all rejected. The launch gate's demand for a human to read it is correct, not lazy.
 
 **Net effect on the launch:** the only outstanding gate is Lee's EMQ read. The US boosted post is now
 `ARCHIVED` (resolved). Details: `campaigns/meta/RUNBOOK-lee-tasks.md`.

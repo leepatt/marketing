@@ -60,6 +60,20 @@ Lee's Events Manager screenshot surfaced what the API confirms:
 > one bucket was read as the whole picture. The caveat below even records the tell — *"`match_keys`
 > returned a small sample (6 events)"* — and then reasons past it instead of paginating.
 >
+> **The corroborating readings, each checked individually:**
+>
+> - `match_rate_approx: -1` / `matched_entries: 0` **are real readings** — fields on the pixel *node*
+>   (not stats aggregations, which the API rejects by those names). They report **offline / customer-list
+>   upload matching**, a system this pixel has never used; `-1` is Meta's "not applicable" sentinel.
+>   They are silent on browser-event Advanced Matching.
+> - `/da_checks` → `[failed] Pixel has low event source match rate`. **Its own `description` reads:**
+>   *"Some content_ids sent from pixel fires by this pixel do not match any catalog associated to the
+>   pixel…"* — a **product-catalog / DPA `content_id`** check. The title does not describe what it
+>   measures. Worth fixing for catalog ads someday; **nothing to do with customer identity.**
+>
+> So the "four independent sources" were one misread fragment, two fields belonging to a different
+> matching system, and one check whose title misled. **Read the `description`, not the title.**
+>
 > The two earlier failures verified **configuration instead of function**. This one verified **a
 > fragment instead of the whole**. Same family: a check that was run, and stopped too early.
 >

@@ -26,9 +26,28 @@ _Everything Claude can do is already done: v2 ad set built, 6 ads published, v1 
 `judgeLaunchReadiness()` was run against the real object this session and returns exactly one problem:
 EMQ is unacknowledged. Meta does not expose EMQ through the Marketing API, so a human has to read it.
 
-**Where:** https://business.facebook.com/events_manager2/list/dataset/677437638374055/overview
-→ confirm top-left says **Craftons Web · 677437638374055** → date range **Last 28 days** → scroll past
-the "Event activities" chart to the events table → **"Event match quality"** column.
+### Where EMQ actually lives
+
+**It is only in the Events Manager UI.** Confirmed this session by probing the Graph API as a node field
+(`event_match_quality`, `match_quality`, `data_quality`, `emq`), as an edge, and as a stats aggregation —
+every one rejected. There is no API route to it, which is exactly why the gate asks a human.
+
+**Link (Meta's own, taken from the `da_checks` `action_uri`):**
+https://business.facebook.com/events_manager2/list/pixel/677437638374055/overview
+
+1. Confirm the top-left says **Craftons Web · 677437638374055** — *not* "Craftons Ads API"
+   (`993965426717610`), which is a different dataset and a known red herring.
+2. Set the date range, top right, to **Last 28 days**.
+3. **Route A — the events table (most reliable).** Scroll down past the "Event activities" chart to the
+   table listing `PageView`, `ViewContent`, `AddToCart`, `InitiateCheckout`, `Purchase`. Look for the
+   **"Event match quality"** column — a score out of 10, per event.
+4. **Route B — if that column isn't shown.** Click the **`InitiateCheckout`** row itself. The detail
+   panel opens with the score plus the list of parameters being received.
+5. **Route C — the Overview card.** The "Improve your match quality" card has a **`⌄` chevron** at its
+   right edge, just past the `···`. It expands in place.
+
+Meta moves this around between UI versions, so if none of the three match what you see, screenshot the
+Overview page and send it — the score is on that page somewhere.
 
 **Send Claude two numbers: EMQ for `InitiateCheckout` and EMQ for `Purchase`.**
 

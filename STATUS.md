@@ -608,7 +608,11 @@ words. Read before writing a single line of copy. Beats every other doc on produ
 marketing) · `copy-reconciliation.md` (the two-funnel model + claim verdicts; **§4 copy superseded**) ·
 **`suby-8-hacks-implementation.md` (⭐ the 8 hacks → concrete actions, + the corrected July post-mortem)** ·
 `META-ADS-AGENT-BIBLE.md` (agent design + phased build) · `launch-angles.md` (⚠️ Angle 2 retired,
-anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-interview.md` (mostly answered)
+anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-interview.md` (mostly answered) ·
+**`aug26-post-mortem-and-salvage-plan.md` (⭐ the Aug26 launch post-mortem: the custom conversion never
+fired, delivery collapsed, salvage = repoint to standard InitiateCheckout. Learnings ledger at the end)** ·
+`monitoring-and-reward-plan.md` (the reading log: 16h/72h/83h) · `pool-builders.md` (use case confirmed
+from orders — formwork, not set-out; LF7 gated)
 
 **🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
 `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`

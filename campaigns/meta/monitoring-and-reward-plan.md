@@ -208,6 +208,90 @@ $106.67 while the new TOF campaign produced 0 on $176.68. Attribution trap uncha
 
 ---
 
+## 🚨 READING 3 — 83h (2026-08-17 07:44 UTC). DELIVERY IS COLLAPSING.
+
+### Today's sales are real, and the ads did not produce them
+
+Three orders, **$3,592**. Checked every one against Shopify's customer-journey data:
+
+| Order | Value | First touch | Closed via | Meta UTM? |
+|---|---:|---|---|---|
+| #1293 | $2,736 | Google SEO — cavity battens page | **Email** (Trade Program welcome) | ❌ none |
+| #1292 | $521 | Google SEO — **straight onto `/products/radius-online`** | same, 1 touchpoint | ❌ none |
+| #1291 | $335 | Google SEO — homepage | same, 1 touchpoint | ❌ none |
+
+**No `utm_campaign=radiuspro_tof_aug26` on any of them.** Meta attributes **0 purchases** and **$0 revenue**
+to the campaign since launch. Today's revenue is SEO and email doing their job.
+
+> Worth noting who #1292 is: **`paul@wollongongconcrete.com.au` — a concreter — bought $521 of Radius Pro
+> landing directly on the product page from Google, in a single touchpoint.** Exactly the buyer the ads
+> are chasing, arriving for free.
+
+**Pixel inflation confirmed:** 7 pixel Purchases today vs **3 real Shopify orders** = **2.33×**, matching
+the documented 2.3× factor.
+
+### 🚨 The smoking gun: delivery has fallen 86% in three days
+
+| Day (Melbourne) | Spend | Impressions | Link clicks | LPV | IC |
+|---|---:|---:|---:|---:|---:|
+| 08-14 | $63.05 | 6,934 | 230 | 222 | 1 |
+| 08-15 | $65.56 | 5,671 | 227 | 217 | 0 |
+| 08-16 | $48.28 | 3,458 | 118 | 116 | 0 |
+| **08-17** | **$14.73** | **998** | **24** | **23** | **0** |
+
+Budget is **$75/day** and it has **never once been hit**. Today it is spending **20% of budget** with
+~75% of the day gone. `learning_stage_info` is **empty** — not LEARNING, not LEARNING_LIMITED, *nothing*
+— and `issues_info` is empty too, so Meta reports no policy or setup fault.
+
+**This is the textbook signature of an optimisation target that never converts.** The optimiser is told
+to find people who will trigger conversion `27686282527680441`. That conversion has never fired, so it
+cannot build a model, cannot find look-alikes, loses confidence, and throttles spend. **It is not a
+budget, creative or targeting problem. It is the broken conversion starving the optimiser.**
+
+### The creative is NOT the problem — that part is working
+
+| Metric | This test | July AD5 |
+|---|---:|---:|
+| Link CTR | **3.58%** | — (July's "10.45%" was all-clicks) |
+| Link click → landing page view | **96.9%** | — |
+| LPV → AddToCart | **0.9%** | **0.16%** |
+
+**5.6× better traffic quality than July.** The objective change fixed *who arrives*. What's broken is
+whether Meta can *measure* what they do next.
+
+### ⛔ Still no kills. Same reason, now stronger.
+
+Cumulative: $191.62 · 578 LPV · 6 ATC · 1 IC · 0 purchases. AD5 ($102.67) and AD6 ($35.05) still read
+"zero results" — and that reading is still measuring nothing. **Do not kill creative to fix a
+measurement fault.**
+
+### ➡️ The fix: repoint the ad set at an event Meta actually records
+
+Change the ad set's conversion event from the custom conversion to the **standard `InitiateCheckout`**.
+Two minutes in Ads Manager: Ad set → Conversion → Event. Whatever the true weekly IC volume is, it is
+more than the **zero** the optimiser currently sees.
+
+There is no `update_ad_set` change type in the tool, so this is either a manual edit or a small build.
+
+**If it can't be fixed today, pausing the ad set is defensible** — it is buying traffic with no
+optimisation behind it. The bleed is self-limiting (down to $15/day), so this is not urgent by the hour,
+but every day it runs broken is a day of the test wasted.
+
+### 🔴 CORRECTION to the 72h note above
+
+That note said the pixel showed *"34 IC in ~3.5 days ≈ 68/week raw"* and used it to argue standard IC has
+ample volume. **That figure is not sound.** The `/{pixel}/stats` endpoint does not window reliably:
+`start_time=2026-08-17` (one day) returns **44 IC**, which is *more* than `start_time=2026-08-13` (four
+days) returns at **34**. Those cannot both be right, so no weekly rate should be quoted from it — and the
+30-day figures earlier in the project may share the flaw.
+
+**What is trustworthy:** Shopify order counts, and Meta's own ad-level `actions`. **Use those.** The
+recommendation above does not depend on the discarded number.
+
+**Next: 7-day read armed for 2026-08-20 21:00 UTC.**
+
+---
+
 ## ⏱ When do we cut ads, and when do we touch budget?
 
 All constants read from `_meta-policy.mjs`, not from memory.

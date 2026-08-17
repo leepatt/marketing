@@ -54,7 +54,7 @@ attached before launch.
 | Currency + timezone correct | AUD, `Australia/Melbourne` |
 | No spend cap blocking | `spend_cap: 0` |
 | Pixel healthy | `Craftons Web`, `is_unavailable: false` |
-| **Advanced Matching ON, 11 fields** | `em, fn, ln, ge, ph, ct, st, zp, db, country, external_id` |
+| ~~**Advanced Matching ON, 11 fields**~~ | 🔴 **THIS ✅ WAS WRONG — see below.** The 11 fields are *configured*; only `external_id` actually arrives |
 | First-party cookie | `first_party_cookie_enabled` |
 | **Custom conversion live** | `27686282527680441` — Sales Intent, IC OR Purchase |
 | Purchase carries AUD value | Confirmed in earlier pass |

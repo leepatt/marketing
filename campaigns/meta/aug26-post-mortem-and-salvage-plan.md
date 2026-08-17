@@ -24,6 +24,42 @@ So the fix was a rebuild, not an edit.
 Verified account-wide after the rebuild: **1 live ad set** (retargeting only), **0 non-AU ad sets**,
 0 active ads in either v1 or v2.
 
+### 🔴 SECOND ROOT CAUSE FOUND 2026-08-17 — match quality. Same mistake, second instance.
+
+Lee's Events Manager screenshot surfaced what the API confirms:
+
+| Meta says | We verified |
+|---|---|
+| **"$118 ad spend affected by low data quality"** | of $192 total campaign spend |
+| **"Improve your match quality by sending more parameters" — HIGH PRIORITY** | ✅ correct |
+| 7 outstanding data-quality actions | — |
+
+**Configured** advanced-matching fields: `em, fn, ln, ge, ph, ct, st, zp, db, country, external_id`
+(11, `enable_automatic_matching: true`).
+**Actually arriving:** `external_id` **only**. No email. No phone. No name. No location.
+
+> **`launch-readiness.md` listed "Advanced Matching ON, 11 fields ✅" under *Verified ready*. That was
+> wrong, and wrong the same way the conversion was: I verified the SETTING, not the DATA.** Two
+> independent pre-launch gates, both marked verified, both confirming configuration rather than
+> function. That is the actual pattern behind both failed campaigns.
+
+**Why it compounds the damage.** Two faults, not one:
+
+1. **The custom conversion never fires** → the optimiser gets no signal → delivery collapses.
+2. **Match quality is poor** → when a conversion *does* happen, Meta often cannot tie it back to the ad
+   click. The site logged **109 InitiateCheckouts in 7 days** while the ads were credited with **1**.
+   Some of that gap is genuine (most site IC is organic/retargeting), but with only `external_id`
+   arriving, attribution is structurally weak — and Meta has costed it at $118.
+
+**Fix (free, and higher leverage than relaunching):** the Shopify → Meta integration must pass customer
+email/phone at checkout. Meta's own **"Get Started"** on that high-priority action walks it through;
+on the Shopify side it is the Facebook & Instagram app's customer-data-sharing level plus the CAPI
+integration shown as *"Conversions Pixel — Manage integration"* in that screenshot.
+
+⚠️ **Caveat, stated honestly:** `match_keys` returned a small sample (6 events), and that endpoint is
+already known to window unreliably. The *composition* is the signal, and it agrees with Meta's own
+high-priority warning and the $118 figure — three independent sources. It is not a single-source claim.
+
 ### ⛔ What is deliberately NOT done: activation
 
 The new launch gate refuses it, correctly:

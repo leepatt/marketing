@@ -211,6 +211,28 @@ For reference it spent **$43.82 for 0 results**, targeting the **United States**
 event, so this would not directly move the 6.4 — it is a genuine but slow, indirect improvement, and
 holding $65/day of learning to chase it is a poor trade.
 
+## 🚦 STAGED FOR ACTIVATION — approved, not yet applied (2026-08-17)
+
+Lee approved activation after reading EMQ. All 7 changes are **proposed and approved** in the approvals
+table; **none has been applied.** Nothing has touched the account. Each `apply` re-runs the live
+preflight (AU targeting, $100/day cap, monthly ceiling, `judgeLaunchReadiness`) and fails closed.
+
+| # | Change | Target | Approval ID |
+|---|---|---|---|
+| 1 | `activate_ad_set` | `120247812165960186` (v2, $65/day) | `950c66ab-c4cb-4983-a6b2-b2f6281a83a2` |
+| 2 | `activate_ad` | AD5 Chippies `120247812181800186` | `a25420d8-d6f0-4d47-8485-a39e6ac263df` |
+| 3 | `activate_ad` | AD4 Builders `120247812183590186` | `96381950-e769-4808-af3f-f5c4d4db7459` |
+| 4 | `activate_ad` | AD6 Carpenters `120247812185720186` | `f5b09946-1c54-4fea-a5be-aaeaf439ac02` |
+| 5 | `activate_ad` | AD1 Concreters `120247812187850186` | `1309bee9-35dd-4be5-bcb6-75b8f07ae9ad` |
+| 6 | `activate_ad` | AD2 Landscapers `120247812190310186` | `fd11c166-30a0-430b-be7c-2b161a11e225` |
+| 7 | `activate_ad` | AD2b Landscapers finished-first `120247812192110186` | `20cb2d98-07f7-40e8-a907-384b3588c85e` |
+
+All carry `emq_acknowledged: true`. Approver recorded as **Lee Patterson**, with the EMQ numbers and the
+knowingly-accepted 6.4 in the approval note. Dry-run confirms the ad-set call is
+`POST 120247812165960186 {"status":"ACTIVE"}`.
+
+**To execute:** `CONFIRM=1 node tools/meta-ads.mjs apply --approval_id=<id>` for each, ad set first.
+
 ## Verified live this session (2026-08-17) — nothing quoted from memory
 
 | Check | Result |

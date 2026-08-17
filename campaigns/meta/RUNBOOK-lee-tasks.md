@@ -118,3 +118,31 @@ recommendation.
 | **v2 ad set** — standard `InitiateCheckout`, $65/day | `120247812165960186` | **PAUSED**, 6 ads PAUSED |
 | v1 ad set — dead custom conversion | `120247706822330186` | **PAUSED** (retired) |
 | Retargeting — BOF | `120233074187690186` | **ACTIVE** — leave it, it produces the account's results |
+
+## Object ID reference (everything a future session needs)
+
+| Thing | ID |
+|---|---|
+| Ad account | `act_1650412872259063` (AUD, Australia/Melbourne) |
+| Pixel / dataset **Craftons Web** | `677437638374055` |
+| Second dataset **Craftons Ads API** — *not* linked to the ad account, red herring | `993965426717610` |
+| Custom conversion *Sales Intent* — **DEAD, never fired, do not reuse** | `27686282527680441` |
+| Facebook Page | `611852278682648` |
+
+**v2 ads (PAUSED, in ad set `120247812165960186`) → creative:**
+
+| Ad | Ad ID | Creative ID |
+|---|---|---|
+| AD5 Chippies (Lawless photo — the 10.45% CTR winner) | `120247812181800186` | `1078072304563046` |
+| AD4 Builders (Lawless photo) | `120247812183590186` | `801056473070934` |
+| AD6 Carpenters (Lawless photo) | `120247812185720186` | `3695505940601153` |
+| AD1 Concreters (Ardreagh carousel) | `120247812187850186` | `954057387710539` |
+| AD2 Landscapers (Ardreagh carousel) | `120247812190310186` | `1036744315626177` |
+| AD2b Landscapers finished-first (carousel) | `120247812192110186` | `1379645754375539` |
+
+All six creatives are the **aug26 v2** set: "laminate" corrected to "double them up" on the three Lawless
+ads, UTMs on `radiuspro_tof_aug26`. The v1 ad set holds a parallel set of 6 ads — **do not confuse them**;
+v1 is retired.
+
+Winning site photo (the only real one): `content-engine/sandbox/real/site-lawless-curved-stud-wall.jpg`
+in `leepatt/cnccut-app`, recovered from Meta image hash `923c0b632935f8af124c792e1b56d3f9`.

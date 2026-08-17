@@ -239,6 +239,12 @@ from the success responses:**
 
 Blended daily spend is now ~**$80/day** (v2 $65 + retargeting $15).
 
+### ⏰ 72h+ reading is SCHEDULED — Fri 2026-08-21, 08:00 Melbourne (Aug 20 22:00 UTC)
+
+Auto-fires into the Claude session (`trigger_id trig_0147qKAxFDujEStfERNNNYqE`), ~83h after launch —
+past the 72h gate and in the morning rather than 9pm Thursday. It carries its own setup instructions
+(branch, repo re-clone, env aliases), the kill rule, the ladder, and LAW 1. **Nobody has to remember.**
+
 ### What to watch, and when
 
 - **Do not judge before ~72h** (≈ Aug 20). Kill rule needs **≥72h AND ≥$25 AND zero results** — and

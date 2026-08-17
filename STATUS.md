@@ -5,6 +5,35 @@ _Check items off as they're done so we never repeat work. Doc index at the botto
 
 ---
 
+## 🔴 CORRECTION — Meta match quality was MISDIAGNOSED (2026-08-17)
+
+**Advanced Matching was never broken. Do not "fix" it.** The Aug26 post-mortem's second root cause is
+withdrawn. Verified against the live API this session:
+
+- `email` (332) and `phone` (212) arrive in the last 7d, plus `fn`, `ln`, `ct`, `st`, `zip`, `country`.
+  They have arrived **every day for 14+ days** — including before the claim was written.
+- `had_pii`: **100% of `Purchase` events (39/39)** carry PII. `InitiateCheckout` 51 with / 79 without.
+- `event_source`: 7831 SERVER vs 4028 BROWSER — CAPI is live.
+
+**The error:** `/stats?aggregation=match_keys` returns **hourly buckets**. The first bucket held 6 events
+carrying only `external_id`, and that fragment was read as the whole window. Three of the four
+"independent sources" cited (Meta's UI warning, the `$118` figure, `/da_checks`) are the same match-rate
+metric restated — they agree by construction. `match_rate_approx` and `matched_entries`, quoted as
+`-1` and `0`, are **not valid aggregations at all**; the API rejects them.
+
+> **Rule to add to the two existing ones.** The old failures verified *configuration instead of
+> function*. This one verified *a fragment instead of the whole*. **Paginate before you conclude. A small
+> sample is a reason to widen the window, never a reason to lean harder on sources that already agree.**
+
+What remains true: match coverage is *partial* (~25–39% of TOF events carry PII, normal for guest
+browsing) and `/da_checks` still returns `[failed] Pixel has low event source match rate`. That is a mild
+drag, **not a launch blocker, and there is no pending Shopify fix behind it.**
+
+**Net effect on the launch:** the only outstanding gate is Lee's EMQ read. The US boosted post is now
+`ARCHIVED` (resolved). Details: `campaigns/meta/RUNBOOK-lee-tasks.md`.
+
+---
+
 ## 🚨 BEFORE YOU RESEARCH ANYTHING — check it isn't already done
 
 **This repo has now lost the same work twice.** Both times the cost was days of re-derivation and, once,

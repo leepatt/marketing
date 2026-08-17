@@ -1,15 +1,45 @@
-# Lee's tasks — step by step (2026-08-17)
+# Lee's tasks — step by step (updated 2026-08-17, second pass)
 
-_Three tasks. ~15 minutes total. Task 1 and 2 unblock the v2 relaunch; Task 3 is tidy-up._
+> # ✅ ONE TASK LEFT, AND IT IS A 60-SECOND READ
+>
+> Re-verified against the live API this session. **Tasks 2 and 3 are off the list:**
+>
+> - **Task 2 (Shopify match quality) — NOT NEEDED. The fault was misdiagnosed.** Email and phone have
+>   been arriving for at least 14 days straight (`email` 332, `phone` 212 in the last 7d; 100% of
+>   `Purchase` events carry PII; CAPI is live at 7831 server events). The earlier "only `external_id`
+>   arrives" reading came from one hourly bucket of a paginated endpoint. **Do not change any Shopify
+>   setting on account of this** — there is nothing to fix. Full detail in
+>   `aug26-post-mortem-and-salvage-plan.md`.
+> - **Task 3 (US boosted post) — DONE.** The CAMPBELL STREET ad set is now `ARCHIVED` (was `PAUSED`) and
+>   its ad is gone from the account. Every one of the 7 live/pausable ad sets is AU-only.
+>
+> **The only remaining blocker is the EMQ read below** — a number the API genuinely cannot return, which
+> is why the launch gate demands a human state it. Everything else the gate checks now passes.
+
 _Everything Claude can do is already done: v2 ad set built, 6 ads published, v1 retired, all PAUSED._
 
 ---
 
-## ~~TASK 1 — Read the EMQ baseline~~ → SKIP IT (updated 2026-08-17)
+## ⭐ TASK 1 — Read the EMQ score — **REINSTATED, and now the only task**
 
-**Advice changed after reading more of the API.** Don't spend time hunting the score. Match quality is
-already confirmed broken from **four independent sources**, and the exact number would not change what
-we do next:
+**This is the whole remaining gate.** The v2 ad set passes every machine-checkable launch condition;
+`judgeLaunchReadiness()` was run against the real object this session and returns exactly one problem:
+EMQ is unacknowledged. Meta does not expose EMQ through the Marketing API, so a human has to read it.
+
+**Where:** https://business.facebook.com/events_manager2/list/dataset/677437638374055/overview
+→ confirm top-left says **Craftons Web · 677437638374055** → date range **Last 28 days** → scroll past
+the "Event activities" chart to the events table → **"Event match quality"** column.
+
+**Send Claude two numbers: EMQ for `InitiateCheckout` and EMQ for `Purchase`.**
+
+Given what is actually arriving, expect **mid-to-high single digits**, not the 3–5 the old note
+predicted. `Purchase` should read highest — every Purchase event carries PII.
+
+### Superseded reasoning, kept as the record
+
+_The note below said to skip this task because match quality was "confirmed broken from four
+independent sources". Three of those four were the same metric restated, and the fourth was a misread
+of one hourly bucket. The task is back on._
 
 | Source | Reading |
 |---|---|
@@ -43,9 +73,13 @@ arriving. Target is **above 7**.
 
 ---
 
-## TASK 2 — Fix match quality (10 minutes) ⭐ the important one
+## ~~TASK 2 — Fix match quality~~ → ❌ CANCELLED. The diagnosis was wrong; nothing here needs doing.
 
-**Why:** Meta says **"$118 of ad spend affected by low data quality"** and lists *"Improve your match
+> **Do not action any of the steps below.** Advanced Matching is working: `email` and `phone` arrive
+> daily, 100% of `Purchase` events carry PII, and CAPI is live. Changing the Shopify data-sharing level
+> now would be a change made on a false premise. Retained only as the record of the misdiagnosis.
+
+**Original text follows — superseded.** Meta says **"$118 of ad spend affected by low data quality"** and lists *"Improve your match
 quality by sending more parameters"* as **HIGH PRIORITY**. We have 11 matching fields configured and
 **only `external_id` actually arriving** — no email, no phone, no name. This is free to fix and worth
 more than any creative change.
@@ -82,9 +116,15 @@ This is almost certainly where the missing parameters are blocked.
 
 ---
 
-## TASK 3 — Delete the US-targeted boosted post (2 minutes, tidy-up)
+## ~~TASK 3 — Delete the US-targeted boosted post~~ → ✅ DONE (verified 2026-08-17)
 
-The last thing on the account breaching the Australia-only rule. It is paused and not spending, but a
+> Re-audited this session: the CAMPBELL STREET ad set is now **`ARCHIVED`**, and no ad matching it
+> remains in the account. All 7 live-or-pausable ad sets are AU-only. Archived is not the same as
+> deleted, but it is two states from live rather than one, which closes the original concern.
+> Nothing further needed.
+
+**Original text follows — superseded.** The last thing on the account breaching the Australia-only rule.
+It is paused and not spending, but a
 paused ad set is one un-pause from live. The Marketing API refuses to touch it — Meta replies *"can only
 be deleted on your Page"*.
 
@@ -97,16 +137,36 @@ For reference it spent **$43.82 for 0 results**, targeting the **United States**
 
 ---
 
-## What happens after Tasks 1 and 2
+## What happens after Task 1
 
-1. You send Claude the EMQ numbers.
+1. You send Claude the two EMQ numbers.
 2. Claude proposes activation of **v2** (`120247812165960186`) with `emq_acknowledged=true`.
 3. You approve. Claude applies. Ads go live on the **standard `InitiateCheckout`** event at **$65/day**.
 4. Hands off 7 days. First readable signal ~72h; readable CAC ~3–4 weeks.
 
-**If EMQ comes back below 7:** the right call is to finish Task 2 and let EMQ recover *before* spending,
-rather than launch into the penalty Meta has already costed at $118. That is Lee's call, but it is the
-recommendation.
+**If EMQ comes back at 6 or above:** launch. Nothing else is outstanding.
+
+**If EMQ comes back below 6:** it is still Lee's call, but the recommendation has changed. There is no
+longer a pending fix to wait for — the Shopify theory is dead, and partial PII coverage on top-of-funnel
+events is largely structural (guests browsing before they identify themselves). Waiting would mean
+waiting for nothing in particular. Weigh a below-6 score as a known, priced-in drag on attribution
+rather than as a blocker with a fix behind it.
+
+## Verified live this session (2026-08-17) — nothing quoted from memory
+
+| Check | Result |
+|---|---|
+| `doctor` | **54/54 pass, 0 fail** |
+| v2 `promoted_object` | `pixel_id 677437638374055` + `custom_event_type INITIATED_CHECKOUT` ✅ |
+| v2 status / budget / geo | `PAUSED` · `6500` cents = $65/day · `countries: ["AU"]` ✅ |
+| v1 `promoted_object` | still the dead `custom_conversion_id 27686282527680441`, `PAUSED` ✅ |
+| Campaign `120247706808370186` | `ACTIVE` (container only) |
+| `InitiateCheckout` firing | **yes, daily** — 6–44/day; 44 on Aug 17. The v2 target has real signal. |
+| Pixel `last_fired_time` | `2026-08-16T23:45:24+0000` — live |
+| `judgeLaunchReadiness(v2)` | one problem: EMQ unacknowledged. With `emq_acknowledged=true` → **`ok: true`** |
+| `judgeLaunchReadiness(v1)` | still correctly **refused** (conversion never fired) |
+| Geo audit | 7 live/pausable ad sets, **0 non-AU**; the US one is `ARCHIVED` |
+| Link CTR (Lawless ads, 14d) | **3.65% / 3.60% / 3.43%** — headline CTR reads ~12%, engagement-inflated |
 
 ---
 
@@ -117,7 +177,8 @@ recommendation.
 | Campaign `RadiusPro \| TOF \| Aug26` | `120247706808370186` | ACTIVE (container only) |
 | **v2 ad set** — standard `InitiateCheckout`, $65/day | `120247812165960186` | **PAUSED**, 6 ads PAUSED |
 | v1 ad set — dead custom conversion | `120247706822330186` | **PAUSED** (retired) |
-| Retargeting — BOF | `120233074187690186` | **ACTIVE** — leave it, it produces the account's results |
+| Retargeting — BOF | `120233074187690186` | **ACTIVE** ($15/day) — leave it, it produces the account's results |
+| US boosted post — CAMPBELL STREET | (Page-owned) | **ARCHIVED** ✅ resolved |
 
 ## Object ID reference (everything a future session needs)
 

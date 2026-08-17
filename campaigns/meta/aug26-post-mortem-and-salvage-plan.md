@@ -36,7 +36,41 @@ Lee's Events Manager screenshot surfaced what the API confirms:
 
 **Configured** advanced-matching fields: `em, fn, ln, ge, ph, ct, st, zp, db, country, external_id`
 (11, `enable_automatic_matching: true`).
-**Actually arriving:** `external_id` **only**. No email. No phone. No name. No location.
+
+> ## ⛔ CORRECTION (2026-08-17) — this fault was misdiagnosed. Advanced Matching was never broken.
+>
+> The claim below — *"actually arriving: `external_id` only"* — is **wrong**, and it was wrong when it
+> was written. Re-checked against the same endpoint over a 14-day window, aggregated across **all**
+> buckets rather than the first one:
+>
+> | match key | count, 7d | | match key | count, 7d |
+> |---|---|---|---|---|
+> | `external_id` | 3609 | | `email` | **332** |
+> | `fr_cookie` | 860 | | `phone` | **212** |
+> | `true_fr_cookie` | 748 | | `fn` / `ln` | 147 / 77 |
+> | `c_user_cookie` | 634 | | `zip` / `st` / `ct` / `country` | 142 / 110 / 77 / 122 |
+>
+> `email` and `phone` have arrived **every single day** for the whole 14-day window — including the days
+> before this document was written. `had_pii` confirms it independently: **100% of `Purchase` events
+> (39/39) carry PII**, and `InitiateCheckout` runs 51 with / 79 without. `event_source` shows 7831
+> SERVER vs 4028 BROWSER events, so CAPI is live too.
+>
+> **How the error happened — and it is the third instance of the same pattern.** `/stats` returns
+> *hourly buckets*. The first bucket of the window contained 6 events carrying only `external_id`. That
+> one bucket was read as the whole picture. The caveat below even records the tell — *"`match_keys`
+> returned a small sample (6 events)"* — and then reasons past it instead of paginating.
+>
+> The two earlier failures verified **configuration instead of function**. This one verified **a
+> fragment instead of the whole**. Same family: a check that was run, and stopped too early.
+>
+> **What is actually true:** match quality is *partial*, not *absent*. Roughly 25–39% of top-of-funnel
+> events carry PII, because guest browsing has no identity attached yet — that is normal and not fully
+> fixable. `/da_checks` still returns `[failed] Pixel has low event source match rate`, and that is a
+> real but much milder signal than "no parameters arriving". **The $118 penalty is not a launch blocker,
+> and Lee's Shopify data-sharing task was never the prerequisite this document made it.**
+
+**Claimed at the time (retained, struck, as the record of the error):**
+~~**Actually arriving:** `external_id` **only**. No email. No phone. No name. No location.~~
 
 > **`launch-readiness.md` listed "Advanced Matching ON, 11 fields ✅" under *Verified ready*. That was
 > wrong, and wrong the same way the conversion was: I verified the SETTING, not the DATA.** Two
@@ -46,19 +80,23 @@ Lee's Events Manager screenshot surfaced what the API confirms:
 **Why it compounds the damage.** Two faults, not one:
 
 1. **The custom conversion never fires** → the optimiser gets no signal → delivery collapses.
-2. **Match quality is poor** → when a conversion *does* happen, Meta often cannot tie it back to the ad
-   click. The site logged **109 InitiateCheckouts in 7 days** while the ads were credited with **1**.
-   Some of that gap is genuine (most site IC is organic/retargeting), but with only `external_id`
-   arriving, attribution is structurally weak — and Meta has costed it at $118.
+2. ~~**Match quality is poor**~~ → **withdrawn, see the correction above.** The gap between site
+   InitiateCheckouts and ads-credited ones is real, but it is explained by the dead custom conversion
+   (fault 1), not by missing match parameters. Email and phone were arriving the whole time.
 
-**Fix (free, and higher leverage than relaunching):** the Shopify → Meta integration must pass customer
-email/phone at checkout. Meta's own **"Get Started"** on that high-priority action walks it through;
-on the Shopify side it is the Facebook & Instagram app's customer-data-sharing level plus the CAPI
-integration shown as *"Conversions Pixel — Manage integration"* in that screenshot.
+**Fix:** ~~the Shopify → Meta integration must pass customer email/phone at checkout~~ — **not required.**
+It already does. No Shopify change is a prerequisite for relaunch.
 
 ⚠️ **Caveat, stated honestly:** `match_keys` returned a small sample (6 events), and that endpoint is
 already known to window unreliably. The *composition* is the signal, and it agrees with Meta's own
 high-priority warning and the $118 figure — three independent sources. It is not a single-source claim.
+
+> 🔎 **That caveat is the lesson.** It correctly identified the sample as tiny (6 events from one hourly
+> bucket) and then treated three *restatements of the same symptom* as three independent sources. Meta's
+> UI warning, the `$118` figure and `/da_checks` all derive from the same underlying match-rate metric —
+> they corroborate each other by construction. The one genuinely independent check available, paginating
+> `match_keys`, was the one not run. **A small sample is a reason to widen the window, never a reason to
+> lean harder on agreeing sources.**
 
 ### ⛔ What is deliberately NOT done: activation
 

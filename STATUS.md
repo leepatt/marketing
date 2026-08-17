@@ -47,6 +47,12 @@ and **there is no pending Shopify fix behind either.**
 (`event_match_quality`, `match_quality`, `data_quality`, `emq`, …), as an edge, and as a stats
 aggregation — all rejected. The launch gate's demand for a human to read it is correct, not lazy.
 
+**✅ EMQ READ 2026-08-17 (Lee, Events Manager, Jul 20 → Aug 16):**
+**`InitiateCheckout` 6.4/10 · `Purchase` 8.3/10** · TOF events 6.1–6.3.
+A pixel receiving only `external_id` scores 2–3, so this independently **confirms Advanced Matching
+works**. Purchase clears the Bible's >7 bar; **InitiateCheckout at 6.4 does not** — launching is
+therefore a knowing, recorded deviation on the optimisation event, not a satisfied gate.
+
 **Net effect on the launch:** the only outstanding gate is Lee's EMQ read. The US boosted post is now
 `ARCHIVED` (resolved). Details: `campaigns/meta/RUNBOOK-lee-tasks.md`.
 

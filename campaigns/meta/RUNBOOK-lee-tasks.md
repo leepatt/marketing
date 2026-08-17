@@ -49,10 +49,30 @@ https://business.facebook.com/events_manager2/list/pixel/677437638374055/overvie
 Meta moves this around between UI versions, so if none of the three match what you see, screenshot the
 Overview page and send it — the score is on that page somewhere.
 
-**Send Claude two numbers: EMQ for `InitiateCheckout` and EMQ for `Purchase`.**
+### ✅ READ — 2026-08-17, Jul 20 → Aug 16 window, dataset Craftons Web `677437638374055`
 
-Given what is actually arriving, expect **mid-to-high single digits**, not the 3–5 the old note
-predicted. `Purchase` should read highest — every Purchase event carries PII.
+| Event | EMQ | Meta band | Total events (28d) |
+|---|---|---|---|
+| **Initiate checkout** ← the v2 optimisation event | **6.4 / 10** | Good | 255 |
+| **Purchase** | **8.3 / 10** | Great | 91 |
+| PageView | 6.3 | Good | 60.6K |
+| View content | 6.1 | Good | 82.1K |
+| Add to cart | 6.1 ⚠️ *update recommended* | Good | 1.2K |
+| ConfiguratorStarted | 6.1 ⚠️ *update recommended* | Good | 1K |
+
+**This settles it: match quality was never broken.** A pixel receiving only `external_id` scores 2–3.
+Purchase at **8.3** is Meta's "Great" band and is the number that governs whether CAC can be read at
+all. The gradient — Purchase 8.3 > InitiateCheckout 6.4 > TOF events 6.1 — is exactly what identity
+resolution looks like: the further down the funnel, the more customers have identified themselves.
+It matches `had_pii` precisely (Purchase 100% PII, IC 39%).
+
+⚠️ **One honest deviation:** Bible §4.7 Stage 1 sets the bar at **EMQ > 7**. InitiateCheckout is **6.4**,
+so the optimisation event is **below the written bar** while Purchase clears it comfortably.
+See the launch decision below — this is Lee's call to make knowingly, not something to wave through.
+
+_Note: `Initiate checkout` shows no ad set under "Used by" because the window ends **Aug 16** and the v2
+ad set was created **Aug 17**. Not a wiring fault — confirmed separately that v2's `promoted_object`
+carries `INITIATED_CHECKOUT`._
 
 ### Superseded reasoning, kept as the record
 
@@ -163,13 +183,33 @@ For reference it spent **$43.82 for 0 results**, targeting the **United States**
 3. You approve. Claude applies. Ads go live on the **standard `InitiateCheckout`** event at **$65/day**.
 4. Hands off 7 days. First readable signal ~72h; readable CAC ~3–4 weeks.
 
-**If EMQ comes back at 6 or above:** launch. Nothing else is outstanding.
+### The launch decision, with the real numbers in hand
 
-**If EMQ comes back below 6:** it is still Lee's call, but the recommendation has changed. There is no
-longer a pending fix to wait for — the Shopify theory is dead, and partial PII coverage on top-of-funnel
-events is largely structural (guests browsing before they identify themselves). Waiting would mean
-waiting for nothing in particular. Weigh a below-6 score as a known, priced-in drag on attribution
-rather than as a blocker with a fix behind it.
+**Recommendation: launch.** Reasoning, including the part that argues against:
+
+**For:**
+1. **Purchase EMQ 8.3 clears the >7 bar.** Purchase attribution is what determines whether CAC is
+   readable — and CAC is the metric the whole budget ladder and kill rule run on. The monitoring plan's
+   hard rule is *never kill while results can't be counted*; at 8.3, they can be counted.
+2. **What actually killed Aug26 is fixed and verified** — a custom conversion that had never fired.
+   v2 runs on standard `InitiateCheckout`, which fired **255 times** in the window and 44 times on
+   Aug 17 alone.
+3. **Signal volume is adequate.** 255 IC / 28d ≈ 9/day ≈ 63/week, around Meta's ~50/week guidance for
+   stable ad-set optimisation.
+4. **Waiting buys nothing specific.** There is no pending fix behind the 6.4. The Shopify theory is
+   dead. IC sits below Purchase for a structural reason — shoppers start checkout before they identify
+   themselves — and that does not resolve with time.
+
+**Against, stated plainly:**
+- **6.4 is below the Bible's >7 gate for the optimisation event.** That is a real deviation from a
+  written standard, and this repo's whole failure history is standards waved through. The honest framing
+  is *knowingly accepting a moderate attribution drag*, *not* *"the gate is satisfied"*.
+- Expect reported CAC to read somewhat **worse than true CAC**. Judge the ladder against that.
+
+**The lever if Lee prefers to raise it first:** the ⚠️ *update recommended* flags on `Add to cart` and
+`ConfiguratorStarted` are Meta offering more parameters on those events. Neither is the optimisation
+event, so this would not directly move the 6.4 — it is a genuine but slow, indirect improvement, and
+holding $65/day of learning to chase it is a poor trade.
 
 ## Verified live this session (2026-08-17) — nothing quoted from memory
 

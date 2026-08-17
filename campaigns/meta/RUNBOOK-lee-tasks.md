@@ -5,9 +5,28 @@ _Everything Claude can do is already done: v2 ad set built, 6 ads published, v1 
 
 ---
 
-## TASK 1 — Read the EMQ baseline (2 minutes)
+## ~~TASK 1 — Read the EMQ baseline~~ → SKIP IT (updated 2026-08-17)
 
-Do this **first**, before changing anything, so we can prove the Task 2 fix worked.
+**Advice changed after reading more of the API.** Don't spend time hunting the score. Match quality is
+already confirmed broken from **four independent sources**, and the exact number would not change what
+we do next:
+
+| Source | Reading |
+|---|---|
+| `match_keys` composition | only `external_id` arrives — no `em`, `ph`, `fn`, `ln` |
+| `match_rate_approx` | **`-1`** (Meta's "unavailable" sentinel) |
+| `valid_entries` / `matched_entries` | **`0` / `0`** |
+| `/da_checks` | **`[failed] Pixel has low event source match rate`** |
+| Events Manager UI | *"$118 ad spend affected by low data quality"* · match quality **HIGH PRIORITY** |
+
+**Go straight to Task 2.** Verification afterwards is machine-checkable — Claude re-runs `match_keys`
+and `matched_entries` and confirms whether real identifiers start arriving. That is a better proof than
+a UI number read once.
+
+_If you do want the score anyway: on the Events Manager Overview, click the **⌄ chevron** at the right
+of the "Improve your match quality" card (just past the `···`). It expands in place — no scrolling._
+
+### Old instructions, kept for reference
 
 1. Open **https://business.facebook.com/events_manager2/list/dataset/677437638374055/overview**
 2. Confirm top-left says **Craftons Web · ID 677437638374055** (not *Craftons Ads API*).

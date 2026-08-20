@@ -291,6 +291,126 @@ recommendation above does not depend on the discarded number.
 **Next: 7-day read armed for 2026-08-20 21:00 UTC.**
 
 ---
+## ✅ READING 4 — 83h after the **v2** relaunch (2026-08-20 22:01 UTC / Aug 21 08:01 Melbourne)
+
+**First reading of a test that is actually measurable.** Readings 1–3 measured a campaign optimising on
+a conversion that never fired. This one has a live optimisation event and working attribution, so for
+the first time the numbers mean what they say.
+
+**Verdict: HOLD. Do not kill the ad set.** One ad (AD6) mechanically qualifies under the coded rule —
+proposed below, not applied. LAW 1: nothing was changed.
+
+### State — verified live, not from memory
+
+| Object | State |
+|---|---|
+| v2 ad set `120247812165960186` | `ACTIVE` / effective `ACTIVE` · **$65.00/day** · `OFFSITE_CONVERSIONS` |
+| `promoted_object` | `pixel 677437638374055` + `INITIATED_CHECKOUT` ✅ unchanged |
+| geo | `["AU"]` ✅ |
+| 6 ads | all `ACTIVE` / effective `ACTIVE` ✅ |
+| Retargeting `120233074187690186` | `ACTIVE` $15.00/day ✅ left alone |
+
+### v2 only, since activation (Aug 17 → 20)
+
+| Day | Spend | Impr | Link clicks | Link CTR | ATC | IC | Purchase |
+|---|---|---|---|---|---|---|---|
+| Aug 17 *(3h)* | $9.49 | 1,199 | 53 | 4.42% | 5 | 0 | 0 |
+| Aug 18 | $73.55 | 8,298 | 267 | 3.22% | 3 | 0 | 0 |
+| Aug 19 | $40.54 | 3,765 | 142 | 3.77% | 1 | 0 | 0 |
+| Aug 20 | $42.18 | 3,804 | 112 | 2.94% | 0 | 0 | 0 |
+| **Total** | **$165.76** | **17,066** | **574** | **~3.4%** | **9** | **0** | **0** |
+
+**Cost per link click $0.29. Cost per ATC $18.42. LPV→ATC ≈ 1.63%** (~552 LPV).
+That LPV→ATC is **better than the 0.9% benchmark and ~10× July's 0.16%.** Traffic quality is not the
+problem.
+
+### Does the kill rule fire?
+
+Rule: **≥72h AND ≥$25 AND zero results**, per ad, max half the batch, and *an ad with results is never
+killed*.
+
+| Ad | Spend | Link clicks | ATC | Qualifies? |
+|---|---|---|---|---|
+| AD5 Chippies | $84.14 | 308 | **7** | ❌ protected — has results |
+| AD4 Builders | $44.05 | 141 | **2** | ❌ protected — has results |
+| **AD6 Carpenters** | **$25.67** | 92 | **0** | ✅ **QUALIFIES** |
+| AD1 Concreters | $5.63 | 14 | 0 | ❌ under $25 |
+| AD2 Landscapers | $2.15 | 11 | 0 | ❌ under $25 |
+| AD2b Landscapers | $4.12 | 8 | 0 | ❌ under $25 |
+
+**Exactly one ad qualifies — AD6 Carpenters.** 1 of 6, well inside the 50% cap.
+
+### Why the ad set is NOT killed, and why this is different from Reading 3
+
+Reading 3's refusal was *"never kill on zero results when results cannot be counted."* **That escape no
+longer applies — results can be counted now** (9 ATC attributed, EMQ Purchase 8.3). So the refusal has
+to stand on the evidence, not on a measurement excuse:
+
+1. **The ads produce attributed bottom-funnel intent.** 9 ATC in 83h at $18.42 each. A dead campaign
+   does not generate ATC.
+2. **Zero IC is within noise.** Site-wide ATC→IC ran 28% over Aug 18–20 (22 IC / 78 ATC). 9 ATC predicts
+   **~2.5 IC**; observing 0 has probability **e^-2.5 ≈ 8%**. Unlucky, not damning. **n=9 cannot carry a
+   kill decision.**
+3. **Delivery is not collapsing.** Aug 18–20 ran $73.55 / $40.54 / $42.18 — underpacing the $65 budget
+   at roughly 62–65%, but nothing like Reading 3's **86% collapse**. Different signature entirely.
+
+### ⚠️ The two genuine negative signals, stated plainly
+
+- **ATC is trending down: 5 → 3 → 1 → 0.** Four points, tiny n, and Aug 17 is a 3-hour stub, so this may
+  be nothing. But it is the single thing most likely to justify a kill at day 7.
+- **Delivery underpaces at ~62–65% of budget**, consistent with Meta not finding IC-likely users.
+
+### 🔎 A hypothesis I formed and then disproved — recorded so nobody re-forms it
+
+I was going to report that **`InitiateCheckout` is too sparse an event to optimise on** — a mild cousin
+of the Aug26 error — on the basis that site IC looked like ~9/day (~63/week) against Meta's ~50/week
+learning threshold. **Checked before writing it, and it is wrong.**
+
+The 72h note warned `/{pixel}/stats` does not window reliably (*"one day returns 44, four days returns
+34"*). **That flaw does not reproduce today.** Nested windows are monotonic and self-consistent:
+
+| `start_time` | span | IC | ATC | Purchase |
+|---|---|---|---|---|
+| 2026-08-20 | 1d | 9 | 21 | 5 |
+| 2026-08-19 | 2d | 18 | 45 | 8 |
+| 2026-08-18 | 3d | 22 | 78 | 8 |
+| 2026-08-17 | 4d | 81 | 252 | 21 |
+| 2026-08-14 | **7d** | **116** | 386 | 25 |
+
+Each nests correctly inside the next. **Site-wide IC is ~116/week — comfortably above the ~50/week
+learning threshold.** The event has ample volume; v2 simply is not capturing it yet.
+*(Aug 17 alone contributed 59 IC — a spike worth understanding, not a typo.)*
+
+### Blended account read (7 days to Aug 20)
+
+| Metric | Value |
+|---|---|
+| Spend | $469.52 |
+| Results | 3 — **all from retargeting** ($100.24) |
+| Revenue | $4,291.00 |
+| Cost per result | $156.51 |
+| MTD | $884.95, projected $1,269.95 of the $2,000 ceiling |
+
+TOF campaign spend of $369.28 includes **v1's pre-pause spend**, since the 7-day window opens Aug 14 and
+v1 was retired Aug 17. **v2's own spend is $165.76.** Do not read the campaign row as v2's performance.
+
+⚠️ `report` warns **2 live ad sets** against policy `MAX_AD_SETS` = 1. This is the known, accepted
+retargeting exception — it produces every attributed result on the account. Not an action item.
+
+### Recommendation
+
+1. **HOLD the ad set.** Re-read at **7 days (2026-08-24)**. Readable CAC is still 3–4 weeks out.
+2. **Propose pausing AD6 Carpenters** — the one ad the coded rule qualifies. Narrow, reversible, and it
+   concentrates budget on AD5/AD4, which are producing. **Honest caveat:** AD6's zero is *also* within
+   noise (92 clicks at AD5's rate predicts ~2.1 ATC; P(0) ≈ 12%). The case for acting is that the rule
+   exists so these calls are not re-litigated each time, not that AD6 is proven bad.
+3. **Do not touch budget.** Ladder step needs CAC ≤ $322, and CAC is not yet computable for v2.
+4. **At day 7, kill criteria:** if ATC stays at 0–1/day *and* IC is still 0 on >$300 cumulative, that is
+   a real kill case with an adequate denominator.
+
+**Next: 7-day read armed for 2026-08-24.**
+
+---
 
 ## ⏱ When do we cut ads, and when do we touch budget?
 

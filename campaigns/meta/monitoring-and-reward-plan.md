@@ -291,14 +291,59 @@ recommendation above does not depend on the discarded number.
 **Next: 7-day read armed for 2026-08-20 21:00 UTC.**
 
 ---
-## ✅ READING 4 — 83h after the **v2** relaunch (2026-08-20 22:01 UTC / Aug 21 08:01 Melbourne)
+## 📎 READING 4 — ANNEX: v2 mechanics, and a HOLD recommendation that was WRONG
 
-**First reading of a test that is actually measurable.** Readings 1–3 measured a campaign optimising on
-a conversion that never fired. This one has a live optimisation event and working attribution, so for
-the first time the numbers mean what they say.
+_Written independently at 83h (2026-08-20 22:01 UTC / Aug 21 08:01 Melbourne), before this session saw
+the 7-day read below. **Kept because the per-ad data and the disproved hypothesis are worth having —
+but its verdict is superseded.** Read `📕 Reading 4 — +7 days` for the decision._
 
-**Verdict: HOLD. Do not kill the ad set.** One ad (AD6) mechanically qualifies under the coded rule —
-proposed below, not applied. LAW 1: nothing was changed.
+> ### ⛔ This annex recommended HOLD. That recommendation is withdrawn.
+>
+> **Why it was wrong: it scoped the question to v2 alone.** It asked *"is 83h enough to judge this ad
+> set?"* — a reasonable question with a reasonable answer (no, n=9 cannot carry a kill decision). But
+> that was the wrong question. The right one is *"is this the best place for the money?"*, and answering
+> it needs the account, not the ad set.
+>
+> **Verified independently before conceding** — the 7-day read's numbers hold up on the live API:
+>
+> | Claim | Verified |
+> |---|---|
+> | RadiusPro TOF lifetime | **$1,649.22** ($1,279.94 Jul26 + $369.28 Aug26) — matches their $1,649.12 |
+> | RadiusPro TOF purchases, Meta-attributed | **0**, on **15,414 link clicks** |
+> | Retargeting campaign lifetime | **$3,229.71 → 62 purchases → $57,730** = **$52.09/purchase** |
+> | Retargeting vs break-even | $52 against **$322**. Even after the ~3× Meta-over-claim haircut, ~$154 |
+> | Retargeting budget-capped? | **Yes** — 10-day average **$14.86/day** against a $15 cap, 4 days at/over |
+> | Retargeting frequency | **1.60** current — unsaturated, room to spend |
+>
+> **15,414 link clicks into Radius Pro TOF for zero Meta-attributed purchases** is the number that
+> settles it. That is not a sample-size problem.
+>
+> **The annex's own noise argument still stands and still loses.** Zero IC from 9 ATC really is ~8%
+> likely by chance. But "this particular 83h window was unlucky" cannot explain two months and $1,649.
+> A locally valid statistical point, applied at the wrong altitude.
+>
+> **Rule this cost:** *n is too small to judge* and *the money is in the wrong place* are answers to
+> different questions. Check which one is being asked before reaching for the statistics.
+>
+> ### The one real objection to killing TOF, and the numbers on it
+>
+> **"Retargeting needs TOF to fill its audience — kill the top of the funnel and the pool drains."**
+> That is the standard objection and it deserves a number, not a shrug:
+>
+> | | |
+> |---|---|
+> | Site-wide PageViews, 7d (Aug 14–20) | **7,807** (~1,115/day) |
+> | v2 paid landing-page views | ~158/day |
+> | **Paid TOF share of top-funnel inflow** | **14.2%** |
+>
+> So pausing v2 removes about **one seventh** of pool-filling; ~86% is organic and continues untouched.
+>
+> **More decisive: retargeting is budget-constrained, not audience-constrained.** Frequency is **1.60**
+> and it hits its cap most days. It is running out of *money*, not people. Removing 14% of inflow cannot
+> bind while budget is the binding constraint — and if frequency later climbs past ~3 on a raised budget,
+> *that* is the signal the pool is thinning and TOF needs revisiting.
+>
+> **Monitor, don't block.** The objection is real but it does not out-rank $1,649 for zero purchases.
 
 ### State — verified live, not from memory
 
@@ -397,18 +442,16 @@ v1 was retired Aug 17. **v2's own spend is $165.76.** Do not read the campaign r
 ⚠️ `report` warns **2 live ad sets** against policy `MAX_AD_SETS` = 1. This is the known, accepted
 retargeting exception — it produces every attributed result on the account. Not an action item.
 
-### Recommendation
+### ~~Recommendation~~ — SUPERSEDED
 
-1. **HOLD the ad set.** Re-read at **7 days (2026-08-24)**. Readable CAC is still 3–4 weeks out.
-2. **Propose pausing AD6 Carpenters** — the one ad the coded rule qualifies. Narrow, reversible, and it
-   concentrates budget on AD5/AD4, which are producing. **Honest caveat:** AD6's zero is *also* within
-   noise (92 clicks at AD5's rate predicts ~2.1 ATC; P(0) ≈ 12%). The case for acting is that the rule
-   exists so these calls are not re-litigated each time, not that AD6 is proven bad.
-3. **Do not touch budget.** Ladder step needs CAC ≤ $322, and CAC is not yet computable for v2.
-4. **At day 7, kill criteria:** if ATC stays at 0–1/day *and* IC is still 0 on >$300 cumulative, that is
-   a real kill case with an adequate denominator.
+_This annex recommended: hold the ad set, pause only AD6 Carpenters, don't touch budget, re-read Aug 24._
 
-**Next: 7-day read armed for 2026-08-24.**
+**Superseded by the 7-day read.** Pausing v2 entirely makes the AD6 question moot, and the budget the
+annex declined to touch is exactly what should move — to retargeting, not up the TOF ladder.
+
+**What survives from it:** the per-ad table above stays useful if TOF is ever retried — AD5 (7 ATC on
+$84) and AD4 (2 ATC on $44) are the two creatives that produced anything, and the three carousels never
+got a real chance at under $6 each. The pixel-windowing re-verification stands on its own.
 
 ---
 

@@ -1,13 +1,34 @@
 # Lee's tasks — step by step (updated 2026-08-17, second pass)
 
+> # 🔴 THE 7-DAY READ IS IN — 2026-08-20. TOF DOES NOT WORK.
+>
+> The reading this banner was waiting for has been done, against the live Meta and Shopify APIs.
+>
+> **v2 ran 3.5 days: $165.66 · 553 landing page views · 9 add-to-carts · 0 checkouts · 0 orders.**
+> **TOF all time: $1,649.12 across three campaigns and two months → one traceable $362 order.**
+>
+> Meanwhile **retargeting returns roughly ten times its cost and runs out of money every single day**
+> at $15/day, frequency 1.6 — nowhere near saturated. The money is in the wrong place.
+>
+> **Two changes proposed. Nothing has touched the account.**
+>
+> | Change | approval_id |
+> |---|---|
+> | **Pause TOF v2** `120247812165960186` | `d8391efe-4388-4b9e-9c5e-fb2e027dc5da` |
+> | **Retargeting `120233074187690186` $15 → $18/day** | `25d9597c-3363-4e23-8e95-f933ead563a6` |
+>
+> Full working, including why 3.5 days is enough this time: **`aug20-seven-day-read.md`**.
+>
+> **Match quality is not implicated.** The 08-17 correction stands — Advanced Matching was never
+> broken, EMQ is IC 6.4 / Purchase 8.3, and none of that explains 553 landing page views producing
+> zero checkouts. Do not reopen it.
+
+<details><summary>Launch banner and task history (kept for the record)</summary>
+
 > # 🟢 LAUNCHED 2026-08-17 — Lee's task list is EMPTY
 >
 > All three tasks are closed and **v2 is live at $65/day**. Task 1 (EMQ) read: IC 6.4 / Purchase 8.3.
 > Task 2 cancelled — misdiagnosis, nothing to fix. Task 3 done — US post archived.
-> Verified live state in the LAUNCHED section below. **Next action is a reading at ~72h (≈ Aug 20),
-> not before.** History of the task list follows.
-
-<details><summary>Task history (kept for the record)</summary>
 
 > # ✅ ONE TASK LEFT, AND IT IS A 60-SECOND READ
 >
@@ -295,14 +316,14 @@ knowingly-accepted 6.4 in the approval note. Dry-run confirms the ad-set call is
 
 ---
 
-## Current state — nothing is spending on the test
+## Current state — updated 2026-08-20 from the live account
 
 | Object | ID | Status |
 |---|---|---|
 | Campaign `RadiusPro \| TOF \| Aug26` | `120247706808370186` | ACTIVE (container only) |
-| **v2 ad set** — standard `InitiateCheckout`, $65/day | `120247812165960186` | **PAUSED**, 6 ads PAUSED |
+| **v2 ad set** — standard `InitiateCheckout`, $65/day | `120247812165960186` | **ACTIVE since 2026-08-17**, 6 ads ACTIVE — Lee approved activation 08-17 10:43 UTC. **Pause proposed**, see below |
 | v1 ad set — dead custom conversion | `120247706822330186` | **PAUSED** (retired) |
-| Retargeting — BOF | `120233074187690186` | **ACTIVE** ($15/day) — leave it, it produces the account's results |
+| Retargeting — BOF | `120233074187690186` | **ACTIVE**, $15/day and budget-capped every day. 62 lifetime purchases at $52 each. **Raise to $18 proposed** |
 | US boosted post — CAMPBELL STREET | (Page-owned) | **ARCHIVED** ✅ resolved |
 
 ## Object ID reference (everything a future session needs)

@@ -430,3 +430,57 @@ Six corrected creatives are built and validated against Meta:
 
 **"Laminate" is on Lee's banned list and shipped in all three Lawless ads in July.** Duplicating them
 unchanged would have re-shipped it.
+
+---
+
+## 📕 Reading 4 — +7 days (2026-08-20). The last one for this test.
+
+**Full working: `aug20-seven-day-read.md`. This is the summary and the decision.**
+
+v2 was activated 2026-08-17 on Lee's approval and ran 3.5 days at $65/day.
+
+| | v2 |
+|---|---:|
+| Spend | $165.66 |
+| Landing page views | 553 |
+| Add to cart | 9 (1.63% of LPV) |
+| **InitiateCheckout** | **0** |
+| Shopify orders | **0** |
+
+### The kill rule fires, and this time it is not refused
+
+The three earlier readings all refused the kill rule under the same standing rule — *never kill on
+"zero results" when results cannot be counted.* That protection no longer applies:
+
+- v2 optimises on **standard `InitiateCheckout`**, which fired 19 times account-wide in August.
+- Shopify journey attribution **demonstrably captures Meta clicks** (verified against 60 orders).
+
+The denominator is real now. The result is genuinely zero.
+
+**And the decision does not rest on 3.5 days.** It rests on **$1,649.12 of TOF spend across three
+campaigns and two months producing one traceable $362 order.**
+
+### What the readings got right, and the one thing they missed
+
+Right: refusing to cut creative on a broken denominator, three times running. Had those cuts been
+made, the creative would have been blamed for a measurement fault, and v2's 4× improvement in
+LPV→ATC (0.40% → 1.63%) would never have been visible.
+
+Missed: **every reading looked at the test in isolation.** None compared it to the retargeting ad set
+sitting beside it — $15/day, budget-capped every single day since October 2025, frequency 1.6, 62
+purchases at $52 each. The comparison is what turns "TOF is underperforming" into "the money is in
+the wrong place", and it was available at reading 1.
+
+**Rule to carry forward: read every test against the best-performing thing already in the account,
+not only against its own targets.** A test that fails in isolation is a data point. A test that fails
+while a proven ad set next to it runs out of money daily is a misallocation.
+
+### Proposed, pending Lee
+
+| Change | approval_id |
+|---|---|
+| Pause TOF v2 `120247812165960186` | `d8391efe-4388-4b9e-9c5e-fb2e027dc5da` |
+| Retargeting `120233074187690186` $15 → $18/day | `25d9597c-3363-4e23-8e95-f933ead563a6` |
+
+Per this plan's own escalation table — *"Propose pausing zero-result ads. Lee approves."* Rung 0.
+Nothing applied.

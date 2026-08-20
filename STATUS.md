@@ -673,6 +673,37 @@ live. **Lee's action.**
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·
 `ad-extensions.md` · `ads/*` · `conversion-tracking.md` · `api-access.md` · `api-tool-design.md` ·
 `cnc-cut-review-log.md`
+### 🔴 THE 7-DAY VERDICT — 2026-08-20 → `campaigns/meta/aug20-seven-day-read.md`
+
+**Top-of-funnel does not work, and it is no longer a close call.**
+
+- v2 went live **2026-08-17** on Lee's explicit approval (7 approval rows, `approver = "Lee Patterson"`,
+  08-17 10:43 UTC). LAW 1 held. **The previous handoff claiming "v2 is PAUSED" was stale** — it had
+  been live for three days by the time that note was read.
+- **v2: $165.66 · 553 LPV · 9 ATC · 0 checkouts · 0 orders.**
+- **TOF all time: $1,649.12 → one traceable $362 order** (`#1280`, and its last click was retargeting).
+  Three campaigns, two months, in agreement.
+- **Retargeting is the engine and it is starved.** $15/day, spends it every day since Oct 2025,
+  frequency **1.6** (not saturated), **62 lifetime purchases at $52 each** vs a $322 break-even.
+  August: $266 spend → **$3,901 of Shopify-traceable revenue**.
+- **Match quality is NOT implicated, and I nearly re-asserted the withdrawn claim.** I pulled
+  `match_rate_approx: -1` / `matched_entries: 0` again and began writing them up as a fault. The
+  08-17 correction (above) had already withdrawn that, and those two fields measure **offline
+  customer-list matching**, not Advanced Matching — `-1` is a "not applicable" sentinel. EMQ is
+  IC 6.4 / Purchase 8.3. **Nothing to fix; do not reopen.** Caught only by reading the remote branch
+  before pushing — which is the third time this repo's "check it isn't already done" rule has paid.
+- **Correction — Meta over-claims purchases ~3×.** Meta MTD: 9 purchases/$13,608. Shopify: 3 Meta-UTM
+  orders/$3,901. Divide any Meta-reported ROAS by ~3.
+- **Method note that makes the read trustworthy:** Shopify journey data *does* capture Meta when Meta
+  drives a click (verified across 60 orders back to 07-07). So zero Meta orders in the window is a
+  real absence, not a tracking gap. **Always run this check before concluding "no attributed sales".**
+- **Proposed, pending Lee, nothing applied:** pause TOF v2 (`d8391efe-4388-4b9e-9c5e-fb2e027dc5da`) ·
+  retargeting $15→$18 (`25d9597c-3363-4e23-8e95-f933ead563a6`).
+- **The real gap, unchanged since July:** ~15,113 cold visitors bought, **zero captured**. The next
+  build is lead capture, not more creative.
+
+---
+
 **Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs
@@ -683,7 +714,10 @@ anti-angle section retracted) · `conversion-tracking.md` · `radius-pro-intervi
 **`aug26-post-mortem-and-salvage-plan.md` (⭐ the Aug26 launch post-mortem: the custom conversion never
 fired, delivery collapsed, salvage = repoint to standard InitiateCheckout. Learnings ledger at the end)** ·
 `monitoring-and-reward-plan.md` (the reading log: 16h/72h/83h) · `pool-builders.md` (use case confirmed
-from orders — formwork, not set-out; LF7 gated)
+from orders — formwork, not set-out; LF7 gated) ·
+**`aug20-seven-day-read.md` (⭐⭐ THE VERDICT — TOF is $1,649 for one $362 order across three campaigns.
+Retargeting returns ~10× and is budget-capped daily. Two changes proposed. Also corrects the
+match-quality over-weighting and measures Meta's ~3× purchase over-claim)**
 
 **🔑 Market intel — the verbatim corpus. READ BEFORE WRITING ANY COPY.** `research/market-intel/` →
 `VOICE-OF-CUSTOMER-curved-jobs.md` (9 verbatim enquiries, won + lost) · `CURVED-JOBS-WINLOSS.md`

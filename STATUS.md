@@ -704,6 +704,36 @@ live. **Lee's action.**
 
 ---
 
+### 🔴 2026-08-23 — A1/B1/C1/D1 → `campaigns/meta/aug23-work-log.md` + `c1-lead-capture-spec.md`
+
+Lee chose A1, B1, C1, D1. **Two of the four were not what they looked like.**
+
+- **A1 DONE.** TOF v2 **PAUSED** and verified. Retargeting ($15/day) is now the only Meta spend.
+- **⏱ The 7-day read was 3 days stale** — pulled 08-20, Lee replied 08-23, v2 kept spending.
+  **Final v2: $386.81 · 1,116 LPV · 18 ATC · 1 checkout · 0 orders.** TOF all-time **$1,870.27** for
+  one traceable $362 order. **Always re-pull before acting on a read from a previous turn.**
+- **🔴 B1 STOPPED — my own proposal was wrong.** `meta-ads.mjs` refuses `ADD_TO_CART` by name, with
+  July's data, and the guardrail is right: ATC→checkout is 5.6% on TOF vs 41.8% on retargeting.
+  **The premise was also wrong** — cold TOF converts to IC at 0.02–0.17% of LPV, so 1 checkout from
+  1,116 LPV is the *expected* number, not evidence of a broken target. Lookalikes are closed too:
+  every one is "too small to be used" (seeds ~20 people). **Meta prospecting: ~$7,000 → 5 purchases.
+  Retargeting: $3,229 → 62.** Meta works for Craftons as retargeting only.
+- **🔴 D1 — the Google campaign was ALREADY LIVE**, and losing money in a fixable way. 30d:
+  **$1,059.42 → 4 conversions, of which only 2 are purchases** ($1,098). True CAC **~$529** vs $322
+  break-even. **$824.28 sits on 0-conversion keywords; the 4 that convert cost $95.98 total.**
+  Ad group **Radius Pro: $567.24, 132 clicks, 0 conversions** — every keyword buys a *substitute
+  product* searcher (`bendy ply`, `curved mdf`, `flexible plywood`). **We banned "bendy ply" in our
+  copy and then bid $136.53 on it.** Same lesson as Meta TOF, second channel: the traffic is the
+  problem, not the creative. Radius Pro *does* sell via Google **organic** (`#1292`, `#1298`).
+  **20 changes proposed, none applied** — 10 keyword pauses (~$435/30d) + 10 negatives. $389.36 of
+  other 0-conv keywords deliberately NOT proposed (same intent as the winners; CPC cut, not a pause).
+- **⬜ C1 spec written, not built.** Design: **"Email me this quote"** at the configurator price, not
+  a discount popup — these buyers are pricing a job they have not won. Evidence it works: order
+  `#1293` **$2,736**, first visit 08-11, closed 08-17 by a **Craftons Trade Program email**. The web
+  form currently gets **~2 submissions a month**.
+
+---
+
 **Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs

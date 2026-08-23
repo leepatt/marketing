@@ -647,3 +647,44 @@ while a proven ad set next to it runs out of money daily is a misallocation.
 
 Per this plan's own escalation table — *"Propose pausing zero-result ads. Lee approves."* Rung 0.
 Nothing applied.
+
+---
+
+## ✅ READING 5 — 2026-08-23. The pause is applied, and the numbers are worse than Reading 4 knew.
+
+**Reading 4 was pulled 2026-08-20. Lee replied 2026-08-23. v2 kept spending in between.**
+
+| | Reading 4 (08-20) | **Final (08-23)** |
+|---|---:|---:|
+| v2 spend | $165.66 | **$386.81** |
+| Landing page views | 553 | **1,116** |
+| Add to cart | 9 | **18** |
+| Checkout | 0 | **1** |
+| Orders | 0 | **0** |
+
+The extra three days cost **$221.15** for one checkout and no orders. **TOF all-time: $1,870.27** for
+one traceable $362 order.
+
+**Lee chose A1. v2 is PAUSED**, applied and verified 2026-08-23. Retargeting at $15/day is the only
+Meta spend. Both independent Reading 4s — the 83h annex and the 7-day read — converged on this before
+it was applied.
+
+### The rule this reading adds
+
+**Re-pull before acting on a read written in a previous turn.** The 7-day read was correct when
+written and three days stale when acted on, and nothing in the conversation showed that. Every figure
+quoted to Lee in the intervening reply was understated by roughly half.
+
+This joins the two existing rules:
+
+1. Verify **function**, not configuration.
+2. **Paginate** before concluding — a fragment is not the window.
+3. **Re-pull before acting** — a read has a timestamp, and the gap between reading and deciding is
+   real time in which money moves.
+
+### And the rule Reading 4 already earned, restated
+
+**Read every test against the best thing already in the account.** Applied to Google this session, it
+found the same failure a second time: an ad group spending $567.24 for 132 clicks and zero
+conversions, next to four keywords converting at $24 each. Same shape, different channel. See
+`aug23-work-log.md`.

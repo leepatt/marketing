@@ -734,6 +734,28 @@ Lee chose A1, B1, C1, D1. **Two of the four were not what they looked like.**
 
 ---
 
+### ✅ 2026-08-23 (later) — A2 applied + ladder to $50/day → `campaigns/meta/retargeting-budget-ladder.md`
+
+Lee: *"do a2, increase daily until budget is $50 per day."*
+
+- **Retargeting `120233074187690186` is now $18.00/day** (was $15), applied and verified.
+- **Ladder to $50/day** in +20% steps (the coded `MAX_BUDGET_INCREASE_FRACTION`):
+  18 → 21.60 → 25.92 → 31.10 → 37.32 → 44.78 → 50.00. **One step every 2 days**, reaching $50 around
+  **2026-09-04**. Lee asked for daily; each step is inside the 20% cap but six consecutive daily edits
+  compound to +178% in a week and Meta disrupts delivery on repeated changes. Two-day spacing is the
+  judgement call — **say the word to make it daily.**
+- **$50/day is supported by the audience, checked not assumed:** `delivery_estimate` returns
+  **9,500–11,200 MAU**; reach is only ~614/day because the budget is small. Frequency 1.29–2.03.
+- **Four guards stop the ladder automatically:** 7d frequency ≥ 3.0 · 7d cost/pixel-purchase ≥ $100
+  (≈ $300 real at the 3× over-claim) · monthly ceiling breach · 7 days with zero purchases.
+  **A guard trip is a stop, not a slow-down.**
+- **Armed:** trigger `trig_011UaPGvNu813zEAC3w7CZgC` fires 2026-08-25, re-pulls data, checks guards,
+  steps, records, and re-arms. Does not depend on memory.
+- ⚠️ **September headroom:** $50/day × 30 = $1,500 of the $2,000 ceiling. Restarting Meta prospecting
+  in September needs a ceiling conversation first.
+
+---
+
 **Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs

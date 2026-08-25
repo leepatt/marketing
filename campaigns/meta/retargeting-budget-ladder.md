@@ -34,8 +34,8 @@ the number to watch, and it is guarded below rather than trusted.**
 | Step | Budget | Status |
 |---:|---:|---|
 | 0 | $15.00 | starting point |
-| **1** | **$18.00** | ✅ **applied 2026-08-23** |
-| 2 | $21.60 | pending |
+| **1** | **$18.00** | ✅ applied 2026-08-23 |
+| **2** | **$21.60** | ✅ **applied 2026-08-25** |
 | 3 | $25.92 | pending |
 | 4 | $31.10 | pending |
 | 5 | $37.32 | pending |
@@ -74,10 +74,42 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 | Date | From | To | 7d freq | 7d $/purchase | Applied by |
 |---|---:|---:|---:|---:|---|
 | 2026-08-23 | $15.00 | **$18.00** | 1.65 | $22.75 | Lee approved in chat → applied |
+| 2026-08-25 | $18.00 | **$21.60** | 1.65 | $22.42 | ladder, all 4 guards re-checked live |
 
 ## Automation
 
-Step 2 is armed as a scheduled reminder — trigger `trig_011UaPGvNu813zEAC3w7CZgC`, fires
-**2026-08-25 22:06 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
+Step 3 is armed as a scheduled reminder — trigger `trig_01823R9KDE6f1JECHAZamkoi`, fires
+**2026-08-27 22:11 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
+
+
+---
+
+## Step 2 reading — 2026-08-25
+
+All four guards re-checked against the live account before stepping:
+
+| Guard | Reading | Verdict |
+|---|---:|---|
+| G1 frequency (7d avg) | **1.65** | ✅ pass |
+| G2 cost per pixel purchase (7d) | **$22.42** | ✅ pass |
+| G3 month-to-date + projection | $1,195.88 → ~$1,325 of $2,000 | ✅ pass |
+| G4 purchases in 7d | **5** | ✅ pass |
+
+**The $18 step behaved exactly as the audience model predicted, which is the important result.**
+
+| | at $15/day | at $18/day (08-24, 08-25) |
+|---|---:|---:|
+| Daily reach | ~500 | **854, 861** |
+| Frequency | 1.6 | **1.62, 1.80** |
+
+**Reach expanded ~70% and frequency stayed flat.** That is Meta finding new people in the
+9,500–11,200 pool rather than re-showing ads to the same ones — the thing the flat-reach projection
+warned might not happen. It did. The path to $50/day is sound on current evidence.
+
+**The signal to watch from here** is the inverse: if reach stops growing while frequency climbs, the
+pool is saturating, and that is worth flagging to Lee **even while frequency is still under the 3.0
+guard**. A guard is a backstop, not the first warning.
+
+Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.

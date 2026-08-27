@@ -35,8 +35,8 @@ the number to watch, and it is guarded below rather than trusted.**
 |---:|---:|---|
 | 0 | $15.00 | starting point |
 | **1** | **$18.00** | ✅ applied 2026-08-23 |
-| **2** | **$21.60** | ✅ **applied 2026-08-25** |
-| 3 | $25.92 | pending |
+| **2** | **$21.60** | ✅ applied 2026-08-25 |
+| **3** | **$25.92** | ✅ **applied 2026-08-27** |
 | 4 | $31.10 | pending |
 | 5 | $37.32 | pending |
 | 6 | $44.78 | pending |
@@ -75,11 +75,12 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 |---|---:|---:|---:|---:|---|
 | 2026-08-23 | $15.00 | **$18.00** | 1.65 | $22.75 | Lee approved in chat → applied |
 | 2026-08-25 | $18.00 | **$21.60** | 1.65 | $22.42 | ladder, all 4 guards re-checked live |
+| 2026-08-27 | $21.60 | **$25.92** | 1.75 | $33.06 | ladder, all 4 guards re-checked live |
 
 ## Automation
 
-Step 3 is armed as a scheduled reminder — trigger `trig_01823R9KDE6f1JECHAZamkoi`, fires
-**2026-08-27 22:11 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
+Step 4 is armed as a scheduled reminder — trigger `trig_01NpsYM6Cy8RWQM3aGM692jF`, fires
+**2026-08-29 22:15 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -111,5 +112,47 @@ warned might not happen. It did. The path to $50/day is sound on current evidenc
 **The signal to watch from here** is the inverse: if reach stops growing while frequency climbs, the
 pool is saturating, and that is worth flagging to Lee **even while frequency is still under the 3.0
 guard**. A guard is a backstop, not the first warning.
+
+Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.
+
+
+---
+
+## Step 3 reading — 2026-08-27. A near-miss worth recording.
+
+All four guards passed: frequency **1.75**, **$33.06** per pixel purchase, MTD $1,242.46 projecting to
+~$1,346 of $2,000, **4 purchases**. Stepped to **$25.92**.
+
+**But the early-warning signal appeared to be firing, and it was a false alarm.** Read day by day:
+
+| Date | Spend | Reach | Freq | CPM |
+|---|---:|---:|---:|---:|
+| Tue 08-25 | $23.55 | 861 | 1.80 | $15.19 |
+| Wed 08-26 | $24.39 | **723** | **2.05** | $16.47 |
+| Thu 08-27 | $22.10 | **651** | 1.93 | $17.57 |
+
+Reach falling, frequency up, CPM up, at flat spend. That is the textbook saturation signature and it
+is exactly what step 2's note said to flag.
+
+**It does not survive a same-weekday comparison:**
+
+| | Reach | Freq | CPM | Spend |
+|---|---:|---:|---:|---:|
+| Wed 08-19 → Wed 08-26 | 481 → **723** (+50%) | 1.68 → 2.05 | $15.95 → $16.47 (+3%) | +89% |
+| Thu 08-20 → Thu 08-27 | 468 → **651** (+39%) | 1.60 → 1.93 | $18.07 → $17.57 (−3%) | +63% |
+
+Reach is still expanding strongly and **CPM is flat**. Tuesday is simply a high day on this account;
+comparing Tuesday to Thursday manufactured a trend that is not there. Spend +70% split into roughly
++45% reach and +20% frequency is a healthy absorption, not saturation.
+
+> **Rule: compare same weekday to same weekday.** A three-day within-week slope on an account this
+> size is day-of-week, not trend. This nearly caused a wrong call in the conservative direction —
+> which is the cheap direction to be wrong in, but still wrong.
+
+**Cost per purchase moved $22.42 → $33.06.** Worth watching, but that is 4–5 purchases per window;
+the swing is noise, and it is a fifth of the $100 guard and a tenth of the $322 break-even.
+
+**The real saturation signal, restated:** reach flat-or-falling **on a same-weekday basis** while
+frequency *and* CPM both climb. Not the within-week wobble.
 
 Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.

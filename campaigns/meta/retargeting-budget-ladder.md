@@ -36,8 +36,8 @@ the number to watch, and it is guarded below rather than trusted.**
 | 0 | $15.00 | starting point |
 | **1** | **$18.00** | ✅ applied 2026-08-23 |
 | **2** | **$21.60** | ✅ applied 2026-08-25 |
-| **3** | **$25.92** | ✅ **applied 2026-08-27** |
-| 4 | $31.10 | pending |
+| **3** | **$25.92** | ✅ applied 2026-08-27 |
+| **4** | **$31.10** | ✅ **applied 2026-08-29** |
 | 5 | $37.32 | pending |
 | 6 | $44.78 | pending |
 | 7 | **$50.00** | target (+11.7%, final step) |
@@ -76,11 +76,12 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 | 2026-08-23 | $15.00 | **$18.00** | 1.65 | $22.75 | Lee approved in chat → applied |
 | 2026-08-25 | $18.00 | **$21.60** | 1.65 | $22.42 | ladder, all 4 guards re-checked live |
 | 2026-08-27 | $21.60 | **$25.92** | 1.75 | $33.06 | ladder, all 4 guards re-checked live |
+| 2026-08-29 | $25.92 | **$31.10** | 1.79 | $30.43 | ladder, all 4 guards re-checked live |
 
 ## Automation
 
-Step 4 is armed as a scheduled reminder — trigger `trig_01NpsYM6Cy8RWQM3aGM692jF`, fires
-**2026-08-29 22:15 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
+Step 5 is armed as a scheduled reminder — trigger `trig_01PMncWw2bXNiJjgE5PgChDV`, fires
+**2026-08-31 22:17 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -156,3 +157,57 @@ the swing is noise, and it is a fifth of the $100 guard and a tenth of the $322 
 frequency *and* CPM both climb. Not the within-week wobble.
 
 Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.
+
+
+---
+
+## Step 4 reading — 2026-08-29. Clean, but a trend is forming.
+
+Guards: frequency **1.79**, **$30.43** per pixel purchase, MTD $1,289.89 → ~$1,352 of $2,000,
+**5 purchases**. All pass. Stepped to **$31.10**.
+
+**Same-weekday comparison is clean** — the check that was a false alarm at step 3:
+
+| Day | Reach | CPM |
+|---|---|---|
+| Mon | 503 → 854 (**+70%**) | −14% |
+| Tue | 635 → 861 (**+36%**) | −5% |
+| Wed | 481 → 723 (**+50%**) | +3% |
+| Thu | 468 → 651 (**+39%**) | −3% |
+| Fri | 488 → 814 (**+67%**) | +1% |
+| Sat | 645 → 1,051 (**+63%**) | −9% |
+| Sun | 1,218 → 588 (−52%) | +17% |
+
+Six of seven days show reach up 36–70% with CPM flat or falling. The Sunday reversal is an outlier in
+the *prior* week — 08-16 delivered 1,218 reach at $20.29, the highest of the fortnight. **Week totals:
+spend +45%, reach +25%, CPM −2%.**
+
+### The trend worth naming now, well before it becomes a guard trip
+
+Reach expansion is slowing relative to spend:
+
+| Step | Spend increase | Reach increase |
+|---|---:|---:|
+| 2 → 3 | +70% | **+45%** |
+| 3 → 4 | +45% | **+25%** |
+
+And frequency is creeping: **1.65 → 1.75 → 1.79**.
+
+**This is not yet saturation.** CPM is flat-to-down (−2% week over week), which is the counter-signal:
+if the pool were genuinely exhausting, Meta would be paying more per thousand, not less. Reach is
+still growing in absolute terms. But the *ratio* is moving the wrong way, and two more +20% steps sit
+between here and $50.
+
+> **Explicit condition for the remaining steps:** if reach growth falls below roughly **half** of
+> spend growth **and** CPM turns upward on a same-weekday basis, that is real saturation. Flag it to
+> Lee even under the 3.0 frequency guard, and consider **holding short of $50** — the target is a
+> number Lee named, not a law. The point of the ladder is to find the efficient ceiling, and it is
+> possible that ceiling is below $50.
+
+Cost per purchase is stable: $22.42 → $33.06 → $30.43. Comfortably inside the $100 guard and a tenth
+of the $322 break-even.
+
+Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.
+
+**Next step lands in September** — G3 must be recomputed from 2026-09-01 with real days remaining and
+every active ad set counted, not carried over from August.

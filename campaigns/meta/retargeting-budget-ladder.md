@@ -37,8 +37,8 @@ the number to watch, and it is guarded below rather than trusted.**
 | **1** | **$18.00** | ✅ applied 2026-08-23 |
 | **2** | **$21.60** | ✅ applied 2026-08-25 |
 | **3** | **$25.92** | ✅ applied 2026-08-27 |
-| **4** | **$31.10** | ✅ **applied 2026-08-29** |
-| 5 | $37.32 | pending |
+| **4** | **$31.10** | ✅ applied 2026-08-29 |
+| **5** | **$37.32** | ✅ **applied 2026-08-31** |
 | 6 | $44.78 | pending |
 | 7 | **$50.00** | target (+11.7%, final step) |
 
@@ -77,11 +77,12 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 | 2026-08-25 | $18.00 | **$21.60** | 1.65 | $22.42 | ladder, all 4 guards re-checked live |
 | 2026-08-27 | $21.60 | **$25.92** | 1.75 | $33.06 | ladder, all 4 guards re-checked live |
 | 2026-08-29 | $25.92 | **$31.10** | 1.79 | $30.43 | ladder, all 4 guards re-checked live |
+| 2026-08-31 | $31.10 | **$37.32** | 1.82 | $30.44 | ladder, all 4 guards re-checked live |
 
 ## Automation
 
-Step 5 is armed as a scheduled reminder — trigger `trig_01PMncWw2bXNiJjgE5PgChDV`, fires
-**2026-08-31 22:17 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
+Step 6 is armed as a scheduled reminder — trigger `trig_01NogSPPfBxFKi2v1xSfhTnb`, fires
+**2026-09-02 22:20 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -211,3 +212,44 @@ Also verified unchanged: v2 TOF and v1 TOF both still `PAUSED`.
 
 **Next step lands in September** — G3 must be recomputed from 2026-09-01 with real days remaining and
 every active ad set counted, not carried over from August.
+
+
+---
+
+## Step 5 reading — 2026-08-31. **The step-4 concern did not hold.**
+
+Guards: frequency **1.82**, **$30.44** per pixel purchase, **6 purchases**, September projection
+**$1,470 of $2,000**. All pass. Stepped to **$37.32**.
+
+**Two days ago I told Lee reach expansion was slowing and might mean an efficient ceiling below $50.
+That reversed completely.**
+
+| Step | Spend growth | Reach growth | Reach as share of spend |
+|---|---:|---:|---:|
+| 2 → 3 | +70% | +45% | 64% |
+| 3 → 4 | +45% | +25% | **56%** ← the concern |
+| **4 → 5** | **+73%** | **+72%** | **98%** |
+
+CPM **−6%** week over week, and reach up on **every single weekday**: Tue +36%, Wed +50%, Thu +39%,
+Fri +67%, Sat +63%, **Sun +164%**, Mon +74%.
+
+> **Rule: two points are not a trend.** The step-4 note was right to name what it saw and right to
+> call it "not yet saturation", but it was one reading away from recommending a hold that the data
+> did not support. On a metric this noisy, a ceiling call needs **more than two readings**, and the
+> honest framing at the time should have been "watch this", not "a trend is forming".
+
+The genuine condition is unchanged and now explicitly needs persistence: **reach growth below ~50% of
+spend growth AND CPM rising on a same-weekday basis, sustained across more than two readings.**
+
+Falling CPM while spend rises 73% is the strongest evidence yet that the 9,500–11,200 pool is not
+close to exhausted. **$50/day looks comfortably reachable.**
+
+### Account hygiene, verified
+
+**1 of 7 ad sets is ACTIVE** — retargeting. Everything else, including both TOF ad sets, is paused.
+The whole Meta account is now a single ad set spending on the one thing that has ever worked.
+
+### September ceiling
+
+Sept MTD $6.21. Completing the ladder (37.32×2 + 44.78×2 + 50×26) projects **$1,464** — inside the
+$2,000 ceiling with ~$530 spare. That spare is the entire budget for anything else in September.

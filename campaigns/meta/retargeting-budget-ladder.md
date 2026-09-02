@@ -38,8 +38,8 @@ the number to watch, and it is guarded below rather than trusted.**
 | **2** | **$21.60** | ✅ applied 2026-08-25 |
 | **3** | **$25.92** | ✅ applied 2026-08-27 |
 | **4** | **$31.10** | ✅ applied 2026-08-29 |
-| **5** | **$37.32** | ✅ **applied 2026-08-31** |
-| 6 | $44.78 | pending |
+| **5** | **$37.32** | ✅ applied 2026-08-31 |
+| **6** | **$44.78** | ✅ **applied 2026-09-02** |
 | 7 | **$50.00** | target (+11.7%, final step) |
 
 **Cadence: one step every 2 days.** Lee asked for daily. Each individual step is inside the 20% cap
@@ -78,11 +78,13 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 | 2026-08-27 | $21.60 | **$25.92** | 1.75 | $33.06 | ladder, all 4 guards re-checked live |
 | 2026-08-29 | $25.92 | **$31.10** | 1.79 | $30.43 | ladder, all 4 guards re-checked live |
 | 2026-08-31 | $31.10 | **$37.32** | 1.82 | $30.44 | ladder, all 4 guards re-checked live |
+| 2026-09-02 | $37.32 | **$44.78** | 1.84 | $30.81 | ladder, all 4 guards re-checked live |
 
 ## Automation
 
-Step 6 is armed as a scheduled reminder — trigger `trig_01NogSPPfBxFKi2v1xSfhTnb`, fires
-**2026-09-02 22:20 UTC**. It re-pulls live data, checks all four guards, steps only if they pass,
+The **final** step ($50.00) is armed — trigger `trig_01Mu4rGJ23pnd7kcnPZpUhke`, fires
+**2026-09-04 22:22 UTC**. After it lands the ladder is complete and the 2-day cadence **stops**; a
+single 7-day hold-and-watch check replaces it. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -253,3 +255,43 @@ The whole Meta account is now a single ad set spending on the one thing that has
 
 Sept MTD $6.21. Completing the ladder (37.32×2 + 44.78×2 + 50×26) projects **$1,464** — inside the
 $2,000 ceiling with ~$530 spare. That spare is the entire budget for anything else in September.
+
+
+---
+
+## Step 6 reading — 2026-09-02. Absorption is now above 100%.
+
+Guards: frequency **1.84**, **$30.81** per pixel purchase, **7 purchases**, September projection
+**$1,474.61 of $2,000**. All pass. Stepped to **$44.78**. One rung left.
+
+| Week | spend | reach | CPM | absorption |
+|---|---:|---:|---:|---:|
+| 2 → 3 | +70% | +45% | +3% | 64% |
+| 3 → 4 | +45% | +25% | −2% | **56%** |
+| 4 → 5 | +73% | +72% | −6% | 98% |
+| **5 → 6** | **+74%** | **+82%** | **−9%** | **110%** |
+
+**Reach is now growing faster than spend, and CPM is falling as spend rises.** Every weekday is up
+(+39% to +164%) and CPM is down on six of seven. That is the signature of a pool that was
+budget-starved, not close to exhausted — Meta is finding *cheaper* inventory at higher spend, which is
+the opposite of what saturation looks like.
+
+Frequency has essentially stopped moving: 1.79 → 1.82 → 1.84. Cost per purchase is stable across the
+whole ladder: $22.75 → $22.42 → $33.06 → $30.43 → $30.44 → $30.81.
+
+**The step-4 ceiling worry is now conclusively dead.** Four readings of absorption — 64%, 56%, 98%,
+110% — show the 56% was a single noisy dip, exactly as "two points are not a trend" predicted.
+
+### What happens after $50
+
+The final step is armed for 2026-09-04, and **the 2-day cadence stops there.** It is replaced by one
+**7-day hold-and-watch** check, because:
+
+- **$50 is the number Lee named, not a proven optimum.** On this evidence the account may well absorb
+  more — `MAX_DAILY_BUDGET_AUD` is $100.
+- Going past $50 needs **Lee's explicit say-so and a fresh ceiling conversation**: September at
+  $50/day is already ~$1,500 of the $2,000 ceiling, leaving ~$500 for everything else.
+- Letting it sit for a week at $50 gives the first clean read of where cost per purchase settles at
+  full budget, rather than measuring during a climb.
+
+Also verified: **1 of 7 ad sets ACTIVE** — retargeting only. Both TOF ad sets still `PAUSED`.

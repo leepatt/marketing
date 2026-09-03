@@ -325,7 +325,8 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 
 ## 📁 Document index
 **Strategy / brand:** `CONTENT-PILLARS.md` · `SOCIAL-VOICE.md` · `inspiration/SWIPE-FILE.md` ·
-`.claude/skills/craftons-design/BRAND.md` · `briefs/craft-macro-shoot-brief.md`
+`.claude/skills/craftons-design/BRAND.md` · `briefs/craft-macro-shoot-brief.md` ·
+**`briefs/radius-pro-howto-video-brief.md`** (⭐ How-To Series ep — Lee to camera + screen grab; brief, P/S/B template, full script, caption, shoot spec)
 **Skill suite + memory:** `.claude/skills/{keyword-research,seo-content,positioning-angles,direct-response-copy,content-atomizer}/` ·
 `brand/{voice-profile,audience,competitors,keyword-plan,assets}.md`
 **AdWords:** `campaigns/adwords/` → `campaign-setup.md` · `keywords.md` · `negative-keywords.md` ·

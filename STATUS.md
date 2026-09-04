@@ -140,7 +140,8 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   base64-encodes through the chat — unusable for video). Chat upload cap is 30 MiB → render at crf 19 or
   2-pass ~1250 kbps. Wide pages (the quote sheet) need the full 848 px viewport crop — no side trim.
   Facebook Reels length limits vary by account (90 s / 2 min / longer); if a 2:31 reel is rejected, post as
-  a standard FB video or cut a 90 s version from the same cut sheet.
+  a standard FB video or cut a 90 s version from the same cut sheet. **Facebook Reels also refused the 4:5** —
+  the FB deliverable is the same 4:5 edit padded to 1080×1920 with white (`FB916=1` in compose-reel.sh).
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /

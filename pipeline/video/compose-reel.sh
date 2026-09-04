@@ -6,6 +6,7 @@
 #   full4x5    1080x1350, screen recording at full viewport width (848 px, no side trim so wide pages like the
 #              quote sheet are not clipped), white pad top/bottom, avatar PiP 260x462 bottom-left (24,864).
 #              Captions: captions-highlight.py defaults (SIZE=84 BOTTOM=1190, 2x2 words, centred; clear of the PiP, above the Reels UI overlay).
+# Env FB916=1: also pad the 4:5 output to 9:16 for Facebook Reels (captions keep their 4:5 placement, still above the overlay).
 # Env FREEZE: optional "first:last:replace" frame numbers, e.g. FREEZE=4044:4086:4043, to hold one frame of the screen
 #              recording over a page-loading flash (find the frames with signalstats YAVG). Done as a separate pre-pass
 #              (trim/loop/concat) because freezeframes+split inside one graph trips an ffmpeg scheduler assertion.
@@ -31,6 +32,8 @@ case "$L" in
   green9x16) FC="color=c=0x194431:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:60:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
   *) echo "unknown layout $L" >&2; exit 2;;
 esac
-if [ -n "$CAPS" ]; then FC="$FC;[v0]ass=$CAPS:fontsdir=$HERE/fonts[v]"; else FC="$FC;[v0]null[v]"; fi
+if [ -n "$CAPS" ]; then FC="$FC;[v0]ass=$CAPS:fontsdir=$HERE/fonts[v1]"; else FC="$FC;[v0]null[v1]"; fi
+# FB916=1: Facebook Reels rejects 4:5 — pad the finished 4:5 frame to 1080x1920 with white (285 px top/bottom).
+if [ "${FB916:-0}" = "1" ]; then FC="$FC;[v1]pad=1080:1920:0:285:color=white,setsar=1[v]"; else FC="$FC;[v1]null[v]"; fi
 "$FF" -y -loglevel error -stats -i "$S" -i "$A" -filter_complex "$FC" -map "[v]" -map 1:a \
   -c:v libx264 -preset medium -crf 19 -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -ar 48000 -movflags +faststart "$O"

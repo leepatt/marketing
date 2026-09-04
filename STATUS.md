@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-08-03. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-09-04 (video pipeline + first reel, branch `claude/radius-pro-instagram-edit-62mac9`). Previous: 2026-08-03 on `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -120,6 +120,27 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   so treat the precision carefully). Worst = "AD5 Chippies" at **$758.74/result**. That's 125× —
   and independent evidence for making the configurator the creative engine.
 - Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
+
+
+### Video pipeline + first reel (2026-09-04, branch `claude/radius-pro-instagram-edit-62mac9`)
+- [x] **First reel produced and approved by Lee** — Radius Pro walkthrough, 1080×1350 (4:5), 2:31. Lee's final
+  caption is in `campaigns/social/2026-09-radius-pro-reel-01.md`. Source files (phone clip `IMG_5902.MOV`,
+  screen recording `Radius pro 03.mp4`, cut sheet) are in Drive `Marketing/Video/`. The finished MP4 was handed
+  over in chat (session disk is ephemeral) — if it's needed again, re-run the pipeline below (~15 min).
+- [x] **Repeatable Reel pipeline** in `pipeline/video/` (see `pipeline/README.md`, "Two-angle Reel"):
+  `jumpcut.py` (silence + filler removal via ffmpeg silencedetect + faster-whisper, writes a cut sheet) →
+  audio cross-correlation to sync a second angle → `compose-reel.sh` (layouts: `full4x5` chosen; `white9x16`,
+  `green9x16` kept) → `captions-highlight.py` (the chosen Craftons caption look: Inter Bold 84 px in
+  `--craftons-green`, 2 lines × 2 words, spoken word in line green, no box, bottom at y=1190, `RAISE=t:px`
+  to lift it over on-page buttons). Inter static TTFs are vendored in `pipeline/video/fonts/`.
+- **Decisions locked with Lee:** 4:5 full-bleed over 9:16 (no green bands); avatar cropped 9:16, small,
+  bottom-left; captions centred at the reference height (Bluebeam reel used for placement only); no emoji;
+  captions proofread for Australian spelling (metre/millimetre, "form ply", "Accept quote").
+- **Gotchas:** Drive files must be "Anyone with the link" for `curl` download (the connector's download tool
+  base64-encodes through the chat — unusable for video). Chat upload cap is 30 MiB → render at crf 19 or
+  2-pass ~1250 kbps. Wide pages (the quote sheet) need the full 848 px viewport crop — no side trim.
+  Facebook Reels length limits vary by account (90 s / 2 min / longer); if a 2:31 reel is rejected, post as
+  a standard FB video or cut a 90 s version from the same cut sheet.
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /

@@ -71,4 +71,4 @@ The chat upload cap is 30 MiB, so hand back the `--preview` file or a 2-pass ~12
    correlation — 0.94 score on the Radius Pro take), then apply the same keep-list shifted by that offset to the screen recording.
 3. Crop the avatar tight (Radius Pro take: `crop=742:1320:249:600` on the 1080×1920 phone clip → 9:16 head-and-shoulders).
 4. `python3 video/captions.py reel.words.json white caps.ass` (styles: white / green / card / highlight).
-5. `bash video/compose-reel.sh screen-cut.mp4 avatar-cut.mp4 reel-final.mp4 caps.ass`
+5. `bash video/compose-reel.sh white9x16 screen-cut.mp4 avatar-cut.mp4 reel-final.mp4 caps.ass` (layouts: white9x16, full4x5, green9x16)

@@ -1,5 +1,5 @@
 """captions.py - build Reel captions (ASS, Inter) from faster-whisper word timestamps.
-Usage: captions.py words.json STYLE out.ass [marginV]   STYLE: white, green, card, highlight
+Usage: captions.py words.json STYLE out.ass [marginV]   STYLE: white, green, card, highlight, ink (ink text on white ground)
 Env: SHIFT=seconds (subtract from times, for test frames); ML/MR caption margins (default 40/410 = clear of a bottom-right PiP).
 Burn in: ffmpeg -i in.mp4 -vf "ass=out.ass:fontsdir=fonts" ...  (fonts/ = Inter static TTFs from github.com/rsms/inter)
 Colours: Craftons green-900 pill, ink text on white card, line-green #2d8a5b spoken-word highlight."""
@@ -32,6 +32,7 @@ styles={
  "white":     f"Style: Cap,Inter,68,{WHITE},{WHITE},{BLACK},&H80000000,-1,0,0,0,100,100,-1,0,1,4,2,2,{ML},{MR},{MV},1",
  "green":     f"Style: Cap,Inter,60,{WHITE},{WHITE},{GREEN},{GREEN},-1,0,0,0,100,100,-1,0,3,22,0,2,{ML},{MR},{MV},1",
  "card":      f"Style: Cap,Inter,60,{INK},{INK},{WHITE},{WHITE},-1,0,0,0,100,100,-1,0,3,22,0,2,{ML},{MR},{MV},1",
+ "ink":       f"Style: Cap,Inter,68,{INK},{INK},{WHITE},{WHITE},-1,0,0,0,100,100,-1,0,1,3,0,2,{ML},{MR},{MV},1",
  "highlight": f"Style: Cap,Inter,68,{WHITE},{WHITE},{BLACK},&H80000000,-1,0,0,0,100,100,-1,0,1,4,2,2,{ML},{MR},{MV},1",
 }
 hdr=f"""[Script Info]

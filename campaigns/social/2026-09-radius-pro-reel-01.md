@@ -68,3 +68,11 @@ Cut and delivered in a couple of days. Link in bio.
 - No emoji, sentence case, soft CTA only — per `SOCIAL-VOICE.md`.
 - "A couple of days" matches the video; the quote page shows "2 Business Days". Don't promise tighter than that.
 - Facebook: same caption; if FB Reels rejects the 2:31 length on the account, post as a standard video instead.
+
+## Caption variants rendered 2026-09-04 (same cut, captions differ) — for Lee to pick / A-B
+1. `var1-karaoke-black` — locked karaoke style, live word in ink black instead of line green.
+2. `var2-hook-steps` — + hook title card 0–2.4 s ("Curves are on every plan now.") + "n / 7" step pill top-left.
+3. `var3-ui-callouts` — + green pills with leader lines on the control being used (9 callouts).
+4. `var4-editorial-lower` — sentence-level lower-third with a green rule, no karaoke.
+5. `var5-knockout-opener` — "Curves." knockout on green for 2 s, then the locked karaoke captions.
+Built with `pipeline/video/overlays.py`; the knockout chain is in `REEL-PROCESS.md`.

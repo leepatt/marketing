@@ -120,6 +120,7 @@ If the screen was recorded portrait (step 0), use / add a `full9x16` layout inst
 `overlays.py` adds layers on top of the karaoke captions: hook title card + step counter, UI callouts,
 editorial lower-third, knockout opener mask. Chain them: `ass=caps.ass:fontsdir=fonts,ass=ov-title.ass:fontsdir=fonts`.
 Knockout opener (V5): render the mask on `color=black,format=rgb24` then `format=gray,lut=y='clip((val-16)*255/219,0,255)'`
-(limited-range black is 16, not 0 - without the lut the page bleeds through the green), then
-`[green][video][mask]maskedmerge,trim=0:2.6` and `xfade=fade:duration=0.5:offset=2.1` into the main video.
+(limited-range black is 16, not 0 - without the lut the page bleeds through the green), then build a 3-plane mask (`split=3`, scale two copies to half size, `mergeplanes=0x001020:yuv420p`) so chroma is masked too,
+`[green][video][mask]maskedmerge,trim=0:2.6`, `fps=30` on both xfade inputs (xfade refuses variable-rate input), and
+`xfade=fade:duration=0.5:offset=2.1` into the main video.
 Stills for checking overlays: shift the ASS by (t - 0.5), not t, or the frame lands inside the fade-in and shows nothing.

@@ -76,3 +76,6 @@ Cut and delivered in a couple of days. Link in bio.
 4. `var4-editorial-lower` — sentence-level lower-third with a green rule, no karaoke.
 5. `var5-knockout-opener` — "Curves." knockout on green for 2 s, then the locked karaoke captions.
 Built with `pipeline/video/overlays.py`; the knockout chain is in `REEL-PROCESS.md`.
+**Lee's verdict 2026-09-04: all five rejected ("really bad"). Do not re-pitch these. Lee is supplying caption references;
+the next round is built to match those, still first, then render.** The locked karaoke style (green, line-green live word,
+2x2 stacked) stays the approved base until then.

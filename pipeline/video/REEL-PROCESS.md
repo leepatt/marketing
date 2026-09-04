@@ -115,3 +115,11 @@ If the screen was recorded portrait (step 0), use / add a `full9x16` layout inst
 | Drive file not link-shared → sign-in page | Step 1.2 |
 | `freezeframes` + `split` in one ffmpeg graph asserts | Freeze is a pre-pass (already in the script) |
 | pgrep-based wait loops match themselves | Wait on the task notification or a sentinel line |
+
+## Caption variants (added after the caption-style research, `research/2026-caption-styles.md`)
+`overlays.py` adds layers on top of the karaoke captions: hook title card + step counter, UI callouts,
+editorial lower-third, knockout opener mask. Chain them: `ass=caps.ass:fontsdir=fonts,ass=ov-title.ass:fontsdir=fonts`.
+Knockout opener (V5): render the mask on `color=black,format=rgb24` then `format=gray,lut=y='clip((val-16)*255/219,0,255)'`
+(limited-range black is 16, not 0 - without the lut the page bleeds through the green), then
+`[green][video][mask]maskedmerge,trim=0:2.6` and `xfade=fade:duration=0.5:offset=2.1` into the main video.
+Stills for checking overlays: shift the ASS by (t - 0.5), not t, or the frame lands inside the fade-in and shows nothing.

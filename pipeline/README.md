@@ -50,5 +50,17 @@ Anton, Big Shoulders Display, and JetBrains Mono load from Google Fonts.
 - ☐ Swap interim `tokens.css` for canonical CSS; add Aeonik `.otf`s.
 - ☐ Pull the real curve-motif PNG + logo from Drive `assets/` (current motif is an SVG placeholder).
 - ☐ More templates: carousel slides, quote/testimonial card, compliance block, story 1080×1920.
-- ☐ Video: ffmpeg assembly of Tia's footage + Reels export.
+- ✅ Video: `video/jumpcut.py` — talking-head clip → pause/filler-free Reel cut + cut sheet (first used on the Radius Pro Reel, 2026-09-04).
+- ☐ Video: second-angle (screen recording) sync + PiP compositing from the cut sheet; brand captions burn-in.
 - ☐ The social/illustration **style layer** (anti-slop rules) feeding AI gen (Replicate/Glif).
+
+## Video: jump-cut a talking-head clip
+```bash
+pip install imageio-ffmpeg faster-whisper        # once; ffmpeg comes with the wheel
+python3 video/jumpcut.py IMG_1234.MOV out/reel-v1.mp4 --preview
+```
+Removes every pause ≥0.6 s (keeps 0.12 s handles), removes um/uh, normalises loudness, exports
+1080×1920 H.264. Also writes `reel-v1.cut-sheet.txt` — the keep-list in *source* timecode — so a
+screen recording of the same take can be cut to match once its start is aligned to the phone clip.
+Large sources: Drive → "Anyone with the link" → `curl "https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t"`.
+The chat upload cap is 30 MiB, so hand back the `--preview` file or a 2-pass ~1250 kbps render.

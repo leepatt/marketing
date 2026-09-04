@@ -18,7 +18,7 @@ PIP="format=yuva420p,geq=lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':a='$MASK'"
 SCR="crop=806:976:21:152"
 case "$L" in
   white9x16) FC="color=c=white:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:0:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
-  full4x5)   FC="[0:v]$SCR,scale=1115:1350:flags=lanczos,crop=1080:1350:17:0[scr];[1:v]scale=300:533,$PIP[pip];[scr][pip]overlay=30:787[v0]";;
+  full4x5)   FC="[0:v]$SCR,scale=1115:1350:flags=lanczos,crop=1080:1350:17:0,setsar=1[scr];[1:v]scale=300:533,$PIP[pip];[scr][pip]overlay=30:787[v0]";;
   green9x16) FC="color=c=0x194431:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:60:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
   *) echo "unknown layout $L" >&2; exit 2;;
 esac

@@ -2,7 +2,8 @@
 Stacked Reel captions: up to 2 lines x 2 words per block, Craftons green Inter Bold, spoken word flips to
 white in a green rounded box. Env: SIZE(84) BOTTOM(1190) CX(540) PLAYH(1350) WPL(2 words/line) LINES(2)
 GAP(10 px between lines) PAD(14) R(14) SHIFT(0) RAISE="t:px" (raise blocks starting after t seconds by px, e.g. RAISE=143:200 to clear the quote page's own
-Accept Quote button). Needs: pip install fonttools. Burn in: ffmpeg ass=out.ass:fontsdir=pipeline/video/fonts.
+Accept Quote button). BOX=0 drops the box and highlights the live word by colour only: HL=linegreen (#2d8a5b,
+the chosen look) | ink | white. Needs: pip install fonttools. Burn in: ffmpeg ass=out.ass:fontsdir=pipeline/video/fonts.
 Usage: captions-highlight.py words.json out.ass"""
 import json, os, sys
 from fontTools.ttLib import TTFont
@@ -28,7 +29,8 @@ if cur: chunks.append(cur)
 for i,c in enumerate(chunks):
     nxt=chunks[i+1][0]["s"] if i+1<len(chunks) else c[-1]["e"]+0.6
     c[0]["cs"]=c[0]["s"]; c[0]["ce"]=min(nxt, c[-1]["e"]+0.5)
-GREEN="&H00314419"; WHITE="&H00FFFFFF"; PAPER="&H00F4F1EA"
+GREEN="&H00314419"; WHITE="&H00FFFFFF"; PAPER="&H00F4F1EA"; LINEGREEN="&H005B8A2D"; INK="&H000C0E0E"
+BOX=E("BOX","1")=="1"; HL={"linegreen":LINEGREEN,"ink":INK,"white":WHITE}[E("HL","white")]
 hdr=f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: 1080
@@ -64,8 +66,8 @@ for c in chunks:
     for i,x in enumerate(c):
         s_=x["s"] if i>0 else c[0]["cs"]; e_=c[i+1]["s"] if i+1<len(c) else c[0]["ce"]
         if e_<=s_: continue
-        ev.append(f"Dialogue: 0,{ts(s_)},{ts(e_)},Box,,0,0,0,,{{\\an7\\pos(0,0)\\p1}}{rrect(x['x1']-PAD,x['ly']-LH+2,x['x2']+PAD,x['ly']+2,R)}{{\\p0}}")
+        if BOX: ev.append(f"Dialogue: 0,{ts(s_)},{ts(e_)},Box,,0,0,0,,{{\\an7\\pos(0,0)\\p1}}{rrect(x['x1']-PAD,x['ly']-LH+2,x['x2']+PAD,x['ly']+2,R)}{{\\p0}}")
         for k,line in enumerate(lines):
-            t2=" ".join((f"{{\\c{WHITE}\\bord0\\shad0}}{y['t']}{{\\c{GREEN}\\bord3\\shad1}}" if y is x else y["t"]) for y in line)
+            t2=" ".join(((f"{{\\c{WHITE}\\bord0\\shad0}}{y['t']}{{\\c{GREEN}\\bord3\\shad1}}" if BOX else f"{{\\c{HL}}}{y['t']}{{\\c{GREEN}}}") if y is x else y["t"]) for y in line)
             ev.append(f"Dialogue: 1,{ts(s_)},{ts(e_)},Cap,,0,0,0,,{{\\an2\\pos({CX},{ly[k]:.0f})}}{t2}")
 open(out,"w").write(hdr+"\n".join(ev)+"\n"); print(len(chunks),"blocks; avg",round(sum(len(c) for c in chunks)/len(chunks),2),"words/block")

@@ -70,6 +70,6 @@ The chat upload cap is 30 MiB, so hand back the `--preview` file or a 2-pass ~12
 2. Find the offset between recordings by cross-correlating the two audio envelopes (numpy, 100 Hz log-envelope FFT
    correlation — 0.94 score on the Radius Pro take), then apply the same keep-list shifted by that offset to the screen recording.
 3. Crop the avatar tight (Radius Pro take: `crop=742:1320:249:600` on the 1080×1920 phone clip → 9:16 head-and-shoulders).
-4. `python3 video/captions-highlight.py reel.words.json caps.ass` — the approved Craftons style (green Inter Bold, 2 lines x 2 words, spoken word flips to white in a green box; `RAISE=t:px` lifts it over on-page buttons).
+4. `python3 video/captions-highlight.py reel.words.json caps.ass` — the approved Craftons style (green Inter Bold, 2 lines x 2 words, spoken word in line green with `BOX=0 HL=linegreen`, or white in a green box by default; `RAISE=t:px` lifts it over on-page buttons).
    `video/captions.py` keeps the earlier plain styles (white / green / card / highlight / ink).
 5. `bash video/compose-reel.sh white9x16 screen-cut.mp4 avatar-cut.mp4 reel-final.mp4 caps.ass` (layouts: white9x16, full4x5, green9x16)

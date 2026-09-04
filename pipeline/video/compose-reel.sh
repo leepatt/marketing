@@ -4,8 +4,8 @@
 #   white9x16  1080x1920, white ground (matches the app page), screen recording full-width at top,
 #              9:16 avatar PiP bottom-left (36,1113). Captions: ink style, ML=400 MR=40 MV=340.
 #   full4x5    1080x1350, screen recording at full viewport width (848 px, no side trim so wide pages like the
-#              quote sheet are not clipped), white pad top/bottom, avatar PiP 300x533 bottom-left (30,787).
-#              Captions: white style, centred, ML=40 MR=40 MV=70, PlayResY 1350.
+#              quote sheet are not clipped), white pad top/bottom, avatar PiP 260x462 bottom-left (24,864).
+#              Captions: captions-highlight.py (centred, bottom at y=1100, clear of the PiP and of the Reels UI overlay).
 # Env FREEZE: optional "first:last:replace" frame numbers, e.g. FREEZE=4044:4086:4043, to hold one frame of the screen
 #              recording over a page-loading flash (find the frames with signalstats YAVG). Done as a separate pre-pass
 #              (trim/loop/concat) because freezeframes+split inside one graph trips an ffmpeg scheduler assertion.
@@ -27,7 +27,7 @@ if [ -n "${FREEZE:-}" ]; then
 fi
 case "$L" in
   white9x16) FC="color=c=white:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:0:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
-  full4x5)   FC="[0:v]crop=848:976:0:152,scale=1080:1243:flags=lanczos,pad=1080:1350:0:53:color=white,setsar=1[scr];[1:v]scale=300:533,$PIP[pip];[scr][pip]overlay=30:787[v0]";;
+  full4x5)   FC="[0:v]crop=848:976:0:152,scale=1080:1243:flags=lanczos,pad=1080:1350:0:53:color=white,setsar=1[scr];[1:v]scale=260:462,$PIP[pip];[scr][pip]overlay=24:864[v0]";;
   green9x16) FC="color=c=0x194431:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:60:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
   *) echo "unknown layout $L" >&2; exit 2;;
 esac

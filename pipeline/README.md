@@ -66,6 +66,7 @@ Large sources: Drive → "Anyone with the link" → `curl "https://drive.usercon
 The chat upload cap is 30 MiB, so hand back the `--preview` file or a 2-pass ~1250 kbps render.
 
 ### Two-angle Reel (screen recording + talking head)
+**Process runbook: `video/REEL-PROCESS.md` — read it before the next reel.**
 1. `jumpcut.py` the phone clip → cut + `.cut-sheet.txt` + `.words.json`.
 2. Find the offset between recordings by cross-correlating the two audio envelopes (numpy, 100 Hz log-envelope FFT
    correlation — 0.94 score on the Radius Pro take), then apply the same keep-list shifted by that offset to the screen recording.

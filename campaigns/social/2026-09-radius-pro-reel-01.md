@@ -8,7 +8,21 @@ Built with `pipeline/video/` (jumpcut → cross-correlated screen sync → compo
 
 **Lane:** Formwork Builder Showcase / How-To (soft CTA allowed). Post to Instagram Reels + Facebook Reels.
 
-## Caption — recommended (A) — APPROVED by Lee 2026-09-04, with the nesting line added
+## FINAL — Lee's edit, 2026-09-04 (this is what goes out)
+
+Curves are on every floor plan now. Cutting the plates on site is the slow bit.
+
+Pick your ply, set the radius and angle, add straight legs if the wall runs on. Every piece turns up with its part ID engraved, so it goes together in order.
+
+The software nests every part on the sheet the most efficient way it can. Less offcut, less waste, less to pay for.
+
+Save the quote, send it to the boss, or add it to the cart. Plates cut and on site in a couple of days.
+
+Configure yours at craftons.com.au — link in bio.
+
+#RadiusPro #CurvedWalls #Formply #Carpentry #Framing #CNCCut #AustralianMade #BuiltWithCraftons
+
+## Caption — draft A (superseded by the final above)
 
 Curves are on every floor plan now. Cutting the plates on site is the slow bit.
 

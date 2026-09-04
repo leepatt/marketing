@@ -127,6 +127,7 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   caption is in `campaigns/social/2026-09-radius-pro-reel-01.md`. Source files (phone clip `IMG_5902.MOV`,
   screen recording `Radius pro 03.mp4`, cut sheet) are in Drive `Marketing/Video/`. The finished MP4 was handed
   over in chat (session disk is ephemeral) — if it's needed again, re-run the pipeline below (~15 min).
+- [x] **Caption-style research** → `research/2026-caption-styles.md` (taxonomy, data, top 5 for Craftons; next reel: add hook card + step counter + UI callouts on top of the locked karaoke style).
 - [x] **Reel process runbook** → `pipeline/video/REEL-PROCESS.md` (pre-shoot checklist, hand-over, pipeline, review loop, filing, learnings). **Start here for the next reel.**
 - [x] **Repeatable Reel pipeline** in `pipeline/video/` (see `pipeline/README.md`, "Two-angle Reel"):
   `jumpcut.py` (silence + filler removal via ffmpeg silencedetect + faster-whisper, writes a cut sheet) →

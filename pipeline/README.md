@@ -51,7 +51,7 @@ Anton, Big Shoulders Display, and JetBrains Mono load from Google Fonts.
 - ☐ Pull the real curve-motif PNG + logo from Drive `assets/` (current motif is an SVG placeholder).
 - ☐ More templates: carousel slides, quote/testimonial card, compliance block, story 1080×1920.
 - ✅ Video: `video/jumpcut.py` — talking-head clip → pause/filler-free Reel cut + cut sheet (first used on the Radius Pro Reel, 2026-09-04).
-- ☐ Video: second-angle (screen recording) sync + PiP compositing from the cut sheet; brand captions burn-in.
+- ✅ Video: `video/compose-reel.sh` (screen recording + avatar PiP, 9:16) and `video/captions.py` (Inter captions, 4 styles). Second-angle sync = audio cross-correlation of the two tracks (see jumpcut cut sheet).
 - ☐ The social/illustration **style layer** (anti-slop rules) feeding AI gen (Replicate/Glif).
 
 ## Video: jump-cut a talking-head clip
@@ -64,3 +64,11 @@ Removes every pause ≥0.6 s (keeps 0.12 s handles), removes um/uh, normalises l
 screen recording of the same take can be cut to match once its start is aligned to the phone clip.
 Large sources: Drive → "Anyone with the link" → `curl "https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t"`.
 The chat upload cap is 30 MiB, so hand back the `--preview` file or a 2-pass ~1250 kbps render.
+
+### Two-angle Reel (screen recording + talking head)
+1. `jumpcut.py` the phone clip → cut + `.cut-sheet.txt` + `.words.json`.
+2. Find the offset between recordings by cross-correlating the two audio envelopes (numpy, 100 Hz log-envelope FFT
+   correlation — 0.94 score on the Radius Pro take), then apply the same keep-list shifted by that offset to the screen recording.
+3. Crop the avatar tight (Radius Pro take: `crop=742:1320:249:600` on the 1080×1920 phone clip → 9:16 head-and-shoulders).
+4. `python3 video/captions.py reel.words.json white caps.ass` (styles: white / green / card / highlight).
+5. `bash video/compose-reel.sh screen-cut.mp4 avatar-cut.mp4 reel-final.mp4 caps.ass`

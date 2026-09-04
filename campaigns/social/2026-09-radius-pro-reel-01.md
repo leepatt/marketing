@@ -8,13 +8,15 @@ Built with `pipeline/video/` (jumpcut → cross-correlated screen sync → compo
 
 **Lane:** Formwork Builder Showcase / How-To (soft CTA allowed). Post to Instagram Reels + Facebook Reels.
 
-## Caption — recommended (A)
+## Caption — recommended (A) — APPROVED by Lee 2026-09-04, with the nesting line added
 
 Curves are on every floor plan now. Cutting the plates on site is the slow bit.
 
 Radius Pro takes the radius straight off the drawings. Pick your ply, set the radius and angle, add straight
 legs if the wall runs on. Big curves split to fit a 2.4 m sheet and every piece turns up with its part ID
 engraved, so it goes together in order.
+
+The software nests every part on the sheet the most efficient way it can. Less offcut, less waste, less to pay for.
 
 Save the quote, send it to the boss, or add it to the cart. Plates cut and on site in a couple of days.
 

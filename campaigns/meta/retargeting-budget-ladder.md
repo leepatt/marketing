@@ -39,8 +39,8 @@ the number to watch, and it is guarded below rather than trusted.**
 | **3** | **$25.92** | ✅ applied 2026-08-27 |
 | **4** | **$31.10** | ✅ applied 2026-08-29 |
 | **5** | **$37.32** | ✅ applied 2026-08-31 |
-| **6** | **$44.78** | ✅ **applied 2026-09-02** |
-| 7 | **$50.00** | target (+11.7%, final step) |
+| **6** | **$44.78** | ✅ applied 2026-09-02 |
+| **7** | **$50.00** | ✅ **applied 2026-09-04 — LADDER COMPLETE** |
 
 **Cadence: one step every 2 days.** Lee asked for daily. Each individual step is inside the 20% cap
 that protects the learning phase, but six consecutive daily edits compound to +178% in under a week
@@ -79,12 +79,12 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 | 2026-08-29 | $25.92 | **$31.10** | 1.79 | $30.43 | ladder, all 4 guards re-checked live |
 | 2026-08-31 | $31.10 | **$37.32** | 1.82 | $30.44 | ladder, all 4 guards re-checked live |
 | 2026-09-02 | $37.32 | **$44.78** | 1.84 | $30.81 | ladder, all 4 guards re-checked live |
+| 2026-09-04 | $44.78 | **$50.00** | 1.78 | $35.83 | **FINAL** — all 4 guards re-checked live |
 
 ## Automation
 
-The **final** step ($50.00) is armed — trigger `trig_01Mu4rGJ23pnd7kcnPZpUhke`, fires
-**2026-09-04 22:22 UTC**. After it lands the ladder is complete and the 2-day cadence **stops**; a
-single 7-day hold-and-watch check replaces it. It re-pulls live data, checks all four guards, steps only if they pass,
+**The ladder is complete.** The 2-day cadence has stopped. A **7-day hold-and-watch** check is armed —
+trigger `trig_012vWYx3E24u995URjKtEZww`, fires **2026-09-11 22:26 UTC**. It does not step the budget. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -295,3 +295,76 @@ The final step is armed for 2026-09-04, and **the 2-day cadence stops there.** I
   full budget, rather than measuring during a climb.
 
 Also verified: **1 of 7 ad sets ACTIVE** — retargeting only. Both TOF ad sets still `PAUSED`.
+
+
+---
+
+# ✅ LADDER COMPLETE — 2026-09-04. $15/day → $50/day in 7 steps over 12 days.
+
+Final step guards: frequency **1.78**, **$35.83** per pixel purchase, **7 purchases**, September
+projection **$1,473.68 of $2,000**. All pass.
+
+## The whole ladder, end to end
+
+| Date | Budget | 7d freq | 7d $/pixel purchase |
+|---|---:|---:|---:|
+| 2026-08-23 | $15 → $18 | 1.65 | $22.75 |
+| 2026-08-25 | → $21.60 | 1.65 | $22.42 |
+| 2026-08-27 | → $25.92 | 1.75 | $33.06 |
+| 2026-08-29 | → $31.10 | 1.79 | $30.43 |
+| 2026-08-31 | → $37.32 | 1.82 | $30.44 |
+| 2026-09-02 | → $44.78 | 1.84 | $30.81 |
+| **2026-09-04** | **→ $50.00** | **1.78** | **$35.83** |
+
+**Budget tripled. Frequency ended where it started (1.65 → 1.78). Cost per purchase moved $22.75 →
+$35.83** — up, but still a **ninth of the $322 break-even**.
+
+Since the ladder began (08-23 → 09-04): **$382.29 spend, 11 pixel purchases, $34.75 each.**
+
+## Absorption told the story, and the story got better every reading
+
+| Step | Spend | Reach | CPM | Absorption |
+|---|---:|---:|---:|---:|
+| 2 → 3 | +70% | +45% | +3% | 64% |
+| 3 → 4 | +45% | +25% | −2% | **56%** ← the false alarm |
+| 4 → 5 | +73% | +72% | −6% | 98% |
+| 5 → 6 | +74% | +82% | −9% | 110% |
+| **6 → 7** | **+73%** | **+100%** | **−14%** | **137%** |
+
+On the final reading **reach doubled on 73% more spend, CPM fell 14%, and frequency went *down*
+(1.84 → 1.78)**. Reach rose on all seven weekdays and CPM fell on all seven.
+
+**The audience was never near saturation — it was starved.** The `delivery_estimate` of 9,500–11,200
+MAU understated what was reachable: daily reach went from ~500 to ~1,600 and is still climbing.
+
+## What the readings taught, kept for the next ladder
+
+1. **Re-pull before acting.** A read has a timestamp; the gap between reading and deciding is real
+   time in which money moves. (Reading 5 — the 7-day read was 3 days stale when acted on.)
+2. **Compare same weekday to same weekday.** A 3-day within-week slope on this account is
+   day-of-week, not trend. (Step 3 — a textbook saturation signature that wasn't there.)
+3. **Two points are not a trend.** The 56% absorption dip at step 4 was one reading from a
+   recommended hold that the next four readings contradicted. (Steps 4–7.)
+4. **Falling CPM under rising spend is the counter-signal to saturation.** If a pool were exhausting,
+   Meta would charge more per thousand, not less. It fell every week.
+
+## Open question for Lee: is $50 the ceiling?
+
+**Probably not.** Nothing in the final reading says this audience is tapped out — the opposite. But:
+
+- **$50 was Lee's target, not a measured optimum.** `MAX_DAILY_BUDGET_AUD` is **$100**.
+- **September at $50/day is ~$1,500 of the $2,000 ceiling**, leaving ~$500 for everything else.
+  Going higher is a ceiling conversation, not just a budget step.
+- **Cost per purchase drifted $22.75 → $35.83** across the ladder. Still excellent, but it is the
+  first metric that has moved against us, and one settled week at flat budget will say whether that
+  is the cost of scale or just noise on 7–11 purchases.
+- **Meta over-claims purchases ~3×.** The next check must reconcile against real Shopify orders
+  carrying `source=meta` UTMs. **That real number, not the pixel number, decides whether to go past
+  $50.**
+
+The hold-and-watch check on 2026-09-11 answers this with a settled week rather than a climbing one.
+
+## Account state at completion
+
+**1 of 7 ad sets ACTIVE** — retargeting, $50/day. Both TOF ad sets `PAUSED`. The entire Meta account
+is one ad set, spending on the only structure that has ever worked for Craftons.

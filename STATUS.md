@@ -756,6 +756,35 @@ Lee: *"do a2, increase daily until budget is $50 per day."*
 
 ---
 
+### ✅ 2026-09-04 — RETARGETING LADDER COMPLETE, $15 → $50/day → `campaigns/meta/retargeting-budget-ladder.md`
+
+Seven +20% steps over 12 days, every one gated on four live-checked guards. **Budget tripled;
+frequency ended where it started (1.65 → 1.78); cost per pixel purchase $22.75 → $35.83, a ninth of
+the $322 break-even.** Since 08-23: $382.29 → 11 pixel purchases at $34.75.
+
+**The audience was starved, not saturated.** Absorption (reach growth ÷ spend growth) went
+64% → 56% → 98% → 110% → **137%**. On the last reading **reach doubled on 73% more spend, CPM fell
+14%, frequency fell**. Daily reach ~500 → ~1,600 and still climbing.
+
+**Four rules earned, and they generalise beyond this ladder:**
+1. **Re-pull before acting** — the 7-day read was 3 days stale when acted on and understated by half.
+2. **Compare same weekday to same weekday** — a 3-day within-week slope is day-of-week noise.
+3. **Two points are not a trend** — the 56% dip nearly triggered a hold the next four readings refuted.
+4. **Falling CPM under rising spend is the counter-signal to saturation.**
+
+**Open:** is $50 the ceiling? Probably not — cap in code is $100 — but September at $50/day is ~$1,500
+of the $2,000 ceiling, cost/purchase has drifted upward, and **Meta over-claims ~3×, so the next check
+must reconcile against real Shopify `source=meta` orders**. Hold-and-watch armed for 2026-09-11
+(`trig_012vWYx3E24u995URjKtEZww`) — a settled week, not a climbing one. **It does not step the budget.**
+
+**Account: 1 of 7 ad sets ACTIVE** — retargeting only. Both TOF ad sets PAUSED.
+
+⚠️ **Container was recycled 2026-09-04; `/workspace/cnccut-app` was lost.** The code repo now lives at
+**`/home/user/cnccut-app`** (branch `claude/craftons-real-footage-register`). Re-attach via add_repo +
+`git clone --depth 1` + register_repo_root, then `npm install --no-save @neondatabase/serverless`.
+
+---
+
 **Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs

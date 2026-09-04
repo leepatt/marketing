@@ -1,7 +1,9 @@
-"""captions-highlight.py - Reel captions in the Craftons style (approved 2026-09-04 on the Radius Pro reel):
-white Inter Bold with a soft dark edge, the word being spoken sits in a Craftons-green (#194431) rounded box,
-two words at a time, centred. Word widths come from the Inter Bold hmtx table so the box lands on the word.
-Needs: pip install fonttools. Burn in with ffmpeg ass=out.ass:fontsdir=pipeline/video/fonts.
+"""captions-highlight.py - Reel captions in the Craftons style chosen for the Radius Pro reel (2026-09-04).
+MODE=green (default): Inter Bold in Craftons green with a thin off-white edge, two words at a time, centred;
+  the word being spoken flips to white inside a Craftons-green rounded box.
+MODE=white: white text, spoken word boxed in green (Bluebeam-style).
+Word widths come from the Inter Bold hmtx table so the box lands on the word. Needs: pip install fonttools.
+Placement used: SIZE=84 BOTTOM=1190 on a 1080x1350 frame (just above the Reels username/caption overlay).
 Usage: captions-highlight.py words.json out.ass  Env: SIZE(80) BOTTOM(1100) CX(540) PLAYH(1350) MAXW(2) MAXC(16) SHIFT(0) PAD(14) R(14)"""
 import json, os, sys
 from fontTools.ttLib import TTFont
@@ -25,7 +27,9 @@ if cur: chunks.append(cur)
 for i,c in enumerate(chunks):
     nxt=chunks[i+1][0]["s"] if i+1<len(chunks) else c[-1]["e"]+0.6
     c[0]["cs"]=c[0]["s"]; c[0]["ce"]=min(nxt, c[-1]["e"]+0.5)
-GREEN="&H00314419"; WHITE="&H00FFFFFF"
+GREEN="&H00314419"; WHITE="&H00FFFFFF"; PAPER="&H00F4F1EA"
+MODE=os.environ.get("MODE","green")  # green: green text, live word white-in-green-box | white: white text, live word in green box
+TXT,OUT,SHD,BORD,SHADOW=(GREEN,PAPER,"&H90000000",3,1) if MODE=="green" else (WHITE,"&H70000000","&H80000000",3,3)
 hdr=f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: 1080
@@ -35,7 +39,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Inter,{SIZE},{WHITE},{WHITE},&H70000000,&H80000000,-1,0,0,0,100,100,0,0,1,3,3,2,0,0,0,1
+Style: Cap,Inter,{SIZE},{TXT},{TXT},{OUT},{SHD},-1,0,0,0,100,100,0,0,1,{BORD},{SHADOW},2,0,0,0,1
 Style: Box,Inter,{SIZE},{GREEN},{GREEN},{GREEN},{GREEN},0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
 
 [Events]
@@ -58,5 +62,12 @@ for c in chunks:
             xs=x0+off; xe=xs+wid(x["t"])
             ev.append(f"Dialogue: 0,{ts(s)},{ts(e)},Box,,0,0,0,,{{\\an7\\pos(0,0)\\p1}}{rrect(xs-PAD,BOTTOM-LH+2,xe+PAD,BOTTOM+2,R)}{{\\p0}}")
         off+=wid(x["t"])+SP
-    ev.append(f"Dialogue: 1,{ts(c[0]['cs'])},{ts(c[0]['ce'])},Cap,,0,0,0,,{{\\an2\\pos({CX},{BOTTOM})}}{txt}")
+    if MODE=="green":
+        for i,x in enumerate(c):
+            s_=x["s"] if i>0 else c[0]["cs"]; e_=c[i+1]["s"] if i+1<len(c) else c[0]["ce"]
+            if e_<=s_: continue
+            t2=" ".join((f"{{\\c{WHITE}\\bord0\\shad0}}{y['t']}{{\\c{GREEN}\\bord{BORD}\\shad{SHADOW}}}" if j==i else y["t"]) for j,y in enumerate(c))
+            ev.append(f"Dialogue: 1,{ts(s_)},{ts(e_)},Cap,,0,0,0,,{{\\an2\\pos({CX},{BOTTOM})}}{t2}")
+    else:
+        ev.append(f"Dialogue: 1,{ts(c[0]['cs'])},{ts(c[0]['ce'])},Cap,,0,0,0,,{{\\an2\\pos({CX},{BOTTOM})}}{txt}")
 open(out,"w").write(hdr+"\n".join(ev)+"\n"); print(len(chunks),"chunks, LH",round(LH,1))

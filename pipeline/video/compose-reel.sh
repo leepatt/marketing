@@ -5,7 +5,7 @@
 #              9:16 avatar PiP bottom-left (36,1113). Captions: ink style, ML=400 MR=40 MV=340.
 #   full4x5    1080x1350, screen recording at full viewport width (848 px, no side trim so wide pages like the
 #              quote sheet are not clipped), white pad top/bottom, avatar PiP 260x462 bottom-left (24,864).
-#              Captions: SIZE=84 BOTTOM=1190 captions-highlight.py (centred, clear of the PiP and above the Reels UI overlay).
+#              Captions: captions-highlight.py defaults (SIZE=84 BOTTOM=1190, 2x2 words, centred; clear of the PiP, above the Reels UI overlay).
 # Env FREEZE: optional "first:last:replace" frame numbers, e.g. FREEZE=4044:4086:4043, to hold one frame of the screen
 #              recording over a page-loading flash (find the frames with signalstats YAVG). Done as a separate pre-pass
 #              (trim/loop/concat) because freezeframes+split inside one graph trips an ffmpeg scheduler assertion.

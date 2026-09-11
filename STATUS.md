@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-08-03. Branch: `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-09-11. Branch: `claude/zen-hamilton-9k1rq2` (video); Meta ads work on `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -120,6 +120,24 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   so treat the precision carefully). Worst = "AD5 Chippies" at **$758.74/result**. That's 125× —
   and independent evidence for making the configurator the creative engine.
 - Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
+
+### 🎬 Video — first HyperFrames motion graphic MADE (2026-09-11)
+- [x] **HyperFrames by HeyGen = HTML/CSS/GSAP → MP4 renderer, not an avatar tool.** The MCP connector is
+  installed but **unauthorised** (needs a HeyGen sign-in in claude.ai → Settings → Connectors). **Not needed:**
+  the open-source CLI renders locally in the session. Pipeline proven end-to-end.
+- [x] **How-To Series: "The set-out numbers"** — 29 s, 9:16, silent-safe, rendered + QA'd (0 lint/runtime
+  errors, 38/38 WCAG AA). Teaches chord + rise set-out for a curved wall plate from R3714 / 90 / 30°
+  (chord 1923, rise 127, arc 1945). Radius Pro appears once, at the end. Locked pillar item
+  "How to calculate curved wall plates from plans".
+  → source `pipeline/video/hyperframes/howto-setout/` (re-render: `./render.sh`) ·
+  brief + caption + decisions `briefs/howto-setout-numbers-video-brief.md`
+- [x] **Sandbox gotchas solved and scripted** (in `render.sh`): Playwright's ffmpeg has no H.264 → use
+  `@ffmpeg-installer`/`@ffprobe-installer` npm binaries; Google Fonts unreachable from headless Chrome →
+  self-hosted woff2 + Aeonik-Medium.otf pulled from Drive (git-ignored, licensed); GSAP vendored.
+- [x] Exact design tokens (`colors_and_type.css` `:root`) + Aeonik now proven usable in a session render.
+- [ ] **Lee:** review the MP4 on the phone; answer the 6 decisions in the brief (episode number, keep/cut
+  the product line, the R3714/30° example, VO or silent, Instagram handle, whether to authorise the connector).
+- [ ] Save the approved MP4 to Drive `Marketing/Video/How-To-Series/` (connector can't push video).
 
 ## ⏳ Pending / in progress
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
@@ -349,5 +367,10 @@ actually order, from Shopify) · `enquiry-language.md` (⚠️ correct language,
 **In Google Drive** `Peninsula Studio/01 Craftons/Marketing/` — **not optional reading:**
 `MARKETING-BIBLE.md` (Suby doctrine · Godfather Offer · the verbatim law · the 8 hacks §9) ·
 `MARKETING-CHECKLIST.md` (the phased action list) · `META-ADS-BRIEF.md` (**the golden rule** + approved copy)
+
+**Video:** `pipeline/video/hyperframes/howto-setout/` (⭐ first rendered How-To motion graphic: HyperFrames source + `render.sh`) ·
+`briefs/howto-setout-numbers-video-brief.md` (beat sheet · caption · Lee's 6 decisions). Earlier video briefs live on other
+branches: `briefs/radius-pro-howto-video-brief.md` (`claude/radius-pro-video-script-gitg6u`) · `pipeline/video/REEL-PROCESS.md`
+(`claude/radius-pro-instagram-edit-62mac9`) · `briefs/heygen-avatar-build-guide.md` (`claude/heygen-avatar-creation-zy0smi`)
 
 **Setup / ops:** `SETUP.md` · `INTEGRATIONS.md` · `DESKTOP-TODO.md` · `CLAUDE.md` · `QUALITY-DOCTRINE.md`

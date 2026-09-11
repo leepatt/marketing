@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Craftons How-To Series: the set-out numbers for a curved wall plate</title>
+    <script src="vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="tokens-root.css" />
+    <link rel="stylesheet" href="fonts/aeonik.css" />
+    <style>
+      /* Self-hosted fonts. Aeonik (licensed Craftons display face) is declared in fonts/aeonik.css,
+         which render.sh generates only when fonts/Aeonik-Medium.otf is present. Falls back to Inter. */
+      @font-face { font-family: "Inter"; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+      @font-face { font-family: "Inter"; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+      @font-face { font-family: "Inter"; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--craftons-green-900); }
+      body { font-family: var(--font-body); color: var(--fg); -webkit-font-smoothing: antialiased; }
+
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .clip { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+
+      /* ---- grounds ---- */
+      .ground-dark  { background: var(--craftons-green-900); color: var(--fg-invert); }
+      .ground-paper { background: var(--paper); color: var(--fg); }
+
+      /* ---- the curved-line motif (drawn in SVG at runtime) ---- */
+      .motif { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .motif path { fill: none; stroke: var(--craftons-line-green); stroke-width: 3; stroke-linecap: round; }
+
+      /* ---- type ---- */
+      .eyebrow {
+        font-family: var(--font-mono); font-weight: 500; font-size: 26px;
+        letter-spacing: var(--tracking-widest); text-transform: uppercase;
+      }
+      .ground-dark .eyebrow  { color: var(--craftons-line-green); }
+      .ground-paper .eyebrow { color: var(--craftons-green); }
+
+      .display {
+        font-family: var(--font-display); font-weight: 500;
+        font-size: 96px; line-height: var(--lh-display); letter-spacing: var(--tracking-tighter);
+      }
+      .display-2 {
+        font-family: var(--font-display); font-weight: 500;
+        font-size: 60px; line-height: 1.12; letter-spacing: var(--tracking-tight);
+      }
+      .ground-dark .display-2 { color: var(--paper-2); }
+      .ground-paper .display  { font-size: 84px; }
+      .ground-paper .display-2 { color: var(--ink-2); }
+
+      .body {
+        font-family: var(--font-body); font-weight: 500;
+        font-size: 44px; line-height: 1.3; letter-spacing: var(--tracking-tight); color: var(--ink-2);
+      }
+      .body b { font-weight: 600; color: var(--craftons-green); }
+
+      .formula {
+        font-family: var(--font-mono); font-weight: 500; font-size: 24px; line-height: 1.55;
+        color: var(--slate); letter-spacing: 0;
+      }
+
+      .stack { position: absolute; left: 80px; width: 920px; }
+      .stack > * + * { margin-top: var(--sp-6); }
+
+      /* ---- drawing ---- */
+      .drawing { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+      .plate     { fill: var(--paper-2); stroke: var(--ink); stroke-width: 3; }
+      .ink-line  { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+      .dim-line  { fill: none; stroke: var(--slate); stroke-width: 2.5; stroke-dasharray: 14 12; }
+      .dim-solid { fill: none; stroke: var(--slate); stroke-width: 2.5; }
+      .hi-line   { fill: none; stroke: var(--craftons-line-green); stroke-width: 7; stroke-linecap: round; }
+      .hi-thin   { fill: none; stroke: var(--craftons-line-green); stroke-width: 4; stroke-linecap: round; }
+
+      .chip {
+        position: absolute;
+        font-family: var(--font-mono); font-weight: 500; font-size: 34px; letter-spacing: var(--tracking-wide);
+        color: var(--white); background: var(--craftons-green);
+        padding: 10px 20px; border-radius: var(--r-md); white-space: nowrap;
+        box-shadow: var(--shadow-2);
+      }
+      .chip.hi { background: var(--craftons-line-green); }
+      .chip.ghost { background: var(--white); color: var(--ink); box-shadow: var(--shadow-inset), var(--shadow-1); }
+
+      /* ---- end card ---- */
+      .wordmark {
+        position: absolute; left: 80px; top: 1380px;
+        font-family: var(--font-display); font-weight: 500; font-size: 76px; letter-spacing: -0.04em; color: var(--white);
+      }
+      .url {
+        position: absolute; left: 80px; top: 1478px;
+        font-family: var(--font-mono); font-weight: 500; font-size: 26px; letter-spacing: var(--tracking-wider);
+        color: var(--craftons-line-green);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="29" data-width="1080" data-height="1920">
+
+      <!-- ============ SCENE 1 · HOOK (0 – 4.0s) ============ -->
+      <section id="s1" class="clip ground-dark" data-start="0" data-duration="4" data-track-index="1">
+        <svg class="motif" id="motif1" viewBox="0 0 1080 1920" aria-hidden="true" data-layout-allow-overflow></svg>
+        <div class="stack" style="top: 520px">
+          <div class="eyebrow" id="s1-eyebrow">How-To Series</div>
+          <div class="display" id="s1-h1">The plan says<br />R3714.</div>
+          <div class="display-2" id="s1-h2">It doesn't say how to set it out.</div>
+        </div>
+      </section>
+
+      <!-- ============ SCENE 2 · THE DRAWING (4.0 – 22.5s) ============ -->
+      <section id="s2" class="clip ground-paper" data-start="4" data-duration="18.5" data-track-index="1">
+        <!-- chapter 1 text -->
+        <div class="stack" style="top: 250px" id="ch1">
+          <div class="eyebrow">01 / Off the plan</div>
+          <div class="display">Three numbers off the plan.</div>
+          <div class="body" id="ch1-body">Radius. Width. How much of the circle you need.</div>
+        </div>
+
+        <!-- chapter 2 text -->
+        <div class="stack" style="top: 250px" id="ch2">
+          <div class="eyebrow">02 / The set-out numbers</div>
+          <div class="display">Chord and rise. That's your set-out.</div>
+          <div class="body" id="ch2-b1"><b>Chord</b> is where the plate starts and ends.</div>
+          <div class="body" id="ch2-b2"><b>Rise</b> is how far it bows off the string line.</div>
+          <div class="body" id="ch2-b3">String the chord, mark the rise at the middle. Nobody is swinging a 3.7 metre trammel on a slab.</div>
+        </div>
+
+        <div class="formula" id="formulas" style="position:absolute; left:80px; top:930px; width:920px">
+          chord = 2R sin(θ/2) &nbsp;&nbsp;·&nbsp;&nbsp; rise = R(1 − cos θ/2)<br />arc = Rθ &nbsp;&nbsp;·&nbsp;&nbsp; θ in radians, 30° = 0.5236
+        </div>
+
+        <!-- the plan-view drawing -->
+        <svg class="drawing" id="drawing" viewBox="0 0 1080 1920" aria-hidden="true">
+          <path id="plate" class="plate" />
+          <line id="radius-line" class="dim-line" />
+          <line id="end-left"  class="dim-line" />
+          <line id="end-right" class="dim-line" />
+          <path id="angle-arc" class="dim-solid" />
+          <line id="width-dim" class="dim-solid" />
+          <line id="width-tick-a" class="dim-solid" />
+          <line id="width-tick-b" class="dim-solid" />
+          <line id="chord" class="hi-line" />
+          <line id="rise" class="hi-thin" />
+          <line id="rise-tick-a" class="hi-thin" />
+          <line id="rise-tick-b" class="hi-thin" />
+          <path id="arc-hi" class="hi-line" />
+        </svg>
+
+        <!-- callout chips (positioned by script from the geometry) -->
+        <div class="chip" id="chip-r">R 3714</div>
+        <div class="chip" id="chip-w">90 wide</div>
+        <div class="chip" id="chip-a">30°</div>
+        <div class="chip hi" id="chip-chord">CHORD <span id="chord-n">0</span></div>
+        <div class="chip hi" id="chip-rise">RISE <span id="rise-n">0</span></div>
+        <div class="chip hi" id="chip-arc">ARC <span id="arc-n">0</span></div>
+        <div class="chip ghost" id="chip-mat">17mm formply · 90 stud</div>
+      </section>
+
+      <!-- ============ SCENE 3 · PAYOFF (22.5 – 29.0s) ============ -->
+      <section id="s3" class="clip ground-dark" data-start="22.5" data-duration="6.5" data-track-index="1">
+        <svg class="motif" id="motif3" viewBox="0 0 1080 1920" aria-hidden="true" data-layout-allow-overflow></svg>
+        <div class="stack" style="top: 520px">
+          <div class="display" id="s3-h1">Or type the radius into Radius Pro.</div>
+          <div class="display-2" id="s3-h2">Arc, chord and rise come back on their own. Plates turn up cut to size.</div>
+          <div class="display-2" id="s3-h3" style="margin-top: 72px">Save this for your next curved job.</div>
+        </div>
+        <div class="wordmark" id="s3-mark">Craftons</div>
+        <div class="url" id="s3-url">craftons.com.au</div>
+      </section>
+    </div>
+
+    <script>
+      /* ------------------------------------------------------------------
+         Geometry. One real job: internal radius 3714 mm, 90 mm stud width,
+         a 30° segment, 17 mm formply. Everything on screen is derived from
+         these so the drawing and the numbers can never disagree.
+         ------------------------------------------------------------------ */
+      const JOB = { R: 3714, W: 90, deg: 30 };
+      const theta = (JOB.deg * Math.PI) / 180;
+      const NUM = {
+        chord: Math.round(2 * JOB.R * Math.sin(theta / 2)),        // 1923
+        rise:  Math.round(JOB.R * (1 - Math.cos(theta / 2))),      // 127
+        arc:   Math.round(JOB.R * theta),                          // 1945
+      };
+
+      // Drawing scale: 1700 px for the 3714 mm radius. Centre sits below the frame,
+      // which is the honest picture: on a real slab the centre point is usually not reachable.
+      const PX = 1700 / JOB.R;
+      const G = { cx: 540, cy: 1150 + 1700, R: 1700, W: JOB.W * PX, half: theta / 2 };
+      const pt = (r, phi) => [G.cx + r * Math.sin(phi), G.cy - r * Math.cos(phi)];
+      const f = (n) => n.toFixed(2);
+
+      const [ax, ay] = pt(G.R, -G.half), [bx, by] = pt(G.R, G.half);           // inner arc ends
+      const [ox, oy] = pt(G.R + G.W, -G.half), [px, py] = pt(G.R + G.W, G.half); // outer arc ends
+      const [mx, my] = pt(G.R, 0);                                              // inner arc mid
+      const Ro = G.R + G.W;
+
+      const set = (id, attrs) => { const el = document.getElementById(id); for (const k in attrs) el.setAttribute(k, attrs[k]); return el; };
+
+      set("plate", { d: `M ${f(ax)} ${f(ay)} A ${G.R} ${G.R} 0 0 1 ${f(bx)} ${f(by)} L ${f(px)} ${f(py)} A ${Ro} ${Ro} 0 0 0 ${f(ox)} ${f(oy)} Z` });
+      set("arc-hi", { d: `M ${f(ax)} ${f(ay)} A ${G.R} ${G.R} 0 0 1 ${f(bx)} ${f(by)}` });
+      set("chord", { x1: f(ax), y1: f(ay), x2: f(bx), y2: f(by) });
+      set("rise", { x1: G.cx, y1: f(ay), x2: G.cx, y2: f(my) });
+      set("rise-tick-a", { x1: G.cx - 18, y1: f(ay), x2: G.cx + 18, y2: f(ay) });
+      set("rise-tick-b", { x1: G.cx - 18, y1: f(my), x2: G.cx + 18, y2: f(my) });
+      set("radius-line", { x1: G.cx, y1: f(my), x2: G.cx, y2: 1920 });
+
+      // radial end lines, run off the bottom of the frame toward the centre
+      const toBottom = (x0, y0) => { const t = (1920 - y0) / (G.cy - y0); return [x0 + (G.cx - x0) * t, 1920]; };
+      const [lx, ly] = toBottom(ax, ay), [rx, ry] = toBottom(bx, by);
+      set("end-left",  { x1: f(ax), y1: f(ay), x2: f(lx), y2: ly });
+      set("end-right", { x1: f(bx), y1: f(by), x2: f(rx), y2: ry });
+
+      // angle dimension arc, drawn at radius 1300 px from the (off-frame) centre
+      const ar = 1300; const [a1x, a1y] = pt(ar, -G.half), [a2x, a2y] = pt(ar, G.half);
+      set("angle-arc", { d: `M ${f(a1x)} ${f(a1y)} A ${ar} ${ar} 0 0 1 ${f(a2x)} ${f(a2y)}` });
+
+      // width dimension at the left end: across the band, offset outward along the radial
+      const wphi = -G.half; const [w1x, w1y] = pt(G.R - 8, wphi), [w2x, w2y] = pt(Ro + 8, wphi);
+      const nx = Math.sin(wphi), ny = -Math.cos(wphi);          // radial unit vector
+      const tx = -ny, ty = nx;                                    // tangent (for ticks)
+      const off = -34;                                             // offset along tangent (to the left)
+      set("width-dim", { x1: f(w1x + tx * off), y1: f(w1y + ty * off), x2: f(w2x + tx * off), y2: f(w2y + ty * off) });
+      set("width-tick-a", { x1: f(w1x), y1: f(w1y), x2: f(w1x + tx * (off - 10)), y2: f(w1y + ty * (off - 10)) });
+      set("width-tick-b", { x1: f(w2x), y1: f(w2y), x2: f(w2x + tx * (off - 10)), y2: f(w2y + ty * (off - 10)) });
+
+      // chips
+      const place = (id, x, y, anchor = "left") => { const el = document.getElementById(id); el.style.top = `${Math.round(y)}px`; if (anchor === "center") { el.style.left = "50%"; el.style.transform = "translateX(-50%)"; } else { el.style.left = `${Math.round(x)}px`; } };
+      place("chip-r", G.cx + 28, 1330);
+      place("chip-w", 40, oy - 120);
+      place("chip-a", 0, a1y + 40, "center");
+      place("chip-chord", G.cx + 120, ay + 26);
+      place("chip-rise", G.cx + 34, my - 10);
+      place("chip-arc", 0, my - 96, "center");
+      place("chip-mat", 0, 1760, "center");
+
+      /* ------------------------------------------------------------------
+         The curved-line motif: a family of Lissajous curves, drawn in.
+         ------------------------------------------------------------------ */
+      function buildMotif(svgId, variant) {
+        // The brand pattern is a blend: one rounded loop repeated ~25 times, each copy nudged along a
+        // diagonal so the strokes bunch into parallel bands, brightest at one end and fading at the other.
+        const svg = document.getElementById(svgId);
+        const NS = "http://www.w3.org/2000/svg";
+        const w = 760, h = 980, r = 340;
+        const d = `M ${r} 0 H ${w - r} A ${r} ${r} 0 0 1 ${w} ${r} V ${h - r} A ${r} ${r} 0 0 1 ${w - r} ${h} H ${r} A ${r} ${r} 0 0 1 0 ${h - r} V ${r} A ${r} ${r} 0 0 1 ${r} 0 Z`;
+        const N = 26, paths = [];
+        const dir = variant === 0 ? 1 : -1;   // hook sweeps up-right, end card mirrors it
+        for (let i = 0; i < N; i++) {
+          const t = i / (N - 1);
+          const x = 160 + dir * (-300 + 620 * t);
+          const y = 1150 - 1250 * t;
+          const rot = dir * (-22 + 14 * t);
+          const sc = 0.82 + 0.3 * t;
+          const p = document.createElementNS(NS, "path");
+          p.setAttribute("d", d);
+          p.setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot.toFixed(2)} ${w / 2} ${h / 2}) scale(${sc.toFixed(3)})`);
+          p.style.opacity = String(0.10 + 0.55 * t);
+          svg.appendChild(p);
+          paths.push(p);
+        }
+        return paths;
+      }
+      const motif1 = buildMotif("motif1", 0);
+      const motif3 = buildMotif("motif3", 1);
+
+      /* ------------------------------------------------------------------
+         Timeline. Absolute positions in seconds. Deterministic only.
+         ------------------------------------------------------------------ */
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const EASE = "power3.out";
+      const prepDraw = (el) => { const L = el.getTotalLength(); el.style.strokeDasharray = `${L}`; el.style.strokeDashoffset = `${L}`; return L; };
+      const draw = (sel, at, dur, ease = "power2.inOut") => { const el = typeof sel === "string" ? document.querySelector(sel) : sel; const L = prepDraw(el); tl.fromTo(el, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur, ease }, at); };
+      const pop = (sel, at, dur = 0.45) => tl.from(sel, { opacity: 0, y: 26, duration: dur, ease: EASE }, at);
+      const popChip = (sel, at) => tl.from(sel, { opacity: 0, scale: 0.7, duration: 0.4, ease: "back.out(2)" }, at);
+      const count = (spanId, target, at, dur = 0.8) => { const o = { v: 0 }; const el = document.getElementById(spanId); tl.to(o, { v: target, duration: dur, ease: "power3.out", onUpdate: () => { el.textContent = String(Math.round(o.v)); } }, at); };
+
+      // ---- Scene 1 (0 – 4.0)
+      motif1.forEach((p, i) => draw(p, 0.0 + i * 0.05, 2.2, "power2.out"));
+      pop("#s1-eyebrow", 0.3);
+      pop("#s1-h1", 0.55, 0.6);
+      pop("#s1-h2", 1.9, 0.6);
+
+      // ---- Scene 2 (4.0 – 22.5)
+      tl.from("#s2", { opacity: 0, duration: 0.3, ease: "power1.out" }, 4.0);
+      tl.set("#chip-r, #chip-w, #chip-a, #chip-chord, #chip-rise, #chip-arc, #chip-mat, #formulas, #ch2", { opacity: 0 }, 0);
+      tl.set("#chord, #rise, #rise-tick-a, #rise-tick-b, #arc-hi", { opacity: 0 }, 0);
+
+      // chapter 1
+      draw("#plate", 4.1, 1.1);
+      tl.from("#plate", { fillOpacity: 0, duration: 0.5 }, 4.9);
+      pop("#ch1 .eyebrow", 4.4);
+      pop("#ch1 .display", 4.65, 0.6);
+      pop("#ch1-body", 5.2, 0.6);
+      tl.to("#chip-mat", { opacity: 1, duration: 0.3 }, 5.0);
+
+      draw("#radius-line", 5.6, 0.7);
+      tl.to("#chip-r", { opacity: 1, duration: 0.01 }, 6.2); popChip("#chip-r", 6.2);
+
+      draw("#width-tick-a", 7.0, 0.2); draw("#width-tick-b", 7.0, 0.2); draw("#width-dim", 7.1, 0.35);
+      tl.to("#chip-w", { opacity: 1, duration: 0.01 }, 7.4); popChip("#chip-w", 7.4);
+
+      draw("#end-left", 8.1, 0.6); draw("#end-right", 8.1, 0.6); draw("#angle-arc", 8.5, 0.5);
+      tl.to("#chip-a", { opacity: 1, duration: 0.01 }, 8.9); popChip("#chip-a", 8.9);
+
+      // chapter swap
+      tl.to("#ch1", { opacity: 0, y: -20, duration: 0.3, ease: "power2.in" }, 10.4);
+      tl.to("#ch2", { opacity: 1, duration: 0.01 }, 10.7);
+      pop("#ch2 .eyebrow", 10.7);
+      pop("#ch2 .display", 10.9, 0.6);
+
+      // chord
+      tl.set("#chord", { opacity: 1 }, 11.3);
+      draw("#chord", 11.3, 0.6);
+      tl.to("#chip-chord", { opacity: 1, duration: 0.01 }, 11.9); popChip("#chip-chord", 11.9); count("chord-n", NUM.chord, 11.9, 0.7);
+      pop("#ch2-b1", 12.4, 0.6);
+
+      // rise
+      tl.set("#rise, #rise-tick-a, #rise-tick-b", { opacity: 1 }, 13.7);
+      draw("#rise-tick-a", 13.7, 0.15); draw("#rise", 13.8, 0.35); draw("#rise-tick-b", 14.1, 0.15);
+      tl.to("#chip-rise", { opacity: 1, duration: 0.01 }, 14.2); popChip("#chip-rise", 14.2); count("rise-n", NUM.rise, 14.2, 0.5);
+      pop("#ch2-b2", 14.5, 0.6);
+
+      // arc
+      tl.set("#arc-hi", { opacity: 1 }, 15.9);
+      draw("#arc-hi", 15.9, 0.8);
+      tl.to("#chip-arc", { opacity: 1, duration: 0.01 }, 16.6); popChip("#chip-arc", 16.6); count("arc-n", NUM.arc, 16.6, 0.7);
+
+      pop("#ch2-b3", 17.0, 0.6);
+      tl.to("#formulas", { opacity: 1, duration: 0.5 }, 19.4);
+
+      // ---- Scene 3 (22.5 – 29.0)
+      motif3.forEach((p, i) => draw(p, 22.5 + i * 0.04, 2.0, "power2.out"));
+      pop("#s3-h1", 22.8, 0.6);
+      pop("#s3-h2", 24.3, 0.6);
+      pop("#s3-h3", 26.0, 0.6);
+      pop("#s3-mark", 26.5, 0.6);
+      pop("#s3-url", 26.7, 0.6);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+# licensed font: fetch from the Drive brain (see README), never commit
+fonts/Aeonik-*.otf
+fonts/aeonik.css
+# render output + QA frames
+out/
+snapshots/
+node_modules/
+assets/
+caps.ass

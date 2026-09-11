@@ -121,6 +121,23 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   and independent evidence for making the configurator the creative engine.
 - Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
 
+### 🎬 Formwork Builder soft-launch reel — BUILT from Lee's take + live builder capture (2026-09-11)
+- [x] **Lee's 2:36 phone take pulled from Drive via curl** (300 MB, link-shared), jump-cut to 1:36 with
+  `jumpcut.py`, re-transcribed on the cut for captions. Whisper misses fixed by hand: 17mm (not 70mm),
+  cantilever (not counter lever), delivered (not lived), formworkers.
+- [x] **The live Formwork Builder captured headless in the session.** Chrome cannot reach the internet from the
+  sandbox, so `pipeline/video/builder-capture/rproxy.mjs` reverse-proxies `builder.craftons.com.au` on localhost
+  and Chrome renders the real app (Three.js preview on software WebGL). `capture-fw.mjs` walks Lee's own design
+  (share `fw-FTSclLEA`) step by step; `build-demo.py` lays the steps onto the voiceover timeline.
+- [x] **Reel assembled in HyperFrames** (`pipeline/video/hyperframes/fw-reel/`): Lee to camera 17.5 s → builder
+  demo 78 s under his voiceover, gentle punch-ins → brand end card. Karaoke captions burned in (locked style).
+  99 s, 9:16. Campaign note + 3 caption variants: `campaigns/social/2026-09-formwork-builder-soft-launch.md`.
+- [x] **Reel 01 tooling merged onto this branch** (`jumpcut.py`, `captions*.py`, `compose-reel.sh`,
+  `overlays.py`, `REEL-PROCESS.md`, fonts) so the video pipeline lives in one place → `pipeline/video/README.md`.
+- [ ] ⚠️ **Lee to decide the delivery line:** the take says "three to four days"; the builder shows **7 to 9
+  business days** on screen. Cut the sentence or re-record it. Also: keep 99 s or cut a 35 to 40 s lean version.
+- [ ] Save the approved MP4 to Drive `Marketing/Video/`; post via Later. Nothing auto-publishes.
+
 ### 🎬 Video — first HyperFrames motion graphic MADE (2026-09-11)
 - [x] **HyperFrames by HeyGen = HTML/CSS/GSAP → MP4 renderer, not an avatar tool.** The MCP connector is
   installed but **unauthorised** (needs a HeyGen sign-in in claude.ai → Settings → Connectors). **Not needed:**
@@ -368,7 +385,9 @@ actually order, from Shopify) · `enquiry-language.md` (⚠️ correct language,
 `MARKETING-BIBLE.md` (Suby doctrine · Godfather Offer · the verbatim law · the 8 hacks §9) ·
 `MARKETING-CHECKLIST.md` (the phased action list) · `META-ADS-BRIEF.md` (**the golden rule** + approved copy)
 
-**Video:** `pipeline/video/hyperframes/howto-setout/` (⭐ first rendered How-To motion graphic: HyperFrames source + `render.sh`) ·
+**Video:** `pipeline/video/README.md` (⭐ the whole reel pipeline: pull → jump-cut → live builder capture → HyperFrames → captions) ·
+`pipeline/video/hyperframes/fw-reel/` (Formwork Builder soft-launch reel) · `campaigns/social/2026-09-formwork-builder-soft-launch.md` ·
+`pipeline/video/hyperframes/howto-setout/` (first rendered How-To motion graphic) ·
 `briefs/howto-setout-numbers-video-brief.md` (beat sheet · caption · Lee's 6 decisions). Earlier video briefs live on other
 branches: `briefs/radius-pro-howto-video-brief.md` (`claude/radius-pro-video-script-gitg6u`) · `pipeline/video/REEL-PROCESS.md`
 (`claude/radius-pro-instagram-edit-62mac9`) · `briefs/heygen-avatar-build-guide.md` (`claude/heygen-avatar-creation-zy0smi`)

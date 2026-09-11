@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# compose-reel.sh LAYOUT SCREEN_CUT.mp4 AVATAR_CUT.mp4 OUT.mp4 [caps.ass]
+# LAYOUT:
+#   white9x16  1080x1920, white ground (matches the app page), screen recording full-width at top,
+#              9:16 avatar PiP bottom-left (36,1113). Captions: ink style, ML=400 MR=40 MV=340.
+#   full4x5    1080x1350, screen recording at full viewport width (848 px, no side trim so wide pages like the
+#              quote sheet are not clipped), white pad top/bottom, avatar PiP 260x462 bottom-left (24,864).
+#              Captions: captions-highlight.py defaults (SIZE=84 BOTTOM=1190, 2x2 words, centred; clear of the PiP, above the Reels UI overlay).
+# Env FB916=1: also pad the 4:5 output to 9:16 for Facebook Reels (captions keep their 4:5 placement, still above the overlay).
+# Env FREEZE: optional "first:last:replace" frame numbers, e.g. FREEZE=4044:4086:4043, to hold one frame of the screen
+#              recording over a page-loading flash (find the frames with signalstats YAVG). Done as a separate pre-pass
+#              (trim/loop/concat) because freezeframes+split inside one graph trips an ffmpeg scheduler assertion.
+#   green9x16  1080x1920, Craftons-green ground, screen at y=60, avatar PiP bottom-left. Captions as white9x16.
+# Screen source: 902x1128 Chrome window (tab/address/bookmark bars + side panel cropped: crop=806:976:21:152).
+# Avatar source: 742x1320 (jumpcut.py output + crop=742:1320:249:600 on the 1080x1920 phone clip).
+set -euo pipefail
+L=$1; S=$2; A=$3; O=$4; CAPS=${5:-}
+FF=$(python3 -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())" 2>/dev/null || echo ffmpeg)
+HERE=$(cd "$(dirname "$0")" && pwd)
+R=28; RR=$((R*R)); R1=$((R+1))
+MASK="if(lt(X,$R)*lt(Y,$R)*gt(pow(X-$R,2)+pow(Y-$R,2),$RR)+lt(X,$R)*gt(Y,H-$R1)*gt(pow(X-$R,2)+pow(Y-(H-$R1),2),$RR)+gt(X,W-$R1)*lt(Y,$R)*gt(pow(X-(W-$R1),2)+pow(Y-$R,2),$RR)+gt(X,W-$R1)*gt(Y,H-$R1)*gt(pow(X-(W-$R1),2)+pow(Y-(H-$R1),2),$RR),0,255)"
+PIP="format=yuva420p,geq=lum='p(X,Y)':cb='p(X,Y)':cr='p(X,Y)':a='$MASK'"
+SCR="crop=806:976:21:152"
+if [ -n "${FREEZE:-}" ]; then
+  IFS=: read -r F1 F2 F3 <<<"$FREEZE"; N=$((F2-F1))
+  "$FF" -y -loglevel error -i "$S" -filter_complex "[0:v]split=3[a][b][c];[a]trim=end_frame=$F1,setpts=PTS-STARTPTS[a1];[b]trim=start_frame=$F3:end_frame=$((F3+1)),setpts=PTS-STARTPTS,loop=loop=$N:size=1:start=0,setpts=N/30/TB[b1];[c]trim=start_frame=$((F2+1)),setpts=PTS-STARTPTS[c1];[a1][b1][c1]concat=n=3:v=1:a=0[v]" -map "[v]" -an -c:v libx264 -preset fast -crf 18 -r 30 "${O%.mp4}.screen-frozen.mp4"
+  S="${O%.mp4}.screen-frozen.mp4"
+fi
+case "$L" in
+  white9x16) FC="color=c=white:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:0:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
+  full4x5)   FC="[0:v]crop=848:976:0:152,scale=1080:1243:flags=lanczos,pad=1080:1350:0:53:color=white,setsar=1[scr];[1:v]scale=260:462,$PIP[pip];[scr][pip]overlay=24:864[v0]";;
+  green9x16) FC="color=c=0x194431:s=1080x1920:r=30[bg];[0:v]$SCR,scale=1080:1308:flags=lanczos[scr];[1:v]scale=330:587,$PIP[pip];[bg][scr]overlay=0:60:shortest=1[a];[a][pip]overlay=36:1113[v0]";;
+  *) echo "unknown layout $L" >&2; exit 2;;
+esac
+if [ -n "$CAPS" ]; then FC="$FC;[v0]ass=$CAPS:fontsdir=$HERE/fonts[v1]"; else FC="$FC;[v0]null[v1]"; fi
+# FB916=1: Facebook Reels rejects 4:5 — pad the finished 4:5 frame to 1080x1920 with white (285 px top/bottom).
+if [ "${FB916:-0}" = "1" ]; then FC="$FC;[v1]pad=1080:1920:0:285:color=white,setsar=1[v]"; else FC="$FC;[v1]null[v]"; fi
+"$FF" -y -loglevel error -stats -i "$S" -i "$A" -filter_complex "$FC" -map "[v]" -map 1:a \
+  -c:v libx264 -preset medium -crf 19 -pix_fmt yuv420p -r 30 -c:a aac -b:a 192k -ar 48000 -movflags +faststart "$O"

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Craftons Formwork Builder soft launch reel</title>
+    <script src="vendor/gsap.min.js"></script>
+    <link rel="stylesheet" href="tokens-root.css" />
+    <link rel="stylesheet" href="fonts/aeonik.css" />
+    <style>
+      @font-face { font-family: "Inter"; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+      @font-face { font-family: "Inter"; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+      @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--white); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--white); }
+      .clip { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      video.clip { object-fit: cover; }
+      #intro { transform-origin: 50% 42%; }
+      #demo  { transform-origin: 50% 60%; background: var(--white); }
+      .ground-dark { background: var(--craftons-green-900); color: var(--fg-invert); }
+      .motif { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .motif path { fill: none; stroke: var(--craftons-line-green); stroke-width: 3; stroke-linecap: round; }
+      .tag {
+        position: absolute; left: 60px; top: 150px;
+        font-family: var(--font-mono); font-weight: 500; font-size: 28px; letter-spacing: var(--tracking-widest); text-transform: uppercase;
+        color: var(--white); background: var(--craftons-green); padding: 16px 24px; border-radius: var(--r-md); box-shadow: var(--shadow-2);
+      }
+      .display { font-family: var(--font-display); font-weight: 500; font-size: 96px; line-height: 1.05; letter-spacing: var(--tracking-tighter); color: var(--white); }
+      .display-2 { font-family: var(--font-display); font-weight: 500; font-size: 56px; line-height: 1.15; letter-spacing: var(--tracking-tight); color: var(--paper-2); }
+      .eyebrow { font-family: var(--font-mono); font-weight: 500; font-size: 26px; letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--craftons-line-green); }
+      .stack { position: absolute; left: 80px; width: 920px; }
+      .stack > * + * { margin-top: var(--sp-6); }
+      .wordmark { position: absolute; left: 80px; top: 1380px; font-family: var(--font-display); font-weight: 500; font-size: 76px; letter-spacing: -0.04em; color: var(--white); }
+      .url { position: absolute; left: 80px; top: 1478px; font-family: var(--font-mono); font-weight: 500; font-size: 26px; letter-spacing: var(--tracking-wider); color: var(--craftons-line-green); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="99" data-width="1080" data-height="1920">
+
+      <!-- Lee to camera (jump-cut take, first 17.5 s) -->
+      <video id="intro" class="clip" data-start="0" data-duration="17.54" data-track-index="1" src="assets/intro.mp4" muted playsinline></video>
+      <div id="tag" class="clip" data-start="1.2" data-duration="7" data-track-index="2" style="pointer-events:none"><div class="tag">New · Formwork Builder</div></div>
+
+      <!-- The builder, captured live, laid onto the voiceover -->
+      <video id="demo" class="clip" data-start="17.54" data-duration="78.1" data-track-index="1" src="assets/demo.mp4" muted playsinline></video>
+
+      <!-- Voiceover: the whole cut take's audio -->
+      <audio id="vo" data-start="0" data-duration="96.2" data-track-index="3" data-volume="1" src="assets/vo.m4a"></audio>
+
+      <!-- End card -->
+      <section id="end" class="clip ground-dark" data-start="93.6" data-duration="5.4" data-track-index="2">
+        <svg class="motif" id="motif" viewBox="0 0 1080 1920" aria-hidden="true" data-layout-allow-overflow></svg>
+        <div class="stack" style="top: 560px">
+          <div class="eyebrow" id="end-eyebrow">Formwork Builder</div>
+          <div class="display" id="end-h1">Design it. Price it. Order it.</div>
+          <div class="display-2" id="end-h2">Curved formwork, cut to your set-out. Link in bio.</div>
+        </div>
+        <div class="wordmark" id="end-mark">Craftons</div>
+        <div class="url" id="end-url">craftons.com.au</div>
+      </section>
+    </div>
+
+    <script>
+      // brand motif (same construction as the How-To piece)
+      (function () {
+        const svg = document.getElementById("motif"), NS = "http://www.w3.org/2000/svg";
+        const w = 760, h = 980, r = 340;
+        const d = `M ${r} 0 H ${w - r} A ${r} ${r} 0 0 1 ${w} ${r} V ${h - r} A ${r} ${r} 0 0 1 ${w - r} ${h} H ${r} A ${r} ${r} 0 0 1 0 ${h - r} V ${r} A ${r} ${r} 0 0 1 ${r} 0 Z`;
+        for (let i = 0; i < 26; i++) { const t = i / 25; const p = document.createElementNS(NS, "path"); p.setAttribute("d", d);
+          p.setAttribute("transform", `translate(${(160 - (-300 + 620 * t)).toFixed(1)} ${(1150 - 1250 * t).toFixed(1)}) rotate(${(22 - 14 * t).toFixed(2)} ${w / 2} ${h / 2}) scale(${(0.82 + 0.3 * t).toFixed(3)})`);
+          p.style.opacity = String(0.10 + 0.55 * t); svg.appendChild(p); }
+      })();
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const D = 17.54;                       // demo clip start (absolute seconds)
+      const EASE = "power2.inOut";
+
+      // intro: slow push-in on Lee
+      tl.fromTo("#intro", { scale: 1.06 }, { scale: 1.16, duration: 17.54, ease: "none" }, 0);
+      tl.from(".tag", { opacity: 0, y: 20, duration: 0.5, ease: "power3.out" }, 1.2);
+      tl.to(".tag", { opacity: 0, duration: 0.4 }, 7.8);
+
+      // demo: gentle punch-ins on the beats (times relative to the demo clip)
+      const punch = (t, s, oy, dur = 0.9) => { tl.to("#demo", { scale: s, transformOrigin: `50% ${oy}%`, duration: dur, ease: EASE }, D + t); };
+      punch(0.0, 1.0, 60, 0.01);
+      punch(7.4, 1.07, 66);        // dimensions
+      punch(11.0, 1.04, 62);       // straights
+      punch(14.0, 1.0, 40);        // the 220° arc: pull out to the model
+      punch(20.3, 1.0, 50);
+      punch(30.6, 1.07, 62);       // backrest numbers
+      punch(36.6, 1.05, 66);       // cantilever
+      punch(41.3, 1.0, 50);        // scroll to formwork
+      punch(48.4, 1.06, 62);       // plates / shutters / end caps
+      punch(60.4, 1.0, 50);        // summary
+      punch(66.5, 1.06, 30);       // back on the model
+      punch(69.8, 1.0, 50);        // add to cart / share quote
+
+      // end card
+      tl.from("#end", { opacity: 0, duration: 0.7, ease: "power1.out" }, 93.6);
+      tl.from("#end-eyebrow", { opacity: 0, y: 20, duration: 0.5 }, 94.0);
+      tl.from("#end-h1", { opacity: 0, y: 26, duration: 0.6, ease: "power3.out" }, 94.2);
+      tl.from("#end-h2", { opacity: 0, y: 26, duration: 0.6, ease: "power3.out" }, 95.2);
+      tl.from("#end-mark", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" }, 96.0);
+      tl.from("#end-url", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" }, 96.2);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

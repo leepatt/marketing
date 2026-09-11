@@ -83,8 +83,9 @@ Before each step, re-read the live account. **Hold, do not step, and report if a
 
 ## Automation
 
-**The ladder is complete.** The 2-day cadence has stopped. A **7-day hold-and-watch** check is armed —
-trigger `trig_012vWYx3E24u995URjKtEZww`, fires **2026-09-11 22:26 UTC**. It does not step the budget. It re-pulls live data, checks all four guards, steps only if they pass,
+**The ladder is complete.** A **weekly check with a live tripwire** is armed — trigger
+`trig_01HsF7DSNxyZkCCq8i6VJF29`, fires **2026-09-18 22:30 UTC**. It does not raise the budget; it may
+propose stepping it **down**. See the 2026-09-11 hold-and-watch reading at the end of this file. It re-pulls live data, checks all four guards, steps only if they pass,
 records the step here, and re-arms itself for the next rung. **If a guard trips it stops and does not
 re-arm.** The ladder does not depend on anyone remembering it.
 
@@ -368,3 +369,95 @@ The hold-and-watch check on 2026-09-11 answers this with a settled week rather t
 
 **1 of 7 ad sets ACTIVE** — retargeting, $50/day. Both TOF ad sets `PAUSED`. The entire Meta account
 is one ad set, spending on the only structure that has ever worked for Craftons.
+
+---
+
+# 📕 HOLD-AND-WATCH — 2026-09-11. A settled week at $50, and a problem.
+
+**All four guards pass. I am still recommending we do not go higher, and I am flagging that the case
+for the ladder rested on numbers I now have reason to distrust.**
+
+## The settled week (09-05 → 09-11, flat at $50/day)
+
+| | Settled week | Prior (climbing) week |
+|---|---:|---:|
+| Spend | **$355.27** | $250.93 |
+| Pixel purchases | **10** | 7 |
+| Cost per pixel purchase | **$35.53** | $35.85 |
+| Frequency | **2.04** | 1.78 |
+
+Guards: frequency 2.04 (limit 3.0) ✅ · $35.53 (limit $100) ✅ · September projection $1,480 of $2,000 ✅ ·
+10 purchases ✅. Account still **1 of 7 ad sets ACTIVE** — retargeting only, both TOF ad sets `PAUSED`.
+
+On the pixel numbers alone this looks like a clean success.
+
+## The reconciliation says otherwise
+
+**Meta claims 10 purchases that week. Shopify shows ONE order with a Meta source.**
+
+`#1330`, **$188** — first visit `utm_campaign=radiuspro_tof_aug26`, last click
+`utm_campaign=retargeting_radius_pro`. Every other order in the window came from Google SEO, **Bing
+SEO**, direct, or the builder.
+
+**Real cost per traceable order that week: $355.27. Break-even is $322.**
+
+And the trend across the ladder is the wrong way:
+
+| Window | Budget | Meta spend | Shopify Meta-sourced orders | Real CPA |
+|---|---:|---:|---:|---:|
+| Aug 1–20 | $15/day | $266 | **3** | **$89** |
+| Sep 1–11 | $31→$50/day | $530 | **1** | **$530** |
+
+**Spend tripled; traceable orders went down.**
+
+### Both numbers are wrong, and I should have said so earlier
+
+Neither figure is the truth, and the error runs in both directions:
+
+- **Meta over-claims.** Retargeting shows ads to people who already visited and were often coming back
+  anyway. A 1-day view window collects a lot of credit for purchases that would have happened.
+- **Shopify under-credits Meta.** Its journey attribution tends to name the *first* and *last* source;
+  a retargeting click in the middle of a journey frequently shows as "direct" or "Google".
+
+So the real answer sits between 1 and 10. But I have been quoting **$52, then $22, then $35 per
+purchase** to justify every rung of this ladder, and those were all **pixel** numbers. I previously
+described the over-claim as "~3×". **This week it is 10×.** That was too generous, and the ladder's
+business case was weaker than I presented it.
+
+## The saturation condition was met for the first time
+
+| | Climbing week → settled week |
+|---|---|
+| Spend | **+42%** |
+| Reach | +16% |
+| CPM | **+8%** |
+| Absorption | **38%** |
+
+The stated condition is *absorption below ~50% **and** CPM rising on a same-weekday basis*. **Both are
+true this reading.** Reach fell week-over-week on Thursday (−7%) and Friday (−13%) — the first
+negative weekdays of the whole ladder. Frequency stepped 1.78 → 2.04.
+
+Per the rule this ladder itself earned — **two points are not a trend** — one reading is not a ceiling
+call. But it is the first evidence pointing the same way as the reconciliation.
+
+## Recommendation: HOLD at $50. Do not go higher. And here is the tripwire.
+
+Going to $60–100 would be spending more on the strength of a pixel number that Shopify does not
+corroborate. Cutting now would be reacting to a single week with a denominator of one order.
+
+**So: hold at $50 for one more week, with a pre-agreed tripwire —**
+
+> **If the week of 09-12 → 09-18 again shows ≤1 Meta-traceable Shopify order, step the budget back
+> down to ~$31/day** — the last rung where the pixel and Shopify stories had not diverged this far —
+> and re-read from there.
+
+Recording it now so it is a decision Lee has seen in advance, not a surprise later.
+
+## Two things found on the way that are not about Meta
+
+1. **Bing is quietly producing real money.** In the last fortnight: `#1337` $1,791, `#1315` $3,513,
+   `#1336` $1,161, `#1333` $526, `#1329` $361, `#1319` $366 — roughly **$7,700 from Bing SEO**, a
+   channel nobody in this project has ever looked at. Worth a session of its own.
+2. **The one Meta order first-clicked the paused TOF campaign** three weeks earlier. It does not
+   change the TOF verdict (~$1,870 for two traceable orders), but it confirms TOF's conversion lag is
+   measured in weeks, which is why same-week reads of prospecting were always going to look empty.

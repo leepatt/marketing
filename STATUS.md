@@ -785,6 +785,39 @@ must reconcile against real Shopify `source=meta` orders**. Hold-and-watch armed
 
 ---
 
+### 🟠 2026-09-11 — HOLD-AND-WATCH at $50/day: the pixel and Shopify disagree 10×
+
+**All four guards pass on pixel numbers. The reconciliation does not, and that changes the story.**
+
+- Settled week at $50: $355.27, **10 pixel purchases**, $35.53 each, frequency 2.04. Looks clean.
+- **Shopify shows ONE Meta-sourced order that week** (`#1330`, $188). **Real CPA $355 vs $322
+  break-even.** Everything else came from Google SEO, **Bing SEO**, direct, or the builder.
+- **Traceable orders went DOWN as spend tripled:** Aug 1–20 at $15/day → $266 for **3** Meta orders
+  ($89 each). Sep 1–11 at $31–50/day → $530 for **1** ($530).
+- 🔴 **CORRECTION I owe Lee:** every rung of the ladder was justified with **pixel** cost-per-purchase
+  ($52 → $22 → $35). I described Meta's over-claim as "~3×". **This week it is 10×.** The ladder's
+  business case was weaker than I presented it. Both numbers are wrong — Meta over-claims because
+  retargeting hits people already returning; Shopify under-credits because a mid-journey click shows
+  as "direct" — but the gap is too large to keep quoting the pixel figure unqualified.
+- **Saturation condition met for the first time:** spend +42%, reach +16%, CPM +8%, **absorption 38%**
+  (condition is <50% AND CPM rising). Thu −7% and Fri −13% were the first negative reach weekdays of
+  the whole ladder. Per this ladder's own rule, **one reading is not a ceiling call** — but it points
+  the same way as the reconciliation.
+- **Recommendation: HOLD at $50, do not go higher.** With a **pre-agreed tripwire**: if the week of
+  09-12 → 09-18 again shows **≤1 Meta-traceable Shopify order, step back down to ~$31/day.** Armed as
+  `trig_01HsF7DSNxyZkCCq8i6VJF29` — it can only propose a *decrease*, and still needs Lee's approval.
+
+**🔎 NEW — Bing SEO is producing real money and nobody has ever looked at it.** Fortnight to 09-11:
+`#1337` $1,791 · `#1315` $3,513 · `#1336` $1,161 · `#1333` $526 · `#1329` $361 · `#1319` $366 ≈
+**$7,700, all organic Bing.** Worth a session of its own.
+
+**Google, re-verified 09-11 (not assumed):** the 10 keywords proposed for pausing on 08-23 have burned
+**$391.73 with ZERO conversions** since 08-24 and are all still ENABLED. The ad-group view flatters
+Radius Pro ($156.87/conv) because *other* keywords in it convert — at keyword level the proposal
+holds. **Still the only item actively losing money.**
+
+---
+
 **Meta Ads:** `campaigns/meta/` → **`radius-pro-product-truth.md` (⭐ WHAT THE PRODUCT IS — Lee's own
 words. Read before writing a single line of copy. Beats every other doc on product facts)** ·
 **`radius-pro-ad-copy.md` (⭐ the live copy set, v2)** · `BUILD-CHECKLIST.md` (every item, machine vs

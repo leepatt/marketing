@@ -13,13 +13,13 @@
 | 2 | The ask | Face | The customer's words, not ours |
 | 3 | The answer | Screen | First look at the app |
 | 4 | The moment | Screen, tight | The one detail that makes it click |
-| 5 | Payoff | The machine | Nest on screen → nest in the sheet → one plate out |
+| 5 | Payoff | The conveyor | Nest on screen → same nest on the belt, top-down → one plate off |
 | 6 | Soft close | Face | Soft, no pitch |
 
-**The payoff is not on site.** It's the nest on screen cutting to the real sheet on the
-Woodtron, then one plate lifted out of it. The nest *is* what the software worked out, so the
-match cut proves the tool did something rather than just illustrating it. No forklift, no site
-access, and it's footage of something that was going to happen anyway.
+**The payoff is not on site.** It's the nest on screen cutting to the same nest travelling
+on the conveyor, shot top-down, then one plate picked off the belt. The nest *is* what the
+software worked out, so the match proves the tool did something rather than illustrating it.
+No forklift, no site access, and it's footage of something that was going to happen anyway.
 
 ---
 
@@ -64,23 +64,25 @@ hunting, no menus, no browser chrome.*
 the beat that decides whether a concreter takes the app seriously, so it has to be one
 specific detail rather than a tour.*
 
-**35 – 42s · MATCH CUT → THE MACHINE · the payoff**
+**35 – 42s · MATCH CUT → THE CONVEYOR · the payoff**
 
 > *(no voiceover — let it land)*
 
 *Three shots, tight together:*
 
-1. *The nest on screen fills the frame. Hard cut to the real sheet on the Woodtron — same
-   layout, same orientation. The nest is what the software worked out, so this is the match
-   that actually proves something*
-2. *Cutting, speed-ramped. 8–10 curved plates coming out of one sheet of formply*
-3. **The pop-out.** *One finished plate lifted out of the sheet, leaving a curved hole
-   behind. Close. This is the best second in the video — the drawing becoming a thing you
-   can hold*
+1. **Top-down, the match.** *The nest fills the screen. Hard cut to the same nest on the
+   belt, shot from directly overhead. The configurator is a plan view and a top-down belt
+   shot is a plan view, so this match is near-exact rather than approximate. Shoot it from
+   above or don't bother*
+2. *The belt running. 8–10 detabbed curved plates travelling through frame. The movement is
+   free — you don't have to do anything to it*
+3. **Picking one off the belt.** *Hand in, lifts a plate, belt keeps running underneath.
+   Close. This is the best second in the video — the drawing becoming a thing you can hold*
 
-> **Not a dry assembly on the floor.** It was in an earlier draft and it's wrong: plates laid
+> **Not a dry assembly on the floor, and not the cut.** The assembly was wrong: plates laid
 > flat only read as a curve from directly above, and pushing them together is slow to watch.
-> The machine already does the work of showing the geometry, and it does it faster.
+> The cut is the wrong subject — it shows off the machine, and this video is about the
+> software. The belt shows the software's *output*, which is what you're claiming it makes.
 
 **42 – 47s · FACE · soft close**
 
@@ -104,12 +106,13 @@ isn't carrying information, it's carrying "this leaves here and goes to a job".*
 | B | Face, beat 6 | Same setup, same framing. Shoot straight after A |
 | C | Screen recording — drawing the curve | Clean desktop. Hide the browser. Record at 2× the length you need |
 | D | Screen recording — one field changing | Tight. This is the money shot of the app half |
-| E | The sheet on the Woodtron | Match the on-screen nest's orientation. Camera on something solid — a tripod, a bag of sand, anything but handheld. It gets speed-ramped hard and handheld ramps look cheap |
-| F | **The pop-out** | One plate lifted out of the sheet, curved hole left behind. Close. Shoot it five or six times from different heights — it's the payoff and it's one and a half seconds |
+| E | **Top-down on the belt** | Directly overhead, plates in nest order. Locked off. This is the match shot and the angle is not negotiable — side-on loses the match entirely |
+| F | **Picking one off the belt** | Hand in, lift a plate, belt still running. Close. Shoot it five or six times from different heights — it's the payoff and it's under two seconds |
 | G | Wide, carrying the bundle out | You, bundle under the arm, past the roller door. Locked off, wide. No close-up |
 
-**Shoot E and F first.** They need a real job on the machine, so they set the timing for
-everything else — and F is the shot most likely to change the script once you see it.
+**Shoot E and F first.** They need a real job coming off the machine, so the job sets the
+timing for everything else — and F is the shot most likely to change the script once you see
+it. Get the nest up on a screen while you frame E so you can see what you're matching.
 
 ---
 
@@ -128,11 +131,11 @@ everything else — and F is the shot most likely to change the script once you 
   in a tight shot. If it doesn't, the video is a tour of an app and it will die. Look at
   shot D before committing to the rest
 - **The match cut has to be genuinely tight.** A loose one reads as two unrelated clips and
-  the payoff evaporates. Have the nest up on screen while you frame shot E so you can see
-  what you're matching
-- **The cut is slow.** Ten nested plates is a long cut and the ramp will be aggressive. If
-  the ramp looks cheap, use less of it and hold on the pop-out longer instead
-- **Does the Woodtron leave the parts tabbed in?** If it does, shot F is sitting there
-  waiting. If parts come free, F becomes the plate coming off the bed — still works, slightly
-  less satisfying
+  the payoff evaporates. Top-down, nest order, screen visible while you frame it
+- **Getting properly overhead may be awkward.** If you can't get high enough over the belt,
+  that's the thing to solve before shooting — a compromised angle kills the only shot the
+  whole payoff rests on
+- **The plates are detabbed**, so there's no cutting in this video at all. That's deliberate
+  here. Bank a spindle shot anyway when it's easy — it's the right payoff for a *Radius Pro*
+  video, just not this one
 - **Beat 6 asks for faults.** Be ready for people to find them. That's the trade

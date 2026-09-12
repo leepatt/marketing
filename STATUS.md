@@ -324,6 +324,16 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 ---
 
 ## 📁 Document index
+**Vendor assessment — Jade Ryuki / ContentOS (2026-09-12, OPEN DECISION):**
+`research/jade-contentos-proposal-review.md` (the proposal + what's missing from it + the Plot Joinery
+claim check) · `research/jade-vs-market-comparison.md` (⭐ 2026 Melbourne rate cards + the 10-option
+ladder + risks) · `research/Craftons-x-ContentOS-proposal.pdf` (the original) ·
+`research/contentos-review.html` (the published one-pager for Lee + Jake).
+Headline: $7k/mo + GST × 3 months = **$21k committed**, reverting to $12k/mo = **$129k/yr** path.
+Filming NOT included. No volume committed. Jade is solo and still full-time at Plot.
+**No recommendation drawn yet** — Lee asked for the comparison first, questions after. Still to do:
+Plot Joinery Instagram teardown with view/like/comment numbers (Lee's Q17).
+
 **Strategy / brand:** `CONTENT-PILLARS.md` · `SOCIAL-VOICE.md` · `inspiration/SWIPE-FILE.md` ·
 `.claude/skills/craftons-design/BRAND.md` · `briefs/craft-macro-shoot-brief.md`
 **Skill suite + memory:** `.claude/skills/{keyword-research,seo-content,positioning-angles,direct-response-copy,content-atomizer}/` ·

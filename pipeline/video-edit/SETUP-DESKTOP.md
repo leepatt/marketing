@@ -1,6 +1,6 @@
 # Desktop setup — step by step
 
-**For Lee, on the Windows desktop.** Roughly 45–60 minutes if nothing fights you.
+**Windows desktop.** (Jake's machine in practice — the paths below use `%USERPROFILE%` so they work either way.) Roughly 45–60 minutes if nothing fights you.
 
 Work through it in order. **Each step has a checkpoint — don't move on until it passes.**
 If a checkpoint fails, that's the thing to fix; carrying on makes it harder to find.
@@ -23,15 +23,31 @@ Open **Command Prompt** (not PowerShell — the activate command below differs).
 
 ## Step 1 — Get the repo
 
+> ⚠️ **This work lives on a BRANCH, not the default branch.** A plain `git clone` gives you a
+> folder with no `pipeline\video-edit` in it at all. You must clone the branch.
+
+> ⚠️ **The repo is `leepatt/marketing`.** If your `gh` is authenticated as **cncJake** you will
+> not see it — Jake's account lists 5 repos and this is not one of them. Authenticate as Lee, or
+> have Lee grant the account access, before you start.
+
 ```cmd
 cd %USERPROFILE%\Documents
-git clone https://github.com/leepatt/marketing
+git clone -b claude/dreamy-fermi-gfqbdj https://github.com/leepatt/marketing
 cd marketing\pipeline\video-edit
 ```
 
-If you already have it cloned elsewhere, just `cd` there and `git pull`.
+Already cloned? Make sure you're on the right branch:
 
-**✅ Checkpoint:** `dir` shows `CLAUDE.md`, `transcribe.py`, `craftons-video-style.json`.
+```cmd
+git fetch origin
+git checkout claude/dreamy-fermi-gfqbdj
+git pull
+```
+
+**✅ Checkpoint:** `dir` shows `CLAUDE.md`, `transcribe.py`, `craftons-video-style.json` and a
+`remotion` folder. **If the folder is empty or missing, you are on the wrong branch** — that is
+the single most likely thing to go wrong here. Run `git branch --show-current` and confirm it
+says `claude/dreamy-fermi-gfqbdj`.
 
 ---
 

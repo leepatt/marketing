@@ -44,7 +44,7 @@ The YouTube walkthrough used Deepgram + Remotion + Kie.ai. Two deliberate change
 
 ```bash
 # 1. this repo, on your desktop
-git clone https://github.com/leepatt/marketing
+git clone -b claude/dreamy-fermi-gfqbdj https://github.com/leepatt/marketing   # BRANCH, not default
 cd marketing/pipeline/video-edit
 
 # 2. transcription (free, local, no API key)

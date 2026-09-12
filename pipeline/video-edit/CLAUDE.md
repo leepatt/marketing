@@ -126,11 +126,39 @@ Unless Lee says otherwise, every talking-head reel gets:
 
 When Jake names a real job spec, stamp it: `R900 · 2400mm · 17mm formply`
 
-Condensed face, mono for the numbers, `#194431` panel or white on dark footage, sitting in the
-central safe area. This is Craftons' signature move — the thing that makes the content
-unmistakably theirs and is impossible for a competitor to fake, because it comes off a real job.
+Craftons' signature move. Unmistakably theirs, and impossible for a competitor to fake because
+it comes off a real job.
+
+**Render it with Remotion, then bring the file into CapCut.** Don't rebuild it with CapCut text
+elements — the Remotion component is the brand-accurate version and it's already verified.
+
+```bash
+cd remotion
+npx remotion render SpecStamp out/job.mov \
+  --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le \
+  --props='{"radius":"R900","specs":["2400mm","17mm formply"],"label":"CUT TO"}'
+```
+
+Then place `out/job.mov` on a track **above** the footage. Transparency is preserved.
+
+> ⚠️ **`--pixel-format=yuva444p10le` is mandatory.** Without it `--prores-profile=4444` still
+> renders with no alpha and the overlay appears as a **solid black box**. The npm scripts in
+> `remotion/package.json` already carry the flag — prefer them over hand-written commands.
 
 **Only ever use real figures.** Never a plausible-looking placeholder.
+
+### The other Remotion pieces
+
+| Composition | Use | Props |
+|---|---|---|
+| `SpecStamp` | Real job specs | `radius`, `specs[]`, `label`, `position` |
+| `LowerThird` | Customer on camera. First name + last initial | `name`, `role` |
+| `TitleCard` | Section marker. Number it **only** if genuinely a sequence | `text`, `step` |
+| `Endcard` | 1.5s sign-off. Opaque — render as plain mp4, no alpha flags | `cta`, `url` |
+
+If Lee asks for a new overlay type, add a composition in `remotion/src/` and register it in
+`Root.tsx` rather than improvising with CapCut text. Set an explicit `fontWeight` (700 or 900 for
+condensed) or the browser mixes faces mid-word.
 
 ---
 

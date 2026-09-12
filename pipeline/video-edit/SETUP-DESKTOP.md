@@ -130,7 +130,49 @@ Usually a missing dependency or a bad path.
 
 ---
 
-## Step 6 — Smoke test ⚠️ DO THIS BEFORE ANY REAL VIDEO
+## Step 6 — Motion graphics (Remotion)
+
+This is what makes the spec stamp possible. **Verified working** — unlike the CapCut half, every
+composition here has been rendered and checked.
+
+```cmd
+cd %USERPROFILE%\Documents\marketing\pipeline\video-edit\remotion
+npm install
+```
+
+**✅ Checkpoint:**
+
+```cmd
+npm run still
+```
+
+`out\spec-stamp.png` appears, showing **R900** in the Craftons green with the specs beneath.
+Open it — the type should be tall and condensed, not a generic sans. If it looks generic, the
+fonts in `public\fonts` didn't load; say so rather than shipping off-brand video.
+
+Render one with alpha:
+
+```cmd
+npm run spec
+```
+
+`out\spec-stamp.mov` is a transparent overlay you drop on a track **above** your footage in
+CapCut.
+
+**For a real job**, pass the actual numbers:
+
+```cmd
+npx remotion render SpecStamp out/job.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le --props="{\"radius\":\"R1450\",\"specs\":[\"3600mm\",\"19mm bendy ply\"]}"
+```
+
+> ⚠️ **`--pixel-format=yuva444p10le` is not optional.** Without it the file renders with no alpha
+> and the overlay shows up in CapCut as a **solid black box**. The npm scripts include it.
+
+`npm run studio` opens a live preview if you want to see changes as you make them.
+
+---
+
+## Step 7 — Smoke test ⚠️ DO THIS BEFORE ANY REAL VIDEO
 
 **Close CapCut completely first.** The bridge writes project files on disk; CapCut can overwrite
 them if it's holding the folder open.
@@ -152,7 +194,7 @@ Don't debug past this on your own for long. Bring me the error.
 
 ---
 
-## Step 7 — First real clip
+## Step 8 — First real clip
 
 Get one of Jake's clips onto the desktop, then:
 

@@ -1,0 +1,24 @@
+{
+  "name": "craftons-remotion",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "spec": "remotion render SpecStamp out/spec-stamp.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le",
+    "lower": "remotion render LowerThird out/lower-third.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le",
+    "title": "remotion render TitleCard out/title-card.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le",
+    "endcard": "remotion render Endcard out/endcard.mp4",
+    "still": "remotion still SpecStamp out/spec-stamp.png --frame=45"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.259",
+    "@remotion/google-fonts": "^4.0.259",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.259"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}

@@ -17,3 +17,8 @@ node_modules/
 *.jpg
 *.jpeg
 *.psd
+
+# IG collector — never commit session cookies or logs
+tools/.ig-session.json
+tools/ig-collect.log
+tools/node_modules/

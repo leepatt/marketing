@@ -337,6 +337,15 @@ Filming NOT included. No volume committed. Jade is solo and still full-time at P
 **No recommendation drawn yet** — Lee asked for the comparison first, questions after. Still to do:
 Plot Joinery Instagram teardown with view/like/comment numbers (Lee's Q17).
 
+**🔧 Instagram capture — `tools/` (RUN ON DESKTOP, not in a session):** `ig-collect.mjs`
+(pulls a public profile's media + `manifest.json` straight into the Drive `G:` mount) ·
+`video-frames.py` (dedupes frames from the videos) · `ig-collect.bat` + `install-schedule.cmd`
+(scheduled runs) · `tools/README.md` (the runbook). **This is how every existing
+`01 Inspiration/<handle>/` folder was made.** It CANNOT run in a cloud session — Instagram blocks
+datacenter/headless traffic, Firecrawl refuses the site (403), and direct fetch 302s to login.
+Ported here 2026-09-12 from `claude/elegant-ramanujan-ct2p85`, where it had been lost.
+Pair with `pipeline/transcribe-reels.py` to turn collected reels into transcripts.
+
 **Strategy / brand:** `CONTENT-PILLARS.md` · `SOCIAL-VOICE.md` · `inspiration/SWIPE-FILE.md` ·
 `.claude/skills/craftons-design/BRAND.md` · `briefs/craft-macro-shoot-brief.md`
 **Skill suite + memory:** `.claude/skills/{keyword-research,seo-content,positioning-angles,direct-response-copy,content-atomizer}/` ·

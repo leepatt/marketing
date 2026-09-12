@@ -161,9 +161,49 @@ Fixed cadence, mixed sources so no single bottleneck stops the feed:
 the honesty bar in §4. It does *not* clear it for subtle interactions; expect format-level
 answers, not fine-grained ones.
 
-**The real test is week 5–8, not week 1.** Everyone films in week one. Sustaining two a week
+**The real test is week 5–8, not week 1.** Everyone films in week one. Sustaining output
 while running production is the actual experiment, and the honest thing to do at week 4 is
 re-baseline the plan against what Jake actually managed rather than what we hoped.
+
+### Batch the filming — do not film twice a week
+
+Revised 2026-09-12. **Jake films one session a fortnight, 8–10 clips, not 2 per week.**
+
+Two a week is eight separate activation events a month — each with setup, a mindset switch,
+finding a spot, tidying up. That overhead, not editing, is what kills founder content. One
+fortnightly session collapses eight events into two. The working benchmark is 10–15
+platform-ready clips from a single afternoon's recording.
+
+It also changes the question being asked of Jake from "can you sustain this every week,
+indefinitely, on top of production?" to "can you give one afternoon a fortnight?" — a far more
+answerable ask, and the one the whole plan rests on.
+
+**The fortnightly loop:**
+
+| When | What | Who |
+|---|---|---|
+| Before each batch day | 10 scripted ideas — hook, shot list, caption, variable tested | Claude |
+| Fortnightly, ~90 min | Film all 10. One setup, workshop, lav mic | Jake |
+| Same afternoon | CapCut: template + Smart Cut + auto-captions → 10 exports | Jake |
+| Same afternoon | Load the fortnight into Later.com | Jake / Lee |
+| Fridays, 15 min | Log the week's numbers into `post-log.csv` | Jake / Lee |
+| Fridays | Analysis + the next 10 ideas | Claude |
+
+**What batching does NOT fix:** Jake still has to be on camera, taste still needs a human, and
+trade-vocabulary caption fixes stay manual (see §7).
+
+### CapCut AI features worth using — and one to avoid
+
+- **Smart Cut / Remove Silence** (Pro) — reported to cut talking-head edit time 30–40%
+- **Remove Filler Words** (Pro)
+- **Auto captions** — but *"mostly accurate until you hit a brand name, an accent, or a number"*,
+  which is exactly this vocabulary: Radius Pro, formply, architrave, 900mm radius, plus an
+  Australian accent. **Budget a minute per clip to fix captions. It does not go away.**
+- **One saved template** carrying the Craftons font, caption style, colours and endcard — build
+  it once, apply to everything. Rotate ~3 templates per pillar.
+- **Avoid AI avatars and TTS voices.** The brand position is builder-to-builder with real
+  footage leading. A synthetic voice reads as fake to a trade audience faster than to almost
+  any other.
 
 ---
 

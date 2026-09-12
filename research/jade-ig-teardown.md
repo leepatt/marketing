@@ -2,6 +2,8 @@
 
 **Date:** 2026-09-12. Companion to `research/jade-contentos-proposal-review.md`.
 **Purpose:** due diligence on the person pitching the ContentOS programme.
+**Mirrored to Drive:** `Marketing/01 Inspiration/jade.ryuki/jade-ryuki-teardown.md`
+(folder `10k0NpW66TYqoBytzJHx5-SsoUHoy-9jY`). Keep the two in sync if either is edited.
 
 > **Correction notice.** The first version of this file (commit 6da1130) described a live-music
 > photography account with 143 posts and ~11K followers. That came from search-engine snapshots

@@ -328,7 +328,10 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 `research/jade-contentos-proposal-review.md` (the proposal + what's missing from it + the Plot Joinery
 claim check) · `research/jade-vs-market-comparison.md` (⭐ 2026 Melbourne rate cards + the 10-option
 ladder + risks) · `research/Craftons-x-ContentOS-proposal.pdf` (the original) ·
-`research/contentos-review.html` (the published one-pager for Lee + Jake).
+`research/contentos-review.html` (the published one-pager for Lee + Jake) ·
+`research/jade-ig-teardown.md` (@jade.ryuki account teardown — **also in Drive at
+`01 Inspiration/jade.ryuki/`**; note the correction notice, the first pass used stale
+search data and was wrong).
 Headline: $7k/mo + GST × 3 months = **$21k committed**, reverting to $12k/mo = **$129k/yr** path.
 Filming NOT included. No volume committed. Jade is solo and still full-time at Plot.
 **No recommendation drawn yet** — Lee asked for the comparison first, questions after. Still to do:

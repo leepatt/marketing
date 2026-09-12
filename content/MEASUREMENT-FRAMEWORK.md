@@ -107,8 +107,8 @@ minutes a month. Start here; don't build anything yet.
 
 **Option B — Instagram Graph API (later, if volume justifies it).** Business/Creator account
 linked to a Facebook Page. Exposes plays, reach, saves, shares, `ig_reels_avg_watch_time`,
-completion rate and `reels_skip_rate`. **Requires 1,000+ followers for engagement insights —
-confirm Craftons is over the line before building anything.** Note Meta deprecated
+completion rate and `reels_skip_rate`. **Follower threshold confirmed cleared (Lee, 2026-09-12)
+— Craftons is over 1,000, so the engagement insights are available.** Note Meta deprecated
 `video_views`, `profile_views` and `website_clicks` from Graph API v21 (Jan 2025), so don't
 design around those.
 
@@ -138,7 +138,7 @@ Fixed cadence, mixed sources so no single bottleneck stops the feed:
 | Source | Per week | Per 8 weeks | Who |
 |---|---|---|---|
 | Jake self-shot (phone + Submagic) | 2 | 16 | Jake |
-| Tia shoot (finished product on site) | ~3 videos from 1 shoot, fortnightly | ~12 | Tia films + edits |
+| Tia shoot (workshop-heavy, site for heroes) | ~3 videos from 1 shoot, fortnightly | ~12 | Tia films + edits |
 | Customer-supplied content | ~1 | 8 | Lee to collect |
 | How-to series episodes | ~0.5 | 4 | existing storyboards |
 | **Total** | **~5/week** | **~40** | |

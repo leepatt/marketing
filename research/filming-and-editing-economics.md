@@ -2,7 +2,8 @@
 
 **Date:** 2026-09-12. Supports `research/jade-vs-market-comparison.md`.
 **Tia's rates (from Lee):** **$100/hr + travel** to shoot · **$200 per video** to edit.
-**Travel rate unknown** — modelled at ~$125/shoot (roughly 1–1.5 hrs round trip in Melbourne). Confirm with Tia.
+**Travel: $0–$100 depending on location** (confirmed by Lee, 2026-09-12). Modelled at **$50** average.
+Note the $0 end: **filming at the Fairfield workshop carries no travel cost at all** — see §7.
 
 ---
 
@@ -16,15 +17,15 @@ A "finished product" shoot = travel to a completed job, film the curved work in 
 | Hours on site | 2 | 3 | 4 |
 | Videos out per shoot | 1 | 3 | 5 |
 | Shoot fee | $200 | $300 | $400 |
-| Travel (est.) | $125 | $125 | $125 |
+| Travel (avg $50) | $50 | $50 | $50 |
 | Edit fee | $200 | $600 | $1,000 |
-| **Per shoot** | **$525** | **$1,025** | **$1,525** |
-| **Per month** | **$2,273** | **$4,438** | **$6,603** |
-| **Per year** | **$27,300** | **$53,300** | **$79,300** |
+| **Per shoot** | **$450** | **$950** | **$1,450** |
+| **Per month** | **$1,949** | **$4,114** | **$6,279** |
+| **Per year** | **$23,400** | **$49,400** | **$75,400** |
 | **Videos/month** | 4.3 | 13 | 21.7 |
-| **Cost per video** | $121 | $79 | $70 |
+| **Cost per video** | $104 | $63 | $58 |
 
-Note the third column: **$6,603/month for ~22 videos, filming included** — versus Jade at
+Note the third column: **$6,279/month for ~22 videos, filming included** — versus Jade at
 $7,000/month for unlimited editing and **no filming**.
 
 ---
@@ -54,12 +55,12 @@ Jade does not film. So the real monthly cost of the Jade route is Jade **plus** 
 
 | Route | Filming | Editing | Monthly | Videos/mo |
 |---|---|---|---|---|
-| **Tia films + Tia edits** | Tia | Tia | **$4,438** | ~13 |
-| **Tia films + AU freelance editor** | Tia | freelance | **$3,040–4,240** | ~13 |
-| **Tia films + Jade edits** | Tia ($1,840 shoot-only) | Jade | **$8,840** | unlimited ceiling |
-| **Tia films + Jade edits, month 4+** | Tia ($1,840) | Jade | **$13,840** | unlimited ceiling |
+| **Tia films + Tia edits** | Tia | Tia | **$4,114** | ~13 |
+| **Tia films + Submagic (Jake's) + Tia (hers)** | Tia + Jake | mixed | **~$2,100–4,150** | ~26–35 |
+| **Tia films + Jade edits** | Tia ($1,516 shoot-only) | Jade | **$8,516** | unlimited ceiling |
+| **Tia films + Jade edits, month 4+** | Tia ($1,516) | Jade | **$13,516** | unlimited ceiling |
 
-Tia shoot-only = 3 hrs + travel × 4.33 = $1,840/month.
+Tia shoot-only = (3 hrs + $50 travel) × 4.33 = $1,516/month.
 
 **Jade + Tia is roughly 2–3× the cost of Tia + a freelance editor for the same realistic volume.**
 The gap only closes if Craftons gets to Plot-like output.
@@ -92,11 +93,31 @@ being asked to pay a volume-editing price for a coaching service.
 
 ---
 
-## 6. Confirm with Tia
+## 6. Still to confirm with Tia
 
-1. How is travel charged — hourly at $100, a flat call-out, or per km?
+1. ~~How is travel charged?~~ **Answered: $0–$100 by location.**
 2. Is there a minimum booking (2 hrs? half day?)
 3. Does $200/video cover a hero cut *and* the cut-downs, or is each cut $200?
+   **This is now the single biggest unknown** — it swings the realistic monthly figure
+   between ~$1,950 and ~$4,100.
 4. Rate for a bulk/retainer arrangement — e.g. 4 shoots/month booked ahead?
 5. Turnaround time per video.
 6. Who owns the raw footage.
+
+---
+
+## 7. The $0-travel insight
+
+Travel runs $0–$100 **by location**, which means the Fairfield workshop is a zero-travel shoot.
+
+That matters more than it first looks. Workshop content — the Woodtron cutting curves, material
+going in, finished parts coming off — is:
+
+- **The cheapest content you can make** (no travel, no site coordination, no client permission)
+- **Available on demand** (no waiting for a job to finish)
+- **Inherently watchable** (machine/process content performs strongly, and it's the one
+  structural content advantage Craftons has over Plot, who can only film finished rooms)
+
+So the shoot mix should probably lean **workshop-heavy for volume, site shoots for the hero
+pieces** — rather than treating every shoot as a trip. That also de-risks the whole plan: if a
+month goes badly and nobody gets to a site, the workshop still produces.

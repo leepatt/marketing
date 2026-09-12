@@ -37,6 +37,9 @@ The YouTube walkthrough used Deepgram + Remotion + Kie.ai. Two deliberate change
 
 ## Setup — once
 
+> **Step-by-step with checkpoints: [`SETUP-DESKTOP.md`](SETUP-DESKTOP.md).** Use that, not the
+> summary below, if you're setting this up for the first time.
+
 **Prerequisites:** CapCut desktop installed, Claude Code working locally, Python 3.10+, Node.
 
 ```bash

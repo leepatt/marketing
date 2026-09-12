@@ -337,6 +337,15 @@ Filming NOT included. No volume committed. Jade is solo and still full-time at P
 **No recommendation drawn yet** — Lee asked for the comparison first, questions after. Still to do:
 Plot Joinery Instagram teardown with view/like/comment numbers (Lee's Q17).
 
+**🎬 Reel editing — `pipeline/video-edit/` (RUN ON DESKTOP, local Claude Code):**
+`CLAUDE.md` (⭐ the actual asset — brand, caption style, 2026 safe zones, the trade vocabulary
+Whisper mangles, the standard edit, when to stop and ask) · `craftons-video-style.json` (same,
+machine-readable) · `transcribe.py` (local word-level transcription, **verified working**) ·
+`README.md` (desktop setup runbook). Lee prompts, Claude edits, CapCut renders. Bridge is
+**VectCutAPI** (third-party, maintained — deliberately not ours, the draft format is the
+fragile part). **No AI-generated footage — real footage leads.** CapCut half is UNTESTED (no
+CapCut in a cloud session); expect to iterate on the first video. Set up 2026-09-12.
+
 **🔧 Instagram capture — `tools/` (RUN ON DESKTOP, not in a session):** `ig-collect.mjs`
 (pulls a public profile's media + `manifest.json` straight into the Drive `G:` mount) ·
 `video-frames.py` (dedupes frames from the videos) · `ig-collect.bat` + `install-schedule.cmd`

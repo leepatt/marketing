@@ -1,0 +1,81 @@
+{
+  "$comment": "Machine-readable Craftons reel style. Prose version with rationale: CLAUDE.md",
+  "canvas": { "width": 1080, "height": 1920, "fps": 30, "aspect": "9:16" },
+
+  "safeZone": {
+    "$comment": "Meta consolidated Stories + Reels into one 9:16 safe zone, March 2026",
+    "topPx": 270, "sidePx": 65, "bottomPx": 672,
+    "centralSafeArea": { "width": 950, "height": 978 },
+    "rule": "Nothing that must be read goes outside the central safe area. Captions sit in the lower-middle third, above the bottom 672px."
+  },
+
+  "colour": {
+    "green": "#194431", "green700": "#123022", "green900": "#0a1c14",
+    "lineGreen": "#2d8a5b", "black": "#000000", "ink": "#0e0e0c", "white": "#ffffff",
+    "neutralBias": "warm, no blue cast",
+    "forbidden": ["gradients on UI surfaces"]
+  },
+
+  "type": {
+    "display": ["Aeonik", "Space Grotesk", "Inter"],
+    "condensed": ["HWT Artz", "Big Shoulders Display", "Anton"],
+    "mono": ["JetBrains Mono"],
+    "body": ["Inter"]
+  },
+
+  "captions": {
+    "font": "Inter SemiBold",
+    "emphasisFont": "Big Shoulders Display",
+    "case": "sentence",
+    "wordsPerCard": [3, 5],
+    "colour": "#ffffff",
+    "shadow": "subtle dark",
+    "highlightColour": "#2d8a5b",
+    "maxHighlightsPerGroup": 1,
+    "position": "lower-middle third, above bottom unsafe band",
+    "timing": "on the word, never behind it"
+  },
+
+  "specStamp": {
+    "$comment": "Craftons signature move. Real job figures only, never placeholders.",
+    "format": "R900 · 2400mm · 17mm formply",
+    "labelFont": "Big Shoulders Display",
+    "numberFont": "JetBrains Mono",
+    "panel": "#194431",
+    "textOnPanel": "#ffffff",
+    "placement": "central safe area"
+  },
+
+  "endcard": { "durationSec": 1.5, "background": "#194431", "cta": "soft" },
+
+  "editing": {
+    "silenceThresholdSec": 0.5,
+    "removeFillerWords": true,
+    "preferredTakeOnRepeat": "second",
+    "hookWindowSec": 1.7
+  },
+
+  "bRoll": {
+    "allowed": ["cad_screengrab", "on_site_footage", "workshop_footage"],
+    "forbidden": ["ai_generated_image", "ai_generated_video", "generic_stock"],
+    "rule": "Real footage leads. Cut to b-roll at the moment Jake names the thing."
+  },
+
+  "vocabulary": {
+    "$comment": "Whisper mis-transcribes these every time. Check after every transcription.",
+    "terms": ["Radius Pro", "Rip Pro", "Craftons", "formply", "formwork", "architrave",
+              "chord length", "set-out", "bendy ply", "MDF", "Woodtron", "cavity batten",
+              "perf panel", "NCC", "plywood", "laminate", "spoilboard", "Fairfield"],
+    "criticalNote": "Numbers and units matter most: '900mm radius', '17mm formply', 'R900', '2400 x 1200'. A misheard radius is the worst error this pipeline can make."
+  },
+
+  "voice": {
+    "register": "builder-to-builder",
+    "spelling": "Australian",
+    "forbidden": ["em dashes", "the word 'precision'", "emoji", "marketing jargon", "hard sell"],
+    "pronouns": { "we": "Craftons", "you": "the builder" },
+    "valueFirstRatio": 0.85
+  },
+
+  "export": { "codec": "h264", "width": 1080, "height": 1920, "approval": "human required" }
+}

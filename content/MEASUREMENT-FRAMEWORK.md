@@ -119,15 +119,29 @@ nobody has yet is how tooling gets built and abandoned.
 
 ## 7. Tooling costs
 
-| Tool | Cost | Notes |
-|---|---|---|
-| Submagic Starter | $19/mo ($12 annual) | Captions, silence removal, auto-zoom |
-| Submagic Pro | $39/mo ($23 annual) | More exports/features |
-| **Submagic Business + API** | **$69/mo ($41 annual)** | 100 API min/mo, then $0.15/min (≤2,000), $0.10/min high volume |
-| Instagram Graph API | Free | Needs FB Page link + 1,000 followers |
+| Tool | Cost | Mobile? | Notes |
+|---|---|---|---|
+| **CapCut Pro** | **$19.99/mo · $179.99/yr (~$15/mo)** | **Native app** | One tool end-to-end; auto captions on Pro |
+| Submagic Starter | $19/mo ($12 annual) | **No app — web, desktop UI** | Best-in-class animated captions, silence removal, auto-zoom |
+| Submagic Pro | $39/mo ($23 annual) | No app | More exports/features |
+| Submagic Business + API | $69/mo ($41 annual) | No app | 100 API min/mo, then $0.15/min (≤2,000), $0.10/min high volume |
+| **Wireless lav mic for Jake's phone** | **~$30–60 once** | — | **Buy this first.** See below. |
+| Instagram Graph API | Free | — | Needs FB Page link + 1,000 followers ✅ cleared |
 
-**Start on Starter or Pro.** The API tier only pays for itself once we're automating a
-pipeline, and we shouldn't automate before the format is settled.
+**Start on CapCut, not Submagic** (revised 2026-09-12). Submagic has **no mobile app** — the
+workflow is film on phone → upload → *edit on a desktop*. That adds a desktop trip to every
+video, which is friction at exactly the point this plan is most fragile: Jake sustaining 2/week
+while running production. Submagic's real edge is batching *dozens* of shorts a week; Jake is
+doing 8–9 a month. Revisit if volume climbs or Tia's footage joins the same pipeline.
+
+**Buy the microphone before the subscription.** The workshop is loud and §9 names inaudible
+audio as the floor below which a post stops being "rough but useful". No editor fixes this
+properly — Descript's Studio Sound is the strongest repair available and is explicitly weak
+"where noise covers the words". Fix it at the source.
+
+**Don't over-optimise this.** It's a ~$15–40/month decision covering ~9 videos a month (Tia
+edits her own footage in her own suite). The tool is not the bottleneck — filming is. Pick one,
+ship ten videos, change only if it's actually in the way.
 
 ---
 

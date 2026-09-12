@@ -205,6 +205,36 @@ trade-vocabulary caption fixes stay manual (see §7).
   footage leading. A synthetic voice reads as fake to a trade audience faster than to almost
   any other.
 
+### CapCut API — checked 2026-09-12, don't re-research
+
+**No official API.** CapCut ships no public API for rendering, captions or batch processing;
+its Open Platform is for editor plugins. ByteDance's Seedance 2.5 developer API (Aug 2026) is
+AI video *generation*, not editing.
+
+**Unofficial ones exist** — `capcut-cli`, `capcut-mate`, `CapCutAPI`/`VectCutAPI`, plus a
+community MCP server — all of which work by writing CapCut's internal `draft_content.json`.
+
+**Decision: use the CapCut template, do not build a Claude editing pipeline.** Reasons:
+1. The bottleneck is filming, not editing — automating editing fixes the wrong step.
+2. The workflow runs backwards. CapCut's value is Jake editing on the same phone the same
+   afternoon; a cloud pipeline means upload → process → download → review → post. More
+   friction, not less, at the plan's most fragile point.
+3. Those APIs write an undocumented internal format ByteDance can change without notice. Same
+   fragility class `tools/ig-collect.mjs` warns about for IG markup — but in the *publishing*
+   critical path rather than research.
+4. Taste is unsolved: ~0.47 F1 on LLM segment selection; no tested tool picks the clip a human
+   would pick first.
+5. The template does ~90% of it today, free, in about an hour.
+
+**The line:** use code to generate **brand assets**; use CapCut to **edit**. The genuine
+candidate for custom code is a **Craftons spec-stamp overlay** generated from real job data
+("R900 · 2400mm · 17mm formply" in brand type, per clip) — brand-specific, repeatable, nothing
+off-the-shelf does it, and the same shape as what `pipeline/render.mjs` + `tokens.css` already
+do for static graphics.
+
+**Revisit when BOTH hold:** sustained 40+ videos/month AND a settled format. Neither is true
+today. Building before the format is known automates the wrong thing well.
+
 ---
 
 ## 9. One caution on "quantity over quality"

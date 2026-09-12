@@ -13,12 +13,13 @@
 | 2 | The ask | Face | The customer's words, not ours |
 | 3 | The answer | Screen | First look at the app |
 | 4 | The moment | Screen, tight | The one detail that makes it click |
-| 5 | Payoff | Workshop floor | Geometry becomes physical. Match cut |
+| 5 | Payoff | The machine | Nest on screen → nest in the sheet → one plate out |
 | 6 | Soft close | Face | Soft, no pitch |
 
-**The payoff is not on site.** It's a match cut from the curve on screen to the same curve
-in formply, then a dry assembly on the workshop floor. No forklift, no site access, no
-footage you don't already have the ability to shoot this week.
+**The payoff is not on site.** It's the nest on screen cutting to the real sheet on the
+Woodtron, then one plate lifted out of it. The nest *is* what the software worked out, so the
+match cut proves the tool did something rather than just illustrating it. No forklift, no site
+access, and it's footage of something that was going to happen anyway.
 
 ---
 
@@ -63,13 +64,23 @@ hunting, no menus, no browser chrome.*
 the beat that decides whether a concreter takes the app seriously, so it has to be one
 specific detail rather than a tour.*
 
-**35 – 42s · MATCH CUT → WORKSHOP FLOOR · the payoff**
+**35 – 42s · MATCH CUT → THE MACHINE · the payoff**
 
 > *(no voiceover — let it land)*
 
-*Full-frame curve on screen. Hard cut to the identical curve in formply, same shape, same
-position in frame, in your hands. Then the segments on the floor, pushed together until the
-curve closes.*
+*Three shots, tight together:*
+
+1. *The nest on screen fills the frame. Hard cut to the real sheet on the Woodtron — same
+   layout, same orientation. The nest is what the software worked out, so this is the match
+   that actually proves something*
+2. *Cutting, speed-ramped. 8–10 curved plates coming out of one sheet of formply*
+3. **The pop-out.** *One finished plate lifted out of the sheet, leaving a curved hole
+   behind. Close. This is the best second in the video — the drawing becoming a thing you
+   can hold*
+
+> **Not a dry assembly on the floor.** It was in an earlier draft and it's wrong: plates laid
+> flat only read as a curve from directly above, and pushing them together is slow to watch.
+> The machine already does the work of showing the geometry, and it does it faster.
 
 **42 – 47s · FACE · soft close**
 
@@ -78,6 +89,10 @@ curve closes.*
 *Soft. No CTA graphic, no "link in bio" on screen. The invitation to break it is doing more
 work than a pitch would — it's a soft launch, and asking for faults is how you earn the
 second video.*
+
+*Cut away from your face on the last line to a **wide** of you carrying the bundle out past
+the roller door. Wide, not close — a strapped bundle has no detail worth seeing, and the shot
+isn't carrying information, it's carrying "this leaves here and goes to a job".*
 
 ---
 
@@ -89,11 +104,12 @@ second video.*
 | B | Face, beat 6 | Same setup, same framing. Shoot straight after A |
 | C | Screen recording — drawing the curve | Clean desktop. Hide the browser. Record at 2× the length you need |
 | D | Screen recording — one field changing | Tight. This is the money shot of the app half |
-| E | The part in your hands | Match the on-screen curve's shape and frame position exactly. Shoot D and E back to back so you can see what you're matching |
-| F | Dry assembly on the floor | Real parts from a real job. Push the segments together on camera. Shoot from above and from low |
+| E | The sheet on the Woodtron | Match the on-screen nest's orientation. Camera on something solid — a tripod, a bag of sand, anything but handheld. It gets speed-ramped hard and handheld ramps look cheap |
+| F | **The pop-out** | One plate lifted out of the sheet, curved hole left behind. Close. Shoot it five or six times from different heights — it's the payoff and it's one and a half seconds |
+| G | Wide, carrying the bundle out | You, bundle under the arm, past the roller door. Locked off, wide. No close-up |
 
-**Shoot F first.** It needs the parts off the machine and it's the shot most likely to make
-you change the script once you see it.
+**Shoot E and F first.** They need a real job on the machine, so they set the timing for
+everything else — and F is the shot most likely to change the script once you see it.
 
 ---
 
@@ -112,5 +128,11 @@ you change the script once you see it.
   in a tight shot. If it doesn't, the video is a tour of an app and it will die. Look at
   shot D before committing to the rest
 - **The match cut has to be genuinely tight.** A loose one reads as two unrelated clips and
-  the payoff evaporates. Shoot D and E in the same session with the screen visible
+  the payoff evaporates. Have the nest up on screen while you frame shot E so you can see
+  what you're matching
+- **The cut is slow.** Ten nested plates is a long cut and the ramp will be aggressive. If
+  the ramp looks cheap, use less of it and hold on the pop-out longer instead
+- **Does the Woodtron leave the parts tabbed in?** If it does, shot F is sitting there
+  waiting. If parts come free, F becomes the plate coming off the bed — still works, slightly
+  less satisfying
 - **Beat 6 asks for faults.** Be ready for people to find them. That's the trade

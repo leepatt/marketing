@@ -1,71 +1,73 @@
 # Script 01 — Formwork Builder launch
 
-**Shoot today. Workshop only.** ~50s spoken, 685 characters — inside the 600–900 band that
-outperforms the modal length by 65% on Plot's data.
-
-**The one idea:** *a radius on its own isn't enough, and this turns it into a priced pack.*
-Not a tour of the Builder. Everything else it does is a separate video.
+**Lee's draft, lightly reordered.** ~530 characters, roughly 40 seconds. Workshop only, shoot today.
 
 ---
 
 ## The script
 
-> "The reason we built this is that nearly every concreter who calls us has one number. The radius.
+> "We've been getting countless enquiries from concreters since word spread about the Radius Pro.
+> They want formwork for their concrete structures.
 >
-> And a radius on its own doesn't tell you much. You still need to know how long the arc is, what the
-> chord is, how many plates it splits into, and what it's going to cost, before you can price the job.
+> Rather than make you guys wait days for a quote, we built the Formwork Builder. You build your own
+> concrete structure in it, and the formwork gets figured out automatically and cut by us.
 >
-> So that's what this does. Pick your shape. Put your inner radius and your height in. It gives you
-> your arc and your chord as you go, splits the curve into plates that fit a sheet, and prices it live.
+> Pick your shape, put your radius and your height in, and it works out the plates, gives you your
+> arcs and chords, and prices it while you're standing there.
 >
-> So you get a price standing there, instead of sending us a drawing and waiting a few days. It's
-> priced when you configure it, so there's no variation later. And nobody's cutting curves on site."
+> Then we cut it and send it out. Nobody's cutting curves on site."
 
-**Stop.** No sign-off, no logo, no "link in bio". There isn't one across 148 Plot posts.
+**Stop there.** No sign-off, no logo, no "link in bio".
 
-**Caption:** Now you only need the radius.
-
-No hashtags. No comment gate — there's no long-form library to point at yet.
+**Caption:** Build your own, we'll cut it.
 
 ---
 
-## Shoot list — under an hour
+## What changed from Lee's version, and why
 
-| # | Shot | Time |
-|---|---|---|
-| 1 | **Screen recording of the Builder.** Do it at a real radius from a real job. Hide the browser chrome. Record twice as long as you need | 10 min |
-| 2 | **A stack of finished plates**, or formply, in the workshop. Clean, well lit | 10 min |
-| 3 | **You, at the bench.** Only from "So that's what this does" onward | 15 min |
+1. **First sentence flipped.** His opened "after word spreading about the Radius Pro" — brand in the
+   first four words. Across 148 Plot posts not one opens on the brand. The concreters ringing is the
+   hook; the Radius Pro follows immediately. Same information, different order
+2. **Two sentences added** (paragraphs 3 and 4). His jumped from "we built the app" straight to
+   nothing, which left the screen recording with no words under it
 
-**Order on screen:** plates first while you say the hook → screen for the middle → you at the
-pivot → back to the screen for arc and chord → plates to close.
-
-**You don't open on your face.** Not one of Plot's top performers does; their presenter arrives at
-the problem-to-solution turn. Yours is "so that's what this does".
-
-If you're short on time, shot 3 is the one to drop. Voice over shots 1 and 2 works.
+Paragraphs 1 and 2 are his, reordered only. **3 and 4 are mine — change them first if they don't
+sound like him.**
 
 ---
 
-## Captions on screen
+## Worth replacing before you shoot
 
-Burned in, one short phrase at a time, key number highlighted. The words to highlight:
-**the radius · the arc · the chord · plates that fit a sheet · no variation**
-
----
-
-## Two things to confirm before you post
-
-- **The sheet size.** The script says "plates that fit a sheet" rather than naming it. If you want
-  the number in there, say it — specificity is the credibility — but only the real one
-- **"A few days"** for a drawing-based quote. If it's usually longer or shorter, say the true number
+**"Countless."** If there's a real number, use it. "About thirty concreters have rung us" beats
+countless, and specificity is the cheapest credibility available. Same for "days" — if a
+drawing-based quote usually takes two days or five, say which.
 
 ---
 
-## What this deliberately leaves out
+## Visuals
 
-The part IDs, the setout, five-day dispatch, shutters versus plates, the 3D view. **All of them are
-separate videos.** The measured cost of cramming them in, on an otherwise identical post, is 24x.
+| You say | On screen |
+|---|---|
+| "enquiries from concreters… Radius Pro" | **Plates.** A clean stack of finished curved plates, one slow move across |
+| "wait days for a quote" | **A real set-out drawing** a customer sent. One with a radius on it and not much else |
+| "we built the Formwork Builder" | **You.** Bench, workshop behind. First and only time |
+| "Pick your shape" | Screen: the Wall Shape row, click Circle |
+| "your radius and your height" | Screen: typing into Inner Radius. A real job's number |
+| "arcs and chords" | Screen, tight: the readout — `3770mm arc · 2400mm chord` |
+| "prices it while you're standing there" | Screen: the curve splitting into plates, then the price |
+| "we cut it and send it out" | Back to the plates, different angle to the opening |
 
-Next one is the part ID: *"the reason every plate has a number cut into it is that a curved wall can
-be twenty-odd parts and no two are the same."* Same shoot, different day.
+**Have ready:** a clean stack of plates, one real customer drawing, a real radius to type in, browser
+chrome hidden. Record the screen at 1440 wide and crop in the edit.
+
+**Don't open on your face.** Not one of Plot's top performers does. You arrive at "we built the
+Formwork Builder", which is the problem-to-solution turn.
+
+---
+
+## Length note
+
+530 characters sits in the 300–600 band, which runs a median of 166 likes on Plot's data against 275
+for 600–900. One more real sentence would move it up — part IDs, the material, the dispatch time.
+
+Not padding it. A tight video that gets shot today beats a longer one that doesn't.

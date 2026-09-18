@@ -18,3 +18,19 @@ cloud-upload dependency is never imported.
 
 **Known limits:** Claude can't watch video, only frames and transcripts. The CapCut draft was written
 without CapCut to test against. The Windows username in the draft paths is a placeholder (`LEE`).
+
+## Cut 7 additions (18 Sep, evening)
+
+| File | Does |
+|---|---|
+| `record-formwork-builder-closeup.mjs` | Records only the 3D viewer at full frame (config panel moved off-screen, inputs driven via DOM events so the model still updates and the formwork ticks register) |
+| `overlays.py` | Draws the brand overlays with Pillow straight from the TTFs: green banner + logo, the homepage hero slide rebuilt at 9:16, and the spec stamps (R1300 / FORMWORK SELECTED / $675) |
+| `build_mid2.py` | Composites hero → close-up model → ply hold with the stamps fading in, under the 6013 voice |
+| `assets/` | Craftons logo and the homepage bench photo, pulled from craftons.com.au |
+
+**Fonts:** the woff2 files in `remotion/public/fonts` are Google-Fonts subsets with almost no glyphs — converting
+them to TTF gives boxes. Full fonts come from rsms/inter and JetBrains/JetBrainsMono releases and the
+google/fonts repo (Big Shoulders as a variable font). Put them in `fonts/`. This also means the Remotion
+compositions' condensed numerals fall back in this sandbox.
+
+**zoompan gotcha:** its `d=` is frames *per input frame*. Feed it one frame, never a looped image.

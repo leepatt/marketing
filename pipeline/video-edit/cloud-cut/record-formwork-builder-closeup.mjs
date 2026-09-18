@@ -1,0 +1,23 @@
+import { chromium } from 'playwright';
+import { readFileSync } from 'node:fs';
+const spki = readFileSync('spki.txt','utf8').trim();
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: [`--ignore-certificate-errors-spki-list=${spki}`] });
+const ctx = await b.newContext({ viewport: { width: 1080, height: 1920 }, recordVideo: { dir: 'rec2', size: { width: 1080, height: 1920 } } });
+const p = await ctx.newPage();
+const t0 = Date.now(); const mark = (l) => console.log(`${((Date.now()-t0)/1000).toFixed(2)}s  ${l}`);
+await p.goto('https://craftons-curves-calculator.vercel.app/apps/formwork', { waitUntil: 'domcontentloaded', timeout: 60000 });
+await p.waitForSelector('canvas'); await p.waitForTimeout(3000);
+await p.addStyleTag({ content: `#__viewer{position:fixed;inset:0;width:1080px;height:1920px;background:#f6f6f4;z-index:9999} #__panel{position:fixed;left:-3000px;top:0;width:1000px}` });
+await p.evaluate(() => { let host = document.querySelector('canvas'); for (let i=0;i<3;i++) host = host.parentElement; host.id='__viewer'; const panel=[...document.querySelectorAll('h1,h2,h3,div')].find(e=>/^Configure Formwork/.test(e.innerText||'')); let ph=panel; for(let i=0;i<3&&ph&&ph.parentElement&&ph.parentElement!==host.parentElement;i++) ph=ph.parentElement; if(ph) ph.id='__panel'; window.dispatchEvent(new Event('resize')); });
+await p.waitForTimeout(3000); mark('START big model, defaults 1200/450');
+const radius = p.locator('#radius, input[name="radius"], input[id*="radius" i]').first();
+const height = p.locator('#wall-height, input[name="wall-height"], input[id*="wall-height" i]').first();
+await p.waitForTimeout(1500);
+for (const v of ['1250','1300']) { await radius.evaluate((el,v)=>{const s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; s.call(el,v); el.dispatchEvent(new Event('input',{bubbles:true})); el.dispatchEvent(new Event('change',{bubbles:true}));}, v); await p.waitForTimeout(700); } mark('radius 1300');
+await p.waitForTimeout(1200);
+for (const v of ['500','550','600']) { await height.evaluate((el,v)=>{const s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; s.call(el,v); el.dispatchEvent(new Event('input',{bubbles:true})); el.dispatchEvent(new Event('change',{bubbles:true}));}, v); await p.waitForTimeout(600); } mark('height 600');
+await p.waitForTimeout(1500);
+for (const name of ['Plates','Shutters','End Caps']) { await p.getByText(name, { exact: true }).first().evaluate(el => { (el.closest('label')||el.closest('button')||el).click(); }); mark(`tick ${name}`); await p.waitForTimeout(900); }
+await p.waitForTimeout(3500); mark('END');
+await p.screenshot({ path: 'rec2/final.png' });
+await ctx.close(); await b.close();

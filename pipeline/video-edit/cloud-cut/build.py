@@ -65,5 +65,5 @@ C += caps([
     (13.36,14.44,"with the set-out drawings","set-out drawings"),
 ], S3["in"], t3)
 edl = dict(fps=30, segments=[S1,S2,S3], captions=C)
-Path("cut10.json").write_text(json.dumps(edl, indent=1))
-subprocess.run(["python3","assemble.py","cut10.json","out/formwork-builder-cut10.mp4"], check=True)
+Path("cut11.json").write_text(json.dumps(edl, indent=1))
+subprocess.run(["python3","assemble.py","cut11.json","out/formwork-builder-cut11.mp4"], check=True)

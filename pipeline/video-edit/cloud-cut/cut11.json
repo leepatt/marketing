@@ -1,0 +1,122 @@
+{
+ "fps": 30,
+ "segments": [
+  {
+   "src": "src/IMG_5999.mov",
+   "push": 0.06,
+   "in": 1.6,
+   "out": 10.05
+  },
+  {
+   "src": "src/mid3.mp4",
+   "in": 0.0,
+   "out": 9.2
+  },
+  {
+   "src": "src/IMG_6001.mov",
+   "push": 0.05,
+   "in": 10.6,
+   "out": 14.44
+  }
+ ],
+ "captions": [
+  {
+   "start": 0.34,
+   "end": 2.16,
+   "text": "Since launching the Radius Pro",
+   "hi": "Radius Pro",
+   "pos": null
+  },
+  {
+   "start": 2.16,
+   "end": 3.5,
+   "text": "been getting a lot of concreters",
+   "hi": "concreters",
+   "pos": null
+  },
+  {
+   "start": 3.5,
+   "end": 4.46,
+   "text": "using the app",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 4.46,
+   "end": 6.16,
+   "text": "but also reaching out and asking",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 6.16,
+   "end": 7.38,
+   "text": "if we can cut the formwork",
+   "hi": "formwork",
+   "pos": null
+  },
+  {
+   "start": 7.38,
+   "end": 8.45,
+   "text": "for the whole project",
+   "hi": "whole project",
+   "pos": null
+  },
+  {
+   "start": 8.67,
+   "end": 10.65,
+   "text": "So we built the Formwork Builder",
+   "hi": "Formwork Builder",
+   "pos": "top"
+  },
+  {
+   "start": 10.65,
+   "end": 12.03,
+   "text": "an online tool where you can",
+   "hi": null,
+   "pos": "seam"
+  },
+  {
+   "start": 12.03,
+   "end": 13.99,
+   "text": "design your concrete structure",
+   "hi": "concrete structure",
+   "pos": "seam"
+  },
+  {
+   "start": 13.99,
+   "end": 15.03,
+   "text": "select your formwork",
+   "hi": "formwork",
+   "pos": "seam"
+  },
+  {
+   "start": 15.03,
+   "end": 16.13,
+   "text": "and get an instant price",
+   "hi": "instant price",
+   "pos": "seam"
+  },
+  {
+   "start": 17.87,
+   "end": 19.37,
+   "text": "It's then cut by us",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 19.37,
+   "end": 20.41,
+   "text": "and sent out to site",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 20.41,
+   "end": 21.49,
+   "text": "with the set-out drawings",
+   "hi": "set-out drawings",
+   "pos": null
+  }
+ ]
+}

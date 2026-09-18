@@ -14,7 +14,7 @@ def T(k): return marks[next(x for x in marks if x.startswith(k))]
 # sub-clips (in, out, speed): each covers a phrase of the voice
 SUB = [
     (T("A start")+2.6,      T("B height 600")+0.3,  None),  # zoom + orbit + radius/height   "an online tool where you can"  (1.56s)
-    (T("C backrest on")-0.4, T("C orbit3")+0.2,      None),  # backrest, taper, cantilever, orbit  "design your concrete structure" (2.0s)
+    (T("C backrest on")-0.4, T("C orbit3")-33.0,     None),   # stop before the orbit drops below the bench  # backrest, taper, cantilever, orbit  "design your concrete structure" (2.0s)
     (T("D tick Plates")-0.3, T("D orbit4")+0.1,      None),  # formwork ticks + pan across ply   "select your formwork" (1.5s)
     (T("E order summary")-0.6, T("END"),              None),  # price + last orbit              "and get an instant price" + hold (2.9s)
 ]

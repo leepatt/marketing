@@ -461,3 +461,42 @@ Recording it now so it is a decision Lee has seen in advance, not a surprise lat
 2. **The one Meta order first-clicked the paused TOF campaign** three weeks earlier. It does not
    change the TOF verdict (~$1,870 for two traceable orders), but it confirms TOF's conversion lag is
    measured in weeks, which is why same-week reads of prospecting were always going to look empty.
+
+---
+
+# 🔴 TRIPWIRE FIRED — 2026-09-18
+
+**Two settled weeks at $50/day, each producing exactly ONE Meta-traceable Shopify order.**
+
+| Week | Meta spend | Pixel purchases | Pixel CPA | **Shopify Meta orders** | **Real CPA** |
+|---|---:|---:|---:|---:|---:|
+| 09-05 → 09-11 | $355.27 | 10 | $35.78 | **1** (`#1330` $188) | **$355** |
+| 09-11 → 09-17 | $343.40 | 6 | **$57.23** | **1** (`#1345` $322) | **$343** |
+
+Combined: **~$699 → 2 traceable orders = $349 each, against a $322 break-even.** Both weeks
+independently. This is the condition set out in the 09-11 reading, and Lee saw it in advance.
+
+**Reach has plateaued.** Spend −4%, reach +3%, frequency 1.99 — the ad set is no longer converting
+extra budget into extra people, which is what the 09-11 absorption reading first suggested.
+
+**Pixel CPA moved the wrong way too**: $35.78 → $57.23.
+
+**Proposed: step back to $31.10/day** — approval `8662dea4-abd3-4e44-a9a7-2c753a338409`. Not applied;
+this is a strategy reversal, not a ladder step, so it waits for Lee.
+
+## 🔴 A number I have been quoting at the wrong scope
+
+Throughout this ladder I justified scaling with **"retargeting: $3,229.71 lifetime → 62 purchases,
+$52 each."** That is the **campaign** figure, and the campaign contains more than the ad set we have
+been scaling.
+
+**The ad set itself has done $1,473.01 → 36 pixel purchases since 2025-10-07 — $40.92 each.**
+
+Still good, and it does not change the direction of the earlier decisions — but I was describing the
+ad set using the campaign's numbers, and should have said which was which.
+
+## Context: Meta is a small slice of a healthy business
+
+13 Shopify orders totalling **$13,339** in the seven days to 09-17. Sources: the builder (3),
+Google SEO (4), direct (4), **Bing** (1), **Meta (1)**. Meta is **2.4% of revenue** in that window
+while taking $343 of spend.

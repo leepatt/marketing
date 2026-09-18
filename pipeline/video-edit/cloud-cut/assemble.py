@@ -31,6 +31,7 @@ WrapStyle: 0
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Inter SemiBold,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,3,2,80,80,720,1
 Style: CapTop,Inter SemiBold,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,3,8,80,80,300,1
+Style: Seam,Inter SemiBold,52,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,80,80,0,1
 Style: Card,Big Shoulders Display Thin,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1
 
 [Events]
@@ -41,8 +42,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         txt = c["text"]
         if c.get("hi") and c["hi"] in txt:
             txt = txt.replace(c["hi"], "{\\c" + GREEN + "}" + c["hi"] + "{\\c&H00FFFFFF&}")
-        style = "CapTop" if c.get("pos") == "top" else "Cap"
-        lines.append(f"Dialogue: 0,{ass_time(c['start'])},{ass_time(c['end'])},{style},,0,0,0,,{txt}")
+        style = {"top":"CapTop","seam":"Seam"}.get(c.get("pos"), "Cap")
+        pos = "{\\pos(540,960)}" if style == "Seam" else ""
+        lines.append(f"Dialogue: 0,{ass_time(c['start'])},{ass_time(c['end'])},{style},,0,0,0,,{pos}{txt}")
     if label:
         lines.append(f"Dialogue: 0,{ass_time(0)},{ass_time(label[1])},Card,,0,0,0,,{label[0]}")
     Path(path).write_text(hdr + "\n".join(lines) + "\n")
@@ -55,7 +57,11 @@ def main():
         p = tmp / f"seg{i:02d}.mp4"
         if "src" in s:
             dur = s["out"] - s["in"]
-            vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},format=yuv420p"
+            vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps}"
+            if s.get("push"):   # slow push-in over the segment: crop tightens with t, then rescale. ~6% over the clip
+                k = float(s["push"]); nf = int(dur*fps)
+                vf += f",zoompan=z='1+{k}*on/{nf}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={fps}"
+            vf += ",format=yuv420p"
             cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur),
                    "-i", s["src"], "-vf", vf, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000", "-ac", "2",
                    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-c:a", "aac", "-b:a", "160k", str(p)]
@@ -75,7 +81,7 @@ def main():
     ass = tmp / "caps.ass"; write_ass(edl.get("captions", []), ass)
     subprocess.run([FF, "-hide_banner", "-loglevel", "error", "-y", "-i", str(joined),
                     "-vf", f"subtitles={ass}:fontsdir={FONTS}", "-c:v", "libx264", "-preset", "medium",
-                    "-crf", "19", "-c:a", "copy", "-movflags", "+faststart", out], check=True)
+                    "-crf", "19", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-movflags", "+faststart", out], check=True)
     print(f"rendered {out}  ({t:.1f}s, {len(parts)} segments)")
 
 if __name__ == "__main__": main()

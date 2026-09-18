@@ -33,10 +33,10 @@ if False: subprocess.run([FF,"-hide_banner","-loglevel","error","-y", *ins,
     "-t", f"{vid_dur:.3f}", "src/mid.mp4"], check=True)
 
 # ---- timeline ----
-S1 = dict(src="src/IMG_5999.mov", **{"in":1.6, "out":10.05})
-vid_dur = json.loads(Path("mid2.json").read_text())["dur"]
-S2 = dict(src="src/mid2.mp4", **{"in":0.0, "out":vid_dur})
-S3 = dict(src="src/IMG_6001.mov", **{"in":10.6, "out":14.44})
+S1 = dict(src="src/IMG_5999.mov", push=0.06, **{"in":1.6, "out":10.05})
+vid_dur = json.loads(Path("mid3.json").read_text())["dur"]
+S2 = dict(src="src/mid3.mp4", **{"in":0.0, "out":vid_dur})
+S3 = dict(src="src/IMG_6001.mov", push=0.05, **{"in":10.6, "out":14.44})
 t1, t2, t3 = 0.0, S1["out"]-S1["in"], None; t3 = t2 + vid_dur
 print(f"timeline: face 0-{t2:.2f} | screen {t2:.2f}-{t3:.2f} | face {t3:.2f}-{t3+S3['out']-S3['in']:.2f}")
 
@@ -54,10 +54,10 @@ C += caps([
 ], S1["in"], t1)
 C += caps([
     (2.32,4.30,"So we built the Formwork Builder","Formwork Builder","top"),
-    (4.30,5.68,"an online tool where you can",None),
-    (5.68,7.64,"design your concrete structure","concrete structure"),
-    (7.64,8.68,"select your formwork","formwork"),
-    (8.68,9.78,"and get an instant price","instant price"),
+    (4.30,5.68,"an online tool where you can",None,"seam"),
+    (5.68,7.64,"design your concrete structure","concrete structure","seam"),
+    (7.64,8.68,"select your formwork","formwork","seam"),
+    (8.68,9.78,"and get an instant price","instant price","seam"),
 ], VO_IN, t2)
 C += caps([
     (10.82,12.32,"It's then cut by us",None),
@@ -65,5 +65,5 @@ C += caps([
     (13.36,14.44,"with the set-out drawings","set-out drawings"),
 ], S3["in"], t3)
 edl = dict(fps=30, segments=[S1,S2,S3], captions=C)
-Path("cut7.json").write_text(json.dumps(edl, indent=1))
-subprocess.run(["python3","assemble.py","cut7.json","out/formwork-builder-cut7.mp4"], check=True)
+Path("cut10.json").write_text(json.dumps(edl, indent=1))
+subprocess.run(["python3","assemble.py","cut10.json","out/formwork-builder-cut10.mp4"], check=True)

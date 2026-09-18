@@ -34,3 +34,17 @@ google/fonts repo (Big Shoulders as a variable font). Put them in `fonts/`. This
 compositions' condensed numerals fall back in this sandbox.
 
 **zoompan gotcha:** its `d=` is frames *per input frame*. Feed it one frame, never a looped image.
+
+## Cut 10 (19 Sep, overnight) — split-screen
+
+| File | Does |
+|---|---|
+| `split-layout.mjs` | Restyles the live Formwork Builder into a 1080×1920 split: 3D viewer fixed in the top half, config panel (zoomed 2×) in the bottom half. Both moved to `body` so no ancestor clips them |
+| `record-split.mjs` | The take: zoom in, orbit by mouse-drag, radius/height, backrest (taper 15°), cantilever (200 deep), formwork ticks, pan across the ply, order summary. Prints timestamped marks |
+| `build_mid3.py` | Picks sub-clips from the marks, retimes them under the 6013 voice, hero slide in front, banner + green seam bar on top. No text over the iframe |
+| `capcut_draft2.py` | Layered CapCut draft: pre-renders the four retimed sub-clips as small files, fills the durations the library leaves at zero, strips the two raw phone clips (Lee has them) |
+
+**Gotchas:** headless three.js at 1080×960 paints ~5 fps, so an orbit of 50 mouse steps takes 60–100 s of
+wall-clock and the raw take runs 6–7 minutes; it looks smooth once sped up 20–60× because every captured
+frame is a distinct pose. `pkill -f <script>` kills the shell that ran it too — use `pgrep -f "[n]ode …"`.
+The app intermittently never mounts its canvas under load; the recorder screenshots `fail.png` when that happens.

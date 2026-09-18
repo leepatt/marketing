@@ -1,0 +1,38 @@
+import { chromium } from 'playwright';
+import { readFileSync } from 'node:fs';
+import { applySplit, scrollPanelTo } from './split-layout.mjs';
+const spki = readFileSync('spki.txt','utf8').trim();
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: [`--ignore-certificate-errors-spki-list=${spki}`] });
+const ctx = await b.newContext({ viewport: { width: 1080, height: 1920 }, recordVideo: { dir: 'rec3', size: { width: 1080, height: 1920 } } });
+const p = await ctx.newPage();
+const t0 = Date.now(); const mark = (l) => console.log(`${((Date.now()-t0)/1000).toFixed(2)}s  ${l}`);
+await p.goto('https://craftons-curves-calculator.vercel.app/apps/formwork', { waitUntil: 'domcontentloaded', timeout: 60000 });
+await p.waitForSelector('canvas'); await p.waitForTimeout(3000);
+console.log(await applySplit(p)); await p.waitForTimeout(2500);
+const setv = async (sel, v) => p.evaluate(([sel,v])=>{ const el=document.querySelector(sel); const s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; s.call(el,v); el.dispatchEvent(new Event('input',{bubbles:true})); el.dispatchEvent(new Event('change',{bubbles:true})); }, [sel,v]);
+const clickText = async (t) => p.evaluate((t)=>{ const el=[...document.querySelectorAll('#__panel *')].find(e=>e.children.length===0 && (e.innerText||'').trim()===t); (el.closest('label')||el.closest('button')||el).click(); }, t);
+const cv = { x: 0, y: 0 };
+const orbit = async (dx, dy, steps=40, ms=35) => { const sx=540, sy=520; await p.mouse.move(sx, sy); await p.mouse.down(); for (let i=1;i<=steps;i++){ await p.mouse.move(sx+dx*i/steps, sy+dy*i/steps); await p.waitForTimeout(ms);} await p.mouse.up(); };
+const zoom = async (n, dir=-1) => { await p.mouse.move(540, 480); for (let i=0;i<n;i++){ await p.mouse.wheel(0, dir*100); await p.waitForTimeout(70);} };
+
+await scrollPanelTo(p, 'WALL SHAPE', 10); await p.waitForTimeout(800);
+mark('A start'); await zoom(6); await p.waitForTimeout(600); await orbit(-140, -25, 50, 40); mark('A zoomed + orbit1');
+await scrollPanelTo(p, 'DIMENSIONS', 10); await p.waitForTimeout(700);
+for (const v of ['1250','1300']) { await setv('#radius', v); await p.waitForTimeout(500); } mark('B radius 1300');
+for (const v of ['500','550','600']) { await setv('#wall-height', v); await p.waitForTimeout(450); } mark('B height 600');
+await orbit(-90, 10, 40, 40); mark('B orbit2');
+await scrollPanelTo(p, 'ADD-ONS', 10); await p.waitForTimeout(700);
+await clickText('Backrest'); mark('C backrest on'); await p.waitForTimeout(900);
+await setv('#backrest-taper', '15'); mark('C taper 15'); await p.waitForTimeout(700);
+await clickText('Cantilever'); mark('C cantilever on'); await p.waitForTimeout(900);
+await setv('#cantilever-depth', '200'); mark('C cantilever depth 200'); await p.waitForTimeout(700);
+await zoom(2); await orbit(150, -70, 50, 40); mark('C orbit3 front 3/4');
+await scrollPanelTo(p, 'FORMWORK', 10); await p.waitForTimeout(800);
+for (const name of ['Plates','Shutters','End Caps']) { await clickText(name); mark(`D tick ${name}`); await p.waitForTimeout(900); }
+await orbit(-170, 30, 60, 40); mark('D orbit4 pan across ply');
+await scrollPanelTo(p, 'Order Summary', 10); await p.waitForTimeout(1200); mark('E order summary');
+await orbit(-80, 0, 40, 45); mark('E orbit5'); await p.waitForTimeout(1500); mark('END');
+console.log('PRICE:', await p.evaluate(() => (document.getElementById('__panel').innerText.match(/\$[\d,]+\.\d\d/)||['?'])[0]));
+console.log('INPUTS:', await p.evaluate(() => [...document.querySelectorAll('#__panel input[type=number]')].map(e=>`${e.id||e.name}=${e.value}`).join(' ')));
+await p.screenshot({ path: 'rec3/final.png' });
+await ctx.close(); await b.close();

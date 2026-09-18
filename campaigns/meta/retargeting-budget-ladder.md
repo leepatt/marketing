@@ -500,3 +500,65 @@ ad set using the campaign's numbers, and should have said which was which.
 13 Shopify orders totalling **$13,339** in the seven days to 09-17. Sources: the builder (3),
 Google SEO (4), direct (4), **Bing** (1), **Meta (1)**. Meta is **2.4% of revenue** in that window
 while taking $343 of spend.
+
+---
+
+# 🔴 TRIPWIRE CONFIRMED + A HARD BLOCKER FOUND — 2026-09-18 (evening)
+
+## Second clean week, same answer
+
+| Week | Meta spend | Pixel purchases | Pixel CPA | **Shopify Meta orders** | **Real CPA** |
+|---|---:|---:|---:|---:|---:|
+| 09-05 → 09-11 | $355.27 | 10 | $35.53 | **1** (`#1330` $188) | **$355** |
+| 09-12 → 09-18 | $350.24 | 6 | **$58.37** | **1** (`#1345` $322) | **$350** |
+
+Two consecutive non-overlapping weeks: **$705.51 → 2 traceable orders = $353 each**, against a **$322
+break-even**. 14 Shopify orders in the tripwire week; one carried a Meta campaign.
+
+**Meta's own numbers now corroborate it independently:** pixel CPA deteriorated **$35.53 → $58.37** in
+a week at flat spend. That is not an attribution argument — it is Meta's own figure getting worse.
+
+## 🚨 The step-down cannot be applied — Meta is blocking it
+
+The approved step-down (`8662dea4-abd3-4e44-a9a7-2c753a338409`) fails against the API:
+
+> **"Advertiser is missing"** — *"Provide a verified advertiser so that ads in this ad set can be
+> delivered to audiences in the selected locations."* (`error_subcode 3858634`,
+> `blame_field_specs: ["compliance_section"]`)
+
+**Root cause, confirmed on the account:**
+
+```
+business: Craftons (1006792137511423)
+verification_status: "not_verified"
+```
+
+This is **not** the sandbox permission issue from this morning — that was a separate, transient
+refusal. This is Meta itself.
+
+**What still works, tested with `validate_only`:**
+
+| Action | Result |
+|---|---|
+| **Pause the ad set** | ✅ **would succeed** |
+| Change the daily budget | 🔴 **BLOCKED — advertiser not verified** |
+
+So budget management on this account is frozen until Craftons completes Meta business verification.
+
+**Delivery has not stopped yet** — the ad set spent $47.26 on 09-18 and is `ACTIVE` with no
+`issues_info` on the ad set or any of the three ads. But the error explicitly ties verification to
+*delivery in the selected locations*, so this is a live risk, not just an edit restriction.
+
+## Lee's three options
+
+1. **Complete Meta business verification** *(recommended)* — Business Manager → Security Centre →
+   Business verification. It unblocks budget control, removes the delivery risk, and is required
+   regardless of what we decide about spend. **This is the only option that fixes the actual problem.**
+2. **Pause the retargeting ad set** — works right now. Stops a ~$350 CPA against a $322 break-even.
+   Costs the account its only currently-working paid channel.
+3. **Leave it at $50/day** — the overrun is about **$30 per order, roughly $30/week**. Real, but small
+   enough that waiting a few days for option 1 is not expensive.
+
+**Not actioned.** The pre-agreed tripwire authorised stepping *down to $31.10*, not switching Meta
+off, and pausing is a materially bigger decision than the one Lee approved. Option 2 is available the
+moment he wants it.

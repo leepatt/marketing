@@ -562,3 +562,71 @@ So budget management on this account is frozen until Craftons completes Meta bus
 **Not actioned.** The pre-agreed tripwire authorised stepping *down to $31.10*, not switching Meta
 off, and pausing is a materially bigger decision than the one Lee approved. Option 2 is available the
 moment he wants it.
+
+---
+
+# 🔴 WEEK 3 — 2026-09-25. Zero retargeting-attributable orders, and saturation has arrived.
+
+## The reconciliation, third week running
+
+| Week | Meta spend | Pixel PUR | Pixel CPA | Shopify Meta orders | Note |
+|---|---:|---:|---:|---:|---|
+| 09-05 → 09-11 | $355.27 | 10 | $35.53 | 1 — `#1330` $188 | retargeting UTM |
+| 09-12 → 09-18 | $350.24 | 6 | $58.38 | 1 — `#1345` $322 | retargeting UTM |
+| **09-19 → 09-25** | **$340.86** | 7 | $48.69 | 1 — `#1361` $186 | 🔴 **`radiuspro_tof_aug26`** |
+
+**This week's single Meta order came from the TOF campaign, which has been PAUSED since 18 August.**
+Its UTM is `radiuspro_tof_aug26` on both first and last visit — a click carried on a stored cookie
+from five weeks ago, not anything this week's retargeting spend bought.
+
+**So zero of the 14 orders this week are attributable to the $340.86 of retargeting spend.**
+
+Three weeks combined: **$1,046.37 → 2 retargeting-attributable orders = $523 each**, against a **$322
+break-even.**
+
+## Saturation is no longer a projection
+
+| | Prior week | This week |
+|---|---:|---:|
+| Spend | $350.24 | $340.86 (**−3%**) |
+| Reach | 12,730 | **11,005 (−14%)** |
+| Frequency | 2.00 | **2.19** (daily peak **2.62**) |
+
+**Reach falling 14% while frequency rises, at flat spend.** That is the condition set out on 09-11,
+and unlike the step-3 false alarm it is a week-on-week aggregate, not a within-week slope. The pool
+this ad set can reach at $50/day is exhausted.
+
+In fairness: **Meta's own numbers improved slightly** — pixel CPA $58.38 → $48.69 on 7 purchases. The
+problem is not that Meta's figures are collapsing; it is that they have never been corroborated.
+
+## 🚨 Still blocked, and it has not moved
+
+Re-tested with `validate_only` today: **budget edits are still refused.**
+
+```
+business Craftons (1006792137511423) — verification_status: "not_verified"
+"Advertiser is missing" (error_subcode 3858634)
+```
+
+Delivery continues ($37.68 on 09-25, ad set `ACTIVE`, no `issues_info`), and the account is still
+**1 of 7 ad sets active**. But **the budget cannot be lowered.** The approved step-down to $31.10
+(`8662dea4…`) has now been un-appliable for a week.
+
+## Proposed: pause the ad set — `7504ba6f-bb26-4228-9c69-fb7786bb50e8`
+
+**Pausing is the only lever Meta still allows.** With the step-down blocked, the choice is $50/day or
+nothing; there is no middle setting until the business is verified.
+
+**Not applied.** The tripwire Lee pre-agreed authorised stepping *down to $31.10*, not switching Meta
+off, and that distinction still holds — but the trigger's own instruction was to propose a pause if
+the case got worse, and it has: from one traceable order a week to none, with the audience saturating.
+
+**The fix that reopens every option is still business verification** — Business Manager → Security
+Centre. Verify, and the $31.10 step-down applies immediately instead of a binary on/off.
+
+## Also noticed
+
+- `#1363` ($507) came in from **`ntp.msn.com`** — Microsoft Start. More evidence that the Bing/MSN
+  ecosystem is quietly delivering and has never been examined.
+- `#1358` ($507) carries `sag_organic / product_sync` — Shopify's **organic** Google product sync, not
+  paid. Worth knowing before anyone credits Google Ads for it.

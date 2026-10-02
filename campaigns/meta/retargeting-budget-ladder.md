@@ -630,3 +630,69 @@ Centre. Verify, and the $31.10 step-down applies immediately instead of a binary
   ecosystem is quietly delivering and has never been examined.
 - `#1358` ($507) carries `sag_organic / product_sync` — Shopify's **organic** Google product sync, not
   paid. Worth knowing before anyone credits Google Ads for it.
+
+---
+
+# ⛔ WEEK 4 — 2026-10-02. ZERO Meta orders. The recommendation is now to pause.
+
+**16 Shopify orders this week, $17,348. Not one carries a Meta source of any kind** — no `source=meta`,
+no facebook, no instagram UTM, paid or organic.
+
+Meta spent **$349.41** and its pixel claims **10 purchases**.
+
+## Four weeks, reconciled
+
+| Week | Meta spend | Pixel PUR | **Retargeting-attributable Shopify orders** |
+|---|---:|---:|---:|
+| 09-05 → 09-11 | $355.27 | 10 | 1 (`#1330` $188) |
+| 09-12 → 09-18 | $350.24 | 6 | 1 (`#1345` $322) |
+| 09-19 → 09-25 | $340.86 | 7 | **0** (the one Meta order was a stale TOF cookie) |
+| **09-26 → 10-02** | **$349.41** | **10** | **0** |
+
+**$1,395.78 → 2 attributable orders = $698 each**, against a **$322 break-even.** Two of the four weeks
+produced nothing at all.
+
+**Meta claiming 10 purchases in a week where not a single order carries a Meta referrer** is the
+clearest statement yet that the pixel figure is not measuring incremental sales.
+
+## Saturation is now severe
+
+| | 09-11 | 09-18 | 09-25 | **10-02** |
+|---|---:|---:|---:|---:|
+| Frequency | 2.04 | 2.00 | 2.19 | **2.54** (daily peak **2.91**) |
+| Reach | 12,162 | 12,730 | 11,009 | **10,659** |
+
+Frequency up 25% and reach down 16% over three weeks at flat spend. The ad set is showing the same
+shrinking pool the same two tired ads more often.
+
+## The honest counter-argument, stated once more
+
+Retargeting by definition shows ads to people who have already visited, so Shopify's journey will
+often credit their original source — eight of this week's orders are `direct` and six `Google`, and
+some of those buyers may well have been nudged by a Meta ad. **Neither number is the whole truth.**
+
+But the channel is demonstrably capable of showing up: it did in August (3 orders) and twice in
+September. **Four weeks and ~$1,400 later it has stopped appearing at all.** At some point absence of
+evidence across a long enough window is evidence.
+
+## 🔴 Recommendation: PAUSE — `7504ba6f-bb26-4228-9c69-fb7786bb50e8`
+
+**Continuing costs roughly $350/week for nothing measurable.** This is the fourth consecutive week the
+reconciliation has failed and the second with a flat zero.
+
+**Still not applied.** Lee authorised stepping *down to $31.10*, not switching Meta off, and that is
+still the only thing he has approved. The proposal is one word away.
+
+**Budget edits remain blocked** — re-tested today, business `Craftons` is still `not_verified`,
+`"Advertiser is missing"`. So pause is the only lever Meta allows. **Verifying the business would turn
+this back into a $31.10 step-down instead of an on/off switch** — that remains the better outcome and
+it is entirely in Lee's hands.
+
+Account: **1 of 7 ad sets ACTIVE**. September closed at **$1,466.63** of the $2,000 ceiling. October
+MTD $106.11.
+
+## And again, the thing nobody has looked at
+
+`#1381` — **$3,029, first visit Bing.** Plus last week's `#1359` $2,009 and `#1363` $507 from MSN. The
+Bing/MSN ecosystem keeps producing four-figure orders with zero attention and zero spend, while Meta
+takes $350 a week for nothing.

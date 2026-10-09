@@ -696,3 +696,38 @@ MTD $106.11.
 `#1381` — **$3,029, first visit Bing.** Plus last week's `#1359` $2,009 and `#1363` $507 from MSN. The
 Bing/MSN ecosystem keeps producing four-figure orders with zero attention and zero spend, while Meta
 takes $350 a week for nothing.
+
+---
+
+# ⛔ WEEK 5 — 2026-10-09. Second consecutive zero. Five weeks, two orders.
+
+**13 orders this week. Zero carry a Meta source.** One (`#1394`, $194, placed minutes before this
+reading) has no journey data computed yet and is unresolved either way — the other 12 are Google,
+direct, the builder, and one referral from `cnccut.melbourne`.
+
+| Week | Meta spend | Pixel PUR | **Attributable orders** |
+|---|---:|---:|---:|
+| 09-05 → 09-11 | $355.27 | 10 | 1 |
+| 09-12 → 09-18 | $350.24 | 6 | 1 |
+| 09-19 → 09-25 | $340.86 | 7 | 0 |
+| 09-26 → 10-02 | $349.41 | 10 | 0 |
+| **10-03 → 10-09** | **$351.98** | **7** | **0** (1 unresolved) |
+
+## Cumulative since the first failed reconciliation
+
+**$1,747.87 spent. 40 pixel purchases claimed. 2 Shopify orders attributable. $874 per order**, against
+a **$322 break-even.**
+
+Saturation continues: frequency **2.59** (daily peak **2.91** on 10-09), reach **10,505** — down from
+12,730 five weeks ago at the same spend.
+
+## Unchanged
+
+- **Verification still blocked.** Re-tested today: business `Craftons` is `not_verified`,
+  `"Advertiser is missing"`. Budget edits refused; pause still works.
+- **Pause proposal `7504ba6f-bb26-4228-9c69-fb7786bb50e8` remains pending** and remains the
+  recommendation. Not applied — Lee has only ever approved a step-down to $31.10.
+- Account: **1 of 7 ad sets ACTIVE**. October MTD **$460.23** of the $2,000 ceiling.
+
+The case was argued in full in the 10-02 entry and has not changed; it has only accumulated another
+$352 and another zero.

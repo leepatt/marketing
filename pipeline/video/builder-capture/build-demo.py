@@ -15,10 +15,10 @@ for i, s in enumerate(sorted([x for x in steps if x['name'] in cues], key=lambda
     cue = cues.get(s['name'])
     start = max(cue, prev_end)
     fr = s['frames']
-    # fit the step to its voiceover slot: if it runs longer than the gap to the next cue, play it faster (never below 0.45x)
+    # fit the step to its voiceover slot: if it runs longer than the gap to the next cue, play it faster (never below 0.28x)
     ordered = sorted(cues.values()); nxt = next((c for c in ordered if c > cue), None)
     slot = (nxt - start) if nxt is not None else fr[-1]['t']
-    k = 1.0 if fr[-1]['t'] <= slot or slot <= 0 else max(0.45, slot / fr[-1]['t'])
+    k = 1.0 if fr[-1]['t'] <= slot or slot <= 0 else max(0.28, slot / fr[-1]['t'])
     fr = [dict(f, t=round(f['t'] * k, 4)) for f in fr]
     if k < 1: print(f"  {s['name']}: {fr[-1]['t']/k:.2f}s -> fit to {slot:.2f}s (x{1/k:.2f})")
     for j, f in enumerate(fr):

@@ -44,3 +44,14 @@ python3 build-demo.py cues.json demo.mp4 --length 78.1  # lay steps onto the voi
 - HyperFrames `<audio>` needs an `id` or it renders silent.
 - The old static ffmpeg build has no `xstack fill`; use `concat,tile` for contact sheets.
 - `pip install` can time out on files.pythonhosted.org; retry with `--timeout 120`.
+
+## Gotchas added 2026-10-12 (after a container reset)
+- `pip` here is Python 3.13's; the scripts run on `/usr/local/bin/python3` (3.11). Always `python3 -m pip install …`.
+- `npm install hyperframes` does not hoist `puppeteer-core`; install it explicitly for the capture scripts.
+- The `@ffmpeg-installer` static build (2018) fails on `aresample` channel layout in the recut filter. Use the
+  imageio-ffmpeg 7 binary (`python3 -c "import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())"`) for cuts;
+  the static build is fine for caption burn-in and for HyperFrames.
+- Never re-transcribe a spliced cut: Whisper drops words at the splices. Map the corrected source transcript onto
+  the cut with `map-words.py` (uses the cut sheet).
+- HyperFrames rejects a timed `<video>` inside a timed wrapper; drive a PIP wrapper's opacity with GSAP instead.
+- Keep templates out of `.html` in a project folder, or `check` reports multiple root compositions.

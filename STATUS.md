@@ -1,6 +1,6 @@
 # Marketing engine — status & plan (READ THIS FIRST)
 
-_Living handoff doc. Last updated 2026-09-11. Branch: `claude/zen-hamilton-9k1rq2` (video); Meta ads work on `claude/craftons-meta-ads-marketing-qif4cl`._
+_Living handoff doc. Last updated 2026-10-12. Branch: `claude/zen-hamilton-9k1rq2` (video); Meta ads work on `claude/craftons-meta-ads-marketing-qif4cl`._
 _Check items off as they're done so we never repeat work. Doc index at the bottom._
 
 ---
@@ -134,8 +134,15 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
   99 s, 9:16. Campaign note + 3 caption variants: `campaigns/social/2026-09-formwork-builder-soft-launch.md`.
 - [x] **Reel 01 tooling merged onto this branch** (`jumpcut.py`, `captions*.py`, `compose-reel.sh`,
   `overlays.py`, `REEL-PROCESS.md`, fonts) so the video pipeline lives in one place → `pipeline/video/README.md`.
-- [ ] ⚠️ **Lee to decide the delivery line:** the take says "three to four days"; the builder shows **7 to 9
-  business days** on screen. Cut the sentence or re-record it. Also: keep 99 s or cut a 35 to 40 s lean version.
+- [x] **v2 (2026-10-12), per Lee's feedback:** 68 s (was 99 s). Lee full-screen → hero image title card on the words
+  "Formwork Builder" → builder with Lee as a PIP top-right → end card. Beats cut: L-shape, straights, "designing the
+  structure", "cool features", rounded ends, taper, "software works it out", the delivery-days line. The builder now
+  shows **5 to 7 business days** on screen (site changed since September). Reproducible: `recut.py` +
+  `keeps-formwork-v2.json`, `map-words.py`, `capture-fw-v2.mjs`, `make-v2.py` + `index.v2.tmpl`, `finish-v2.sh`.
+- [x] **Container reset survived** (2026-10-12): everything rebuilt from the repo + Drive in ~15 min. Gotchas added
+  to `pipeline/video/README.md`: `python3 -m pip` (not `pip`, which is a different interpreter here); install
+  `puppeteer-core` explicitly; the 2018 static ffmpeg fails on `aresample` channel layout → use imageio-ffmpeg 7 for
+  cuts; never re-transcribe a spliced cut (map the source words instead).
 - [ ] Save the approved MP4 to Drive `Marketing/Video/`; post via Later. Nothing auto-publishes.
 
 ### 🎬 Video — first HyperFrames motion graphic MADE (2026-09-11)

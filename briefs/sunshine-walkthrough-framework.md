@@ -1,6 +1,6 @@
 # Sunshine workshop walkthrough — video framework
 
-_Status: **Edit v1 (40 s) liked as a start; v2 (+ showroom, 51 s) rendered 2026-10-13, awaiting Lee's review.** Framework built from Lee's 4 clips (shot 2026-10-12)._
+_Status: **Edit v1 (40 s) liked as a start; v2 (+ showroom, 51 s) and v3 (+ showroom + office, 59 s) rendered 2026-10-13, awaiting Lee's pick.** Framework built from Lee's 4 clips (shot 2026-10-12)._
 _Source: Drive `Marketing/…/96 Technology/` — IMG_6170, 6172, 6173, 6175. All vertical 1080×1920, 30 fps._
 
 **Goal:** short vertical walkthrough (Reels / TikTok / Shorts) of the new Sunshine factory.
@@ -146,9 +146,23 @@ Same as v1 with a showroom beat inserted between the CNC zone (row 7) and the cl
 | 7a | 6173 0:07.00–0:14.85 | **6173 0:04.30** | "Through here, we've got our showroom, which we are working on. We've ripped up all the carpet and painted the walls," (picture runs early: corridor walk into the showroom) |
 | 7b | 6173 0:15.30–0:16.80 | 6173 0:12.15 | "jazz that up a little bit." (0.45 s pause removed) |
 
+## 4c. Edit v3: v2 + office (59 s)
+
+v2 with an office beat inserted between the showroom (7b) and the close (8). Tag: `OFFICE`.
+
+| # | Audio (clip in–out) | Picture (clip in) | Line |
+|---|---|---|---|
+| 7c | 6173 0:31.25–0:34.30 | **6173 0:22.90** | "And up the stairs we'll have our office." (picture: climbing the stairs) |
+| 7d | 6173 0:35.70–0:36.80 | **6173 0:36.00** | "Nice big office," (picture: office wide, big windows) |
+| 7e | 6173 0:42.20–0:46.50 | 6173 0:42.20 | "It's a bit of a gloomy day here, but we can have nice, natural light." (ends on the view out the window) |
+
+Left out of the office beat: "also ripped up the carpet, replacing all of that" and "walls have been painted as well" (the showroom already says both).
+
 ## 5. Next steps
 - [x] Lee picked the 40 s cut · "firewood" = plywood
 - [x] Edit v1 rendered, Lee likes it as a start
 - [x] Edit v2 (+ showroom) rendered
+- [x] Edit v3 (+ showroom + office) rendered
+- [ ] Lee: pick v1 / v2 / v3 (or post more than one)
 - [ ] Lee: confirm spelling of "Woodtron" (the caption follows the transcription)
 - [ ] Lee approves → Later.com

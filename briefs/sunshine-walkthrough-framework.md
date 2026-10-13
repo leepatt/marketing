@@ -1,6 +1,6 @@
 # Sunshine workshop walkthrough — video framework
 
-_Status: **Edit v1 (40 s cut) rendered 2026-10-13, awaiting Lee's approval.** Framework built from Lee's 4 clips (shot 2026-10-12)._
+_Status: **Edit v1 (40 s) liked as a start; v2 (+ showroom, 51 s) rendered 2026-10-13, awaiting Lee's review.** Framework built from Lee's 4 clips (shot 2026-10-12)._
 _Source: Drive `Marketing/…/96 Technology/` — IMG_6170, 6172, 6173, 6175. All vertical 1080×1920, 30 fps._
 
 **Goal:** short vertical walkthrough (Reels / TikTok / Shorts) of the new Sunshine factory.
@@ -137,8 +137,18 @@ beat tags in Craftons green (`THE FIT-OUT` · `CNC ZONE` · `SUNSHINE`). Audio i
 
 Dropped for length: 6175's "So yeah, that's a layout of our new factory in Sunshine" (repeats the hook).
 
+## 4b. Edit v2: v1 + showroom (51 s)
+
+Same as v1 with a showroom beat inserted between the CNC zone (row 7) and the close (row 8). Tag: `SHOWROOM`.
+
+| # | Audio (clip in–out) | Picture (clip in) | Line |
+|---|---|---|---|
+| 7a | 6173 0:07.00–0:14.85 | **6173 0:04.30** | "Through here, we've got our showroom, which we are working on. We've ripped up all the carpet and painted the walls," (picture runs early: corridor walk into the showroom) |
+| 7b | 6173 0:15.30–0:16.80 | 6173 0:12.15 | "jazz that up a little bit." (0.45 s pause removed) |
+
 ## 5. Next steps
 - [x] Lee picked the 40 s cut · "firewood" = plywood
-- [x] Edit v1 rendered
+- [x] Edit v1 rendered, Lee likes it as a start
+- [x] Edit v2 (+ showroom) rendered
 - [ ] Lee: confirm spelling of "Woodtron" (the caption follows the transcription)
 - [ ] Lee approves → Later.com

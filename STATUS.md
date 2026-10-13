@@ -122,6 +122,10 @@ Read live from the Marketing API, last 30 days: **$1,977.82 spend · 21 results 
 - Full post-mortem → `campaigns/meta/META-ADS-AGENT-BIBLE.md` §4.5.
 
 ## ⏳ Pending / in progress
+- [ ] **Sunshine workshop walkthrough video** (2026-10-13) — clips rated, framework built, mic-dip audio fixed.
+  Awaiting Lee's approval before editing → `briefs/sunshine-walkthrough-framework.md`.
+  Reusable audio fix → `pipeline/level-speech.py`. Note: Drive connector caps downloads at 10 MB;
+  video needs the folder link-shared (or a service-account key) to pull into a session.
 - [ ] **Google Ads API Basic access** — application prepared (answers + PDF design doc sent). Lee to submit /
   awaiting Google (~3 business days). → `campaigns/adwords/api-access.md` + `api-tool-design.md`
 - [ ] **Mirror Google Ads creds into THIS engine's env vars** (for `google-ads.mjs` to run here)

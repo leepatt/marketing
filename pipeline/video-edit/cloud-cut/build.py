@@ -13,7 +13,7 @@ SUB = [  # (src_in, src_out, speed)   screen.mp4 timings, second recording
     (15.0, 17.2, 1.60),   # Plates, Shutters, End Caps ticked  "select your formwork"
     (19.4, 22.0, 1.00),   # order summary: $675, 5-7 days      "and get an instant price"
 ]
-VO_IN, VO_OUT = 2.1, 9.78                     # IMG_6013 audio slice
+VO_IN, VO_OUT = 2.50, 10.35                    # IMG_6013 audio slice (measured)
 vid_dur = sum((b-a)/sp for a,b,sp in SUB)
 vo_dur = VO_OUT - VO_IN
 pad = max(0.0, vid_dur - vo_dur)
@@ -33,7 +33,7 @@ if False: subprocess.run([FF,"-hide_banner","-loglevel","error","-y", *ins,
     "-t", f"{vid_dur:.3f}", "src/mid.mp4"], check=True)
 
 # ---- timeline ----
-S1 = dict(src="src/IMG_5999.mov", push=0.06, **{"in":1.86, "out":10.05})
+S1 = dict(src="src/IMG_5999.mov", push=0.06, **{"in":1.86, "out":10.20})   # "project" measured end 10.06
 M5 = json.loads(Path("mid5.json").read_text()); vid_dur = M5["dur"]
 S2 = dict(src="src/mid5.mp4", **{"in":0.0, "out":vid_dur})
 S3 = dict(src="src/IMG_6001.mov", push=0.05, card="ovl/endcard.png", card_at=15.10-10.74, fade_out=True, **{"in":10.74, "out":16.30})   # "drawings" ends 14.68; card from 15.10
@@ -54,17 +54,18 @@ C += caps([
     (8.98,10.05,"for the whole project","whole project"),
 ], S1["in"], t1)
 C += caps([
-    (2.32,4.00,"So we built the Formwork Builder","Formwork Builder","top"),
-    (4.00,5.68,"an online tool where you can",None,"seam"),
-    (5.68,7.64,"design your concrete structure","concrete structure","seam"),
-    (7.64,8.68,"select your formwork","formwork","seam"),
-    (8.68,9.78,"and get an instant price","instant price","seam"),
+    (2.69,4.29,"So we built the Formwork Builder","Formwork Builder","top"),   # measured phrase times below
+    (4.29,5.95,"an online tool where you can",None,"seam"),
+    (5.95,7.55,"design your concrete structure","concrete structure","seam"),
+    (7.55,8.78,"select your formwork","formwork","seam"),
+    (8.78,10.35,"and get an instant price","instant price","seam"),
 ], VO_IN, t2)
 C += caps([
     (10.82,12.32,"It's then cut by us",None),
     (12.32,13.36,"and sent out to site",None),
     (13.36,14.80,"with the set-out drawings","set-out drawings"),
 ], S3["in"], t3)
-edl = dict(fps=30, segments=[S1,S2,S3], captions=C, min_tail=0.8)
-Path("cut19.json").write_text(json.dumps(edl, indent=1))
-subprocess.run(["python3","assemble.py","cut19.json","out/formwork-builder-cut19.mp4"], check=True)
+edl = dict(fps=30, segments=[S1,S2,S3], captions=C, min_tail=0.8,
+           audio_ramps=[(round(t3 - 0.20, 3), round(t3, 3), 0.25)])   # concrete-room echo after "price" eases 12 dB into the next clip
+Path("cut24.json").write_text(json.dumps(edl, indent=1))
+subprocess.run(["python3","assemble.py","cut24.json","out/formwork-builder-cut24.mp4"], check=True)

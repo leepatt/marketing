@@ -89,3 +89,19 @@ the real energy runs to **14.68 s**. Whisper word ends run early — never cut o
 
 The renderer now has three guards — dead air, digital dropout, tail — all of them for things that
 frames and transcripts can't show.
+
+## Cut 24 (13 Oct) — "price" clipped, gaps at every join
+
+Lee: "it cuts off the end of price." Same mistake as "drawings", in a second place: `PRICE_END` was
+Whisper's **start** time for "price." (9.42); the word ends at **10.05**. In this clip Whisper's phrase
+starts were 0.07–0.46 s early, so the captions were early too.
+
+| Finding | Fix |
+|---|---|
+| Every cut point timed from Whisper | **`cutaudit.py`** measures real speech start/end at each in/out from the energy envelope. Screen-section phrases re-timed from measured pauses; captions follow them |
+| **~21 ms near-silent gap at every join.** Segments were AAC-encoded separately and joined by stream copy, which keeps each segment's encoder priming. Not exact zeros, so the dropout check missed it; the click check looked for jumps, not gaps | Soundtrack built as **one PCM buffer**: each segment decoded **straight from its source** with its filters, cut to an exact sample count, concatenated, encoded once. Video still joined by stream copy (safe) |
+| Concrete-room echo after "price" at −31 dB vs −42 dB room tone in the next clip: an 11 dB step at the cut | `audio_ramps` in the EDL: a sample-exact 0.2 s ease of −12 dB on the PCM, landing on the next clip's background. Not a fade to zero — fades to zero at a cut are themselves dropouts |
+| **Guard upgrade** | Dropout check now also fails on 5 ms windows below −65 dBFS for ≥10 ms (catches priming gaps). Verified on cut 22: flags 30 ms at 8.29 and 16.10 |
+
+Result: quietest 50 ms in the whole video (excluding the closing fade) is −44 dB; picture cuts land on
+the planned frames exactly.

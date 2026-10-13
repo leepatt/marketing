@@ -1,0 +1,133 @@
+{
+ "fps": 30,
+ "segments": [
+  {
+   "src": "src/IMG_5999.mov",
+   "push": 0.06,
+   "in": 1.86,
+   "out": 10.2
+  },
+  {
+   "src": "src/mid5.mp4",
+   "in": 0.0,
+   "out": 7.85
+  },
+  {
+   "src": "src/IMG_6001.mov",
+   "push": 0.05,
+   "card": "ovl/endcard.png",
+   "card_at": 4.359999999999999,
+   "fade_out": true,
+   "in": 10.74,
+   "out": 16.3
+  }
+ ],
+ "captions": [
+  {
+   "start": 0.08,
+   "end": 1.9,
+   "text": "Since launching the Radius Pro",
+   "hi": "Radius Pro",
+   "pos": null
+  },
+  {
+   "start": 1.9,
+   "end": 3.24,
+   "text": "been getting a lot of concreters",
+   "hi": "concreters",
+   "pos": null
+  },
+  {
+   "start": 3.24,
+   "end": 4.2,
+   "text": "using the app",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 4.2,
+   "end": 5.9,
+   "text": "but also reaching out and asking",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 5.9,
+   "end": 7.12,
+   "text": "if we can cut the formwork",
+   "hi": "formwork",
+   "pos": null
+  },
+  {
+   "start": 7.12,
+   "end": 8.19,
+   "text": "for the whole project",
+   "hi": "whole project",
+   "pos": null
+  },
+  {
+   "start": 8.52,
+   "end": 10.12,
+   "text": "So we built the Formwork Builder",
+   "hi": "Formwork Builder",
+   "pos": "top"
+  },
+  {
+   "start": 10.12,
+   "end": 11.78,
+   "text": "an online tool where you can",
+   "hi": null,
+   "pos": "seam"
+  },
+  {
+   "start": 11.78,
+   "end": 13.38,
+   "text": "design your concrete structure",
+   "hi": "concrete structure",
+   "pos": "seam"
+  },
+  {
+   "start": 13.38,
+   "end": 14.61,
+   "text": "select your formwork",
+   "hi": "formwork",
+   "pos": "seam"
+  },
+  {
+   "start": 14.61,
+   "end": 16.18,
+   "text": "and get an instant price",
+   "hi": "instant price",
+   "pos": "seam"
+  },
+  {
+   "start": 16.28,
+   "end": 17.78,
+   "text": "It's then cut by us",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 17.78,
+   "end": 18.82,
+   "text": "and sent out to site",
+   "hi": null,
+   "pos": null
+  },
+  {
+   "start": 18.82,
+   "end": 20.26,
+   "text": "with the set-out drawings",
+   "hi": "set-out drawings",
+   "pos": null
+  }
+ ],
+ "min_tail": 0.8,
+ "audio_ramps": [
+  [
+   16.0,
+   16.2,
+   0.25
+  ]
+ ]
+}

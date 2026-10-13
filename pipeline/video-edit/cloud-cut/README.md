@@ -48,3 +48,19 @@ compositions' condensed numerals fall back in this sandbox.
 wall-clock and the raw take runs 6–7 minutes; it looks smooth once sped up 20–60× because every captured
 frame is a distinct pose. `pkill -f <script>` kills the shell that ran it too — use `pgrep -f "[n]ode …"`.
 The app intermittently never mounts its canvas under load; the recorder screenshots `fail.png` when that happens.
+
+## Cut 17 (13 Oct) — dead air fixed
+
+Lee caught what I missed: 1.5 s of silence after "instant price", then a hard cut back to his face. The
+build log printed `pad 1.52` and I treated it as a deliberate hold. Frames and transcripts cannot show dead air.
+
+| Change | Why |
+|---|---|
+| `build_mid4.py` | Screen section is timed **to the voice**: beats pinned to the words, no audio padding. Exits on an **L-cut**: the price shot holds while Lee's "It's" from 6001 plays, and the picture cuts to his face on "then" |
+| `assemble.py` dead-air guard | Every render runs `silencedetect` (−40 dB, 0.3 s) and **fails** if any interior gap is over 0.5 s. Verified against a rebuild of the cut-11 stall, which it flags at 2.0 s |
+| `assemble.py` frame-exact segments | Each segment is cut to a whole number of frames with picture (`tpad`) and sound (`apad`) padded then trimmed to that length. Before this, mismatched stream ends drifted each cut 0.04–0.08 s late, so captions overlapped the wrong shot |
+| Opening trim | 5999 now starts 0.08 s before "Since", not 0.34 s |
+
+**Environment gotchas from the reset:** `pip` and `python3` are different Pythons here — use `python3 -m pip`.
+`*.png` is git-ignored, so the logo and hero image are re-fetched from craftons.com.au. Playwright must be
+installed next to the scripts (`npm i playwright@1.63.0`); ESM imports ignore the global install.

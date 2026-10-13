@@ -56,14 +56,14 @@ def main():
     for i, s in enumerate(edl["segments"]):
         p = tmp / f"seg{i:02d}.mp4"
         if "src" in s:
-            dur = s["out"] - s["in"]
+            dur = round((s["out"] - s["in"]) * fps) / fps      # whole frames, so the computed timeline is the real one
             vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps}"
             if s.get("push"):   # slow push-in over the segment: crop tightens with t, then rescale. ~6% over the clip
                 k = float(s["push"]); nf = int(dur*fps)
                 vf += f",zoompan=z='1+{k}*on/{nf}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={fps}"
-            vf += ",format=yuv420p"
+            vf += f",format=yuv420p,tpad=stop_mode=clone:stop_duration=1"   # picture never ends early
             cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur),
-                   "-i", s["src"], "-vf", vf, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000", "-ac", "2",
+                   "-i", s["src"], "-vf", vf, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,apad", "-ac", "2", "-t", f"{dur:.4f}",
                    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-c:a", "aac", "-b:a", "160k", str(p)]
         else:
             dur = s["dur"]; ass = tmp / f"card{i:02d}.ass"
@@ -83,5 +83,20 @@ def main():
                     "-vf", f"subtitles={ass}:fontsdir={FONTS}", "-c:v", "libx264", "-preset", "medium",
                     "-crf", "19", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-movflags", "+faststart", out], check=True)
     print(f"rendered {out}  ({t:.1f}s, {len(parts)} segments)")
+    # --- dead-air guard: frames can't show silence, so measure it. Any gap over MAX_GAP fails the render.
+    import re as _re
+    MAX_GAP = float(edl.get("max_gap", 0.5))
+    r = subprocess.run([FF, "-hide_banner", "-i", out, "-af", "silencedetect=noise=-40dB:d=0.3", "-f", "null", "-"],
+                       capture_output=True, text=True).stderr
+    starts = [float(x) for x in _re.findall(r"silence_start: ([\d.]+)", r)]
+    ends   = [(float(a), float(b)) for a, b in _re.findall(r"silence_end: ([\d.]+) \| silence_duration: ([\d.]+)", r)]
+    gaps = [(round(e - d, 2), round(e, 2), round(d, 2)) for e, d in ends]
+    if len(starts) > len(ends): gaps.append((round(starts[-1], 2), round(t, 2), round(t - starts[-1], 2)))
+    inner = [g for g in gaps if g[0] > 0.15 and g[1] < t - 0.15]          # ignore the very start and tail
+    print("silences (start, end, dur):", gaps or "none")
+    bad = [g for g in inner if g[2] > MAX_GAP]
+    if bad:
+        print(f"DEAD AIR: {bad}  (limit {MAX_GAP}s)"); sys.exit(2)
+    print(f"dead-air check passed: no gap over {MAX_GAP}s")
 
 if __name__ == "__main__": main()

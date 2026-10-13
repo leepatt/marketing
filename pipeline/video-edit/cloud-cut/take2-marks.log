@@ -1,0 +1,21 @@
+canvas 1080x960@0 | panel 1080x2194@960
+13.71s  A start
+105.17s  A zoomed + orbit1
+107.64s  B radius 1300
+109.27s  B height 600
+169.52s  B orbit2
+170.94s  C backrest on
+171.99s  C taper 15
+173.02s  C cantilever on
+174.10s  C cantilever depth 200
+265.25s  C orbit3 front 3/4
+267.01s  D tick Plates
+268.40s  D tick Shutters
+269.56s  D tick End Caps
+389.23s  D orbit4 pan across ply
+391.06s  E order summary
+469.16s  E orbit5
+470.66s  END
+PRICE: $1667.00
+INPUTS: wall-width=600 radius=1300 wall-height=600 angle=180 backrest-height=450 backrest-top-width=100 backrest-taper=15 cantilever-depth=200 cantilever-height=200
+EXIT 0

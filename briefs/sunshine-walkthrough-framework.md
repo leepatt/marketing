@@ -1,6 +1,6 @@
 # Sunshine workshop walkthrough — video framework
 
-_Status: **framework only, no edit yet.** Built 2026-10-13 from Lee's 4 clips (shot 2026-10-12)._
+_Status: **Edit v1 (40 s cut) rendered 2026-10-13, awaiting Lee's approval.** Framework built from Lee's 4 clips (shot 2026-10-12)._
 _Source: Drive `Marketing/…/96 Technology/` — IMG_6170, 6172, 6173, 6175. All vertical 1080×1920, 30 fps._
 
 **Goal:** short vertical walkthrough (Reels / TikTok / Shorts) of the new Sunshine factory.
@@ -31,7 +31,7 @@ Opens on Lee's face. Story: _we've outgrown Fairfield → here's the new space �
 | 0:33.8–0:39.8 | _"…two older machines, but most of the work is going to get done on the two new ones"_ | More pointing | Optional, cut first if too long |
 | 0:42.2–0:43.4 + 0:49.0–0:55.4 | _"So plenty of space… we're going to have a big assembly area over there and over in this corner will be sort of like a dispatch"_ | Show it over **0:54–1:02**, the steady wide of the roller door and loading area (best wide in the clip) | ✅ **Yes** |
 | 0:56.8–1:08.8 | Incoming / outgoing dispatch | Repeats the dispatch point | ❌ Cut |
-| 1:13.7–1:30 | _"current stock, all our materials… this corner… all our **firewood** on pallet rack"_ | Whip pans and blur 1:12–1:22 | ❌ Cut. ⚠️ Transcribed as "firewood". **Lee to confirm** what was said (plywood?) |
+| 1:13.7–1:30 | _"current stock, all our materials… this corner… all our **firewood** on pallet rack"_ | Whip pans and blur 1:12–1:22 | ❌ Cut. (Lee confirmed: "plywood") |
 | Dead air | 0:59–1:05, 1:09–1:13, 1:22–1:25 | | ❌ |
 
 ### IMG_6173 — showroom + office (5/10)
@@ -116,8 +116,29 @@ Final mix target for social: −14 LUFS integrated, −1 dBTP.
 
 ---
 
-## 4. Next steps
-- [ ] Lee: approve the framework / pick a length (60 s vs 40 s)
-- [ ] Lee: confirm the "firewood" line (only matters if we keep that section)
-- [ ] Edit v1: assemble per §2, levelled audio, captions, chapter tags
+## 4. Edit v1 — 40 s cut (as built)
+
+Lee picked the 40 s cut. 41.7 s, 1080×1920, about −15 LUFS, peak −1.3 dBTP, captions burned in (Inter Bold),
+beat tags in Craftons green (`THE FIT-OUT` · `CNC ZONE` · `SUNSHINE`). Audio is the levelled track from
+`pipeline/level-speech.py`.
+
+| # | Audio (clip in–out) | Picture (clip in) | Line |
+|---|---|---|---|
+| 1 | 6170 0:00.00–0:08.75 | 6170 0:00.00 | "So we are moving factories… show you around." |
+| 2 | 6172 0:01.15–0:01.55 | 6172 0:04.65 | "We've" (skips the stumble) |
+| 3 | 6172 0:05.05–0:08.40 | 6172 0:05.05 | "had the keys now for a couple of weeks and the boys have been" |
+| 4 | 6172 0:08.85–0:10.60 | **6172 0:55.00** | "in here painting the walls" (roller-door wide hides the rubbish pile) |
+| 5 | 6172 0:13.35–0:18.60 | 6172 0:13.35 | "got the sparky in… CNC machines." |
+| 6 | 6172 0:20.10–0:29.65 | 6172 0:20.10 | "So our CNCs… new Woodtron that's going to sit" |
+| 7 | 6172 0:30.75–0:31.50 | 6172 0:30.75 | "next to that." |
+| 8 | 6175 0:04.50–0:13.60 | **6175 0:01.20** | "Fair bit bigger… bigger jobs as well, so I'll" (picture runs early to keep the window reveal) |
+| 9 | 6175 0:16.40–0:17.45 | 6175 0:10.30 | "keep you posted along" |
+| 10 | 6175 0:18.05–0:19.70 | 6175 0:11.35 | "the way." plus about 1 s of tail (extended at Lee's request) |
+
+Dropped for length: 6175's "So yeah, that's a layout of our new factory in Sunshine" (repeats the hook).
+
+## 5. Next steps
+- [x] Lee picked the 40 s cut · "firewood" = plywood
+- [x] Edit v1 rendered
+- [ ] Lee: confirm spelling of "Woodtron" (the caption follows the transcription)
 - [ ] Lee approves → Later.com

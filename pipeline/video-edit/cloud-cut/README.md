@@ -75,3 +75,17 @@ Lee: "it still glitches towards the end" and "an audio issue when the screen sho
 | The screen-section voice is IMG_6013, a separate indoor recording: 12 dB quieter at source, ~7 dB boomier in the low-mids, centroid 1,900 Hz vs 2,600–3,700 Hz outdoors. Loudnorm matched volume, not tone | `voicematch.py` measures 1/3-octave speech spectra of 5999+6001 vs 6013 and fits a **smoothed** EQ (−6 dB at 100 Hz, +5–6 dB above 1.5 kHz). Unsmoothed fitting reached 0.8 dB but was jagged (+10/−4 dB in adjacent bands) = fitting the words, not the room |
 | Segment audio came out a few ms short and `apad` filled it with zeros (29 ms at the cut) | Read 0.3 s extra source and trim on output: never pad with silence |
 | **New guard** | Every render fails on any run of digital silence over 20 ms (`int16 |x| <= 2`). Verified: flags cut 17's glitch at 15.63 s |
+
+## Cut 19 (13 Oct) — clipped last word, end card
+
+Lee: "you can't even hear me finish the word drawings." The out point was Whisper's word end (14.44 s);
+the real energy runs to **14.68 s**. Whisper word ends run early — never cut on them without measuring.
+
+- Last clip now runs to 16.30; the end card (`ovl/endcard.png`, drawn by Pillow) fades in **over that clip's
+  own picture** at 15.10, so its audio is the same loudness pass and the room tone fades out naturally.
+  A first attempt as a separate 1.2 s clip ran loudnorm on pure room tone and boosted it to speech level.
+- **Tail guard:** every render fails if the last speech ends less than `min_tail` (0.8 s) before the video
+  does. Cut 18 fails it (0.00 s); cut 19 passes (1.54 s).
+
+The renderer now has three guards — dead air, digital dropout, tail — all of them for things that
+frames and transcripts can't show.

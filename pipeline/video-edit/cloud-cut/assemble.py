@@ -61,9 +61,15 @@ def main():
             if s.get("push"):   # slow push-in over the segment: crop tightens with t, then rescale. ~6% over the clip
                 k = float(s["push"]); nf = int(dur*fps)
                 vf += f",zoompan=z='1+{k}*on/{nf}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={fps}"
+            if s.get("card"):   # end card faded in over the clip's own picture; the clip's audio carries on underneath
+                at = float(s["card_at"])
+                vf += (f"[base];movie={s['card']},loop=loop=-1:size=1,setpts=N/{fps}/TB,scale={W}:{H},format=rgba,"
+                       f"fade=t=in:st={at}:d=0.25:alpha=1[card];[base][card]overlay=0:0:shortest=1")
             vf += f",format=yuv420p,tpad=stop_mode=clone:stop_duration=1"   # picture never ends early
             cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur + 0.3),   # read extra, trim on output: never pad with zeros
-                   "-i", s["src"], "-vf", vf, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,apad", "-ac", "2", "-t", f"{dur:.4f}",
+                   "-i", s["src"], "-filter_complex" if s.get("card") else "-vf", ("[0:v]" + vf) if s.get("card") else vf,
+                   "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,apad" + (f",afade=t=out:st={dur-0.9:.3f}:d=0.9" if s.get("fade_out") else ""),
+                   "-ac", "2", "-t", f"{dur:.4f}",
                    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-c:a", "aac", "-b:a", "160k", str(p)]
         else:
             dur = s["dur"]; ass = tmp / f"card{i:02d}.ass"
@@ -108,5 +114,14 @@ def main():
     if runs:
         print(f"DROPOUT (digital silence) at {runs}"); sys.exit(3)
     print("dropout check passed: no digital silence over 20 ms")
+    # --- tail guard: the last word must finish well before the video ends (frames can't show a clipped word)
+    MIN_TAIL = float(edl.get("min_tail", 0.8))
+    f32 = a.astype(_np.float32) / 32768; fr = 2400
+    db = 20*_np.log10(_np.sqrt(_np.convolve(f32**2, _np.ones(fr)/fr, "valid")[::fr//2]) + 1e-9)
+    thr = max(-38.0, _np.percentile(db, 90) - 18)
+    last = _np.where(db > thr)[0]; last_t = (last[-1] * (fr//2) + fr) / 48000 if len(last) else 0
+    tail = len(a)/48000 - last_t
+    print(f"tail check: last speech ends {last_t:.2f}s, video ends {len(a)/48000:.2f}s, tail {tail:.2f}s")
+    if tail < MIN_TAIL: print(f"TAIL TOO SHORT (< {MIN_TAIL}s): last word is clipped or rushed"); sys.exit(4)
 
 if __name__ == "__main__": main()

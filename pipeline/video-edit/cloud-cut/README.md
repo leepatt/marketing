@@ -105,3 +105,18 @@ starts were 0.07–0.46 s early, so the captions were early too.
 
 Result: quietest 50 ms in the whole video (excluding the closing fade) is −44 dB; picture cuts land on
 the planned frames exactly.
+
+## Cut 26 (13 Oct) — ending without new voiceover
+
+Lee wanted a more engaging ending but had no extra VO. The last line keeps playing while the picture changes:
+"It's then cut by us" stays on Lee; just before "and sent out to site" (12.50 s in 6001, no pause there) it cuts to
+the finished bench orbiting full screen; the end panel fades in over the moving model, not a static card.
+
+| Piece | Notes |
+|---|---|
+| `record-orbit.mjs` | Full-frame viewer, same config as the video (R1300, 600 high, backrest 15° taper, cantilever 200, plates + shutters + end caps), zoom, tilt, 140-step orbit. Raw 6:57 at headless speed; first 196 s used (the open end + backrest profile; later it is just the outer shutter wall). Nav cube painted out with the sampled background |
+| `audio_src` / `audio_in` on a segment | Picture from one file, sound from another. **Contiguous audio from the same source (within one frame) is decoded as one piece**, so one loudness pass: no level step mid-sentence when the picture changes |
+| Segment pictures are now video-only | The soundtrack only ever comes from the sources |
+| `Box` caption style | White on a brand-green box for captions over the light 3D background; highlight switches to light green (#9fd8b5) — brand green on a brand-green box disappears |
+
+**Next:** set-out screenshot under "with the set-out drawings"; open on the orbit too and the video loops.

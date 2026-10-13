@@ -36,7 +36,10 @@ if False: subprocess.run([FF,"-hide_banner","-loglevel","error","-y", *ins,
 S1 = dict(src="src/IMG_5999.mov", push=0.06, **{"in":1.86, "out":10.20})   # "project" measured end 10.06
 M5 = json.loads(Path("mid5.json").read_text()); vid_dur = M5["dur"]
 S2 = dict(src="src/mid5.mp4", **{"in":0.0, "out":vid_dur})
-S3 = dict(src="src/IMG_6001.mov", push=0.05, card="ovl/endcard.png", card_at=15.10-10.74, fade_out=True, **{"in":10.74, "out":16.30})   # "drawings" ends 14.68; card from 15.10
+SWITCH = 12.50   # picture leaves Lee just before "and sent out to site" (no pause there: the voice runs straight through)
+S3 = dict(src="src/IMG_6001.mov", push=0.05, **{"in":10.74, "out":SWITCH})
+S4 = dict(src="src/orbit.mp4", push=0.04, card="ovl/endpanel.png", card_at=15.10-SWITCH, fade_out=True,
+          audio_src="src/IMG_6001.mov", audio_in=SWITCH, **{"in":0.0, "out":16.30-SWITCH})   # finished bench orbits under the rest of the line; "drawings" ends 14.69
 q = lambda d: round(d*30)/30
 t1, t2, t3 = 0.0, q(S1["out"]-S1["in"]), None; t3 = t2 + q(vid_dur)
 print(f"timeline: face 0-{t2:.2f} | screen {t2:.2f}-{t3:.2f} | face {t3:.2f}-{t3+S3['out']-S3['in']:.2f}")
@@ -61,11 +64,11 @@ C += caps([
     (8.78,10.35,"and get an instant price","instant price","seam"),
 ], VO_IN, t2)
 C += caps([
-    (10.82,12.32,"It's then cut by us",None),
-    (12.32,13.36,"and sent out to site",None),
-    (13.36,14.80,"with the set-out drawings","set-out drawings"),
+    (11.06,12.50,"It's then cut by us",None),                          # measured: speech from 11.06
+    (12.50,13.62,"and sent out to site",None,"box"),                    # over the orbit: white on green box
+    (13.62,14.80,"with the set-out drawings","set-out drawings","box"),
 ], S3["in"], t3)
-edl = dict(fps=30, segments=[S1,S2,S3], captions=C, min_tail=0.8,
+edl = dict(fps=30, segments=[S1,S2,S3,S4], captions=C, min_tail=0.8,
            audio_ramps=[(round(t3 - 0.20, 3), round(t3, 3), 0.25)])   # concrete-room echo after "price" eases 12 dB into the next clip
-Path("cut24.json").write_text(json.dumps(edl, indent=1))
-subprocess.run(["python3","assemble.py","cut24.json","out/formwork-builder-cut24.mp4"], check=True)
+Path("cut26.json").write_text(json.dumps(edl, indent=1))
+subprocess.run(["python3","assemble.py","cut26.json","out/formwork-builder-cut26.mp4"], check=True)

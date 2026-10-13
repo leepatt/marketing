@@ -32,6 +32,7 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: Cap,Inter SemiBold,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,3,2,80,80,720,1
 Style: CapTop,Inter SemiBold,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,3,8,80,80,300,1
 Style: Seam,Inter SemiBold,52,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,80,80,0,1
+Style: Box,Inter SemiBold,58,&H00FFFFFF,&H00FFFFFF,&H00314419,&H00314419,0,0,0,0,100,100,0,0,3,14,0,2,80,80,700,1
 Style: Card,Big Shoulders Display Thin,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1
 
 [Events]
@@ -41,8 +42,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     for c in caps:
         txt = c["text"]
         if c.get("hi") and c["hi"] in txt:
-            txt = txt.replace(c["hi"], "{\\c" + GREEN + "}" + c["hi"] + "{\\c&H00FFFFFF&}")
-        style = {"top":"CapTop","seam":"Seam"}.get(c.get("pos"), "Cap")
+            hi_col = "&H00B5D89F" if c.get("pos") == "box" else GREEN      # light green on the green box; brand green elsewhere
+            txt = txt.replace(c["hi"], "{\\c" + hi_col + "}" + c["hi"] + "{\\c&H00FFFFFF&}")
+        style = {"top":"CapTop","seam":"Seam","box":"Box"}.get(c.get("pos"), "Cap")
         pos = "{\\pos(540,960)}" if style == "Seam" else ""
         lines.append(f"Dialogue: 0,{ass_time(c['start'])},{ass_time(c['end'])},{style},,0,0,0,,{pos}{txt}")
     if label:
@@ -68,10 +70,8 @@ def main():
             vf += f",format=yuv420p,tpad=stop_mode=clone:stop_duration=1"   # picture never ends early
             cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur + 0.3),   # read extra, trim on output: never pad with zeros
                    "-i", s["src"], "-filter_complex" if s.get("card") else "-vf", ("[0:v]" + vf) if s.get("card") else vf,
-                   "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,apad"
-                          + (f",afade=t=out:st={dur-0.9:.3f}:d=0.9" if s.get("fade_out") else ""),   # no dip-to-zero at cuts: that IS a dropout
-                   "-ac", "2", "-t", f"{dur:.4f}",
-                   "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-c:a", "aac", "-b:a", "160k", str(p)]
+                   "-an", "-t", f"{dur:.4f}",                     # picture only: the soundtrack is built from the sources (PCM stage)
+                   "-c:v", "libx264", "-preset", "fast", "-crf", "18", str(p)]
         else:
             dur = s["dur"]; ass = tmp / f"card{i:02d}.ass"
             write_ass([], ass, label=(s["card"], dur))
@@ -90,16 +90,27 @@ def main():
     # Joining compressed AAC by stream copy leaves ~21 ms of encoder priming silence at every cut.
     import numpy as _np, wave as _wave
     SR = 48000; bufs = []
-    for p, sgm in zip(parts, edl["segments"]):
-        n = int(round(sgm["_dur"] * SR))
-        af = "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000" + (f",afade=t=out:st={sgm['_dur']-0.9:.3f}:d=0.9" if sgm.get("fade_out") else "")
-        x = _np.frombuffer(subprocess.run([FF, "-hide_banner", "-loglevel", "error", "-ss", str(sgm["in"]), "-t", f"{sgm['_dur']+0.3:.4f}",
-                                          "-i", sgm["src"], "-vn", "-af", af, "-ac", "2", "-ar", str(SR), "-f", "f32le", "-"],
-                                          capture_output=True, check=True).stdout, dtype=_np.float32).reshape(-1, 2)   # straight from the source, no compressed intermediate
-        if len(x) < n:      # safety net only: top up with room tone from just BEFORE the decoder's end padding
-            print(f"  note: {p.name} audio {len(x)/SR:.3f}s < {n/SR:.3f}s, topping up {(n-len(x))/SR*1000:.0f} ms")
-            body = x[:-960] if len(x) > 4800 else x
-            tail = body[-2400:]
+    segs = edl["segments"]
+    for sg in segs:
+        sg["_asrc"] = sg.get("audio_src", sg["src"]); sg["_ain"] = float(sg.get("audio_in", sg["in"]))
+    groups, cur = [], [0]
+    for k in range(1, len(segs)):
+        a, b = segs[k-1], segs[k]
+        if b["_asrc"] == a["_asrc"] and abs(b["_ain"] - (a["_ain"] + a["_dur"])) <= 1.0/fps + 1e-6: cur.append(k)   # within a frame = continuous; decoded as one piece
+        else: groups.append(cur); cur = [k]
+    groups.append(cur)
+    for g in groups:
+        first, last = segs[g[0]], segs[g[-1]]
+        total = sum(segs[k]["_dur"] for k in g)
+        ns = [int(round(segs[k]["_dur"] * SR)) for k in g]; n = sum(ns)
+        af = "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000" + (f",afade=t=out:st={total-0.9:.3f}:d=0.9" if last.get("fade_out") else "")
+        x = _np.frombuffer(subprocess.run([FF, "-hide_banner", "-loglevel", "error", "-ss", str(first["_ain"]), "-t", f"{total+0.3:.4f}",
+                                          "-i", first["_asrc"], "-vn", "-af", af, "-ac", "2", "-ar", str(SR), "-f", "f32le", "-"],
+                                          capture_output=True, check=True).stdout, dtype=_np.float32).reshape(-1, 2)
+        if len(g) > 1: print(f"  audio: segments {g} decoded as one piece from {first['_asrc'].split('/')[-1]} ({total:.2f}s)")
+        if len(x) < n:
+            print(f"  note: audio {len(x)/SR:.3f}s < {n/SR:.3f}s, topping up {(n-len(x))/SR*1000:.0f} ms")
+            body = x[:-960] if len(x) > 4800 else x; tail = body[-2400:]
             x = _np.concatenate([x] + [tail] * (1 + (n - len(x)) // max(1, len(tail))))
         bufs.append(x[:n])
     track = _np.concatenate(bufs)

@@ -64,3 +64,14 @@ build log printed `pad 1.52` and I treated it as a deliberate hold. Frames and t
 **Environment gotchas from the reset:** `pip` and `python3` are different Pythons here — use `python3 -m pip`.
 `*.png` is git-ignored, so the logo and hero image are re-fetched from craftons.com.au. Playwright must be
 installed next to the scripts (`npm i playwright@1.63.0`); ESM imports ignore the global install.
+
+## Cut 18 (13 Oct) — glitch and voice mismatch
+
+Lee: "it still glitches towards the end" and "an audio issue when the screen shot is visible".
+
+| Finding | Fix |
+|---|---|
+| The L-cut "breath" was `apad` = 0.244 s of exact digital zeros: plays as a dropout. Then the voice switched to the outdoor clip while the screen shot was still up | L-cut removed. Natural room tone after "price" read from the 6013 source; straight cut to face |
+| The screen-section voice is IMG_6013, a separate indoor recording: 12 dB quieter at source, ~7 dB boomier in the low-mids, centroid 1,900 Hz vs 2,600–3,700 Hz outdoors. Loudnorm matched volume, not tone | `voicematch.py` measures 1/3-octave speech spectra of 5999+6001 vs 6013 and fits a **smoothed** EQ (−6 dB at 100 Hz, +5–6 dB above 1.5 kHz). Unsmoothed fitting reached 0.8 dB but was jagged (+10/−4 dB in adjacent bands) = fitting the words, not the room |
+| Segment audio came out a few ms short and `apad` filled it with zeros (29 ms at the cut) | Read 0.3 s extra source and trim on output: never pad with silence |
+| **New guard** | Every render fails on any run of digital silence over 20 ms (`int16 |x| <= 2`). Verified: flags cut 17's glitch at 15.63 s |

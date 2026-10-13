@@ -62,7 +62,7 @@ def main():
                 k = float(s["push"]); nf = int(dur*fps)
                 vf += f",zoompan=z='1+{k}*on/{nf}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps={fps}"
             vf += f",format=yuv420p,tpad=stop_mode=clone:stop_duration=1"   # picture never ends early
-            cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur),
+            cmd = [FF, "-hide_banner", "-loglevel", "error", "-y", "-ss", str(s["in"]), "-t", str(dur + 0.3),   # read extra, trim on output: never pad with zeros
                    "-i", s["src"], "-vf", vf, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,apad", "-ac", "2", "-t", f"{dur:.4f}",
                    "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-c:a", "aac", "-b:a", "160k", str(p)]
         else:
@@ -98,5 +98,15 @@ def main():
     if bad:
         print(f"DEAD AIR: {bad}  (limit {MAX_GAP}s)"); sys.exit(2)
     print(f"dead-air check passed: no gap over {MAX_GAP}s")
+    # --- dropout guard: inserted digital silence (exact zeros) plays as a dropout, unlike real room tone
+    import numpy as _np
+    pcm = subprocess.run([FF, "-hide_banner", "-loglevel", "error", "-i", out, "-vn", "-ac", "1", "-ar", "48000", "-f", "s16le", "-"],
+                         capture_output=True, check=True).stdout
+    a = _np.frombuffer(pcm, dtype=_np.int16); z = (_np.abs(a) <= 2).astype(_np.int8)
+    edges = _np.diff(_np.concatenate(([0], z, [0]))); st = _np.where(edges == 1)[0]; en = _np.where(edges == -1)[0]
+    runs = [(round(s_/48000, 3), round((e_-s_)/48000, 3)) for s_, e_ in zip(st, en) if (e_-s_) > 0.02*48000 and 0.1*48000 < s_ < len(a)-0.1*48000]
+    if runs:
+        print(f"DROPOUT (digital silence) at {runs}"); sys.exit(3)
+    print("dropout check passed: no digital silence over 20 ms")
 
 if __name__ == "__main__": main()

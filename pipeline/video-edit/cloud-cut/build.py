@@ -34,9 +34,9 @@ if False: subprocess.run([FF,"-hide_banner","-loglevel","error","-y", *ins,
 
 # ---- timeline ----
 S1 = dict(src="src/IMG_5999.mov", push=0.06, **{"in":1.86, "out":10.05})
-M4 = json.loads(Path("mid4.json").read_text()); vid_dur = M4["dur"]
-S2 = dict(src="src/mid4.mp4", **{"in":0.0, "out":vid_dur})
-S3 = dict(src="src/IMG_6001.mov", push=0.05, **{"in":11.26, "out":14.44})
+M5 = json.loads(Path("mid5.json").read_text()); vid_dur = M5["dur"]
+S2 = dict(src="src/mid5.mp4", **{"in":0.0, "out":vid_dur})
+S3 = dict(src="src/IMG_6001.mov", push=0.05, **{"in":10.74, "out":14.44})
 q = lambda d: round(d*30)/30
 t1, t2, t3 = 0.0, q(S1["out"]-S1["in"]), None; t3 = t2 + q(vid_dur)
 print(f"timeline: face 0-{t2:.2f} | screen {t2:.2f}-{t3:.2f} | face {t3:.2f}-{t3+S3['out']-S3['in']:.2f}")
@@ -61,11 +61,10 @@ C += caps([
     (8.68,9.78,"and get an instant price","instant price","seam"),
 ], VO_IN, t2)
 C += caps([
-    (10.82,11.26,"It's then cut by us",None,"seam"),   # over the price shot (L-cut): sit in the green bar
-    (11.26,12.32,"It's then cut by us",None),           # after the cut: normal position
+    (10.82,12.32,"It's then cut by us",None),
     (12.32,13.36,"and sent out to site",None),
     (13.36,14.44,"with the set-out drawings","set-out drawings"),
 ], S3["in"], t3)
 edl = dict(fps=30, segments=[S1,S2,S3], captions=C)
-Path("cut17.json").write_text(json.dumps(edl, indent=1))
-subprocess.run(["python3","assemble.py","cut17.json","out/formwork-builder-cut17.mp4"], check=True)
+Path("cut18.json").write_text(json.dumps(edl, indent=1))
+subprocess.run(["python3","assemble.py","cut18.json","out/formwork-builder-cut18.mp4"], check=True)

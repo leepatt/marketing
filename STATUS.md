@@ -267,6 +267,18 @@ Built in `leepatt/cnccut-app` @ `claude/marketing-agents-setup-qamq2f`, `content
 
 ---
 
+### 🆕 Video caption style + font — options ready for Lee (2026-10-13) → `research/2026-10-video-caption-system.md`
+- **Problem found:** three different caption styles are in use (Inter Bold green karaoke · Inter SemiBold white in the
+  CapCut pipeline · Aeonik + mono on ad statics). Brand guide says Aeonik for display, social guide says Aeonik
+  **Regular** + Akkurat Mono caps labels + sage `#dae6d2`. The video pipeline never picked the social guide up.
+- **Recommended (C):** Aeonik Regular 70px paper text on a Craftons-green 6px-radius line plate, live word in sage,
+  spoken measurements as Akkurat Mono caps **spec chips** (`R900`, `17MM`). Floating text (A) only for Craft Macro.
+  Rendered over the Lawless wall photo: plates were the only thing readable on bright timber; dimmed "upcoming
+  word" karaoke disappeared entirely.
+- The five variants rejected 2026-09-04 are **not** re-pitched. Only the base caption changes.
+- ⬜ **Lee to pick** A/B/C/D · ⬜ **check Aeonik licence covers video** (CoType terms not public; some foundries
+  exclude video on desktop licences) · ⬜ then update `captions-highlight.py` + `pipeline/video-edit/CLAUDE.md` §3.
+
 ## ⏭ Next steps (in order) — full detail in `campaigns/meta/launch-readiness.md`
 1. ⬜ **Lee to flag keepers vs bin** from the 33-ad contact sheet, then regenerate into the gaps.
 2. ⬜ **Add `META_PAGE_ID=611852278682648`** to env.

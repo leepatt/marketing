@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Aeonik;font-weight:400;src:url(fonts/Aeonik-Regular.otf)}
+@font-face{font-family:Aeonik;font-weight:500;src:url(fonts/Aeonik-Medium.otf)}
+@font-face{font-family:InterL;font-weight:700;src:url(fonts/Inter-Bold.ttf)}
+@font-face{font-family:Mono;font-weight:700;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2)}
+:root{--green:#194431;--green900:#0a1c14;--line:#2d8a5b;--sage:#dae6d2;--paper:#f4f1ea;--ink:#0e0e0c}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+.bg{position:absolute;inset:0;background:url(bg1.jpg) center/cover}
+/* approximate Reels UI so the safe zone is visible */
+.ui{position:absolute;inset:0;pointer-events:none}
+.rail{position:absolute;right:34px;bottom:300px;display:flex;flex-direction:column;gap:44px}
+.rail i{display:block;width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.82);box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.meta{position:absolute;left:40px;bottom:150px;width:760px}
+.meta b{display:block;width:300px;height:30px;border-radius:15px;background:rgba(255,255,255,.85);margin-bottom:22px}
+.meta s{display:block;height:22px;border-radius:11px;background:rgba(255,255,255,.6);margin-bottom:14px}
+.unsafe{position:absolute;left:0;right:0;bottom:0;height:672px;border-top:3px dashed rgba(255,80,80,.0)}
+.tag{position:absolute;left:40px;top:120px;font:700 30px/1 Mono,monospace;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.55);padding:14px 18px;border-radius:6px}
+.cap{position:absolute;left:70px;right:70px;bottom:690px;text-align:center}
+
+/* 0: current locked style */
+.v0 .cap{font:700 84px/1.12 InterL;color:var(--green);-webkit-text-stroke:0;text-shadow:
+ -3px -3px 0 var(--paper),3px -3px 0 var(--paper),-3px 3px 0 var(--paper),3px 3px 0 var(--paper),0 3px 0 var(--paper),0 -3px 0 var(--paper),3px 0 0 var(--paper),-3px 0 0 var(--paper),2px 4px 3px rgba(0,0,0,.6)}
+.v0 .live{color:var(--line)}
+
+/* A: Aeonik clean, progressive reveal */
+.vA .cap{font:500 76px/1.16 Aeonik;color:var(--paper);letter-spacing:-.01em;text-shadow:0 2px 3px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45)}
+.vA .cap::before{content:"";position:absolute;left:-40px;right:-40px;top:-60px;bottom:-60px;background:radial-gradient(ellipse at center,rgba(10,28,20,.62) 0%,rgba(10,28,20,.35) 45%,rgba(10,28,20,0) 72%);z-index:-1}
+.vA .live{color:var(--sage)}
+
+/* B: Aeonik + spec mono */
+.vB .cap{font:400 70px/1.2 Aeonik;color:var(--paper)}
+.vB .cap span.line{background:var(--green);padding:8px 26px 12px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.vB .live{color:var(--sage)}
+.spec{font:700 .74em/1 Mono,monospace;letter-spacing:.02em;color:var(--green);background:var(--sage);padding:.14em .26em .1em;border-radius:6px;text-shadow:none;position:relative;top:-.06em}
+
+/* C: green plate */
+.vC .cap{font:400 70px/1.2 Aeonik;color:var(--paper)}
+.vC .cap span.line{background:var(--green);padding:8px 26px 12px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.vC .live{color:var(--sage)}
+
+/* D: sage plate */
+.vD .cap{font:500 70px/1.2 Aeonik;color:var(--green)}
+.vD .cap span.line{background:var(--sage);padding:8px 26px 12px;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.vD .next{color:rgba(25,68,49,.45)}
+
+/* E: endcard per social guide */
+.vE .bg{background:var(--green)}
+.vE .ui{display:none}
+.motif{position:absolute;inset:0;opacity:.35}
+.ec-h{position:absolute;left:80px;right:80px;top:640px;font:400 112px/1.04 Aeonik;letter-spacing:-.02em;color:var(--paper)}
+.ec-l{position:absolute;left:80px;top:560px;font:700 30px/1 Mono,monospace;letter-spacing:.12em;color:var(--sage)}
+.ec-s{position:absolute;left:80px;right:80px;top:1010px;font:400 44px/1.3 Aeonik;color:var(--sage)}
+.ec-logo{position:absolute;left:80px;bottom:330px;font:500 64px/1 Aeonik;color:var(--paper);letter-spacing:-.01em}
+.ec-url{position:absolute;right:80px;bottom:342px;font:700 28px/1 Mono,monospace;letter-spacing:.08em;color:var(--sage)}
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+const v=new URLSearchParams(location.search).get('v')||'0';
+const tags={E:'ENDCARD · SOCIAL GUIDE GRID',0:'NOW · INTER BOLD GREEN',A:'A · FLOATING AEONIK',B:'C · PLATE + SPEC CHIP',C:'B · GREEN PLATE',D:'D · SAGE PLATE'};
+const caps={
+ 0:'Punch in<br>the <span class="live">radius</span>',
+ A:'Punch in the <span class="live">radius</span>,<br>we cut the plates.',
+ B:'<span class="line">We cut the <span class="live">plates</span> to</span><br><span class="line"><span class="spec">R900</span> in <span class="spec">17MM</span> formply.</span>',
+ C:'<span class="line">Punch in the <span class="live">radius</span>,</span><br><span class="line">we cut the plates.</span>',
+ D:'<span class="line">Punch in the radius,</span><br><span class="line"><span class="next">we cut the plates.</span></span>'
+};
+const ui='<div class="ui"><div class="rail"><i></i><i></i><i></i><i></i></div><div class="meta"><b></b><s style="width:640px"></s><s style="width:420px"></s></div></div>';
+const root=document.getElementById('root');
+root.className='v'+v;
+if(v==='E'){
+ root.innerHTML=`<div class="bg"></div>
+ 
+ <div class="tag">${tags.E}</div><div class="ec-l">RADIUS PRO</div>
+ <div class="ec-h">Less measuring.<br>Less cutting.<br>More building.</div>
+ <div class="ec-s">Punch in the radius. We cut the plates.</div>
+ <div class="ec-logo">Craftons</div><div class="ec-url">CRAFTONS.COM.AU</div>`;
+}else{
+ root.innerHTML=`<div class="bg"></div>${ui}<div class="tag">${tags[v]}</div><div class="cap">${caps[v]}</div>`;
+}
+</script>
+</body></html>

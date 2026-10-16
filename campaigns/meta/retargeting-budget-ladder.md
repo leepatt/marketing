@@ -731,3 +731,42 @@ Saturation continues: frequency **2.59** (daily peak **2.91** on 10-09), reach *
 
 The case was argued in full in the 10-02 entry and has not changed; it has only accumulated another
 $352 and another zero.
+
+---
+
+# ⛔ WEEK 6 — 2026-10-16. Third consecutive zero. Six weeks, two orders.
+
+**10 orders this week, $16,116. Zero carry a Meta source.** Sources: direct (6), the builder (3),
+Google (1) — plus two where Google was the last click.
+
+**`#1394` is resolved: `direct` → builder. Not Meta.** So week 5 was a confirmed clean zero, not an
+open question.
+
+| Week | Meta spend | Pixel PUR | **Attributable orders** |
+|---|---:|---:|---:|
+| 09-05 → 09-11 | $355.27 | 10 | 1 |
+| 09-12 → 09-18 | $350.24 | 6 | 1 |
+| 09-19 → 09-25 | $340.86 | 7 | 0 |
+| 09-26 → 10-02 | $349.41 | 10 | 0 |
+| 10-03 → 10-09 | $351.98 | 7 | **0** (confirmed) |
+| **10-10 → 10-16** | **$348.47** | **6** | **0** |
+
+## Cumulative
+
+**$2,096.34 spent · 46 pixel purchases claimed · 2 attributable Shopify orders · $1,048 each**, against
+a **$322 break-even.**
+
+**Reach has fallen 27% from its peak** — 12,730 → 11,009 → 10,659 → 10,505 → **9,230** — at flat
+spend. Frequency 2.48, and it touched **3.30** on 10-12, crossing the G1 guard set on 2026-08-23
+("a stop, not a slow-down").
+
+## Status unchanged
+
+- Verification still blocked: business `Craftons` is `not_verified`, `"Advertiser is missing"`.
+  Re-tested today. Budget edits refused; pause still works.
+- **Lee asked on 10-12 whether the recommendation is to pause. It is — answered the same day, as a
+  two-week incrementality test rather than a verdict. No decision yet.** The pause proposal
+  `7504ba6f-bb26-4228-9c69-fb7786bb50e8` is still pending and still unapplied.
+- Account: **1 of 7 ad sets ACTIVE**. October MTD **$805.61** of the $2,000 ceiling.
+
+Nothing new to argue. The only change this week is another $348 and another zero.

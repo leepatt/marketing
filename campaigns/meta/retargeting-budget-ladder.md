@@ -770,3 +770,54 @@ spend. Frequency 2.48, and it touched **3.30** on 10-12, crossing the G1 guard s
 - Account: **1 of 7 ad sets ACTIVE**. October MTD **$805.61** of the $2,000 ceiling.
 
 Nothing new to argue. The only change this week is another $348 and another zero.
+
+---
+
+# ⛔ FORTNIGHT 10-17 → 10-30. Meta's own numbers have now collapsed too.
+
+**12 orders, $14,739. Zero carry a Meta source.** Google (7), direct (3), the builder (1), Bing (1).
+
+**$688.56 spent over the fortnight → 0 attributable orders.**
+
+## This reading no longer depends on the attribution argument
+
+Every previous entry rested on a disagreement between Meta's pixel and Shopify's journey. **That
+disagreement is over — Meta is now reporting the collapse itself:**
+
+| Week | Spend | **Pixel purchases** | Frequency | Reach |
+|---|---:|---:|---:|---:|
+| 09-26 → 10-02 | $349.41 | 10 | 2.54 | 10,659 |
+| 10-03 → 10-09 | $351.98 | 7 | 2.59 | 10,505 |
+| 10-10 → 10-16 | $348.47 | 6 | 2.48 | 9,230 |
+| 10-17 → 10-23 | $345.08 | **4** | **4.35** | **5,495** |
+| 10-24 → 10-30 | $343.48 | **2** | 3.87 | 6,518 |
+
+At flat spend: **pixel purchases down from 10/week to 2, reach down ~49% from its 12,730 peak, and
+frequency at 3.87–4.35 — well past the 3.0 guard.** Meta's own cost per claimed purchase went from
+$35 to **$172** in five weeks.
+
+This is what an exhausted retargeting pool looks like from the inside.
+
+## Cumulative since 09-05
+
+**$2,784.91 spent · 52 pixel purchases claimed · 2 attributable Shopify orders · $1,392 each**, against
+a **$322 break-even.**
+
+**October spend: $1,495.29 — 75% of the $2,000 monthly ceiling, on this one ad set, for nothing
+traceable.**
+
+## Status
+
+- Verification **still blocked**: business `Craftons` is `not_verified`, `"Advertiser is missing"`.
+  Re-tested today. Budget edits refused; pause still works.
+- Ad set `ACTIVE` at $50/day, `updated_time` 2026-09-05 — **nobody has touched it.** 1 of 7 ad sets
+  active.
+- Pause proposal `7504ba6f-bb26-4228-9c69-fb7786bb50e8` pending since 09-25. Not applied.
+
+## One thing noted but NOT attributed
+
+Order count this fortnight was **12 in 14 days**, against roughly 13–16 per week earlier in the
+period. Revenue held up (~$7,370/week) and the earlier figures included some unusually large single
+orders, so this may be seasonality or noise. **It is not evidence about Meta either way** — Meta
+contributed zero attributable orders in both the higher and lower weeks. Recording it so a future
+reading has the baseline, not as an argument.

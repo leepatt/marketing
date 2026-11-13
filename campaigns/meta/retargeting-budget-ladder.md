@@ -821,3 +821,69 @@ period. Revenue held up (~$7,370/week) and the earlier figures included some unu
 orders, so this may be seasonality or noise. **It is not evidence about Meta either way** — Meta
 contributed zero attributable orders in both the higher and lower weeks. Recording it so a future
 reading has the baseline, not as an argument.
+
+---
+
+# 🟡 FORTNIGHT 10-31 → 11-13. The picture reversed. I was wrong to call it a collapse.
+
+**Two Meta-attributable orders — the first since mid-September.**
+
+| Order | Date | Value | Source |
+|---|---|---:|---|
+| `#1427` | 11-10 | **$904** | facebook.com · `utm_campaign=retargeting_radius_pro` · meta/paid_social |
+| `#1440` | 11-13 | **$631** | facebook.com · `utm_campaign=Retargeting Campaign - Bottom Of Funnel` · meta/paid_social |
+
+**$709.14 spent → 2 attributable orders, $1,535 revenue → $354.57 per order**, against a **$322
+break-even.** Marginally over, not the $1,392 of the last reading.
+
+*(`#1438`, $2,716, first-visited Instagram with `source=ig, medium=social` and no campaign — that is
+**organic**, and does not count. Noting it because organic social quietly produced the second-largest
+order of the fortnight.)*
+
+## Correcting my own last entry
+
+The 10-30 entry said **"Meta's own numbers have now collapsed too"** and treated that as the decisive,
+attribution-independent evidence. **It did not hold.**
+
+| Week | Spend | Pixel purchases |
+|---|---:|---:|
+| 10-17 → 10-23 | $345.08 | 4 |
+| 10-24 → 10-30 | $343.48 | **2** |
+| 10-31 → 11-06 | $354.26 | 2 |
+| **11-07 → 11-13** | **$354.88** | **11** |
+
+I called a two-week decline a collapse. **That is the same error this project already named — "two
+points are not a trend" — made again, in the other direction.** The decline was real; calling it
+terminal was not supported, and I built a recommendation on it.
+
+## Cumulative since 09-05
+
+**$3,494.08 · 65 pixel purchases claimed · 4 attributable Shopify orders · $873.52 each.**
+
+Still well above break-even over the whole period. But the trend within it has turned.
+
+## What has NOT changed
+
+Saturation is still real: **frequency 3.53**, **reach 5,786** against a 12,730 peak. The pool is small
+and being hit hard, whatever the conversions did this fortnight.
+
+Verification **still blocked** — `not_verified`, `"Advertiser is missing"`, re-tested today. Budget
+edits refused. Ad set `updated_time` still 2026-09-05; nobody has touched it. 1 of 7 ad sets active.
+
+October closed at **$1,533.79**; November MTD **$670.27** of the $2,000 ceiling.
+
+## Recommendation: HOLD one more fortnight. Do not pause now.
+
+I spent five readings arguing for a pause on the grounds of zero attributable orders. **Two orders at
+roughly break-even is not that**, and consistency with my own rule means one good fortnight no more
+settles it than one bad one did.
+
+The pause proposal `7504ba6f-bb26-4228-9c69-fb7786bb50e8` stays on the table but **is no longer the
+active recommendation.** The next reading decides it: two fortnights of break-even-or-better means
+keep it; a return to zero means pause, and that will be three data points, not two.
+
+## Business context
+
+**23 orders, $34,737 this fortnight** — against 12 orders / $14,739 last time. The dip I flagged on
+10-30 as "probably noise, not evidence about Meta" was exactly that. Recording it as a baseline was
+the right call; reading anything into it would not have been.
